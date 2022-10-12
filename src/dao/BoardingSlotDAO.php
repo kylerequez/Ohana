@@ -10,7 +10,7 @@ class BoardingSlotDAO
         $this->conn = $database->getConnection();
     }
 
-    public function getAllBoardingSlots(): array
+    public function getAllBoardingSlots(): mixed
     {
         try{
             $sql = "
@@ -23,6 +23,7 @@ class BoardingSlotDAO
                 while($slot = $stmt->fetch(PDO::FETCH_ASSOC))
                 {
                     $existingSlot = new BoardingSlot($slot["slot_image"], $slot["slot_name"], $slot["slot_information"], $slot["is_available"], $slot["pet_id"], $slot["pet_name"]);
+                    $existingSlot->setId($slot["slot_id"]);
                     $slots[] = $existingSlot;
                 }
             }
@@ -59,6 +60,24 @@ class BoardingSlotDAO
             
             return $stmt->execute() > 0;
         } catch(Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function deleteById(string $id): bool
+    {
+        try {
+            $sql = "DELETE FROM ohana_boarding_slot
+                    WHERE slot_id=:id";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+
+            $isDeleted = $stmt->execute() > 0;
+
+            return $isDeleted;
+        } catch (Exception $e) {
             echo $e;
             return null;
         }

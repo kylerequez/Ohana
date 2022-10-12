@@ -27,7 +27,7 @@
 </head>
 
 <body>
-  <?php
+<?php
   if (!isset($_SESSION)) session_start();
   include_once dirname(__DIR__) . '/../models/Account.php';
 
@@ -39,7 +39,7 @@
   } else {
     $user = unserialize($_SESSION['user']);
   ?>
-    <div class="layer"> </div>
+    <div class="layer"></div>
 
     <!-- Body -->
 
@@ -62,7 +62,7 @@
           </div>
 
           <div class="users-table table-wrapper">
-          <div class="search-wrapper">
+            <div class="search-wrapper">
               <i data-feather="search" aria-hidden="true"></i>
               <input type="text" placeholder=" Search">
             </div>
@@ -71,115 +71,47 @@
                   <i data-feather="plus" aria-hidden="true"></i>
                   Add Slot </button></a>
             </div>
-            <table class="posts-table">
-              <thead>
-                <tr class="users-table-info">
 
-
-                  <th>SLOT I.D </th>
-                  <th>DOG NAME</th>
-                  <th>DOG OWNER</th>
-                  <th>PICK-UP DATE</th>
-                  <th>ACTION</th>
-
-    
-              </thead>
-              <tbody>
-                <tr>
-                  <!-- first row -->
-
-                  <td>
-                   12345
-                  </td>
-                  <td>
-                    Lilo 
-                  </td>
-                  <td>
-                    <div class="pages-table-img">
-                      Jenny Wilson
-                    </div>
-                  </td>
-
-                  <td>17.04.2021</td>
-                  <td>
-                    <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
-                    <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i> </button>
-                  </td>
-                </tr>
-                <tr>
-
-                  <td>
-                   12345
-                  </td>
-                  <td>
-                    dog name
-                  </td>
-                  <td>
-                    <div class="pages-table-img">
-                      Annette Black
-                    </div>
-                  </td>
-
-                  <td>23.04.2021</td>
-                  <td>
-                    <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
-                    <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i> </button>
-                  </td>
-                </tr>
-                <tr>
-
-                  <td>
-                    98765
-                  </td>
-                  <td>
-                    dog name
-                  </td>
-                  <td>
-                    <div class="pages-table-img">
-                      customer name
-                    </div>
-                  </td>
-                  <td>17.04.2021</td>
-                  <td>
-                    <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
-                    <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i> </button>
-                  </td>
-                </tr>
-                <tr>
-
-                  <td>
-                   98765
-                  </td>
-                  <td>
-                    dog name
-                  </td>
-                  <td>
-                    <div class="pages-table-img">
-                      Guy Hawkins
-                    </div>
-                  </td>
-
-                  <td>17.04.2021</td>
-                  <td>
-                    <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
-                    <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i> </button>
-                  </td>
-                </tr>
-               
-
-              </tbody>
-            </table>
+            <?php
+            require_once dirname(__DIR__) . '/../models/BoardingSlot.php';
+            $slots = !empty($_SESSION["slots"]) ? unserialize($_SESSION["slots"]) : null;
+            //print_r($_SESSION["slots"]);
+            if (!empty($slots)) {
+            ?>
+              <table class="posts-table">
+                <thead>
+                  <tr class="users-table-info">
+                    <th>SLOT I.D</th>
+                    <th>SLOT NAME</th>
+                    <th>SLOT IMAGE</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
+                </thead>
+                <tbody>
+                  <?php
+                  foreach ($slots as $slot) {
+                  ?>
+                    <tr>
+                      <td><?php echo $slot->getId();?></td>
+                      <td><img src="data:image/jpeg;base64,<?php echo base64_encode($slot->getImage()); ?>" style="width: 100px; height: 100px;"></td>
+                      <td><?php echo $slot->getName();?></td>
+                      <td><?php echo $slot->getIsAvailable() == 1 ? "AVAILABLE" : "UNAVAILABLE";?></td>
+                      <td>
+                        <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
+                        <a href="/dashboard/petboarding/delete/<?php echo $slot->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Slot ID <?php echo $slot->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>
+                      </td>
+                    </tr>
+                  <?php
+                  }
+                  ?>
+                </tbody>
+              </table>
           </div>
-
-          <div class="paginations">
-            <li class="page-item previous-page"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">1</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
-            <li class="page-item dots"><a class="page-link" href="#">...</a></li>
-            <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
-          </div>
-
-
+        <?php
+            } else {
+              echo "<h1>NULL</h1>";
+            }
+        ?>
         </main>
 
         <!-- FOOTER -->
@@ -204,24 +136,6 @@
           </div>
           <div class="modal-footer">
             <a href="/landing.html"><button type="button" class="btn btn-secondary ">Logout</button></a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- DELETE Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"> Delete Item Confirmation </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Are you sure you want to delete this item?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary"> Delete </button>
           </div>
         </div>
       </div>

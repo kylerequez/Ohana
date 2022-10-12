@@ -10,7 +10,7 @@ class BoardingSlot
     private ?int $petId = null;
     private ?string $petName = null;
 
-    public function __construct($image, string $name, string $information, bool $isAvailable, int $petId, string $petName)
+    public function __construct($image, string $name, string $information, bool $isAvailable, ?int $petId, ?string $petName)
     {
         $this->image = $image;
         $this->name = $name;

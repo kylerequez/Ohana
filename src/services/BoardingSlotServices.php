@@ -13,4 +13,9 @@ class BoardingSlotServices
     {
         return $this->dao->getAllBoardingSlots();
     }
+
+    public function deleteSlot($id): bool
+    {
+        return $this->dao->deleteById($id);
+    }
 }

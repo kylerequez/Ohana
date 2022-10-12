@@ -28,7 +28,7 @@
         </li>
 
         <li>
-          <a href="/dashboard/petboarding">
+          <a href="/dashboard/petboarding/get">
             <span class="icon paperplus" aria-hidden="true"></span> Pet Boarding Slots </span>
           </a>
         </li>

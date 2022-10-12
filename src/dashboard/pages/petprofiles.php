@@ -82,8 +82,8 @@
               <table class="posts-table">
                 <thead>
                   <tr class="users-table-info">
-                    <th>DOG PICTURE </th>
                     <th>DOG I.D </th>
+                    <th>DOG PICTURE </th>
                     <th>DOG NAME</th>
                     <th>OWNER</th>
                     <th>ACTION</th>
@@ -94,12 +94,12 @@
                   foreach ($profiles as $profile) {
                   ?>
                     <tr>
-                      <td><img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" style="width: 100px; height: 100px;"></td>
                       <td><?php echo $profile->getId(); ?></td>
+                      <td><img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" style="width: 100px; height: 100px;"></td>
                       <td><?php echo $profile->getName(); ?></td>
                       <td><?php echo $profile->getOwnerName(); ?></td>
                       <td>
-                      <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
+                        <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
                         <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i> </button>
                       </td>
                     </tr>

@@ -79,8 +79,9 @@
               <br>
             <?php
             }
-            if (isset($_SESSION["staff"])) {
-              $staffs = unserialize($_SESSION["staff"]);
+            $staffs = !empty($_SESSION["staff"]) ? unserialize($_SESSION["staff"]) : null;
+
+            if(!empty($staffs)){
             ?>
               <table class="posts-table">
                 <thead>
@@ -110,7 +111,8 @@
                       <?php
                       if ($user->getType() == "ADMINISTRATOR") {
                       ?>
-                        <td><a href="#" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $staff->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:aqua; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button></a>
+                        <td>
+                          <a href="#" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $staff->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:aqua; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button></a>
                           <a href="/dashboard/staff/delete/<?php echo $staff->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Account ID <?php echo $staff->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>
                         </td>
                       <?php
@@ -177,15 +179,6 @@
             }
             ?>
           </div>
-
-          <!-- <div class="paginations">
-            <li class="page-item previous-page"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">1</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
-            <li class="page-item dots"><a class="page-link" href="#">...</a></li>
-            <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
-          </div> -->
 
           <!-- ADD STAFF POP UP MODAL -->
           <form method="POST" action="/dashboard/staff/add">
