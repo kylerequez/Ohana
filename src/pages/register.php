@@ -117,6 +117,7 @@
               <p id="number" class="invalid">At least one <b>number</b></p>
               <p id="length" class="invalid">Minimum <b>8 characters</b></p>
             </div>
+            <br>
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
@@ -151,7 +152,6 @@
           </form>
         </div>
       </div>
-
       <!-- FOOTER -->
       <?php include_once dirname(__DIR__) . '/pages/footer.php';; ?>
     </main>
@@ -224,7 +224,7 @@
         var pass = document.getElementById("password");
         var confirmpass = document.getElementById("confirm-password");
         if (confirmpass.value != pass.value) {
-          confirmpass.setCustomValidity("Passwords Do Not Match");
+          confirmpass.setCustomValidity("Password does not match");
         } else {
           confirmpass.setCustomValidity("");
         }

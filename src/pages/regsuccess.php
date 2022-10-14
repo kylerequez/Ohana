@@ -38,10 +38,8 @@
 </head>
 
 <body style="background-color: #FAF8F0;">
-
   <!-- UNREGISTERED USERS NAVIGATION BAR-->
   <?php include_once 'navbar.php'; ?>
-
 
   <div class="container-fluid">
     <main class="sign-up">
@@ -58,7 +56,7 @@
             <center>
               <div class="form__row">
                 <div class="logbtn">
-                  <button><span> Login </span></button>
+                  <a  href="/login" style="text-decoration: none;"><button><span>Login</span></button></a>
                 </div>
               </div>
             </center>

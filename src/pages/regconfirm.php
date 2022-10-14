@@ -38,10 +38,8 @@
 </head>
 
 <body style="background-color: #FAF8F0;">
-
   <!-- UNREGISTERED USERS NAVIGATION BAR-->
   <?php include_once 'navbar.php'; ?>
-
 
   <div class="container-fluid">
     <main class="sign-up">
@@ -49,31 +47,32 @@
         <div class="sign-up__content">
           <header class="sign-up__header">
             <h1 class="sign-up__title" style="font-size: 100px; margin-top: 10%; font-family: Bantayog-Regular;">
-              Welcome to Ohana! 
+              Welcome to Ohana!
             </h1>
             <p style="font-size:20px;"> Complete registration by entering the OTP sent to your email. </p>
           </header>
           <form class="sign-up__form form">
-            
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
                   <label class="input__label" for="confirm-password"> <b>Enter OTP</b> </label><br>
-                  <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2"> <!-- OTP 6 BOXES FOR USER INPUT -->
-                    <input class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1" /> 
-                    <input class="m-2 text-center form-control rounded" type="text" id="second" maxlength="1" /> 
-                    <input class="m-2 text-center form-control rounded" type="text" id="third" maxlength="1" /> 
-                    <input class="m-2 text-center form-control rounded" type="text" id="fourth" maxlength="1" /> 
-                    <input class="m-2 text-center form-control rounded" type="text" id="fifth" maxlength="1" /> 
-                    <input class="m-2 text-center form-control rounded" type="text" id="sixth" maxlength="1" /> 
+                  <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
+                    <!-- OTP 6 BOXES FOR USER INPUT -->
+                    <input class="m-2 text-center form-control rounded" type="text" name="otpFirst" id="otpFirst" maxlength="1" />
+                    <input class="m-2 text-center form-control rounded" type="text" name="otpSecond" id="otpSecond" maxlength="1" />
+                    <input class="m-2 text-center form-control rounded" type="text" name="otpThird" id="otpThird" maxlength="1" />
+                    <input class="m-2 text-center form-control rounded" type="text" name="otpFourth" id="otpFourth" maxlength="1" />
+                    <input class="m-2 text-center form-control rounded" type="text" name="otpFifth" id="otpFifth" maxlength="1" />
+                    <input class="m-2 text-center form-control rounded" type="text" name="otpSixth" id="otpSixth" maxlength="1" />
                   </div>
                 </div>
               </div>
             </div>
             <center><br>
-            <div class="form__row">
+              <div class="form__row">
                 <p style="font-size:20px;">Did not recieve OTP? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="##">Resend OTP</a></p>
-              </div> </center>
+              </div>
+            </center>
             <center>
               <div class="form__row">
                 <div class="logbtn">
@@ -81,14 +80,11 @@
                 </div>
               </div>
             </center>
-
             <hr style="width:100%"><br>
-
             <center>
               <div class="form__row">
-                <p style="font-size:20px;">Already have an account? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="login.php">Login</a></p>
+                <p style="font-size:20px;">Already have an account? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="/login">Login</a></p>
               </div>
-
           </form>
         </div>
       </div>
@@ -107,13 +103,13 @@
           </div>
         </div>
       </div>
-        <!-- FOOTER -->
-        <?php include_once 'footer.php'; ?>
+      <!-- FOOTER -->
+      <?php include_once 'footer.php'; ?>
 
     </main>
 
     <!-- SCRIPTS -->
-  
+
     <!-- SCRIPTS IMPORT-->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
@@ -123,8 +119,6 @@
 
     <script src="../js/privacyscript.js"></script>
     <script src="../js/termsscript.js"></script>
-
-
 </body>
 
 </body>

@@ -9,10 +9,10 @@ require dirname(__DIR__) . '/../controllers/AccountController.php';
 
 $database = new Database($servername, $database, $username, $password);
 $dao = new AccountDAO($database);
-// $logdao = new LogDAO($database);
+$logdao = new LogDAO($database);
 $services = new AccountServices($dao);
-// $logservices = new LogServices($logdao);
-$controller = new AccountController($services, null);
+$logservices = new LogServices($logdao);
+$controller = new AccountController($services, $logservices);
 
 // echo $_SERVER["REQUEST_METHOD"] . "<br>";
 // echo $id . "<br>";

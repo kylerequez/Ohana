@@ -13,6 +13,6 @@ $controller = new AccountController($services, null);
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
     // register account
-    $_SESSION["data"] = $_POST;
-    $controller->processUserCollectionRequest($_SERVER["REQUEST_METHOD"]);
+    // $_SESSION["data"] = $_POST;
+    // $controller->processUserCollectionRequest($_SERVER["REQUEST_METHOD"]);
 }

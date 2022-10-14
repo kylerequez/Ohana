@@ -44,9 +44,9 @@ class AccountController
                 if ($this->services->addAccount($data) == true) {
                     // redirect to registered landing
                     header("Location: http://localhost/login");
-                    echo "Added";
+                    //echo "Added";
                 } else {
-                    echo "ERROR";
+                    //echo "ERROR";
                 }
                 break;
         }
