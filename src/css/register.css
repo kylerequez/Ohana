@@ -356,12 +356,13 @@ button span {
 /* The message box is shown when the user clicks on the password field */
 #message {
   display: none;
-  background: #f1f1f1;
+  background: #eed1c2;
   color: #000;
   position: relative;
   padding: 20px;
   margin-top: 10px;
   border-radius: 15%;
+  opacity:0.8;
 }
 
 #message p {

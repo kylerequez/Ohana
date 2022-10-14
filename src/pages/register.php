@@ -96,10 +96,12 @@
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
-                  <input class="input__field" id="email" name="email" placeholder="Email" required type="text" /><label class="input__label" for="email">Email</label>
+                  <input class="input__field" type="email "id="email" name="email" placeholder="Email" required type="text" /><label class="input__label" for="email">
+                    Email <!-- <i class="uil uil-envelope email-icon"></i> --> </label>
                 </div>
               </div>
             </div>
+
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
@@ -157,6 +159,25 @@
     </main>
 
     <!-- SCRIPTS -->
+    <script>
+      const input = document.querySelector("input"),
+            emailIcon = document.querySelector(".email-icon")
+
+            input.addEventListener("keyup", () =>{
+              let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+              if(input.value === ""){
+                return console.log("input is empty")
+              }
+              if(input.value.match(pattern)){
+                emailIcon.classList.replace("uil-envelope","uil-check-circle");
+                return emailIcon.style.color ="green"
+              }
+                emailIcon.classList.replace("uil-check-circle","uil-envelope");
+                return emailIcon.style.color ="red"
+            })
+    </script>
+
     <script>
       //PASSWORD VALIDATION SCRIPT
 
