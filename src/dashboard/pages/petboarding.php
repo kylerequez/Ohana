@@ -27,7 +27,7 @@
 </head>
 
 <body>
-<?php
+  <?php
   if (!isset($_SESSION)) session_start();
   include_once dirname(__DIR__) . '/../models/Account.php';
 
@@ -82,8 +82,8 @@
                 <thead>
                   <tr class="users-table-info">
                     <th>SLOT I.D</th>
-                    <th>SLOT NAME</th>
                     <th>SLOT IMAGE</th>
+                    <th>SLOT NAME</th>
                     <th>STATUS</th>
                     <th>ACTION</th>
                 </thead>
@@ -92,10 +92,10 @@
                   foreach ($slots as $slot) {
                   ?>
                     <tr>
-                      <td><?php echo $slot->getId();?></td>
+                      <td><?php echo $slot->getId(); ?></td>
                       <td><img src="data:image/jpeg;base64,<?php echo base64_encode($slot->getImage()); ?>" style="width: 100px; height: 100px;"></td>
-                      <td><?php echo $slot->getName();?></td>
-                      <td><?php echo $slot->getIsAvailable() == 1 ? "AVAILABLE" : "UNAVAILABLE";?></td>
+                      <td><?php echo $slot->getName(); ?></td>
+                      <td><?php echo $slot->getIsAvailable() == 1 ? "AVAILABLE" : "UNAVAILABLE"; ?></td>
                       <td>
                         <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
                         <a href="/dashboard/petboarding/delete/<?php echo $slot->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Slot ID <?php echo $slot->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>

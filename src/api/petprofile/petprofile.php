@@ -14,7 +14,9 @@ $logservices = new LogServices($logdao);
 $services = new PetProfileServices($dao);
 $controller = new PetProfileController($services, $logservices);
 
-if($_SERVER["REQUEST_METHOD"] == "GET")
+if($_SERVER["REQUEST_METHOD"] == "GET" && empty($id))
 {
+    $controller->processRequest($_SERVER["REQUEST_METHOD"], null);
+} else if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($id)) {
     $controller->processRequest($_SERVER["REQUEST_METHOD"], null);
 }
