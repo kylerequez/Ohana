@@ -27,7 +27,7 @@ main {
 }
 
 h1 {
-    color:#2f1f18!important;
+    color:#db6551!important;
 }
 .card {
   border-radius: 10px;
@@ -119,7 +119,7 @@ body {
   width: 180px;
   height: 50px;
   border-radius: 10px;
-  background-color: #2f1f18;
+  background-color: #eed1c2;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;

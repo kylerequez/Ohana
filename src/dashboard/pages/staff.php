@@ -112,7 +112,7 @@
                       if ($user->getType() == "ADMINISTRATOR") {
                       ?>
                         <td>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $staff->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:aqua; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button></a>
+                          <a href="#" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $staff->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button></a>
                           <a href="/dashboard/staff/delete/<?php echo $staff->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Account ID <?php echo $staff->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>
                         </td>
                       <?php
@@ -159,7 +159,7 @@
                                 </div>
                               </div>
                               <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary"> Save Changes </button>
+                                <button type="submit" class="btn" style="background-color:#db6551"> Save Changes </button>
                               </div>
                             </div>
                           </div>
@@ -193,31 +193,31 @@
                     <input name="type" type="hidden" value="STAFF">
                     <div class="mb-3">
                       <label for="fname" class="col-form-label"> First Name: </label>
-                      <input type="text" class="form-control" name="fname" placeholder="Enter First Name" required>
+                      <input type="text" class="form-control" name="fname" placeholder="Enter First Name" required style="background-color:#eed1c2; color:black">
                     </div>
                     <div class="mb-3">
                       <label for="mname" class="col-form-label"> Middle Name: </label>
-                      <input type="text" class="form-control" name="mname" placeholder="Enter Middle Name" required>
+                      <input type="text" class="form-control" name="mname" placeholder="Enter Middle Name" required style="background-color:#eed1c2; color:black">
                     </div>
                     <div class="mb-3">
                       <label for="lname" class="col-form-label"> Surname: </label>
-                      <input type="text" class="form-control" name="lname" placeholder="Enter Surname" required>
+                      <input type="text" class="form-control" name="lname" placeholder="Enter Surname" required style="background-color:#eed1c2; color:black">
                     </div>
                     <div class="mb-3">
                       <label for="email" class="col-form-label"> Email Address: </label>
-                      <input type="email" class="form-control" name="email" placeholder="Enter Email Address" required>
+                      <input type="email" class="form-control" name="email" placeholder="Enter Email Address" required style="background-color:#eed1c2; color:black">
                     </div>
                     <div class="mb-3">
                       <label for="number" class="col-form-label"> Contact Number: </label>
-                      <input type="text" class="form-control" name="number" placeholder="Enter Contact Number" required>
+                      <input type="text" class="form-control" name="number" placeholder="Enter Contact Number" required style="background-color:#eed1c2; color:black">
                     </div>
                     <div class="mb-3">
                       <label for="password" class="col-form-label"> Password: </label>
-                      <input type="password" class="form-control" name="password" placeholder="Enter Password" required>
+                      <input type="password" class="form-control" name="password" placeholder="Enter Password" required style="background-color:#eed1c2; color:black"> 
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary"> Add Staff </button>
+                    <button type="submit" class="btn" style="background-color:#db6551"> Add Staff </button>
                   </div>
                 </div>
               </div>

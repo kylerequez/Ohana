@@ -137,7 +137,7 @@
     <!-- MODALS -->
 
     <!-- BOOTSTRAP LOGOUT MODAL -->
-    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby=logoutmodal" aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutmodal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -169,11 +169,11 @@
               <input name="type" type="hidden" value="STAFF">
               <div class="mb-3">
                 <label for="name" class="col-form-label"> DOG NAME </label>
-                <input type="text" class="form-control" name="name" placeholder="Enter Dog Name" required>
+                <input type="text" class="form-control" name="name" placeholder="Enter Dog Name" required style="background-color:#eed1c2; color:black">
               </div>
               <div class="mb-3">
                 <label for="age" class="col-form-label"> DOG AGE</label>
-                <input type="text" class="form-control" name="age" placeholder="Enter Dog Age" required>
+                <input type="text" class="form-control" name="age" placeholder="Enter Dog Age" required style="background-color:#eed1c2; color:black">
               </div>
 
               <div class="mb-3">
@@ -184,11 +184,11 @@
 
               <div class="mb-3">
                 <label for="birthdate" class="col-form-label"> BIRTHDAY </label> <!-- DATE SELECTOR-->
-                <input type="date" class="form-control" name="birthdate" required>
+                <input type="date" class="form-control" name="birthdate" required style="background-color:#eed1c2; color:black">
               </div>
               <div class="mb-3">
                 <label for="color" class="col-form-label"> COLOR/TRAIT </label>
-                <input type="text" class="form-control" name="color" placeholder="Enter Color/Trait" required>
+                <input type="text" class="form-control" name="color" placeholder="Enter Color/Trait" required style="background-color:#eed1c2; color:black">
               </div>
               <div class="mb-3">
 
@@ -206,7 +206,7 @@
               </div>
               <div class="mb-3">
                 <label for="price" class="col-form-label"> PRICE </label>
-                <input type="text" class="form-control" name="price" placeholder="Enter Price" required>
+                <input type="text" class="form-control" name="price" placeholder="Enter Price" required style="background-color:#eed1c2; color:black">
               </div>
 
               <input type="hidden" class="form-control" name="status"> <!-- FOR OHANA OWNER -->
@@ -217,7 +217,7 @@
             </div>
 
             <div class="modal-footer">
-              <button type="submit" class="btn btn-primary"> Add Pet </button>
+              <button type="submit" class="btn" style="background-color:#db6551"> Add Pet </button>
             </div>
           </div>
         </div>

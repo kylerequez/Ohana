@@ -20,9 +20,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- Web Icon -->
-  <link rel="shortcut icon" href="../images/templogo.png" type="image/x-icon">
-
   <!-- Bootstrap CSS CDN -->
   <!-- 5.2.1 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous">
@@ -73,10 +70,10 @@
                 <h3> Registered Customer Name<br /><span>customer@gmail.com</span></h3>
                 <ul>
                   <li>
-                    <img src="/Ohana/src/images/icons/edit.png" /><a href="#">My profile</a>
+                    <img src="/Ohana/src/images/icons/edit.png" /><a href="/userprofile">My profile</a>
                   </li>
                   <li>
-                    <img src="/Ohana/src/images/icons/dog.png" /><a href="#">Pet profile</a>
+                    <img src="/Ohana/src/images/icons/dog.png" /><a href="/ownedpets">Pet profile</a>
                   </li>
                   <li>
                     <img src="/Ohana/src/images/icons/settings.png" /><a href="#">Setting</a>

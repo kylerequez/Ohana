@@ -120,9 +120,51 @@
       </div><!-- main wrapper END -->
     </div> <!-- PAGE FLEX END-->
     <!-- MODALS -->
+    
+     <!-- ADD SLOTS MODAL -->
+     <form method="POST" action="/dashboard/petprofiles/add">
+      <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addSlotModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addStaffTitle"> ADD PET BOARDING SLOT </h5>
+              <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+            </div>
+            <div class="modal-body">
+              <input name="type" type="hidden" value="STAFF">
+              <div class="mb-3">
+                <label for="name" class="col-form-label"> SLOT NAME </label>
+                <input type="text" class="form-control" name="name" placeholder="Enter Slot Name" required style="background-color:#eed1c2; color:black">
+              </div>
+              
+              <div class="mb-3">
+                <label for="hasPCCI" class="col-form-label"> STATUS </label><br> <!-- RADIO BUTTON -->
+
+                <label for="pcci1" class="radio-inline"> <input type="radio" id="pcci1" name="pcciStatus" value="Registered"> Available </label>
+                <label for="pcci2" class="radio-inline"> <input type="radio" id="pcci2" name="pcciStatus" value="Pending"> Occupied </label>
+
+              </div>
+           
+
+              <input type="hidden" class="form-control" name="status"> <!-- FOR OHANA OWNER -->
+
+              <div class="mb-3">
+                <label for="image" class="col-form-label"> SLOT IMAGE </label><br>
+                <input type="file" name="fileToUpload" id="fileToUpload" style="background-color:transparent;">
+              </div>
+
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn" style="background-color:#db6551"> Add Slot </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
 
     <!-- BOOTSTRAP LOGOUT MODAL -->
-    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby=logoutmodal" aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutmodal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">

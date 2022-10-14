@@ -3,7 +3,7 @@
 
 <head>
 
-    <title> OHANA CART </title>
+    <title> PAW CART </title>
 
     <!-- META TAGS -->
     <meta charset="utf-8">
@@ -42,7 +42,7 @@
 
         <div class="container-fluid">
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-            <img src="/Ohana/src/images/Pages/cartheader.png" width="100%" style="margin-top:7%">
+            <img src="/Ohana/src/images/Pages/cartheader.png" width="100%" style="margin-top:10%">
 
             <section class="h-100">
                 <div class="container h-100 py-5">
@@ -50,7 +50,7 @@
                         <div class="col-10">
 
                             <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h3 class="fw-normal mb-0 text-black"> ORDER DESCRIPTION</h3>
+                                <h3 class="fw-normal mb-0 text-black"> ORDER DESCRIPTION</h3>
                                 <div>
                                     <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
                                 </div>
@@ -63,22 +63,22 @@
                                             <img src="/Ohana/src/images/Dogs/pup1.png" class="img-fluid rounded-3" alt="Cotton T-shirt">
                                         </div>
                                         <div class="col-md-3 col-lg-3 col-xl-3">
-                                            <p class="lead fw-normal mb-2">Basic T-shirt</p>
-                                            <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+                                            <p class="lead fw-normal mb-2">French Puppy</p>
+                                            <p><span class="text-muted">Gender: </span>Male <span class="text-muted">Color: </span>Grey</p>
                                         </div>
                                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                                             <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                                 <i class="fas fa-minus"></i>
                                             </button>
 
-                                            <input id="form1" min="0" name="quantity" value="2" type="number" class="form-control form-control-sm" />
+                                            <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control form-control-sm" />
 
                                             <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                                 <i class="fas fa-plus"></i>
                                             </button>
                                         </div>
                                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                            <h5 class="mb-0">P100,000</h5>
+                                            <h5 class="mb-0">P80,000</h5>
                                         </div>
                                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                             <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
@@ -94,22 +94,22 @@
                                             <img src="/Ohana/src/images/Dogs/pup1.png" class="img-fluid rounded-3" alt="Cotton T-shirt">
                                         </div>
                                         <div class="col-md-3 col-lg-3 col-xl-3">
-                                            <p class="lead fw-normal mb-2">Basic T-shirt</p>
-                                            <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+                                            <p class="lead fw-normal mb-2">French Puppy</p>
+                                            <p><span class="text-muted">Gender: </span>Male <span class="text-muted">Color: </span>Grey</p>
                                         </div>
                                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                                             <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                                 <i class="fas fa-minus"></i>
                                             </button>
 
-                                            <input id="form1" min="0" name="quantity" value="2" type="number" class="form-control form-control-sm" />
+                                            <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control form-control-sm" />
 
                                             <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                                 <i class="fas fa-plus"></i>
                                             </button>
                                         </div>
                                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                            <h5 class="mb-0">P100,000</h5>
+                                            <h5 class="mb-0">P80,000</h5>
                                         </div>
                                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                             <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
@@ -125,15 +125,15 @@
                                             <img src="/Ohana/src/images/Dogs/pup1.png" class="img-fluid rounded-3" alt="Cotton T-shirt">
                                         </div>
                                         <div class="col-md-3 col-lg-3 col-xl-3">
-                                            <p class="lead fw-normal mb-2">Basic T-shirt</p>
-                                            <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+                                            <p class="lead fw-normal mb-2">French Puppy</p>
+                                            <p><span class="text-muted">Gender: </span>Female <span class="text-muted">Color: </span>Grey</p>
                                         </div>
                                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                                             <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                                 <i class="fas fa-minus"></i>
                                             </button>
 
-                                            <input id="form1" min="0" name="quantity" value="2" type="number" class="form-control form-control-sm" />
+                                            <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control form-control-sm" />
 
                                             <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                                 <i class="fas fa-plus"></i>
@@ -149,12 +149,9 @@
                                 </div>
                             </div>
 
-                            <div class="card" style="margin-top:10%; height:100px;">
-                                <div class="card-body" style="margin-top:10px;"><center>
-                                    <button type="button" class="btn btn-dark btn-lg me-2"> Back to Home</button>
-                                    <button type="button" name="btn-Payment" class="btn btn-warning btn-block btn-lg"> Proceed to Select Payment Method </button></center>
-                                </div>
-                            </div>
+                            <a href="/home"><button type="button" class="btn btn-dark btn-lg me-2"> Back to Home</button></a>
+                            <a href="/checkout"><button type="button" name="btn-Payment" class="btn btn-block btn-lg" style="float:right; background-color:#c0b65a; color:white;">
+                             Proceed to Select Payment Method </button></a>
 
                         </div>
                     </div>

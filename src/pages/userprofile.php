@@ -3,9 +3,9 @@
 
 <head>
 
-    <title> OHANA APPOINTMENT </title>
+    <title> USER PROFILE </title>
 
-    <!-- META TAGS --> 
+    <!-- META TAGS -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
@@ -17,7 +17,7 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
 
     <!-- EXTERNAL CSS -->
-    <link rel="stylesheet" href="/Ohana/src/css/calendar.css">
+    <link rel="stylesheet" href="/Ohana/src/css/userprofile.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
 
     <!-- FONT AWESOME ICONS IMPORT -->
@@ -42,37 +42,35 @@
         <?php include_once 'Rnavbar.php'; ?>
 
         <div class="container-fluid">
-
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-            <center>
-            <section class="calendar" style="margin-top:10%; ">
-                <div class="calendarview">
+            
+                <section class="abouthead" style="margin-top:10%;">
+                    <div class="aboutheader">
+                        <h1> USER PROFILE </h1>
+                    </div>
+                </section>
 
-                    <h1> INSERT CALENDAR HERE </h1>
-
-                </div>
-            </section>
-            </center>
+                <section class="extrasection">
+                    
+                </section>
+            
         </div>
     </main>
 
     <div class="container-fluid">
-    <?php include_once 'footer.php'; ?>
+        <?php include_once 'footer.php'; ?>
     </div>
 
-    <!-- SCIPTS OF CALENDAR -->
+    <!-- SCIPTS -->
 
-    <!-- END OF APPOINTMENT CALENDAR SCRIPT -->
-    
     <!-- Chart library -->
-    <script src="../plugins/chart.min.js"></script>
+    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
 
     <!-- Icons library -->
-    <script src="../plugins/feather.min.js"></script>
+    <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
 
     <!-- Custom scripts -->
-    <script src="../js/script.js"></script>
-  
+    <script src="/Ohana/src/dashboard/js/script.js"></script>
 
     <!-- JAVASCRIPT IMPORTS -->
     <!-- Bootstrap Bundle with Popper -->

@@ -62,6 +62,7 @@
                 <label for="s5" id="slide5"><img src="/Ohana/src/images/sliders/socials.png" alt=""></label>
             </section>
             <section>
+            <!-- 
             <div class="message">
                 <h1 style="font-size:80px; Margin-top:10%; color:#DB6551"> BOOK AN APPOINTMENT WITH US </h1>
             </div>
@@ -70,8 +71,7 @@
                         <button id="btnLearn" name="btnLearn"><span> BOOK AN APPOINTMENT! </span></button>
                     </div>
                 </form>
-            </section>
-          
+            </section> -->
         </div> <!-- END OF CONTAINER FLUID -->
     </main>
 

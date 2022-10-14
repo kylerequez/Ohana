@@ -3,7 +3,7 @@
 
 <head>
 
-    <title> OHANA PUPPIES </title>
+    <title> STUD PROFILES </title>
 
     <!-- META TAGS -->
     <meta charset="utf-8">
@@ -50,65 +50,17 @@
                     </div><br><br>
                     <!-- AVAILABLE PUPPIES CARD -->
                     <div class="container">
+                    
                     <div class="row row-cols-1 row-cols-md-2 g-4">
-                        <div class="col" style="margin-top:5%;">
+                        <div class="col" style="margin-top:5%; margin-left:25%;">
                             <div class="card h-100">
-                                <img src="/Ohana/src/images/services/stud.png" class="card-img-top" alt="...">
+                                <a href="/studprofile"><img src="/Ohana/src/images/petprofile/stud.jpg" class="card-img-top" alt="stud dog"></a>
                                 <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <h3 class="card-title" style="text-align:center"> FRENCH BULLDOG NAME </h3>
+                                    <p class="card-text" style="font-size:20px; text-align:center"> Stud success rate: 90% | Color: Brown | Gender: Male </p>
                                 </div>
                                 <div class="card-footer">
-                                    <form action="/" method='get'>
-                                        <div class="btn-Learn" name="btn-Learn">
-                                            <button id="btnLearn" name="btnLearn"><span> More Info! </span></button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col" style="margin-top:5%;">
-                            <div class="card h-100">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <form action="/" method='get'>
-                                        <div class="btn-Learn" name="btn-Learn">
-                                            <button id="btnLearn" name="btnLearn"><span> More Info! </span></button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 2ND ROW -->
-                        <div class="col" style="margin-top:5%;">
-                            <div class="card h-100">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <form action="/" method='get'>
-                                        <div class="btn-Learn" name="btn-Learn">
-                                            <button id="btnLearn" name="btnLearn"><span> More Info! </span></button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col" style="margin-top:5%;">
-                            <div class="card h-100">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <form action="/" method='get'>
+                                    <form action="/studprofile" method='get'>
                                         <div class="btn-Learn" name="btn-Learn">
                                             <button id="btnLearn" name="btnLearn"><span> More Info! </span></button>
                                         </div>
@@ -117,7 +69,25 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                    
+                        <!--
+                        <div class="col" style="margin-top:5%;">
+                            <div class="card h-100">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <form action="/" method='get'>
+                                        <div class="btn-Learn" name="btn-Learn">
+                                            <button id="btnLearn" name="btnLearn"><span> More Info! </span></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div> 
+                        </div> -->
+
                 <section class="reason" style="margin-top:5%;">
 
                 </section>
