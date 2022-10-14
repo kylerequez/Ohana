@@ -1,3 +1,19 @@
+<head>
+<style>
+body { 
+    text-align:justify;
+    font-family:'Helvetica';
+ }
+ p {
+    font-size: 14px;
+ }
+ ul { 
+    font-size: 14px;
+ }
+
+
+</style>
+</head>
 
 <center><h1 style="font-size:70px;">Terms and Conditions</h1><br></center>
 		<h1> Welcome to Ohana Kennel PH! </h1>
@@ -9,8 +25,16 @@
 <p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and compliant to the Company’s terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to the same.</p>
 
 <h3><strong>Cancellation Policy</strong></h3>
+<p> Please note that once you have booked an appointment with us it means that we have reserved time in our schedule exclusively for you. If you cancel your appointment less than [24 hours] before it is scheduled to take place, you will be subject to an account suspension of 3-5 days.
+</p>
+<p>To avoid an account suspension, please provide cancellation notice at least 24 hours prior to your appointment.
+</p>
 
 <h3><strong>Payment Policy</strong></h3>
+<p>If you wish to avail any product or service made available through service (“Purchase”), you must set an appointment for dog rehoming, stud-service, pet boarding or kennel visit. There will be no payments done on this website, as the clients will only be asked to select their preferred payment method to be done face-to-face. Given the price of the dogs, Ohana Kennel PH only accepts payments through cash, bank transfer & Gcash, as seen on the list of available payment methods after checkout. 
+</p>
+<p>We reserve the right to refuse or cancel your appointment if there are suspicious activities or information detected from your account.
+</p>
 
 <h3><strong>Cookies</strong></h3>
 

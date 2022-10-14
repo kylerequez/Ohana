@@ -1,3 +1,23 @@
+<head>
+<style>
+body { 
+    text-align:justify;
+    font-family:'Helvetica';
+ }
+ p {
+    font-size: 14px;
+ }
+ ul { 
+    font-size: 14px;
+ }
+ h1, h3 {
+	font-weight:bold;
+ }
+
+
+</style>
+</head>
+<body>
 <h1>Privacy Policy for Ohana Kennel PH</h1>
 		<p>At OhanaKennelPH, accessible from OhanaKennelPH.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by OhanaKennelPH and how we use it.</p>
 
@@ -86,3 +106,5 @@
 	and we will do our best efforts to promptly remove such information from our records.</p>
 		<br>
 <!-- END OF CONTENT -->
+
+</body>

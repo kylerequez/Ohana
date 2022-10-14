@@ -64,44 +64,52 @@
               </center>
               <div class="row">
 
-                <div class="card mb-3" style="max-width: 480px; margin-left:10px;">
+                <div class="card mb-3" style="max-width: 400px; margin-left:20px;">
                   <div class="row g-0">
                     <div class="col-md-4">
-                      <img src="..." class="img-fluid rounded-start" alt="...">
+                      <a href="##"><img src="/Ohana/src/dashboard/img/main/registered.png" class="img-fluid rounded-start" alt="..." style="margin-top:10px; margin-bottom:10px;"></a>
+                    </div>
+
+                    <div class="col-md-8">
+                      <a href="##">
+                        <div class="card-body">
+                          <h5 class="card-title" style="color:#db6551;font-weight:bold"> REGISTERED USERS</h5>
+                          <h2 class="card-text"> - 100</h2>
+                        </div>
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="card mb-3" style="max-width: 400px; margin-left:20px;">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <a href="##"><img src="/Ohana/src/dashboard/img/main/feedback.png" class="img-fluid rounded-start" alt="..." style="margin-top:10px; margin-bottom:10px;"></a>
                     </div>
                     <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title" style="color:#db6551;font-weight:bold"> REGISTERED USERS</h5>
-                        <p class="card-text"> 100</p>
-                      </div>
+                      <a href="##">
+                        <div class="card-body">
+                          <h5 class="card-title" style="color:#db6551;font-weight:bold"> USER FEEDBACKS </h5>
+                          <h2 class="card-text"> - 100</h2>
+                        </div>
+                      </a>
                     </div>
                   </div>
                 </div>
 
-                <div class="card mb-3" style="max-width: 480px; margin-left:10px;">
+                <div class="card mb-3" style="max-width: 400px; margin-left:20px;">
                   <div class="row g-0">
                     <div class="col-md-4">
-                      <img src="..." class="img-fluid rounded-start" alt="...">
+                      <a href="##"><img src="/Ohana/src/dashboard/img/main/sales.png" class="img-fluid rounded-start" alt="..." style="margin-top:10px; margin-bottom:10px;"></a>
                     </div>
                     <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title" style="color:#db6551;font-weight:bold"> STAFF ACCOUNTS </h5>
-                        <p class="card-text"> 100</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card mb-3" style="max-width: 480px; margin-left:10px;">
-                  <div class="row g-0">
-                    <div class="col-md-4">
-                      <img src="..." class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title" style="color:#db6551;font-weight:bold"> TOTAL SALES </h5>
-                        <p class="card-text"> 100</p>
-                      </div>
+                      <a href="##">
+                        <div class="card-body">
+                          <h5 class="card-title" style="color:#db6551;font-weight:bold"> TOTAL SALES </h5>
+                          <h2 class="card-text"> P100,000 </h2>
+                        </div>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -111,97 +119,56 @@
               <div class="row" style="margin-top:20px;">
                 <!-- 2nd row -->
 
-                <div class="card mb-3" style="max-width: 480px; margin-left:10px;">
+                <div class="card mb-3" style="max-width: 400px; margin-left:20px;">
                   <div class="row g-0">
                     <div class="col-md-4">
-                      <img src="..." class="img-fluid rounded-start" alt="...">
+                      <a href="##"><img src="/Ohana/src/dashboard/img/main/dogs.png" class="img-fluid rounded-start" alt="..." style="margin-top:10px; margin-bottom:10px;"></a>
                     </div>
                     <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title" style="color:#db6551;font-weight:bold"> TOTAL AVAILABLE DOGS </h5>
-                        <p class="card-text"> 10</p>
-                      </div>
+                      <a href="##">
+                        <div class="card-body">
+                          <h5 class="card-title" style="color:#db6551;font-weight:bold"> TOTAL AVAILABLE PUPPIES </h5>
+                          <p class="card-text"> 5 </p>
+                        </div>
+                      </a>
                     </div>
                   </div>
                 </div>
 
-                <div class="card mb-3" style="max-width: 480px; margin-left:10px;">
+                <div class="card mb-3" style="max-width: 400px; margin-left:20px;">
                   <div class="row g-0">
                     <div class="col-md-4">
-                      <img src="..." class="img-fluid rounded-start" alt="...">
+                      <a href="##"><img src="/Ohana/src/dashboard/img/main/slots.png" class="img-fluid rounded-start" alt="..." style="margin-top:10px; margin-bottom:10px;"></a>
                     </div>
                     <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title" style="color:#db6551;font-weight:bold"> AVAILABLE SLOTS </h5>
-                        <p class="card-text"> 10</p>
-                      </div>
+                      <a href="##">
+                        <div class="card-body">
+                          <h5 class="card-title" style="color:#db6551;font-weight:bold"> AVAILABLE SLOTS </h5>
+                          <p class="card-text"> 10</p>
+                        </div>
+                      </a>
                     </div>
                   </div>
                 </div>
 
-                <div class="card mb-3" style="max-width: 480px; margin-left:10px;">
+                <div class="card mb-3" style="max-width: 400px; margin-left:20px;">
                   <div class="row g-0">
                     <div class="col-md-4">
-                      <img src="..." class="img-fluid rounded-start" alt="...">
+                      <a href="##"><img src="/Ohana/src/dashboard/img/main/pets.png" class="img-fluid rounded-start" alt="..." style="margin-top:10px; margin-bottom:10px;"> </a>
                     </div>
                     <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title" style="color:#db6551;font-weight:bold"> PET PROFILES CREATED </h5>
-                        <p class="card-text">10</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div><!-- END OF ROW-->
-
-              <div class="row" style="margin-top:20px;">
-                <!-- 3rd row -->
-
-                <div class="card mb-3" style="max-width: 480px; margin-left:10px;">
-                  <div class="row g-0">
-                    <div class="col-md-4">
-                      <img src="..." class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title" style="color:#db6551;font-weight:bold"> TOTAL AVAILABLE DOGS </h5>
-                        <p class="card-text"> 10</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card mb-3" style="max-width: 480px; margin-left:10px;">
-                  <div class="row g-0">
-                    <div class="col-md-4">
-                      <img src="..." class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title" style="color:#db6551;font-weight:bold"> AVAILABLE SLOTS </h5>
-                        <p class="card-text"> 10</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card mb-3" style="max-width: 480px; margin-left:10px;">
-                  <div class="row g-0">
-                    <div class="col-md-4">
-                      <img src="..." class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title" style="color:#db6551;font-weight:bold"> PET PROFILES CREATED </h5>
-                        <p class="card-text"> 20 </p>
-                      </div>
+                      <a href="##">
+                        <div class="card-body">
+                          <h5 class="card-title" style="color:#db6551;font-weight:bold"> PET PROFILES CREATED </h5>
+                          <p class="card-text">10</p>
+                        </div>
+                      </a>
                     </div>
                   </div>
                 </div>
 
               </div><!-- END OF ROW-->
-            
+
             </div><!-- END OF CONTAINER -->
           </div><!-- END OF CONTAINER FLUID -->
 

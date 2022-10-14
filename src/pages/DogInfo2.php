@@ -47,16 +47,16 @@
             <img class="card-img-top" src="/OhanaV2/src/images/cardbg.png" alt="Card image" style="width:100%; height:70vh">
             <div class="card-img-overlay">
         <div class="card-header">
-          <p style="font-size: 40px; text-align:center">&#10084;<b> KEONE </b>&#10084;</p>
+          <p style="font-size: 40px; text-align:center">&#10084;<b> KOKO </b>&#10084;</p>
           </div>
       <div class="row justify-content"> <hr style="color:white">
         <div class="col-md-5 mx-auto">
-          <img src="/OhanaV2/src/images/Ohanapups/trans2.png" class="card-img">
+          <img src="/OhanaV2/src/images/Ohanapups/trans3.png" class="card-img">
       </div>
         <div class="col-md-5">
           <div class="card-body"><br>
               <p class="card-text"> <b>BIRTHDAY:</b> June 13, 2022 </p>
-              <p class="card-text"> <b>COLOR:</b> Choco Tan Merle </p>
+              <p class="card-text"> <b>COLOR:</b> Choco Tan </p>
               <p class="card-text"> <b>GENDER:</b> Male </p>
               <p class="card-text"> <b>WEIGHT:</b> 6.1kg </p>
               <p class="card-text"> <b>GENES:</b> Lilac Tan Carrier & Isabella Carrier </p>
