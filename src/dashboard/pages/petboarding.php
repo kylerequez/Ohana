@@ -27,7 +27,7 @@
 </head>
 
 <body>
-<?php
+  <?php
   if (!isset($_SESSION)) session_start();
   include_once dirname(__DIR__) . '/../models/Account.php';
 
@@ -82,8 +82,8 @@
                 <thead>
                   <tr class="users-table-info">
                     <th>SLOT I.D</th>
-                    <th>SLOT NAME</th>
                     <th>SLOT IMAGE</th>
+                    <th>SLOT NAME</th>
                     <th>STATUS</th>
                     <th>ACTION</th>
                 </thead>
@@ -92,10 +92,10 @@
                   foreach ($slots as $slot) {
                   ?>
                     <tr>
-                      <td><?php echo $slot->getId();?></td>
+                      <td><?php echo $slot->getId(); ?></td>
                       <td><img src="data:image/jpeg;base64,<?php echo base64_encode($slot->getImage()); ?>" style="width: 100px; height: 100px;"></td>
-                      <td><?php echo $slot->getName();?></td>
-                      <td><?php echo $slot->getIsAvailable() == 1 ? "AVAILABLE" : "UNAVAILABLE";?></td>
+                      <td><?php echo $slot->getName(); ?></td>
+                      <td><?php echo $slot->getIsAvailable() == 1 ? "AVAILABLE" : "UNAVAILABLE"; ?></td>
                       <td>
                         <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
                         <a href="/dashboard/petboarding/delete/<?php echo $slot->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Slot ID <?php echo $slot->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>
@@ -120,9 +120,51 @@
       </div><!-- main wrapper END -->
     </div> <!-- PAGE FLEX END-->
     <!-- MODALS -->
+    
+     <!-- ADD SLOTS MODAL -->
+     <form method="POST" action="/dashboard/petprofiles/add">
+      <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addSlotModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addStaffTitle"> ADD PET BOARDING SLOT </h5>
+              <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+            </div>
+            <div class="modal-body">
+              <input name="type" type="hidden" value="STAFF">
+              <div class="mb-3">
+                <label for="name" class="col-form-label"> SLOT NAME </label>
+                <input type="text" class="form-control" name="name" placeholder="Enter Slot Name" required style="background-color:#eed1c2; color:black">
+              </div>
+              
+              <div class="mb-3">
+                <label for="hasPCCI" class="col-form-label"> STATUS </label><br> <!-- RADIO BUTTON -->
+
+                <label for="pcci1" class="radio-inline"> <input type="radio" id="pcci1" name="pcciStatus" value="Registered"> Available </label>
+                <label for="pcci2" class="radio-inline"> <input type="radio" id="pcci2" name="pcciStatus" value="Pending"> Occupied </label>
+
+              </div>
+           
+
+              <input type="hidden" class="form-control" name="status"> <!-- FOR OHANA OWNER -->
+
+              <div class="mb-3">
+                <label for="image" class="col-form-label"> SLOT IMAGE </label><br>
+                <input type="file" name="fileToUpload" id="fileToUpload" style="background-color:transparent;">
+              </div>
+
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn" style="background-color:#db6551"> Add Slot </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
 
     <!-- BOOTSTRAP LOGOUT MODAL -->
-    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby=logoutmodal" aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutmodal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">

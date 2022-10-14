@@ -75,7 +75,7 @@
             <thead>
               <tr class="users-table-info">
 
-                <th>LOG I.D </th>
+                <th> IMAGE </th>
                 <th> DESCRIPTION </th>
                 <th> USER TYPE </th>
                 <th>DATE</th>
@@ -85,7 +85,7 @@
             <tbody>
               <tr>
                 <td>
-                  I.D NUMBER 12345
+                  IMAGE
                 </td>
                 <td>
                   CUSTOMER EMAIL ADDRESS
@@ -99,7 +99,7 @@
               </tr>
               <tr>
                 <td>
-                  I.D NUMBER 12345
+                  IMAGE
                 </td>
                 <td>
                   CUSTOMER EMAIL ADDRESS
@@ -114,7 +114,7 @@
               </tr>
               <tr>
                 <td>
-                  I.D NUMBER 98765
+                  IMAGE
                 </td>
                 <td>
                   CUSTOMER EMAIL ADDRESS
@@ -130,7 +130,7 @@
               </tr>
               <tr>
                 <td>
-                  I.D NUMBER 98765
+                  IMAGE
                 </td>
                 <td>
                   SYSTEM ACTION BY USER
@@ -145,12 +145,8 @@
 
               </tr>
               <tr>
-                <td>
-                  I.D NUMBER 98765
-                </td>
-                <td>
-                  SYSTEM ACTION BY USER
-                </td>
+                <td> IMAGE</td>
+                <td>SYSTEM ACTION BY USER</td>
                 <td>
                   <div class="pages-table-img">
                     CUSTOMER NAME
@@ -161,12 +157,8 @@
 
               </tr>
               <tr>
-                <td>
-                  I.D NUMBER 98765
-                </td>
-                <td>
-                  SYSTEM ACTION BY USER
-                </td>
+                <td>IMAGE</td>
+                <td>SYSTEM ACTION BY USER</td>
                 <td>
                   <div class="pages-table-img">
                     Customer Name

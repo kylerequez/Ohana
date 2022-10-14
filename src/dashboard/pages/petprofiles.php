@@ -109,35 +109,20 @@
                 </tbody>
               </table>
           </div>
-
-          <!-- <div class="paginations">
-          <li class="page-item previous-page"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">1</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
-          <li class="page-item dots"><a class="page-link" href="#">...</a></li>
-          <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
-        </div> -->
-
-
         </main>
       <?php
             } else {
               echo "<h1>NULL</h1>";
             }
       ?>
-
       <!-- FOOTER -->
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
-
       </div><!-- main wrapper END -->
     </div> <!-- PAGE FLEX END-->
     <!-- MODALS -->
 
     <!-- BOOTSTRAP LOGOUT MODAL -->
-    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby=logoutmodal" aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutmodal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -157,8 +142,8 @@
     </div>
 
     <!-- ADD PET PROFILE MODAL -->
-    <form method="POST" action="/dashboard/petprofiles/add">
-      <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addStaffModal" aria-hidden="true">
+    <form method="POST" action="/dashboard/petprofiles/add" enctype="multipart/form-data">
+      <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addProfileModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
@@ -169,11 +154,11 @@
               <input name="type" type="hidden" value="STAFF">
               <div class="mb-3">
                 <label for="name" class="col-form-label"> DOG NAME </label>
-                <input type="text" class="form-control" name="name" placeholder="Enter Dog Name" required>
+                <input type="text" class="form-control" name="name" placeholder="Enter Dog Name" required style="background-color:#eed1c2; color:black">
               </div>
               <div class="mb-3">
                 <label for="age" class="col-form-label"> DOG AGE</label>
-                <input type="text" class="form-control" name="age" placeholder="Enter Dog Age" required>
+                <input type="text" class="form-control" name="age" placeholder="Enter Dog Age" required style="background-color:#eed1c2; color:black">
               </div>
 
               <div class="mb-3">
@@ -184,11 +169,11 @@
 
               <div class="mb-3">
                 <label for="birthdate" class="col-form-label"> BIRTHDAY </label> <!-- DATE SELECTOR-->
-                <input type="date" class="form-control" name="birthdate" required>
+                <input type="date" class="form-control" name="birthdate" required style="background-color:#eed1c2; color:black">
               </div>
               <div class="mb-3">
                 <label for="color" class="col-form-label"> COLOR/TRAIT </label>
-                <input type="text" class="form-control" name="color" placeholder="Enter Color/Trait" required>
+                <input type="text" class="form-control" name="color" placeholder="Enter Color/Trait" required style="background-color:#eed1c2; color:black">
               </div>
               <div class="mb-3">
 
@@ -206,18 +191,17 @@
               </div>
               <div class="mb-3">
                 <label for="price" class="col-form-label"> PRICE </label>
-                <input type="text" class="form-control" name="price" placeholder="Enter Price" required>
+                <input type="text" class="form-control" name="price" placeholder="Enter Price" required style="background-color:#eed1c2; color:black">
               </div>
-
-              <input type="hidden" class="form-control" name="status"> <!-- FOR OHANA OWNER -->
+              <input type="hidden" class="form-control" name="ownerName" value="Ohana"> <!-- FOR OHANA OWNER -->
               <div class="mb-3">
                 <label for="image" class="col-form-label"> DOG IMAGE </label><br>
-                <input type="file" name="fileToUpload" id="fileToUpload" style="background-color:transparent;">
+                <input type="file" name="image" id="image" style="background-color:transparent;">
               </div>
             </div>
 
             <div class="modal-footer">
-              <button type="submit" class="btn btn-primary"> Add Pet </button>
+              <button type="submit" class="btn" style="background-color:#db6551"> Add Pet </button>
             </div>
           </div>
         </div>

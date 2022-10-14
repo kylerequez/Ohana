@@ -3,7 +3,7 @@
 
 <head>
 
-    <title> OHANA CART </title>
+    <title> PAYMENT METHOD </title>
 
     <!-- META TAGS -->
     <meta charset="utf-8">
@@ -43,43 +43,69 @@
 
         <div class="container-fluid">
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-            <center>
-                <section class="carthead" style="margin-top:10%; ">
-                    <div class="cartheader">
-                        <img src="/Ohana/src/images/Pages/checkoutheader.png" width="100%">
-                    </div>
-                </section>
 
-                <section class="paymentsection">
+            <section class="carthead" style="margin-top:10%; ">
+                <div class="cartheader">
+                    <img src="/Ohana/src/images/Pages/checkoutheader.png" width="100%">
+                </div>
+            </section>
+
+            <div class="container">
+                <section class="paymentsection" style="margin-top:5%;">
                     <div class="paymentmethod" id="paymentmethod">
                         <div class="row">
-                            <div class="card text-center" style="width: 18rem;">
+
+                            <div class="card text-center" style="width: 18rem; margin-left:10%;">
                                 <div class="card-body">
-                                    <h5 class="card-title">Special title treatment</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <img src="/Ohana/src/images/payment/pay1.png" width="150px" height="150px">
+                                    <h5 class="card-title"> GCASH</h5>
+                                    <p class="card-text"> No. of users who chose this: 5</p>
+                                    <a href="#" class="btn" style="background-color:#db6551; color:white;"> Select </a>
                                 </div>
                             </div>
 
-                            <div class="card text-center" style="width: 18rem;">
+                            <div class="card text-center" style="width: 18rem; margin-left:8%;">
                                 <div class="card-body">
-                                    <h5 class="card-title">Special title treatment</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="#" class="btn btn-primary"> GCASH </a>
+                                    <img src="/Ohana/src/images/payment/pay2.png" width="150px" height="150px">
+                                    <h5 class="card-title"> BANK TRANSFER </h5>
+                                    <p class="card-text"> No. of users who chose this: 10</p>
+                                    <a href="#" class="btn" style="background-color:#db6551; color:white;"> Select</a>
                                 </div>
                             </div>
 
-                            <div class="card text-center" style="width: 18rem;">
+                            <div class="card text-center" style="width: 18rem; margin-left:8%;">
                                 <div class="card-body">
-                                    <h5 class="card-title">Special title treatment</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <img src="/Ohana/src/images/payment/pay3.png" width="150px" height="150px">
+                                    <h5 class="card-title"> CASH </h5>
+                                    <p class="card-text"> No. of users who chose this: 15</p>
+                                    <a href="#" class="btn" style="background-color:#db6551; color:white;"> Select</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <br><br>
+                    <div class="paymentselected">
+                        <center>
+                            <h1 style="font-size:30px"> YOU HAVE SELECTED: *PAYMENT METHOD* </h1>
+                        </center>
+                    </div>
+
+                </section><br>
+                <section class="paymentnote">
+                    <center>
+                        <div class="card rounded-3 mb-4" style="width:75%;">
+                            <br>
+                            <p style="font-size:15px"> Note: TRANSACTIONS WILL BE DONE FACE TO FACE, YOU ONLY NEED TO SELECT A PAYMENT METHOD OF YOUR CHOICE </p>
+                            <p style="font-size:15px"> Friendly Reminder: Kindly Read the <b>Terms and Conditions for Cancellation and Payment Policy.</b> </p>
+                            <br>
+                        </div>
+                        <a href="/invoice"><button type="button" name="btn-Payment" class="btn btn-block btn-lg" style="background-color:#c0b65a; color:white; width:300px;">
+                                Proceed </button></a> <br><br>
+                        <a href="/home"><button type="button" class="btn btn-dark btn-lg" style="width:300px;"> Back to Home</button></a>
+                    </center>
                 </section>
-            </center>
+            </div>
+
         </div>
     </main>
 

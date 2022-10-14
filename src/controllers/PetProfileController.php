@@ -38,8 +38,11 @@ class PetProfileController
                 header("Location: http://localhost/dashboard/petprofiles");
                 break;
             case "POST":
-                print_r($_POST);
-                // $this->services->addPetProfiles();
+                // print_r($_POST);
+                $data = $_POST;
+                $data["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
+                print_r($data);
+                //$this->services->addPetProfile($data);
                 break;
         }
     }

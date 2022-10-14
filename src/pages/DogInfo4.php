@@ -10,10 +10,10 @@
   <meta name="keywords" content="Kennel Business, French Bulldogs">
   <!-- END OF META TAGS -->
 
-  <title> OHANA DOGS </title>
+  <title> OHANA PUPPIES </title>
 
   <!-- Web Icon -->
-  <link rel="shortcut icon" href="../images/Landing/ohana.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/Ohana/src/images/Landing/ohana.png" type="image/x-icon">
 
   <!-- AJAX LIBRARY IMPORTS/ FONT AWSOME -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" />
@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
   <!-- Custom styles -->
-  <link rel="stylesheet" href="/OhanaV2/src/css/Dogs.css">
+  <link rel="stylesheet" href="/Ohana/src/css/Dogs.css">
 
 </head>
 
@@ -39,53 +39,59 @@
 
   <main>
     <div class="header" style="margin-top:8%; margin-bottom:10px">
-      <center><h1>PUPPY PROFILE</h1></center>
-      </div>
-      <!-- START OF STUD PROFILES CONTENT-->
-      <center>
-      <div class="card mx-auto img-fluid" style="max-width: 60vw; max-height:75vh; background-color:#2f1f18">
-            <img class="card-img-top" src="/OhanaV2/src/images/cardbg.png" alt="Card image" style="width:100%; height:70vh">
-            <div class="card-img-overlay">
-        <div class="card-header">
-          <p style="font-size: 40px; text-align:center">&#10084;<b> KALA </b>&#10084;</p>
+    <h1 style="color:#DB6551; font-size: 80px; font-family: 'Karla', sans-serif; font-weight:800"> AVAILABLE FRENCH PUPPIES </h1>
+    </div><br>
+    <!-- START OF PROFILES CONTENT-->
+    <center>
+      <div class="card mx-auto img-fluid" style="max-width: 60vw; max-height:60vh; background-color:#2f1f18;">
+        <img class="card-img-top" src="/Ohana/src/images/Ohanapups/cardbg.png" alt="Card image" style="width:100%; height:70vh">
+        <div class="card-img-overlay">
+          <div class="card-header">
+            <p style="font-size: 40px; text-align:center">&#10084;<b> KALA </b>&#10084;</p>
           </div>
-      <div class="row justify-content"> <hr style="color:white">
-        <div class="col-md-5 mx-auto">
-          <img src="/OhanaV2/src/images/Ohanapups/trans6.png" class="card-img">
-      </div>
-        <div class="col-md-5">
-          <div class="card-body"><br>
-              <p class="card-text"> <b>BIRTHDAY:</b> June 13, 2022 </p>
-              <p class="card-text"> <b>COLOR:</b> Black Tan Merle </p>
-              <p class="card-text"> <b>GENDER:</b> Female </p>
-              <p class="card-text"> <b>WEIGHT:</b> 6.1kg </p>
-              <p class="card-text"> <b>GENES:</b> Lilac Tan Carrier & Isabella Carrier </p>
-</div> </div>
+          <div class="row justify-content">
+            <hr style="color:white">
+            <div class="col-md-5 mx-auto">
+              <img src="/Ohana/src/images/Ohanapups/trans6.png" class="card-img">
+            </div>
+            <div class="col-md-5">
+              <div class="card-body"><br>
+                <p class="card-text"> <b>BIRTHDAY:</b> June 13, 2022 </p>
+                <p class="card-text"> <b>COLOR:</b> Black Tan Merle </p>
+                <p class="card-text"> <b>GENDER:</b> Female </p>
+                <p class="card-text"> <b>WEIGHT:</b> 6.1kg </p>
+                <p class="card-text"> <b>GENES:</b> Lilac Tan Carrier & Isabella Carrier </p>
+                <p class="card-text"> <b>PCCI PAPERS:</b> COMPLETE</p>
+                <p class="card-text"> <b>Note: All french bulldog puppies are fully vaccinated before release.</b></p>
+              </div>
+            </div>
             <div class="row justify-content">
-            <div class="col-md-6">
-            <div class="backbtn">
-            <span class="backbtn">
-              <span class="back">Back</span>
-</div></div>
-            <div class="col-md-6">
-              <form>
-                <div class="cart__button" style="float:right">
-                  <span class="cart__button">
-                    <span class="add__to-cart" style="font-weight:bold">Add to Cart</span>
-                    <span class="added">Added</span>
-                    <i class="fas fa-shopping-cart"></i>
-                    <i class="fas fa-box"></i>
-                  </span>
+              <div class="col-md-5">
+                <div class="backbtn">
+                  <span class="backbtn">
+                    <span class="back">Back</span>
                 </div>
-              </form> </div>
-</div>
+              </div>
+              <div class="col-md-7">
+                <form>
+                  <div class="cart__button" style="float:right">
+                    <span class="cart__button">
+                      <span class="add__to-cart" style="font-weight:bold">Add to Cart</span>
+                      <span class="added">Added</span>
+                      <i class="fas fa-shopping-cart"></i>
+                      <i class="fas fa-box"></i>
+                    </span>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
 
-</div>
+      </div>
 
-    
-</center>
+
+    </center>
 
 
   </main>

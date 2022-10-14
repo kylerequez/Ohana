@@ -10,7 +10,7 @@
   <meta name="keywords" content="Kennel Business, French Bulldogs">
   <!-- END OF META TAGS -->
 
-  <title> OHANA PUPPIES </title>
+  <title> STUD INFORMATION </title>
 
   <!-- Web Icon -->
   <link rel="shortcut icon" href="/Ohana/src/images/Landing/ohana.png" type="image/x-icon">
@@ -40,7 +40,7 @@
   <main>
     <div class="header" style="margin-top:8%; margin-bottom:10px">
       <center>
-      <h1 style="color:#DB6551; font-size: 80px; font-family: 'Karla', sans-serif; font-weight:800"> AVAILABLE FRENCH PUPPIES </h1>
+      <h1 style="color:#DB6551; font-size: 80px; font-family: 'Karla', sans-serif; font-weight:800"> FRENCH BULLDOGS FOR STUD </h1>
       </center>
     </div><br>
     <!-- START OF PROFILES CONTENT-->
@@ -49,27 +49,27 @@
         <img class="card-img-top" src="/Ohana/src/images/Ohanapups/cardbg.png" alt="Card image" style="width:100%; height:70vh">
         <div class="card-img-overlay">
           <div class="card-header">
-            <p style="font-size: 40px; text-align:center">&#10084;<b> KEONE </b>&#10084;</p>
+            <p style="font-size: 40px; text-align:center">&#10084;<b> FRENCH BULLDOG NAME </b>&#10084;</p>
           </div>
           <div class="row justify-content">
             <hr style="color:white">
             <div class="col-md-5 mx-auto">
-              <img src="/Ohana/src/images/Ohanapups/trans2.png" class="card-img">
+              <img src="/Ohana/src/images/petprofile/studog.png" class="card-img">
             </div>
             <div class="col-md-5">
               <div class="card-body"><br>
-                <p class="card-text" style="font-size:30px"> PUPPY DETAILS </p><br>
-                <p class="card-text"> <b>BIRTHDAY:</b> June 13, 2022 </p>
-                <p class="card-text"> <b>COLOR:</b> Choco Tan Merle </p>
+                <p class="card-text" style="font-size:30px"> DOG INFORMATION </p><br>
+                <p class="card-text"> <b>BIRTHDAY:</b> June 13, 2018 </p>
+                <p class="card-text"> <b>COLOR:</b> Brown Tan </p>
                 <p class="card-text"> <b>GENDER:</b> Male </p>
-                <p class="card-text"> <b>WEIGHT:</b> 6.1kg </p>
+                <p class="card-text"> <b>WEIGHT:</b> 12 kg </p>
                 <p class="card-text"> <b>GENES:</b> Lilac Tan Carrier & Isabella Carrier </p>
                 <p class="card-text"> <b>PCCI PAPERS:</b> COMPLETE</p>
-                <p class="card-text"> <b>Note: All french bulldog puppies are fully vaccinated before release.</b></p>
+                <p class="card-text"> <b>Note: Our Adult Frenchies are fully vaccinated. </b></p>
               </div>
             </div>
 
-            <div class="row justify-content"> <!-- BUTTON ROW -->
+            <div class="row justify-content" style="margin-top:2%"> <!-- BUTTON ROW -->
               <div class="col-md-5">
                 <div class="backbtn">
                   <span class="backbtn">
@@ -81,7 +81,7 @@
                 <form>
                   <div class="cart__button" style="float:right">
                     <span class="cart__button">
-                      <span class="add__to-cart" style="font-weight:bold">Add to Cart</span>
+                      <span class="add__to-cart" style="font-weight:bold"> Perfect Pair </span>
                       <span class="added">Added</span>
                       <i class="fas fa-shopping-cart"></i>
                       <i class="fas fa-box"></i>
@@ -92,9 +92,7 @@
             </div>
           </div>
         </div>
-
       </div>
-
 
     </center>
 
