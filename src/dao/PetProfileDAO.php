@@ -58,4 +58,16 @@ class PetProfileDAO
             return null;
         }
     }
+
+    public function addPetProfile(PetProfile $profile): mixed
+    {
+        try{
+            $sql = "
+                
+            ";
+        } catch(Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
 }

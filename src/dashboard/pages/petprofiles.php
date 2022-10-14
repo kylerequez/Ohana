@@ -109,29 +109,14 @@
                 </tbody>
               </table>
           </div>
-
-          <!-- <div class="paginations">
-          <li class="page-item previous-page"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">1</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
-          <li class="page-item dots"><a class="page-link" href="#">...</a></li>
-          <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
-        </div> -->
-
-
         </main>
       <?php
             } else {
               echo "<h1>NULL</h1>";
             }
       ?>
-
       <!-- FOOTER -->
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
-
       </div><!-- main wrapper END -->
     </div> <!-- PAGE FLEX END-->
     <!-- MODALS -->
@@ -157,8 +142,8 @@
     </div>
 
     <!-- ADD PET PROFILE MODAL -->
-    <form method="POST" action="/dashboard/petprofiles/add">
-      <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addStaffModal" aria-hidden="true">
+    <form method="POST" action="/dashboard/petprofiles/add" enctype="multipart/form-data">
+      <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addProfileModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
@@ -208,11 +193,10 @@
                 <label for="price" class="col-form-label"> PRICE </label>
                 <input type="text" class="form-control" name="price" placeholder="Enter Price" required style="background-color:#eed1c2; color:black">
               </div>
-
-              <input type="hidden" class="form-control" name="status"> <!-- FOR OHANA OWNER -->
+              <input type="hidden" class="form-control" name="ownerName" value="Ohana"> <!-- FOR OHANA OWNER -->
               <div class="mb-3">
                 <label for="image" class="col-form-label"> DOG IMAGE </label><br>
-                <input type="file" name="fileToUpload" id="fileToUpload" style="background-color:transparent;">
+                <input type="file" name="image" id="image" style="background-color:transparent;">
               </div>
             </div>
 
