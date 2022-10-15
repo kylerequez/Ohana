@@ -277,10 +277,8 @@ class AccountDAO
             $stmt->bindParam(":email", $email, PDO::PARAM_STR);
             $stmt->bindParam(":status", $status, PDO::PARAM_STR);
             // $stmt->bindParam(":password", $password, PDO::PARAM_STR);
-
-            $isUpdated = $stmt->execute() > 0;
-
-            return $isUpdated;
+            
+            return $stmt->execute() > 0;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -296,9 +294,7 @@ class AccountDAO
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
-            $isDeleted = $stmt->execute() > 0;
-
-            return $isDeleted;
+            return $stmt->execute() > 0;
         } catch (Exception $e) {
             echo $e;
             return null;

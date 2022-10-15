@@ -99,7 +99,7 @@ class AccountServices
                 $_SESSION["user"] = serialize($account);
             }
         } else {
-            $_SESSION["msg"] = "Wrong email!";
+            $_SESSION["msg"] = "The account does not exist.";
         }
         return $account;
     }
