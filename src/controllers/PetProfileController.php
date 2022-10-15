@@ -33,6 +33,8 @@ class PetProfileController
                 }
                 $this->processCollectionRequest("GET");
                 break;
+            case "POST":
+                break;
         }
     }
 

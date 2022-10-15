@@ -16,7 +16,6 @@ class PetProfileDAO
             $sql = "
                 SELECT * FROM ohana_pet_profiles;
             ";
-
             $stmt = $this->conn->query($sql);
             $petProfiles = null;
             if ($stmt->execute() > 0) {
@@ -38,12 +37,22 @@ class PetProfileDAO
         try {
             $sql = "SELECT * FROM ohana_pet_profiles
                     WHERE owner_name = 'OHANA';";
-
             $stmt = $this->conn->query($sql);
             $petProfiles = null;
             if ($stmt->execute() > 0) {
                 while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $existingPetProfile = new PetProfile($petProfile["pet_image"], $petProfile["pet_name"], $petProfile["pet_age"], new DateTime($petProfile["pet_birthdate"]), $petProfile["pet_sex"], $petProfile["pet_color"], $petProfile["is_vaccinated"], $petProfile["pcci_status"], $petProfile["account_id"], $petProfile["owner_name"], $petProfile["pet_price"], $petProfile["pet_status"]);
+                    $existingPetProfile = new PetProfile($petProfile["pet_image"],
+                        $petProfile["pet_name"],
+                        $petProfile["pet_age"],
+                        new DateTime($petProfile["pet_birthdate"]),
+                        $petProfile["pet_sex"],
+                        $petProfile["pet_color"],
+                        $petProfile["is_vaccinated"],
+                        $petProfile["pcci_status"],
+                        $petProfile["account_id"],
+                        $petProfile["owner_name"],
+                        $petProfile["pet_price"],
+                        $petProfile["pet_status"]);
                     $existingPetProfile->setId($petProfile["pet_id"]);
                     $petProfiles[] = $existingPetProfile;
                 }
@@ -114,11 +123,11 @@ class PetProfileDAO
                         $petProfile["pet_image"],
                         $petProfile["pet_name"],
                         $petProfile["pet_age"],
-                        $petProfile["pet_birthdate"],
+                        new DateTime($petProfile["pet_birthdate"]),
                         $petProfile["pet_sex"],
                         $petProfile["pet_color"],
                         $petProfile["is_vaccinated"],
-                        $petProfile["pccci_status"],
+                        $petProfile["pcci_status"],
                         $petProfile["account_id"],
                         $petProfile["owner_name"],
                         $petProfile["pet_price"],
@@ -126,7 +135,6 @@ class PetProfileDAO
                     );
                 }
             }
-
             return $searchedPetProfile;
         } catch (Exception $e) {
             echo $e;
@@ -139,10 +147,8 @@ class PetProfileDAO
         try {
             $sql = "DELETE FROM ohana_pet_profiles
                     WHERE pet_id=:id";
-
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-
             return $stmt->execute() > 0;
         } catch (Exception $e) {
             echo $e;
