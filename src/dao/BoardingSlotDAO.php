@@ -51,7 +51,7 @@ class BoardingSlotDAO
             $petName = $slot->getPetName();
 
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(":image", $image);
+            $stmt->bindParam(":image", $image, PDO::PARAM_STR);
             $stmt->bindParam(":name", $name, PDO::PARAM_STR);
             $stmt->bindParam(":information", $information, PDO::PARAM_STR);
             $stmt->bindParam(":isAvailable", $isAvailable, PDO::PARAM_BOOL);
@@ -74,9 +74,7 @@ class BoardingSlotDAO
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
-            $isDeleted = $stmt->execute() > 0;
-
-            return $isDeleted;
+            return $stmt->execute() > 0;
         } catch (Exception $e) {
             echo $e;
             return null;

@@ -42,14 +42,10 @@
     $user = unserialize($_SESSION['user']);
   ?>
     <div class="layer"> </div>
-
     <!-- Body -->
-
     <div class="page-flex">
-
       <!-- Dashboard Sidebar -->
       <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
-
       <div class="main-wrapper">
         <!-- ! Main nav -->
         <?php include_once dirname(__DIR__) . "/navbar.php" ?>
@@ -62,7 +58,6 @@
               <h2 class="main-title"> INVENTORY - PET PROFILES </h2>
             </center>
           </div>
-
           <div class="users-table table-wrapper">
             <div class="search-wrapper">
               <i data-feather="search" aria-hidden="true"></i>
@@ -74,7 +69,6 @@
                   Add Pet </button></a>
             </div>
             <br>
-
             <?php
             $profiles = unserialize($_SESSION["profiles"]);
             if (!empty($profiles)) {
@@ -160,15 +154,13 @@
                 <label for="age" class="col-form-label"> DOG AGE</label>
                 <input type="text" class="form-control" name="age" placeholder="Enter Dog Age" required style="background-color:#eed1c2; color:black">
               </div>
-
               <div class="mb-3">
-                <label> DOG GENDER </label><br> <!-- RADIO BUTTON -->
+                <label> DOG GENDER </label><br>
                 <label for="sex1" class="radio-inline"> <input type="radio" id="sex1" name="sex" value="Male"> Male </label>
                 <label for="sex2" class="radio-inline"> <input type="radio" id="sex2" name="sex" value="Female"> Female </label>
               </div>
-
               <div class="mb-3">
-                <label for="birthdate" class="col-form-label"> BIRTHDAY </label> <!-- DATE SELECTOR-->
+                <label for="birthdate" class="col-form-label"> BIRTHDAY </label>
                 <input type="date" class="form-control" name="birthdate" required style="background-color:#eed1c2; color:black">
               </div>
               <div class="mb-3">
@@ -176,30 +168,25 @@
                 <input type="text" class="form-control" name="color" placeholder="Enter Color/Trait" required style="background-color:#eed1c2; color:black">
               </div>
               <div class="mb-3">
-
-                <label for="isVaccinated" class="col-form-label"> IS VACCINATED </label><br> <!-- RADIO BUTTON -->
+                <label for="isVaccinated" class="col-form-label"> IS VACCINATED </label><br>
                 <label for="yes" class="radio-inline"> <input type="radio" id="yes" name="isVaccinated" value="Yes">Yes </label>
                 <label for="no" class="radio-inline"> <input type="radio" id="no" name="isVaccinated" value="No"> No </label>
               </div>
-
               <div class="mb-3">
-                <label for="hasPCCI" class="col-form-label"> PCCI STATUS </label><br> <!-- RADIO BUTTON -->
-
+                <label for="hasPCCI" class="col-form-label"> PCCI STATUS </label><br>
                 <label for="pcci1" class="radio-inline"> <input type="radio" id="pcci1" name="pcciStatus" value="Registered"> Registered </label>
                 <label for="pcci2" class="radio-inline"> <input type="radio" id="pcci2" name="pcciStatus" value="Pending"> Pending </label>
-
               </div>
               <div class="mb-3">
                 <label for="price" class="col-form-label"> PRICE </label>
                 <input type="text" class="form-control" name="price" placeholder="Enter Price" required style="background-color:#eed1c2; color:black">
               </div>
-              <input type="hidden" class="form-control" name="ownerName" value="Ohana"> <!-- FOR OHANA OWNER -->
+              <input type="hidden" class="form-control" name="ownerName" value="Ohana">
               <div class="mb-3">
                 <label for="image" class="col-form-label"> DOG IMAGE </label><br>
                 <input type="file" name="image" id="image" style="background-color:transparent;">
               </div>
             </div>
-
             <div class="modal-footer">
               <button type="submit" class="btn" style="background-color:#db6551"> Add Pet </button>
             </div>

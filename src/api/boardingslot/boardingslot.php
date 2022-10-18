@@ -16,9 +16,13 @@ $controller = new BoardingSlotController($services, $logservices);
 
 if($_SERVER["REQUEST_METHOD"] == "GET" && empty($id)){
     // get boarding slots
-    echo "GET";
+    echo "GET DISPLAY";
     $controller->processRequest($_SERVER["REQUEST_METHOD"], null);
-} else if($_SERVER["REQUEST_METHOD"] == "GET" && !empty($id)) {
+} else if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($id)){
+    // add boarding slot
+    echo "POST ADD";
+    $controller->processRequest($_SERVER["REQUEST_METHOD"], null);
+}else if($_SERVER["REQUEST_METHOD"] == "GET" && !empty($id)) {
     echo "TEST";
     $controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
 }

@@ -13,6 +13,8 @@ $controller = new AccountController($services, null);
 if(isset($_POST["btnLogin"]))
 {
     $controller->loginRequest($_SERVER["REQUEST_METHOD"]);
+} else if (isset($_POST["btnOtp"])) {
+    $controller->loginRequest($_SERVER["REQUEST_METHOD"]);
 } else {
     if(!isset($_SESSION)) session_start();
     $_SESSION["msg"] = "Wrong way of accessing";

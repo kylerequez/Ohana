@@ -76,7 +76,7 @@ class AccountController
                     $log = $user->getFullName() . " has deleted Account ID $id";
                     if(!$this->logservices->addLog($log))
                     {
-                        $_SESSION["msg"] = "Error on adding log";
+                        $_SESSION["msg"] = "There was an error in the logging of the action.";
                     }
                     $this->processStaffCollectionRequest($method);
                 } else {
@@ -93,7 +93,7 @@ class AccountController
                     $log = $user->getFullName() . " has updated Account ID $id";
                     if(!$this->logservices->addLog($log))
                     {
-                        $_SESSION["msg"] = "Error on adding log";
+                        $_SESSION["msg"] = "There was an error in the logging of the action.";
                     }
                     $this->processStaffCollectionRequest("GET");
                 } else {
@@ -125,7 +125,7 @@ class AccountController
                     $log = $user->getFullName() . " has added a staff account";
                     if($this->logservices->addLog($log) == false)
                     {
-                        $_SESSION["msg"] = "Error on adding log";
+                        $_SESSION["msg"] = "There was an error in the logging of the action.";
                     }
                     $this->processStaffCollectionRequest("GET");
                 } else {
@@ -153,6 +153,8 @@ class AccountController
                         // echo "TEST";
                         header("Location: http://localhost/dashboard");
                     }
+                } else {
+                    echo "Account does not exist";
                 }
                 break;
         }
@@ -165,7 +167,7 @@ class AccountController
         if ($this->services->logoutAccount()) {
             header("Location: http://localhost/login");
         } else {
-            $_SESSION["msg"] = "Error on logout";
+            $_SESSION["msg"] = "There was an error on log out. Please try again.";
         }
     }
 }

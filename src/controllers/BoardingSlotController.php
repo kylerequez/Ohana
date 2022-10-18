@@ -36,7 +36,7 @@ class BoardingSlotController
                     $log = $user->getFullName() . " has deleted Slot ID $id";
                     if(!$this->logservices->addLog($log))
                     {
-                        $_SESSION["msg"] = "Error on adding log";
+                        $_SESSION["msg"] = "There was an error in the logging of the action.";
                     }
                     $_SESSION["msg"] = "Slot ID $id was successfully deleted!";
                     $this->processCollectionRequest("GET");
@@ -48,12 +48,14 @@ class BoardingSlotController
                 break;
             case "POST":
                 
+
                 break;
         }
     }
 
     public function processCollectionRequest(string $method): void
     {
+        echo "$method";
         switch($method)
         {
             // Boarding Slot Display
@@ -61,8 +63,19 @@ class BoardingSlotController
                 $_SESSION["slots"] = serialize($this->services->getAllBoardingSlots());
                 header("Location: http://localhost/dashboard/petboarding");
                 break;
+            // Add Boarding Slot
             case "POST":
-
+                $data = $_POST;
+                $data["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
+                if(!isset($_SESSION)) session_start();
+                $user = unserialize($_SESSION["user"]);
+                $data["accountId"] = $user->getType() != "USER" ? 1 : $user->getId();
+                if ($this->services->addBoardingSlot($data)) {
+                    $_SESSION["msg"] = "You have successfully added a pet boarding slot!";
+                } else {
+                    $_SESSION["msg"] = "There was an error in adding the pet boarding slot.";
+                }
+                $this->processCollectionRequest("GET");
                 break;
         }
     }
