@@ -3,7 +3,7 @@
 
 <head>
 
-  <title> OHANA- FORGOT PASSWORD </title>
+  <title> CHANGE PASSWORD </title>
 
   <!-- META TAGS -->
   <meta charset="utf-8">
@@ -16,35 +16,36 @@
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900'>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
 
-  <!-- EXTERNAL CSS -->
-  <link rel="stylesheet" href="../css/register.css">
-
   <!-- FONT AWESOME ICONS IMPORT -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Web Icon -->
-  <link rel="shortcut icon" href="../images/templogo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="/Ohana/src/images/Landing/ohana.png" type="image/x-icon">
 
   <!-- Bootstrap CSS CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css" 
-  integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE" crossorigin="anonymous">
-  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css" integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE" crossorigin="anonymous">
+
   <!-- MORE icons -->
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+  <!-- EXTERNAL CSS -->
+  <link rel="stylesheet" href="/Ohana/src/css/register.css">
+  <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
+  <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
 </head>
 
 <body style="background-color: #FAF8F0;">
 
   <!-- UNREGISTERED USERS NAVIGATION BAR-->
-  <?php include_once 'Navigation.php'; ?>
+  <?php include_once 'navbar.php'; ?>
   <!-- MAIN CONTENT -->
   <main class="sign-up">
     <div class="sign-up__container">
       <div class="sign-up__content">
         <header class="sign-up__header">
-          <h1 class="sign-up__title"  style="font-size: 80px; margin-top: 20%; font-family: Bantayog-Regular;">
+          <h1 class="sign-up__title" style="font-size: 80px; margin-top: 10%; font-family: Bantayog-Regular;">
             FORGOT PASSWORD
           </h1>
           <p class="sign-up__descr" style="font-size: 25px;">
@@ -101,9 +102,9 @@
         </form>
       </div>
     </div>
-  </main>
+  </main><br>
   <!-- FOOTER -->
-  <?php include_once 'pagesfooter.php'; ?>
+  <?php include_once 'footer.php'; ?>
 
   <!-- START OF JAVASCRIPT-->
   <script>

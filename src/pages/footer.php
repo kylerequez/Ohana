@@ -1,5 +1,6 @@
 <!-- FOOTER -->
-<div class="container-fluid" style="width:100%; margin-top: 15%;">
+<!-- OLD FOOTER DIV
+<div class="container-fluid" style="width:100%; margin-top: 5%; align-items:center">
   <footer class="fixfooter d-flex flex-wrap justify-content-between align-items-center py-3 my-4" style="height:75px; font-size:20px; margin-top:10%;">
     <div class="col-md-5 d-flex align-items-center">
       <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
@@ -11,12 +12,15 @@
         <a href="#" style="text-decoration:none; color:#c0b65a;" data-bs-toggle="modal" data-bs-target="#privacyModal"> DATA PRIVACY </a>
       </span>
     </div>
-
-    <ul class="nav col-md-5 justify-content-end list-unstyled d-flex">
-      <span id="social-links">
-        <a href="https://www.facebook.com/OhanaKennelPH" target="_blank" rel="noopener noreferrer" style="color:#db6551; font-size:30px; margin-right:10px; margin-left:10px;">
-         <i class="uil uil-facebook"></i></a>
-      </span>
+  </footer>
+</div>
+-->
+<div class="container-fluid" style="width:75%; margin-top: 4%; color:#db6551">
+  <footer class="py-3 my-4 border-top border-warning bottom-0">
+    <p class="text-center" style="font-size:15px"><br> &copy; 2022 Ohana Kennel PH. All Rights Reserved</p>
+    <ul class="nav justify-content-center pb-3 mb-3">
+      <a href="#" style="text-decoration:none; color:#c0b65a;" data-bs-toggle="modal" data-bs-target="#termsModal"> TERMS AND CONDITIONS | </a>
+      <a href="#" style="text-decoration:none; color:#c0b65a;" data-bs-toggle="modal" data-bs-target="#privacyModal">&nbsp; DATA PRIVACY </a>
     </ul>
   </footer>
 </div>

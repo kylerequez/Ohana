@@ -74,99 +74,22 @@
           <table class="posts-table">
             <thead>
               <tr class="users-table-info">
-
                 <th> IMAGE </th>
                 <th> DESCRIPTION </th>
-                <th> USER TYPE </th>
-                <th>DATE</th>
-
+                <th> TYPE </th>
+                <th> DATE </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>
-                  IMAGE
-                </td>
-                <td>
-                  CUSTOMER EMAIL ADDRESS
-                </td>
+                <td>IMAGE</td>
+                <td>CUSTOMER EMAIL ADDRESS</td>
                 <td>
                   <div class="pages-table-img">
                     Jenny Wilson
                   </div>
                 </td>
                 <td>17.04.2021</td>
-              </tr>
-              <tr>
-                <td>
-                  IMAGE
-                </td>
-                <td>
-                  CUSTOMER EMAIL ADDRESS
-                </td>
-                <td>
-                  <div class="pages-table-img">
-                    Annette Black
-                  </div>
-                </td>
-                <td>23.04.2021</td>
-
-              </tr>
-              <tr>
-                <td>
-                  IMAGE
-                </td>
-                <td>
-                  CUSTOMER EMAIL ADDRESS
-                </td>
-                <td>
-                  <div class="pages-table-img">
-                    customer name
-                  </div>
-                </td>
-
-                <td>17.04.2021</td>
-
-              </tr>
-              <tr>
-                <td>
-                  IMAGE
-                </td>
-                <td>
-                  SYSTEM ACTION BY USER
-                </td>
-                <td>
-                  <div class="pages-table-img">
-                    Guy Hawkins
-                  </div>
-                </td>
-
-                <td>17.04.2021</td>
-
-              </tr>
-              <tr>
-                <td> IMAGE</td>
-                <td>SYSTEM ACTION BY USER</td>
-                <td>
-                  <div class="pages-table-img">
-                    CUSTOMER NAME
-                  </div>
-                </td>
-
-                <td>17.04.2021</td>
-
-              </tr>
-              <tr>
-                <td>IMAGE</td>
-                <td>SYSTEM ACTION BY USER</td>
-                <td>
-                  <div class="pages-table-img">
-                    Customer Name
-                  </div>
-                </td>
-
-                <td>17.04.2021</td>
-
               </tr>
             </tbody>
           </table>

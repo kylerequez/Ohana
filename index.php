@@ -2,9 +2,7 @@
 <html lang="en">
 
 <head>
-
     <title> OHANA </title>
-
     <!-- META TAGS -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -20,6 +18,8 @@
     <!-- EXTERNAL CSS -->
     <link rel="stylesheet" href="/Ohana/src/css/index.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
+    <link rel="stylesheet" href="/Ohana/src/css/footer.css">
+    <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
 
     <!-- FONT AWESOME ICONS IMPORT -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -27,21 +27,20 @@
 
     <!-- Web Icon -->
     <link rel="shortcut icon" href="/Ohana/src/images/Landing/ohana.png" type="image/x-icon">
-
-    <!-- Bootstrap CSS  CDN -->
-    <!-- 5.2.1 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous">
-
-    <!-- MORE icons -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
+    <!-- Bootstrap CSS CDN --> <!-- 5.2.1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+    </style>
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-smooth-scroll="true" style="background-color: #FAF8F0;">
     <main>
         <!-- UNREGISTERED USERS NAVIGATION BAR-->
         <?php include_once dirname(__DIR__) . '/Ohana/src/pages/navbar.php'; ?>
-
         <div class="container-fluid">
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
             <section class="introduction" id="home">
@@ -49,25 +48,21 @@
                     <img src="/Ohana/src/images/Landing/introduction.png" width="100%" height="80%">
                 </div>
             </section>
-
             <section class="about-us" id="about">
                 <div class="about">
                     <img src="/Ohana/src/images/Landing/about-us.png" style="width: 100%;">
                 </div>
             </section>
-
             <section class="services" id="services">
                 <div class="service">
-                    <h1 style="color:#C0B65A; font-size: 100px; font-family: 'Karla', sans-serif; font-weight:800"> WHY CHOOSE US? </h1>
+                    <h1 style="color:#C0B65A; font-size: 100px; font-family: 'Acme', sans-serif; font-weight:800"> WHY CHOOSE US? </h1>
                 </div><br><br>
                 <div class="row" style="text-align:center; margin-left:10%; margin-right:10%;">
                     <div class="col-lg-4">
                         <img src="/Ohana/src/images/services/rehome.png" width="540" height="400" role="img" focusable="false">
                         <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
-
                         <h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Pet Rehoming </h2>
                         <p style="color:#7d605c; font-size: 25px;"> Want to add another member to your family? We have the cutest and most loving frenchies waiting for you. </p>
-
                     </div>
                     <div class="col-lg-4">
                         <div class="stud">
@@ -77,33 +72,30 @@
                         <h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Stud Service </h2>
                         <p style="color:#7d605c; font-size: 25px;"> Want to produce quality and compact french bulldogs? Choose from any of our male frenchies ready for mating. </p>
                     </div>
-
                     <div class="col-lg-4">
                         <img src="/Ohana/src/images/services/boarding.png" width="540" height="400" role="img" focusable="false">
                         <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
                         <h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Pet Boarding </h2>
                         <p style="color:#7d605c; font-size: 25px;"> Want to increase chances of your pet fertility after stud? We offer pet boarding to prevent your pet from getting stressed. </p>
-
                     </div>
                 </div>
             </section><br><br>
             <section class="reasons">
                 <div class="reason">
                     <img src="/Ohana/src/images/Landing/reasons.png" style="width: 100%;">
-
                     <form action="/login" method='get'>
                         <div class="btn-Adopt" name="btn-Adopt" style="margin-left: 25%;">
                             <button id="btnAdopt" name="btnAdopt"><span> Adopt one now! </span></button>
                         </div>
                     </form>
-
                 </div>
                 <br>
-            </section>
-
+            </section><br>
             <section class="amenities">
                 <div class="amenity">
-                    <h1 class="amenity" style="font-family: 'DM Sans', sans-serif; font-size:70px;"> your <strong style="font-family: 'Karla', sans-serif; font-weight:800">KAUHALE</strong> away from home </h1>
+                    <h1 class="amenity" style="font-family: 'Poppins', sans-serif; font-size:70px; color:#db6551;"> your
+                        <strong style="font-family: 'Acme', sans-serif; font-weight:800; font-size: 80px; color:#C0B65A">KAUHALE</strong> away from home
+                    </h1>
                 </div>
                 <br>
                 <div class="row" style="text-align:center; margin-left:10%; margin-right:10%;">
@@ -152,7 +144,7 @@
             <section class="contact-us" id="contact">
                 <div class="container-fluid">
                     <div class="message" style="margin-left:32%;">
-                        <h1 style="font-size:100px; font-family: 'Karla', sans-serif;"> CONTACT US! </h1>
+                        <h1 style="font-size:100px; font-family: 'Acme', sans-serif; color:#db6551"> CONTACT US! </h1>
                     </div>
 
                     <form id="contactform" class="topBefore">
@@ -167,9 +159,10 @@
                         </div>
                     </form>
                 </div>
-             </div>
             </section>
+        </div>
 
+        <div id="chat-container"> </div>
     </main>
 
     <?php include_once dirname(__DIR__) . '/Ohana/src/pages/footer.php'; ?>
@@ -178,11 +171,14 @@
     <!-- SCIPTS -->
 
     <!-- JAVASCRIPT IMPORTS -->
-
+    <script src="/Ohana/src/js/chatbot-ui.js"></script>
+    <script>
+        createChatBot(host = 'http://localhost:5005/webhooks/rest/webhook', botLogo = "/Ohana/src/images/Chatbot/bot-logo.png",
+            title = "Lilo from Ohana", welcomeMessage = "Good Day, How can I help you?", inactiveMsg = "Waiting for the developers to update this", theme = "orange")
+    </script>
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 
 </body>
-
 </html>

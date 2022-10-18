@@ -81,7 +81,7 @@
             }
             $staffs = !empty($_SESSION["staff"]) ? unserialize($_SESSION["staff"]) : null;
 
-            if(!empty($staffs)){
+            if (!empty($staffs)) {
             ?>
               <table class="posts-table">
                 <thead>
@@ -213,19 +213,34 @@
                     </div>
                     <div class="mb-3">
                       <label for="password" class="col-form-label"> Password: </label>
-                      <input type="password" class="form-control" name="password" placeholder="Enter Password" required style="background-color:#eed1c2; color:black"> 
+                      <input type="password" class="form-control" name="password" placeholder="Enter Password" required style="background-color:#eed1c2; color:black">
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="submit" class="btn" style="background-color:#db6551"> Add Staff </button>
+                    <button type="submit" class="btn" id="ToastBtn" style="background-color:#db6551"> Add Staff </button>
                   </div>
                 </div>
               </div>
             </div>
+            
+
+          <!-- TOAST NOTIFICATION FOR ADD STAFF -->
+          <div class="toast-container top-0 end-0 p-3">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+              <div class="toast-header">
+                <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+                <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
+                <small> JUST NOW </small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body" style="color:#db6551; font-size:15px;">Added Staff Successfully!</div>
+            </div>
+          </div>
           </form>
 
+
           <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-            <div class="toast show">
+            <div class="toast show position-fixed bottom-0 end-0 p-3">
               <div class="toast-header">
                 <strong class="me-auto">Toast Header</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
@@ -247,7 +262,17 @@
     </div>
 
     <!-- SCRIPTS -->
-
+    <script>
+      //TOAST SCRIPT TRIGGER 
+      const toastTrigger = document.getElementById('ToastBtn')
+      const toastLiveExample = document.getElementById('liveToast')
+      if (toastTrigger) {
+        toastTrigger.addEventListener('click', () => {
+          const toast = new bootstrap.Toast(toastLiveExample)
+          toast.show()
+        })
+      }
+    </script>
     <!-- Chart library -->
     <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
 

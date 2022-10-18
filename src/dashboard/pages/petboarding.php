@@ -139,20 +139,14 @@
               
               <div class="mb-3">
                 <label for="hasPCCI" class="col-form-label"> STATUS </label><br> <!-- RADIO BUTTON -->
-
                 <label for="pcci1" class="radio-inline"> <input type="radio" id="pcci1" name="pcciStatus" value="Registered"> Available </label>
                 <label for="pcci2" class="radio-inline"> <input type="radio" id="pcci2" name="pcciStatus" value="Pending"> Occupied </label>
-
               </div>
-           
-
               <input type="hidden" class="form-control" name="status"> <!-- FOR OHANA OWNER -->
-
               <div class="mb-3">
                 <label for="image" class="col-form-label"> SLOT IMAGE </label><br>
                 <input type="file" name="fileToUpload" id="fileToUpload" style="background-color:transparent;">
               </div>
-
             </div>
 
             <div class="modal-footer">

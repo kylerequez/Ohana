@@ -23,6 +23,7 @@
   <!-- EXTERNAL CSS IMPORT-->
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
+  <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
   <!-- FONT AWESOME ICONS IMPORT -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />

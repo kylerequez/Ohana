@@ -29,6 +29,7 @@
 
   <!-- Custom styles -->
   <link rel="stylesheet" href="/Ohana/src/css/Dogs.css">
+  <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
 </head>
 

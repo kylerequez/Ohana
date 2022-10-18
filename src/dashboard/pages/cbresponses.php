@@ -55,25 +55,20 @@
               <h2 class="main-title"> CHATBOT RESPONSES </h2>
             </center>
           </div>
-
           <div class="users-table table-wrapper">
             <div class="search-wrapper">
               <i data-feather="search" aria-hidden="true"></i>
               <input type="text" placeholder=" Search..">
             </div>
-
             <br>
-
             <table class="posts-table">
               <thead>
                 <tr class="users-table-info">
-
                   <th> RESPONSE I.D </th>
                   <th> RESPONSE </th>
                   <th> QUERY </th>
                   <th> TIMES ASKED </th>
                   <th> ACTION </th>
-
                 </tr>
               </thead>
               <tbody>
@@ -82,7 +77,7 @@
                     I.D NUMBER 12345
                   </td>
                   <td>
-                    Chatbot Response 
+                    Chatbot Response
                   </td>
                   <td>
                     <div class="pages-table-img">
@@ -91,24 +86,53 @@
                   </td>
                   <td> 10 </td>
                   <td>
-                    <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
+                  <a href="" data-bs-toggle="modal" data-bs-target="#editModalId">
+                    <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button></a>
                     <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i> </button>
                   </td>
                 </tr>
-
-
-
               </tbody>
             </table>
           </div>
-
         </main>
 
         <!-- ! Footer -->
         <?php include_once dirname(__DIR__) . '/footer.php'; ?>
-
       </div>
     </div>
+
+    <!--EDIT RESPONSES MODAL -->
+    <form method="POST" action="/dashboard/petprofiles/add">
+      <div class="modal fade" id="editModalId" tabindex="-1" aria-labelledby="addSlotModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editCbresponses"> EDIT CHATBOT RESPONSES </h5>
+              <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+            </div>
+            <div class="modal-body">
+              <input name="type" type="hidden" value="STAFF">
+              <div class="mb-3">
+                <label for="name" class="col-form-label"> DOG NAME </label>
+                <input type="text" class="form-control" name="name" placeholder="Enter Dog Name" required style="background-color:#eed1c2; color:black">
+              </div>
+              <div class="mb-3">
+                <label for="owner" class="col-form-label"> DOG OWNER </label>
+                <input type="text" class="form-control" name="owner" placeholder="Name of Dog Owner" required style="background-color:#eed1c2; color:black">
+              </div>
+              <input type="hidden" class="form-control" name="status"> <!-- FOR OHANA OWNER -->
+              <div class="mb-3">
+                <label for="image" class="col-form-label"> DOG IMAGE </label><br>
+                <input type="file" name="fileToUpload" id="fileToUpload" style="background-color:transparent;">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn" id="ToastBtn" style="background-color:#db6551"> SAVE CHANGES </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
 
     <!-- SCRIPTS -->
 

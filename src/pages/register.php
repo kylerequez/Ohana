@@ -22,6 +22,7 @@
   <!-- EXTERNAL CSS IMPORT-->
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
+  <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
   <!-- FONT AWESOME ICONS IMPORT -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -48,10 +49,10 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <h1 class="sign-up__title" style="font-size: 80px; margin-top: 20%; font-family: Bantayog-Regular;">
+            <h1 class="sign-up__title" style="font-size: 100px; margin-top: 10%; font-family: 'Acme', sans-serif;">
               Create An Account
             </h1>
-            <p class="sign-up__descr" style="font-size: 60px; color:#ff5757;">
+            <p class="sign-up__descr" style="font-size: 70px; color:#c0b65a; font-family: 'Acme', sans-serif;">
               Welcome to Ohana!
             </p>
             <p style="font-size:20px;"> Fill up the fields below to create an account. </p>

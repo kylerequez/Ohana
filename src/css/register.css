@@ -6,17 +6,18 @@
 /* FOR PARAGRAPHS font-family: 'DM Sans', sans-serif; */
 @import url("https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap");
 /* FOR ALTERNATIVE font-family: 'Karla', sans-serif; */
-@import url("https://fonts.googleapis.com/css2?family=Neucha&display=swap");
-/*FOR HEADERS IN REPLACEMENT FOR TROPIKA font-family: 'Neucha', cursive; */
-@font-face {
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+/* font-family: 'Acme', sans-serif; FOR HEADERS */
+
+/*@font-face {
   font-family: "Bantayog-Regular";
   src: url(/fonts/bantayog/Bantayog-Regular.otf);
 }
-
+### OTHER FONTS USED IN THE WEBSITE BUT CANNOT BE IMPORTED 
 @font-face {
   font-family: "Tropika-Island";
   src: url(/fonts/Tropika_Island/Aiyari\ -\ Tropika\ Island\ Int.otf);
-}
+}*/
 
 * {
   margin: 0;
@@ -282,7 +283,7 @@ input:-webkit-autofill {
 .sign-up__title {
   margin-bottom: 16px;
   color: #db6551;
-  font-family: "Neucha", cursive;
+  font-family: 'Acme', sans-serif; 
   font-weight: bolder;
 }
 

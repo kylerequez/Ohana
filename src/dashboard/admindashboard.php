@@ -12,23 +12,19 @@
 
   <title> OHANA KENNEL PH DASHBOARD </title>
 
-  <!-- Web Icon -->
+  <!-- Web Icon and IconScout -->
   <link rel="shortcut icon" href="/Ohana/src/dashboard/img/ohana.png" type="image/x-icon">
-
-  <!-- BOOTSTRAP CSS CDN -->
-  <!-- VERSION 5.2.1 FOR BOOSTRAP COMPONENTS-->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <!-- BOOTSTRAP CSS CDN VERSION 5.2.1 FOR BOOSTRAP COMPONENTS-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
   <!-- JavaScript Includes -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
-
   <!-- Custom styles -->
   <link rel="stylesheet" href="/Ohana/src/dashboard/css/admin.css">
-
-  <!-- MORE icons -->
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+</style>
 </head>
 
 <body>
@@ -60,11 +56,11 @@
           <div class="container-fluid">
             <div class="container">
               <center>
-                <h2 class="main-title" style="color:#C0B65A; font-size:80px;"> WELCOME BACK ADMIN!</h2>
+                <h2 class="main-title" style="color:#C0B65A; font-size:80px; font-family:'Acme', sans-serif;"> WELCOME BACK ADMIN!</h2>
               </center>
               <div class="row">
 
-                <div class="card mb-3" style="max-width: 400px; margin-left:20px;">
+                <div class="card mb-3" style="max-width: 400px; margin-left:30px;">
                   <div class="row g-0">
                     <div class="col-md-4">
                       <a href="##"><img src="/Ohana/src/dashboard/img/main/registered.png" class="img-fluid rounded-start" alt="..." style="margin-top:10px; margin-bottom:10px;"></a>
@@ -82,7 +78,7 @@
                   </div>
                 </div>
 
-                <div class="card mb-3" style="max-width: 400px; margin-left:20px;">
+                <div class="card mb-3" style="max-width: 400px; margin-left:30px;">
                   <div class="row g-0">
                     <div class="col-md-4">
                       <a href="##"><img src="/Ohana/src/dashboard/img/main/feedback.png" class="img-fluid rounded-start" alt="..." style="margin-top:10px; margin-bottom:10px;"></a>
@@ -98,7 +94,7 @@
                   </div>
                 </div>
 
-                <div class="card mb-3" style="max-width: 400px; margin-left:20px;">
+                <div class="card mb-3" style="max-width: 400px; margin-left:30px;">
                   <div class="row g-0">
                     <div class="col-md-4">
                       <a href="##"><img src="/Ohana/src/dashboard/img/main/sales.png" class="img-fluid rounded-start" alt="..." style="margin-top:10px; margin-bottom:10px;"></a>
@@ -113,13 +109,10 @@
                     </div>
                   </div>
                 </div>
-
               </div>
-
               <div class="row" style="margin-top:20px;">
-                <!-- 2nd row -->
-
-                <div class="card mb-3" style="max-width: 400px; margin-left:20px;">
+                
+                <div class="card mb-3" style="max-width: 400px; margin-left:30px;"><!-- 2nd row -->
                   <div class="row g-0">
                     <div class="col-md-4">
                       <a href="##"><img src="/Ohana/src/dashboard/img/main/dogs.png" class="img-fluid rounded-start" alt="..." style="margin-top:10px; margin-bottom:10px;"></a>
@@ -135,7 +128,7 @@
                   </div>
                 </div>
 
-                <div class="card mb-3" style="max-width: 400px; margin-left:20px;">
+                <div class="card mb-3" style="max-width: 400px; margin-left:30px;">
                   <div class="row g-0">
                     <div class="col-md-4">
                       <a href="##"><img src="/Ohana/src/dashboard/img/main/slots.png" class="img-fluid rounded-start" alt="..." style="margin-top:10px; margin-bottom:10px;"></a>
@@ -151,7 +144,7 @@
                   </div>
                 </div>
 
-                <div class="card mb-3" style="max-width: 400px; margin-left:20px;">
+                <div class="card mb-3" style="max-width: 400px; margin-left:30px;">
                   <div class="row g-0">
                     <div class="col-md-4">
                       <a href="##"><img src="/Ohana/src/dashboard/img/main/pets.png" class="img-fluid rounded-start" alt="..." style="margin-top:10px; margin-bottom:10px;"> </a>
