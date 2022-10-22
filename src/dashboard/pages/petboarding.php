@@ -103,35 +103,35 @@
                     </tr>
                     <!-- EDIT POP UP MODAL -->
                     <form method="POST" action="/dashboard/petboarding/update/<?php echo $slot->getId(); ?>" enctype="multipart/form-data">
-                        <div class="modal fade" id="editModalId<?php echo $slot->getId(); ?>" tabindex="-1" aria-labelledby="editslotmodal" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="editingModal">EDIT BOARDING SLOT</h5>
-                                <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                      <div class="modal fade" id="editModalId<?php echo $slot->getId(); ?>" tabindex="-1" aria-labelledby="editslotmodal" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="editingModal">EDIT BOARDING SLOT</h5>
+                              <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                            </div>
+                            <div class="modal-body">
+                              <div class="mb-3">
+                                <label for="name" class="col-form-label"> SLOT NAME: </label>
+                                <input type="text" class="form-control" name="name" value="<?php echo $slot->getName(); ?>" required>
                               </div>
-                              <div class="modal-body">
-                                <div class="mb-3">
-                                  <label for="name" class="col-form-label"> SLOT NAME: </label>
-                                  <input type="text" class="form-control" name="name" value="<?php echo $slot->getName(); ?>" required>
-                                </div>
-                                <div class="mb-3">
-                                  <label for="name" class="col-form-label"> SLOT INFORMATION: </label>
-                                  <input type="text" class="form-control" name="name" value="<?php echo $slot->getInformation(); ?>" required>
-                                </div>
-                                <div class="mb-3">
-                                  <label for="name" class="col-form-label"> SLOT IMAGE: </label>
-                                  <input type="file" class="form-control" name="image">
-                                  <input type="hidden" class="form-control" name="old_image" value="<?php echo base64_encode($slot->getImage()); ?>">
-                                  <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>">
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="submit" class="btn" style="background-color:#db6551"> Save Changes </button>
-                                </div>
+                              <div class="mb-3">
+                                <label for="name" class="col-form-label"> SLOT INFORMATION: </label>
+                                <input type="text" class="form-control" name="name" value="<?php echo $slot->getInformation(); ?>" required>
+                              </div>
+                              <div class="mb-3">
+                                <label for="name" class="col-form-label"> SLOT IMAGE: </label>
+                                <input type="file" class="form-control" name="image">
+                                <input type="hidden" class="form-control" name="old_image" value="<?php echo base64_encode($slot->getImage()); ?>">
+                                <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>">
+                              </div>
+                              <div class="modal-footer">
+                                <button type="submit" class="btn" style="background-color:#db6551"> Save Changes </button>
                               </div>
                             </div>
                           </div>
-                      </form>
+                        </div>
+                    </form>
                   <?php
                   }
                   ?>
