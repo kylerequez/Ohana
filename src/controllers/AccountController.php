@@ -29,19 +29,18 @@ class AccountController
     public function processUserCollectionRequest(string $method): void
     {
         switch ($method) {
-            // User Display
+                // User Display
             case "GET":
-                    if (!isset($_SESSION)) session_start();
-                    $_SESSION["users"] = serialize($this->services->getUserAccounts());
+                if (!isset($_SESSION)) session_start();
+                $_SESSION["users"] = serialize($this->services->getUserAccounts());
 
-                    header("Location: http://localhost/dashboard/customers");
+                header("Location: http://localhost/dashboard/customers");
                 break;
-            // User registration
+                // User registration
             case "POST":
                 if (!isset($_SESSION)) session_start();
-                $data = $_SESSION["data"];
-                unset($_SESSION["data"]);
-                if ($this->services->addAccount($data) == true) {
+                $data = $_POST;
+                if ($this->services->addAccount($data)) {
                     // redirect to registered landing
                     header("Location: http://localhost/login");
                     //echo "Added";
@@ -67,15 +66,14 @@ class AccountController
     public function processStaffResourceRequest(string $method, ?string $id): void
     {
         switch ($method) {
-            // Staff Delete
+                // Staff Delete
             case "GET":
                 echo "DELETE";
                 if (!isset($_SESSION)) session_start();
                 if ($this->services->deleteAccount($id)) {
                     $user = unserialize($_SESSION["user"]);
                     $log = $user->getFullName() . " has deleted Account ID $id";
-                    if(!$this->logservices->addLog($log))
-                    {
+                    if (!$this->logservices->addLog($log)) {
                         $_SESSION["msg"] = "There was an error in the logging of the action.";
                     }
                     $this->processStaffCollectionRequest($method);
@@ -83,21 +81,19 @@ class AccountController
                     echo "Not deleted";
                 }
                 break;
-            // Staff Update
+                // Staff Update
             case "POST":
                 echo "UPDATE";
                 if (!isset($_SESSION)) session_start();
-                $data = $_SESSION["data"];
-                if ($this->services->updateAccount($id, $data)){
+                $data = $_POST;
+                if ($this->services->updateAccount($id, $data)) {
                     $user = unserialize($_SESSION["user"]);
                     $log = $user->getFullName() . " has updated Account ID $id";
-                    if(!$this->logservices->addLog($log))
-                    {
+                    if (!$this->logservices->addLog($log)) {
                         $_SESSION["msg"] = "There was an error in the logging of the action.";
                     }
                     $this->processStaffCollectionRequest("GET");
                 } else {
-
                 }
                 break;
         }
@@ -106,30 +102,26 @@ class AccountController
     public function processStaffCollectionRequest(string $method): void
     {
         switch ($method) {
-            // Staff Display
+                // Staff Display
             case "GET":
                 if (!isset($_SESSION)) session_start();
                 $_SESSION["staff"] = serialize($this->services->getStaffAccounts());
 
                 header("Location: http://localhost/dashboard/staff");
                 break;
-            // Add Staff
+                // Add Staff
             case "POST":
                 if (!isset($_SESSION)) session_start();
-                $data = $_SESSION["data"];
-                unset($_SESSION["data"]);
+                $data = $_POST;
                 if ($this->services->addAccount($data) == true) {
-                    // unset($_SESSION["data"]);
                     $_SESSION["msg"] = "You have successfully added a new staff account.";
                     $user = unserialize($_SESSION["user"]);
                     $log = $user->getFullName() . " has added a staff account";
-                    if($this->logservices->addLog($log) == false)
-                    {
+                    if ($this->logservices->addLog($log) == false) {
                         $_SESSION["msg"] = "There was an error in the logging of the action.";
                     }
                     $this->processStaffCollectionRequest("GET");
                 } else {
-                    // unset($_SESSION["data"]);
                     echo "ERROR";
                 }
                 break;
@@ -140,7 +132,7 @@ class AccountController
     public function loginRequest(string $method): void
     {
         switch ($method) {
-            // Account login
+                // Account login
             case "POST":
                 if (!isset($_SESSION)) session_start();
                 $account = $this->services->loginAccount($_POST["email"], $_POST["password"]);

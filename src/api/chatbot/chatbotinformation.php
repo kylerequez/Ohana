@@ -15,5 +15,5 @@ $logservices = new LogServices($logdao);
 $controller = new ChatbotController($services, $logservices);
 
 if($_SERVER["REQUEST_METHOD"] == "GET"){
-    $controller->processAdminRequest($_SERVER["REQUEST_METHOD"], null);
+    $controller->processSettingsRequest($_SERVER["REQUEST_METHOD"], null);
 }

@@ -22,7 +22,11 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && empty($id)){
     // add boarding slot
     echo "POST ADD";
     $controller->processRequest($_SERVER["REQUEST_METHOD"], null);
-}else if($_SERVER["REQUEST_METHOD"] == "GET" && !empty($id)) {
+} else if($_SERVER["REQUEST_METHOD"] == "GET" && !empty($id)) {
+    // delete boarding slot
     echo "TEST";
+    $controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
+} else if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($id)){
+    // update
     $controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
 }

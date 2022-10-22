@@ -129,7 +129,6 @@
                                 <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
                               </div>
                               <div class="modal-body">
-                                <input name="type" type="hidden">
                                 <div class="mb-3">
                                   <label for="fname" class="col-form-label"> First Name: </label>
                                   <input type="text" class="form-control" name="fname" value="<?php echo $staff->getFname(); ?>" required>
