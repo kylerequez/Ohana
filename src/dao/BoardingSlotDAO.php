@@ -12,7 +12,7 @@ class BoardingSlotDAO
 
     public function getAllBoardingSlots(): mixed
     {
-        try{
+        try {
             $sql = "
                 SELECT * FROM ohana_boarding_slot;
             ";
@@ -20,15 +20,14 @@ class BoardingSlotDAO
             $stmt = $this->conn->query($sql);
             $slots = null;
             if ($stmt->execute() > 0) {
-                while($slot = $stmt->fetch(PDO::FETCH_ASSOC))
-                {
+                while ($slot = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $existingSlot = new BoardingSlot($slot["slot_image"], $slot["slot_name"], $slot["slot_information"], $slot["is_available"], $slot["pet_id"], $slot["pet_name"]);
                     $existingSlot->setId($slot["slot_id"]);
                     $slots[] = $existingSlot;
                 }
             }
             return $slots;
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             echo $e;
             return null;
         }
@@ -36,7 +35,7 @@ class BoardingSlotDAO
 
     public function addBoardingSlot(BoardingSlot $slot): bool
     {
-        try{
+        try {
             $sql = "
                 INSERT INTO ohana_boarding_slot
                 (slot_image, slot_name, slot_information, is_available, pet_id, pet_name)
@@ -57,9 +56,9 @@ class BoardingSlotDAO
             $stmt->bindParam(":isAvailable", $isAvailable, PDO::PARAM_BOOL);
             $stmt->bindParam(":petId", $petId, PDO::PARAM_INT);
             $stmt->bindParam(":petName", $petName, PDO::PARAM_STR);
-            
+
             return $stmt->execute() > 0;
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             echo $e;
             return null;
         }
@@ -73,6 +72,62 @@ class BoardingSlotDAO
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+
+            return $stmt->execute() > 0;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function searchById(string $id): mixed
+    {
+        try {
+            $sql = "SELECT * FROM ohana_boarding_slot
+                    WHERE slot_id=:id
+                    LIMIT 1;
+                    ";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+
+            $searchedSlot = null;
+            if ($stmt->execute() > 0) {
+                while ($slot = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $searchedSlot = new BoardingSlot($slot["slot_image"], $slot["slot_name"], $slot["slot_information"], $slot["is_available"], $slot["pet_id"], $slot["pet_name"]);
+                    $searchedSlot->setId($slot["slot_id"]);
+                }
+            }
+            return $searchedSlot;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function updateBoardingSlot(BoardingSlot $slot): mixed
+    {
+        try {
+            $sql = "UPDATE ohana_boarding_slot
+                    SET slot_image=:image, slot_name=:name, slot_information=:information, is_available=:isAvailable, pet_id=:petId, pet_name=:petName
+                    WHERE slot_id=:id";
+
+            $id = $slot->getId();
+            $image = $slot->getImage();
+            $name = $slot->getName();
+            $information = $slot->getInformation();
+            $isAvailable = $slot->getIsAvailable();
+            $petId = $slot->getPetId();
+            $petName = $slot->getPetName();
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt->bindParam(":image", $image, PDO::PARAM_STR);
+            $stmt->bindParam(":name", $name, PDO::PARAM_STR);
+            $stmt->bindParam(":information", $information, PDO::PARAM_STR);
+            $stmt->bindParam(":isAvailable", $isAvailable, PDO::PARAM_BOOL);
+            $stmt->bindParam(":petId", $petId, !is_null($petId) ? PDO::PARAM_INT : PDO::PARAM_BOOL);
+            $stmt->bindParam(":petName", $petName, PDO::PARAM_STR);
 
             return $stmt->execute() > 0;
         } catch (Exception $e) {

@@ -52,7 +52,7 @@
         <!-- ! Main nav -->
         <?php include_once dirname(__DIR__) . "/navbar.php" ?>
 
-        <!--  PET PROFILES MAIN CONTENT -->
+        <!--  PET BOARDING MAIN CONTENT -->
         <main class="main users chart-page" id="skip-target">
           <div class="container">
             <br>
@@ -75,7 +75,6 @@
             <?php
             require_once dirname(__DIR__) . '/../models/BoardingSlot.php';
             $slots = !empty($_SESSION["slots"]) ? unserialize($_SESSION["slots"]) : null;
-            //print_r($_SESSION["slots"]);
             if (!empty($slots)) {
             ?>
               <table class="posts-table">
@@ -97,11 +96,11 @@
                       <td><?php echo $slot->getName(); ?></td>
                       <td><?php echo $slot->getIsAvailable() == 1 ? "AVAILABLE" : "UNAVAILABLE"; ?></td>
                       <td>
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $slot->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"></i></button></a>
+                        <a href="" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $slot->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"></i></button></a>
                         <a href="/dashboard/petboarding/delete/<?php echo $slot->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Slot ID <?php echo $slot->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>
                       </td>
                     </tr>
-                    <!-- EDIT POP UP MODAL -->
+                    <!-- EDIT SLOT MODAL -->
                     <form method="POST" action="/dashboard/petboarding/update/<?php echo $slot->getId(); ?>" enctype="multipart/form-data">
                       <div class="modal fade" id="editModalId<?php echo $slot->getId(); ?>" tabindex="-1" aria-labelledby="editslotmodal" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -116,14 +115,24 @@
                                 <input type="text" class="form-control" name="name" value="<?php echo $slot->getName(); ?>" required>
                               </div>
                               <div class="mb-3">
-                                <label for="name" class="col-form-label"> SLOT INFORMATION: </label>
-                                <input type="text" class="form-control" name="name" value="<?php echo $slot->getInformation(); ?>" required>
+                                <label for="information" class="col-form-label"> SLOT INFORMATION: </label>
+                                <input type="text" class="form-control" name="information" value="<?php echo $slot->getInformation(); ?>" required>
                               </div>
                               <div class="mb-3">
-                                <label for="name" class="col-form-label"> SLOT IMAGE: </label>
+                                <label for="isAvailable" class="col-form-label"> SLOT AVAILABILITY: </label><br>
+                                <label for="yes" class="radio-inline"> <input type="radio" id="yes" <?php if ($slot->getIsAvailable() == 1) echo "checked"; ?> name="isAvailable" value="AVAILABLE"> Available </label>
+                                <label for="no" class="radio-inline"> <input type="radio" id="no" <?php if ($slot->getIsAvailable() == 0) echo "checked"; ?> name="isAvailable" value="UNAVAILABLE"> Unavailable </label>
+                              </div>
+                              <div class="mb-3">
+                                <label for="petName" class="col-form-label"> PET NAME: </label>
+                                <input type="hidden" name="petId" value="<?php echo !is_null($slot->getPetId()) ? $slot->getPetId() : null; ?>">
+                                <input disabled type="text" class="form-control" name="petName" value="<?php echo !is_null($slot->getPetName()) ? $slot->getPetName() : "N/A"; ?>">
+                              </div>
+                              <div class="mb-3">
+                                <label for="image" class="col-form-label"> SLOT IMAGE: </label>
                                 <input type="file" class="form-control" name="image">
                                 <input type="hidden" class="form-control" name="old_image" value="<?php echo base64_encode($slot->getImage()); ?>">
-                                <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>">
+                                <!-- <img src="data:image/jpeg;base64,<?php echo base64_encode($slot->getImage()); ?>"> -->
                               </div>
                               <div class="modal-footer">
                                 <button type="submit" class="btn" style="background-color:#db6551"> Save Changes </button>
@@ -143,6 +152,18 @@
               echo "<h1>NULL</h1>";
             }
         ?>
+        <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+          <div class="toast show">
+            <div class="toast-header">
+              <strong class="me-auto">Toast Header</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+              <p><?php echo $_SESSION["msg"];
+                  unset($_SESSION["msg"]); ?></p>
+            </div>
+          </div>
+        <?php } ?>
         </main>
 
         <!-- FOOTER -->

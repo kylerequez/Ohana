@@ -45,16 +45,27 @@ class BoardingSlotController
                 break;
             case "POST":
                 echo "UPDATE";
+                $data = $_POST;
                 if(!empty($_FILES["image"]["tmp_name"])) {
-                    echo "new";
-                    $data = $_POST;
                     $data["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
                 } else {
-                    echo "Old";
-                    $data = $_POST;
                     $data["image"] = base64_decode($_POST["old_image"]);
                 }
-
+                // print_r($data);
+                // echo empty($data["petName"]) ? "LOL" : "NO";
+                // echo $data["petName"];
+                if (!isset($_SESSION)) session_start();
+                if($this->services->updateBoardingSlot($id, $data)){
+                    $_SESSION["msg"] = "You have successfully updated Slot ID $id!";
+                    $user = unserialize($_SESSION["user"]);
+                    $log = $user->getFullName() . " has updated Slot ID $id";
+                    if (!$this->logservices->addLog($log)) {
+                        $_SESSION["msg"] = "There was an error in the logging of the action.";
+                    }
+                } else {
+                    $_SESSION["msg"] = "There was an error in updating the boarding slot.";
+                }
+                $this->processCollectionRequest("GET");
                 break;
         }
     }

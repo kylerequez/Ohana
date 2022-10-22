@@ -40,13 +40,10 @@ class PetProfileController
             // Update Pet Profile
             case "POST":
                 echo "UPDATE";
+                $data = $_POST;
                 if(!empty($_FILES["image"]["tmp_name"])) {
-                    echo "new";
-                    $data = $_POST;
                     $data["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
                 } else {
-                    echo "Old";
-                    $data = $_POST;
                     $data["image"] = base64_decode($_POST["old_image"]);
                 }
                 if (!isset($_SESSION)) session_start();
