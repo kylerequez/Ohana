@@ -41,7 +41,8 @@ class PetProfileDAO
             $petProfiles = null;
             if ($stmt->execute() > 0) {
                 while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $existingPetProfile = new PetProfile($petProfile["pet_image"],
+                    $existingPetProfile = new PetProfile(
+                        $petProfile["pet_image"],
                         $petProfile["pet_name"],
                         $petProfile["pet_age"],
                         new DateTime($petProfile["pet_birthdate"]),
@@ -52,7 +53,8 @@ class PetProfileDAO
                         $petProfile["account_id"],
                         $petProfile["owner_name"],
                         $petProfile["pet_price"],
-                        $petProfile["pet_status"]);
+                        $petProfile["pet_status"]
+                    );
                     $existingPetProfile->setId($petProfile["pet_id"]);
                     $petProfiles[] = $existingPetProfile;
                 }
@@ -136,6 +138,49 @@ class PetProfileDAO
                 }
             }
             return $searchedPetProfile;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function updatePetProfile(PetProfile $profile): bool
+    {
+        try {
+            $sql = "UPDATE ohana_pet_profiles
+                    SET pet_image=:image, pet_name=:name, pet_age=:age, pet_birthdate=:birthdate, pet_sex=:sex, pet_color=:color, is_vaccinated=:isVaccinated, pcci_status=:pcciStatus, account_id=:accountId, owner_name=:ownerName, pet_price=:price, pet_status=:status
+                    WHERE pet_id=:id";
+
+            $id = $profile->getId();
+            $image = $profile->getImage();
+            $name = $profile->getName();
+            $age = $profile->getAge();
+            $birthdate = $profile->getBirthdate()->format("Y-m-d");
+            $sex = $profile->getSex();
+            $color = $profile->getColor();
+            $isVaccinated = $profile->getIsVaccinated();
+            $pcciStatus = $profile->getPcciStatus();
+            $accountId = $profile->getAccountId();
+            $ownerName = $profile->getOwnerName();
+            $price = $profile->getPrice();
+            $status = $profile->getStatus();
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt->bindParam(":image", $image, PDO::PARAM_STR);
+            $stmt->bindParam(":name", $name, PDO::PARAM_STR);
+            $stmt->bindParam(":age", $age, PDO::PARAM_INT);
+            $stmt->bindParam(":birthdate", $birthdate, PDO::PARAM_STR);
+            $stmt->bindParam(":sex", $sex, PDO::PARAM_STR);
+            $stmt->bindParam(":color", $color, PDO::PARAM_STR);
+            $stmt->bindParam(":isVaccinated", $isVaccinated, PDO::PARAM_BOOL);
+            $stmt->bindParam(":pcciStatus", $pcciStatus, PDO::PARAM_STR);
+            $stmt->bindParam(":accountId", $accountId, PDO::PARAM_INT);
+            $stmt->bindParam(":ownerName", $ownerName, PDO::PARAM_STR);
+            $stmt->bindParam(":price", $price, PDO::PARAM_STR);
+            $stmt->bindParam(":status", $status, PDO::PARAM_STR);
+
+            return $stmt->execute() > 0;
         } catch (Exception $e) {
             echo $e;
             return null;

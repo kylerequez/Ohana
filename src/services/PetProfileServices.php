@@ -37,8 +37,34 @@ class PetProfileServices
         $status = "AVAILABLE";
 
         $petProfile = new PetProfile($image, $name, $age, $birthdate, $sex, $color, $isVaccinated, $pcciStatus, $accountId, $ownerName, $price, $status);
-        
+
         return $this->dao->addPetProfile($petProfile);
+    }
+
+    public function updatePetProfile(string $id, array $data): bool
+    {
+        if (!is_null($this->dao->searchById($id))) {
+            $image = $data["image"];
+            $name = strtoupper($data["name"]);
+            $age = $data["age"];
+            $birthdate = DateTime::createFromFormat("Y-m-d", $data["birthdate"]);
+            $sex = strtoupper($data["sex"]);
+            $color = strtoupper($data["color"]);
+            $isVaccinated = $data["isVaccinated"] == "Yes" ? 1 : 0;
+            $pcciStatus = strtoupper($data["pcciStatus"]);
+            $accountId = $data["accountId"];
+            $ownerName = strtoupper($data["ownerName"]);
+            $price = $data["price"];
+            $status = $data["status"];
+
+            $profile = new PetProfile($image, $name, $age, $birthdate, $sex, $color, $isVaccinated, $pcciStatus, $accountId, $ownerName, $price, $status);
+            $profile->setId($id);
+            $isUpdated = $this->dao->updatePetProfile($profile);
+        } else {
+            $_SESSION["msg"] = "Pet Profile $id was not updated! The pet profile does not exist";
+            $isUpdated = false;
+        }
+        return $isUpdated;
     }
 
     public function deletePetProfile($id): bool
