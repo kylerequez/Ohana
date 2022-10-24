@@ -256,7 +256,40 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn" style="background-color:#db6551"> Add Pet </button>
+              <button type="submit" class="btn" id="ToastBtn" style="background-color:#db6551"> Add Pet </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!--EDIT PET PROFILE MODAL -->
+    <form method="POST" action="/dashboard/petprofiles/add">
+      <div class="modal fade" id="editModalId" tabindex="-1" aria-labelledby="addSlotModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addStaffTitle"> EDIT PET PROFILE </h5>
+              <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+            </div>
+            <div class="modal-body">
+              <input name="type" type="hidden" value="STAFF">
+              <div class="mb-3">
+                <label for="name" class="col-form-label"> DOG NAME </label>
+                <input type="text" class="form-control" name="name" placeholder="Enter Dog Name" required style="background-color:#eed1c2; color:black">
+              </div>
+              <div class="mb-3">
+                <label for="owner" class="col-form-label"> DOG OWNER </label>
+                <input type="text" class="form-control" name="owner" placeholder="Name of Dog Owner" required style="background-color:#eed1c2; color:black">
+              </div>
+              <input type="hidden" class="form-control" name="status"> <!-- FOR OHANA OWNER -->
+              <div class="mb-3">
+                <label for="image" class="col-form-label"> DOG IMAGE </label><br>
+                <input type="file" name="fileToUpload" id="fileToUpload" style="background-color:transparent;">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn" id="ToastBtn" style="background-color:#db6551"> SAVE CHANGES </button>
             </div>
           </div>
         </div>
@@ -281,7 +314,31 @@
       </div>
     </div>
 
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast-container top-0 end-0 p-3">
+      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+        <div class="toast-header">
+          <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+          <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
+          <small> JUST NOW </small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" style="color:#db6551; font-size:15px;">Added Pet Profile Successfully!</div>
+      </div>
+    </div>
+
     <!-- SCRIPTS -->
+    <script>
+      //TOAST SCRIPT TRIGGER 
+      const toastTrigger = document.getElementById('ToastBtn')
+      const toastLiveExample = document.getElementById('liveToast')
+      if (toastTrigger) {
+        toastTrigger.addEventListener('click', () => {
+          const toast = new bootstrap.Toast(toastLiveExample)
+          toast.show()
+        })
+      }
+    </script>
 
     <!-- Chart library -->
     <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>

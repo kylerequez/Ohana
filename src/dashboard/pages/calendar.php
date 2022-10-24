@@ -3,14 +3,12 @@
 
 <head>
   <!--meta tags-->
-
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
   <meta name="keywords" content="Kennel Business, French Bulldogs">
 
-  <!-- end of meta tags-->
   <title> DASHBOARD - CALENDER </title>
 
   <!-- WEB ICON-->
@@ -40,9 +38,7 @@
     $user = unserialize($_SESSION['user']);
   ?>
     <div class="layer"> </div>
-
     <!-- Body -->
-
     <div class="page-flex">
       <!-- Dashboard Sidebar -->
       <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
@@ -66,7 +62,6 @@
 
         <!-- FOOTER -->
         <?php include_once dirname(__DIR__) . '/footer.php'; ?>
-
       </div>
     </div>
 
@@ -74,17 +69,13 @@
 
     <!-- Chart library -->
     <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-
     <!-- Icons library -->
     <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
-
     <!-- Custom scripts -->
     <script src="/Ohana/src/dashboard/js/script.js"></script>
-
     <!-- JavaScript BOOTSTRAP Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
-
     <!--SCRIPT FOR BOOTSTRAP MODAL-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>

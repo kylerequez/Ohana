@@ -17,7 +17,7 @@ h1 {
 </style>
 </head>
 
-<center><h1 style="font-size:70px;">Terms and Conditions</h1><br></center>
+<center><h1 style="font-size:50px;">Terms and Conditions</h1><br></center>
 		
 <p>These terms and conditions outline the rules and regulations for the use of Ohana Kennel PH’s Website, located at ohanakennelph.com.</p>
 

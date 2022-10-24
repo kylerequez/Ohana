@@ -18,7 +18,7 @@ body {
 </style>
 </head>
 <body><br>
-<h1>Privacy Policy for Ohana Kennel PH</h1><br>
+<h1 style="font-size:50px;">Privacy Policy for Ohana Kennel PH</h1><br>
 	<p>At OhanaKennelPH, accessible from OhanaKennelPH.com, one of our main priorities is the privacy of our visitors. 
 		This Privacy Policy document contains types of information that is collected and recorded by OhanaKennelPH and how we use it.</p>
 

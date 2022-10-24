@@ -55,8 +55,8 @@
             <input type="text" placeholder=" Search User Account">
           </div>
           <div class="createstaff-wrapper">
-            <button type="create"><i data-feather="bar-chart" aria-hidden="true"></i><a class="generate-sales-btn" href="salesreport.html"> Generate Sales Report </a></button>
-            <button type="create"><i data-feather="file-text" aria-hidden="true"></i><a class="export-btn" href="staffpopout.html"> Export Report </a></button>
+            <button type="create"><i data-feather="bar-chart" aria-hidden="true"></i><a class="generate-sales-btn" href="/dashboard/sales"> Generate Sales Report </a></button>
+            <button type="create"><i data-feather="file-text" aria-hidden="true"></i><a class="export-btn" href="/"> Export Report </a></button>
           </div>
           <br>
           <table class="posts-table">
@@ -89,8 +89,6 @@
           
                 </td>
               </tr>
-              
-              
             </tbody>
           </table>
         </div>

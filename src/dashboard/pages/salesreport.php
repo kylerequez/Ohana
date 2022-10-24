@@ -24,10 +24,43 @@
   <!-- Custom styles -->
   <link rel="stylesheet" href="/Ohana/src/dashboard/css/adminpages.css">
 
+  <!-- CHART CUSTOM CSS-->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    .chartMenu {
+      height: 40px;
+      color: rgba(255, 26, 104, 1);
+    }
+
+    .chartMenu p {
+      padding: 10px;
+      font-size: 20px;
+    }
+
+    .chartCard {
+      height: calc(60vh - 40px);
+      display: flex; /* ALLOWS YOU TO PUT ITEMS IN ONE LINE */
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chartBox {
+      width: 280px; /* WIDTH OF THE CHART BOX*/ 
+      padding: 20px;
+      border-radius: 20px;
+      border: solid 3px #db6551;
+      background: white;
+    }
+  </style>
 </head>
 
 <body>
-<?php
+  <?php
   if (!isset($_SESSION)) session_start();
   include_once dirname(__DIR__) . '/../models/Account.php';
 
@@ -39,81 +72,202 @@
   } else {
     $user = unserialize($_SESSION['user']);
   ?>
-  <div class="layer"> </div>
+    <div class="layer"> </div>
 
-  <!-- Body -->
+    <!-- Body -->
 
-  <div class="page-flex">
+    <div class="page-flex">
 
-    <!-- Dashboard Sidebar -->
-    <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
+      <!-- Dashboard Sidebar -->
+      <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
 
-    <div class="main-wrapper">
-      <!-- END OF ADMIN DASHBOARD SIDE-->
+      <div class="main-wrapper">
+        <!-- END OF ADMIN DASHBOARD SIDE-->
 
-      <!-- ! Main nav -->
-      <?php include_once dirname(__DIR__) . "/navbar.php" ?>
+        <!-- ! Main nav -->
+        <?php include_once dirname(__DIR__) . "/navbar.php" ?>
 
-      <!--  TRANSACTIONS CONTENT -->
-      <main class="main users chart-page" id="skip-target">
-        <div class="container">
-          <br>
-          <center>
-            <h2 class="main-title"> BUSINESS SALES REPORT </h2>
-          </center>
-        </div>
-
-        <div class="users-table table-wrapper">
-
-          <div class="createstaff-wrapper">
-            <button type="create"><i data-feather="file-text" aria-hidden="true"></i><a class="export-btn" href="staffpopout.html"> Export Report </a></button>
-          </div>
-
-          <br><br><br>
-
-          <div class="sales-charts">
+        <!--  TRANSACTIONS CONTENT -->
+        <main class="main users chart-page" id="skip-target">
+          <div class="container">
+            <br>
             <center>
-              <h1> INSERT CHARTS HERE </h1>
+              <h2 class="main-title"> BUSINESS SALES REPORT </h2>
             </center>
-          </div>
+              
+              <div class="chartCard">
+                <div class="chartBox"> <!-- 1st chart-->
+                  <canvas id="myChart"></canvas>
+                </div>
+                <div class="chartBox" style="margin-left:20px; margin-right:20px;">
+                  <canvas id="myChartLine"></canvas>
+                </div>
+                <div class="chartBox">
+                  <canvas id="myChartDoughnut"></canvas><!-- 3rd chart-->
+                </div>
+              </div>
+              <div class="createstaff-wrapper">
+                <button type="create"><i data-feather="file-text" aria-hidden="true"></i><a class="export-btn" href="staffpopout.html"> Export Report </a></button>
+              </div>
 
-          <div class="paginations">
-            <li class="page-item previous-page"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">1</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
-            <li class="page-item dots"><a class="page-link" href="#">...</a></li>
-            <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
-          </div>
+              <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script><!-- CHART JS IMPORT -->
 
-      </main>
+              <script>
+                // BAR CHART
+                const data = {
+                  labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                  datasets: [{
+                    label: 'Monthly Sales',
+                    data: [18, 12, 6, 9, 12, 3, 9],
+                    backgroundColor: [
+                      'rgba(255, 26, 104, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)',
+                      'rgba(0, 0, 0, 0.2)'
+                    ],
+                    borderColor: [
+                      'rgba(255, 26, 104, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 159, 64, 1)',
+                      'rgba(0, 0, 0, 1)'
+                    ],
+                    borderWidth: 1
+                  }]
+                };
 
-      <!-- ! Footer -->
-      <?php include_once dirname(__DIR__) . '/footer.php'; ?>
+                // config 
+                const config = {
+                  type: 'bar',
+                  data,
+                  options: {
+                    aspectRatio: 1, //changes aspect ratio of chart
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    }
+                  }
+                };
 
+                // render init block
+                const myChart = new Chart(
+                  document.getElementById('myChart'),
+                  config
+                );
+
+                // -------------------------- LINE CHART ------------------- //
+                 // setup 
+                 const dataLine = {
+                  labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                  datasets: [{
+                    label: 'Monthly Transactions',
+                    data: [18, 12, 6, 9, 12, 3, 9],
+                    backgroundColor: [
+                      'rgba(0, 0, 0, 0.2)'
+                    ],
+                    borderColor: [
+                      'rgba(0, 0, 0, 1)'
+                    ],
+                    borderWidth: 1
+                  }]
+                };
+
+                // configuration of the graph  
+                const configLine = {
+                  type: 'line', //CHANGE TYPE OF GRAPH 
+                  data: dataLine, //always refer to constant data line
+                  options: {
+                    aspectRatio: 1, //changes aspect ratio of chart
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    }
+                  }
+                };
+
+                // render init block
+                const myChartLine = new Chart(
+                  document.getElementById('myChartLine'),
+                  configLine //shorthand refer to constant config line line 174
+                );
+
+                //DOUGNUT CHART
+                 // setup 
+                 const dataDoughnut = {
+                  labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                  datasets: [{
+                    label: 'Dougnut',
+                    data: [18, 12, 6, 9, 12, 3, 9],
+                    backgroundColor: [
+                      'rgba(255, 26, 104, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)',
+                      'rgba(0, 0, 0, 0.2)'
+                    ],
+                    borderColor: [
+                      'rgba(255, 26, 104, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 159, 64, 1)',
+                      'rgba(0, 0, 0, 1)'
+                    ],
+                    borderWidth: 1
+                  }]
+                };
+
+                // config 
+                const configDoughnut = {
+                  type: 'doughnut', //type of chart
+                  data: dataDoughnut, //there are no scales in a doughnut chart
+                  options: {
+                  }
+                };
+
+                // render init block
+                const myChartDoughnut = new Chart(
+                  document.getElementById('myChartDoughnut'),
+                  configDoughnut
+                );
+              </script>
+            </div>
+        </main>
+        <br><br><br>
+        <!-- ! Footer -->
+        <?php include_once dirname(__DIR__) . '/footer.php'; ?>
+
+      </div>
     </div>
-  </div>
 
-  <!-- SCRIPTS -->
+    <!-- SCRIPTS -->
 
-  <!-- Chart library -->
-  <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
+    <!-- Chart library -->
+    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
 
-  <!-- Icons library -->
-  <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
+    <!-- Icons library -->
+    <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
 
-  <!-- Custom scripts -->
-  <script src="/Ohana/src/dashboard/js/script.js"></script>
+    <!-- Custom scripts -->
+    <script src="/Ohana/src/dashboard/js/script.js"></script>
 
-  <!-- JavaScript BOOTSTRAP Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
-  </script>
+    <!-- JavaScript BOOTSTRAP Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+    </script>
 
-  <!--SCRIPT FOR BOOTSTRAP MODAL-->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-  </script>
+    <!--SCRIPT FOR BOOTSTRAP MODAL-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
   <?php
   }
   ?>

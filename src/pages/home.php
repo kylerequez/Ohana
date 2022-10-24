@@ -20,6 +20,8 @@
     <!-- EXTERNAL CSS -->
     <link rel="stylesheet" href="/Ohana/src/css/home.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
+    <link rel="stylesheet" href="/Ohana/src/css/footer.css">
+    <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
 
     <!-- FONT AWESOME ICONS IMPORT -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -46,7 +48,7 @@
 
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
             <div class="message">
-                <h1 style="font-size:100px; Margin-top:10%; color:#c0b65a"> WELCOME TO OHANA! CLIENT </h1>
+                <h1 style="font-size:100px; Margin-top:10%; color:#c0b65a; font-family: 'Acme', sans-serif;"> WELCOME TO OHANA! CLIENT </h1>
             </div>
             <section id="slider">
                 <input type="radio" name="slider" id="s1" checked>
@@ -62,7 +64,7 @@
                 <label for="s5" id="slide5"><img src="/Ohana/src/images/sliders/socials.png" alt=""></label>
             </section>
             <section>
-            <!-- 
+                <!-- 
             <div class="message">
                 <h1 style="font-size:80px; Margin-top:10%; color:#DB6551"> BOOK AN APPOINTMENT WITH US </h1>
             </div>
@@ -72,6 +74,7 @@
                     </div>
                 </form>
             </section> -->
+                <div id="chat-container"> </div>
         </div> <!-- END OF CONTAINER FLUID -->
     </main>
 
@@ -80,6 +83,11 @@
 
 
     <!-- SCIPTS -->
+    <script src="/Ohana/src/js/chatbot-ui.js"></script>
+    <script>
+        createChatBot(host = 'http://localhost:5005/webhooks/rest/webhook', botLogo = "/Ohana/src/images/Chatbot/bot-logo.png",
+            title = "Lilo from Ohana", welcomeMessage = "Good Day, How can I help you?", inactiveMsg = "Waiting for the developers to update this", theme = "orange")
+    </script>
     <!-- Chart library -->
     <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
 

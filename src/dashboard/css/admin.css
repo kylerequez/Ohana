@@ -1,13 +1,8 @@
 /*FONTS IMPORT*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
-/* FOR PARAGRAPHS font-family: 'DM Sans', sans-serif;*/
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap');
-/* FOR OTHER PARAGRAPHS font-family: 'Karla', sans-serif; */
-@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
-/* font-family: 'Neucha', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+/* font-family: 'Acme', sans-serif; FOR HEADERS */
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 /* FOR headers bold - font-family: 'Anton', sans-serif; */
 
@@ -1298,11 +1293,12 @@ h3 {
 
 .main-title { /* ############################################ HEADER TEXT IN PAGE ################################################### */
   font-weight: 900;
-  font-size: 50px;
+  font-size: 80px;
   line-height: 1.42;
   color: #DB6551;
   margin-bottom: 20px;
   margin-top: 20px;
+  font-family:'Acme', sans-serif;
 }
 
 /* !Summary BOOTSTRAP CARDS */

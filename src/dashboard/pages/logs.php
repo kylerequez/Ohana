@@ -62,48 +62,53 @@
           if (isset($_SESSION["logs"]) && !empty($_SESSION["logs"])) {
             $logs = unserialize($_SESSION["logs"]);
           ?>
-          <div class="users-table table-wrapper">
-            <div class="search-wrapper">
-              <i data-feather="search" aria-hidden="true"></i>
-              <input type="text" placeholder=" Search ">
-              <button type="filter"> FILTER </button>
-              <button type="sort"> SORT </button>
+            <div class="users-table table-wrapper">
+              <div class="search-wrapper">
+                <i data-feather="search" aria-hidden="true"></i>
+                <input type="text" placeholder=" Search ">
+                <button class="btn dropdown-toggle" type="filter" data-bs-toggle="dropdown" aria-expanded="false"> FILTER </button><!-- TESTING FILTER BUTTON -->
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">DATE</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+                <button type="sort"> SORT </button>
+              </div>
+              <br>
+              <table class="posts-table">
+                <thead>
+                  <tr class="users-table-info">
+                    <th>LOG I.D </th>
+                    <th>DESCRIPTION</th>
+                    <th>DATE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  foreach ($logs as $log) {
+                  ?>
+                    <tr>
+                      <td><?php echo $log->getId(); ?></td>
+                      <td><?php echo $log->getLog(); ?></td>
+                      <td><?php echo $log->getDate()->format('m-d-Y H:i:s'); ?></td>
+                    </tr>
+                  <?php
+                  }
+                  ?>
+                </tbody>
+              </table>
             </div>
-            <br>
-            <table class="posts-table">
-              <thead>
-                <tr class="users-table-info">
-                  <th>LOG I.D </th>
-                  <th>DESCRIPTION</th>
-                  <th>DATE</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php
-                foreach ($logs as $log){
-                ?>
-                <tr>
-                  <td><?php echo $log->getId(); ?></td>
-                  <td><?php echo $log->getLog(); ?></td>
-                  <td><?php echo $log->getDate()->format('m-d-Y H:i:s'); ?></td>
-                </tr>
-                <?php
-                }
-                ?>
-              </tbody>
-            </table>
-          </div>
 
-          <div class="paginations">
-            <li class="page-item previous-page"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">1</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
-            <li class="page-item dots"><a class="page-link" href="#">...</a></li>
-            <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
-          </div>
+            <div class="paginations">
+              <li class="page-item previous-page"><a class="page-link" href="#">Previous</a></li>
+              <li class="page-item current-page"><a class="page-link" href="#">1</a></li>
+              <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
+              <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
+              <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
+              <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
+              <li class="page-item dots"><a class="page-link" href="#">...</a></li>
+              <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
+            </div>
 
           <?php
           } else {
@@ -113,7 +118,7 @@
         </main>
 
       <?php
-      }
+    }
       ?>
       <!-- FOOTER -->
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>

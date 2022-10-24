@@ -76,114 +76,26 @@
           <table class="posts-table">
             <thead>
               <tr class="users-table-info">
-
                 <th>TYPE OF APPOINTMENT</th>
                 <th>FULL NAME</th>
                 <th>CONTACT NUMBER</th>
                 <th>STATUS</th>
                 <th>DATE</th>
                 <th>ACTION</th>
-
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>
-                  <!-- TYPE OF APPOINTMENT -->
-                  STUD SERVICE
-                </td>
-                <td>
-                  CUSTOMER EMAIL ADDRESS
-                </td>
-                <td>
-                  <div class="pages-table-img">
-                    Jenny Wilson
-                  </div>
-                </td>
+                <td>STUD SERVICE</td> <!-- TYPE OF APPOINTMENT -->
+                <td>CUSTOMER EMAIL ADDRESS</td>
+                <td><div class="pages-table-img">Jenny Wilson</div></td>
                 <td> PENDING </td>
                 <td>17.04.2021</td>
                 <td>
                 <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
-                  <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i> </button>
+                <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i> </button>
                 </td>
               </tr>
-              <tr>
-                <td>
-                  STUD SERVICE
-                </td>
-                <td>
-                  CUSTOMER EMAIL ADDRESS
-                </td>
-                <td>
-                  <div class="pages-table-img">
-                    Annette Black
-                  </div>
-                </td>
-                <td> PENDING </td>
-                <td>23.04.2021</td>
-                <td>
-                <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
-                  <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i> </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  KENNEL VISIT
-                </td>
-                <td>
-                  STUD SERVICE
-                </td>
-                <td>
-                  <div class="pages-table-img">
-                    customer name
-                  </div>
-                </td>
-                <td> COMPLETE </td>
-                <td>17.04.2021</td>
-                <td>
-                <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
-                  <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i> </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  I.D NUMBER 98765
-                </td>
-                <td>
-                  CUSTOMER EMAIL ADDRESS
-                </td>
-                <td>
-                  <div class="pages-table-img">
-                    Guy Hawkins
-                  </div>
-                </td>
-                <td> COMPLETE</td>
-                <td>17.04.2021</td>
-                <td>
-                <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
-                  <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i> </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  I.D NUMBER 98765
-                </td>
-                <td>
-                  CUSTOMER EMAIL ADDRESS
-                </td>
-                <td>
-                  <div class="pages-table-img">
-                    CUSTOMER NAME
-                  </div>
-                </td>
-                <td>COMPLETE</td>
-                <td>17.04.2021</td>
-                <td>
-                <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
-                  <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i> </button>
-                </td>
-              </tr>
-              
             </tbody>
           </table>
         </div>
