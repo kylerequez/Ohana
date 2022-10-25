@@ -19,7 +19,16 @@ class AccountDAO
             $accounts = null;
             if ($stmt->execute() > 0) {
                 while ($account = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $existingAccount = new Account($account["account_type"], $account["fname"], $account["mname"], $account["lname"], $account["number"], $account["email"], $account["status"], $account["password"]);
+                    $existingAccount = new Account(
+                        $account["account_type"],
+                        $account["fname"],
+                        $account["mname"],
+                        $account["lname"],
+                        $account["number"],
+                        $account["email"],
+                        $account["status"],
+                        $account["password"],
+                    );
                     $existingAccount->setId($account["account_id"]);
 
                     $accounts[] = $existingAccount;
@@ -42,7 +51,16 @@ class AccountDAO
             $accounts = null;
             if ($stmt->execute() > 0) {
                 while ($account = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $existingAccount = new Account($account["account_type"], $account["fname"], $account["mname"], $account["lname"], $account["number"], $account["email"], $account["status"], $account["password"]);
+                    $existingAccount = new Account(
+                        $account["account_type"],
+                        $account["fname"],
+                        $account["mname"],
+                        $account["lname"],
+                        $account["number"],
+                        $account["email"],
+                        $account["status"],
+                        $account["password"],
+                    );
                     $existingAccount->setId($account["account_id"]);
 
                     $accounts[] = $existingAccount;
@@ -65,7 +83,16 @@ class AccountDAO
             $accounts = null;
             if ($stmt->execute() > 0) {
                 while ($account = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $existingAccount = new Account($account["account_type"], $account["fname"], $account["mname"], $account["lname"], $account["number"], $account["email"], $account["status"], $account["password"]);
+                    $existingAccount = new Account(
+                        $account["account_type"],
+                        $account["fname"],
+                        $account["mname"],
+                        $account["lname"],
+                        $account["number"],
+                        $account["email"],
+                        $account["status"],
+                        $account["password"],
+                    );
                     $existingAccount->setId($account["account_id"]);
 
                     $accounts[] = $existingAccount;
@@ -98,8 +125,8 @@ class AccountDAO
                         $account["fname"],
                         $account["mname"],
                         $account["lname"],
-                        $account["email"],
                         $account["number"],
+                        $account["email"],
                         $account["status"],
                         $account["password"],
                     );
@@ -166,8 +193,8 @@ class AccountDAO
                         $account["fname"],
                         $account["mname"],
                         $account["lname"],
-                        $account["email"],
                         $account["number"],
+                        $account["email"],
                         $account["status"],
                         $account["password"],
                     );
@@ -201,8 +228,8 @@ class AccountDAO
                         $account["fname"],
                         $account["mname"],
                         $account["lname"],
-                        $account["email"],
                         $account["number"],
+                        $account["email"],
                         $account["status"],
                         $account["password"],
                     );
@@ -236,8 +263,8 @@ class AccountDAO
                         $account["fname"],
                         $account["mname"],
                         $account["lname"],
-                        $account["email"],
                         $account["number"],
+                        $account["email"],
                         $account["status"],
                         $account["password"],
                     );
@@ -257,7 +284,7 @@ class AccountDAO
             $sql = "UPDATE ohana_account
                     SET fname=:fname, mname=:mname, lname=:lname, number=:number, email=:email, status=:status
                     WHERE account_id=:id";
-            
+
             $id = $account->getId();
             $fname = $account->getFname();
             $mname = $account->getMname();
@@ -277,7 +304,7 @@ class AccountDAO
             $stmt->bindParam(":email", $email, PDO::PARAM_STR);
             $stmt->bindParam(":status", $status, PDO::PARAM_STR);
             // $stmt->bindParam(":password", $password, PDO::PARAM_STR);
-            
+
             return $stmt->execute() > 0;
         } catch (Exception $e) {
             echo $e;

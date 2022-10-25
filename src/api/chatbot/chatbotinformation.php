@@ -16,4 +16,6 @@ $controller = new ChatbotController($services, $logservices);
 
 if($_SERVER["REQUEST_METHOD"] == "GET"){
     $controller->processSettingsRequest($_SERVER["REQUEST_METHOD"], null);
+} else if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $controller->processSettingsRequest($_SERVER["REQUEST_METHOD"], null);
 }

@@ -82,7 +82,7 @@
                 // }
               ?>
                 <center>
-                  <form method="POST" class="form-inline" action="/action_page.php">
+                  <form method="POST" class="form-inline" action="/dashboard/chatbot-settings/update">
                     <h2 class="main-title"> CHATBOT SETTINGS </h2>
                     
                     <div class="chatbot-image">

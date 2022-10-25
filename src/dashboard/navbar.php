@@ -29,14 +29,9 @@
                             <span> <?php echo $user->getFullName(); ?> </span>
                         </a></li>
 
-                    <li><a href="#" data-bs-toggle="modal" data-bs-target="#editprofileModal">
+                    <li><a href="/dashboard/profile">
                             <i data-feather="user" aria-hidden="true"></i>
                             <span>Profile</span>
-                        </a></li>
-
-                    <li><a href="##">
-                            <i data-feather="settings" aria-hidden="true"></i>
-                            <span>Account settings</span>
                         </a></li>
 
                     <li><a class="danger" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
