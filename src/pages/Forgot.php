@@ -43,78 +43,81 @@
 
   <div class="container-fluid">
 
-  <!-- MAIN CONTENT -->
-  <main class="sign-up">
-    <div class="sign-up__container">
-      <div class="sign-up__content">
-        <header class="sign-up__header">
-          <h1 class="sign-up__title" style="font-size: 80px; margin-top: 10%; font-family: Bantayog-Regular;">
-            FORGOT PASSWORD
-          </h1>
-          <p class="sign-up__descr" style="font-size: 20px;">
-            To reset your password, please enter your <b>Email</b> and click reset password.
-          </p>
-          <p class="sign-up__descr" style="font-size: 20px;">
+    <!-- MAIN CONTENT -->
+    <main class="sign-up">
+      <div class="sign-up__container">
+        <div class="sign-up__content">
+          <header class="sign-up__header">
+            <h1 class="sign-up__title" style="font-size: 80px; margin-top: 5%;">
+              FORGOT PASSWORD
+            </h1>
+            <p class="sign-up__descr" style="font-size: 20px;">
+              To reset your password, please enter your <b>Email</b> and click reset password.
+            </p>
+            <!-- <p class="sign-up__descr" style="font-size: 20px;">
             an <b>OTP</b> (One-Time Pin) will be sent to your email.
-          </p>
-        </header>
+          </p>-->
+          </header>
 
-        <form id="form" method="POST" action="/forgot2" class="sign-up__form form">
-          <div class="form__row form__row--two">
-            <div class="input form__inline-input">
-              <div class="input__container">
+          <?php if(isset($_SESSION["msg"])){ ?>
+          <h1><?php echo $_SESSION["msg"]; unset($_SESSION); ?></h1>
+          <?php } ?>
 
-                <!-- EMAIL INPUT BOX -->
-                <div class="form__row">
-                  <div class="input">
-                    <div class="input__container">
-                      <input type="email" class="input__field" id="email" name="email" placeholder="Email/Contact Number" required="" />
-                      <label class="input__label" for="email/contact-no">Email Address
-                        <i class="uil uil-envelope email-icon"></i>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <center>
+          <form id="form" method="GET" action="/forgotpassword" class="sign-up__form form">
+            <div class="form__row form__row--two">
+              <div class="input form__inline-input">
+                <div class="input__container">
+                  <!-- EMAIL INPUT BOX -->
                   <div class="form__row">
-                    <div class="logbtn">
-                      <button type="submit" name="btnSubmit"><span> Reset password </span></button>
+                    <div class="input">
+                      <div class="input__container">
+                        <input type="email" class="input__field" id="email" name="email" placeholder="Email/Contact Number" required="" />
+                        <label class="input__label" for="email">Email Address
+                          <i class="uil uil-envelope email-icon"></i>
+                        </label>
+                      </div>
                     </div>
                   </div>
-                </center>
 
-                <hr style="width:100%"><br>
-                <div class="form__row sign-up__sign">
-                  Dont have an account? &nbsp;<a class="link" href="/register" style="text-decoration: none;"> Register Now! </a>
-        </form>
+                  <center>
+                    <div class="form__row">
+                      <div class="logbtn">
+                        <button type="submit" name="btnSubmit"><span> Reset password </span></button>
+                      </div>
+                    </div>
+                  </center>
+
+                  <hr style="width:100%"><br>
+                  <div class="form__row sign-up__sign">
+                    Dont have an account? &nbsp;<a class="link" href="/register" style="text-decoration: none;"> Register Now! </a>
+          </form>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <!-- FOOTER -->
-  <?php include_once 'footer.php'; ?>
+    <!-- FOOTER -->
+    <?php include_once 'footer.php'; ?>
 
-  <!-- START OF JAVASCRIPT-->
-  <script>
-    const input = document.querySelector("input"),
-      emailIcon = document.querySelector(".email-icon")
+    <!-- START OF JAVASCRIPT-->
+    <script>
+      const input = document.querySelector("input"),
+        emailIcon = document.querySelector(".email-icon")
 
-    input.addEventListener("keyup", () => {
-      let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      input.addEventListener("keyup", () => {
+        let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-      if (input.value === "") {
-        return console.log("input is empty")
-      }
-      if (input.value.match(pattern)) {
-        emailIcon.classList.replace("uil-envelope", "uil-check-circle");
-        return emailIcon.style.color = "green"
-      }
-      emailIcon.classList.replace("uil-check-circle", "uil-envelope");
-      return emailIcon.style.color = "red"
-    })
-  </script>
-  </main>
+        if (input.value === "") {
+          return console.log("input is empty")
+        }
+        if (input.value.match(pattern)) {
+          emailIcon.classList.replace("uil-envelope", "uil-check-circle");
+          return emailIcon.style.color = "green"
+        }
+        emailIcon.classList.replace("uil-check-circle", "uil-envelope");
+        return emailIcon.style.color = "red"
+      })
+    </script>
+    </main>
 
 </body>
 

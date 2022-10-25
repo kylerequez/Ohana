@@ -163,7 +163,6 @@ input:-webkit-autofill {
 }
 .input-checkbox__square::before,
 .input-checkbox__square::after {
-  content: "";
   display: inline-block;
   width: 2px;
   background: #7d605c;
@@ -184,9 +183,11 @@ input:-webkit-autofill {
 }
 .input-checkbox__field:focus + .input-checkbox__square::before,
 .input-checkbox__field:focus + .input-checkbox__square::after,
+
 .input-checkbox__field:checked + .input-checkbox__square::before,
 .input-checkbox__field:checked + .input-checkbox__square::after {
   background: green;
+  content: "";
 }
 .input-checkbox__field:hover + .input-checkbox__square {
   box-shadow: 0 1px 6px green;

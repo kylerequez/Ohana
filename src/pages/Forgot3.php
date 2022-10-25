@@ -45,7 +45,7 @@
     <div class="sign-up__container">
       <div class="sign-up__content">
         <header class="sign-up__header">
-          <h1 class="sign-up__title" style="font-size: 80px; margin-top: 10%; font-family: Bantayog-Regular;">
+          <h1 class="sign-up__title" style="font-size: 80px; margin-top: 5%;">
             FORGOT PASSWORD
           </h1>
           <p class="sign-up__descr" style="font-size: 25px;">
@@ -53,7 +53,7 @@
           </p>
         </header>
 
-        <form id="form" method="POST" action="login.php" class="sign-up__form form">
+        <form id="form" method="POST" action="/forgotpassword" class="sign-up__form form">
           <div class="form__row form__row--two">
             <div class="input form__inline-input">
               <div class="input__container">
@@ -62,6 +62,7 @@
                 <div class="form__row">
                   <div class="input">
                     <div class="input__container">
+                      <input type="hidden" name="email" value="<?php echo trim($email); ?>">
                       <input class="input__field" id="password" name="password" placeholder="Password" required="" type="password" />
                       <label class="input__label" for="password"> Enter New Password</label>
                     </div>
@@ -83,28 +84,31 @@
                 <div class="form__row">
                   <div class="input">
                     <div class="input__container">
-                      <input class="input__field" id="password" name="password" placeholder="Password" required="" type="password" />
-                      <label class="input__label" for="cnfrm-password"> Confirm Password</label>
+                      <input class="input__field" id="confirm-password" placeholder="Confirm password" required="" type="password" />
+                      <label class="input__label" for="confirm-password">Confirm password</label>
                     </div>
                   </div>
                 </div>
-                <center>
+                <center><br>
                   <div class="form__row">
                     <div class="logbtn">
-                      <button name="btnChange" data-bs-toggle="modal" data-bs-target="#exampleModal"> <span> Change Password </span></button>
+                      <button name="btnChange" type="submit"> <span> Change Password </span></button>
                     </div>
                   </div>
                 </center>
                 <hr style="width:100%"><br>
                 <div class="form__row sign-up__sign">
-                  Did not recieve OTP? &nbsp;<a class="link" href="register.html" style="text-decoration: none;"> Resend OTP </a><br><br>
-                  Dont have an account? &nbsp;<a class="link" href="register.html" style="text-decoration: none;"> Register Now! </a>
+                  Don't have an account? &nbsp;<a class="link" href="/register" style="text-decoration: none;"> Register Now! </a>
+                </div>
         </form>
       </div>
     </div>
-  </main><br>
+  </main>
   <!-- FOOTER -->
+  <div name="footer" style="margin-top:15%">
   <?php include_once 'footer.php'; ?>
+  </div>
+  
 
   <!-- START OF JAVASCRIPT-->
   <script>
@@ -129,11 +133,12 @@
   <script>
     //PASSWORD VALIDATION SCRIPT
 
-    var myInput = document.getElementById("password");
-    var letter = document.getElementById("letter");
-    var capital = document.getElementById("capital");
-    var number = document.getElementById("number");
-    var length = document.getElementById("length");
+    var myInput = document.getElementById("password"),
+      letter = document.getElementById("letter"),
+      capital = document.getElementById("capital"),
+      number = document.getElementById("number"),
+      length = document.getElementById("length"),
+      confirmpass = document.getElementById("confirm-password");
 
     // When the user clicks on the password field, show the message box
     myInput.onfocus = function() {
@@ -184,6 +189,17 @@
       } else {
         length.classList.remove("valid");
         length.classList.add("invalid");
+      }
+    }
+
+    // Validate if passwords match
+    confirmpass.onkeyup = function validatePassword() {
+      var pass = document.getElementById("password");
+      var confirmpass = document.getElementById("confirm-password");
+      if (confirmpass.value != pass.value) {
+        confirmpass.setCustomValidity("Password does not match");
+      } else {
+        confirmpass.setCustomValidity("");
       }
     }
   </script>

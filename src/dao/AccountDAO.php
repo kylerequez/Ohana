@@ -233,13 +233,14 @@ class AccountDAO
                         $account["status"],
                         $account["password"],
                     );
+                    $searchedAccount->setId($account["account_id"]);
                 }
             }
 
             return $searchedAccount;
         } catch (Exception $e) {
             echo $e;
-            return null;
+            // return null;
         }
     }
 
@@ -312,7 +313,7 @@ class AccountDAO
         }
     }
 
-    public function deleteById(string $id): bool
+    public function deleteById(string $id): mixed
     {
         try {
             $sql = "DELETE FROM ohana_account
@@ -320,6 +321,24 @@ class AccountDAO
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+
+            return $stmt->execute() > 0;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function changePassword(string $email, string $password): mixed
+    {
+        try {
+            $sql = "UPDATE ohana_account
+                    SET password=:password
+                    WHERE email=:email";
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":password", $password, PDO::PARAM_STR);
+            $stmt->bindParam(":email", $email, PDO::PARAM_STR);
 
             return $stmt->execute() > 0;
         } catch (Exception $e) {

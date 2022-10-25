@@ -87,13 +87,6 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="form__row">
-              <div class="input">
-                <div class="input__container">
-                  <input class="input__field" id="address" placeholder="Address" required="" type="text" /><label class="input__label" for="address">Address</label>
-                </div>
-              </div>
-            </div> -->
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
@@ -130,9 +123,11 @@
               </div>
             </div>
             <div class="form__row">
-              <div class="input-checkbox">
+              <div class="input-checkbox"><!-- CHECKBOX -->
                 <div class="input-checkbox__container">
-                  <input type="checkbox" class="input-checkbox__field" id="agree" required="true;" /> <span class="input-checkbox__square"></span>
+
+                  <input type="checkbox" class="input-checkbox__field" id="agree" required="true;"/> <span class="input-checkbox__square"></span>
+                  
                   <label class="input-checkbox__label" for="agree"> I agree with the
                     <a href="#" style="text-decoration: none; color:#ff5757" data-bs-toggle="modal" data-bs-target="#termsModal">
                       Terms and Conditions </a> </label>
@@ -159,6 +154,7 @@
       <?php include_once dirname(__DIR__) . '/pages/footer.php';; ?>
     </main>
 
+    <a href="#" style="text-decoration: none; color:#ff5757" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions </a>
     <!-- SCRIPTS -->
     <script>
       const input = document.querySelector("input"),

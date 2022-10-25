@@ -167,7 +167,24 @@ class AccountController
     {
         switch($method)
         {
-            
+            case "GET":
+                if($this->services->forgotPasswordRequest($email))
+                {
+                    // echo "true";
+                    header("Location: http://localhost/forgot-confirm");
+                } else {
+                    // echo "false";
+                    header("Location: http://localhost/forgot");
+                }
+                break;
+            case "POST":
+                if($this->services->changePasswordRequest($email)) 
+                {
+                    header("Location: http://localhost/login");
+                } else {
+                    header("Location: http://localhost/forgot/$email");
+                }
+                break;
         }
     }
 }

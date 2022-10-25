@@ -46,47 +46,21 @@
     <div class="sign-up__container">
       <div class="sign-up__content">
         <header class="sign-up__header">
-          <h1 class="sign-up__title" style="font-size: 80px; margin-top: 20%; font-family: Bantayog-Regular;">
+          <h1 class="sign-up__title" style="font-size: 80px; margin-top: 5%; ">
             FORGOT PASSWORD
-          </h1>
-          <p class="sign-up__descr" style="font-size: 20px;">
-            Enter the OTP that was sent to your email.
-          </p>
+          </h1><br>
+          <p class="sign-up__descr" style="font-size: 20px; color:#c0b65a;">A link to change your password has been sent in your email. </p>
+          <p class="sign-up__descr" style="font-size: 20px; color:#c0b65a;">Please check your inbox.</p>
         </header>
 
         <form id="form" method="POST" action="/forgot3" class="sign-up__form form">
           <div class="form__row form__row--two">
             <div class="input form__inline-input">
               <div class="input__container">
-
-                <!-- EMAIL INPUT BOX -->
-                <div class="form__row">
-                  <div class="input">
-                    <div class="input__container">
-                      <label class="input__label" for="email/contact-no"> Input OTP Here</label><br>
-                      <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
-                        <!-- OTP 6 BOXES FOR USER INPUT -->
-                        <input class="m-2 text-center form-control rounded" type="text" name="otpFirst" id="otpFirst" maxlength="1" />
-                        <input class="m-2 text-center form-control rounded" type="text" name="otpSecond" id="otpSecond" maxlength="1" />
-                        <input class="m-2 text-center form-control rounded" type="text" name="otpThird" id="otpThird" maxlength="1" />
-                        <input class="m-2 text-center form-control rounded" type="text" name="otpFourth" id="otpFourth" maxlength="1" />
-                        <input class="m-2 text-center form-control rounded" type="text" name="otpFifth" id="otpFifth" maxlength="1" />
-                        <input class="m-2 text-center form-control rounded" type="text" name="otpSixth" id="otpSixth" maxlength="1" />
-                      </div>
-                    </div>
-                  </div>
-                </div><br>
-                <center>
-                  <div class="form__row">
-                    <div class="logbtn">
-                      <button><span> Proceed to reset </span></button>
-                    </div>
-                  </div>
-                </center>
-                <hr style="width:100%"><br>
                 <div class="form__row sign-up__sign">
-                  Did not recieve OTP? &nbsp;<a class="link" href="register.html" style="text-decoration: none;"> Resend OTP </a><br><br>
-                  Dont have an account? &nbsp;<a class="link" href="register.html" style="text-decoration: none;"> Register Now! </a>
+                  Did not receive an email? &nbsp;<a class="link" href="/forgot" style="text-decoration: none;"> Resend Email </a><br><br>
+                  Don't have an account? &nbsp;<a class="link" href="/register" style="text-decoration: none;"> Register Now! </a>
+                </div>
         </form>
       </div>
     </div>
@@ -94,59 +68,6 @@
 
   <!-- FOOTER -->
   <?php include_once 'footer.php'; ?>
-
-  <!-- START OF JAVASCRIPT-->
-  <script>
-    const input = document.querySelector("input"),
-      emailIcon = document.querySelector(".email-icon")
-
-    input.addEventListener("keyup", () => {
-      let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-
-      if (input.value === "") {
-        return console.log("input is empty")
-      }
-      if (input.value.match(pattern)) {
-        emailIcon.classList.replace("uil-envelope", "uil-check-circle");
-        return emailIcon.style.color = "green"
-      }
-      emailIcon.classList.replace("uil-check-circle", "uil-envelope");
-      return emailIcon.style.color = "red"
-    })
-  </script>
-  </main>
-
-  <!--
-  <script type="text/javascript">
-    function validation()
-    {
-      var form = document.getElementbyId("form");
-      var email = document.getElementbyId("email").value;
-      var message = document.getElementbyId("message");
-      var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-
-      if(email(pattern)){
-        form.classList.add("valid");
-        form.classList.remove("invalid");
-        message.innerHTML = "Your Email Address is Valid.";
-        text.style.color = "#000000";
-      }
-      else {
-        form.classList.remove("valid");
-        form.classList.remove("invalid");
-        message.innerHTML = " Please enter Valid Email.";
-        text.style.color = "#000000";
-      }
-      if (email== ""){
-        form.classList.remove("valid");
-        form.classList.remove("invalid");
-        message.innerHTML = " Please enter Valid Email.";
-        text.style.color = "#000000";
-      }
-    }
-  </script>
-  -->
-</body>
 
 <!-- SCIPTS -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
