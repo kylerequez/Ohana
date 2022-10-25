@@ -162,4 +162,12 @@ class AccountController
             $_SESSION["msg"] = "There was an error on log out. Please try again.";
         }
     }
+
+    public function forgotPasswordRequest($method, $email): void
+    {
+        switch($method)
+        {
+            
+        }
+    }
 }
