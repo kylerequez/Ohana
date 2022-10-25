@@ -53,12 +53,13 @@
               Create An Account
             </h1>
             <p class="sign-up__descr" style="font-size: 70px; color:#c0b65a; font-family: 'Acme', sans-serif;">
-              Welcome to Ohana!
+              Welcome to Ohana! <?php echo $_SESSION["msg"] ?>
             </p>
             <p style="font-size:20px;"> Fill up the fields below to create an account. </p>
           </header>
           <form class="sign-up__form form" action="/accounts/register" method="POST">
             <input type="hidden" name="type" value="USER">
+            <input type="hidden" name="status" value="UNREGISTERED">
             <div class="form__row">
               <div class="input">
                 <div class="input__container">

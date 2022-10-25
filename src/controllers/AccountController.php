@@ -38,16 +38,12 @@ class AccountController
                 break;
                 // User registration
             case "POST":
-                if (!isset($_SESSION)) session_start();
-                $data = $_POST;
-                if ($this->services->addAccount($data)) {
-                    // redirect to registered landing
-                    header("Location: http://localhost/login");
-                    //echo "Added";
-                } else {
-                    //echo "ERROR";
-                }
-                break;
+                // if ($this->services->addAccount($_POST)) {
+                //     header("Location: http://localhost/login");
+                // } else {
+
+                // }
+                // break;
         }
     }
 
@@ -183,6 +179,28 @@ class AccountController
                     header("Location: http://localhost/login");
                 } else {
                     header("Location: http://localhost/forgot/$email");
+                }
+                break;
+        }
+    }
+
+    public function registrationRequest($method): void
+    {
+        switch($method)
+        {
+            case "POST":
+                if(!isset($_SESSION)) session_start();
+                echo "2";
+                if ($this->services->addAccount($_POST)) {
+                    echo "3";
+                    if($this->services->registrationRequest($_POST)){
+                        echo "END";
+                        // Redirect to otp entering
+                    } else {
+                        header("Location: http://localhost/register");
+                    }
+                } else {
+                    header("Location: http://localhost/register");
                 }
                 break;
         }

@@ -39,16 +39,19 @@ class AccountServices
         $email = trim($data["email"]);
         $number = trim($data["number"]);
         $password = password_hash(trim($data["password"]), PASSWORD_DEFAULT);
-        $status = "ACTIVE";
+        $status = trim($data["status"]);
         $account = new Account($type, $fname, $mname, $lname, $number, $email, $status, $password);
 
-        if (is_null($this->dao->searchByEmail($email)) and is_null($this->dao->searchByNumber($number))) {
-            $isCreated = $this->dao->createAccount($account);
+        if (!is_null($this->dao->searchByEmail($email)) and !is_null($this->dao->searchByNumber($number))) {
+            $_SESSION["msg"] = "The account already exists in the database.";
+            return false;
         } else {
-            $_SESSION["msg"] = "Account credential is a duplicate!";
-            $isCreated = false;
+            if(!$this->dao->createAccount($account)){
+                $_SESSION["msg"] = "There was an error in adding the account in the database.";
+                return false;
+            }
+            return true;
         }
-        return $isCreated;
     }
 
     public function updateAccount(string $id, array $data): bool
@@ -133,73 +136,74 @@ class AccountServices
             return false;
         }
 
-        //Create a new PHPMailer instance
+        // Create a new PHPMailer instance
         $mail = new PHPMailer();
 
-        //Tell PHPMailer to use SMTP
+        // Tell PHPMailer to use SMTP
         $mail->isSMTP();
 
-        //Enable SMTP debugging
-        //SMTP::DEBUG_OFF = off (for production use)
-        //SMTP::DEBUG_CLIENT = client messages
-        //SMTP::DEBUG_SERVER = client and server messages
+        // Enable SMTP debugging
+        // SMTP::DEBUG_OFF = off (for production use)
+        // SMTP::DEBUG_CLIENT = client messages
+        // SMTP::DEBUG_SERVER = client and server messages
         $mail->SMTPDebug = SMTP::DEBUG_OFF;
 
-        //Set the hostname of the mail server
+        // Set the hostname of the mail server
         $mail->Host = 'smtp.gmail.com';
-        //Use `$mail->Host = gethostbyname('smtp.gmail.com');`
-        //if your network does not support SMTP over IPv6,
-        //though this may cause issues with TLS
+        // Use `$mail->Host = gethostbyname('smtp.gmail.com');`
+        // if your network does not support SMTP over IPv6,
+        // though this may cause issues with TLS
 
-        //Set the SMTP port number:
+        // Set the SMTP port number:
         // - 465 for SMTP with implicit TLS, a.k.a. RFC8314 SMTPS or
         // - 587 for SMTP+STARTTLS
         $mail->Port = 465;
 
-        //Set the encryption mechanism to use:
+        // Set the encryption mechanism to use:
         // - SMTPS (implicit TLS on port 465) or
         // - STARTTLS (explicit TLS on port 587)
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 
-        //Whether to use SMTP authentication
+        // Whether to use SMTP authentication
         $mail->SMTPAuth = true;
 
-        //Username to use for SMTP authentication - use full email address for gmail
+        // Username to use for SMTP authentication - use full email address for gmail
         $mail->Username = 'ohana.kennel.business@gmail.com';
 
-        //Password to use for SMTP authentication
+        // Password to use for SMTP authentication
         $mail->Password = 'ctdlqnibzafgmwyj';
 
-        //Set who the message is to be sent from
-        //Note that with gmail you can only use your account address (same as `Username`)
-        //or predefined aliases that you have configured within your account.
-        //Do not use user-submitted addresses in here
+        // Set who the message is to be sent from
+        // Note that with gmail you can only use your account address (same as `Username`)
+        // or predefined aliases that you have configured within your account.
+        // Do not use user-submitted addresses in here
         $mail->setFrom('ohana.kennel.business@gmail.com');
 
-        //Set an alternative reply-to address
-        //This is a good place to put user-submitted addresses
+        // Set an alternative reply-to address
+        // This is a good place to put user-submitted addresses
         // $mail->addReplyTo('replyto@example.com', 'First Last');
 
-        //Set who the message is to be sent to
+        // Set who the message is to be sent to
         $mail->addAddress($email);
 
-        //Set the subject line
+        // Set the subject line
         $mail->Subject = 'Ohana Account Password Reset';
 
-        //Read an HTML message body from an external file, convert referenced images to embedded,
-        //convert HTML into a basic plain-text alternative body
+        // Read an HTML message body from an external file, convert referenced images to embedded,
+        // convert HTML into a basic plain-text alternative body
         // $mail->msgHTML(file_get_contents('/phpmailertest/contents.html'), dirname(__DIR__) . '/phpmailertest/');
 
         $mail->Body = 'Your Ohana Account password reset link: <a href="localhost/forgot/' . $email . '">Click Here</a>';
         //Replace the plain text body with one created manually
         $mail->AltBody = 'Reset Password Link for Ohana Account';
 
-        //Attach an image file
+        // Attach an image file
         // $mail->addAttachment('images/phpmailer_mini.png');
 
         //send the message, check for errors
         if (!$mail->send()) {
             //echo 'Mailer Error: ' . $mail->ErrorInfo;
+            $_SESSION["msg"] = "There was an error in sending the reset link to your mail.";
             return false;
         } else {
             //echo 'Message sent!';
@@ -231,6 +235,96 @@ class AccountServices
             $_SESSION["msg"] = "There was an error in changing the password. The password was not changed.";
             return false;
         } else {
+            return true;
+        }
+    }
+
+    public function registrationRequest(array $data): mixed
+    {
+        $email = trim($data["email"]);
+        $account = $this->dao->searchByEmail($email);
+        if(is_null($account)) {
+            $_SESSION["msg"] = "The account does not exist in the database.";
+            return false;
+        }
+        if($account->getStatus() != "UNREGISTERED") {
+            $_SESSION["msg"] = "The account does is already registered. Please log in.";
+            return false;
+        }
+
+        // Create a new PHPMailer instance
+        $mail = new PHPMailer();
+
+        // Tell PHPMailer to use SMTP
+        $mail->isSMTP();
+
+        // Enable SMTP debugging
+        // SMTP::DEBUG_OFF = off (for production use)
+        // SMTP::DEBUG_CLIENT = client messages
+        // SMTP::DEBUG_SERVER = client and server messages
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;
+
+        // Set the hostname of the mail server
+        $mail->Host = 'smtp.gmail.com';
+        // Use `$mail->Host = gethostbyname('smtp.gmail.com');`
+        // if your network does not support SMTP over IPv6,
+        // though this may cause issues with TLS
+
+        // Set the SMTP port number:
+        // - 465 for SMTP with implicit TLS, a.k.a. RFC8314 SMTPS or
+        // - 587 for SMTP+STARTTLS
+        $mail->Port = 465;
+
+        // Set the encryption mechanism to use:
+        // - SMTPS (implicit TLS on port 465) or
+        // - STARTTLS (explicit TLS on port 587)
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+
+        // Whether to use SMTP authentication
+        $mail->SMTPAuth = true;
+
+        // Username to use for SMTP authentication - use full email address for gmail
+        $mail->Username = 'ohana.kennel.business@gmail.com';
+
+        // Password to use for SMTP authentication
+        $mail->Password = 'ctdlqnibzafgmwyj';
+
+        // Set who the message is to be sent from
+        // Note that with gmail you can only use your account address (same as `Username`)
+        // or predefined aliases that you have configured within your account.
+        // Do not use user-submitted addresses in here
+        $mail->setFrom('ohana.kennel.business@gmail.com');
+
+        // Set an alternative reply-to address
+        // This is a good place to put user-submitted addresses
+        // $mail->addReplyTo('replyto@example.com', 'First Last');
+
+        // Set who the message is to be sent to
+        $mail->addAddress($email);
+
+        // Set the subject line
+        $mail->Subject = 'Ohana Account Verification OTP';
+
+        // Read an HTML message body from an external file, convert referenced images to embedded,
+        // convert HTML into a basic plain-text alternative body
+        // $mail->msgHTML(file_get_contents('/phpmailertest/contents.html'), dirname(__DIR__) . '/phpmailertest/');
+
+        $otp = rand(100000, 999999);
+        $mail->Body = "Your Ohana Account OTP is: $otp";
+        //Replace the plain text body with one created manually
+        $mail->AltBody = 'Ohana Registration OTP';
+
+        // Attach an image file
+        // $mail->addAttachment('images/phpmailer_mini.png');
+
+        //send the message, check for errors
+        if (!$mail->send()) {
+            //echo 'Mailer Error: ' . $mail->ErrorInfo;
+            $_SESSION["msg"] = "There was an error in sending the otp to your mail.";
+            return false;
+        } else {
+            //echo 'Message sent!';
+            $_SESSION["userOtp"] = $otp;
             return true;
         }
     }
