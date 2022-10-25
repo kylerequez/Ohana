@@ -122,7 +122,7 @@ class AccountController
                     }
                     $this->processStaffCollectionRequest("GET");
                 } else {
-                    echo "ERROR";
+                    $this->processStaffCollectionRequest("GET");
                 }
                 break;
         }
@@ -146,7 +146,7 @@ class AccountController
                         header("Location: http://localhost/dashboard");
                     }
                 } else {
-                    echo "Account does not exist";
+                    header("Location: http://localhost/login");
                 }
                 break;
         }

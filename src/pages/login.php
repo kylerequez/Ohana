@@ -104,7 +104,7 @@
       </div>
     </div>
   </main>
-  <!-- FOOTER -->
+  <!-- FOOTER --><br><br>
   <?php include_once 'footer.php'; ?>
 
   <!-- START OF JAVASCRIPT-->

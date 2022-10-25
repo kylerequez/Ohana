@@ -48,7 +48,7 @@
     <div class="sign-up__container">
       <div class="sign-up__content">
         <header class="sign-up__header">
-          <h1 class="sign-up__title" style="font-size: 80px; margin-top: 20%; font-family: Bantayog-Regular;">
+          <h1 class="sign-up__title" style="font-size: 80px; margin-top: 10%; font-family: Bantayog-Regular;">
             FORGOT PASSWORD
           </h1>
           <p class="sign-up__descr" style="font-size: 20px;">
