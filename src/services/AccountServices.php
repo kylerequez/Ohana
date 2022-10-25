@@ -92,14 +92,18 @@ class AccountServices
     {
         $account = $this->dao->searchByEmail($email);
         if (!is_null($account)) {
-            // $account = $this->dao->searchUserByEmailAndPassword($email, $password);
             if (!password_verify($password, $account->getPassword())) {
                 $_SESSION["msg"] = "Wrong password!";
-            } else {
-                $_SESSION["user"] = serialize($account);
+                return null;
             }
+            // $account = $this->dao->searchUserByEmailAndPassword($email, $password);
+            if ($account->getStatus() == "DISABLED" or $account->getStatus() == "UNREGISTERED") {
+                $_SESSION["msg"] = "Account is disabled";
+                return null;
+            }
+            $_SESSION["user"] = serialize($account);
         } else {
-            $_SESSION["msg"] = "Wrong email!";
+            $_SESSION["msg"] = "The account does not exist.";
         }
         return $account;
     }

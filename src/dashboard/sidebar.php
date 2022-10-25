@@ -70,17 +70,10 @@
         </li>
 
         <li>
-          <a href="/dashboard/logs/get"><span class="icon edit" aria-hidden="true"></span> System
-            Logs</a>
-        </li>
-
-        <li>
           <a class="show-cat-btn" href="##">
             <span class="icon category" aria-hidden="true"></span> Chat Bot
-            <span class="sr-only">Open list</span>
-            </span>
+            <span class="sr-only">Open list</span></span>
           </a>
-
           <ul class="cat-sub-menu">
             <li>
               <a href="/dashboard/chatbot-settings/get"> Settings </a>
@@ -90,7 +83,10 @@
             </li>
           </ul>
         </li>
-
+        <li>
+          <a href="/dashboard/logs/get"><span class="icon edit" aria-hidden="true"></span> System
+            Logs</a>
+        </li>
       </ul>
     </div>
   </div>

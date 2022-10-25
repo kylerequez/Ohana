@@ -19,4 +19,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && empty($id))
     $controller->processRequest($_SERVER["REQUEST_METHOD"], null);
 } else if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($id)) {
     $controller->processRequest($_SERVER["REQUEST_METHOD"], null);
+} else if ($_SERVER["REQUEST_METHOD"] == "GET" && !empty($id)) {
+    $controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
+} else if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($id)) {
+    $controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
 }

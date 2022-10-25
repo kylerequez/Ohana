@@ -11,20 +11,20 @@ class ChatbotController
         $this->logservices = $logServices;
     }
 
-    public function processAdminRequest(string $method, ?string $id): void
+    public function processSettingsRequest(string $method, ?string $id): void
     {
         if ($id) {
-            $this->processAdminResourceRequest($method, $id);
+            $this->processSettingsResourceRequest($method, $id);
         } else {
-            $this->processAdminCollectionRequest($method);
+            $this->processSettingsCollectionRequest($method);
         }
     }
 
-    public function processAdminResourceRequest(string $method, $id)
+    public function processSettingsResourceRequest(string $method, $id)
     {
     }
 
-    public function processAdminCollectionRequest(string $method)
+    public function processSettingsCollectionRequest(string $method)
     {
         switch ($method) {
             case "GET":

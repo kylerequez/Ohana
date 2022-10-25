@@ -19,6 +19,7 @@
     <!-- EXTERNAL CSS -->
     <link rel="stylesheet" href="/Ohana/src/css/userprofile.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
+    <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
     <!-- FONT AWESOME ICONS IMPORT -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -43,17 +44,34 @@
 
         <div class="container-fluid">
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-            
-                <section class="abouthead" style="margin-top:10%;">
-                    <div class="aboutheader">
-                        <h1> USER PROFILE </h1>
+            <section class="userprofile" style="margin-top:10%;">
+                <div class="userheader">
+                    <h1> USER PROFILE </h1>
+                </div>
+            </section>
+            <div class="container" style="margin-left:30%">
+                <section class="profilesection">
+                    <div class="col-md-5" style="margin-left:7%">
+                        <div class="p-3 py-5">
+                            <div class="d-flex justify-content-between align-items-center mb-3"></div>
+                            <div class="row mt-3">
+                                <div class="col-md-12"><label class="labels" style="color:#c0b65a; font-size:20px">Name</label><input type="text" class="form-control" placeholder="First Name" value="" id="" name=""></div>
+                                <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px"><label class="labels">Middle Name</label><input type="text" class="form-control" placeholder="Middle Name" value="" id="" name=""></div>
+                                <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px"><label class="labels">Last Name</label><input type="text" class="form-control" placeholder="Last Name" value="" id="" name=""></div>
+                                <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px"><label class="labels">Mobile Number (+63)</label><input type="text" class="form-control" placeholder="+63" value="" id="" name=""></div>
+                                <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px"><label class="labels">Email</label>
+                                    <input type="text" class="form-control" placeholder="Enter email " value="" id="" name="">
+                                </div>
+                            </div>
+                            <span>
+                                <div class="text-center"><a href=""><button class="btn profile-button" type="button" style="background-color:#db6551; color:white; float:right">Save changes</button></a>
+                                </div>
+                                <div class="mt-5 text-center"><button class="btn profile-button" type="button" style="background-color:#db6551; color:white; float:right; margin-right:10px;"> Change Password</button></div>
+                            </span>
+                        </div>
                     </div>
                 </section>
-
-                <section class="extrasection">
-                    
-                </section>
-            
+            </div>
         </div>
     </main>
 

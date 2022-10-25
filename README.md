@@ -51,7 +51,30 @@ Second commit
 - get('/userprofile', '/Ohana/src/pages/userprofile.php'); //customer user profile 
 - get('/ownedpets', '/Ohana/src/pages/petprofiles.php'); //user pet profiles
 
-#
+# Log 10-18-2022 - JOHN JEMUEL LOPEZ
+//CUSTOMERS
+- FIXED FOOTER
+- added footer.css file and imported them in all customer pages
 
+- FIXED ALL FORGOT PASSWORD PAGES(navbars,footers, and some adjustments)
+
+- created new error page, deleted the old one. 
+
+- added CHATBOT UI in landing page and home page
+
+//ADMIN
+- Added Toast to pet profiles, add staff, edit staff. (backend needed)
+- Added edit pet profile modal with toast (backend needed)
+- Updated and organized the code in website content and website settings page 
+- Updated CBsettings UI bug and margin.
+- Added Chatbot Response Modal - to be updated 
+- Updated HEADER FONTS IN ADMIN PAGES
+- removed paginations in salesreport pages since charts will be shown instead of tables
+- UPDATED SIDEBAR!!!!
+- added chart js example to salesreport.php - TO BE UPDATED
+
+//ADMIN CSS
+- Added a new font import on both lines
+- Deleted old pages back up css and pages.css (backup file saved)
 
 #

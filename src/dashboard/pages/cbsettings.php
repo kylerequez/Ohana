@@ -82,7 +82,7 @@
                 // }
               ?>
                 <center>
-                  <form method="POST" class="form-inline" action="/action_page.php">
+                  <form method="POST" class="form-inline" action="/dashboard/chatbot-settings/update">
                     <h2 class="main-title"> CHATBOT SETTINGS </h2>
                     
                     <div class="chatbot-image">
@@ -90,13 +90,13 @@
                       <br><input type="file" id="myFile" name="filename" style="background-color: #FAF8F0;">
                     </div>
                     </center><br>
-                    <label for="name" style="font-size:20px; margin-left:20%;"> <b>CHATBOT NAME:</b> </label>
+                    <label for="name" style="font-size:20px; margin-left:10%;"> <b>CHATBOT NAME:</b> </label>
                     <input type="text" id="name" value="<?php echo $information->getName(); ?>" name="email" size="100" style="background:#eed1c2; float:right; margin-right:10%;"><br>
 
-                    <br><label for="greeting" style="font-size:20px; margin-left:20%;"> <b>CHATBOT GREETING:</b> </label>
+                    <br><label for="greeting" style="font-size:20px; margin-left:10%;"> <b>CHATBOT GREETING:</b> </label>
                     <input type="text" id="greeting" value="<?php echo $information->getIntroduction(); ?>" name="pswd" size="100" style="background:#eed1c2; float:right; margin-right:10%;"><br>
 
-                    <br><label for="noReply" style="font-size:20px; margin-left:20%;"> <b>CHATBOT NO REPLY:</b> </label>
+                    <br><label for="noReply" style="font-size:20px; margin-left:10%;"> <b>CHATBOT NO REPLY:</b> </label>
                     <input type="text" id="noReply" value="<?php echo $information->getNoResponse(); ?>" name="pswd" size="100" style="background:#eed1c2; float:right; margin-right:10%;"><br>
 
                     <input class="btn" type="submit" value="Save Changes" id="btn-Submit" style="margin-top:5%; margin-left:65%; background-color:#db6551; color:white; width:25%; font-size:20px;">

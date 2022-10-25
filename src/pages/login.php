@@ -19,6 +19,7 @@
   <!-- EXTERNAL CSS -->
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
+  <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
   <!-- FONT AWESOME ICONS IMPORT -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
@@ -96,14 +97,14 @@
             <div class="form__row sign-up__sign">
               Dont have an account? &nbsp;<a class="link" href="/register" style="text-decoration: none;"> Register Now! </a>
             <div class="form__row">
-              <br><a class="link" href="forgot.php" style="text-decoration: none;">Forgot your password?</a>
+              <br><a class="link" href="/forgot" style="text-decoration: none;">Forgot your password?</a>
             </div>
             </div>
         </form>
       </div>
     </div>
   </main>
-  <!-- FOOTER -->
+  <!-- FOOTER --><br><br>
   <?php include_once 'footer.php'; ?>
 
   <!-- START OF JAVASCRIPT-->

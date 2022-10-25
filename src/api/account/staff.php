@@ -26,14 +26,11 @@ if($_SERVER["REQUEST_METHOD"] === "GET" && empty($id))
     $controller->processStaffRequest($_SERVER["REQUEST_METHOD"], null);
 } else if($_SERVER["REQUEST_METHOD"] === "POST" && empty($id)){
     // add staff account
-    $_SESSION["data"] = $_POST;
     $controller->processStaffRequest($_SERVER["REQUEST_METHOD"], null);
 } else if($_SERVER["REQUEST_METHOD"] === "GET" && !empty($id)){
     // delete staff account
     $controller->processStaffRequest($_SERVER["REQUEST_METHOD"], $id);
 } else if($_SERVER["REQUEST_METHOD"] === "POST" && !empty($id)){
     // update staff account
-    echo "Update";
-    $_SESSION["data"] = $_POST;
     $controller->processStaffRequest($_SERVER["REQUEST_METHOD"], $id);
 }

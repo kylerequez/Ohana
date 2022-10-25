@@ -19,7 +19,7 @@ class PetProfile
     public function __construct($image, string $name, int $age, DateTime $birthdate, string $sex, string $color, bool $isVaccinated, string $pcciStatus, int $accountId, string $ownerName, float $price, string $status)
     {
         $this->image = $image;
-        $this->name = $this->capitalizeName($name);
+        $this->name = $name;
         $this->age = $age;
         $this->birthdate = $birthdate;
         $this->sex = $sex;
@@ -27,7 +27,7 @@ class PetProfile
         $this->isVaccinated = $isVaccinated;
         $this->pcciStatus = $pcciStatus;
         $this->accountId = $accountId;
-        $this->ownerName = $this->capitalizeName($ownerName);
+        $this->ownerName = $ownerName;
         $this->price = $price;
         $this->status = $status;
     }

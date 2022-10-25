@@ -42,14 +42,10 @@
     $user = unserialize($_SESSION['user']);
   ?>
     <div class="layer"> </div>
-
     <!-- Body -->
-
     <div class="page-flex">
-
       <!-- Dashboard Sidebar -->
       <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
-
       <div class="main-wrapper">
         <!-- ! Main nav -->
         <?php include_once dirname(__DIR__) . "/navbar.php" ?>
@@ -62,7 +58,6 @@
               <h2 class="main-title"> INVENTORY - PET PROFILES </h2>
             </center>
           </div>
-
           <div class="users-table table-wrapper">
             <div class="search-wrapper">
               <i data-feather="search" aria-hidden="true"></i>
@@ -74,7 +69,6 @@
                   Add Pet </button></a>
             </div>
             <br>
-
             <?php
             $profiles = unserialize($_SESSION["profiles"]);
             if (!empty($profiles)) {
@@ -99,9 +93,77 @@
                       <td><?php echo $profile->getName(); ?></td>
                       <td><?php echo $profile->getOwnerName(); ?></td>
                       <td>
-                        <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
-                        <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i> </button>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $profile->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"></i></button></a>
+                        <a href="/dashboard/petprofiles/delete/<?php echo $profile->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Pet Profile ID <?php echo $profile->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>
                       </td>
+                      <!-- EDIT POP UP MODAL -->
+                      <form method="POST" action="/dashboard/petprofiles/update/<?php echo $profile->getId(); ?>" enctype="multipart/form-data">
+                        <div class="modal fade" id="editModalId<?php echo $profile->getId(); ?>" tabindex="-1" aria-labelledby="editprofilemodal" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="editingModal">EDIT PET PROFILE</h5>
+                                <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                              </div>
+                              <div class="modal-body">
+                                <div class="mb-3">
+                                  <label for="name" class="col-form-label"> DOG NAME: </label>
+                                  <input type="text" class="form-control" name="name" value="<?php echo $profile->getName(); ?>" required>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="sex" class="col-form-label"> DOG AGE: </label>
+                                  <input type="text" class="form-control" name="age" value="<?php echo $profile->getAge(); ?>" required>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="sex" class="col-form-label"> BIRTHDAY: </label>
+                                  <input type="date" class="form-control" name="birthdate" value="<?php echo $profile->getBirthdate()->format('Y-m-d'); ?>" required>
+                                </div>
+                                <div class="mb-3">
+                                  <label> DOG GENDER </label><br>
+                                  <label for="sex1" class="radio-inline"> <input type="radio" id="sex1" <?php if ($profile->getSex() == "MALE") echo "checked"; ?> name="sex" value="Male"> Male </label>
+                                  <label for="sex2" class="radio-inline"> <input type="radio" id="sex2" <?php if ($profile->getSex() == "FEMALE") echo "checked"; ?> name="sex" value="Female"> Female </label>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="color" class="col-form-label"> COLOR/TRAIT: </label>
+                                  <input type="text" class="form-control" name="color" value="<?php echo $profile->getColor(); ?>" required>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="isVaccinated" class="col-form-label"> IS VACCINATED </label><br>
+                                  <label for="yes" class="radio-inline"> <input type="radio" id="yes" <?php if ($profile->getIsVaccinated() == 1) echo "checked"; ?> name="isVaccinated" value="Yes">Yes </label>
+                                  <label for="no" class="radio-inline"> <input type="radio" id="no" <?php if ($profile->getIsVaccinated() == 0) echo "checked"; ?> name="isVaccinated" value="No"> No </label>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="pcciStatus" class="col-form-label"> PCCI STATUS </label><br>
+                                  <label for="pcci1" class="radio-inline"> <input type="radio" id="pcci1" <?php if ($profile->getPcciStatus() == "REGISTERED") echo "checked"; ?> name="pcciStatus" value="Registered"> Registered </label>
+                                  <label for="pcci2" class="radio-inline"> <input type="radio" id="pcci2" <?php if ($profile->getPcciStatus() == "PENDING") echo "checked"; ?> name="pcciStatus" value="Pending"> Pending </label>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="ownerName" class="col-form-label"> OWNER NAME: </label>
+                                  <input type="hidden" name="accountId" value="<?php echo $profile->getAccountId(); ?>">
+                                  <input type="disabled" class="form-control" name="ownerName" value="<?php echo $profile->getOwnerName(); ?>" required>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="price" class="col-form-label"> PRICE: </label>
+                                  <input type="text" class="form-control" name="price" value="<?php echo $profile->getPrice(); ?>" required>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="status" class="col-form-label"> STATUS: </label>
+                                  <input type="text" class="form-control" name="status" value="<?php echo $profile->getStatus(); ?>" required>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="fname" class="col-form-label"> DOG IMAGE: </label>
+                                  <input type="file" class="form-control" name="image">
+                                  <input type="hidden" class="form-control" name="old_image" value="<?php echo base64_encode($profile->getImage()); ?>">
+                                  <!-- <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>"> -->
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="submit" class="btn" style="background-color:#db6551"> Save Changes </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
                     </tr>
                   <?php
                   }
@@ -160,15 +222,13 @@
                 <label for="age" class="col-form-label"> DOG AGE</label>
                 <input type="text" class="form-control" name="age" placeholder="Enter Dog Age" required style="background-color:#eed1c2; color:black">
               </div>
-
               <div class="mb-3">
-                <label> DOG GENDER </label><br> <!-- RADIO BUTTON -->
+                <label> DOG GENDER </label><br>
                 <label for="sex1" class="radio-inline"> <input type="radio" id="sex1" name="sex" value="Male"> Male </label>
                 <label for="sex2" class="radio-inline"> <input type="radio" id="sex2" name="sex" value="Female"> Female </label>
               </div>
-
               <div class="mb-3">
-                <label for="birthdate" class="col-form-label"> BIRTHDAY </label> <!-- DATE SELECTOR-->
+                <label for="birthdate" class="col-form-label"> BIRTHDAY </label>
                 <input type="date" class="form-control" name="birthdate" required style="background-color:#eed1c2; color:black">
               </div>
               <div class="mb-3">
@@ -176,32 +236,60 @@
                 <input type="text" class="form-control" name="color" placeholder="Enter Color/Trait" required style="background-color:#eed1c2; color:black">
               </div>
               <div class="mb-3">
-
-                <label for="isVaccinated" class="col-form-label"> IS VACCINATED </label><br> <!-- RADIO BUTTON -->
+                <label for="isVaccinated" class="col-form-label"> IS VACCINATED </label><br>
                 <label for="yes" class="radio-inline"> <input type="radio" id="yes" name="isVaccinated" value="Yes">Yes </label>
                 <label for="no" class="radio-inline"> <input type="radio" id="no" name="isVaccinated" value="No"> No </label>
               </div>
-
               <div class="mb-3">
-                <label for="hasPCCI" class="col-form-label"> PCCI STATUS </label><br> <!-- RADIO BUTTON -->
-
+                <label for="pcciStatus" class="col-form-label"> PCCI STATUS </label><br>
                 <label for="pcci1" class="radio-inline"> <input type="radio" id="pcci1" name="pcciStatus" value="Registered"> Registered </label>
                 <label for="pcci2" class="radio-inline"> <input type="radio" id="pcci2" name="pcciStatus" value="Pending"> Pending </label>
-
               </div>
               <div class="mb-3">
                 <label for="price" class="col-form-label"> PRICE </label>
                 <input type="text" class="form-control" name="price" placeholder="Enter Price" required style="background-color:#eed1c2; color:black">
               </div>
-              <input type="hidden" class="form-control" name="ownerName" value="Ohana"> <!-- FOR OHANA OWNER -->
+              <input type="hidden" class="form-control" name="ownerName" value="Ohana">
               <div class="mb-3">
                 <label for="image" class="col-form-label"> DOG IMAGE </label><br>
                 <input type="file" name="image" id="image" style="background-color:transparent;">
               </div>
             </div>
-
             <div class="modal-footer">
-              <button type="submit" class="btn" style="background-color:#db6551"> Add Pet </button>
+              <button type="submit" class="btn" id="ToastBtn" style="background-color:#db6551"> Add Pet </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!--EDIT PET PROFILE MODAL -->
+    <form method="POST" action="/dashboard/petprofiles/add">
+      <div class="modal fade" id="editModalId" tabindex="-1" aria-labelledby="addSlotModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addStaffTitle"> EDIT PET PROFILE </h5>
+              <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+            </div>
+            <div class="modal-body">
+              <input name="type" type="hidden" value="STAFF">
+              <div class="mb-3">
+                <label for="name" class="col-form-label"> DOG NAME </label>
+                <input type="text" class="form-control" name="name" placeholder="Enter Dog Name" required style="background-color:#eed1c2; color:black">
+              </div>
+              <div class="mb-3">
+                <label for="owner" class="col-form-label"> DOG OWNER </label>
+                <input type="text" class="form-control" name="owner" placeholder="Name of Dog Owner" required style="background-color:#eed1c2; color:black">
+              </div>
+              <input type="hidden" class="form-control" name="status"> <!-- FOR OHANA OWNER -->
+              <div class="mb-3">
+                <label for="image" class="col-form-label"> DOG IMAGE </label><br>
+                <input type="file" name="fileToUpload" id="fileToUpload" style="background-color:transparent;">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn" id="ToastBtn" style="background-color:#db6551"> SAVE CHANGES </button>
             </div>
           </div>
         </div>
@@ -226,7 +314,31 @@
       </div>
     </div>
 
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast-container top-0 end-0 p-3">
+      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+        <div class="toast-header">
+          <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+          <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
+          <small> JUST NOW </small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" style="color:#db6551; font-size:15px;">Added Pet Profile Successfully!</div>
+      </div>
+    </div>
+
     <!-- SCRIPTS -->
+    <script>
+      //TOAST SCRIPT TRIGGER 
+      const toastTrigger = document.getElementById('ToastBtn')
+      const toastLiveExample = document.getElementById('liveToast')
+      if (toastTrigger) {
+        toastTrigger.addEventListener('click', () => {
+          const toast = new bootstrap.Toast(toastLiveExample)
+          toast.show()
+        })
+      }
+    </script>
 
     <!-- Chart library -->
     <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
