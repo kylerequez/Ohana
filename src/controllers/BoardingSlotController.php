@@ -27,43 +27,30 @@ class BoardingSlotController
         switch ($method) {
                 // Boarding Slot Delete
             case "GET":
-                if (!isset($_SESSION)) session_start();
-                if ($this->services->deleteSlot($id)) {
-                    echo "TEST";
-                    $user = unserialize($_SESSION["user"]);
-                    $log = $user->getFullName() . " has deleted Slot ID $id";
-                    if (!$this->logservices->addLog($log)) {
-                        $_SESSION["msg"] = "There was an error in the logging of the action.";
-                    }
-                    $_SESSION["msg"] = "Slot ID $id was successfully deleted!";
-                    $this->processCollectionRequest("GET");
-                    break;
-                } else {
-                    $_SESSION["msg"] = "There was an error in deleting Slot ID $id";
-                    header("Location: http://localhost/dashboard/petboarding");
+                if (!$this->services->deleteSlot($id)) {
+                    $this->processCollectionRequest($method);
                 }
+                $user = unserialize($_SESSION["user"]);
+                $log = $user->getFullName() . " has deleted Slot ID $id";
+                if (!$this->logservices->addLog($log)) {
+                    $_SESSION["msg"] = "There was an error in the logging of the action.";
+                }
+                $this->processCollectionRequest("GET");
                 break;
+                // Boarding Slot Update
             case "POST":
-                echo "UPDATE";
-                $data = $_POST;
-                if(!empty($_FILES["image"]["tmp_name"])) {
-                    $data["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
+                if (!empty($_FILES["image"]["tmp_name"])) {
+                    $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
                 } else {
-                    $data["image"] = base64_decode($_POST["old_image"]);
+                    $_POST["image"] = base64_decode($_POST["old_image"]);
                 }
-                // print_r($data);
-                // echo empty($data["petName"]) ? "LOL" : "NO";
-                // echo $data["petName"];
-                if (!isset($_SESSION)) session_start();
-                if($this->services->updateBoardingSlot($id, $data)){
-                    $_SESSION["msg"] = "You have successfully updated Slot ID $id!";
-                    $user = unserialize($_SESSION["user"]);
-                    $log = $user->getFullName() . " has updated Slot ID $id";
-                    if (!$this->logservices->addLog($log)) {
-                        $_SESSION["msg"] = "There was an error in the logging of the action.";
-                    }
-                } else {
-                    $_SESSION["msg"] = "There was an error in updating the boarding slot.";
+                if (!$this->services->updateBoardingSlot($id, $_POST)) {
+                    $this->processCollectionRequest("GET");
+                }
+                $user = unserialize($_SESSION["user"]);
+                $log = $user->getFullName() . " has updated Slot ID $id";
+                if (!$this->logservices->addLog($log)) {
+                    $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest("GET");
                 break;
@@ -81,24 +68,19 @@ class BoardingSlotController
                 break;
                 // Add Boarding Slot
             case "POST":
-                $data = $_POST;
-                $data["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
-                if (!isset($_SESSION)) session_start();
                 $user = unserialize($_SESSION["user"]);
-                $data["accountId"] = $user->getType() != "USER" ? 1 : $user->getId();
-                if ($this->services->addBoardingSlot($data)) {
-                    $log = $user->getFullName() . " has added a Pet Boarding Slot.";
-                    if (!$this->logservices->addLog($log)) {
-                        $_SESSION["msg"] = "There was an error in adding the log.";
-                    } else {
-                        $_SESSION["msg"] = "You have successfully added a pet profile!";
-                    }
-                    $_SESSION["msg"] = "You have successfully added a pet boarding slot!";
-                } else {
-                    $_SESSION["msg"] = "There was an error in adding the pet boarding slot.";
+                $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
+                $_POST["accountId"] = $user->getType() != "USER" ? 1 : $user->getId();
+                if (!$this->services->addBoardingSlot($_POST)) {
+                    $this->processCollectionRequest("GET");
+                }
+                $log = $user->getFullName() . " has added a Pet Boarding Slot.";
+                if (!$this->logservices->addLog($log)) {
+                    $_SESSION["msg"] = "There was an error in adding the log.";
                 }
                 $this->processCollectionRequest("GET");
                 break;
         }
     }
 }
+.

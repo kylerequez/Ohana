@@ -31,6 +31,13 @@ class ChatbotController
                 if (isset($_SESSION)) session_start();
                 $_SESSION["cb_settings"] = serialize($this->services->getAllSettings());
                 header("Location: http://localhost/dashboard/chatbot-settings");
+            case "POST":
+                if (isset($_SESSION)) session_start();
+                $data = $_POST;
+                $data["image"] = $_FILES["image"]["tmp_name"];
+                if($this->services->updateSettings($data)){
+                    
+                }
         }
     }
 }

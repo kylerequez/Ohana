@@ -190,6 +190,7 @@
                   </div>
                   <div class="modal-body">
                     <input name="type" type="hidden" value="STAFF">
+                    <input name="status" type="hidden" value="ACTIVE">
                     <div class="mb-3">
                       <label for="fname" class="col-form-label"> First Name: </label>
                       <input type="text" class="form-control" name="fname" placeholder="Enter First Name" required style="background-color:#eed1c2; color:black">

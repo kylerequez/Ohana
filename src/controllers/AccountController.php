@@ -31,19 +31,9 @@ class AccountController
         switch ($method) {
                 // User Display
             case "GET":
-                if (!isset($_SESSION)) session_start();
                 $_SESSION["users"] = serialize($this->services->getUserAccounts());
-
                 header("Location: http://localhost/dashboard/customers");
                 break;
-                // User registration
-            case "POST":
-                // if ($this->services->addAccount($_POST)) {
-                //     header("Location: http://localhost/login");
-                // } else {
-
-                // }
-                // break;
         }
     }
 
@@ -66,31 +56,29 @@ class AccountController
             case "GET":
                 echo "DELETE";
                 if (!isset($_SESSION)) session_start();
-                if ($this->services->deleteAccount($id)) {
-                    $user = unserialize($_SESSION["user"]);
-                    $log = $user->getFullName() . " has deleted Account ID $id";
-                    if (!$this->logservices->addLog($log)) {
-                        $_SESSION["msg"] = "There was an error in the logging of the action.";
-                    }
+                if (!$this->services->deleteAccount($id)) {
                     $this->processStaffCollectionRequest($method);
-                } else {
-                    echo "Not deleted";
                 }
+                $user = unserialize($_SESSION["user"]);
+                $log = $user->getFullName() . " has deleted Account ID $id";
+                if (!$this->logservices->addLog($log)) {
+                    $_SESSION["msg"] = "There was an error in the logging of the action.";
+                }
+                $this->processStaffCollectionRequest($method);
                 break;
                 // Staff Update
             case "POST":
                 echo "UPDATE";
                 if (!isset($_SESSION)) session_start();
-                $data = $_POST;
-                if ($this->services->updateAccount($id, $data)) {
-                    $user = unserialize($_SESSION["user"]);
-                    $log = $user->getFullName() . " has updated Account ID $id";
-                    if (!$this->logservices->addLog($log)) {
-                        $_SESSION["msg"] = "There was an error in the logging of the action.";
-                    }
+                if (!$this->services->updateAccount($id, $_POST)) {
                     $this->processStaffCollectionRequest("GET");
-                } else {
                 }
+                $user = unserialize($_SESSION["user"]);
+                $log = $user->getFullName() . " has updated Account ID $id";
+                if (!$this->logservices->addLog($log)) {
+                    $_SESSION["msg"] .= "There was an error in the logging of the action.";
+                }
+                $this->processStaffCollectionRequest("GET");
                 break;
         }
     }
@@ -102,24 +90,20 @@ class AccountController
             case "GET":
                 if (!isset($_SESSION)) session_start();
                 $_SESSION["staff"] = serialize($this->services->getStaffAccounts());
-
                 header("Location: http://localhost/dashboard/staff");
                 break;
                 // Add Staff
             case "POST":
                 if (!isset($_SESSION)) session_start();
-                $data = $_POST;
-                if ($this->services->addAccount($data) == true) {
-                    $_SESSION["msg"] = "You have successfully added a new staff account.";
-                    $user = unserialize($_SESSION["user"]);
-                    $log = $user->getFullName() . " has added a staff account";
-                    if ($this->logservices->addLog($log) == false) {
-                        $_SESSION["msg"] = "There was an error in the logging of the action.";
-                    }
-                    $this->processStaffCollectionRequest("GET");
-                } else {
+                if (!$this->services->addAccount($_POST)) {
                     $this->processStaffCollectionRequest("GET");
                 }
+                $user = unserialize($_SESSION["user"]);
+                $log = $user->getFullName() . " has added a staff account";
+                if ($this->logservices->addLog($log) == false) {
+                    $_SESSION["msg"] = "There was an error in the logging of the action.";
+                }
+                $this->processStaffCollectionRequest("GET");
                 break;
         }
     }
@@ -132,17 +116,13 @@ class AccountController
             case "POST":
                 if (!isset($_SESSION)) session_start();
                 $account = $this->services->loginAccount($_POST["email"], $_POST["password"]);
-                if (!is_null($account)) {
-                    if ($account->getType() === "USER") {
-                        // USER
-                        //echo "USER REDIRECT";
-                        header("Location: http://localhost/home");
-                    } else {
-                        // echo "TEST";
-                        header("Location: http://localhost/dashboard");
-                    }
-                } else {
+                if (is_null($account)) {
                     header("Location: http://localhost/login");
+                }
+                if ($account->getType() === "USER") {
+                    header("Location: http://localhost/home");
+                } else {
+                    header("Location: http://localhost/dashboard");
                 }
                 break;
         }
@@ -161,11 +141,9 @@ class AccountController
 
     public function forgotPasswordRequest($method, $email): void
     {
-        switch($method)
-        {
+        switch ($method) {
             case "GET":
-                if($this->services->forgotPasswordRequest($email))
-                {
+                if ($this->services->forgotPasswordRequest($email)) {
                     // echo "true";
                     header("Location: http://localhost/forgot-confirm");
                 } else {
@@ -174,8 +152,7 @@ class AccountController
                 }
                 break;
             case "POST":
-                if($this->services->changePasswordRequest($email)) 
-                {
+                if ($this->services->changePasswordRequest($email)) {
                     header("Location: http://localhost/login");
                 } else {
                     header("Location: http://localhost/forgot/$email");
@@ -186,16 +163,19 @@ class AccountController
 
     public function registrationRequest($method): void
     {
-        switch($method)
-        {
+        switch ($method) {
+            case "GET":
+                if ($this->services->verifyOtp($_GET)) {
+                    header("Location: http://localhost/registercomplete");
+                } else {
+                    header("Location: http://localhost/confirmregister");
+                }
+                break;
             case "POST":
-                if(!isset($_SESSION)) session_start();
-                echo "2";
+                if (!isset($_SESSION)) session_start();
                 if ($this->services->addAccount($_POST)) {
-                    echo "3";
-                    if($this->services->registrationRequest($_POST)){
-                        echo "END";
-                        // Redirect to otp entering
+                    if ($this->services->registrationRequest($_POST)) {
+                        header("Location: http://localhost/confirmregister");
                     } else {
                         header("Location: http://localhost/register");
                     }

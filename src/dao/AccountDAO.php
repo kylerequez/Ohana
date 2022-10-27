@@ -346,4 +346,21 @@ class AccountDAO
             return null;
         }
     }
+
+    public function verifyAccount(string $email): mixed
+    {
+        try {
+            $sql = "UPDATE ohana_account
+                    SET status='ACTIVE'
+                    WHERE email=:email";
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+
+            return $stmt->execute() > 0;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
 }

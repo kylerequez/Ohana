@@ -85,8 +85,7 @@ class BoardingSlotDAO
         try {
             $sql = "SELECT * FROM ohana_boarding_slot
                     WHERE slot_id=:id
-                    LIMIT 1;
-                    ";
+                    LIMIT 1;";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
@@ -130,6 +129,30 @@ class BoardingSlotDAO
             $stmt->bindParam(":petName", $petName, PDO::PARAM_STR);
 
             return $stmt->execute() > 0;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function searchByName(string $name): mixed
+    {
+        try {
+            $sql = "SELECT * FROM ohana_boarding_slot
+                    WHERE slot_name=:name
+                    LIMIT 1;";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":name", $name, PDO::PARAM_STR);
+
+            $searchedSlot = null;
+            if ($stmt->execute() > 0) {
+                while ($slot = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $searchedSlot = new BoardingSlot($slot["slot_image"], $slot["slot_name"], $slot["slot_information"], $slot["is_available"], $slot["pet_id"], $slot["pet_name"]);
+                    $searchedSlot->setId($slot["slot_id"]);
+                }
+            }
+            return $searchedSlot;
         } catch (Exception $e) {
             echo $e;
             return null;

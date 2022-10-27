@@ -53,7 +53,7 @@
               Create An Account
             </h1>
             <p class="sign-up__descr" style="font-size: 70px; color:#c0b65a; font-family: 'Acme', sans-serif;">
-              Welcome to Ohana! <?php echo $_SESSION["msg"] ?>
+              Welcome to Ohana! <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; unset($_SESSION["msg"]); ?>
             </p>
             <p style="font-size:20px;"> Fill up the fields below to create an account. </p>
           </header>

@@ -10,8 +10,10 @@ $dao = new AccountDAO($database);
 $services = new AccountServices($dao);
 $controller = new AccountController($services, null);
 
-if($_SERVER["REQUEST_METHOD"] == "POST")
+if($_SERVER["REQUEST_METHOD"] == "GET" and empty($_SESSION["msg"]))
 {
-    echo "1";
+    $controller->registrationRequest($_SERVER["REQUEST_METHOD"]);
+} else if($_SERVER["REQUEST_METHOD"] == "POST" and empty($_SESSION["msg"]))
+{
     $controller->registrationRequest($_SERVER["REQUEST_METHOD"]);
 }

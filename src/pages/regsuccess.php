@@ -42,6 +42,7 @@
   <!-- UNREGISTERED USERS NAVIGATION BAR-->
   <?php include_once 'navbar.php'; ?>
 
+  <?php unset($_SESSION); session_destroy(); ?>
   <div class="container-fluid">
     <main class="sign-up">
       <div class="sign-up__container">
