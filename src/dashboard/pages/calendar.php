@@ -1,13 +1,13 @@
 <?php
-$host     = 'localhost';
-$username = 'root';
-$password = '';
-$dbname   ='ohana_db';
+// $host     = 'localhost';
+// $username = 'root';
+// $password = '';
+// $dbname   ='ohana_db';
 
-$conn = new mysqli($host, $username, $password, $dbname);
-if(!$conn){
-    die("Cannot connect to the database.". $conn->error);
-}
+// $conn = new mysqli($host, $username, $password, $dbname);
+// if(!$conn){
+//     die("Cannot connect to the database.". $conn->error);
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -198,16 +198,17 @@ if(!$conn){
     </script>
 
     <?php
-    $schedules = $conn->query("SELECT * FROM `schedule_list`");
-    $sched_res = [];
-    foreach ($schedules->fetch_all(MYSQLI_ASSOC) as $row) {
-      $row['sdate'] = date("F d, Y h:i A", strtotime($row['start_datetime']));
-      $row['edate'] = date("F d, Y h:i A", strtotime($row['end_datetime']));
-      $sched_res[$row['id']] = $row;
-    }
+    // $schedules = $conn->query("SELECT * FROM `schedule_list`");
+    // $sched_res = [];
+    // foreach ($schedules->fetch_all(MYSQLI_ASSOC) as $row) {
+    //   $row['sdate'] = date("F d, Y h:i A", strtotime($row['start_datetime']));
+    //   $row['edate'] = date("F d, Y h:i A", strtotime($row['end_datetime']));
+    //   $sched_res[$row['id']] = $row;
+    // }
     ?>
     <?php
-    if (isset($conn)) $conn->close();
+    //if (isset($conn)) $conn->close();
+    $sched_res = unserialize($_SESSION["appointments"]);
     ?>
     <script>
       var scheds = $.parseJSON('<?= json_encode($sched_res) ?>')

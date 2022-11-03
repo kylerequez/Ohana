@@ -36,7 +36,7 @@
         <li><a href="/dashboard/appointments">
             <span class="icon notification" aria-hidden="true"></span> List of Appointments</a></li>
 
-        <li><a href="/dashboard/calendar">
+        <li><a href="/dashboard/appointments/get">
             <span class="icon calendar" aria-hidden="true"></span> Calendar </a> </li>
 
 
