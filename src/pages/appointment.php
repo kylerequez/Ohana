@@ -5,7 +5,7 @@
 
     <title> OHANA APPOINTMENT </title>
 
-    <!-- META TAGS --> 
+    <!-- META TAGS -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
@@ -17,9 +17,14 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
 
     <!-- EXTERNAL CSS -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
     <link rel="stylesheet" href="/Ohana/src/css/calendar.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <link rel="stylesheet" href="/Ohana/src/css/footer.css">
+
+    <link rel="stylesheet" href="/Ohana/src/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Ohana/src/css/main.min.css">
 
     <!-- FONT AWESOME ICONS IMPORT -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -35,45 +40,112 @@
     <!-- MORE icons -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
+    <style>
+        :root {
+            --bs-success-rgb: 71, 222, 152 !important;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            font-family: Apple Chancery, cursive;
+        }
+
+        .btn-info.text-light:hover,
+        .btn-info.text-light:focus {
+            background: #000;
+        }
+
+        table,
+        tbody,
+        td,
+        tfoot,
+        th,
+        thead,
+        tr {
+            border-color: #ededed !important;
+            border-style: solid;
+            border-width: 1px !important;
+        }
+    </style>
+
 </head>
 
 <body style="background-color: #FAF8F0;">
+
     <main>
         <!-- REGISTERED USERS NAVIGATION BAR-->
         <?php include_once 'Rnavbar.php'; ?>
 
         <div class="container-fluid">
-
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-            <center>
             <section class="calendar" style="margin-top:10%; ">
                 <div class="calendarview">
-
-                    <h1> INSERT CALENDAR HERE </h1>
-
+                    <center>
+                        <h1> CALENDAR </h1>
+                    </center>
                 </div>
+                <!-- CALENDAR CONTENT -->
+
+                <div class="container py-5" id="page-container" style="margin-top: 10%">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div id="calendar"></div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="cardt rounded-0 shadow">
+                                <div class="card-header bg-gradient bg-primary text-light">
+                                    <h5 class="card-title">Schedule Form</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="container-fluid">
+                                        <form action="save_schedule.php" method="post" id="schedule-form">
+                                            <input type="hidden" name="id" value="">
+                                            <div class="form-group mb-2">
+                                                <label for="title" class="control-label">Title</label>
+                                                <input type="text" class="form-control form-control-sm rounded-0" name="title" id="title" required>
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                <label for="description" class="control-label">Description</label>
+                                                <textarea rows="3" class="form-control form-control-sm rounded-0" name="description" id="description" required></textarea>
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                <label for="start_datetime" class="control-label">Start</label>
+                                                <input type="datetime-local" class="form-control form-control-sm rounded-0" name="start_datetime" id="start_datetime" required>
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                <label for="end_datetime" class="control-label">End</label>
+                                                <input type="datetime-local" class="form-control form-control-sm rounded-0" name="end_datetime" id="end_datetime" required>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-center">
+                                        <button class="btn btn-primary btn-sm rounded-0" type="submit" form="schedule-form"><i class="fa fa-save"></i> Save</button>
+                                        <button class="btn btn-default border btn-sm rounded-0" type="reset" form="schedule-form"><i class="fa fa-reset"></i> Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
             </section>
-            </center>
         </div>
     </main>
 
     <div class="container-fluid">
-    <?php include_once 'footer.php'; ?>
+        <?php include_once 'footer.php'; ?>
     </div>
 
     <!-- SCIPTS OF CALENDAR -->
-
-    <!-- END OF APPOINTMENT CALENDAR SCRIPT -->
-    
-    <!-- Chart library -->
-    <script src="../plugins/chart.min.js"></script>
-
-    <!-- Icons library -->
-    <script src="../plugins/feather.min.js"></script>
-
-    <!-- Custom scripts -->
-    <script src="../js/script.js"></script>
-  
+    <script src="/Ohana/src/js/jquery-3.6.0.min.js"></script>
+    <script src="/Ohana/src/js/bootstrap.min.js"></script>
+    <script src="/Ohana/src/fullcalendar/lib/main.min.js"></script>
 
     <!-- JAVASCRIPT IMPORTS -->
     <!-- Bootstrap Bundle with Popper -->

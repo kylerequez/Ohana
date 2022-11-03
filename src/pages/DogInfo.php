@@ -30,7 +30,9 @@
   <!-- Custom styles -->
   <link rel="stylesheet" href="/Ohana/src/css/Dogs.css">
   <link rel="stylesheet" href="/Ohana/src/css/footer.css">
-
+  <style>
+        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+    </style>
 </head>
 
 <body style="background-color: #FAF8F0; color:#2f1f18">
@@ -41,7 +43,7 @@
   <main>
     <div class="header" style="margin-top:8%; margin-bottom:10px">
       <center>
-      <h1 style="color:#DB6551; font-size: 80px; font-family: 'Karla', sans-serif; font-weight:800"> AVAILABLE FRENCH PUPPIES </h1>
+      <h1 style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800"> AVAILABLE FRENCH PUPPIES </h1>
       </center>
     </div><br>
     <!-- START OF PROFILES CONTENT-->
@@ -59,7 +61,6 @@
             </div>
             <div class="col-md-5">
               <div class="card-body"><br>
-                <p class="card-text" style="font-size:30px"> PUPPY DETAILS </p><br>
                 <p class="card-text"> <b>BIRTHDAY:</b> June 13, 2022 </p>
                 <p class="card-text"> <b>COLOR:</b> Choco Tan Merle </p>
                 <p class="card-text"> <b>GENDER:</b> Male </p>
@@ -74,7 +75,7 @@
               <div class="col-md-5">
                 <div class="backbtn">
                   <span class="backbtn">
-                    <span class="back">Back</span>
+                    <a href="/puppies"><span class="back">Back</span></a>
                 </div>
               </div>
 

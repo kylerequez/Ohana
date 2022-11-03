@@ -20,8 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- Bootstrap CSS CDN -->
-  <!-- 5.2.1 -->
+  <!-- Bootstrap CSS CDN --><!-- 5.2.1 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous">
 
   <!-- MORE icons -->
@@ -29,7 +28,6 @@
 
   <!-- EXTERNAL CSS -->
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-
 </head>
 
 <body>
@@ -64,7 +62,7 @@
           <li class="nav-item">
             <div class="action">
               <div class="profile" onclick="menuToggle();">
-                <img src="/Ohana/src/images/icons/user.png" />
+                <img src="/Ohana/src/images/icons/customer.png" style="width:60px; height:50px;">
               </div>
               <div class="menu">
                 <h3> Registered Customer Name<br /><span>customer@gmail.com</span></h3>
@@ -121,39 +119,5 @@
   <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
-
 </body>
-
 </html>
-<!-- 
-                  <div class="action"> 
-                    <img src="../images/icons/client.png"/>
-                  </div>
-                  <div class="menu">
-                    <div class="profile">
-                      <img src="../images/icons/client.png"/>
-                      <div class="info">
-                        <h2> NAME OF USER </h2>
-                      </div>
-                    </div>
-                    <a class="btnCreate" href="#">
-                      <img src="../images/icon/dog.png"/> 
-                      Create Pet Profile 
-                    </a>
-                    <ul>
-                      <li>
-                        <img src="../images/icon/user.png"/>
-                        <a href=""> VIEW PROFILE </a>
-                      </li>
-                      <li>
-                        <img src="../images/icon/edit.png"/>
-                        <a href=""> PET PROFILE </a>
-                      </li>
-                      <li>
-                        <img src="../images/icon/log-out.png"/>
-                        <a href=""> LOGOUT </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div> 
--->

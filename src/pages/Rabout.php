@@ -34,7 +34,9 @@
 
     <!-- MORE icons -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+    </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -45,7 +47,8 @@
         <div class="container-fluid">
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
             <center>
-                <section class="abouthead" style="margin-top:10%;">
+            <h1 style="color:#DB6551; font-size: 120px; font-family: 'Acme', sans-serif; font-weight:800; margin-top:10%"> ABOUT US </h1>
+                <section class="abouthead">
                     <div class="aboutheader">
                         <img src="/Ohana/src/images/Pages/about1.png" style="width: 100%;">
                     </div>

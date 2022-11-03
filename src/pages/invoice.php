@@ -34,7 +34,9 @@
 
     <!-- MORE icons -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+    </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -46,9 +48,9 @@
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
 
             <div class="container">
-                <section class="h-6 h-custom" style="margin-top:15%;">
+                <section class="h-6 h-custom" style="margin-top:10%;">
                     <div class="service">
-                        <h1 style="color:#DB6551; font-size: 60px; font-family: 'Karla', sans-serif; font-weight:800"> THANK YOU FOR TRUSTING OHANA </h1>
+                        <br><h1 style="color:#DB6551; font-size: 60px; font-family: 'Acme', sans-serif; font-weight:800"> THANK YOU FOR TRUSTING OHANA </h1>
                     </div><br>
                     <div class="container py-5 h-100">
                         <div class="row d-flex justify-content-center align-items-center h-100">

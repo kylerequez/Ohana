@@ -33,7 +33,9 @@
 
     <!-- MORE icons -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+    </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -46,56 +48,26 @@
             <div class="message" style="margin-top:10%;">
                 <section class="services" id="services">
                     <div class="service">
-                        <h1 style="color:#DB6551; font-size: 100px; font-family: 'Karla', sans-serif; font-weight:800"> CHOOSE THE PERFECT PAIR </h1>
+                        <h1 style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800; text-align:center"> CHOOSE THE PERFECT PAIR </h1>
                     </div><br><br>
                     <!-- AVAILABLE PUPPIES CARD -->
-                    <div class="container">
-                    
-                    <div class="row row-cols-1 row-cols-md-2 g-4">
-                        <div class="col" style="margin-top:5%; margin-left:25%;">
-                            <div class="card h-100">
-                                <a href="/studprofile"><img src="/Ohana/src/images/petprofile/stud.jpg" class="card-img-top" alt="stud dog"></a>
-                                <div class="card-body">
-                                    <h3 class="card-title" style="text-align:center"> FRENCH BULLDOG NAME </h3>
-                                    <p class="card-text" style="font-size:20px; text-align:center"> Stud success rate: 90% | Color: Brown | Gender: Male </p>
-                                </div>
-                                <div class="card-footer">
-                                    <form action="/studprofile" method='get'>
-                                        <div class="btn-Learn" name="btn-Learn">
-                                            <button id="btnLearn" name="btnLearn"><span> More Info! </span></button>
-                                        </div>
-                                    </form>
-                                </div>
+                    <div class="container-fluid d-flex justify-content-center">
+
+                        <div class="card" style="width: 20rem;">
+                            <a href="/studprofile"><img src="/Ohana/src/images/petprofile/stud.jpg" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <h5 class="card-title" style="text-align:center"> FRENCH BULLDOG NAME </h5>
+                                <p class="card-text"> Stud success rate: 90% | Gender: Male </p>
+                                <form action="/studprofile" method='get'>
+                                    <div class="btn-Learn" name="btn-Learn">
+                                        <center><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></center>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                    
-                        <!--
-                        <div class="col" style="margin-top:5%;">
-                            <div class="card h-100">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <form action="/" method='get'>
-                                        <div class="btn-Learn" name="btn-Learn">
-                                            <button id="btnLearn" name="btnLearn"><span> More Info! </span></button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div> 
-                        </div> -->
-
-                <section class="reason" style="margin-top:5%;">
-
                 </section>
-
-
             </div>
-
-        </div>
     </main>
 
     <div class="container-fluid">

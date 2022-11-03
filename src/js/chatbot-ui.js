@@ -59,7 +59,7 @@ function init() {
 
 	</div>`
 
-// END OF CHATBOT FRONT END // 
+    // END OF CHATBOT FRONT END // 
 
     chatContainer.innerHTML = Ohanabot;
 

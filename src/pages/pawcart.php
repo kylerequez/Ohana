@@ -43,7 +43,7 @@
 
         <div class="container-fluid">
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-            <img src="/Ohana/src/images/Pages/cartheader.png" width="100%" style="margin-top:10%">
+            <img src="/Ohana/src/images/Pages/cartheader.png" width="100%" style="margin-top:5%">
 
             <section class="h-100">
                 <div class="container h-100 py-5">
@@ -68,80 +68,10 @@
                                             <p><span class="text-muted">Gender: </span>Male <span class="text-muted">Color: </span>Grey</p>
                                         </div>
                                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                            <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
-
-                                            <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control form-control-sm" />
-
-                                            <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                <i class="fas fa-plus"></i>
-                                            </button>
+                                        <p class="lead fw-normal mb-2">Quantity: 1</p>
                                         </div>
                                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                             <h5 class="mb-0">P80,000</h5>
-                                        </div>
-                                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                            <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card rounded-3 mb-4">
-                                <div class="card-body p-4">
-                                    <div class="row d-flex justify-content-between align-items-center">
-                                        <div class="col-md-2 col-lg-2 col-xl-2">
-                                            <img src="/Ohana/src/images/Dogs/pup1.png" class="img-fluid rounded-3" alt="Cotton T-shirt">
-                                        </div>
-                                        <div class="col-md-3 col-lg-3 col-xl-3">
-                                            <p class="lead fw-normal mb-2">French Puppy</p>
-                                            <p><span class="text-muted">Gender: </span>Male <span class="text-muted">Color: </span>Grey</p>
-                                        </div>
-                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                            <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
-
-                                            <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control form-control-sm" />
-
-                                            <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                <i class="fas fa-plus"></i>
-                                            </button>
-                                        </div>
-                                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                            <h5 class="mb-0">P80,000</h5>
-                                        </div>
-                                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                            <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card rounded-3 mb-4">
-                                <div class="card-body p-4">
-                                    <div class="row d-flex justify-content-between align-items-center">
-                                        <div class="col-md-2 col-lg-2 col-xl-2">
-                                            <img src="/Ohana/src/images/Dogs/pup1.png" class="img-fluid rounded-3" alt="Cotton T-shirt">
-                                        </div>
-                                        <div class="col-md-3 col-lg-3 col-xl-3">
-                                            <p class="lead fw-normal mb-2">French Puppy</p>
-                                            <p><span class="text-muted">Gender: </span>Female <span class="text-muted">Color: </span>Grey</p>
-                                        </div>
-                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                            <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
-
-                                            <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control form-control-sm" />
-
-                                            <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                <i class="fas fa-plus"></i>
-                                            </button>
-                                        </div>
-                                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                            <h5 class="mb-0">P100,000</h5>
                                         </div>
                                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                             <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
@@ -153,7 +83,6 @@
                             <a href="/home"><button type="button" class="btn btn-dark btn-lg me-2"> Back to Home</button></a>
                             <a href="/checkout"><button type="button" name="btn-Payment" class="btn btn-block btn-lg" style="float:right; background-color:#c0b65a; color:white;">
                              Proceed to Select Payment Method </button></a>
-
                         </div>
                     </div>
                 </div>
@@ -161,7 +90,7 @@
         </div><!-- END OF CONTAINER FLUID -->
     </main>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top:10%;">
         <?php include_once 'footer.php'; ?>
     </div>
 

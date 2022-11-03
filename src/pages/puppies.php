@@ -34,7 +34,9 @@
 
     <!-- MORE icons -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+    </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -47,85 +49,53 @@
             <div class="message" style="margin-top:10%;">
                 <section class="services" id="services">
                     <div class="service">
-                        <h1 style="color:#DB6551; font-size: 100px; font-family: 'Karla', sans-serif; font-weight:800"> ADD TO YOUR OHANA NOW</h1>
+                        <h1 style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;text-align:center"> ADD TO YOUR OHANA NOW</h1>
                     </div><br><br>
+
                     <!-- AVAILABLE PUPPIES CARD -->
-                    <div class="container">
-                    <div class="row row-cols-1 row-cols-md-2 g-4">
-                        <div class="col" style="margin-top:5%;">
-                            <div class="card h-100">
+                    <div class="container d-flex justify-content-center">
+                        <div class="row">
+                            
+                            <div class="card" style="width: 20rem; margin-right:30px;">
                                 <img src="/Ohana/src/images/Ohanapups/trans2.png" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">PUPPY</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <form action="/" method='get'>
-                                        <div class="btn-Learn" name="btn-Learn">
-                                            <button id="btnLearn" name="btnLearn"><span> More Info! </span></button>
-                                        </div>
-                                    </form>
+                                    <h5 class="card-title"> FRENCH PUPPY 1 </h5>
+                                    <p class="card-text"> short description of the puppy for sale </p>
+                                    <p class="card-text"> PRICE: 100,000 </p>
+                                    <div class="btn-Learn" name="btn-Learn">
+                                        <center><a href="/dog1"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col" style="margin-top:5%;">
-                            <div class="card h-100">
+
+                            <div class="card" style="width: 20rem; margin-right:30px;">
                                 <img src="/Ohana/src/images/Ohanapups/trans3.png" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">PUPPY</h5>
-                                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <form action="/" method='get'>
-                                        <div class="btn-Learn" name="btn-Learn">
-                                            <button id="btnLearn" name="btnLearn"><span> More Info! </span></button>
-                                        </div>
-                                    </form>
+                                    <h5 class="card-title"> FRENCH PUPPY 2</h5>
+                                    <p class="card-text"> short description of the puppy for sale </p>
+                                    <p class="card-text"> PRICE: 100,000</p>
+                                    <div class="btn-Learn" name="btn-Learn">
+                                        <center><a href="/dog1"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- 2ND ROW -->
-                        <div class="col" style="margin-top:5%;">
-                            <div class="card h-100">
+
+                            <div class="card" style="width: 20rem; margin-right:30px;">
                                 <img src="/Ohana/src/images/Ohanapups/trans5.png" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">PUPPY</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <form action="/" method='get'>
-                                        <div class="btn-Learn" name="btn-Learn">
-                                            <button id="btnLearn" name="btnLearn"><span> More Info! </span></button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col" style="margin-top:5%;">
-                            <div class="card h-100">
-                                <img src="/Ohana/src/images/Ohanapups/trans6.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title"> PUPPY </h5>
-                                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <form action="/" method='get'>
-                                        <div class="btn-Learn" name="btn-Learn">
-                                            <button id="btnLearn" name="btnLearn"><span> More Info! </span></button>
-                                        </div>
-                                    </form>
+                                    <h5 class="card-title"> FRENCH PUPPY 3 </h5>
+                                    <p class="card-text"> short description of the puppy for sale </p>
+                                    <p class="card-text"> PRICE: 100,000</p>
+                                    <div class="btn-Learn" name="btn-Learn">
+                                        <center><a href="/dog1"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
-                <section class="reason" style="margin-top:5%;">
 
                 </section>
-
-
             </div>
-
         </div>
     </main>
 

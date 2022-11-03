@@ -35,33 +35,36 @@
   <!-- Bootstrap CSS  CDN -->
   <!-- 5.2.1 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous">
-
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
   <!-- UNREGISTERED USERS NAVIGATION BAR-->
   <?php include_once 'navbar.php'; ?>
 
-  <?php unset($_SESSION); session_destroy(); ?>
+  <?php unset($_SESSION);
+  session_destroy(); ?>
   <div class="container-fluid">
     <main class="sign-up">
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-          <img src="/Ohana/src/images/pages/check.png" width="250" height="250" style="margin-top: 5%;">
-            <h1 class="sign-up__title" style="font-size: 100px; margin-top: 5%; font-family: Bantayog-Regular;">
+            <img src="/Ohana/src/images/pages/check.png" width="250" height="250" style="margin-top: 5%;">
+            <h1 class="sign-up__title" style="font-size: 100px; margin-top: 5%; font-family: 'Acme', sans-serif;">
               Account Created!
             </h1>
-            <p style="font-size:25px;"> Your Ohana account has been Successfully Created.  </p>
+            <p style="font-size:25px;"> Your Ohana account has been Successfully Created. </p>
           </header>
-       
-            <center>
-              <div class="form__row">
-                <div class="logbtn">
-                  <a  href="/login" style="text-decoration: none;"><button><span>Login</span></button></a>
-                </div>
+
+          <center>
+            <div class="form__row">
+              <div class="logbtn">
+                <a href="/login" style="text-decoration: none;"><button><span>Login</span></button></a>
               </div>
-            </center>
+            </div>
+          </center>
         </div>
       </div>
 
@@ -79,13 +82,13 @@
           </div>
         </div>
       </div>
-        <!-- FOOTER -->
-        <?php include_once 'footer.php'; ?>
+      <!-- FOOTER -->
+      <?php include_once 'footer.php'; ?>
 
     </main>
 
     <!-- SCRIPTS -->
-  
+
     <!-- SCRIPTS IMPORT-->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>

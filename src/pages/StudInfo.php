@@ -30,7 +30,9 @@
   <!-- Custom styles -->
   <link rel="stylesheet" href="/Ohana/src/css/Dogs.css">
   <link rel="stylesheet" href="/Ohana/src/css/footer.css">
-
+  <style>
+        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0; color:#2f1f18">
@@ -41,7 +43,7 @@
   <main>
     <div class="header" style="margin-top:8%; margin-bottom:10px">
       <center>
-      <h1 style="color:#DB6551; font-size: 80px; font-family: 'Karla', sans-serif; font-weight:800"> FRENCH BULLDOGS FOR STUD </h1>
+      <h1 style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800"> FRENCH BULLDOGS FOR STUD </h1>
       </center>
     </div><br>
     <!-- START OF PROFILES CONTENT-->
@@ -59,7 +61,6 @@
             </div>
             <div class="col-md-5">
               <div class="card-body"><br>
-                <p class="card-text" style="font-size:30px"> DOG INFORMATION </p><br>
                 <p class="card-text"> <b>BIRTHDAY:</b> June 13, 2018 </p>
                 <p class="card-text"> <b>COLOR:</b> Brown Tan </p>
                 <p class="card-text"> <b>GENDER:</b> Male </p>
@@ -70,17 +71,17 @@
               </div>
             </div>
 
-            <div class="row justify-content" style="margin-top:2%"> <!-- BUTTON ROW -->
+            <div class="row justify-content"> <!-- BUTTON ROW -->
               <div class="col-md-5">
                 <div class="backbtn">
                   <span class="backbtn">
-                    <span class="back">Back</span>
+                    <a href="/stud"><span class="back">Back</span></a>
                 </div>
               </div>
 
               <div class="col-md-7">
                 <form>
-                  <div class="cart__button" style="float:right">
+                  <div class="cart__button" style="float:right;background-color:#DB6551">
                     <span class="cart__button">
                       <span class="add__to-cart" style="font-weight:bold"> Perfect Pair </span>
                       <span class="added">Added</span>
@@ -106,18 +107,6 @@
     <?php include_once 'footer.php'; ?>
   </div>
 
-  <!-- SCRIPTS-->
-  <script>
-    const cartButton = document.querySelectorAll(".cart__button");
-    cartButton.forEach((button) => {
-      button.addEventListener("click", cartClick);
-    });
-
-    function cartClick() {
-      let button = this;
-      button.classList.add("clicked");
-    }
-  </script>
   <!-- JAVASCRIPT -->
   <script>
     function menuToggle() {
@@ -125,7 +114,9 @@
       toggleMenu.classList.toggle("active");
     }
   </script>
+
   <script src="https://kit.fontawesome.com/3431c04d0c.js" crossorigin="anonymous"></script>
+
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>

@@ -49,8 +49,8 @@
           <h1 class="sign-up__title" style="font-size: 80px; margin-top: 5%; ">
             FORGOT PASSWORD
           </h1><br>
-          <p class="sign-up__descr" style="font-size: 20px; color:#c0b65a;">A link to change your password has been sent in your email. </p>
-          <p class="sign-up__descr" style="font-size: 20px; color:#c0b65a;">Please check your inbox.</p>
+          <p class="sign-up__descr" style="font-size: 20px;">A link to change your password has been sent in your email. </p>
+          <p class="sign-up__descr" style="font-size: 20px;">Please check your inbox.</p>
         </header>
 
         <form id="form" method="POST" action="/forgot3" class="sign-up__form form">

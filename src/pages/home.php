@@ -58,9 +58,9 @@
                 <input type="radio" name="slider" id="s5">
 
                 <label for="s1" id="slide1"><img src="/Ohana/src/images/sliders/aboutslide.png" alt=""></label>
-                <label for="s2" id="slide2"><img src="/Ohana/src/images/sliders/rehome.png" alt=""></label>
-                <label for="s3" id="slide3"><img src="/Ohana/src/images/sliders/stud.png" alt=""></label>
-                <label for="s4" id="slide4"><img src="/Ohana/src/images/sliders/petbuy.png" alt=""></label>
+                <label for="s2" id="slide2"><img src="/Ohana/src/images/sliders/visit.png" alt=""></label>
+                <label for="s3" id="slide3"><img src="/Ohana/src/images/sliders/studservice.png" alt=""></label>
+                <label for="s4" id="slide4"><img src="/Ohana/src/images/sliders/rehome.png" alt=""></label>
                 <label for="s5" id="slide5"><img src="/Ohana/src/images/sliders/socials.png" alt=""></label>
             </section>
             <section>

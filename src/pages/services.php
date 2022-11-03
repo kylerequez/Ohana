@@ -34,7 +34,9 @@
 
     <!-- MORE icons -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+    </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -47,7 +49,7 @@
             <div class="message" style="margin-top:10%;">
             <section class="services" id="services">
                 <div class="service">
-                    <h1 style="color:#DB6551; font-size: 120px; font-family: 'Karla', sans-serif; font-weight:800"> SERVICES </h1>
+                    <center><h1 style="color:#DB6551; font-size: 120px; font-family: 'Acme', sans-serif; font-weight:800"> SERVICES </h1></center>
                 </div><br><br>
                 <div class="row" style="text-align:center; margin-left:10%; margin-right:10%;">
                     <div class="col-lg-4">
@@ -88,12 +90,12 @@
                 <section class="pair-section">
                     <div class="pair-section">
                         <form action="/stud" method='get'>
-                            <div class="btn-Learn" name="btn-Checkout" style="float:right; margin-right:20%; margin-top:11%;">
+                            <div class="btn-Learn" name="btn-Checkout" style="float:right; margin-right:17%; margin-top:13%;">
                                 <button id="btnCheckout" name="btnCheckout"><span> Find the perfect pair now </span></button>
                             </div>
                         </form>
                         <form action="/stud" method='get'>
-                            <div class="btn-Learn" name="btn-Checkout" style="float:right; margin-right:11%; margin-top:28%;">
+                            <div class="btn-Learn" name="btn-Checkout" style="float:right; margin-right:12%; margin-top:30%;">
                                 <button id="btnCheckout" name="btnCheckout"><span> Find the perfect pair now </span></button>
                             </div>
                         </form>

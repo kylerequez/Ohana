@@ -104,9 +104,11 @@
       </div>
     </div>
   </main>
-  <!-- FOOTER --><br><br>
-  <?php include_once 'footer.php'; ?>
 
+  <!-- FOOTER -->
+  <div class=" " style="margin-top:15%">
+  <?php include_once 'footer.php'; ?>
+  </div>
   <!-- START OF JAVASCRIPT-->
   <script>
     const input = document.querySelector("input"),
