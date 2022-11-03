@@ -62,11 +62,11 @@
           <table class="posts-table">
             <thead>
               <tr class="users-table-info">
-                <th>TRANSACTION I.D </th>
-                <th>EMAIL ADDRESS</th>
-                <th>NAME OF USER</th>
-                <th>DATE</th>
-                <th>ACTION</th>
+                <th><b>TRANSACTION I.D </b></th>
+                <th><b>EMAIL ADDRESS</b></th>
+                <th><b>NAME OF USER</b></th>
+                <th><b>DATE</b></th>
+                <th><b>ACTION</b></th>
               </tr>
             </thead>
             <tbody>

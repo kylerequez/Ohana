@@ -86,10 +86,10 @@
               <table class="posts-table">
                 <thead>
                   <tr class="users-table-info">
-                    <th>STAFF I.D </th>
-                    <th>FULL NAME </th>
-                    <th>EMAIL ADDRESS</th>
-                    <th>STATUS</th>
+                    <th><b>STAFF I.D</b> </th>
+                    <th><b>FULL NAME </b></th>
+                    <th><b>EMAIL ADDRESS</b></th>
+                    <th><b>STATUS</b></th>
                     <?php
                     if ($user->getType() == "ADMINISTRATOR") {
                     ?>
@@ -190,7 +190,6 @@
                   </div>
                   <div class="modal-body">
                     <input name="type" type="hidden" value="STAFF">
-                    <input name="status" type="hidden" value="ACTIVE">
                     <div class="mb-3">
                       <label for="fname" class="col-form-label"> First Name: </label>
                       <input type="text" class="form-control" name="fname" placeholder="Enter First Name" required style="background-color:#eed1c2; color:black">

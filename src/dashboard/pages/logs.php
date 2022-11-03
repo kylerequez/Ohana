@@ -78,9 +78,9 @@
               <table class="posts-table">
                 <thead>
                   <tr class="users-table-info">
-                    <th>LOG I.D </th>
-                    <th>DESCRIPTION</th>
-                    <th>DATE</th>
+                    <th><b>LOG I.D </b></th>
+                    <th><b>DESCRIPTION</b></th>
+                    <th><b>DATE</b></th>
                   </tr>
                 </thead>
                 <tbody>

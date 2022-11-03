@@ -49,7 +49,7 @@ body {
 .navbar-nav li a {
   color: #7D605C;
   font-size: 25px;
-  margin-left: 50px;
+  margin-left: 50px !important;
   margin-right: 70px;
   text-decoration: none;
   font-family: 'DM Sans', sans-serif;
@@ -147,7 +147,7 @@ body {
 }
 .navbar-nav li .action .menu ul li img {
   max-width: 20px;
-  margin-left: 20px;
+  margin-left: 20px!important;
   opacity: 0.5;
   transition: 0.5s;
 }

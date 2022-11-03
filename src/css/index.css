@@ -9,16 +9,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 /* font-family: 'Acme', sans-serif; FOR HEADERS */
 
-@font-face {
-  font-family: 'Bantayog-Regular';
-  src: url(/fonts/bantayog/Bantayog-Regular.otf);
-}
-
-@font-face {
-  font-family: 'Tropika-Island';
-  src: url(/fonts/Tropika_Island/Aiyari\ -\ Tropika\ Island\ Int.otf);
-}
-
 * {
   margin: 0;
   box-sizing: border-box;

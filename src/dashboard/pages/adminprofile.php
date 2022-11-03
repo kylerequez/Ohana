@@ -75,11 +75,11 @@
                                             <div class="d-flex justify-content-between align-items-center mb-3">
                                             </div>
                                             <div class="row mt-3">
-                                                <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" placeholder="First Name" value="<?php echo $user->getFname(); ?>"></div>
-                                                <div class="col-md-12"><label class="labels">Middle Name</label><input type="text" class="form-control" placeholder="Middle Name" value="<?php echo $user->getMname(); ?>"></div>
-                                                <div class="col-md-12"><label class="labels">Last Name</label><input type="text" class="form-control" placeholder="Last Name" value="<?php echo $user->getLname(); ?>"></div>
-                                                <div class="col-md-12"><label class="labels">Mobile Number (+63)</label><input type="text" class="form-control" placeholder="+63" value="<?php echo $user->getNumber(); ?>"></div>
-                                                <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="Enter email " value="<?php echo $user->getEmail(); ?>"></div>
+                                                <div class="col-md-12" ><label class="labels">Name</label><input type="text" class="form-control" placeholder="First Name" value="<?php echo $user->getFname(); ?>" style="background-color:#eed1c2;"></div>
+                                                <div class="col-md-12 mt-3"><label class="labels">Middle Name</label><input type="text" class="form-control" placeholder="Middle Name" value="<?php echo $user->getMname(); ?>" style="background-color:#eed1c2;"></div>
+                                                <div class="col-md-12 mt-3"><label class="labels">Last Name</label><input type="text" class="form-control" placeholder="Last Name" value="<?php echo $user->getLname(); ?>" style="background-color:#eed1c2;"></div>
+                                                <div class="col-md-12 mt-3"><label class="labels">Mobile Number (+63)</label><input type="text" class="form-control" placeholder="+63" value="<?php echo $user->getNumber(); ?>" style="background-color:#eed1c2;"></div>
+                                                <div class="col-md-12 mt-3"><label class="labels">Email</label><input type="text" class="form-control" placeholder="Enter email " value="<?php echo $user->getEmail(); ?>" style="background-color:#eed1c2;"></div>
                                                 <div class="text-center">
                                                     <a href="/dashboard/adminpass"><button class="btn profile-button" type="button" style="background-color:#db6551; color:white; float:left; margin-top:20px;">Change Password</button></a>
                                                 </div>

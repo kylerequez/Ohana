@@ -80,11 +80,11 @@
               <table class="posts-table">
                 <thead>
                   <tr class="users-table-info">
-                    <th>SLOT I.D</th>
-                    <th>SLOT IMAGE</th>
-                    <th>SLOT NAME</th>
-                    <th>STATUS</th>
-                    <th>ACTION</th>
+                    <th><b>SLOT I.D</b></th>
+                    <th><b>SLOT IMAGE</b></th>
+                    <th><b>SLOT NAME</b></th>
+                    <th><b>STATUS</b></th>
+                    <th><b>ACTION</b></th>
                 </thead>
                 <tbody>
                   <?php

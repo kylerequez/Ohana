@@ -148,7 +148,6 @@
             padding: 0%;
         }
     </style>
-
 </head>
 
 <body>
@@ -165,9 +164,7 @@
         $user = unserialize($_SESSION['user']);
     ?>
         <div class="layer"> </div>
-
-        <!-- Body -->
-
+ <!-- Body -->
         <div class="page-flex">
             <!-- Dashboard Sidebar -->
             <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
@@ -178,7 +175,6 @@
                 <!-- ! Main nav -->
                 <?php include_once dirname(__DIR__) . "/navbar.php" ?>
 
-                <!-- CALENDAR Main content -->
                 <main class="main users chart-page" id="skip-target">
                     <div class="container">
                         <br>
@@ -208,21 +204,14 @@
 
                                 </form>
                         </div>
-
                     </div>
-
                     <!-- CHANGE PASSWORD CONTENT -->
-
                 </main>
-
                 <!-- FOOTER -->
                 <?php include_once dirname(__DIR__) . '/footer.php'; ?>
-
             </div>
         </div>
-
         <!-- SCRIPTS -->
-
         <script>
             $('.unmask').on('click', function() {
                 if ($(this).prev('input').attr('type') == 'password')

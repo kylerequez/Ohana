@@ -74,10 +74,10 @@
           <table class="posts-table">
             <thead>
               <tr class="users-table-info">
-                <th> CONTENT I.D </th>
-                <th> CONTENT DESCRIPTION </th>
-                <th> CONTENT TYPE </th>
-                <th> DATE</th>
+                <th> <b> CONTENT I.D</b> </th>
+                <th> <b> CONTENT DESCRIPTION</b> </th>
+                <th> <b> CONTENT TYPE</b> </th>
+                <th> <b> DATE</b></th>
               </tr>
             </thead>
             <tbody>

@@ -39,107 +39,170 @@
   } else {
     $user = unserialize($_SESSION['user']);
   ?>
-  <div class="layer"> </div>
+    <div class="layer"> </div>
 
-  <!-- Body -->
+    <!-- Body -->
 
-  <div class="page-flex">
-    <!-- Dashboard Sidebar -->
-    <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
+    <div class="page-flex">
+      <!-- Dashboard Sidebar -->
+      <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
 
-    <div class="main-wrapper">
-      <!-- END OF ADMIN DASHBOARD SIDE-->
+      <div class="main-wrapper">
+        <!-- END OF ADMIN DASHBOARD SIDE-->
 
-      <!-- ! Main nav -->
-      <?php include_once dirname(__DIR__) . "/navbar.php" ?>
+        <!-- ! Main nav -->
+        <?php include_once dirname(__DIR__) . "/navbar.php" ?>
 
-      <!--  CUSTOMER ACCOUNTS CONTENT -->
-      <main class="main users chart-page" id="skip-target">
-        <div class="container">
-          <br>
-          <center>
-            <h2 class="main-title"> CUSTOMER APPOINTMENTS </h2>
-          </center>
-        </div>
-
-        <div class="users-table table-wrapper">
-          <div class="search-wrapper">
-            <i data-feather="search" aria-hidden="true"></i>
-            <input type="text" placeholder=" Search Appointment">
-            <button type="filter"> FILTER </button>
-            <button type="sort"> SORT </button>
-            <button type="calendar"> CALENDAR </button>
+        <!--  CUSTOMER ACCOUNTS CONTENT -->
+        <main class="main users chart-page" id="skip-target">
+          <div class="container">
+            <br>
+            <center>
+              <h2 class="main-title"> CUSTOMER APPOINTMENTS </h2>
+            </center>
           </div>
 
-          <br>
+          <div class="users-table table-wrapper">
+            <div class="search-wrapper">
+              <i data-feather="search" aria-hidden="true"></i>
+              <input type="text" placeholder=" Search Appointment">
+              <button type="filter"> FILTER </button>
+              <button type="sort"> SORT </button>
+              <button type="calendar"> CALENDAR </button>
+            </div>
 
-          <table class="posts-table">
-            <thead>
-              <tr class="users-table-info">
-                <th>TYPE OF APPOINTMENT</th>
-                <th>FULL NAME</th>
-                <th>CONTACT NUMBER</th>
-                <th>STATUS</th>
-                <th>DATE</th>
-                <th>ACTION</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>STUD SERVICE</td> <!-- TYPE OF APPOINTMENT -->
-                <td>CUSTOMER EMAIL ADDRESS</td>
-                <td><div class="pages-table-img">Jenny Wilson</div></td>
-                <td> PENDING </td>
-                <td>17.04.2021</td>
-                <td>
-                <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
-                <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i> </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            <br>
 
-        <div class="paginations">
-          <li class="page-item previous-page"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">1</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
-          <li class="page-item dots"><a class="page-link" href="#">...</a></li>
-          <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
-        </div>
+            <table class="posts-table">
+              <thead>
+                <tr class="users-table-info">
+                  <th><b>TYPE OF APPOINTMENT</b></th>
+                  <th><b>FULL NAME</b></th>
+                  <th><b>CONTACT NUMBER</b></th>
+                  <th><b>STATUS</b></th>
+                  <th><b>DATE</b></th>
+                  <th><b>ACTION</b></th>
+                </tr>
+              </thead>
 
-      </main>
+              <tbody>
+                <tr>
+                  <td>STUD SERVICE</td> <!-- TYPE OF APPOINTMENT -->
+                  <td>CUSTOMER EMAIL ADDRESS</td>
+                  <td>
+                    <div class="pages-table-img">Jenny Wilson</div>
+                  </td>
+                  <td> PENDING </td>
+                  <td>17.04.2021</td>
+                  <td>
+                    <button class="edit-btn transparent-btn" data-bs-toggle="modal" data-bs-target="#editModal" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
+                    <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i> </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-      <!-- FOOTER -->
-      <?php include_once dirname(__DIR__) . '/footer.php'; ?>
+          <div class="paginations">
+            <li class="page-item previous-page"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">1</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
+            <li class="page-item dots"><a class="page-link" href="#">...</a></li>
+            <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
+          </div>
 
+        </main>
+
+        <!-- FOOTER -->
+        <?php include_once dirname(__DIR__) . '/footer.php'; ?>
+
+      </div>
     </div>
-  </div>
 
-  <!-- SCRIPTS -->
+    <!-- EDIT APPOINTMENT MODAL -->
+    <form method="POST" action="/dashboard/appointments/edit">
+      <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editAppointmentsModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addAppointmentTitle"> EDIT CUSTOMER APPOINTMENT </h5>
+              <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+            </div>
+            <div class="modal-body">
+              <input name="type" type="hidden" value="APPOINTMENT">
+              <div class="mb-3">
+                <label for="fname" class="col-form-label"> Type of Appointment: </label>
+                <input type="text" class="form-control" name="fname" placeholder="Enter First Name" required style="background-color:#eed1c2; color:black">
+              </div>
+              <div class="mb-3">
+                <label for="mname" class="col-form-label"> Middle Name: </label>
+                <input type="text" class="form-control" name="mname" placeholder="Enter Middle Name" required style="background-color:#eed1c2; color:black">
+              </div>
+              <div class="mb-3">
+                <label for="lname" class="col-form-label"> Surname: </label>
+                <input type="text" class="form-control" name="lname" placeholder="Enter Surname" required style="background-color:#eed1c2; color:black">
+              </div>
+              <div class="mb-3">
+                <label for="email" class="col-form-label"> Email Address: </label>
+                <input type="email" class="form-control" name="email" placeholder="Enter Email Address" required style="background-color:#eed1c2; color:black">
+              </div>
+              <div class="mb-3">
+                <label for="number" class="col-form-label"> Contact Number: </label>
+                <input type="text" class="form-control" name="number" placeholder="Enter Contact Number" required style="background-color:#eed1c2; color:black">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="col-form-label"> Password: </label>
+                <input type="password" class="form-control" name="password" placeholder="Enter Password" required style="background-color:#eed1c2; color:black">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn" id="ToastBtn" style="background-color:#db6551"> Save Changes </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <!-- Chart library -->
-  <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
+      <!-- DELETE Modal -->
+      <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"> Delete Item Confirmation </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to delete this item?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary"> Delete </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SCRIPTS -->
 
-  <!-- Icons library -->
-  <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
+      <!-- Chart library -->
+      <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
 
-  <!-- Custom scripts -->
-  <script src="/Ohana/src/dashboard/js/script.js"></script>
+      <!-- Icons library -->
+      <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
 
-  <!-- JavaScript BOOTSTRAP Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
-  </script>
+      <!-- Custom scripts -->
+      <script src="/Ohana/src/dashboard/js/script.js"></script>
 
-  <!--SCRIPT FOR BOOTSTRAP MODAL-->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-  </script>
-  <?php
+      <!-- JavaScript BOOTSTRAP Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+      </script>
+
+      <!--SCRIPT FOR BOOTSTRAP MODAL-->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+      </script>
+    <?php
   }
-  ?>
+    ?>
 </body>
 
 </html>

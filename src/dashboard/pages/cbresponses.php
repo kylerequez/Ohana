@@ -64,11 +64,11 @@
             <table class="posts-table">
               <thead>
                 <tr class="users-table-info">
-                  <th> RESPONSE I.D </th>
-                  <th> RESPONSE </th>
-                  <th> QUERY </th>
-                  <th> TIMES ASKED </th>
-                  <th> ACTION </th>
+                  <th> <b>RESPONSE I.D</b> </th>
+                  <th> <b>RESPONSE</b></th>
+                  <th> <b>QUERY</b> </th>
+                  <th> <b>TIMES ASKED</b> </th>
+                  <th> <b>ACTION</b> </th>
                 </tr>
               </thead>
               <tbody>

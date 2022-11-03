@@ -76,11 +76,11 @@
               <table class="posts-table">
                 <thead>
                   <tr class="users-table-info">
-                    <th>DOG I.D </th>
-                    <th>DOG PICTURE </th>
-                    <th>DOG NAME</th>
-                    <th>OWNER</th>
-                    <th>ACTION</th>
+                    <th><b>DOG I.D </b></th>
+                    <th><b>DOG PICTURE </b></th>
+                    <th><b>DOG NAME </b></th>
+                    <th><b>OWNER </b></th>
+                    <th><b>ACTION </b></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -108,15 +108,15 @@
                               <div class="modal-body">
                                 <div class="mb-3">
                                   <label for="name" class="col-form-label"> DOG NAME: </label>
-                                  <input type="text" class="form-control" name="name" value="<?php echo $profile->getName(); ?>" required>
+                                  <input type="text" class="form-control" name="name" value="<?php echo $profile->getName(); ?>" required style="background-color:#eed1c2;">
                                 </div>
                                 <div class="mb-3">
                                   <label for="sex" class="col-form-label"> DOG AGE: </label>
-                                  <input type="text" class="form-control" name="age" value="<?php echo $profile->getAge(); ?>" required>
+                                  <input type="text" class="form-control" name="age" value="<?php echo $profile->getAge(); ?>" required style="background-color:#eed1c2;">
                                 </div>
                                 <div class="mb-3">
                                   <label for="sex" class="col-form-label"> BIRTHDAY: </label>
-                                  <input type="date" class="form-control" name="birthdate" value="<?php echo $profile->getBirthdate()->format('Y-m-d'); ?>" required>
+                                  <input type="date" class="form-control" name="birthdate" value="<?php echo $profile->getBirthdate()->format('Y-m-d'); ?>" required style="background-color:#eed1c2;">
                                 </div>
                                 <div class="mb-3">
                                   <label> DOG GENDER </label><br>
@@ -125,7 +125,7 @@
                                 </div>
                                 <div class="mb-3">
                                   <label for="color" class="col-form-label"> COLOR/TRAIT: </label>
-                                  <input type="text" class="form-control" name="color" value="<?php echo $profile->getColor(); ?>" required>
+                                  <input type="text" class="form-control" name="color" value="<?php echo $profile->getColor(); ?>" required style="background-color:#eed1c2;">
                                 </div>
                                 <div class="mb-3">
                                   <label for="isVaccinated" class="col-form-label"> IS VACCINATED </label><br>
@@ -140,15 +140,15 @@
                                 <div class="mb-3">
                                   <label for="ownerName" class="col-form-label"> OWNER NAME: </label>
                                   <input type="hidden" name="accountId" value="<?php echo $profile->getAccountId(); ?>">
-                                  <input type="disabled" class="form-control" name="ownerName" value="<?php echo $profile->getOwnerName(); ?>" required>
+                                  <input type="disabled" class="form-control" name="ownerName" value="<?php echo $profile->getOwnerName(); ?>" required style="background-color:#eed1c2;">
                                 </div>
                                 <div class="mb-3">
                                   <label for="price" class="col-form-label"> PRICE: </label>
-                                  <input type="text" class="form-control" name="price" value="<?php echo $profile->getPrice(); ?>" required>
+                                  <input type="text" class="form-control" name="price" value="<?php echo $profile->getPrice(); ?>" required style="background-color:#eed1c2;">
                                 </div>
                                 <div class="mb-3">
                                   <label for="status" class="col-form-label"> STATUS: </label>
-                                  <input type="text" class="form-control" name="status" value="<?php echo $profile->getStatus(); ?>" required>
+                                  <input type="text" class="form-control" name="status" value="<?php echo $profile->getStatus(); ?>" required style="background-color:#eed1c2;">
                                 </div>
                                 <div class="mb-3">
                                   <label for="fname" class="col-form-label"> DOG IMAGE: </label>

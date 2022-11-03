@@ -75,11 +75,11 @@
               <table class="posts-table">
                 <thead>
                   <tr class="users-table-info">
-                    <th>USER I.D </th>
-                    <th>NAME OF USER</th>
-                    <th>EMAIL ADDRESS</th>
-                    <th>CONTACT NUMBER</th>
-                    <th>STATUS</th>
+                    <th><b>USER I.D </b></th>
+                    <th><b>NAME OF USER</b></th>
+                    <th><b>EMAIL ADDRESS</b></th>
+                    <th><b>CONTACT NUMBER</b></th>
+                    <th><b>STATUS</b></th>
                   </tr>
                 </thead>
                 <tbody>
