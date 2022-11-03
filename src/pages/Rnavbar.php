@@ -74,9 +74,6 @@
                     <img src="/Ohana/src/images/icons/dog.png" /><a href="/ownedpets">Pet profile</a>
                   </li>
                   <li>
-                    <img src="/Ohana/src/images/icons/settings.png" /><a href="#">Setting</a>
-                  </li>
-                  <li>
                     <img src="/Ohana/src/images/icons/log-out.png" />
                     <a href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
                   </li>
@@ -90,7 +87,7 @@
   </nav>
 
   <!-- BOOTSTRAP LOGOUT MODAL -->
-  <form method="POST" action="/accounts/logout">
+  <form method="GET" action="/login">
     <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

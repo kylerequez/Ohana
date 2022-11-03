@@ -153,7 +153,7 @@ class AccountController
                 break;
             case "POST":
                 if ($this->services->changePasswordRequest($email)) {
-                    header("Location: http://localhost/login");
+                    header("Location: http://localhost/userpasschanged");
                 } else {
                     header("Location: http://localhost/forgot/$email");
                 }

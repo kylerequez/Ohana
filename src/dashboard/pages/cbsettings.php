@@ -82,31 +82,50 @@
                 // }
               ?>
                 <center>
-                  <form method="POST" class="form-inline" action="/dashboard/chatbot-settings/update">
+                  <form method="POST" class="form-inline" action="/dashboard/chatbot-settings/update" enctype="multipart/form-data">
                     <h2 class="main-title"> CHATBOT SETTINGS </h2>
-                    
+
                     <div class="chatbot-image">
                       <img src="data:image/jpeg;base64,<?php echo base64_encode($information->getBlob()); ?>" style="width:150px; height:150px;">
                       <br><input type="file" id="myFile" name="filename" style="background-color: #FAF8F0;">
+                      <input type="hidden" class="form-control" name="old_image" value="<?php echo base64_encode($information->getBlob()); ?>">
                     </div>
-                    </center><br>
-                    <label for="name" style="font-size:20px; margin-left:10%;"> <b>CHATBOT NAME:</b> </label>
-                    <input type="text" id="name" value="<?php echo $information->getName(); ?>" name="email" size="100" style="background:#eed1c2; float:right; margin-right:10%;"><br>
+                </center><br>
+                <label for="name" style="font-size:20px; margin-left:10%;"> <b>CHATBOT NAME:</b> </label>
+                <input type="text" id="name" value="<?php echo $information->getName(); ?>" name="email" size="100" style="background:#eed1c2; float:right; margin-right:10%;"><br>
 
-                    <br><label for="greeting" style="font-size:20px; margin-left:10%;"> <b>CHATBOT GREETING:</b> </label>
-                    <input type="text" id="greeting" value="<?php echo $information->getIntroduction(); ?>" name="pswd" size="100" style="background:#eed1c2; float:right; margin-right:10%;"><br>
+                <br><label for="greeting" style="font-size:20px; margin-left:10%;"> <b>CHATBOT GREETING:</b> </label>
+                <input type="text" id="greeting" value="<?php echo $information->getIntroduction(); ?>" name="pswd" size="100" style="background:#eed1c2; float:right; margin-right:10%;"><br>
 
-                    <br><label for="noReply" style="font-size:20px; margin-left:10%;"> <b>CHATBOT NO REPLY:</b> </label>
-                    <input type="text" id="noReply" value="<?php echo $information->getNoResponse(); ?>" name="pswd" size="100" style="background:#eed1c2; float:right; margin-right:10%;"><br>
+                <br><label for="noReply" style="font-size:20px; margin-left:10%;"> <b>CHATBOT NO REPLY:</b> </label>
+                <input type="text" id="noReply" value="<?php echo $information->getNoResponse(); ?>" name="pswd" size="100" style="background:#eed1c2; float:right; margin-right:10%;"><br>
 
-                    <input class="btn" type="submit" value="Save Changes" id="btn-Submit" style="margin-top:5%; margin-left:65%; background-color:#db6551; color:white; width:25%; font-size:20px;">
+                <input class="btn" type="submit" value="Save Changes" id="btn-Submit" style="margin-top:5%; margin-left:65%; background-color:#db6551; color:white; width:25%; font-size:20px;">
 
-                  </form>
-               
+                </form>
+
               <?php
               }
               ?>
             </div>
+
+            <!-- TOAST -->
+            <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+              <div class="toast-container top-0 end-0 p-3">
+                <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+                  <div class="toast-header">
+                    <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+                    <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
+                    <small> JUST NOW </small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                  </div>
+                  <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
+                </div>
+              </div>
+            <?php
+            }
+            unset($_SESSION["msg"]);
+            ?>
           </main>
 
           <!-- ! Footer -->

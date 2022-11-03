@@ -53,12 +53,14 @@
         <!--  PET PROFILES MAIN CONTENT -->
         <main class="main users chart-page" id="skip-target">
           <div class="container">
+
             <br>
             <center>
               <h2 class="main-title"> INVENTORY - PET PROFILES </h2>
             </center>
           </div>
           <div class="users-table table-wrapper">
+
             <div class="search-wrapper">
               <i data-feather="search" aria-hidden="true"></i>
               <input type="text" placeholder=" Search Dog">
@@ -181,7 +183,24 @@
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
       </div><!-- main wrapper END -->
     </div> <!-- PAGE FLEX END-->
+
     <!-- MODALS -->
+    <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+      <div class="toast-container top-0 end-0 p-3">
+        <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+          <div class="toast-header">
+            <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+            <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
+            <small> JUST NOW </small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
+        </div>
+      </div>
+    <?php
+    }
+    unset($_SESSION["msg"]);
+    ?>
 
     <!-- BOOTSTRAP LOGOUT MODAL -->
     <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutmodal" aria-hidden="true">
@@ -313,32 +332,6 @@
         </div>
       </div>
     </div>
-
-    <!-- TOAST NOTIFICATION -->
-    <div class="toast-container top-0 end-0 p-3">
-      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
-        <div class="toast-header">
-          <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
-          <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
-          <small> JUST NOW </small>
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body" style="color:#db6551; font-size:15px;">Added Pet Profile Successfully!</div>
-      </div>
-    </div>
-
-    <!-- SCRIPTS -->
-    <script>
-      //TOAST SCRIPT TRIGGER 
-      const toastTrigger = document.getElementById('ToastBtn')
-      const toastLiveExample = document.getElementById('liveToast')
-      if (toastTrigger) {
-        toastTrigger.addEventListener('click', () => {
-          const toast = new bootstrap.Toast(toastLiveExample)
-          toast.show()
-        })
-      }
-    </script>
 
     <!-- Chart library -->
     <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>

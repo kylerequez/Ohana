@@ -221,37 +221,24 @@
                 </div>
               </div>
             </div>
-            
 
-          <!-- TOAST NOTIFICATION FOR ADD STAFF -->
-          <div class="toast-container top-0 end-0 p-3">
-            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
-              <div class="toast-header">
-                <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
-                <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
-                <small> JUST NOW </small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            <!-- TOAST -->
+            <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+              <div class="toast-container top-0 end-0 p-3">
+                <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+                  <div class="toast-header">
+                    <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+                    <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
+                    <small> JUST NOW </small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                  </div>
+                  <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
+                </div>
               </div>
-              <div class="toast-body" style="color:#db6551; font-size:15px;">Added Staff Successfully!</div>
-            </div>
-          </div>
-          </form>
-
-
-          <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-            <div class="toast show position-fixed bottom-0 end-0 p-3">
-              <div class="toast-header">
-                <strong class="me-auto">Toast Header</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-              </div>
-              <div class="toast-body">
-                <p><?php echo $_SESSION["msg"];
-                    unset($_SESSION["msg"]); ?></p>
-              </div>
-            </div>
-          <?php
-          }
-          ?>
+            <?php
+            }
+            unset($_SESSION["msg"]);
+            ?>
         </main>
 
         <!-- ! Footer -->

@@ -49,13 +49,25 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
+
             <h1 class="sign-up__title" style="font-size: 100px; margin-top: 10%; font-family: 'Acme', sans-serif;">
               Create An Account
             </h1>
             <p class="sign-up__descr" style="font-size: 70px; color:#c0b65a; font-family: 'Acme', sans-serif;">
-              Welcome to Ohana! <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; unset($_SESSION["msg"]); ?>
+              Welcome to Ohana! 
             </p>
             <p style="font-size:20px;"> Fill up the fields below to create an account. </p>
+
+            <!-- ALERT -->
+            <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+              <div class="alert alert-success" role="alert">
+              <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; unset($_SESSION["msg"]); ?>
+              </div>
+            <?php
+            }
+            unset($_SESSION["msg"]);
+            ?>
+
           </header>
           <form class="sign-up__form form" action="/accounts/register" method="POST">
             <input type="hidden" name="type" value="USER">
@@ -91,8 +103,10 @@
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
-                  <input class="input__field" type="email "id="email" name="email" placeholder="Email" required type="text" /><label class="input__label" for="email">
-                    Email <!-- <i class="uil uil-envelope email-icon"></i> --> </label>
+                  <input class="input__field" type="email " id="email" name="email" placeholder="Email" required type="text" /><label class="input__label" for="email">
+                    Email
+                    <!-- <i class="uil uil-envelope email-icon"></i> -->
+                  </label>
                 </div>
               </div>
             </div>
@@ -124,11 +138,12 @@
               </div>
             </div>
             <div class="form__row">
-              <div class="input-checkbox"><!-- CHECKBOX -->
+              <div class="input-checkbox">
+                <!-- CHECKBOX -->
                 <div class="input-checkbox__container">
 
-                  <input type="checkbox" class="input-checkbox__field" id="agree" required="true;"/> <span class="input-checkbox__square"></span>
-                  
+                  <input type="checkbox" class="input-checkbox__field" id="agree" required="true;" /> <span class="input-checkbox__square"></span>
+
                   <label class="input-checkbox__label" for="agree"> I agree with the
                     <a href="#" style="text-decoration: none; color:#ff5757" data-bs-toggle="modal" data-bs-target="#termsModal">
                       Terms and Conditions </a> </label>
@@ -159,21 +174,21 @@
     <!-- SCRIPTS -->
     <script>
       const input = document.querySelector("input"),
-            emailIcon = document.querySelector(".email-icon")
+        emailIcon = document.querySelector(".email-icon")
 
-            input.addEventListener("keyup", () =>{
-              let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      input.addEventListener("keyup", () => {
+        let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-              if(input.value === ""){
-                return console.log("input is empty")
-              }
-              if(input.value.match(pattern)){
-                emailIcon.classList.replace("uil-envelope","uil-check-circle");
-                return emailIcon.style.color ="green"
-              }
-                emailIcon.classList.replace("uil-check-circle","uil-envelope");
-                return emailIcon.style.color ="red"
-            })
+        if (input.value === "") {
+          return console.log("input is empty")
+        }
+        if (input.value.match(pattern)) {
+          emailIcon.classList.replace("uil-envelope", "uil-check-circle");
+          return emailIcon.style.color = "green"
+        }
+        emailIcon.classList.replace("uil-check-circle", "uil-envelope");
+        return emailIcon.style.color = "red"
+      })
     </script>
 
     <script>

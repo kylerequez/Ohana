@@ -51,6 +51,15 @@
               Welcome to Ohana!
             </h1>
             <p style="font-size:20px;"> Complete registration by entering the OTP sent to your email. </p>
+               <!-- ALERT -->
+               <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+              <div class="alert alert-success" role="alert">
+              <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; unset($_SESSION["msg"]); ?>
+              </div>
+            <?php
+            }
+            unset($_SESSION["msg"]);
+            ?>
           </header>
           <form class="sign-up__form form" method="GET" action="/accounts/register">
             <div class="form__row">

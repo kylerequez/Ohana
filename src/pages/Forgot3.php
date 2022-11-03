@@ -51,6 +51,15 @@
           <p class="sign-up__descr" style="font-size: 25px;">
             Input a new password for your account.
           </p>
+           <!-- ALERT -->
+           <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+              <div class="alert alert-success" role="alert">
+              <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; unset($_SESSION["msg"]); ?>
+              </div>
+            <?php
+            }
+            unset($_SESSION["msg"]);
+            ?>
         </header>
 
         <form id="form" method="POST" action="/forgotpassword" class="sign-up__form form">
