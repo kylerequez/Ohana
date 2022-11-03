@@ -55,6 +55,15 @@
             <h1 class="sign-up__title" style="font-size: 120px; color:#ff5757;">
               OHANA! 
             </h1>
+             <!-- ALERT -->
+             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+              <div class="alert alert-success" role="alert">
+              <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; unset($_SESSION["msg"]); ?>
+              </div>
+            <?php
+            }
+            unset($_SESSION["msg"]);
+            ?>
           </header>
           
           <form id="form" method="POST" action="/accounts/login" class="sign-up__form form">

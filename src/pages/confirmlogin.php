@@ -4,7 +4,7 @@
 <head>
 
 
-  <title> OHANA REGISTER </title>
+  <title> CONFIRM LOGIN </title>
 
   <!-- META TAGS -->
   <meta charset="utf-8">
@@ -48,9 +48,9 @@
         <div class="sign-up__content">
           <header class="sign-up__header">
             <h1 class="sign-up__title" style="font-size: 100px; margin-top: 10%; font-family: Bantayog-Regular;">
-              Welcome to Ohana!
+              Welcome Back!
             </h1>
-            <p style="font-size:20px;"> Complete registration by entering the OTP sent to your email. </p>
+            <p style="font-size:20px;"> Please enter the OTP sent to your email to proceed. </p>
                <!-- ALERT -->
                <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
               <div class="alert alert-success" role="alert">
@@ -78,7 +78,7 @@
                 </div>
               </div>
             </div>
-            <center><br>
+            <center><br><br>
               <div class="form__row">
                 <p style="font-size:20px;">Did not receive OTP? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="##">Resend OTP</a></p>
               </div>
@@ -90,11 +90,8 @@
                 </div>
               </div>
             </center>
-            <hr style="width:100%"><br>
-            <center>
-              <div class="form__row">
-                <p style="font-size:20px;">Already have an account? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="/login">Login</a></p>
-              </div>
+         
+              
           </form>
         </div>
       </div>
