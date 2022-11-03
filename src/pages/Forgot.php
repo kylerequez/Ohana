@@ -63,13 +63,8 @@
             }
             unset($_SESSION["msg"]);
             ?>
-          
           </header>
-
-          <?php if(isset($_SESSION["msg"])){ ?>
-          <h1><?php echo $_SESSION["msg"]; unset($_SESSION); ?></h1>
-          <?php } ?>
-
+          
           <form id="form" method="GET" action="/forgotpassword" class="sign-up__form form">
             <div class="form__row form__row--two">
               <div class="input form__inline-input">

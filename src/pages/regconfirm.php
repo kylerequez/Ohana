@@ -65,7 +65,7 @@
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
-                  <label class="input__label" for="confirm-password"> <b>Enter OTP <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; unset($_SESSION["msg"]); ?></b> </label><br>
+                  <label class="input__label" for="confirm-password"> <b>Enter OTP</b> </label><br>
                   <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
                     <!-- OTP 6 BOXES FOR USER INPUT -->
                     <input class="m-2 text-center form-control rounded" type="text" name="otpFirst" id="otpFirst" maxlength="1" />
