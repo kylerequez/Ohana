@@ -1,5 +1,5 @@
 <?php
-
+require_once dirname(__DIR__) . "/models/Account.php";
 class ChatbotController
 {
     private ?ChatbotServices $services = null;
@@ -37,9 +37,16 @@ class ChatbotController
                 } else {
                     $_POST["image"] = base64_decode($_POST["old_image"]);
                 }
-                print_r($_POST);
-                // if ($this->services->updateSettings($data)) {
-                // }
+                if (!$this->services->updateSettings($_POST)) {
+                    $this->processSettingsCollectionRequest("GET");
+                }
+                $user = unserialize($_SESSION["user"]);
+                $log = $user->getFullName() . " has updated the Chatbot Settings";
+                if (!$this->logservices->addLog($log)) {
+                    $_SESSION["msg"] = "There was an error in the logging of the action.";
+                }
+                $this->processSettingsCollectionRequest("GET");
+                break;
         }
     }
 }

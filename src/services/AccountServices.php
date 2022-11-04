@@ -283,7 +283,7 @@ class AccountServices
     {
         if (is_null($_SESSION["userOtp"])) {
             echo "No OTP";
-            $_SESSION["msg"] = "No OTP";
+            $_SESSION["msg"] = "There was no OTP issued in your account. Please try again.";
             return false;
         }
         $otp = implode($data);
@@ -294,7 +294,7 @@ class AccountServices
         }
         $email = $_SESSION["email"];
         if (!$this->dao->verifyAccount($email)) {
-            $_SESSION["msg"] = "The account was not verified.";
+            $_SESSION["msg"] = "There was an error in verifying your account. Please try again.";
             return false;
         }
         return true;

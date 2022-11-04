@@ -104,8 +104,7 @@
               <h2 class="main-title"> CALENDAR </h2>
             </center>
           </div>
-          <br>
-          <div class="container py-5" id="page-container" style="margin-top: 10%">
+          <div class="container py-5" id="page-container" style="margin-top: 0%">
             <div class="row">
               <div class="col-md-9">
                 <div id="calendar"></div>

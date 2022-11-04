@@ -71,15 +71,6 @@
               // print_r($information);
 
               if (!empty($information)) {
-
-                // foreach ($information as $data) {
-                //   echo $data->getId() . " // " . $data->getType() . " // " . $data->getName() . " // " . $data->getInformation() . " // ";
-                //   if (!is_null($data->getBlob())) {
-                //     echo '<img src="data:image/jpeg;base64,' . base64_encode($data->getBlob()) . '" height="10%" width="10%"><br>';
-                //   } else {
-                //     echo "NO BLOB<br>";
-                //   }
-                // }
               ?>
                 <center>
                   <form method="POST" class="form-inline" action="/dashboard/chatbot-settings/update" enctype="multipart/form-data">
@@ -92,13 +83,13 @@
                     </div>
                 </center><br>
                 <label for="name" style="font-size:20px; margin-left:10%;"> <b>CHATBOT NAME:</b> </label>
-                <input type="text" id="name" value="<?php echo $information->getName(); ?>" name="email" size="100" style="background:#eed1c2; float:right; margin-right:10%;"><br>
+                <input type="text" id="name" value="<?php echo $information->getName(); ?>" name="name" size="100" style="background:#eed1c2; float:right; margin-right:10%;"><br>
 
-                <br><label for="greeting" style="font-size:20px; margin-left:10%;"> <b>CHATBOT GREETING:</b> </label>
-                <input type="text" id="greeting" value="<?php echo $information->getIntroduction(); ?>" name="pswd" size="100" style="background:#eed1c2; float:right; margin-right:10%;"><br>
+                <br><label for="introduction" style="font-size:20px; margin-left:10%;"> <b>CHATBOT GREETING:</b> </label>
+                <input type="text" id="introduction" value="<?php echo $information->getIntroduction(); ?>" name="introduction" size="100" style="background:#eed1c2; float:right; margin-right:10%;"><br>
 
-                <br><label for="noReply" style="font-size:20px; margin-left:10%;"> <b>CHATBOT NO REPLY:</b> </label>
-                <input type="text" id="noReply" value="<?php echo $information->getNoResponse(); ?>" name="pswd" size="100" style="background:#eed1c2; float:right; margin-right:10%;"><br>
+                <br><label for="noResponse" style="font-size:20px; margin-left:10%;"> <b>CHATBOT NO REPLY:</b> </label>
+                <input type="text" id="noResponse" value="<?php echo $information->getNoResponse(); ?>" name="noResponse" size="100" style="background:#eed1c2; float:right; margin-right:10%;"><br>
 
                 <input class="btn" type="submit" value="Save Changes" id="btn-Submit" style="margin-top:5%; margin-left:65%; background-color:#db6551; color:white; width:25%; font-size:20px;">
 
