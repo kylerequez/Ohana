@@ -24,7 +24,6 @@ class ChatbotServices
         $noResponse = $data["noResponse"];
 
         $information = new ChatbotInformation($blob, $name, $introduction, $noResponse);
-
         if(!$this->dao->updateSettings($information)){
             $_SESSION["msg"] = "There was an error in updating the Chatbot Settings.";
             return false;

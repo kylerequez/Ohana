@@ -89,23 +89,106 @@ class AccountServices
         return true;
     }
 
-    public function loginAccount(string $email, string $password): mixed
+    public function loginRequest(array $data): bool
     {
+        $email = trim($data["email"]);
+        $password = trim($data["password"]);
         $account = $this->dao->searchByEmail($email);
         if (is_null($account)) {
             $_SESSION["msg"] = "The account credentials you have entered is not in the database. Please consider registering a new account.";
-            return null;
+            return false;
         }
         if ($account->getStatus() == "DISABLED" or $account->getStatus() == "UNREGISTERED") {
             $_SESSION["msg"] = "The account you have entered has been disabled or is unregistered. Please contact an administrator for more details.";
-            return null;
+            return false;
         }
         if (!password_verify($password, $account->getPassword())) {
             $_SESSION["msg"] = "You have entered the wrong password. Please try again.";
-            return null;
+            return false;
+        }
+        // Create a new PHPMailer instance
+        $mail = new PHPMailer();
+        // Tell PHPMailer to use SMTP
+        $mail->isSMTP();
+        // Enable SMTP debugging
+        // SMTP::DEBUG_OFF = off (for production use)
+        // SMTP::DEBUG_CLIENT = client messages
+        // SMTP::DEBUG_SERVER = client and server messages
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;
+        // Set the hostname of the mail server
+        $mail->Host = 'smtp.gmail.com';
+        // Use `$mail->Host = gethostbyname('smtp.gmail.com');`
+        // if your network does not support SMTP over IPv6,
+        // though this may cause issues with TLS
+        // Set the SMTP port number:
+        // - 465 for SMTP with implicit TLS, a.k.a. RFC8314 SMTPS or
+        // - 587 for SMTP+STARTTLS
+        $mail->Port = 465;
+        // Set the encryption mechanism to use:
+        // - SMTPS (implicit TLS on port 465) or
+        // - STARTTLS (explicit TLS on port 587)
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        // Whether to use SMTP authentication
+        $mail->SMTPAuth = true;
+        // Username to use for SMTP authentication - use full email address for gmail
+        $mail->Username = 'ohana.kennel.business@gmail.com';
+        // Password to use for SMTP authentication
+        $mail->Password = 'ctdlqnibzafgmwyj';
+        // Set who the message is to be sent from
+        // Note that with gmail you can only use your account address (same as `Username`)
+        // or predefined aliases that you have configured within your account.
+        // Do not use user-submitted addresses in here
+        $mail->setFrom('ohana.kennel.business@gmail.com');
+        // Set an alternative reply-to address
+        // This is a good place to put user-submitted addresses
+        // $mail->addReplyTo('replyto@example.com', 'First Last');
+        // Set who the message is to be sent to
+        $mail->addAddress($email);
+        // Set the subject line
+        $mail->Subject = 'Ohana Account Login OTP';
+        // Read an HTML message body from an external file, convert referenced images to embedded,
+        // convert HTML into a basic plain-text alternative body
+        // $mail->msgHTML(file_get_contents('/phpmailertest/contents.html'), dirname(__DIR__) . '/phpmailertest/');
+        $otp = rand(100000, 999999);
+        $mail->Body = "Your Ohana Account Login OTP is: $otp";
+        //Replace the plain text body with one created manually
+        $mail->AltBody = 'Ohana Account Login OTP';
+        // Attach an image file
+        // $mail->addAttachment('images/phpmailer_mini.png');
+        //send the message, check for errors
+        if (!$mail->send()) {
+            //echo 'Mailer Error: ' . $mail->ErrorInfo;
+            $_SESSION["msg"] = "There was an error in sending the otp to your mail.";
+            return false;
+        } else {
+            //echo 'Message sent!';
+            $_SESSION["userOtp"] = $otp;
+            $_SESSION["email"] = $email;
+            return true;
+        }
+    }
+
+    public function verifyLogin(array $data): mixed
+    {
+        if (is_null($_SESSION["userOtp"])) {
+            echo "No OTP";
+            $_SESSION["msg"] = "There was no OTP issued in your account. Please try again.";
+            return false;
+        }
+        $otp = implode($data);
+        if ($otp != $_SESSION["userOtp"]) {
+            echo "The OTP entered was incorrect. Please try again.";
+            $_SESSION["msg"] = "The OTP entered was incorrect. Please try again.";
+            return false;
+        }
+        $email = $_SESSION["email"];
+        $account = $this->dao->searchByEmail($email);
+        if (is_null($account)) {
+            $_SESSION["msg"] = "There was an error in verifying your account. Please try again.";
+            return false;
         }
         $_SESSION["user"] = serialize($account);
-        return $account;
+        return true;
     }
 
     public function logoutAccount(): bool
@@ -279,7 +362,7 @@ class AccountServices
         }
     }
 
-    public function verifyOtp(array $data): mixed
+    public function verifyRegistration(array $data): mixed
     {
         if (is_null($_SESSION["userOtp"])) {
             echo "No OTP";

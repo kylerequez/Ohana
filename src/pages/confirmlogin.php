@@ -61,7 +61,7 @@
             unset($_SESSION["msg"]);
             ?>
           </header>
-          <form class="sign-up__form form" method="GET" action="/accounts/register">
+          <form class="sign-up__form form" method="GET" action="/accounts/login">
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
@@ -86,7 +86,7 @@
             <center>
               <div class="form__row">
                 <div class="logbtn">
-                  <button><span> Submit </span></button>
+                  <button><span>Submit</span></button>
                 </div>
               </div>
             </center>

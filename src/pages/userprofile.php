@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title> USER PROFILE </title>
     <!-- META TAGS -->
@@ -20,13 +21,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Web Icon -->
     <link rel="shortcut icon" href="/Ohana/src/images/Landing/ohana.png" type="image/x-icon">
-    <!-- Bootstrap CSS  CDN --><!-- 5.2.1 -->
+    <!-- Bootstrap CSS  CDN -->
+    <!-- 5.2.1 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
     </style>
 </head>
+
 <body style="background-color: #FAF8F0;">
     <main>
         <!-- REGISTERED USERS NAVIGATION BAR-->
@@ -40,27 +43,27 @@
                 </div>
             </section>
             <section class="profilesection">
-                <div class="container" style="margin-left:30%">
-                    <div class="col-md-5" style="margin-left:7%">
-                        <div class="p-3 py-5">
-                            <div class="d-flex justify-content-between align-items-center mb-3"></div>
-                            <div class="row mt-3">
-                                <div class="col-md-12"><label class="labels" style="color:#c0b65a; font-size:20px">Name</label><input type="text" class="form-control" placeholder="First Name" value="" id="" name=""></div>
-                                <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px"><label class="labels">Middle Name</label><input type="text" class="form-control" placeholder="Middle Name" value="" id="" name=""></div>
-                                <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px"><label class="labels">Last Name</label><input type="text" class="form-control" placeholder="Last Name" value="" id="" name=""></div>
-                                <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px"><label class="labels">Mobile Number (+63)</label><input type="text" class="form-control" placeholder="+63" value="" id="" name=""></div>
-                                <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px"><label class="labels">Email</label>
-                                    <input type="text" class="form-control" placeholder="Enter Email " value="" id="email" name="email">
+                <form action="" method="">
+                    <div class="container" style="margin-left:30%">
+                        <div class="col-md-5" style="margin-left:7%">
+                            <div class="p-3 py-5">
+                                <div class="d-flex justify-content-between align-items-center mb-3"></div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12"><label class="labels" style="color:#c0b65a; font-size:20px">Name</label><input type="text" class="form-control" placeholder="<?php echo $account->getFname(); ?>" value="<?php echo $account->getFname(); ?>" id="" name=""></div>
+                                    <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px"><label class="labels">Middle Name</label><input type="text" class="form-control" placeholder="<?php echo $account->getMname(); ?>" value="<?php echo $account->getMname(); ?>" id="" name=""></div>
+                                    <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px"><label class="labels">Last Name</label><input type="text" class="form-control" placeholder="<?php echo $account->getLname(); ?>" value="<?php echo $account->getLname(); ?>" id="" name=""></div>
+                                    <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px"><label class="labels">Mobile Number (+63)</label><input type="text" class="form-control" placeholder="+63<?php echo $account->getNumber(); ?>" value="<?php echo $account->getNumber(); ?>" id="" name=""></div>
+                                    <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px"><label class="labels">Email</label><input type="text" class="form-control" placeholder="<?php echo $account->getEmail(); ?>" value="<?php echo $account->getEmail(); ?>" id="email" name="email"></div>
                                 </div>
+                                <span>
+                                    <div class="text-center"><button class="btn profile-button" type="button" style="background-color:#db6551; color:white; float:right">Save changes</button>
+                                    </div>
+                                    <div class="mt-5 text-center"><a href="/changepassword"><button class="btn profile-button" type="button" style="background-color:#db6551; color:white; float:right; margin-right:10px;"> Change Password</button></a></div>
+                                </span>
                             </div>
-                            <span>
-                                <div class="text-center"><a href=""><button class="btn profile-button" type="button" style="background-color:#db6551; color:white; float:right">Save changes</button></a>
-                                </div>
-                                <div class="mt-5 text-center"><a href="/changepassword"><button class="btn profile-button" type="button" style="background-color:#db6551; color:white; float:right; margin-right:10px;"> Change Password</button></a></div>
-                            </span>
                         </div>
                     </div>
-                </div>
+                </form>
             </section>
         </div>
     </main>
@@ -78,4 +81,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 </body>
+
 </html>
