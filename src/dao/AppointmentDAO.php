@@ -20,7 +20,7 @@ class AppointmentDAO
             if ($stmt->execute() > 0) {
                 while ($appointment = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $existingAppointment = new Appointment(
-                        $appointment["id"],
+                        $appointment["title"],
                         null,
                         null,
                         $appointment["description"],
@@ -29,7 +29,7 @@ class AppointmentDAO
                     );
                     $existingAppointment->setId($appointment["id"]);
 
-                    $appointments[] = $existingAppointment;
+                    $appointments[$appointment["id"]] = $existingAppointment;
                 }
             }
             return $appointments;

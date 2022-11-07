@@ -1,13 +1,13 @@
 <?php
-// $host     = 'localhost';
-// $username = 'root';
-// $password = '';
-// $dbname   ='ohana_db';
+$host     = 'localhost';
+$username = 'root';
+$password = '';
+$dbname   = 'ohana_db';
 
-// $conn = new mysqli($host, $username, $password, $dbname);
-// if(!$conn){
-//     die("Cannot connect to the database.". $conn->error);
-// }
+$conn = new mysqli($host, $username, $password, $dbname);
+if (!$conn) {
+  die("Cannot connect to the database." . $conn->error);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,11 +127,11 @@
                           <textarea rows="3" class="form-control form-control-sm rounded-0" name="description" id="description" required></textarea>
                         </div>
                         <div class="form-group mb-2">
-                          <label for="start_datetime" class="control-label">Start</label>
+                          <label for="start_datetime" class="control-label">Start Time</label>
                           <input type="datetime-local" class="form-control form-control-sm rounded-0" name="start_datetime" id="start_datetime" required>
                         </div>
                         <div class="form-group mb-2">
-                          <label for="end_datetime" class="control-label">End</label>
+                          <label for="end_datetime" class="control-label">End Time</label>
                           <input type="datetime-local" class="form-control form-control-sm rounded-0" name="end_datetime" id="end_datetime" required>
                         </div>
                       </form>
@@ -162,10 +162,10 @@
                       <dd id="title" class="fw-bold fs-4"></dd>
                       <dt class="text-muted">Description</dt>
                       <dd id="description" class=""></dd>
-                      <dt class="text-muted">Start</dt>
-                      <dd id="start" class=""></dd>
-                      <dt class="text-muted">End</dt>
-                      <dd id="end" class=""></dd>
+                      <dt class="text-muted">Start Time</dt>
+                      <input type="datetime-local" id="start" class="" disabled></input>
+                      <dt class="text-muted">End Time</dt>
+                      <input type="datetime-local" id="end" class="" disabled></input>
                     </dl>
                   </div>
                 </div>
@@ -207,10 +207,15 @@
     ?>
     <?php
     //if (isset($conn)) $conn->close();
+    include_once dirname(__DIR__) . "/../models/Appointment.php";
     $sched_res = unserialize($_SESSION["appointments"]);
+    //print_r($sched_res);
+    //$sched_res = json_encode($sched_res);
+    //print_r($sched_res);
     ?>
     <script>
-      var scheds = $.parseJSON('<?= json_encode($sched_res) ?>')
+      var scheds = $.parseJSON('<?= json_encode($sched_res) ?>');
+      console.log(scheds)
     </script>
     <script src="/Ohana/src/dashboard/js/calendar-script.js"></script>
   <?php

@@ -8,8 +8,9 @@ $(function() {
             events.push({
                 id: row.id,
                 title: row.title,
-                start: row.start_datetime,
-                end: row.end_datetime,
+                description: row.description,
+                start: row.startDate.date,
+                end: row.endDate.date,
             });
         });
     }
@@ -34,8 +35,8 @@ $(function() {
             if (!!scheds[id]) {
                 _details.find("#title").text(scheds[id].title);
                 _details.find("#description").text(scheds[id].description);
-                _details.find("#start").text(scheds[id].sdate);
-                _details.find("#end").text(scheds[id].edate);
+                _details.find("#start").val(String(scheds[id].startDate.date.replace(/\.\d+/, "")));
+                _details.find("#end").val(String(scheds[id].endDate.date.replace(/\.\d+/, "")));
                 _details.find("#edit,#delete").attr("data-id", id);
                 _details.modal("show");
             } else {
@@ -61,19 +62,22 @@ $(function() {
         var id = $(this).attr("data-id");
         if (!!scheds[id]) {
             var _form = $("#schedule-form");
+            console.log(id);
             console.log(
-                String(scheds[id].start_datetime),
-                String(scheds[id].start_datetime).replace(" ", "\\t")
+                scheds[id].startDate.date,
+                String(scheds[id].startDate.date.replace(" ", "T"))
             );
             _form.find('[name="id"]').val(id);
             _form.find('[name="title"]').val(scheds[id].title);
             _form.find('[name="description"]').val(scheds[id].description);
             _form
                 .find('[name="start_datetime"]')
-                .val(String(scheds[id].start_datetime).replace(" ", "T"));
+                .val(String(scheds[id].startDate.date.replace(" ", "T").replace(/\.\d+/, "")));
+            console.log("Start1");
             _form
                 .find('[name="end_datetime"]')
-                .val(String(scheds[id].end_datetime).replace(" ", "T"));
+                .val(String(scheds[id].endDate.date.replace(" ", "T").replace(/\.\d+/, "")));
+            console.log("End");
             $("#event-details-modal").modal("hide");
             _form.find('[name="title"]').focus();
         } else {

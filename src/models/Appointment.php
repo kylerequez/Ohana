@@ -1,6 +1,6 @@
 <?php
 
-class Appointment
+class Appointment implements JsonSerializable
 {
     // Instance Variable
     private ?int $id = null;
@@ -20,6 +20,12 @@ class Appointment
         $this->description = $description;
         $this->startDate = $startDate;
         $this->endDate = $endDate;
+    }
+
+    // Implement JsonSerialize
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**
