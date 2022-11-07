@@ -26,6 +26,15 @@ class AppointmentController
     {
         switch ($method) {
             case "GET":
+                if (!$this->services->deleteAppointment($id)) {
+                    $this->processCollectionRequest($method);
+                }
+                $user = unserialize($_SESSION["user"]);
+                $log = $user->getFullName() . " has deleted Account ID $id";
+                if (!$this->logservices->addLog($log)) {
+                    $_SESSION["msg"] = "There was an error in the logging of the action.";
+                }
+                $this->processCollectionRequest($method);
                 break;
             case "POST":
                 break;
@@ -36,11 +45,7 @@ class AppointmentController
     {
         switch ($method) {
             case "GET":
-                echo "Wow";
-                if (!isset($_SESSION)) session_start();
                 $_SESSION["appointments"] = serialize($this->services->getAllAppointments());
-                print(json_encode($_SESSION["appointments"]));
-                
                 header("Location: http://localhost/dashboard/calendar");
                 break;
             case "POST":

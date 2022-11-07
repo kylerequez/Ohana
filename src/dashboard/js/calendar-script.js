@@ -33,11 +33,21 @@ $(function() {
             var _details = $("#event-details-modal");
             var id = info.event.id;
             if (!!scheds[id]) {
-                _details.find("#title").text(scheds[id].title);
-                _details.find("#description").text(scheds[id].description);
-                _details.find("#start").val(String(scheds[id].startDate.date.replace(/\.\d+/, "")));
-                _details.find("#end").val(String(scheds[id].endDate.date.replace(/\.\d+/, "")));
-                _details.find("#edit,#delete").attr("data-id", id);
+                _details
+                    .find("#title")
+                    .text(scheds[id].title);
+                _details
+                    .find("#description")
+                    .text(scheds[id].description);
+                _details
+                    .find("#start")
+                    .val(String(scheds[id].startDate.date.replace(/\.\d+/, "")));
+                _details
+                    .find("#end")
+                    .val(String(scheds[id].endDate.date.replace(/\.\d+/, "")));
+                _details
+                    .find("#edit,#delete")
+                    .attr("data-id", id);
                 _details.modal("show");
             } else {
                 alert("Event is undefined");
@@ -67,13 +77,19 @@ $(function() {
                 scheds[id].startDate.date,
                 String(scheds[id].startDate.date.replace(" ", "T"))
             );
-            _form.find('[name="id"]').val(id);
-            _form.find('[name="title"]').val(scheds[id].title);
-            _form.find('[name="description"]').val(scheds[id].description);
+            _form
+                .find('[name="id"]')
+                .val(id);
+            _form
+                .find('[name="title"]')
+                .val(scheds[id].title);
+            _form
+                .find('[name="description"]')
+                .val(scheds[id].description);
             _form
                 .find('[name="start_datetime"]')
                 .val(String(scheds[id].startDate.date.replace(" ", "T").replace(/\.\d+/, "")));
-            console.log("Start1");
+            console.log("Start");
             _form
                 .find('[name="end_datetime"]')
                 .val(String(scheds[id].endDate.date.replace(" ", "T").replace(/\.\d+/, "")));
@@ -81,7 +97,7 @@ $(function() {
             $("#event-details-modal").modal("hide");
             _form.find('[name="title"]').focus();
         } else {
-            alert("Event is undefined");
+            alert("The event does not exist!");
         }
     });
 
@@ -91,7 +107,7 @@ $(function() {
         if (!!scheds[id]) {
             var _conf = confirm("Are you sure to delete this scheduled event?");
             if (_conf === true) {
-                location.href = "./delete_schedule.php?id=" + id;
+                location.replace("/dashboard/appointments/delete/" + id);
             }
         } else {
             alert("Event is undefined");

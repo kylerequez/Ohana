@@ -17,4 +17,9 @@ $controller = new AppointmentController($services, $logservices);
 if($_SERVER["REQUEST_METHOD"] === "GET" && !isset($id))
 {
     $controller->processRequest($_SERVER["REQUEST_METHOD"], null);
+} elseif($_SERVER["REQUEST_METHOD"] === "GET" && isset($id)) {
+    echo "Delete $id";
+    $controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
+} elseif($_SERVER["REQUEST_METHOD"] === "POST" && isset($id)) {
+    $controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
 }

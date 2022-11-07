@@ -55,7 +55,6 @@ class AccountController
                 // Staff Delete
             case "GET":
                 echo "DELETE";
-                if (!isset($_SESSION)) session_start();
                 if (!$this->services->deleteAccount($id)) {
                     $this->processStaffCollectionRequest($method);
                 }
@@ -69,7 +68,6 @@ class AccountController
                 // Staff Update
             case "POST":
                 echo "UPDATE";
-                if (!isset($_SESSION)) session_start();
                 if (!$this->services->updateAccount($id, $_POST)) {
                     $this->processStaffCollectionRequest("GET");
                 }
@@ -94,7 +92,6 @@ class AccountController
                 break;
                 // Add Staff
             case "POST":
-                if (!isset($_SESSION)) session_start();
                 if (!$this->services->addAccount($_POST)) {
                     $this->processStaffCollectionRequest("GET");
                 }
