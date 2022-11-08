@@ -27,4 +27,24 @@ class AppointmentServices
         $_SESSION["msg"] = "You have successfully deleted Appointment $id!";
         return true;
     }
+
+    public function updateAppointment(string $id, array $data): bool
+    {
+        if (is_null($this->dao->searchById($id))) {
+            $_SESSION["msg"] = "There was an error in updating the appointment. The appointment does not exist in the database.";
+            return false;
+        }
+        $title = trim($data["title"]);
+        $description = trim($data["description"]);
+        $startDate = new DateTime(str_replace("T", " ", $data["startDate"]));
+        $endDate = new DateTime(str_replace("T", " ", $data["endDate"]));
+        $appointment = new Appointment($title, null, null, $description, $startDate, $endDate);
+        $appointment->setId($id);
+        if (!$this->dao->updateAppointment($appointment)) {
+            $_SESSION["msg"] = "There was an error in updating the appointment.";
+            return false;
+        }
+        $_SESSION["msg"] = "You have successfully updated Appointment $id!";
+        return true;
+    }
 }

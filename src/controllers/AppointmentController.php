@@ -15,7 +15,7 @@ class AppointmentController
     // STAFF
     public function processRequest(string $method, ?string $id): void
     {
-        if ($id) {
+        if (isset($id)) {
             $this->processResourceRequest($method, $id);
         } else {
             $this->processCollectionRequest($method);
@@ -37,10 +37,15 @@ class AppointmentController
                 $this->processCollectionRequest($method);
                 break;
             case "POST":
-                print_r($_POST);
-                // if (!$this->services->updateAppointment($id, $_POST)) {
-                //     $this->processCollectionRequest("GET");
-                // }
+                if (!$this->services->updateAppointment($id, $_POST)) {
+                    $this->processCollectionRequest("GET");
+                }
+                $user = unserialize($_SESSION["user"]);
+                $log = $user->getFullName() . " has updated Account ID $id";
+                if (!$this->logservices->addLog($log)) {
+                    $_SESSION["msg"] .= "There was an error in the logging of the action.";
+                }
+                $this->processCollectionRequest("GET");
                 break;
         }
     }
@@ -53,6 +58,7 @@ class AppointmentController
                 header("Location: http://localhost/dashboard/calendar");
                 break;
             case "POST":
+                echo "test1";
                 break;
         }
     }

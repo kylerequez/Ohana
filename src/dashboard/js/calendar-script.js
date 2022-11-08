@@ -63,7 +63,7 @@ $(function() {
 
     // Form reset listener
     $("#schedule-form").on("reset", function() {
-        console.log("reset");
+        // console.log("reset");
         $(this).attr('action', '');
         $(this).find("input:hidden").val("");
         $(this).find("input:visible").first().focus();
@@ -75,12 +75,12 @@ $(function() {
         if (!!scheds[id]) {
             var _form = $("#schedule-form");
             _form.attr('action', '/dashboard/appointments/update/' + id);
-            console.log("form", _form);
-            console.log(id);
-            console.log(
-                scheds[id].startDate.date,
-                String(scheds[id].startDate.date.replace(" ", "T"))
-            );
+            // console.log("form", _form);
+            // console.log(id);
+            // console.log(
+            //     scheds[id].startDate.date,
+            //     String(scheds[id].startDate.date.replace(" ", "T"))
+            // );
             _form
                 .find('[name="id"]')
                 .val(id);
@@ -91,13 +91,13 @@ $(function() {
                 .find('[name="description"]')
                 .val(scheds[id].description);
             _form
-                .find('[name="start_datetime"]')
+                .find('[name="startDate"]')
                 .val(String(scheds[id].startDate.date.replace(" ", "T").replace(/\.\d+/, "")));
-            console.log("Start1");
+            // console.log("Start1");
             _form
-                .find('[name="end_datetime"]')
+                .find('[name="endDate"]')
                 .val(String(scheds[id].endDate.date.replace(" ", "T").replace(/\.\d+/, "")));
-            console.log("End1");
+            // console.log("End1");
             $("#event-details-modal")
                 .modal("hide");
             _form

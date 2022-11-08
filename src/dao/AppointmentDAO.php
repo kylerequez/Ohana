@@ -85,4 +85,31 @@ class AppointmentDAO
             return null;
         }
     }
+
+    public function updateAppointment(Appointment $appointment): bool
+    {
+        try {
+            $sql = "UPDATE ohana_appointments
+                    SET title=:title, description=:description, start_datetime=:startDate, end_datetime=:endDate
+                    WHERE id=:id;";
+
+            $id = $appointment->getId();
+            $title = $appointment->getTitle();
+            $description = $appointment->getDescription();
+            $startDate = $appointment->getStartDate()->format("Y-m-d H:i:s");
+            $endDate = $appointment->getEndDate()->format("Y-m-d H:i:s");
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":title", $title, PDO::PARAM_STR);
+            $stmt->bindParam(":description", $description, PDO::PARAM_STR);
+            $stmt->bindParam(":startDate", $startDate, PDO::PARAM_STR);
+            $stmt->bindParam(":endDate", $endDate, PDO::PARAM_STR);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+
+            return $stmt->execute() > 0;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
 }

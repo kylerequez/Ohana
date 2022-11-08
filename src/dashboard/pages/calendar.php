@@ -127,12 +127,12 @@ if (!$conn) {
                           <textarea rows="3" class="form-control form-control-sm rounded-0" name="description" id="description" required></textarea>
                         </div>
                         <div class="form-group mb-2">
-                          <label for="start_datetime" class="control-label">Start Time</label>
-                          <input type="datetime-local" class="form-control form-control-sm rounded-0" name="start_datetime" id="start_datetime" required>
+                          <label for="startDate" class="control-label">Start Time</label>
+                          <input type="datetime-local" class="form-control form-control-sm rounded-0" name="startDate" id="startDate" required>
                         </div>
                         <div class="form-group mb-2">
-                          <label for="end_datetime" class="control-label">End Time</label>
-                          <input type="datetime-local" class="form-control form-control-sm rounded-0" name="end_datetime" id="end_datetime" required>
+                          <label for="endDate" class="control-label">End Time</label>
+                          <input type="datetime-local" class="form-control form-control-sm rounded-0" name="endDate" id="endDate" required>
                         </div>
                       </form>
                     </div>
@@ -197,21 +197,8 @@ if (!$conn) {
     </script>
 
     <?php
-    // $schedules = $conn->query("SELECT * FROM `schedule_list`");
-    // $sched_res = [];
-    // foreach ($schedules->fetch_all(MYSQLI_ASSOC) as $row) {
-    //   $row['sdate'] = date("F d, Y h:i A", strtotime($row['start_datetime']));
-    //   $row['edate'] = date("F d, Y h:i A", strtotime($row['end_datetime']));
-    //   $sched_res[$row['id']] = $row;
-    // }
-    ?>
-    <?php
-    //if (isset($conn)) $conn->close();
     include_once dirname(__DIR__) . "/../models/Appointment.php";
     $sched_res = unserialize($_SESSION["appointments"]);
-    //print_r($sched_res);
-    //$sched_res = json_encode($sched_res);
-    //print_r($sched_res);
     ?>
     <script>
       var scheds = $.parseJSON('<?= json_encode($sched_res) ?>');
