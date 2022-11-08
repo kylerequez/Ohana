@@ -21,5 +21,6 @@ if($_SERVER["REQUEST_METHOD"] === "GET" && !isset($id))
     echo "Delete $id";
     $controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
 } elseif($_SERVER["REQUEST_METHOD"] === "POST" && isset($id)) {
-    $controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
+    echo "POST";
+    //$controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
 }

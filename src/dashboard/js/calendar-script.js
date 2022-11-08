@@ -63,6 +63,8 @@ $(function() {
 
     // Form reset listener
     $("#schedule-form").on("reset", function() {
+        console.log("reset");
+        $(this).attr('action', '');
         $(this).find("input:hidden").val("");
         $(this).find("input:visible").first().focus();
     });
@@ -72,6 +74,8 @@ $(function() {
         var id = $(this).attr("data-id");
         if (!!scheds[id]) {
             var _form = $("#schedule-form");
+            _form.attr('action', '/dashboard/appointments/update/' + id);
+            console.log("form", _form);
             console.log(id);
             console.log(
                 scheds[id].startDate.date,
@@ -89,13 +93,15 @@ $(function() {
             _form
                 .find('[name="start_datetime"]')
                 .val(String(scheds[id].startDate.date.replace(" ", "T").replace(/\.\d+/, "")));
-            console.log("Start");
+            console.log("Start1");
             _form
                 .find('[name="end_datetime"]')
                 .val(String(scheds[id].endDate.date.replace(" ", "T").replace(/\.\d+/, "")));
-            console.log("End");
-            $("#event-details-modal").modal("hide");
-            _form.find('[name="title"]').focus();
+            console.log("End1");
+            $("#event-details-modal")
+                .modal("hide");
+            _form
+                .find('[name="title"]').focus();
         } else {
             alert("The event does not exist!");
         }

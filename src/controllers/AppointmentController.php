@@ -30,13 +30,17 @@ class AppointmentController
                     $this->processCollectionRequest($method);
                 }
                 $user = unserialize($_SESSION["user"]);
-                $log = $user->getFullName() . " has deleted Account ID $id";
+                $log = $user->getFullName() . " has deleted Appointment ID $id";
                 if (!$this->logservices->addLog($log)) {
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest($method);
                 break;
             case "POST":
+                print_r($_POST);
+                // if (!$this->services->updateAppointment($id, $_POST)) {
+                //     $this->processCollectionRequest("GET");
+                // }
                 break;
         }
     }
