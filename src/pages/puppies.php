@@ -48,53 +48,43 @@
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
             <div class="message" style="margin-top:10%;">
                 <section class="services" id="services">
-                    <div class="service">
-                        <h1 style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;text-align:center"> ADD TO YOUR OHANA NOW</h1>
-                    </div><br><br>
+                    <?php
+                    include_once dirname(__DIR__) . '/models/PetProfile.php';
+                    $profiles = unserialize($_SESSION["profiles"]);
 
-                    <!-- AVAILABLE PUPPIES CARD -->
-                    <div class="container d-flex justify-content-center">
-                        <div class="row">
-                            
-                            <div class="card" style="width: 20rem; margin-right:30px;">
-                                <img src="/Ohana/src/images/Ohanapups/trans2.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title"> FRENCH PUPPY 1 </h5>
-                                    <p class="card-text"> short description of the puppy for sale </p>
-                                    <p class="card-text"> PRICE: 100,000 </p>
-                                    <div class="btn-Learn" name="btn-Learn">
-                                        <center><a href="/dog1"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
-                                    </div>
-                                </div>
-                            </div>
+                    if (empty($profiles)) {
+                    ?>
+                        <div class="service">
+                            <h1 style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;text-align:center"> THERE IS CURRENTLY NO AVAILABLE PUPPY FOR REHOMING</h1>
+                        </div><br><br>
+                    <?php } else { ?>
+                        <div class="service">
+                            <h1 style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;text-align:center"> ADD TO YOUR OHANA NOW</h1>
+                        </div><br><br>
 
-                            <div class="card" style="width: 20rem; margin-right:30px;">
-                                <img src="/Ohana/src/images/Ohanapups/trans3.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title"> FRENCH PUPPY 2</h5>
-                                    <p class="card-text"> short description of the puppy for sale </p>
-                                    <p class="card-text"> PRICE: 100,000</p>
-                                    <div class="btn-Learn" name="btn-Learn">
-                                        <center><a href="/dog1"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
-                                    </div>
-                                </div>
-                            </div>
+                        <!-- AVAILABLE PUPPIES CARD -->
+                        <div class="container d-flex justify-content-center">
+                            <div class="row">
 
-                            <div class="card" style="width: 20rem; margin-right:30px;">
-                                <img src="/Ohana/src/images/Ohanapups/trans5.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title"> FRENCH PUPPY 3 </h5>
-                                    <p class="card-text"> short description of the puppy for sale </p>
-                                    <p class="card-text"> PRICE: 100,000</p>
-                                    <div class="btn-Learn" name="btn-Learn">
-                                        <center><a href="/dog1"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
+                                <?php foreach ($profiles as $profile) { ?>
+                                    <div class="card" style="width: 20rem; margin-right:30px;">
+                                        <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image">
+                                        <div class="card-body">
+                                            <h5 class="card-title"> <?php echo $profile->getName(); ?></h5>
+                                            <p class="card-text"> <?php echo $profile->getBirthdate()->format('Y-m-d'); ?> </p>
+                                            <p class="card-text"> <?php echo $profile->getPrice(); ?> </p>
+                                            <div class="btn-Learn" name="btn-Learn">
+                                                <center><a href="/dog1"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                <?php } ?>
+
                             </div>
                         </div>
-                    </div>
-
+                    <?php } ?>
                 </section>
+
             </div>
         </div>
     </main>

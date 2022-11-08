@@ -63,6 +63,7 @@
             <?php
             }
             unset($_SESSION["msg"]);
+            session_destroy();
             ?>
           </header>
           

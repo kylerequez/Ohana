@@ -49,4 +49,33 @@ class ChatbotController
                 break;
         }
     }
+
+    public function processResponsesRequest(string $method, ?string $id): void
+    {
+        if ($id) {
+            $this->processResponsesResourceRequest($method, $id);
+        } else {
+            $this->processResponsesCollectionRequest($method);
+        }
+    }
+
+    public function processResponsesResourceRequest(string $method, string $id): void
+    {
+        switch ($method) {
+            case "GET":
+                break;
+            case "POST":
+                break;
+        }
+    }
+
+    public function processResponsesCollectionRequest(string $method, string $id): void
+    {
+        switch ($method) {
+            case "GET":
+                break;
+            case "POST":
+                break;
+        }
+    }
 }

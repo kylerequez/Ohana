@@ -16,6 +16,5 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_SESSION))
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $controller->loginRequest($_SERVER["REQUEST_METHOD"]);
 } else {
-    if(!isset($_SESSION)) session_start();
     $_SESSION["msg"] = "Wrong way of accessing";
 }

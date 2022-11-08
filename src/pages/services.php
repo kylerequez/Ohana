@@ -47,42 +47,50 @@
         <div class="container-fluid">
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
             <div class="message" style="margin-top:10%;">
-            <section class="services" id="services">
-                <div class="service">
-                    <center><h1 style="color:#DB6551; font-size: 120px; font-family: 'Acme', sans-serif; font-weight:800"> SERVICES </h1></center>
-                </div><br><br>
-                <div class="row" style="text-align:center; margin-left:10%; margin-right:10%;">
-                    <div class="col-lg-4">
-                    <a href="/puppies" style="text-decoration:none;">
-                    <img src="/Ohana/src/images/services/rehome.png" width="540" height="400" role="img" focusable="false">
-                    </a>
-                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
+                <section class="services" id="services">
+                    <div class="service">
+                        <center>
+                            <h1 style="color:#DB6551; font-size: 120px; font-family: 'Acme', sans-serif; font-weight:800"> SERVICES </h1>
+                        </center>
+                    </div><br><br>
+                    <div class="row" style="text-align:center; margin-left:10%; margin-right:10%;">
+                        <div class="col-lg-4">
+                            <a href="/puppies/rehoming/get" style="text-decoration:none;">
+                                <img src="/Ohana/src/images/services/rehome.png" width="540" height="400" role="img" focusable="false">
+                            </a>
+                            <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
 
-                        <a href="/puppies" style="text-decoration:none;"><h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Pet Rehoming </h2></a>
-                        <p style="color:#7d605c; font-size: 25px;"> Want to add another member to your family? We have the cutest and most loving frenchies waiting for you. </p>
+                            <a href="/puppies/rehoming/get" style="text-decoration:none;">
+                                <h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Pet Rehoming </h2>
+                            </a>
+                            <p style="color:#7d605c; font-size: 25px;"> Want to add another member to your family? We have the cutest and most loving frenchies waiting for you. </p>
 
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="/stud" style="text-decoration:none;">
+                                <img src="/Ohana/src/images/services/stud.png" width="540" height="400" role="img" focusable="false">
+                                <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
+                            </a>
+                            <a href="/stud" style="text-decoration:none;">
+                                <h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Stud Service </h2>
+                            </a>
+                            <p style="color:#7d605c; font-size: 25px;"> Want to produce quality and compact french bulldogs? Choose from any of our male frenchies ready for mating. </p>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <a href="#" style="text-decoration:none;">
+                                <img src="/Ohana/src/images/services/boarding.png" width="540" height="400" role="img" focusable="false">
+                                <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
+                            </a>
+                            <a href="/appointment" style="text-decoration:none;">
+                                <h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Pet Boarding </h2>
+                            </a>
+                            <p style="color:#7d605c; font-size: 25px;"> Want to increase chances of your pet fertility after stud? We have an optional pet boarding service to prevent your pet from getting stressed. </p>
+
+                        </div>
                     </div>
-                    <div class="col-lg-4">
-                    <a href="/stud" style="text-decoration:none;">
-                        <img src="/Ohana/src/images/services/stud.png" width="540" height="400" role="img" focusable="false">
-                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
-                        </a>
-                        <a href="/stud" style="text-decoration:none;"><h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Stud Service </h2></a>
-                        <p style="color:#7d605c; font-size: 25px;"> Want to produce quality and compact french bulldogs? Choose from any of our male frenchies ready for mating. </p>
-                    </div>
-
-                    <div class="col-lg-4">
-                    <a href="#" style="text-decoration:none;">
-                        <img src="/Ohana/src/images/services/boarding.png" width="540" height="400" role="img" focusable="false">
-                        <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
-                        </a>
-                        <a href="/appointment" style="text-decoration:none;"><h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Pet Boarding </h2></a>
-                        <p style="color:#7d605c; font-size: 25px;"> Want to increase chances of your pet fertility after stud? We have an optional pet boarding service to prevent your pet from getting stressed. </p>
-
-                    </div>
-                </div>
-            </section>
-            <section class="reason" style="margin-top:5%;">
+                </section>
+                <section class="reason" style="margin-top:5%;">
                     <div class="reasons">
                         <img src="/Ohana/src/images/services/reasons.png" style="width: 100%;">
                     </div>
@@ -113,7 +121,7 @@
     </main>
 
     <div class="container-fluid">
-    <?php include_once 'footer.php'; ?>
+        <?php include_once 'footer.php'; ?>
     </div>
 
     <!-- SCIPTS -->

@@ -79,4 +79,45 @@ class PetProfileController
                 break;
         }
     }
+
+    public function displayPetProfiles(string $type): void
+    {
+        switch($type){
+            case "rehoming":
+                $_SESSION["profiles"] = serialize($this->services->getOhanaPets());
+                header("Location: http://localhost/puppies");
+                break;
+            case "stud":
+                break;
+        }
+    }
+
+    public function processCustomerRequest(string $method, ?string $id): void
+    {
+        if ($id) {
+            $this->processCustomerResourceRequest($method, $id);
+        } else {
+            $this->processCustomerCollectionRequest($method);
+        }
+    }
+
+    public function processCustomerResourceRequest($method, $id): void
+    {
+        switch ($method) {
+            case "GET":
+                break;
+            case "POST":
+                break;
+        }
+    }
+
+    public function processCustomerCollectionRequest($method): void
+    {
+        switch ($method) {
+            case "GET":
+                break;
+            case "POST":
+                break;
+        }
+    }
 }

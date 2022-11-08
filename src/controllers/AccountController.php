@@ -94,6 +94,7 @@ class AccountController
             case "POST":
                 if (!$this->services->addAccount($_POST)) {
                     $this->processStaffCollectionRequest("GET");
+                    break;
                 }
                 $user = unserialize($_SESSION["user"]);
                 $log = $user->getFullName() . " has added a staff account";
@@ -109,25 +110,29 @@ class AccountController
     public function loginRequest(string $method): void
     {
         switch ($method) {
-            // OTP Login 
+                // OTP Login 
             case "GET":
                 if ($this->services->verifyLogin($_GET)) {
                     $account = unserialize($_SESSION["user"]);
-                    if($account->getType() == "USER"){
+                    if ($account->getType() == "USER") {
                         unset($_SESSION["userOtp"]);
                         header("Location: http://localhost/home");
+                        break;
                     } else {
                         header("Location: http://localhost/dashboard");
+                        break;
                     }
                 } else {
                     header("Location: http://localhost/verifylogin");
+                    break;
                 }
                 break;
-            // Account login request
+                // Account login request
             case "POST":
                 if (!isset($_SESSION)) session_start();
-                if(!$this->services->loginRequest($_POST)){
+                if (!$this->services->loginRequest($_POST)) {
                     header("Location: http://localhost/login");
+                    break;
                 }
                 header("Location: http://localhost/verifylogin");
                 break;
@@ -152,16 +157,20 @@ class AccountController
                 if ($this->services->forgotPasswordRequest($email)) {
                     // echo "true";
                     header("Location: http://localhost/forgot-confirm");
+                    break;
                 } else {
                     // echo "false";
                     header("Location: http://localhost/forgot");
+                    break;
                 }
                 break;
             case "POST":
                 if ($this->services->changePasswordRequest($email)) {
                     header("Location: http://localhost/userpasschanged");
+                    break;
                 } else {
                     header("Location: http://localhost/forgot/$email");
+                    break;
                 }
                 break;
         }
@@ -173,8 +182,10 @@ class AccountController
             case "GET":
                 if ($this->services->verifyRegistration($_GET)) {
                     header("Location: http://localhost/registercomplete");
+                    break;
                 } else {
                     header("Location: http://localhost/confirmregister");
+                    break;
                 }
                 break;
             case "POST":
@@ -182,11 +193,14 @@ class AccountController
                 if ($this->services->addAccount($_POST)) {
                     if ($this->services->registrationRequest($_POST)) {
                         header("Location: http://localhost/confirmregister");
+                        break;
                     } else {
                         header("Location: http://localhost/register");
+                        break;
                     }
                 } else {
                     header("Location: http://localhost/register");
+                    break;
                 }
                 break;
         }
