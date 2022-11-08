@@ -25,6 +25,7 @@
   <?php
   if (!isset($_SESSION)) session_start();
   include_once dirname(__DIR__) . '/../models/Account.php';
+  include_once dirname(__DIR__) . '/../models/ChatbotResponse.php';
 
   if (empty($_SESSION['user'])) {
     session_unset();
@@ -61,38 +62,46 @@
               <input type="text" placeholder=" Search..">
             </div>
             <br>
-            <table class="posts-table">
-              <thead>
-                <tr class="users-table-info">
-                  <th> <b>RESPONSE I.D</b> </th>
-                  <th> <b>RESPONSE</b></th>
-                  <th> <b>QUERY</b> </th>
-                  <th> <b>TIMES ASKED</b> </th>
-                  <th> <b>ACTION</b> </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    I.D NUMBER 12345
-                  </td>
-                  <td>
-                    Chatbot Response
-                  </td>
-                  <td>
-                    <div class="pages-table-img">
-                      Jenny Wilson
-                    </div>
-                  </td>
-                  <td> 10 </td>
-                  <td>
-                  <a href="" data-bs-toggle="modal" data-bs-target="#editModalId">
-                    <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button></a>
-                    <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i> </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+
+            <?php
+            $responses = unserialize($_SESSION["cb_responses"]);
+            if (!empty($responses)) {
+            ?>
+              <table class="posts-table">
+                <thead>
+                  <tr class="users-table-info">
+                    <th> <b>RESPONSE I.D</b> </th>
+                    <th> <b>RESPONSE</b></th>
+                    <th> <b>QUERY</b> </th>
+                    <th> <b>TIMES ASKED</b> </th>
+                    <th> <b>ACTION</b> </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  foreach ($responses as $response) {
+                  ?>
+                    <tr>
+                      <td><?php echo $response->getId(); ?></td>
+                      <td><?php echo $response->getResponse(); ?></td>
+                      <td><?php echo $response->getQuery(); ?></td>
+                      <td><?php echo $response->getTimesAsked(); ?></td>
+                      <td>
+                        <a href="" data-bs-toggle="modal" data-bs-target="#editModalId">
+                          <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button></a>
+                        <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i> </button>
+                      </td>
+                    </tr>
+                  <?php
+                  }
+                  ?>
+                </tbody>
+              </table>
+            <?php
+            } else {
+              echo "<h1>NULL</h1>";
+            }
+            ?>
           </div>
         </main>
 

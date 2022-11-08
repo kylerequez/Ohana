@@ -79,7 +79,7 @@
               <a href="/dashboard/chatbot-settings/get"> Settings </a>
             </li>
             <li>
-              <a href="/dashboard/chatbot-responses"> Queries and Responses </a>
+              <a href="/dashboard/chatbot-responses/get"> Queries and Responses </a>
             </li>
           </ul>
         </li>

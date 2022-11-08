@@ -55,4 +55,29 @@ class ChatbotDAO
             return null;
         }
     }
+
+    public function getAllResponses(): mixed
+    {
+        try {
+            $sql = "SELECT * FROM chatbot_responses;";
+
+            $stmt = $this->conn->query($sql);
+            $responses = null;
+            if ($stmt->execute() > 0) {
+                while ($response = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $existingResponse = new ChatbotResponse(
+                        $response["response"],
+                        $response["query"],
+                        $response["times_asked"],
+                    );
+                    $existingResponse->setId($response["response_id"]);
+                    $responses[] = $existingResponse;
+                }
+            }
+            return $responses;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
 }

@@ -31,4 +31,9 @@ class ChatbotServices
         $_SESSION["msg"] = "You have successfully updated the Chatbot Settings!";
         return true;
     }
+
+    public function getAllResponses(): mixed
+    {
+        return $this->dao->getAllResponses();
+    }
 }

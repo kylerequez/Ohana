@@ -28,9 +28,9 @@ class ChatbotController
     {
         switch ($method) {
             case "GET":
-                if (isset($_SESSION)) session_start();
                 $_SESSION["cb_settings"] = serialize($this->services->getAllSettings());
                 header("Location: http://localhost/dashboard/chatbot-settings");
+                break;
             case "POST":
                 if (!empty($_FILES["image"]["tmp_name"])) {
                     $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
@@ -69,10 +69,12 @@ class ChatbotController
         }
     }
 
-    public function processResponsesCollectionRequest(string $method, string $id): void
+    public function processResponsesCollectionRequest(string $method): void
     {
         switch ($method) {
             case "GET":
+                $_SESSION["cb_responses"] = serialize($this->services->getAllResponses());
+                header("Location: http://localhost/dashboard/chatbot-responses");
                 break;
             case "POST":
                 break;
