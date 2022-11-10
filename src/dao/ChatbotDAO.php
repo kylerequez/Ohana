@@ -80,4 +80,91 @@ class ChatbotDAO
             return null;
         }
     }
+
+    public function addResponse(ChatbotResponse $response): bool
+    {
+        try {
+            $sql = "INSERT INTO chatbot_responses
+                    (response, query, timesAsked)
+                    VALUES (:response, :query, :timesAsked);";
+            
+            $res = $response->getResponse();
+            $query = $response->getQuery();
+            $timesAsked = $response->getTimesAsked();
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":response", $res, PDO::PARAM_STR);
+            $stmt->bindParam(":query", $query, PDO::PARAM_STR);
+            $stmt->bindParam(":timesAsked", $timesAsked, PDO::PARAM_STR);
+
+            return $stmt->execute() > 0;
+        } catch (Exception $e) {
+            echo $e;
+            return false;
+        }
+    }
+
+    public function searchById(string $id): mixed
+    {
+        $sql = "SELECT * FROM chatbot_responses
+                WHERE response_id=:id
+                LIMIT 1;";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+
+        $searchedResponse = null;
+        if ($stmt->execute() > 0) {
+            while ($response = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $searchedResponse = new ChatbotResponse(
+                    $response["response"],
+                    $response["query"],
+                    $response["times_asked"]
+                );
+                $searchedResponse->setId($id);
+            }
+        }
+        return $searchedResponse;
+    }
+
+    public function updateResponse(ChatbotResponse $response): mixed
+    {
+        try {
+            $sql = "UPDATE chatbot_responses
+                    SET response=:response, query=:query, times_asked=:timesAsked
+                    WHERE response_id=:id;";
+
+            $id = $response->getId();
+            $res = $response->getResponse();
+            $query = $response->getQuery();
+            $timesAsked = $response->getTimesAsked();
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt->bindParam(":response", $res, PDO::PARAM_STR);
+            $stmt->bindParam(":query", $query, PDO::PARAM_STR);
+            $stmt->bindParam(":timesAsked", $timesAsked, PDO::PARAM_INT);
+
+            return $stmt->execute() > 0;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function deleteById(string $id): mixed
+    {
+        try {
+            $sql = "DELETE FROM chatbot_responses
+                    WHERE response_id=:id";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+
+            return $stmt->execute() > 0;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
 }

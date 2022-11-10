@@ -63,8 +63,26 @@ class ChatbotController
     {
         switch ($method) {
             case "GET":
+                if (!$this->services->deleteResponse($id)) {
+                    $this->processResponsesCollectionRequest($method);
+                }
+                $user = unserialize($_SESSION["user"]);
+                $log = $user->getFullName() . " has deleted Response ID $id";
+                if (!$this->logservices->addLog($log)) {
+                    $_SESSION["msg"] = "There was an error in the logging of the action.";
+                }
+                $this->processResponsesCollectionRequest($method);
                 break;
             case "POST":
+                if (!$this->services->updateResponse($id, $_POST)) {
+                    $this->processResponsesCollectionRequest("GET");
+                }
+                $user = unserialize($_SESSION["user"]);
+                $log = $user->getFullName() . " has updated Response ID $id";
+                if (!$this->logservices->addLog($log)) {
+                    $_SESSION["msg"] .= "There was an error in the logging of the action.";
+                }
+                $this->processResponsesCollectionRequest("GET");
                 break;
         }
     }
@@ -77,6 +95,16 @@ class ChatbotController
                 header("Location: http://localhost/dashboard/chatbot-responses");
                 break;
             case "POST":
+                if (!$this->services->addResponse($_POST)) {
+                    $this->processResponsesCollectionRequest("GET");
+                    break;
+                }
+                $user = unserialize($_SESSION["user"]);
+                $log = $user->getFullName() . " has added a response";
+                if ($this->logservices->addLog($log) == false) {
+                    $_SESSION["msg"] = "There was an error in the logging of the action.";
+                }
+                $this->processResponsesCollectionRequest("GET");
                 break;
         }
     }

@@ -61,7 +61,11 @@
               <i data-feather="search" aria-hidden="true"></i>
               <input type="text" placeholder=" Search..">
             </div>
-            <br>
+            <div class="createstaff-wrapper">
+              <a class="create-response-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create">
+                  <i data-feather="plus" aria-hidden="true"></i>
+                  Add Response </button></a>
+            </div>
 
             <?php
             $responses = unserialize($_SESSION["cb_responses"]);
@@ -87,10 +91,37 @@
                       <td><?php echo $response->getQuery(); ?></td>
                       <td><?php echo $response->getTimesAsked(); ?></td>
                       <td>
-                        <a href="" data-bs-toggle="modal" data-bs-target="#editModalId">
+                        <a href="" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $response->getId(); ?>">
                           <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button></a>
-                        <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i> </button>
+                        <a href="/dashboard/chatbot-responses/delete/<?php echo $response->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Response ID <?php echo $response->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>
                       </td>
+                      <!-- EDIT RESPONSE MODAL -->
+                      <form method="POST" action="/dashboard/chatbot-responses/update/<?php echo $response->getId(); ?>">
+                        <div class="modal fade" id="editModalId<?php echo $response->getId(); ?>" tabindex="-1" aria-labelledby="addResponseModal" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="addStaffTitle"> EDIT CHATBOT RESPONSE </h5>
+                                <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                              </div>
+                              <div class="modal-body">
+                                <input type="hidden" name="timesAsked" value="<?php echo $response->getTimesAsked(); ?>">
+                                <div class="mb-3">
+                                  <label for="query" class="col-form-label"> QUERY </label>
+                                  <input type="text" class="form-control" name="query" value="<?php echo $response->getQuery(); ?>" required style="background-color:#eed1c2; color:black">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="response" class="col-form-label"> RESPONSE </label>
+                                  <input type="text" class="form-control" name="response" value="<?php echo $response->getResponse(); ?>" required style="background-color:#eed1c2; color:black">
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="submit" class="btn" style="background-color:#db6551"> Save Changes </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
                     </tr>
                   <?php
                   }
@@ -102,46 +133,57 @@
               echo "<h1>NULL</h1>";
             }
             ?>
+            <!-- ADD PET PROFILE MODAL -->
+            <form method="POST" action="/dashboard/chatbot-responses/add">
+              <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addResponseModal" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="addStaffTitle"> ADD CHATBOT RESPONSE </h5>
+                      <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                    </div>
+                    <input name="timesAsked" type="hidden" value="0">
+                    <div class="modal-body">
+                      <div class="mb-3">
+                        <label for="query" class="col-form-label"> QUERY </label>
+                        <input type="text" class="form-control" name="query" placeholder="Enter User Query" required style="background-color:#eed1c2; color:black">
+                      </div>
+                      <div class="mb-3">
+                        <label for="response" class="col-form-label"> RESPONSE </label>
+                        <input type="text" class="form-control" name="response" placeholder="Enter Dog Name" required style="background-color:#eed1c2; color:black">
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn" style="background-color:#db6551"> Add Response </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
         </main>
 
         <!-- ! Footer -->
         <?php include_once dirname(__DIR__) . '/footer.php'; ?>
-      </div>
-    </div>
 
-    <!--EDIT RESPONSES MODAL -->
-    <form method="POST" action="/dashboard/petprofiles/add">
-      <div class="modal fade" id="editModalId" tabindex="-1" aria-labelledby="addSlotModal" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="editCbresponses"> EDIT CHATBOT RESPONSES </h5>
-              <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
-            </div>
-            <div class="modal-body">
-              <input name="type" type="hidden" value="STAFF">
-              <div class="mb-3">
-                <label for="name" class="col-form-label"> DOG NAME </label>
-                <input type="text" class="form-control" name="name" placeholder="Enter Dog Name" required style="background-color:#eed1c2; color:black">
+        <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+          <div class="toast-container top-0 end-0 p-3">
+            <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+              <div class="toast-header">
+                <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+                <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
+                <small> JUST NOW </small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
               </div>
-              <div class="mb-3">
-                <label for="owner" class="col-form-label"> DOG OWNER </label>
-                <input type="text" class="form-control" name="owner" placeholder="Name of Dog Owner" required style="background-color:#eed1c2; color:black">
-              </div>
-              <input type="hidden" class="form-control" name="status"> <!-- FOR OHANA OWNER -->
-              <div class="mb-3">
-                <label for="image" class="col-form-label"> DOG IMAGE </label><br>
-                <input type="file" name="fileToUpload" id="fileToUpload" style="background-color:transparent;">
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn" id="ToastBtn" style="background-color:#db6551"> SAVE CHANGES </button>
+              <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
             </div>
           </div>
-        </div>
+        <?php
+        }
+        unset($_SESSION["msg"]);
+        ?>
       </div>
-    </form>
+    </div>
 
     <!-- SCRIPTS -->
 

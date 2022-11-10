@@ -14,8 +14,12 @@ $services = new ChatbotServices($dao);
 $logservices = new LogServices($logdao);
 $controller = new ChatbotController($services, $logservices);
 
-if($_SERVER["REQUEST_METHOD"] == "GET"){
+if($_SERVER["REQUEST_METHOD"] == "GET" && empty($id)){
     $controller->processResponsesRequest($_SERVER["REQUEST_METHOD"], null);
-} else if($_SERVER["REQUEST_METHOD"] == "POST") {
+} else if($_SERVER["REQUEST_METHOD"] == "POST" && empty($id)) {
     $controller->processResponsesRequest($_SERVER["REQUEST_METHOD"], null);
+} else if ($_SERVER["REQUEST_METHOD"] == "GET" && !empty($id)) {
+    $controller->processResponsesRequest($_SERVER["REQUEST_METHOD"], $id);
+} else if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($id)) {
+    $controller->processResponsesRequest($_SERVER["REQUEST_METHOD"], $id);
 }

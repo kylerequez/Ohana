@@ -130,6 +130,7 @@ class AccountDAO
                         $account["status"],
                         $account["password"],
                     );
+                    $searchedAccount->setId($account["account_id"]);
                 }
             }
 
@@ -198,6 +199,7 @@ class AccountDAO
                         $account["status"],
                         $account["password"],
                     );
+                    $searchedAccount->setId($id);
                 }
             }
 
@@ -256,7 +258,6 @@ class AccountDAO
             $stmt->bindParam(":number", $number, PDO::PARAM_STR);
 
             $searchedAccount = null;
-
             if ($stmt->execute() > 0) {
                 while ($account = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $searchedAccount = new Account(
@@ -269,6 +270,7 @@ class AccountDAO
                         $account["status"],
                         $account["password"],
                     );
+                    $searchedAccount->setId($account["account_id"]);
                 }
             }
 

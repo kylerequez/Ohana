@@ -85,9 +85,6 @@
     <!-- SCIPTS -->
     <script src="/Ohana/src/js/chatbot-ui.js"></script>
     <script>
-        <?php
-
-        ?>
         createChatBot(host = 'http://localhost:5005/webhooks/rest/webhook', botLogo = "/Ohana/src/images/Chatbot/bot-logo.png",
             title = "Lilo from Ohana", welcomeMessage = "Good Day, How can I help you?", inactiveMsg = "Waiting for the developers to update this", theme = "orange")
     </script>
