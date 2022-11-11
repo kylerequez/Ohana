@@ -67,8 +67,8 @@
                             <div class="row">
 
                                 <?php foreach ($profiles as $profile) { ?>
-                                    <div class="card" style="width: 20rem; margin-right:30px;">
-                                        <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image">
+                                    <div class="card m-3" style="width: 20rem;">
+                                        <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image" width="250px" height="250px;" style="margin-top:10px;">
                                         <div class="card-body">
                                             <h5 class="card-title"> <?php echo $profile->getName(); ?></h5>
                                             <p class="card-text"> <?php echo $profile->getBirthdate()->format('Y-m-d'); ?> </p>

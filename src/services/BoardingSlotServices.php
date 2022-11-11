@@ -62,10 +62,6 @@ class BoardingSlotServices
         $image = $data["image"];
 
         $name = strtoupper($data["name"]);
-        if(!is_null($this->dao->searchByName($name))){
-            $_SESSION["msg"] = "The pet boarding slot name already exists.";
-            return false;
-        }
         
         $information = strtoupper($data["information"]);
         $isAvailable = $data["isAvailable"] == "AVAILABLE" ? 1 : 0;

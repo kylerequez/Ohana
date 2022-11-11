@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title> USER PROFILE </title>
     <!-- META TAGS -->
@@ -20,13 +21,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Web Icon -->
     <link rel="shortcut icon" href="/Ohana/src/images/Landing/ohana.png" type="image/x-icon">
-    <!-- Bootstrap CSS  CDN --><!-- 5.2.1 -->
+    <!-- Bootstrap CSS  CDN -->
+    <!-- 5.2.1 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
     </style>
 </head>
+
 <body style="background-color: #FAF8F0;">
     <main>
         <!-- REGISTERED USERS NAVIGATION BAR-->
@@ -35,34 +38,35 @@
         <div class="container-fluid">
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
             <section class="userprofile" style="margin-top:10%;">
-                <div class="userheader">
+                <div class="userheader mb-5">
                     <h1> APPOINTMENT HISTORY </h1>
                 </div>
             </section>
             <center>
-            <section class="orderhistory_section">
-                
-                <div class="container">
-            <table class="table table-hover table-bordered table-responsive" style="width=50%">
-  <thead style="font-weight: bold">
-    <tr>
-      <th scope="col">Date</th>
-      <th scope="col">Time</th>
-      <th scope="col">Type of Appointment</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <td style="width:5%">11/22/2022</td>
-    <td style="width:10%">8:00PM</td>
-    <td style="width:10%">Stud-service</td>
+                <section class="orderhistory_section">
 
-    </tr>
-  </tbody>
-</table>
-</div>
-</center>
-                
+                    <div class="container">
+                        <table class="table table-hover table-bordered table-responsive" style="width=50%">
+                            <thead style="font-weight: bold">
+                                <tr>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Type of Appointment</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width:5%">11/22/2022</td>
+                                    <td style="width:10%">8:00PM</td>
+                                    <td style="width:10%">Stud-service</td>
+                                    <td style="width:10%">Pending</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            </center>
+
             </section>
         </div>
     </main>
@@ -80,4 +84,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 </body>
+
 </html>

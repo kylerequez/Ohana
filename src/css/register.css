@@ -6,18 +6,8 @@
 /* FOR PARAGRAPHS font-family: 'DM Sans', sans-serif; */
 @import url("https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap");
 /* FOR ALTERNATIVE font-family: 'Karla', sans-serif; */
-@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
 /* font-family: 'Acme', sans-serif; FOR HEADERS */
-
-/*@font-face {
-  font-family: "Bantayog-Regular";
-  src: url(/fonts/bantayog/Bantayog-Regular.otf);
-}
-### OTHER FONTS USED IN THE WEBSITE BUT CANNOT BE IMPORTED 
-@font-face {
-  font-family: "Tropika-Island";
-  src: url(/fonts/Tropika_Island/Aiyari\ -\ Tropika\ Island\ Int.otf);
-}*/
 
 * {
   margin: 0;
@@ -183,7 +173,6 @@ input:-webkit-autofill {
 }
 .input-checkbox__field:focus + .input-checkbox__square::before,
 .input-checkbox__field:focus + .input-checkbox__square::after,
-
 .input-checkbox__field:checked + .input-checkbox__square::before,
 .input-checkbox__field:checked + .input-checkbox__square::after {
   background: green;
@@ -229,7 +218,7 @@ input:-webkit-autofill {
 
 .form-control:focus {
   box-shadow: none;
-  border: 2px solid red
+  border: 2px solid red;
 }
 
 @media screen and (min-width: 500px) {
@@ -284,7 +273,7 @@ input:-webkit-autofill {
 .sign-up__title {
   margin-bottom: 16px;
   color: #db6551;
-  font-family: 'Acme', sans-serif; 
+  font-family: "Acme", sans-serif;
   font-weight: bolder;
 }
 
@@ -358,13 +347,13 @@ button span {
 /* The message box is shown when the user clicks on the password field */
 #message {
   display: none;
-  background: #eed1c2;
+  background: white;
   color: #000;
   position: relative;
   padding: 20px;
   margin-top: 10px;
   border-radius: 15%;
-  opacity:0.8;
+  opacity: 0.8;
 }
 
 #message p {
@@ -403,4 +392,393 @@ button span {
 .termlink {
   text-decoration: none;
   color: #ff5757;
+}
+
+/* ----------------------------MOBILE RESPONSIVENESS------------------------------- */
+
+@media screen and (min-width: 350px) and (max-width: 900px) {
+  * {
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    position: relative;
+  }
+
+  input,
+  button {
+    appearance: none;
+    outline: none;
+  }
+
+  /*INPUT WEBKITS*/
+  input::-webkit-input-placeholder {
+    color: transparent;
+    user-select: none;
+  }
+
+  input::-moz-placeholder {
+    color: transparent;
+    user-select: none;
+  }
+
+  input:-moz-placeholder {
+    color: transparent;
+    user-select: none;
+  }
+
+  input:-ms-input-placeholder {
+    color: transparent;
+    user-select: none;
+  }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 100px #fff inset;
+    -webkit-text-fill-color: inherit;
+  }
+
+  /*END OF WEBKITS*/
+
+  .input {
+    flex: 1;
+    width: 100%;
+    transition: width 0.18s ease;
+  }
+
+  .input__container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 40px;
+    width: 100%;
+  }
+
+  .input__container.error {
+    height: auto;
+  }
+
+  .input__container.error pre {
+    padding: 8px 8px 0;
+  }
+
+  .input__label {
+    position: absolute;
+    padding: 0 8px;
+    top: 0;
+    color: #2b3a3a;
+    cursor: text;
+    font-size: 20px;
+    transition-property: top, font-size;
+    transition-timing-function: linear;
+    transition-duration: 0.15s;
+  }
+
+  .input__field {
+    background: transparent;
+    border: 0px solid #2f1f18;
+    border-bottom-width: 2px;
+    padding: 6px 10px;
+    font-size: 18px;
+    margin-top: 15px;
+    transition: border 0.2s ease-out;
+  }
+
+  .input__field:required + .input__label:after {
+    content: "*";
+    color: #c0b65a;
+  }
+
+  .input__field:focus,
+  .input__field:not(:placeholder-shown) {
+    border-color: #c0b65a;
+  }
+
+  .input__field:focus + .input__label,
+  .input__field:not(:placeholder-shown) + .input__label {
+    font-size: 20px;
+    top: -16px;
+  }
+
+  .input:hover .input__field:placeholder-shown:not(:focus) {
+    border-color: #c0b65a;
+  }
+
+  /* #############################################  CHECKBOX ############################################## */
+  .input-checkbox__field {
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    margin: 0;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 1;
+  }
+  .input-checkbox__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .input-checkbox__label {
+    padding: 0 16px;
+    color: #3d3c48;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+  .input-checkbox__square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 18px;
+    width: 18px;
+    border: 1px solid #7d605c;
+    border-radius: 4px;
+    will-change: border, box-shadow;
+    transition: border 0.28s ease-out, box-shadow 0.28s ease-out;
+    z-index: 0;
+  }
+  .input-checkbox__square::before,
+  .input-checkbox__square::after {
+    display: inline-block;
+    width: 2px;
+    background: #7d605c;
+    border-radius: 2px;
+    transition: background 0.28s ease-out;
+  }
+  .input-checkbox__square::before {
+    height: 4px;
+    transform: rotate(-40deg) translate3d(-1.5px, 0px, 0);
+  }
+  .input-checkbox__square::after {
+    height: 8px;
+    transform: rotate(40deg);
+  }
+  .input-checkbox:hover .input-checkbox__square::before,
+  .input-checkbox:hover .input-checkbox__square::after {
+    background: green;
+  }
+  .input-checkbox__field:focus + .input-checkbox__square::before,
+  .input-checkbox__field:focus + .input-checkbox__square::after,
+  .input-checkbox__field:checked + .input-checkbox__square::before,
+  .input-checkbox__field:checked + .input-checkbox__square::after {
+    background: green;
+    content: "";
+  }
+  .input-checkbox__field:hover + .input-checkbox__square {
+    box-shadow: 0 1px 6px green;
+  }
+  .input-checkbox__field:focus + .input-checkbox__square {
+    box-shadow: 0 2px 12px green;
+  }
+  .input-checkbox__field:checked + .input-checkbox__square {
+    border-color: green;
+  }
+
+  /* END OF CHECKBOX */
+  .link {
+    text-decoration: none;
+    color: red;
+    display: inline-block;
+    text-decoration: underline;
+    transition: color 0.28s ease-out;
+  }
+
+  .link:hover {
+    color: #7d605c;
+  }
+
+  /* FORM CSS */
+  .form {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .form__row {
+    margin-bottom: 40px;
+  }
+
+  .form__row--two {
+    margin: 0 -16px 0px;
+  }
+
+  .form-control:focus {
+    box-shadow: none;
+    border: 2px solid red;
+  }
+
+  @media screen and (min-width: 500px) {
+    .form__row--two {
+      display: flex;
+    }
+  }
+
+  .form__inline-input {
+    padding: 0 16px;
+    margin-bottom: 40px;
+  }
+
+  @media screen and (min-width: 500px) {
+    .form__inline-input {
+      width: 50%;
+      flex: 1 0 auto;
+    }
+  }
+
+  .form__button {
+    text-align: center;
+  }
+  /* END OF FORM */
+
+  .sign-up {
+    min-height: 80vh;
+  }
+
+  .sign-up__container {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 100%;
+  }
+
+  .sign-up__content {
+    flex: 1;
+  }
+
+  .sign-up__content {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding: 14vh 24px 10vh;
+  }
+
+  .sign-up__header {
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  .sign-up__title {
+    margin-bottom: 16px;
+    color: #db6551;
+    font-family: "Acme", sans-serif;
+    font-weight: bolder;
+  }
+
+  .sign-up__descr {
+    font-size: 25px;
+  }
+
+  .sign-up__form {
+    width: 100%;
+  }
+
+  .sign-up__sign,
+  .sign-up__terms {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .sign-up__sign {
+    margin-top: -8px;
+  }
+
+  .sign-up__terms {
+    margin-top: 80px;
+  }
+
+  /* button */
+  .logbtn button {
+    position: relative;
+    display: block;
+    border: none;
+    color: white;
+    background: #c0b65a;
+    padding: 17px 100px;
+    font-size: 20px;
+    font-weight: 700;
+    outline: none;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .logbtn button:hover {
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .logbtn button:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    height: 490%;
+    width: 140%;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .logbtn button:after {
+    background: #db6551;
+    transform: translate(-120%, -15%) rotate(45deg);
+  }
+
+  .logbtn:hover button:after {
+    transform: translate(-15%, -40%) rotate(45deg);
+  }
+
+  button span {
+    position: relative;
+    z-index: 1;
+  }
+
+  /*login button*/
+
+  /* The message box is shown when the user clicks on the password field */
+  #message {
+    display: none;
+    background: #eed1c2;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 15%;
+    opacity: 0.8;
+  }
+
+  #message p {
+    padding: 5px 35px;
+    font-size: 15px;
+  }
+
+  /* Add a green text color and a checkmark when the requirements are right */
+  .valid {
+    color: green;
+  }
+
+  .valid:before {
+    position: relative;
+    left: -25px;
+    content: "✔";
+  }
+
+  /* Add a red text color and an "x" when the requirements are wrong */
+  .invalid {
+    color: red;
+  }
+
+  .invalid:before {
+    position: relative;
+    left: -25px;
+    content: "✖";
+  }
+
+  /*FOOTER*/
+  .footer {
+    bottom: 0;
+    position: relative;
+  }
+
+  .termlink {
+    text-decoration: none;
+    color: #ff5757;
+  }
 }

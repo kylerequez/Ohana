@@ -30,7 +30,7 @@
 
 <body>
   <?php
-  
+
 
   if (empty($_SESSION['user'])) {
     session_unset();
@@ -158,7 +158,7 @@
                                 </div>
                               </div>
                               <div class="modal-footer">
-                                <button type="submit" class="btn" style="background-color:#db6551"> Save Changes </button>
+                                <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Save Changes </button>
                               </div>
                             </div>
                           </div>

@@ -1,7 +1,56 @@
 body {
-    background-color: #ffffff;
+  background-color: #ffffff;
 }
 .logbtn button {
+  width: 15%;
+  position: relative;
+  display: block;
+  margin: 0 20px;
+  border: none;
+  color: white;
+  background: #f67e94;
+  padding: 17px 60px;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+logbtn:hover {
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+}
+.logbtn button:after,
+.logbtn button:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  height: 490%;
+  width: 140%;
+  transition: all 0.5s ease-in-out;
+}
+.logbtn button:after {
+  background: #78c7d2;
+  transform: translate(-100%, -5%) rotate(45deg);
+}
+.logbtn:hover button:after {
+  transform: translate(-9%, -25%) rotate(45deg);
+}
+
+button span {
+  position: relative;
+  z-index: 1;
+}
+
+/* ----------------------------MOBILE RESPONSIVENESS------------------------------- */
+
+@media screen and (min-width: 350px) and (max-width: 900px) {
+  body {
+    background-color: #ffffff;
+  }
+  .logbtn button {
     width: 15%;
     position: relative;
     display: block;
@@ -15,31 +64,32 @@ body {
     text-transform: uppercase;
     outline: none;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     overflow: hidden;
   }
-  logbtn:hover{
-    box-shadow: 0 5px 30px rgba(0,0,0,.2);
+  logbtn:hover {
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
   }
   .logbtn button:after,
-  .logbtn button:after{
+  .logbtn button:after {
     position: absolute;
-    content: '';
+    content: "";
     left: 0;
     top: 0;
     height: 490%;
     width: 140%;
-    transition: all .5s ease-in-out;
+    transition: all 0.5s ease-in-out;
   }
-  .logbtn button:after{
+  .logbtn button:after {
     background: #78c7d2;
     transform: translate(-100%, -5%) rotate(45deg);
   }
-  .logbtn:hover button:after{
+  .logbtn:hover button:after {
     transform: translate(-9%, -25%) rotate(45deg);
   }
-  
-  button span{
+
+  button span {
     position: relative;
     z-index: 1;
   }
+}

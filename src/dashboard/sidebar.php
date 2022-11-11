@@ -33,16 +33,16 @@
           </a>
         </li>
 
-        <li><a href="/dashboard/appointments">
-            <span class="icon notification" aria-hidden="true"></span> List of Appointments</a></li>
+        <!-- <li><a href="/dashboard/appointments">
+            <span class="icon notification" aria-hidden="true"></span> List of Appointments</a></li> -->
 
         <li><a href="/dashboard/appointments/get">
-            <span class="icon calendar" aria-hidden="true"></span> Calendar </a> </li>
+            <span class="icon calendar" aria-hidden="true"></span> Appointments </a> </li>
 
 
-        <li><a href="/dashboard/website-settings">
+        <!-- <li><a href="/dashboard/website-settings">
             <span class="icon setting" aria-hidden="true"></span>Website Settings </a>
-        </li>
+        </li> -->
 
         <li><a href="/dashboard/website-content">
             <span class="icon image" aria-hidden="true"></span> Website Content </a>

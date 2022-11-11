@@ -54,14 +54,15 @@
               Create An Account
             </h1>
             <p class="sign-up__descr" style="font-size: 70px; color:#c0b65a; font-family: 'Acme', sans-serif;">
-              Welcome to Ohana! 
+              Welcome to Ohana!
             </p>
             <p style="font-size:20px;"> Fill up the fields below to create an account. </p>
 
             <!-- ALERT -->
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
               <div class="alert alert-success" role="alert">
-              <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; unset($_SESSION["msg"]); ?>
+                <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
+                unset($_SESSION["msg"]); ?>
               </div>
             <?php
             }
@@ -82,7 +83,7 @@
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
-                  <input class="input__field" id="middle-name" name="mname" placeholder="Middle Name" required type="text" /><label class="input__label" for="middle-name">Middle Name</label>
+                  <input class="input__field" id="middle-name" name="mname" placeholder="Middle Name" type="text" /><label class="input__label" for="middle-name">Middle Name (Optional)</label>
                 </div>
               </div>
             </div>
@@ -103,9 +104,9 @@
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
-                  <input class="input__field" type="email " id="email" name="email" placeholder="Email" required type="text" /><label class="input__label" for="email">
-                    Email
-                    <!-- <i class="uil uil-envelope email-icon"></i> -->
+                  <input type="email" class="input__field" id="email" name="email" placeholder="Email" required="" />
+                  <label class="input__label" for="email">Email
+                    <i class="uil uil-envelope email-icon"></i>
                   </label>
                 </div>
               </div>
@@ -119,7 +120,7 @@
                 </div>
               </div>
             </div>
-            <div id="message">
+            <div id="message" style="background: white;">
               <center>
                 <h3 style="font-size: 20px; color:#c0b65a;">Password must contain the following:</h3>
               </center>
@@ -171,10 +172,12 @@
     </main>
 
     <a href="#" style="text-decoration: none; color:#ff5757" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions </a>
-    <!-- SCRIPTS -->
+
+
+    <!-- START OF JAVASCRIPT-->
     <script>
       const input = document.querySelector("input"),
-        emailIcon = document.querySelector(".email-icon")
+        emailIcon = document.querySelector(".emailico")
 
       input.addEventListener("keyup", () => {
         let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
@@ -189,9 +192,8 @@
         emailIcon.classList.replace("uil-check-circle", "uil-envelope");
         return emailIcon.style.color = "red"
       })
-    </script>
 
-    <script>
+
       //PASSWORD VALIDATION SCRIPT
 
       var myInput = document.getElementById("password"),
@@ -265,6 +267,9 @@
       }
     </script>
 
+    <script>
+    </script>
+
 
     <!-- SCRIPTS IMPORT-->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
@@ -272,8 +277,6 @@
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-</body>
-
 </body>
 
 </html>
