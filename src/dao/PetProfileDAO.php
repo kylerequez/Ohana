@@ -20,7 +20,20 @@ class PetProfileDAO
             $petProfiles = null;
             if ($stmt->execute() > 0) {
                 while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $existingPetProfile = new PetProfile($petProfile["pet_image"], $petProfile["pet_name"], $petProfile["pet_age"], new DateTime($petProfile["pet_birthdate"]), $petProfile["pet_sex"], $petProfile["pet_color"], $petProfile["is_vaccinated"], $petProfile["pcci_status"], $petProfile["account_id"], $petProfile["owner_name"], $petProfile["pet_price"], $petProfile["pet_status"]);
+                    $existingPetProfile = new PetProfile(
+                        $petProfile["pet_image"],
+                        $petProfile["pet_name"],
+                        new DateTime($petProfile["pet_birthdate"]),
+                        $petProfile["pet_sex"],
+                        $petProfile["pet_color"],
+                        $petProfile["pet_trait"],
+                        $petProfile["is_vaccinated"],
+                        $petProfile["pcci_status"],
+                        $petProfile["account_id"],
+                        $petProfile["owner_name"],
+                        $petProfile["pet_price"],
+                        $petProfile["pet_status"]
+                    );
                     $existingPetProfile->setId($petProfile["pet_id"]);
                     $petProfiles[] = $existingPetProfile;
                 }
@@ -44,10 +57,10 @@ class PetProfileDAO
                     $existingPetProfile = new PetProfile(
                         $petProfile["pet_image"],
                         $petProfile["pet_name"],
-                        $petProfile["pet_age"],
                         new DateTime($petProfile["pet_birthdate"]),
                         $petProfile["pet_sex"],
                         $petProfile["pet_color"],
+                        $petProfile["pet_trait"],
                         $petProfile["is_vaccinated"],
                         $petProfile["pcci_status"],
                         $petProfile["account_id"],
@@ -70,12 +83,12 @@ class PetProfileDAO
     {
         try {
             $sql = "INSERT INTO ohana_pet_profiles
-                    (pet_image, pet_name, pet_age, pet_birthdate, pet_sex, pet_color, is_vaccinated, pcci_status, account_id, owner_name, pet_price, pet_status)
-                    VALUES (:pet_image, :pet_name, :pet_age, :pet_birthdate, :pet_sex, :pet_color, :is_vaccinated, :pcci_status, :account_id, :owner_name, :pet_price, :pet_status);";
+                    (pet_image, pet_name, pet_trait, pet_birthdate, pet_sex, pet_color, is_vaccinated, pcci_status, account_id, owner_name, pet_price, pet_status)
+                    VALUES (:pet_image, :pet_name, :pet_trait, :pet_birthdate, :pet_sex, :pet_color, :is_vaccinated, :pcci_status, :account_id, :owner_name, :pet_price, :pet_status);";
 
             $image = $profile->getImage();
             $name = $profile->getName();
-            $age = $profile->getAge();
+            $trait = $profile->getTrait();
             $birthdate = $profile->getBirthdate()->format("Y-m-d");
             $sex = $profile->getSex();
             $color = $profile->getColor();
@@ -89,7 +102,7 @@ class PetProfileDAO
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":pet_image", $image, PDO::PARAM_STR);
             $stmt->bindParam(":pet_name", $name, PDO::PARAM_STR);
-            $stmt->bindParam(":pet_age", $age, PDO::PARAM_INT);
+            $stmt->bindParam(":pet_trait", $trait, PDO::PARAM_STR);
             $stmt->bindParam(":pet_birthdate", $birthdate, PDO::PARAM_STR);
             $stmt->bindParam(":pet_sex", $sex, PDO::PARAM_STR);
             $stmt->bindParam(":pet_color", $color, PDO::PARAM_STR);
@@ -124,10 +137,10 @@ class PetProfileDAO
                     $searchedPetProfile = new PetProfile(
                         $petProfile["pet_image"],
                         $petProfile["pet_name"],
-                        $petProfile["pet_age"],
                         new DateTime($petProfile["pet_birthdate"]),
                         $petProfile["pet_sex"],
                         $petProfile["pet_color"],
+                        $petProfile["pet_trait"],
                         $petProfile["is_vaccinated"],
                         $petProfile["pcci_status"],
                         $petProfile["account_id"],
@@ -160,10 +173,10 @@ class PetProfileDAO
                     $searchedPetProfile = new PetProfile(
                         $petProfile["pet_image"],
                         $petProfile["pet_name"],
-                        $petProfile["pet_age"],
                         new DateTime($petProfile["pet_birthdate"]),
                         $petProfile["pet_sex"],
                         $petProfile["pet_color"],
+                        $petProfile["pet_trait"],
                         $petProfile["is_vaccinated"],
                         $petProfile["pcci_status"],
                         $petProfile["account_id"],
@@ -186,13 +199,13 @@ class PetProfileDAO
     {
         try {
             $sql = "UPDATE ohana_pet_profiles
-                    SET pet_image=:image, pet_name=:name, pet_age=:age, pet_birthdate=:birthdate, pet_sex=:sex, pet_color=:color, is_vaccinated=:isVaccinated, pcci_status=:pcciStatus, account_id=:accountId, owner_name=:ownerName, pet_price=:price, pet_status=:status
+                    SET pet_image=:image, pet_name=:name, pet_trait=:trait, pet_birthdate=:birthdate, pet_sex=:sex, pet_color=:color, is_vaccinated=:isVaccinated, pcci_status=:pcciStatus, account_id=:accountId, owner_name=:ownerName, pet_price=:price, pet_status=:status
                     WHERE pet_id=:id";
 
             $id = $profile->getId();
             $image = $profile->getImage();
             $name = $profile->getName();
-            $age = $profile->getAge();
+            $trait = $profile->getTrait();
             $birthdate = $profile->getBirthdate()->format("Y-m-d");
             $sex = $profile->getSex();
             $color = $profile->getColor();
@@ -207,7 +220,7 @@ class PetProfileDAO
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt->bindParam(":image", $image, PDO::PARAM_STR);
             $stmt->bindParam(":name", $name, PDO::PARAM_STR);
-            $stmt->bindParam(":age", $age, PDO::PARAM_INT);
+            $stmt->bindParam(":trait", $trait, PDO::PARAM_STR);
             $stmt->bindParam(":birthdate", $birthdate, PDO::PARAM_STR);
             $stmt->bindParam(":sex", $sex, PDO::PARAM_STR);
             $stmt->bindParam(":color", $color, PDO::PARAM_STR);

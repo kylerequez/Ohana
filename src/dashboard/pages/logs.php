@@ -66,12 +66,7 @@
               <div class="search-wrapper">
                 <i data-feather="search" aria-hidden="true"></i>
                 <input type="text" placeholder=" Search ">
-                <button class="btn dropdown-toggle" type="filter" data-bs-toggle="dropdown" aria-expanded="false"> FILTER </button><!-- TESTING FILTER BUTTON -->
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">DATE</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
+                <button type="filter"> FILTER </button>
                 <button type="sort"> SORT </button>
               </div>
               <br>

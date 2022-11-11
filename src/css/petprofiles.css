@@ -1,6 +1,6 @@
 /*FONTS IMPORT*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
 /* font-family: 'Acme', sans-serif; FOR HEADERS */
 
 * {
@@ -18,6 +18,29 @@ section {
 }
 
 .card:hover {
-  transform: scale(1.10);
-  box-shadow: 5px 5px 15px rgba(192,182,90);  
+  transform: scale(1.1);
+  box-shadow: 5px 5px 15px rgba(192, 182, 90);
+}
+
+/* ----------------------------MOBILE RESPONSIVENESS------------------------------- */
+
+@media screen and (min-width: 350px) and (max-width: 900px) {
+  * {
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    position: relative !important;
+  }
+
+  section {
+    display: block;
+    margin-top: 2.5%;
+  }
+
+  .card:hover {
+    transform: scale(1.1);
+    box-shadow: 2.5px 2.5px 7.5px rgba(192, 182, 90);
+  }
 }

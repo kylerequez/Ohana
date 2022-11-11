@@ -44,7 +44,7 @@ if (!isset($_SESSION["user"])) {
 <nav class="navbar navbar-expand-md fixed-top">
   <div class="container-fluid">
     <div class="logo">
-      <a href="/home"> <img src="/Ohana/src/images/Landing/navlogo.png" style="width: 100%; height: 100px;"> </a>
+      <a href="/home"> <img src="/Ohana/src/images/Landing/navlogo.png" style="width: 100%; height: 90px;"> </a>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -68,18 +68,24 @@ if (!isset($_SESSION["user"])) {
         </li>
 
         <li class="nav-item">
-          <div class="action">
+          <div class="action" style="margin-right:25px;">
             <div class="profile" onclick="menuToggle();">
-              <img src="/Ohana/src/images/icons/customer.png" style="width:60px; height:50px;">
+              <img src="/Ohana/src/images/icons/customer.png" style="width:50px; height:40px;">
             </div>
             <div class="menu">
-              <h3><?php echo $account->getFullName(); ?><br><span><?php echo $account->getEmail(); ?></span></h3>
+              <h3 class="text-center mt-3 font-weight-bold"><?php echo $account->getFullName(); ?></h3>
               <ul>
                 <li>
-                  <img src="/Ohana/src/images/icons/edit.png" /><a href="/userprofile">My profile</a>
+                  <img src="/Ohana/src/images/icons/pencil.png" /><a href="/userprofile">My profile</a>
                 </li>
                 <li>
-                  <img src="/Ohana/src/images/icons/dog.png" /><a href="/ownedpets/get">Pet profile</a>
+                  <img src="/Ohana/src/images/icons/doggy.png" /><a href="/ownedpets/get">Pet profile</a>
+                </li>
+                <li>
+                  <img src="/Ohana/src/images/icons/file.png" /><a href="/transactions">Transactions</a>
+                </li>
+                <li>
+                  <img src="/Ohana/src/images/icons/calendar.png" /><a href="/appointments">Appointment</a>
                 </li>
                 <li>
                   <img src="/Ohana/src/images/icons/log-out.png" />

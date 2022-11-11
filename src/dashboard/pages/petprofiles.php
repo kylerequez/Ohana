@@ -109,12 +109,8 @@
                               </div>
                               <div class="modal-body">
                                 <div class="mb-3">
-                                  <label for="name" class="col-form-label"> DOG NAME: </label>
+                                  <label for="name" class="col-form-label">DOG NAME:</label>
                                   <input type="text" class="form-control" name="name" value="<?php echo $profile->getName(); ?>" required style="background-color:#eed1c2;">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="sex" class="col-form-label"> DOG AGE: </label>
-                                  <input type="text" class="form-control" name="age" value="<?php echo $profile->getAge(); ?>" required style="background-color:#eed1c2;">
                                 </div>
                                 <div class="mb-3">
                                   <label for="sex" class="col-form-label"> BIRTHDAY: </label>
@@ -126,8 +122,12 @@
                                   <label for="sex2" class="radio-inline"> <input type="radio" id="sex2" <?php if ($profile->getSex() == "FEMALE") echo "checked"; ?> name="sex" value="Female"> Female </label>
                                 </div>
                                 <div class="mb-3">
-                                  <label for="color" class="col-form-label"> COLOR/TRAIT: </label>
+                                  <label for="color" class="col-form-label"> COLOR: </label>
                                   <input type="text" class="form-control" name="color" value="<?php echo $profile->getColor(); ?>" required style="background-color:#eed1c2;">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="trait" class="col-form-label"> TRAIT: </label>
+                                  <input type="text" class="form-control" name="trait" value="<?php echo $profile->getTrait(); ?>" required style="background-color:#eed1c2;">
                                 </div>
                                 <div class="mb-3">
                                   <label for="isVaccinated" class="col-form-label"> IS VACCINATED </label><br>
@@ -238,10 +238,6 @@
                 <input type="text" class="form-control" name="name" placeholder="Enter Dog Name" required style="background-color:#eed1c2; color:black">
               </div>
               <div class="mb-3">
-                <label for="age" class="col-form-label"> DOG AGE</label>
-                <input type="text" class="form-control" name="age" placeholder="Enter Dog Age" required style="background-color:#eed1c2; color:black">
-              </div>
-              <div class="mb-3">
                 <label> DOG GENDER </label><br>
                 <label for="sex1" class="radio-inline"> <input type="radio" id="sex1" name="sex" value="Male"> Male </label>
                 <label for="sex2" class="radio-inline"> <input type="radio" id="sex2" name="sex" value="Female"> Female </label>
@@ -251,8 +247,12 @@
                 <input type="date" class="form-control" name="birthdate" required style="background-color:#eed1c2; color:black">
               </div>
               <div class="mb-3">
-                <label for="color" class="col-form-label"> COLOR/TRAIT </label>
-                <input type="text" class="form-control" name="color" placeholder="Enter Color/Trait" required style="background-color:#eed1c2; color:black">
+                <label for="color" class="col-form-label"> COLOR </label>
+                <input type="text" class="form-control" name="color" placeholder="Enter Color" required style="background-color:#eed1c2; color:black">
+              </div>
+              <div class="mb-3">
+                <label for="trait" class="col-form-label"> TRAIT: </label>
+                <input type="text" class="form-control" name="trait" placeholder="Enter Trait" required style="background-color:#eed1c2;">
               </div>
               <div class="mb-3">
                 <label for="isVaccinated" class="col-form-label"> IS VACCINATED </label><br>
@@ -281,57 +281,6 @@
         </div>
       </div>
     </form>
-
-    <!--EDIT PET PROFILE MODAL -->
-    <form method="POST" action="/dashboard/petprofiles/add">
-      <div class="modal fade" id="editModalId" tabindex="-1" aria-labelledby="addSlotModal" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="addStaffTitle"> EDIT PET PROFILE </h5>
-              <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
-            </div>
-            <div class="modal-body">
-              <input name="type" type="hidden" value="STAFF">
-              <div class="mb-3">
-                <label for="name" class="col-form-label"> DOG NAME </label>
-                <input type="text" class="form-control" name="name" placeholder="Enter Dog Name" required style="background-color:#eed1c2; color:black">
-              </div>
-              <div class="mb-3">
-                <label for="owner" class="col-form-label"> DOG OWNER </label>
-                <input type="text" class="form-control" name="owner" placeholder="Name of Dog Owner" required style="background-color:#eed1c2; color:black">
-              </div>
-              <input type="hidden" class="form-control" name="status"> <!-- FOR OHANA OWNER -->
-              <div class="mb-3">
-                <label for="image" class="col-form-label"> DOG IMAGE </label><br>
-                <input type="file" name="fileToUpload" id="fileToUpload" style="background-color:transparent;">
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn" id="ToastBtn" style="background-color:#db6551"> SAVE CHANGES </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
-
-    <!-- DELETE Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"> Delete Item Confirmation </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Are you sure you want to delete this item?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary"> Delete </button>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- Chart library -->
     <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>

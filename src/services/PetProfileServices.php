@@ -30,7 +30,7 @@ class PetProfileServices
         $image = $data["image"];
 
         $name = strtoupper($data["name"]);
-        $age = $data["age"];
+        $trait = strtoupper($data["trait"]);
         $birthdate = DateTime::createFromFormat("Y-m-d", $data["birthdate"]);
         $sex = strtoupper($data["sex"]);
         $color = strtoupper($data["color"]);
@@ -41,8 +41,8 @@ class PetProfileServices
         $price = $data["price"];
         $status = "AVAILABLE";
 
-        $petProfile = new PetProfile($image, $name, $age, $birthdate, $sex, $color, $isVaccinated, $pcciStatus, $accountId, $ownerName, $price, $status);
-        if(!$this->dao->addPetProfile($petProfile)){
+        $petProfile = new PetProfile($image, $name, $birthdate, $sex, $color, $trait, $isVaccinated, $pcciStatus, $accountId, $ownerName, $price, $status);
+        if (!$this->dao->addPetProfile($petProfile)) {
             $_SESSION["msg"] = "There was an error in adding the Pet Profile.";
             return false;
         }
@@ -59,7 +59,7 @@ class PetProfileServices
 
         $image = $data["image"];
         $name = strtoupper($data["name"]);
-        $age = $data["age"];
+        $trait = strtoupper($data["trait"]);
         $birthdate = DateTime::createFromFormat("Y-m-d", $data["birthdate"]);
         $sex = strtoupper($data["sex"]);
         $color = strtoupper($data["color"]);
@@ -70,9 +70,9 @@ class PetProfileServices
         $price = $data["price"];
         $status = $data["status"];
 
-        $profile = new PetProfile($image, $name, $age, $birthdate, $sex, $color, $isVaccinated, $pcciStatus, $accountId, $ownerName, $price, $status);
+        $profile = new PetProfile($image, $name, $birthdate, $sex, $color, $trait, $isVaccinated, $pcciStatus, $accountId, $ownerName, $price, $status);
         $profile->setId($id);
-        if(!$this->dao->updatePetProfile($profile)){
+        if (!$this->dao->updatePetProfile($profile)) {
             $_SESSION["msg"] = "There was an error in updating the Pet Profile.";
             return false;
         }

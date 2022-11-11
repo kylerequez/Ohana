@@ -13,12 +13,9 @@ if (!$conn) {
 <html lang="en">
 
 <head>
-  <!--meta tags-->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
-  <meta name="keywords" content="Kennel Business, French Bulldogs">
 
   <title> DASHBOARD - CALENDER </title>
 
@@ -30,6 +27,9 @@ if (!$conn) {
 
   <!-- BOOTSTRAP CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+  <!-- CALENDAR BS-->
+  <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
 
   <!-- Custom styles -->
   <link rel="stylesheet" href="/Ohana/src/dashboard/css/adminpages.css">
@@ -49,12 +49,25 @@ if (!$conn) {
     body {
       height: 100%;
       width: 100%;
-      font-family: Apple Chancery, cursive;
+
     }
 
     .btn-info.text-light:hover,
     .btn-info.text-light:focus {
       background: #000;
+    }
+
+    .fc .fc-button-primary {
+      background-color: #db6551;
+      color: white;
+      border-color: white;
+    }
+
+    .fc .fc-button-primary:not(:disabled).fc-button-active,
+    .fc .fc-button-primary:not(:disabled):active,
+    .fc .fc-button-primary:disabled {
+      background-color: #c0b65a;
+      color: white;
     }
 
     table,
@@ -64,7 +77,7 @@ if (!$conn) {
     th,
     thead,
     tr {
-      border-color: #ededed !important;
+      border-color: #db6551 !important;
       border-style: solid;
       border-width: 1px !important;
     }
@@ -85,23 +98,24 @@ if (!$conn) {
     $user = unserialize($_SESSION['user']);
   ?>
     <div class="layer"> </div>
+
     <!-- Body -->
+
     <div class="page-flex">
       <!-- Dashboard Sidebar -->
       <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
 
       <div class="main-wrapper">
-        <!-- END OF ADMIN DASHBOARD SIDE-->
 
         <!-- ! Main nav -->
         <?php include_once dirname(__DIR__) . "/navbar.php" ?>
 
-        <!-- CALENDAR Main content -->
+        <!--  CUSTOMER ACCOUNTS CONTENT -->
         <main class="main users chart-page" id="skip-target">
           <div class="container">
             <br>
             <center>
-              <h2 class="main-title"> CALENDAR </h2>
+              <h2 class="main-title"> APPOINTMENTS</h2>
             </center>
           </div>
           <div class="container py-5" id="page-container" style="margin-top: 0%">
@@ -111,14 +125,14 @@ if (!$conn) {
               </div>
               <div class="col-md-3">
                 <div class="cardt rounded-0 shadow">
-                  <div class="card-header bg-gradient bg-primary text-light">
-                    <h5 class="card-title">Schedule Form</h5>
+                  <div class="card-header text-light p-3" style="background-color:#db6551;">
+                    <h5 class="card-title mt-4 text-center">Schedule Form</h5><br>
                   </div>
                   <div class="card-body">
                     <div class="container-fluid">
                       <form action="" method="post" id="schedule-form">
                         <input type="hidden" name="id" value="">
-                        <div class="form-group mb-2">
+                        <div class="form-group my-2">
                           <label for="title" class="control-label">Title</label>
                           <input type="text" class="form-control form-control-sm rounded-0" name="title" id="title" required>
                         </div>
@@ -139,8 +153,8 @@ if (!$conn) {
                   </div>
                   <div class="card-footer">
                     <div class="text-center">
-                      <button class="btn btn-primary btn-sm rounded-0" type="submit" form="schedule-form"><i class="fa fa-save"></i> Save</button>
-                      <button class="btn btn-default border btn-sm rounded-0" type="reset" form="schedule-form"><i class="fa fa-reset"></i> Cancel</button>
+                      <button class="btn btn-md rounded-0 my-4" type="submit" form="schedule-form" style="background-color:#db6551;color:white"><i class="fa fa-save"></i> Save</button>
+                      <button class="btn btn-default border btn-md rounded-0 my-4" type="reset" form="schedule-form"><i class="fa fa-reset"></i> Cancel</button>
                     </div>
                   </div>
                 </div>
@@ -181,20 +195,23 @@ if (!$conn) {
           </div>
         </main>
 
-        <!-- FOOTER -->
+
+        </main>
+
+        <!-- ! Footer -->
         <?php include_once dirname(__DIR__) . '/footer.php'; ?>
+
       </div>
     </div>
 
     <!-- SCRIPTS -->
     <!-- Custom scripts -->
-    <script src="/Ohana/src/dashboard/js/script.js"> </script>
+    <script src="/Ohana/src/dashboard/js/script.js"></script>
+
     <!-- JavaScript BOOTSTRAP Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
-    <!--SCRIPT FOR BOOTSTRAP MODAL-->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
+
 
     <?php
     include_once dirname(__DIR__) . "/../models/Appointment.php";
@@ -208,6 +225,7 @@ if (!$conn) {
   <?php
   }
   ?>
+
 </body>
 
 </html>

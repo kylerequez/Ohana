@@ -3,7 +3,7 @@
 
 <head>
 
-    <title> OWNED PETS </title>
+    <title> OHANA PUPPIES </title>
 
     <!-- META TAGS -->
     <meta charset="utf-8">
@@ -17,7 +17,7 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
 
     <!-- EXTERNAL CSS -->
-    <link rel="stylesheet" href="/Ohana/src/css/petprofiles.css">
+    <link rel="stylesheet" href="/Ohana/src/css/puppies.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
@@ -46,48 +46,39 @@
 
         <div class="container-fluid">
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-
-            <section class="abouthead" style="margin-top:10%;">
-                <center>
-                    <h1 style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800"> Your Pets </h1><br>
-                    <div class="form__row">
-                        <p style="font-size:20px;">Do not have a pet profile?&nbsp;<a class="link" name="login" style="text-decoration:none; color:#db6551" href="/createpetprofile">Create now!</a></p>
-                    </div><br>
-                </center>
-
-                <div class="container-fluid d-flex justify-content-center">
-                    <?php
-                    include_once dirname(__DIR__) . '/models/PetProfile.php';
-                    $profiles = unserialize($_SESSION["profiles"]);
-
-                    if (!empty($profiles)) {
-                        foreach ($profiles as $profile) {
-                    ?>
-                            <a href="/ownedpets/profile/<?php echo $profile->getId(); ?>" style="text-decoration: none; color:black">
-                                <div class="card m-3" style="width: 20rem;">
-                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image" width="250px" height="250px;" style="margin-top:10px;">
-                                    <div class="card-body">
-                                        <h5 class="card-title"> <?php echo $profile->getName(); ?></h5>
-                                        <p class="card-text"> <?php echo $profile->getBirthdate()->format('Y-m-d'); ?> </p>
-                                        <p class="card-text"> <?php echo $profile->getPrice(); ?> </p>
-                                    </div>
-                                </div>
-                            </a>
-                        <?php
-                        }
-                    } else {
-                        ?>
-                        <div class="alert alert-info">You currently do not have any pet profiles</div>
-                    <?php
-                    }
-                    ?>
+            <div class="card mx-auto img-fluid" style="max-width: 60vw; max-height:60vh; background-color:#2f1f18; margin-top:10%;">
+                <img class="card-img-top" src="/Ohana/src/images/Ohanapups/cardbg.png" alt="Card image" style="width:100%; height:70vh">
+                <div class="card-img-overlay">
+                    <div class="card-header">
+                        <p style="font-size: 40px; text-align:center">&#10084;<b> KOA </b>&#10084;</p>
+                    </div>
+                    <div class="row justify-content">
+                        <hr style="color:white">
+                        <div class="col-md-5 mx-auto">
+                            <img src="/Ohana/src/images/Ohanapups/trans5.png" class="card-img">
+                        </div>
+                        <div class="col-md-5">
+                            <div class="card-body"><br>
+                                <p class="card-text"> <b>BIRTHDAY:</b> June 13, 2022 </p>
+                                <p class="card-text"> <b>COLOR:</b> Black Tan </p>
+                                <p class="card-text"> <b>GENDER:</b> Male </p>
+                                <p class="card-text"> <b>WEIGHT:</b> 6.1kg </p>
+                                <p class="card-text"> <b>GENES:</b> Lilac Tan Carrier & Isabella Carrier </p>
+                                <p class="card-text"> <b>PCCI PAPERS:</b> COMPLETE</p>
+                                <p class="card-text"> <b>Note: All french bulldog puppies are fully vaccinated before release.</b></p>
+                            </div>
+                            <div name="buttons" style="margin-top:10%">
+                                <button type="button" class="btn btn-secondary mt-3" style="margin-left:25%"> Back to Home</button>
+                                <button type="button" class="btn mt-3" style="margin-left:5%; background-color:#c0b65a"> Choose as Pair </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </section>
-
+            </div>
         </div>
     </main>
 
-    <div class="container-fluid" style="margin-top:10%">
+    <div class="container-fluid">
         <?php include_once 'footer.php'; ?>
     </div>
 
@@ -107,6 +98,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </body>
 
