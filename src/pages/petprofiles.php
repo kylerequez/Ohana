@@ -56,15 +56,31 @@
                 </center>
 
                 <div class="container-fluid d-flex justify-content-center">
-                    <a href="/" style="text-decoration: none; color:black">
-                        <div class="card" style="width: 20rem;">
-                            <img src="/Ohana/src/images/petprofile/studog.png" class="card-img-top" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title" style="color:#c0b65a"> FRENCH BULLDOG NAME </h5>
-                                <p class="card-text"> DESCRIPTION DEPENDS ON THE CUSTOMER </p>
-                            </div>
-                        </div>
-                    </a>
+                    <?php
+                    include_once dirname(__DIR__) . '/models/PetProfile.php';
+                    $profiles = unserialize($_SESSION["profiles"]);
+
+                    if (!empty($profiles)) {
+                        foreach ($profiles as $profile) {
+                    ?>
+                            <a href="/ownedpets/profile/<?php echo $profile->getId(); ?>" style="text-decoration: none; color:black">
+                                <div class="card" style="width: 20rem;">
+                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image">
+                                    <div class="card-body">
+                                        <h5 class="card-title"> <?php echo $profile->getName(); ?></h5>
+                                        <p class="card-text"> <?php echo $profile->getBirthdate()->format('Y-m-d'); ?> </p>
+                                        <p class="card-text"> <?php echo $profile->getPrice(); ?> </p>
+                                    </div>
+                                </div>
+                            </a>
+                        <?php
+                        }
+                    } else {
+                        ?>
+                        <div class="alert alert-info">You currently do not have any pet profiles</div>
+                    <?php
+                    }
+                    ?>
                 </div>
             </section>
 

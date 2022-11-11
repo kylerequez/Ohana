@@ -135,9 +135,47 @@ class PetProfileDAO
                         $petProfile["pet_price"],
                         $petProfile["pet_status"]
                     );
+                    $searchedPetProfile->setId($id);
                 }
             }
             return $searchedPetProfile;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function searchByAccountId(string $id): mixed
+    {
+        try {
+            $sql = "SELECT * FROM ohana_pet_profiles
+                    WHERE account_id=:id";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+
+            $petProfiles = null;
+            if ($stmt->execute() > 0) {
+                while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $searchedPetProfile = new PetProfile(
+                        $petProfile["pet_image"],
+                        $petProfile["pet_name"],
+                        $petProfile["pet_age"],
+                        new DateTime($petProfile["pet_birthdate"]),
+                        $petProfile["pet_sex"],
+                        $petProfile["pet_color"],
+                        $petProfile["is_vaccinated"],
+                        $petProfile["pcci_status"],
+                        $petProfile["account_id"],
+                        $petProfile["owner_name"],
+                        $petProfile["pet_price"],
+                        $petProfile["pet_status"]
+                    );
+                    $searchedPetProfile->setId($petProfile["pet_id"]);
+                    $petProfiles[] = $searchedPetProfile;
+                }
+            }
+            return $petProfiles;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -164,7 +202,7 @@ class PetProfileDAO
             $ownerName = $profile->getOwnerName();
             $price = $profile->getPrice();
             $status = $profile->getStatus();
-            
+
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt->bindParam(":image", $image, PDO::PARAM_STR);

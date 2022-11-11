@@ -11,7 +11,7 @@ function init() {
     script.type = "text/javascript";
     document.getElementsByTagName("head")[0].appendChild(script);
 
-    botLogoPath = "/Ohana/src/images/Chatbot/logo.png"; //CHATBOT IMAGE
+    //botLogoPath = "/Ohana/src/images/Chatbot/logo.png"; //CHATBOT IMAGE
 
     //--------------------------- Chatbot Frontend UI -------------------------------
     const chatContainer = document.getElementById("chat-container");

@@ -16,5 +16,12 @@ $controller = new PetProfileController($services, $logservices);
 
 if($_SERVER["REQUEST_METHOD"] == "GET" && (isset($type) && !isset($id)))
 {
+    // Display Rehoming Pet Profiles
     $controller->displayPetProfiles($type);
+} else if ($_SERVER["REQUEST_METHOD"] == "GET" && !isset($id)) {
+    // Display Own Pet Profiles
+    $controller->processCustomerRequest($_SERVER["REQUEST_METHOD"], null);
+} else if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($id)) {
+    // Display Individual Pet Profile
+    $controller->processCustomerRequest($_SERVER["REQUEST_METHOD"], $id);
 }

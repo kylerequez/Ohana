@@ -28,8 +28,8 @@ class PetProfileController
                 if (!$this->services->deletePetProfile($id)) {
                     $this->processCollectionRequest("GET");
                 }
-                $user = unserialize($_SESSION["user"]);
-                $log = $user->getFullName() . " has deleted Pet Profile ID $id";
+                $account = unserialize($_SESSION["user"]);
+                $log = $account->getFullName() . " has deleted Pet Profile ID $id";
                 if (!$this->logservices->addLog($log)) {
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
@@ -45,8 +45,8 @@ class PetProfileController
                 if (!$this->services->updatePetProfile($id, $_POST)) {
                     $this->processCollectionRequest("GET");
                 }
-                $user = unserialize($_SESSION["user"]);
-                $log = $user->getFullName() . " has updated Pet Profile ID $id";
+                $account = unserialize($_SESSION["user"]);
+                $log = $account->getFullName() . " has updated Pet Profile ID $id";
                 if (!$this->logservices->addLog($log)) {
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
@@ -65,13 +65,13 @@ class PetProfileController
                 break;
                 // Add Pet Profile
             case "POST":
-                $user = unserialize($_SESSION["user"]);
+                $account = unserialize($_SESSION["user"]);
                 $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
-                $_POST["accountId"] = $user->getType() != "USER" ? 1 : $user->getId();
+                $_POST["accountId"] = $account->getType() != "USER" ? 1 : $account->getId();
                 if (!$this->services->addPetProfile($_POST)) {
                     $this->processCollectionRequest("GET");
                 }
-                $log = $user->getFullName() . " has added a Pet Profile.";
+                $log = $account->getFullName() . " has added a Pet Profile.";
                 if (!$this->logservices->addLog($log)) {
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
@@ -105,6 +105,7 @@ class PetProfileController
     {
         switch ($method) {
             case "GET":
+                
                 break;
             case "POST":
                 break;
@@ -115,6 +116,10 @@ class PetProfileController
     {
         switch ($method) {
             case "GET":
+                $account = unserialize($_SESSION['user']);
+                $id = $account->getId();
+                $_SESSION["profiles"] = serialize($this->services->getUserPetProfile($id));
+                header("Location: http://localhost/ownedpets");
                 break;
             case "POST":
                 break;

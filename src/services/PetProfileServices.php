@@ -19,6 +19,11 @@ class PetProfileServices
         return $this->dao->getOhanaPets();
     }
 
+    public function getUserPetProfile(string $id): mixed
+    {
+        return $this->dao->searchByAccountId($id);
+    }
+
     public function addPetProfile(array $data): mixed
     {
         // ADD IMAGE VALIDATION SOON !!! IMPORTANT

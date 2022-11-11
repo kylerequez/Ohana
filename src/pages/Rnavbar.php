@@ -79,7 +79,7 @@ if (!isset($_SESSION["user"])) {
                   <img src="/Ohana/src/images/icons/edit.png" /><a href="/userprofile">My profile</a>
                 </li>
                 <li>
-                  <img src="/Ohana/src/images/icons/dog.png" /><a href="/ownedpets">Pet profile</a>
+                  <img src="/Ohana/src/images/icons/dog.png" /><a href="/ownedpets/get">Pet profile</a>
                 </li>
                 <li>
                   <img src="/Ohana/src/images/icons/log-out.png" />

@@ -83,6 +83,10 @@
 
 
     <!-- SCIPTS -->
+    <?php
+    $test = file_get_contents('http:/localhost/dashboard/chatbot-responses/get');
+    echo $test;
+    ?>
     <script src="/Ohana/src/js/chatbot-ui.js"></script>
     <script>
         createChatBot(host = 'http://localhost:5005/webhooks/rest/webhook', botLogo = "/Ohana/src/images/Chatbot/bot-logo.png",
