@@ -26,20 +26,6 @@
 </head>
 
 <body>
-  <?php
-  if (!isset($_SESSION)) session_start();
-  include_once dirname(__DIR__) . '/../models/Account.php';
-
-  if (empty($_SESSION['user'])) {
-    session_unset();
-    session_destroy();
-    header("Location: http://localhost/login");
-    exit();
-  } else {
-    $user = unserialize($_SESSION['user']);
-    // print_r($existingAccount);
-    // echo "<br>" . $existingAccount->getType();
-  ?>
     <div class="layer"> </div>
 
     <!-- Body -->
@@ -69,8 +55,9 @@
               <button type="sort"> SORT </button>
             </div>
             <?php
-            if (isset($_SESSION["users"])) {
-              $users = unserialize($_SESSION["users"]);
+            $users = unserialize($_SESSION["users"]);
+
+            if(!empty($users)){
             ?>
               <table class="posts-table">
                 <thead>
@@ -129,18 +116,6 @@
             }
             ?>
           </div>
-
-          <!-- <div class="paginations">
-            <li class="page-item previous-page"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">1</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
-            <li class="page-item dots"><a class="page-link" href="#">...</a></li>
-            <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
-          </div> -->
-
         </main>
         <!-- ! Footer -->
         <?php include_once dirname(__DIR__) . '/footer.php'; ?>

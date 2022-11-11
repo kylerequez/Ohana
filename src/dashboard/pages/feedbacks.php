@@ -22,18 +22,6 @@
 </head>
 
 <body>
-  <?php
-  if (!isset($_SESSION)) session_start();
-  include_once dirname(__DIR__) . '/../models/Account.php';
-
-  if (empty($_SESSION['user'])) {
-    session_unset();
-    session_destroy();
-    header("Location: http://localhost/login");
-    exit();
-  } else {
-    $user = unserialize($_SESSION['user']);
-  ?>
     <div class="layer"> </div>
 
     <!-- Body -->

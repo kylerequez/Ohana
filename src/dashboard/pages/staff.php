@@ -29,18 +29,6 @@
 </head>
 
 <body>
-  <?php
-
-
-  if (empty($_SESSION['user'])) {
-    session_unset();
-    session_destroy();
-    header("Location: http://localhost/login");
-    exit();
-  } else {
-    include_once dirname(__DIR__) . '/../models/Account.php';
-    $user = unserialize($_SESSION['user']);
-  ?>
     <div class="layer"> </div>
 
     <!-- Body -->
@@ -173,7 +161,7 @@
             <?php
             } else {
             ?>
-
+            
             <?php
             }
             ?>
@@ -275,9 +263,6 @@
     <!--SCRIPT FOR BOOTSTRAP MODAL-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
-  <?php
-  }
-  ?>
 </body>
 
 </html>

@@ -28,19 +28,6 @@
 
 
 <body>
-  <?php
-  if (!isset($_SESSION)) session_start();
-  include_once dirname(__DIR__) . '/../models/Account.php';
-  include_once dirname(__DIR__) . '/../models/PetProfile.php';
-
-  if (empty($_SESSION['user'])) {
-    session_unset();
-    session_destroy();
-    header("Location: http://localhost/login");
-    exit();
-  } else {
-    $user = unserialize($_SESSION['user']);
-  ?>
     <div class="layer"> </div>
     <!-- Body -->
     <div class="page-flex">
@@ -72,7 +59,9 @@
             </div>
             <br>
             <?php
+            include_once dirname(__DIR__) . '/../models/PetProfile.php';
             $profiles = unserialize($_SESSION["profiles"]);
+
             if (!empty($profiles)) {
             ?>
               <table class="posts-table">
@@ -175,9 +164,9 @@
           </div>
         </main>
       <?php
-            } else {
-              echo "<h1>NULL</h1>";
-            }
+        } else {
+           echo "<h1>NULL</h1>";
+        }
       ?>
       <!-- FOOTER -->
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
@@ -298,9 +287,6 @@
     <!--SCRIPT FOR BOOTSTRAP MODAL-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
-  <?php
-  }
-  ?>
 </body>
 
 </html>

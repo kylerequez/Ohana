@@ -22,19 +22,6 @@
 </head>
 
 <body>
-  <?php
-  if (!isset($_SESSION)) session_start();
-  include_once dirname(__DIR__) . '/../models/Account.php';
-  include_once dirname(__DIR__) . '/../models/ChatbotResponse.php';
-
-  if (empty($_SESSION['user'])) {
-    session_unset();
-    session_destroy();
-    header("Location: http://localhost/login");
-    exit();
-  } else {
-    $user = unserialize($_SESSION['user']);
-  ?>
     <div class="layer"> </div>
 
     <!-- Body -->
@@ -68,7 +55,9 @@
             </div>
 
             <?php
+            include_once dirname(__DIR__) . '/../models/ChatbotResponse.php';
             $responses = unserialize($_SESSION["cb_responses"]);
+            
             if (!empty($responses)) {
             ?>
               <table class="posts-table">
@@ -203,9 +192,6 @@
     <!--SCRIPT FOR BOOTSTRAP MODAL-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
-  <?php
-  }
-  ?>
 </body>
 
 </html>

@@ -9,7 +9,7 @@ class LogServices
         $this->dao = $dao;
     }
 
-    public function getAllLogs(): array
+    public function getAllLogs(): mixed
     {
         return $this->dao->getAllLogs();
     }

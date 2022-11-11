@@ -1,4 +1,16 @@
 <aside class="sidebar">
+  <?php
+  if (empty($_SESSION['user'])) {
+    session_unset();
+    session_destroy();
+    header("Location: http://localhost/login");
+    exit();
+  } else {
+    include_once dirname(__DIR__) . '/models/Account.php';
+    $user = unserialize($_SESSION['user']);
+    $user->getType() == "USER" ? header("Location: http://localhost/home") : null;
+  }
+  ?>
   <div class="sidebar-start">
     <a href="/dashboard" class="logo-wrapper" title="Home"> <img src="/Ohana/src/dashboard/img/Ohana Kennel.png" aria-hidden="true"></a>
 
