@@ -13,23 +13,34 @@ class AppointmentDAO
     public function getAllAppointments(): mixed
     {
         try {
-            $sql = "SELECT * FROM ohana_appointments;";
+            $sql = "SELECT 
+                        a.appointment_id, 
+                        a.appointment_title, 
+                        a.appointment_type, 
+                        a.appointment_description, 
+                        b.account_id, 
+                        b.fname, 
+                        b.lname, 
+                        a.appointment_start, 
+                        a.appointment_end 
+                    FROM ohana_appointments a, ohana_account b;";
 
             $stmt = $this->conn->query($sql);
             $appointments = null;
             if ($stmt->execute() > 0) {
                 while ($appointment = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $existingAppointment = new Appointment(
-                        $appointment["title"],
-                        null,
-                        null,
-                        $appointment["description"],
-                        new DateTime($appointment["start_datetime"]),
-                        new DateTime($appointment["end_datetime"])
+                        $appointment["appointment_title"],
+                        $appointment["appointment_type"],
+                        $appointment["account_id"],
+                        $appointment["fname"] . " " . $appointment["lname"],
+                        $appointment["appointment_description"],
+                        new DateTime($appointment["appointment_start"]),
+                        new DateTime($appointment["appointment_end"]),
                     );
-                    $existingAppointment->setId($appointment["id"]);
+                    $existingAppointment->setId($appointment["appointment_id"]);
 
-                    $appointments[$appointment["id"]] = $existingAppointment;
+                    $appointments[$appointment["appointment_id"]] = $existingAppointment;
                 }
             }
             return $appointments;
@@ -43,7 +54,7 @@ class AppointmentDAO
     {
         try {
             $sql = "DELETE FROM ohana_appointments
-                    WHERE id=:id";
+                    WHERE appointment_id=:id";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
@@ -58,9 +69,18 @@ class AppointmentDAO
     public function searchById(string $id): mixed
     {
         try {
-            $sql = "SELECT * FROM ohana_appointments
-                    WHERE id=:id
-                    LIMIT 1;";
+            $sql = "SELECT 
+                        a.appointment_id, 
+                        a.appointment_title, 
+                        a.appointment_type, 
+                        a.appointment_description, 
+                        b.account_id, 
+                        b.fname, 
+                        b.lname, 
+                        a.appointment_start, 
+                        a.appointment_end 
+                    FROM ohana_appointments a, ohana_account b 
+                    WHERE a.account_id = b.account_id AND appointment_id=:id;";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
@@ -69,14 +89,15 @@ class AppointmentDAO
             if ($stmt->execute() > 0) {
                 while ($appointment = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $searchedAppointment = new Appointment(
-                        $appointment["title"],
-                        null,
-                        null,
-                        $appointment["description"],
-                        new DateTime($appointment["start_datetime"]),
-                        new DateTime($appointment["end_datetime"])
+                        $appointment["appointment_title"],
+                        $appointment["appointment_type"],
+                        $appointment["account_id"],
+                        $appointment["fname"] . " " . $appointment["lname"],
+                        $appointment["appointment_description"],
+                        new DateTime($appointment["appointment_start"]),
+                        new DateTime($appointment["appointment_end"]),
                     );
-                    $searchedAppointment->setId($appointment["id"]);
+                    $searchedAppointment->setId($appointment["appointment_id"]);
                 }
             }
             return $searchedAppointment;
@@ -90,8 +111,8 @@ class AppointmentDAO
     {
         try {
             $sql = "UPDATE ohana_appointments
-                    SET title=:title, description=:description, start_datetime=:startDate, end_datetime=:endDate
-                    WHERE id=:id;";
+                    SET appointment_title=:title, appointment_description=:description, appointment_start=:startDate, appointment_end=:endDate
+                    WHERE appointment_id=:id;";
 
             $id = $appointment->getId();
             $title = $appointment->getTitle();

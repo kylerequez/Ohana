@@ -111,27 +111,39 @@
                       <input type="hidden" name="id" value="">
                       <div class="form-group my-2">
                         <label for="title" class="control-label">Title</label>
-                        <input type="text" class="form-control form-control-sm rounded-0" name="title" id="title" required>
+                        <input type="text" class="form-control form-control-sm rounded-0" name="title" id="title" required readonly="readonly">
+                      </div>
+                      <div class="form-group mb-2">
+                        <label for="type" class="control-label">Type</label>
+                        <input type="text" class="form-control form-control-sm rounded-0" name="type" id="type" required readonly="readonly">
                       </div>
                       <div class="form-group mb-2">
                         <label for="description" class="control-label">Description</label>
-                        <textarea rows="3" class="form-control form-control-sm rounded-0" name="description" id="description" required></textarea>
+                        <textarea rows="3" class="form-control form-control-sm rounded-0" name="description" id="description" required readonly="readonly"></textarea>
+                      </div>
+                      <div class="form-group mb-2">
+                        <label for="accountId" class="control-label">Account ID</label>
+                        <input type="text" class="form-control form-control-sm rounded-0" name="accountId" id="accountId" required readonly="readonly">
+                      </div>
+                      <div class="form-group mb-2">
+                        <label for="customerName" class="control-label">Customer</label>
+                        <input type="text" class="form-control form-control-sm rounded-0" name="customerName" id="customerName" required readonly="readonly">
                       </div>
                       <div class="form-group mb-2">
                         <label for="startDate" class="control-label">Start Time</label>
-                        <input type="datetime-local" class="form-control form-control-sm rounded-0" name="startDate" id="startDate" required>
+                        <input type="datetime-local" step="60" class="form-control form-control-sm rounded-0" name="startDate" id="startDate" required readonly="readonly">
                       </div>
                       <div class="form-group mb-2">
                         <label for="endDate" class="control-label">End Time</label>
-                        <input type="datetime-local" class="form-control form-control-sm rounded-0" name="endDate" id="endDate" required>
+                        <input type="datetime-local" step="60" class="form-control form-control-sm rounded-0" name="endDate" id="endDate" required readonly="readonly">
                       </div>
                     </form>
                   </div>
                 </div>
                 <div class="card-footer">
                   <div class="text-center">
-                    <button class="btn btn-md rounded-0 my-4" type="submit" form="schedule-form" style="background-color:#db6551;color:white"><i class="fa fa-save"></i> Save</button>
-                    <button class="btn btn-default border btn-md rounded-0 my-4" type="reset" form="schedule-form"><i class="fa fa-reset"></i> Cancel</button>
+                    <button class="btn btn-md rounded-0 my-4" name="btnSave" id="btnSave" type="submit" form="schedule-form" style="background-color:#db6551;color:white" disabled><i class="fa fa-save"></i>Save</button>
+                    <button class="btn btn-default border btn-md rounded-0 my-4" type="reset" form="schedule-form"><i class="fa fa-reset"></i>Cancel</button>
                   </div>
                 </div>
               </div>
@@ -151,8 +163,14 @@
                   <dl>
                     <dt class="text-muted">Title</dt>
                     <dd id="title" class="fw-bold fs-4"></dd>
+                    <dt class="text-muted">Type</dt>
+                    <dd id="type" class=""></dd>
                     <dt class="text-muted">Description</dt>
                     <dd id="description" class=""></dd>
+                    <dt class="text-muted">Account ID</dt>
+                    <dd id="accountId" class=""></dd>
+                    <dt class="text-muted">Customer Name</dt>
+                    <dd id="customerName" class=""></dd>
                     <dt class="text-muted">Start Time</dt>
                     <input type="datetime-local" id="start" class="" disabled></input>
                     <dt class="text-muted">End Time</dt>
@@ -171,13 +189,26 @@
           </div>
         </div>
       </main>
-
-
-      </main>
-
       <!-- ! Footer -->
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
 
+      <!-- TOAST -->
+      <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+        <div class="toast-container top-0 end-0 p-3">
+          <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+            <div class="toast-header">
+              <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+              <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
+              <small> JUST NOW </small>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
+          </div>
+        </div>
+      <?php
+      }
+      unset($_SESSION["msg"]);
+      ?>
     </div>
   </div>
 

@@ -35,10 +35,12 @@ class AppointmentServices
             return false;
         }
         $title = trim($data["title"]);
+        $type = trim($data["type"]);
         $description = trim($data["description"]);
+        $accountId = $data["accountId"];
         $startDate = new DateTime(str_replace("T", " ", $data["startDate"]));
         $endDate = new DateTime(str_replace("T", " ", $data["endDate"]));
-        $appointment = new Appointment($title, null, null, $description, $startDate, $endDate);
+        $appointment = new Appointment($title, $type, $accountId, null, $description, $startDate, $endDate);
         $appointment->setId($id);
         if (!$this->dao->updateAppointment($appointment)) {
             $_SESSION["msg"] = "There was an error in updating the appointment.";
