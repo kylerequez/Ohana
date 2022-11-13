@@ -58,9 +58,6 @@ class AppointmentController
                 $_SESSION["appointments"] = serialize($this->services->getAllAppointments());
                 header("Location: http://localhost/dashboard/calendar");
                 break;
-            case "POST":
-                echo "test1";
-                break;
         }
     }
 }

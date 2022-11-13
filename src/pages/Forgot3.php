@@ -51,17 +51,24 @@
           <p class="sign-up__descr" style="font-size: 25px;">
             Input a new password for your account.
           </p>
-           <!-- ALERT -->
-           <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-              <div class="alert alert-success" role="alert">
-              <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; unset($_SESSION["msg"]); ?>
-              </div>
-            <?php
-            }
-            unset($_SESSION["msg"]);
-            ?>
+          <!-- ALERT -->
+          <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+            <div class="alert alert-success" role="alert">
+              <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
+              unset($_SESSION["msg"]); ?>
+            </div>
+          <?php
+          }
+          unset($_SESSION["msg"]);
+          ?>
         </header>
 
+        <?php
+        if ($token != $_SESSION["token"]) {
+          header("Location: http://localhost/forgot-password/confirm");
+          session_destroy();
+        }
+        ?>
         <form id="form" method="POST" action="/forgotpassword" class="sign-up__form form">
           <div class="form__row form__row--two">
             <div class="input form__inline-input">
@@ -71,7 +78,6 @@
                 <div class="form__row">
                   <div class="input">
                     <div class="input__container">
-                      <input type="hidden" name="email" value="<?php echo trim($email); ?>">
                       <input class="input__field" id="password" name="password" placeholder="Password" required="" type="password" />
                       <label class="input__label" for="password"> Enter New Password</label>
                     </div>
@@ -115,9 +121,9 @@
   </main>
   <!-- FOOTER -->
   <div name="footer" style="margin-top:15%">
-  <?php include_once 'footer.php'; ?>
+    <?php include_once 'footer.php'; ?>
   </div>
-  
+
 
   <!-- START OF JAVASCRIPT-->
   <script>

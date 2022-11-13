@@ -108,7 +108,7 @@
                   <div class="form__row sign-up__sign">
                     Dont have an account? &nbsp;<a class="link" href="/register" style="text-decoration: none;"> Register Now! </a>
                     <div class="form__row">
-                      <br><a class="link" href="/forgot" style="text-decoration: none;">Forgot your password?</a>
+                      <br><a class="link" href="/forgot-password" style="text-decoration: none;">Forgot your password?</a>
                     </div>
                   </div>
           </form>

@@ -155,23 +155,31 @@ class AccountController
         switch ($method) {
             case "GET":
                 if ($this->services->forgotPasswordRequest($email)) {
-                    // echo "true";
-                    header("Location: http://localhost/forgot-confirm");
+                    header("Location: http://localhost/forgot-password/confirm");
                     break;
                 } else {
-                    // echo "false";
-                    header("Location: http://localhost/forgot");
+                    header("Location: http://localhost/forgot-password");
                     break;
                 }
                 break;
             case "POST":
                 if ($this->services->changePasswordRequest($email)) {
-                    header("Location: http://localhost/userpasschanged");
+                    header("Location: http://localhost/forgot-password/success");
                     break;
                 } else {
-                    header("Location: http://localhost/forgot/$email");
+                    header("Location: http://localhost/forgot-password/change/" . $_SESSION["token"]);
                     break;
                 }
+                break;
+        }
+    }
+
+    public function resendForgotPasswordRequest($method, $email): void
+    {
+        switch ($method) {
+            case "GET":
+                $this->services->forgotPasswordRequest($email);
+                header("Location: http://localhost/forgot-password/confirm");
                 break;
         }
     }

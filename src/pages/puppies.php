@@ -65,7 +65,6 @@
                         <!-- AVAILABLE PUPPIES CARD -->
                         <div class="container d-flex justify-content-center">
                             <div class="row">
-
                                 <?php foreach ($profiles as $profile) { ?>
                                     <div class="card m-3" style="width: 20rem;">
                                         <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image" width="250px" height="250px;" style="margin-top:10px;">
@@ -79,7 +78,6 @@
                                         </div>
                                     </div>
                                 <?php } ?>
-
                             </div>
                         </div>
                     <?php } ?>
