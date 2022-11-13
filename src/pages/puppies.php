@@ -74,7 +74,7 @@
                                             <p class="card-text"> <?php echo $profile->getBirthdate()->format('Y-m-d'); ?> </p>
                                             <p class="card-text"> <?php echo $profile->getPrice(); ?> </p>
                                             <div class="btn-Learn" name="btn-Learn">
-                                                <center><a href="/dog1"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
+                                                <center><a href="/puppy1"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
                                             </div>
                                         </div>
                                     </div>

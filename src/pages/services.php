@@ -29,7 +29,6 @@
     <link rel="shortcut icon" href="/Ohana/src/images/Landing/ohana.png" type="image/x-icon">
 
     <!-- Bootstrap CSS  CDN -->
-    <!-- 5.2.1 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous">
 
     <!-- MORE icons -->
@@ -57,7 +56,7 @@
                         <div class="row" style="text-align:center; margin-left:10%; margin-right:10%;">
                             <div class="col-lg-6">
                                 <a href="/puppies/rehoming/get" style="text-decoration:none;">
-                                    <img src="/Ohana/src/images/services/rehome.png" width="540" height="400" role="img" focusable="false">
+                                    <img src="/Ohana/src/images/services/1.png" width="400" height="400" role="img" focusable="false">
                                 </a>
                                 <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
 
@@ -69,7 +68,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <a href="/stud" style="text-decoration:none;">
-                                    <img src="/Ohana/src/images/services/stud.png" width="540" height="400" role="img" focusable="false">
+                                    <img src="/Ohana/src/images/services/2.png" width="400" height="400" role="img" focusable="false">
                                     <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
                                 </a>
                                 <a href="/stud" style="text-decoration:none;">
@@ -83,7 +82,7 @@
                 </section>
                 <section class="reason" style="margin-top:5%;">
                     <div class="reasons">
-                        <img src="/Ohana/src/images/services/reasons.png" style="width: 100%;">
+                        <img src="/Ohana/src/images/Landing/reasonsmain.png" class="img-fluid" style="width: 100%;">
                     </div>
                 </section>
                 <section class="pair-section">
@@ -100,12 +99,7 @@
                         </form>
                     </div>
                 </section>
-                <!-- 
-                <section class="reason"> 
-                    <div class="reasons">
-                        <img src="/Ohana/src/images/services/reasons.png" style="width: 100%;">
-                    </div>
-                </section>-->
+            
             </div>
 
         </div>

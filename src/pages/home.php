@@ -48,7 +48,7 @@
 
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
             <div class="message">
-                <h1 style="font-size:80px; Margin-top:10%; color:#c0b65a; font-family: 'Acme', sans-serif;"> WELCOME TO OHANA! CLIENT </h1>
+                <h1 style="font-size:80px; Margin-top:10%; color:#c0b65a; font-family: 'Acme', sans-serif;"> WELCOME TO OHANA!</h1>
             </div>
             <section id="slider">
                 <input type="radio" name="slider" id="s1" checked>
@@ -69,7 +69,7 @@
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
-                                <div class="card-body">
+                                <div class="card-body m-3">
                                     <h5 class="card-title"> NAME OF CUSTOMER </h5>
                                     <p class="card-text">customer review to be inserted</p>
                                 </div>
@@ -77,7 +77,7 @@
                         </div>
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
-                                <div class="card-body">
+                                <div class="card-body m-3">
                                     <h5 class="card-title"> NAME OF CUSTOMER </h5>
                                     <p class="card-text">customer review to be inserted</p>
                                 </div>
@@ -85,7 +85,7 @@
                         </div>
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
-                                <div class="card-body">
+                                <div class="card-body m-3">
                                     <h5 class="card-title"> NAME OF CUSTOMER </h5>
                                     <p class="card-text">customer review to be inserted</p>
                                 </div>
@@ -100,12 +100,12 @@
                 <div class="container d-flex justify-content-center mt-5">
 
                     <div class="row">
-                        <div class="col">
+                        <div class="col m-3">
                             <a href="/puppies" style="text-decoration: none;">
                                 <div class=" card rounded" style="width: 15rem;background-color:#c0b65a">
                                     <img src="/Ohana/src/images/Ohanapups/trans2.png" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title mb-3" style="color:white"> FRENCH PUPPY 1 </h5>
+                                        <h5 class="card-title mb-3 text-center" style="color:white"> FRENCH PUPPY 1 </h5>
                                         <div class="btn-Learn" name="btn-Learn">
                                             <center><a href="/dog1"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
                                         </div>
@@ -114,12 +114,12 @@
                             </a>
                         </div>
 
-                        <div class="col">
+                        <div class="col m-3">
                             <a href="/puppies" style="text-decoration: none;">
                                 <div class="card rounded" style="width: 15rem;background-color:#c0b65a">
                                     <img src=" /Ohana/src/images/Ohanapups/trans3.png" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title mb-3" style="color:white"> FRENCH PUPPY 2</h5>
+                                        <h5 class="card-title mb-3 text-center" style="color:white"> FRENCH PUPPY 2</h5>
                                         <div class="btn-Learn" name="btn-Learn">
                                             <center><a href="/dog1"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
                                         </div>
@@ -127,12 +127,12 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col">
+                        <div class="col m-3">
                             <a href="/puppies" style="text-decoration: none;">
                                 <div class="card rounded" style="width: 15rem;background-color:#c0b65a">
                                     <img src=" /Ohana/src/images/Ohanapups/trans5.png" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title mb-3" style="color:white"> FRENCH PUPPY 3 </h5>
+                                        <h5 class="card-title mb-3 text-center" style="color:white"> FRENCH PUPPY 3 </h5>
                                         <div class="btn-Learn" name="btn-Learn">
                                             <center><a href="/dog1"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
                                         </div>

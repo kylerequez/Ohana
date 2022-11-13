@@ -75,7 +75,7 @@
                                                         <input type="file" class="my-2" name="proofOfPayment">
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
                                                         <button type="button" class="btn" style="background-color:#db6551;color:white;">Upload</button>
                                                     </div>
                                                 </div>
@@ -137,10 +137,6 @@
 
 
     <!-- SCIPTS -->
-    <!-- Chart library -->
-    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-    <!-- Icons library -->
-    <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
     <!-- Custom scripts -->
     <script src="/Ohana/src/dashboard/js/script.js"></script>
     <!-- Bootstrap Bundle with Popper -->
