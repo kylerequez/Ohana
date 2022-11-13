@@ -189,10 +189,10 @@ class AccountController
         switch ($method) {
             case "GET":
                 if ($this->services->verifyRegistration($_GET)) {
-                    header("Location: http://localhost/registercomplete");
+                    header("Location: http://localhost/register/success");
                     break;
                 } else {
-                    header("Location: http://localhost/confirmregister");
+                    header("Location: http://localhost/register/confirm");
                     break;
                 }
                 break;
@@ -200,7 +200,7 @@ class AccountController
                 if (!isset($_SESSION)) session_start();
                 if ($this->services->addAccount($_POST)) {
                     if ($this->services->registrationRequest($_POST)) {
-                        header("Location: http://localhost/confirmregister");
+                        header("Location: http://localhost/register/confirm");
                         break;
                     } else {
                         header("Location: http://localhost/register");

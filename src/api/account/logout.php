@@ -10,11 +10,10 @@ $dao = new AccountDAO($database);
 $services = new AccountServices($dao);
 $controller = new AccountController($services, null);
 
-if(isset($_POST["btnLogout"]))
-{
+if (isset($_POST["btnLogout"])) {
     $controller->logoutRequest($_SERVER["REQUEST_METHOD"]);
 } else {
-    if(!isset($_SESSION)) session_start();
+    if (!isset($_SESSION)) session_start();
     $_SESSION["msg"] = "Wrong way of accessing";
     header("Location: www.google.com");
 }

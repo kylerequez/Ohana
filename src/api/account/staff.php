@@ -14,23 +14,16 @@ $services = new AccountServices($dao);
 $logservices = new LogServices($logdao);
 $controller = new AccountController($services, $logservices);
 
-// echo $_SERVER["REQUEST_METHOD"] . "<br>";
-// // echo $id . "<br>";
-// echo (isset($id) ? "is set" : "is not set") . "<br>";
-// echo (empty($id) ? "is empty" : "is not empty") . "<br>";
-// print_r($_POST);
-
-if($_SERVER["REQUEST_METHOD"] === "GET" && empty($id))
-{
+if ($_SERVER["REQUEST_METHOD"] === "GET" && empty($id)) {
     // get staff accounts
     $controller->processStaffRequest($_SERVER["REQUEST_METHOD"], null);
-} else if($_SERVER["REQUEST_METHOD"] === "POST" && empty($id)){
+} else if ($_SERVER["REQUEST_METHOD"] === "POST" && empty($id)) {
     // add staff account
     $controller->processStaffRequest($_SERVER["REQUEST_METHOD"], null);
-} else if($_SERVER["REQUEST_METHOD"] === "GET" && !empty($id)){
+} else if ($_SERVER["REQUEST_METHOD"] === "GET" && !empty($id)) {
     // delete staff account
     $controller->processStaffRequest($_SERVER["REQUEST_METHOD"], $id);
-} else if($_SERVER["REQUEST_METHOD"] === "POST" && !empty($id)){
+} else if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($id)) {
     // update staff account
     $controller->processStaffRequest($_SERVER["REQUEST_METHOD"], $id);
 }

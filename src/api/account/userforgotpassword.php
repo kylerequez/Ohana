@@ -14,8 +14,7 @@ $services = new AccountServices($dao);
 $logservices = new LogServices($logdao);
 $controller = new AccountController($services, $logservices);
 
-if($_SERVER["REQUEST_METHOD"] == "GET" and !empty($_GET["email"]))
-{
+if ($_SERVER["REQUEST_METHOD"] == "GET" and !empty($_GET["email"])) {
     $controller->forgotPasswordRequest($_SERVER["REQUEST_METHOD"], $_GET["email"]);
 } else if ($_SERVER["REQUEST_METHOD"] == "POST" and !empty($_SESSION["email"])) {
     $controller->forgotPasswordRequest($_SERVER["REQUEST_METHOD"], $_SESSION["email"]);
