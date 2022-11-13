@@ -50,7 +50,7 @@
                 <h1 style="color:#DB6551; font-size: 120px; font-family: 'Acme', sans-serif; font-weight:800; margin-top:10%"> ABOUT US </h1>
                 <section class="abouthead">
                     <div class="aboutheader">
-                        <img src="/Ohana/src/images/Pages/about1.png" class="img-fluid" style="width: 100%;">
+                        <img src="/Ohana/src/images/Pages/aboutmain.png" class="img-fluid" style="width: 100%;">
                     </div>
                 </section>
                 <section class="aboutbody">

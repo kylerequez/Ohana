@@ -97,7 +97,7 @@
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
-                  <input class="input__field" id="contact-no" name="number" placeholder="Contact Number" required type="text" /><label class="input__label" for="contact-no">Contact Number</label>
+                  <input class="input__field" id="contact-no" name="number" placeholder="Contact Number" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;" /><label class="input__label" for="contact-no">Contact Number (+63)</label>
                 </div>
               </div>
             </div>
