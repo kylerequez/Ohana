@@ -143,7 +143,11 @@ class Account
      */
     public function getFullName()
     {
-        return $this->fname . " " . substr($this->mname, 0, 1) . ". " . $this->lname;
+        if(!empty($this->mname)){
+            return $this->fname . " " . substr($this->mname, 0, 1) . ". " . $this->lname;
+        } else {
+            return $this->fname . " " . $this->lname;
+        }
     }
 
     /**

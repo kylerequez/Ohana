@@ -19,5 +19,5 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" and !empty($_GET["email"])) {
 } else if ($_SERVER["REQUEST_METHOD"] == "POST" and !empty($_SESSION["email"])) {
     $controller->forgotPasswordRequest($_SERVER["REQUEST_METHOD"], $_SESSION["email"]);
 } else if ($_SERVER["REQUEST_METHOD"] == "GET" and (!empty($_SESSION["email"] and !empty($token)))) {
-    $controller->resendForgotPasswordRequest($_SERVER["REQUEST_METHOD"], $_SESSION["email"]);
+    $controller->resendForgotPasswordRequest($_SERVER["REQUEST_METHOD"], $_SESSION["email"], $token);
 }

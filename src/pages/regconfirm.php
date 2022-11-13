@@ -50,22 +50,30 @@
             <h1 class="sign-up__title" style="font-size: 100px; margin-top: 10%; font-family: Bantayog-Regular;">
               Welcome to Ohana!
             </h1>
-            <p style="font-size:20px;"> Complete registration by entering the OTP sent to your email. </p>
-               <!-- ALERT -->
-               <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+            <!-- ALERT -->
+            <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
               <div class="alert alert-success" role="alert">
-              <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; unset($_SESSION["msg"]); ?>
+                <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
+                unset($_SESSION["msg"]); ?>
               </div>
             <?php
+              unset($_SESSION["msg"]);
+            } else {
+            ?>
+              <p style="font-size:20px;"> Complete registration by entering the OTP sent to your email. </p>
+            <?php
             }
-            unset($_SESSION["msg"]);
+            if (empty($_SESSION["email"]) && empty($_SESSION["userOtp"]) && empty($_SESSION["token"])) {
+              header("Location: http://localhost/register");
+              session_destroy();
+            }
             ?>
           </header>
           <form class="sign-up__form form" method="GET" action="/accounts/register">
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
-                  <label class="input__label" for="confirm-password"> <b>Enter OTP <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; unset($_SESSION["msg"]); ?></b> </label><br>
+                  <label class="input__label" for="confirm-password"><b>Enter OTP</b></label><br>
                   <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
                     <!-- OTP 6 BOXES FOR USER INPUT -->
                     <input class="m-2 text-center form-control rounded" type="text" name="otpFirst" id="otpFirst" maxlength="1" />
@@ -80,7 +88,7 @@
             </div>
             <center><br>
               <div class="form__row">
-                <p style="font-size:20px;">Did not receive OTP? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="##">Resend OTP</a></p>
+                <p style="font-size:20px;">Did not receive an OTP? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="/register/resend/<?php echo $_SESSION["token"] ?>">Resend OTP</a></p>
               </div>
             </center>
             <center>

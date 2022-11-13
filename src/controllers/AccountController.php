@@ -174,11 +174,11 @@ class AccountController
         }
     }
 
-    public function resendForgotPasswordRequest($method, $email): void
+    public function resendForgotPasswordRequest(string $method, string $email, string $token): void
     {
         switch ($method) {
             case "GET":
-                $this->services->forgotPasswordRequest($email);
+                $this->services->resendForgotPasswordRequest($email, $token);
                 header("Location: http://localhost/forgot-password/confirm");
                 break;
         }
@@ -210,6 +210,16 @@ class AccountController
                     header("Location: http://localhost/register");
                     break;
                 }
+                break;
+        }
+    }
+
+    public function resendRegistrationRequest(string $method, string $email, string $token): void
+    {
+        switch ($method){
+            case "GET":
+                $this->services->resendRegistrationRequest($email, $token);
+                header("Location: http://localhost/register/confirm");
                 break;
         }
     }

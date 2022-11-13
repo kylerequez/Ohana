@@ -67,8 +67,8 @@
             <?php
             }
             unset($_SESSION["msg"]);
+            session_destroy();
             ?>
-
           </header>
           <form class="sign-up__form form" action="/accounts/register" method="POST">
             <input type="hidden" name="type" value="USER">
@@ -83,7 +83,7 @@
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
-                  <input class="input__field" id="middle-name" name="mname" placeholder="Middle Name" type="text" /><label class="input__label" for="middle-name">Middle Name (Optional)</label>
+                  <input class="input__field" id="middle-name" name="mname" placeholder="Middle Name" value="" type="text" /><label class="input__label" for="middle-name">Middle Name (Optional)</label>
                 </div>
               </div>
             </div>
