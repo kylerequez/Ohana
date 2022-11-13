@@ -65,7 +65,7 @@
                     ?>
                             <a href="/ownedpets/profile/<?php echo $profile->getId(); ?>" style="text-decoration: none; color:black">
                                 <div class="card m-3" style="width: 20rem;">
-                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image" width="250px" height="250px;" style="margin-top:10px;">
+                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image" width="250px" height="250px;">
                                     <div class="card-body">
                                         <h5 class="card-title"> <?php echo $profile->getName(); ?></h5>
                                         <p class="card-text"> <?php echo $profile->getBirthdate()->format('Y-m-d'); ?> </p>
@@ -92,16 +92,8 @@
     </div>
 
     <!-- SCIPTS -->
-
-    <!-- Chart library -->
-    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-
-    <!-- Icons library -->
-    <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
-
     <!-- Custom scripts -->
     <script src="/Ohana/src/dashboard/js/script.js"></script>
-
     <!-- JAVASCRIPT IMPORTS -->
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">

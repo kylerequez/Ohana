@@ -44,10 +44,10 @@
             </section>
             <section class="profilesection">
                 <form action="" method="">
-                    <div class="container" style="margin-left:30%">
-                        <div class="col-md-5" style="margin-left:7%">
+                    <div class="container d-flex justify-content-center">
+                        <div class="col-md-5" >
                             <div class="p-3 py-5">
-                                <div class="d-flex justify-content-between align-items-center mb-3"></div>
+                                <div class="mb-3"></div>
                                 <div class="row mt-3">
                                     <div class="col-md-12"><label class="labels" style="color:#c0b65a; font-size:20px">Name</label><input type="text" class="form-control" placeholder="<?php echo $account->getFname(); ?>" value="<?php echo $account->getFname(); ?>" id="" name=""></div>
                                     <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px"><label class="labels">Middle Name</label><input type="text" class="form-control" placeholder="<?php echo $account->getMname(); ?>" value="<?php echo $account->getMname(); ?>" id="" name=""></div>

@@ -69,7 +69,7 @@
                                         <p class="card-text"> <b>Note: Our Adult Frenchies are fully vaccinated. </b></p>
                                     </div>
                                     <div name="buttons" style="margin-top:10%">
-                                        <button type="button" class="btn btn-secondary mt-5" style="margin-left:25%"> Back to Home</button>
+                                        <button type="button" class="btn btn-outline-secondary mt-5"  style="margin-left:25%"> Back to Home</button>
                                         <button type="button" class="btn mt-5" style="margin-left:5%; background-color:#c0b65a"> Choose as Pair </button>
                                     </div>
                                 </div>
