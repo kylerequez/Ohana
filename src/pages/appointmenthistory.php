@@ -22,7 +22,6 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <!-- REGISTERED USERS NAVIGATION BAR-->
         <?php include_once 'Rnavbar.php'; ?>
 
         <div class="container-fluid">

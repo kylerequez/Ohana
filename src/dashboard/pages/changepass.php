@@ -176,7 +176,6 @@
                             <p class="text-center mb-5" style="font-size:20px;">Input a new password for your account</p>
 
                             <p><input type="password" value="" placeholder="Current Password" name="password" id="password" class="password" for="password" required style="background-color:#eed1c2"></p>
-
                             <p><input type="password" value="" placeholder="Enter New Password" name="new-password" id="new-password" class="password" for="password" required style="background-color:#eed1c2"></p>
                             <p><input type="password" value="" placeholder="Confirm Password" name="confirm-password" id="confirm-password" class="password" for="confirm-password" required style="background-color:#eed1c2">
                             <div class="d-flex justify-content-start mt-3">
