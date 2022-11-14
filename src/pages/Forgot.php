@@ -54,17 +54,19 @@
             <p class="sign-up__descr" style="font-size: 20px;">
               To reset your password, please enter your <b>Email</b> and click reset password.
             </p>
-               <!-- ALERT -->
-               <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+            <!-- ALERT -->
+            <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
               <div class="alert alert-success" role="alert">
-              <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; unset($_SESSION["msg"]); ?>
+                <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
+                unset($_SESSION["msg"]); ?>
               </div>
             <?php
             }
             unset($_SESSION["msg"]);
+            session_destroy();
             ?>
           </header>
-          
+
           <form id="form" method="GET" action="/forgotpassword" class="sign-up__form form">
             <div class="form__row form__row--two">
               <div class="input form__inline-input">

@@ -65,8 +65,8 @@
             <div class="search-wrapper">
               <i data-feather="search" aria-hidden="true"></i>
               <input type="text" placeholder=" Search User Account">
-              <button type="filter"> FILTER </button>
-              <button type="sort"> SORT </button>
+              <button type="filter" style="color:white"> FILTER </button>
+              <button type="sort" style="color:white"> SORT </button>
             </div>
             <?php
             if (isset($_SESSION["users"])) {
@@ -147,8 +147,8 @@
 
       </div>
     </div>
-       <!-- TOAST -->
-       <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+    <!-- TOAST -->
+    <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
       <div class="toast-container top-0 end-0 p-3">
         <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
           <div class="toast-header">

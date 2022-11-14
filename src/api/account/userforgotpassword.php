@@ -14,14 +14,10 @@ $services = new AccountServices($dao);
 $logservices = new LogServices($logdao);
 $controller = new AccountController($services, $logservices);
 
-// echo $_POST["email"];
-
-if($_SERVER["REQUEST_METHOD"] == "GET" and !empty($_GET["email"]))
-{
-    echo $_SERVER["REQUEST_METHOD"];
+if ($_SERVER["REQUEST_METHOD"] == "GET" and !empty($_GET["email"])) {
     $controller->forgotPasswordRequest($_SERVER["REQUEST_METHOD"], $_GET["email"]);
-} else if ($_SERVER["REQUEST_METHOD"] == "POST" and !empty($_POST["email"])) {
-    // echo $_SERVER["REQUEST_METHOD"];
-    // echo $_POST["email"];
-    $controller->forgotPasswordRequest($_SERVER["REQUEST_METHOD"], $_POST["email"]);
+} else if ($_SERVER["REQUEST_METHOD"] == "POST" and !empty($_SESSION["email"])) {
+    $controller->forgotPasswordRequest($_SERVER["REQUEST_METHOD"], $_SESSION["email"]);
+} else if ($_SERVER["REQUEST_METHOD"] == "GET" and (!empty($_SESSION["email"] and !empty($token)))) {
+    $controller->resendForgotPasswordRequest($_SERVER["REQUEST_METHOD"], $_SESSION["email"], $token);
 }

@@ -10,7 +10,7 @@ class LogDAO
         $this->conn = $database->getConnection();
     }
 
-    public function getAllLogs(): array
+    public function getAllLogs(): mixed
     {
         try {
             $sql = "SELECT * FROM ohana_logs;";

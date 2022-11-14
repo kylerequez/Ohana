@@ -45,7 +45,7 @@
 
     <!-- MAIN CONTENT -->
     <?php unset($_SESSION);
-  session_destroy(); ?>
+    session_destroy(); ?>
     <main class="sign-up">
       <div class="sign-up__container">
         <div class="sign-up__content">

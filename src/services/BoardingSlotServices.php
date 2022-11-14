@@ -61,8 +61,7 @@ class BoardingSlotServices
         // ADD IMAGE VALIDATION !!! IMPORTANT
         $image = $data["image"];
 
-        $name = strtoupper($data["name"]);
-        
+        $name = strtoupper($data["name"]);  
         $information = strtoupper($data["information"]);
         $isAvailable = $data["isAvailable"] == "AVAILABLE" ? 1 : 0;
         if ($isAvailable == 1) {

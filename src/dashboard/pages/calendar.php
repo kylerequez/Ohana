@@ -114,9 +114,7 @@ if (!$conn) {
         <main class="main users chart-page" id="skip-target">
           <div class="container">
             <br>
-            <center>
-              <h2 class="main-title"> APPOINTMENTS</h2>
-            </center>
+            <h2 class="main-title text-center"> APPOINTMENTS</h2>
           </div>
           <div class="container py-5" id="page-container" style="margin-top: 0%">
             <div class="row">

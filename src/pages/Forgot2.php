@@ -46,11 +46,27 @@
     <div class="sign-up__container">
       <div class="sign-up__content">
         <header class="sign-up__header">
-          <h1 class="sign-up__title" style="font-size: 80px; margin-top: 5%; ">
+          <h1 class="sign-up__title" style="font-size: 80px; margin-top: 5%;">
             FORGOT PASSWORD
           </h1><br>
-          <p class="sign-up__descr" style="font-size: 20px;">A link to change your password has been sent in your email. </p>
-          <p class="sign-up__descr" style="font-size: 20px;">Please check your inbox.</p>
+          <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+            <div class="alert alert-success" role="alert">
+              <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
+              unset($_SESSION["msg"]); ?>
+            </div>
+          <?php
+            unset($_SESSION["msg"]);
+          } else {
+          ?>
+            <p class="sign-up__descr" style="font-size: 20px;">A link to change your password has been sent in your email. </p>
+            <p class="sign-up__descr" style="font-size: 20px;">Please check your inbox.</p>
+          <?php
+          }
+          if (empty($_SESSION["email"]) || empty($_SESSION["token"])) {
+            header("Location: http://localhost/forgot-password");
+            session_destroy();
+          }
+          ?>
         </header>
 
         <form id="form" method="POST" action="/forgot3" class="sign-up__form form">
@@ -58,7 +74,7 @@
             <div class="input form__inline-input">
               <div class="input__container">
                 <div class="form__row sign-up__sign">
-                  Did not receive an email? &nbsp;<a class="link" href="/forgot" style="text-decoration: none;"> Resend Email </a><br><br>
+                  Did not receive an email? &nbsp;<a class="link" href="/forgot-password/resend/<?php echo $_SESSION["token"]; ?>" style="text-decoration: none;"> Resend Email </a><br><br>
                   Don't have an account? &nbsp;<a class="link" href="/register" style="text-decoration: none;"> Register Now! </a>
                 </div>
         </form>
@@ -69,9 +85,9 @@
   <!-- FOOTER -->
   <?php include_once 'footer.php'; ?>
 
-<!-- SCIPTS -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+  <!-- SCIPTS -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </body>
 

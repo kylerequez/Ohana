@@ -17,7 +17,7 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
 
     <!-- EXTERNAL CSS -->
-    <link rel="stylesheet" href="/Ohana/src/css/pawcart.css">
+    <!-- <link rel="stylesheet" href="/Ohana/src/css/pawcart.css"> -->
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
@@ -54,16 +54,18 @@
             <div class="container">
                 <section class="paymentnote">
                     <center>
-                        <div class="card rounded-3 mb-4" style="width:75%;">
-
+                        <div class="card rounded-3 mb-4 p-4" style="width:75%;">
                             <h1 class="mt-2 mb-2"> Upload Proof of Payment </h1>
-                            <form action="/action_page.php" style="background-color:transparent;">
-                                <label for="myfile">Upload Receipt:</label>
-                                <input type="file" id="myfile" name="myfile">
+                            <form action="/action_page.php">
+                                <div class="col">
+                                    <input type="file" id="myfile" name="myfile">
+                                </div>
+                                <div class="col">
+                                    <a href="/skip" style="text-decoration:none; color:#db6551">Skip this step</a>
+                                </div>
                             </form>
-
                         </div>
-                        <div class="card rounded-3 mb-4" style="width:75%;">
+                        <div class="card rounded-3 mb-4 p-4" style="width:75%;">
 
                             <p class="mt-4" style="font-size:15px"> Note: TRANSACTIONS WILL BE DONE FACE TO FACE, YOU ONLY NEED TO SELECT A PAYMENT METHOD OF YOUR CHOICE </p>
                             <p class="mt-2" style="font-size:15px"> Friendly Reminder: Kindly Read the <b>Terms and Conditions for Cancellation and Payment Policy.</b> </p>

@@ -5,6 +5,7 @@ class Appointment implements JsonSerializable
     // Instance Variable
     private ?int $id = null;
     private ?string $title = null;
+    private ?string $type = null;
     private ?int $accountId = null;
     private ?string $customerName = null;
     private ?string $description = null;
@@ -12,9 +13,10 @@ class Appointment implements JsonSerializable
     private ?DateTime $endDate = null;
 
     // Constructor
-    public function __construct(string $title, ?int $accountId, ?string $customerName, string $description, DateTime $startDate, DateTime $endDate)
+    public function __construct(string $title, string $type, ?int $accountId, ?string $customerName, string $description, DateTime $startDate, DateTime $endDate)
     {
         $this->title = $title;
+        $this->type = $type;
         $this->accountId = $accountId;
         $this->customerName = $customerName;
         $this->description = $description;
@@ -164,6 +166,26 @@ class Appointment implements JsonSerializable
     public function setEndDate($endDate)
     {
         $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of type
+     */ 
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set the value of type
+     *
+     * @return  self
+     */ 
+    public function setType($type)
+    {
+        $this->type = $type;
 
         return $this;
     }

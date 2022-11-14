@@ -27,6 +27,7 @@ class AppointmentController
         switch ($method) {
             case "GET":
                 if (!$this->services->deleteAppointment($id)) {
+                    echo "Error";
                     $this->processCollectionRequest($method);
                 }
                 $user = unserialize($_SESSION["user"]);
@@ -41,7 +42,7 @@ class AppointmentController
                     $this->processCollectionRequest("GET");
                 }
                 $user = unserialize($_SESSION["user"]);
-                $log = $user->getFullName() . " has updated Account ID $id";
+                $log = $user->getFullName() . " has updated Appointment ID $id";
                 if (!$this->logservices->addLog($log)) {
                     $_SESSION["msg"] .= "There was an error in the logging of the action.";
                 }
@@ -56,9 +57,6 @@ class AppointmentController
             case "GET":
                 $_SESSION["appointments"] = serialize($this->services->getAllAppointments());
                 header("Location: http://localhost/dashboard/calendar");
-                break;
-            case "POST":
-                echo "test1";
                 break;
         }
     }

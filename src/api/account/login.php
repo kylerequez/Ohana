@@ -10,8 +10,7 @@ $dao = new AccountDAO($database);
 $services = new AccountServices($dao);
 $controller = new AccountController($services, null);
 
-if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_SESSION))
-{
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_SESSION)) {
     $controller->loginRequest($_SERVER["REQUEST_METHOD"]);
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $controller->loginRequest($_SERVER["REQUEST_METHOD"]);

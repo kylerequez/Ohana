@@ -14,16 +14,8 @@ $services = new AccountServices($dao);
 $logservices = new LogServices($logdao);
 $controller = new AccountController($services, $logservices);
 
-// echo $_SERVER["REQUEST_METHOD"] . "<br>";
-// echo $id . "<br>";
-// print_r($_POST);
-
-if($_SERVER["REQUEST_METHOD"] === "GET" && !isset($id))
-{
-    // get user accounts
+if ($_SERVER["REQUEST_METHOD"] === "GET" && !isset($id)) {
     $controller->processUserCollectionRequest($_SERVER["REQUEST_METHOD"], null);
-} else if($_SERVER["REQUEST_METHOD"] === "POST" && !isset($id)){
-    
-} else if($_SERVER["REQUEST_METHOD"] === "GET" && isset($id)){
-    
+} else if ($_SERVER["REQUEST_METHOD"] === "POST" && !isset($id)) {
+} else if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($id)) {
 }

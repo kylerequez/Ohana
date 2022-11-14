@@ -62,7 +62,7 @@
               <input type="text" placeholder=" Search..">
             </div>
             <div class="createstaff-wrapper">
-              <a class="create-response-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create">
+              <a class="create-response-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white">
                   <i data-feather="plus" aria-hidden="true"></i>
                   Add Response </button></a>
             </div>
@@ -154,7 +154,7 @@
                       </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="submit" class="btn" style="background-color:#db6551"> Add Response </button>
+                      <button type="submit" class="btn" style="background-color:#db6551; color:white"> Add Response </button>
                     </div>
                   </div>
                 </div>

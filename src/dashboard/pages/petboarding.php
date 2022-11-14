@@ -67,9 +67,8 @@
               <input type="text" placeholder=" Search">
             </div>
             <div class="createstaff-wrapper">
-              <a class="create-staff-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create">
-                  <i data-feather="plus" aria-hidden="true"></i>
-                  Add Slot </button></a>
+              <a class="create-staff-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white">
+                  <i data-feather="plus" aria-hidden="true"></i> Add Slot </button></a>
             </div>
 
             <?php

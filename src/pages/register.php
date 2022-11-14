@@ -121,9 +121,7 @@
               </div>
             </div>
             <div id="message" style="background: white;">
-              <center>
-                <h3 style="font-size: 20px; color:#c0b65a;">Password must contain the following:</h3>
-              </center>
+              <h3 class="text-center" style="font-size: 20px; color:#c0b65a;">Password must contain the following:</h3>
               <p id="letter" class="invalid">At least one <b>lowercase</b> letter</p>
               <p id="capital" class="invalid">At least one <b>capital</b> letter</p>
               <p id="number" class="invalid">At least one <b>number</b></p>
@@ -174,102 +172,96 @@
     <a href="#" style="text-decoration: none; color:#ff5757" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions </a>
 
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- START OF JAVASCRIPT-->
     <script>
-      const input = document.querySelector("input"),
-        emailIcon = document.querySelector(".emailico")
+      const emailInput = $("#email"),
+        emailIcon = $(".email-icon");
 
-      input.addEventListener("keyup", () => {
+      emailInput.change("autocompletechange",
+        function(event, ui) {
+          let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+          if (emailInput.val() === "") {}
+
+          if (emailInput.val().match(pattern)) {
+            emailIcon.removeClass('uil-envelope');
+            emailIcon.addClass('uil-check-circle');
+            return emailIcon.css('color', 'green');
+          }
+          emailIcon.removeClass('uil-check-circle');
+          emailIcon.addClass('uil-envelope');
+          return emailIcon.css('color', 'red');
+        });
+      emailInput.keypress(() => {
         let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-        if (input.value === "") {
-          return console.log("input is empty")
-        }
-        if (input.value.match(pattern)) {
-          emailIcon.classList.replace("uil-envelope", "uil-check-circle");
-          return emailIcon.style.color = "green"
-        }
-        emailIcon.classList.replace("uil-check-circle", "uil-envelope");
-        return emailIcon.style.color = "red"
-      })
+        if (emailInput.val() === "") {}
 
+        if (emailInput.val().match(pattern)) {
+          emailIcon.removeClass('uil-envelope');
+          emailIcon.addClass('uil-check-circle');
+          return emailIcon.css('color', 'green');
+        }
+        emailIcon.removeClass('uil-check-circle');
+        emailIcon.addClass('uil-envelope');
+        return emailIcon.css('color', 'red');
+      });
 
       //PASSWORD VALIDATION SCRIPT
-
-      var myInput = document.getElementById("password"),
-        letter = document.getElementById("letter"),
-        capital = document.getElementById("capital"),
-        number = document.getElementById("number"),
-        length = document.getElementById("length"),
-        confirmpass = document.getElementById("confirm-password");
-
-      // When the user clicks on the password field, show the message box
-      myInput.onfocus = function() {
-        document.getElementById("message").style.display = "block";
-      }
-
-      // When the user clicks outside of the password field, hide the message box
-      myInput.onblur = function() {
-        document.getElementById("message").style.display = "none";
-      }
-
-      // When the user starts to type something inside the password field
-      myInput.onkeyup = function() {
-        // Validate lowercase letters
-        var lowerCaseLetters = /[a-z]/g;
-        if (myInput.value.match(lowerCaseLetters)) {
-          letter.classList.remove("invalid");
-          letter.classList.add("valid");
+      const passwordInput = $("#password"),
+        letter = $("#letter"),
+        capital = $("#capital"),
+        number = $("#number"),
+        length = $("#length"),
+        confirmpassInput = $("#confirm-password");
+      passwordInput.focus(() => {
+        $("#message").css("display", "block");
+      });
+      passwordInput.blur(() => {
+        $("#message").css("display", "none");
+      });
+      passwordInput.keyup(() => {
+        const lowerCaseLetters = /[a-z]/g;
+        if (passwordInput.val().match(lowerCaseLetters)) {
+          letter.removeClass("invalid");
+          letter.addClass("valid");
         } else {
-          letter.classList.remove("valid");
-          letter.classList.add("invalid");
+          letter.removeClass("valid");
+          letter.addClass("invalid");
         }
-
-        // Validate capital letters
-        var upperCaseLetters = /[A-Z]/g;
-        if (myInput.value.match(upperCaseLetters)) {
-          capital.classList.remove("invalid");
-          capital.classList.add("valid");
+        const upperCaseLetters = /[A-Z]/g;
+        if (passwordInput.val().match(upperCaseLetters)) {
+          capital.removeClass("invalid");
+          capital.addClass("valid");
         } else {
-          capital.classList.remove("valid");
-          capital.classList.add("invalid");
+          capital.removeClass("valid");
+          capital.addClass("invalid");
         }
-
-        // Validate numbers
-        var numbers = /[0-9]/g;
-        if (myInput.value.match(numbers)) {
-          number.classList.remove("invalid");
-          number.classList.add("valid");
+        const numbers = /[0-9]/g;
+        if (passwordInput.val().match(numbers)) {
+          number.removeClass("invalid");
+          number.addClass("valid");
         } else {
-          number.classList.remove("valid");
-          number.classList.add("invalid");
+          number.removeClass("valid");
+          number.addClass("invalid");
         }
-
-        // Validate length
-        if (myInput.value.length >= 8) {
-          length.classList.remove("invalid");
-          length.classList.add("valid");
+        if (passwordInput.val().length >= 8) {
+          length.removeClass("invalid");
+          length.addClass("valid");
         } else {
-          length.classList.remove("valid");
-          length.classList.add("invalid");
+          length.removeClass("valid");
+          length.addClass("invalid");
         }
-      }
-
-      // Validate if passwords match
-      confirmpass.onkeyup = function validatePassword() {
-        var pass = document.getElementById("password");
-        var confirmpass = document.getElementById("confirm-password");
-        if (confirmpass.value != pass.value) {
+      });
+      confirmpassInput.keyup(() => {
+        if (confirmpassInput.val() != passwordInput.val()) {
           confirmpass.setCustomValidity("Password does not match");
         } else {
           confirmpass.setCustomValidity("");
         }
-      }
+      });
     </script>
-
-    <script>
-    </script>
-
 
     <!-- SCRIPTS IMPORT-->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>

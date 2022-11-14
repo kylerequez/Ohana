@@ -155,23 +155,31 @@ class AccountController
         switch ($method) {
             case "GET":
                 if ($this->services->forgotPasswordRequest($email)) {
-                    // echo "true";
-                    header("Location: http://localhost/forgot-confirm");
+                    header("Location: http://localhost/forgot-password/confirm");
                     break;
                 } else {
-                    // echo "false";
-                    header("Location: http://localhost/forgot");
+                    header("Location: http://localhost/forgot-password");
                     break;
                 }
                 break;
             case "POST":
                 if ($this->services->changePasswordRequest($email)) {
-                    header("Location: http://localhost/userpasschanged");
+                    header("Location: http://localhost/forgot-password/success");
                     break;
                 } else {
-                    header("Location: http://localhost/forgot/$email");
+                    header("Location: http://localhost/forgot-password/change/" . $_SESSION["token"]);
                     break;
                 }
+                break;
+        }
+    }
+
+    public function resendForgotPasswordRequest(string $method, string $email, string $token): void
+    {
+        switch ($method) {
+            case "GET":
+                $this->services->resendForgotPasswordRequest($email, $token);
+                header("Location: http://localhost/forgot-password/confirm");
                 break;
         }
     }
@@ -181,10 +189,10 @@ class AccountController
         switch ($method) {
             case "GET":
                 if ($this->services->verifyRegistration($_GET)) {
-                    header("Location: http://localhost/registercomplete");
+                    header("Location: http://localhost/register/success");
                     break;
                 } else {
-                    header("Location: http://localhost/confirmregister");
+                    header("Location: http://localhost/register/confirm");
                     break;
                 }
                 break;
@@ -192,7 +200,7 @@ class AccountController
                 if (!isset($_SESSION)) session_start();
                 if ($this->services->addAccount($_POST)) {
                     if ($this->services->registrationRequest($_POST)) {
-                        header("Location: http://localhost/confirmregister");
+                        header("Location: http://localhost/register/confirm");
                         break;
                     } else {
                         header("Location: http://localhost/register");
@@ -202,6 +210,16 @@ class AccountController
                     header("Location: http://localhost/register");
                     break;
                 }
+                break;
+        }
+    }
+
+    public function resendRegistrationRequest(string $method, string $email, string $token): void
+    {
+        switch ($method){
+            case "GET":
+                $this->services->resendRegistrationRequest($email, $token);
+                header("Location: http://localhost/register/confirm");
                 break;
         }
     }

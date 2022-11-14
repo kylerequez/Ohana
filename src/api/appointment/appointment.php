@@ -20,6 +20,5 @@ if($_SERVER["REQUEST_METHOD"] === "GET" && !isset($id))
 } elseif($_SERVER["REQUEST_METHOD"] === "GET" && isset($id)) {
     $controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
 } elseif($_SERVER["REQUEST_METHOD"] === "POST" && isset($id)) {
-    print_r($_POST);
     $controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
 }

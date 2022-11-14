@@ -8,7 +8,7 @@
   <!-- META TAGS -->
   <meta charset="utf-8">
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
-  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="keywords" content="Kennel Business, French Bulldogs">
   <!-- END OF META TAGS -->
 
@@ -39,14 +39,14 @@
 <body style="background-color: #FAF8F0;">
 
   <!-- UNREGISTERED USERS NAVIGATION BAR-->
-  <?php include_once 'navbar.php'; ?>
+  <?php include_once 'Rnavbar.php'; ?>
   <!-- MAIN CONTENT -->
   <main class="sign-up">
     <div class="sign-up__container">
       <div class="sign-up__content">
         <header class="sign-up__header">
-          <h1 class="sign-up__title" style="font-size: 80px; margin-top: 5%;">
-            FORGOT PASSWORD
+          <h1 class="sign-up__title mt-5" style="font-size: 80px;">
+            CHANGE PASSWORD
           </h1>
           <p class="sign-up__descr" style="font-size: 25px;">
             Input a new password for your account.
@@ -63,44 +63,55 @@
           ?>
         </header>
 
-        <?php
-        if ($token != $_SESSION["token"]) {
-          header("Location: http://localhost/forgot-password/confirm");
-          session_destroy();
-        }
-        ?>
         <form id="form" method="POST" action="/forgotpassword" class="sign-up__form form">
           <div class="form__row form__row--two">
             <div class="input form__inline-input">
               <div class="input__container">
 
+                <div class="form__row">
+                  <div class="input">
+                    <div class="input__container mt-2">
+                      <input class="input__field" id="current-password" placeholder="Current password" required="" type="password" />
+                      <label class="input__label" for="current-password">Current Password</label>
+                    </div>
+                  </div>
+                </div>
+
                 <!-- PASSWORD INPUT BOX -->
                 <div class="form__row">
                   <div class="input">
-                    <div class="input__container">
+                    <div class="input__container mt-2">
                       <input class="input__field" id="password" name="password" placeholder="Password" required="" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
-                      <label class="input__label" for="password">Password</label>
+                      <label class="input__label" for="password"> New Password</label>
                     </div>
                   </div>
                 </div>
 
                 <!-- VALIDATION BOX-->
                 <div id="message" style="background: white;">
-                  <center>
-                    <h3 style="font-size: 20px; color:#c0b65a;">Password must contain the following:</h3>
-                  </center>
+                  <h3 class="text-center" style="font-size: 20px; color:#c0b65a;">Password must contain the following:</h3>
                   <p id="letter" class="invalid">At least one <b>lowercase</b> letter</p>
                   <p id="capital" class="invalid">At least one <b>capital</b> letter</p>
                   <p id="number" class="invalid">At least one <b>number</b></p>
                   <p id="length" class="invalid">Minimum <b>8 characters</b></p>
                 </div>
-                <br>
-                <!-- PASSWORD INPUT BOX -->
+
                 <div class="form__row">
                   <div class="input">
-                    <div class="input__container">
+                    <div class="input__container mt-3">
                       <input class="input__field" id="confirm-password" placeholder="Confirm password" required="" type="password" />
                       <label class="input__label" for="confirm-password">Confirm password</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form__row">
+                  <div class="input-checkbox">
+                    <!-- CHECKBOX -->
+                    <div class="input-checkbox__container">
+
+                      <input type="checkbox" class="input-checkbox__field" id="agree" required="true;" name="" onclick="myFunction()" /> <span class="input-checkbox__square"></span>
+
+                      <label class="input-checkbox__label" for="agree"> Show Password </label>
                     </div>
                   </div>
                 </div>
@@ -111,16 +122,14 @@
                     </div>
                   </div>
                 </center>
-                <hr style="width:100%"><br>
-                <div class="form__row sign-up__sign">
-                  Don't have an account? &nbsp;<a class="link" href="/register" style="text-decoration: none;"> Register Now! </a>
-                </div>
+
+
         </form>
       </div>
     </div>
   </main>
   <!-- FOOTER -->
-  <div name="footer" style="margin-top:15%">
+  <div name="footer" style="margin-top:20%">
     <?php include_once 'footer.php'; ?>
   </div>
 
@@ -177,11 +186,27 @@
     });
     confirmpassInput.keyup(() => {
       if (confirmpassInput.val() != passwordInput.val()) {
-        confirmpass.get(0).setCustomValidity("Password does not match");
+        confirmpass.setCustomValidity("Password does not match");
       } else {
-        confirmpass.get(0).setCustomValidity("");
+        confirmpass.setCustomValidity("");
       }
     });
+  </script>
+
+  <script>
+    // Show Password
+    function myFunction() {
+      if (password.type == 'password') {
+        password.type = 'text';
+      } else {
+        password.type = 'password';
+      }
+      if (confirmpass.type == 'confirm-password') {
+        confirmpass.type = 'text';
+      } else {
+        confirmpass.type = 'confirm=password';
+      }
+    }
   </script>
   </main>
 

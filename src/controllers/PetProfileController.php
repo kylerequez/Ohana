@@ -80,6 +80,18 @@ class PetProfileController
         }
     }
 
+    public function displayPetProfile($method, $id): void
+    {
+        switch($type){
+            case "rehoming":
+                $_SESSION["profiles"] = serialize($this->services->getOhanaPets());
+                header("Location: http://localhost/puppies");
+                break;
+            case "stud":
+                break;
+        }
+    }
+
     public function displayPetProfiles(string $type): void
     {
         switch($type){
