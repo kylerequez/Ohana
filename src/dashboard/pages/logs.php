@@ -66,8 +66,8 @@
               <div class="search-wrapper">
                 <i data-feather="search" aria-hidden="true"></i>
                 <input type="text" placeholder=" Search ">
-                <button type="filter"> FILTER </button>
-                <button type="sort"> SORT </button>
+                <button type="filter" class="text-white"> FILTER </button>
+                <button type="sort" class="text-white"> SORT </button>
               </div>
               <br>
               <table class="posts-table">

@@ -71,8 +71,8 @@
                 <div class="form__row">
                   <div class="input">
                     <div class="input__container mt-2">
-                      <input class="input__field" id="current-password" placeholder="Current password" required="" type="password" />
-                      <label class="input__label" for="current-password">Current Password</label>
+                      <input class="input__field" id="password" placeholder="Current password" required="" type="password" />
+                      <label class="input__label" for="password">Current Password</label>
                     </div>
                   </div>
                 </div>
@@ -81,8 +81,8 @@
                 <div class="form__row">
                   <div class="input">
                     <div class="input__container mt-2">
-                      <input class="input__field" id="password" name="password" placeholder="Password" required="" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
-                      <label class="input__label" for="password"> New Password</label>
+                      <input class="input__field" id="new-password" name="new-password" placeholder="Password" required="" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
+                      <label class="input__label" for="new-password"> New Password</label>
                     </div>
                   </div>
                 </div>
@@ -138,7 +138,8 @@
   <!-- START OF JAVASCRIPT-->
   <script>
     //PASSWORD VALIDATION SCRIPT
-    const passwordInput = $("#password"),
+    const currentpassword = $("#password"),
+      passwordInput = $("#new-password"),
       letter = $("#letter"),
       capital = $("#capital"),
       number = $("#number"),
@@ -196,15 +197,20 @@
   <script>
     // Show Password
     function myFunction() {
-      if (password.type == 'password') {
+      if (currentpassword.type == 'password') {
+        currentpassword.type = 'text';
+      } else {
+        currentpassword.type = 'password';
+      }
+      if (password.type == 'new-password') {
         password.type = 'text';
       } else {
-        password.type = 'password';
+        password.type = 'new-password';
       }
       if (confirmpass.type == 'confirm-password') {
         confirmpass.type = 'text';
       } else {
-        confirmpass.type = 'confirm=password';
+        confirmpass.type = 'confirm-password';
       }
     }
   </script>

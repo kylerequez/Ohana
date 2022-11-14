@@ -10,30 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
-    <!-- END OF META TAGS -->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
-
     <!-- EXTERNAL CSS -->
     <link rel="stylesheet" href="/Ohana/src/css/pawcart.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
-    <!-- FONT AWESOME ICONS IMPORT -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Web Icon -->
-    <link rel="shortcut icon" href="/Ohana/src/images/Landing/ohana.png" type="image/x-icon">
-
-    <!-- Bootstrap CSS  CDN -->
-    <!-- 5.2.1 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous">
-
-    <!-- MORE icons -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <?php include_once 'stylesheets.php'; ?>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+    </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -43,18 +28,17 @@
 
         <div class="container-fluid">
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-            <img src="/Ohana/src/images/Pages/cartheader.png" width="100%" style="margin-top:5%">
-
+            <img src="/Ohana/src/images/Pages/cartheader.png" class="img-fluid" width="100%" style="margin-top:5%">
             <section class="h-100">
                 <div class="container h-100 py-5">
                     <div class="row d-flex justify-content-center align-items-center h-100">
                         <div class="col-10">
 
                             <div class="d-flex justify-content-between align-items-center mb-4">
-                                <h3 class="fw-normal mb-0 text-black"> ORDER DESCRIPTION</h3>
-                                <div>
+                                <h3 class="fw-normal mb-0 text-black"> Order Descripion </h3>
+                                <!-- <div>
                                     <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
-                                </div>
+                                </div> -->
                             </div>
 
                             <div class="card rounded-3 mb-4">
@@ -68,7 +52,7 @@
                                             <p><span class="text-muted">Gender: </span>Male <span class="text-muted">Color: </span>Grey</p>
                                         </div>
                                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                        <p class="lead fw-normal mb-2">Quantity: 1</p>
+                                            <p class="lead fw-normal mb-2">Quantity: 1</p>
                                         </div>
                                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                             <h5 class="mb-0">P80,000</h5>
@@ -80,9 +64,9 @@
                                 </div>
                             </div>
 
-                            <a href="/home"><button type="button" class="btn btn-dark btn-lg me-2"> Back to Home</button></a>
+                            <a href="/home"><button type="button" class="btn btn-outline-dark btn-lg me-2"> Back to Home</button></a>
                             <a href="/checkout"><button type="button" name="btn-Payment" class="btn btn-block btn-lg" style="float:right; background-color:#c0b65a; color:white;">
-                             Proceed to Select Payment Method </button></a>
+                                    Proceed to Select Payment Method </button></a>
                         </div>
                     </div>
                 </div>

@@ -4,9 +4,7 @@
 
     <div class="sidebar-head">
       <span class="sr-only">Home</span>
-      <div class="logo-text">
-        <span class="logo-title"> DASHBOARD </span>
-      </div>
+      <div class="logo-text"></div>
 
       <!-- COLLAPSE SIDEBAR-->
       <button class="sidebar-toggle transparent-btn" title="MENU" type="button">

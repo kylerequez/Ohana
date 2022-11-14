@@ -45,43 +45,43 @@
 </nav>
 
 <!-- BOOTSTRAP USER PROFILE MODAL -->
-<form id="user-profile">  
-<div class="modal fade" id="editProfile" tabindex="-1" aria-labelledby="editprofileModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modalheader" id="editiprofilemodal"> UPDATE USER PROFILE </h5>
-                <a href=""><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label"> First Name: </label>
-                        <input type="text" class="form-control" id="recipient-name" placeholder="First Name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label"> Middle Name: </label>
-                        <input type="text" class="form-control" id="recipient-name" placeholder="Middle Name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label"> Surname: </label>
-                        <input type="text" class="form-control" id="recipient-name" placeholder="Last Name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label"> Email Address: </label>
-                        <input type="text" class="form-control" id="recipient-name" placeholder="Email Address">
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label"> Password: </label>
-                        <input type="password" class="form-control" id="recipient-name" placeholder="Password" required>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary"> Save Changes </button>
+<form id="user-profile">
+    <div class="modal fade" id="editProfile" tabindex="-1" aria-labelledby="editprofileModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modalheader" id="editiprofilemodal"> UPDATE USER PROFILE </h5>
+                    <a href=""><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label"> First Name: </label>
+                            <input type="text" class="form-control" id="recipient-name" placeholder="First Name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label"> Middle Name: </label>
+                            <input type="text" class="form-control" id="recipient-name" placeholder="Middle Name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label"> Surname: </label>
+                            <input type="text" class="form-control" id="recipient-name" placeholder="Last Name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label"> Email Address: </label>
+                            <input type="text" class="form-control" id="recipient-name" placeholder="Email Address">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label"> Password: </label>
+                            <input type="password" class="form-control" id="recipient-name" placeholder="Password" required>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary"> Save Changes </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </form>`
 
 <!-- BOOTSTRAP 5.2.1 LOGOUT MODAL FIXED -->
@@ -103,4 +103,3 @@
         </div>
     </div>
 </form>
-

@@ -10,34 +10,12 @@
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
   <meta name="keywords" content="Kennel Business, French Bulldogs">
-  <!-- END OF META TAGS -->
 
-  <!-- AJAX LIBRARY IMPORTS-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
-
-  <!-- FONT IMPORT -->
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900'>
-
-  <!-- EXTERNAL CSS IMPORT-->
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
   <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
-  <!-- FONT AWESOME ICONS IMPORT -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- Web Icon -->
-  <link rel="shortcut icon" href="/Ohana/src/images/Landing/ohana.png" type="image/x-icon">
-
-  <!-- Bootstrap CSS  CDN -->
-  <!-- 5.2.1 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous">
-
-  <!-- MORE icons -->
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
+  <?php include_once 'stylesheets.php'; ?>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -50,13 +28,13 @@
         <div class="sign-up__content">
           <header class="sign-up__header">
 
-            <h1 class="sign-up__title" style="font-size: 100px; margin-top: 10%; font-family: 'Acme', sans-serif;">
+            <h1 class="sign-up__title mt-5" style="font-size: 100px; font-family: 'Acme', sans-serif;">
               Create An Account
             </h1>
             <p class="sign-up__descr" style="font-size: 70px; color:#c0b65a; font-family: 'Acme', sans-serif;">
               Welcome to Ohana!
             </p>
-            <p style="font-size:20px;"> Fill up the fields below to create an account. </p>
+            <p class="mt-3" style="font-size:20px;"> Fill up the fields below to create an account. </p>
 
             <!-- ALERT -->
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
@@ -168,9 +146,6 @@
       <!-- FOOTER -->
       <?php include_once dirname(__DIR__) . '/pages/footer.php';; ?>
     </main>
-
-    <a href="#" style="text-decoration: none; color:#ff5757" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions </a>
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- START OF JAVASCRIPT-->

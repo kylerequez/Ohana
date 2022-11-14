@@ -48,12 +48,11 @@
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
 
             <section class="abouthead" style="margin-top:10%;">
-                <center>
-                    <h1 style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800"> Your Pets </h1><br>
-                    <div class="form__row">
-                        <p style="font-size:20px;">Do not have a pet profile?&nbsp;<a class="link" name="login" style="text-decoration:none; color:#db6551" href="/createpetprofile">Create now!</a></p>
-                    </div><br>
-                </center>
+                <h1 class="text-center" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800"> Your Pets </h1><br>
+                <div class="form__row text-center mb-5">
+                    <p style="font-size:20px;">Do not have a pet profile?&nbsp;<a class="link" name="login" style="text-decoration:none; color:#db6551" href="/createpetprofile">Create now!</a></p>
+                    <p style="font-size:20px;"><a class="text-decoration-none" name="login" style="color:#db6551" href="/createpetprofile">Add another Pet Profile</a></p>
+                </div>
 
                 <div class="container-fluid d-flex justify-content-center">
                     <?php

@@ -46,8 +46,8 @@
             <div class="message" style="margin-top:10%;">
                 <section class="services" id="services">
                     <div class="service">
-                        <h1 class="text-center" style="color:#DB6551; font-size: 120px; font-family: 'Acme', sans-serif; font-weight:800"> SERVICES </h1>
-                    </div><br><br>
+                        <h1 class="text-center mb-3" style="color:#DB6551; font-size: 100px; font-family: 'Acme', sans-serif; font-weight:800"> SERVICES </h1>
+                    </div>
 
                     <div class="row" style="text-align:center; margin-left:10%; margin-right:10%;">
                         <div class="col-lg-6">
