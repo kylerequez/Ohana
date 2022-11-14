@@ -28,10 +28,8 @@
     <!-- Web Icon -->
     <link rel="shortcut icon" href="/Ohana/src/images/Landing/ohana.png" type="image/x-icon">
 
-    <!-- Bootstrap CSS  CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous">
 
-    <!-- MORE icons -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
@@ -48,11 +46,9 @@
             <div class="message" style="margin-top:10%;">
                 <section class="services" id="services">
                     <div class="service">
-                        <center>
-                            <h1 style="color:#DB6551; font-size: 120px; font-family: 'Acme', sans-serif; font-weight:800"> SERVICES </h1>
-                        </center>
+                            <h1 class="text-center" style="color:#DB6551; font-size: 120px; font-family: 'Acme', sans-serif; font-weight:800"> SERVICES </h1>
                     </div><br><br>
-                    <center>
+                    
                         <div class="row" style="text-align:center; margin-left:10%; margin-right:10%;">
                             <div class="col-lg-6">
                                 <a href="/puppies/rehoming/get" style="text-decoration:none;">
@@ -78,7 +74,7 @@
                             </div>
 
                         </div>
-                    </center>
+                    
                 </section>
                 <section class="reason" style="margin-top:5%;">
                     <div class="reasons">
@@ -95,6 +91,16 @@
                         <form action="/stud" method='get'>
                             <div class="btn-Learn" name="btn-Checkout" style="float:right; margin-right:12%; margin-top:30%;">
                                 <button id="btnCheckout" name="btnCheckout"><span> Find the perfect pair now </span></button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <section class="appointment-section">
+                    <div class="appointment-section">
+                        <form action="/appointment" method='get'>
+                            <div class="btn-Send d-flex justify-content-center" name="btn-Checkout">
+                                <button id="btn-Send" name="btn-Send"><span> Book Appointment </span></button>
                             </div>
                         </form>
                     </div>

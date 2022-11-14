@@ -51,13 +51,129 @@
         <!-- ! Main nav -->
         <?php include_once dirname(__DIR__) . "/dashboard/navbar.php" ?>
 
-        <!--  MAIN OHANNA KENNEL ADMIN DASHBOARD -->
         <main class="main users chart-page" id="skip-target"><br>
           <div class="container-fluid">
             <div class="container">
-              <center>
-                <h2 class="main-title" style="color:#C0B65A; font-size:80px; font-family:'Acme', sans-serif;"> WELCOME BACK ADMIN!</h2>
-              </center>
+              <h2 class="main-title text-center" style="color:#C0B65A; font-size:80px; font-family:'Acme', sans-serif;"> WELCOME BACK ADMIN!</h2>
+
+              <div class="row stat-cards d-flex justify-content-center mt-5">
+
+                <div class="col-md-6 col-xl-3">
+                  <a href="#">
+                    <article class="stat-cards-item">
+                      <div class="stat-cards-icon warning">
+                        <i data-feather="bar-chart-2" aria-hidden="true"></i>
+                      </div>
+                      <div class="stat-cards-info">
+                        <p class="stat-cards-info__num"> 1234565</p>
+                        <p class="stat-cards-info__title"> insert info here </p>
+                        <p class="stat-cards-info__progress">
+                          <span class="stat-cards-info__profit success">
+                            <i data-feather="trending-up" aria-hidden="true"></i>4.07%
+                          </span>
+                        </p>
+                      </div>
+                    </article>
+                  </a>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                  <a href="#">
+                    <article class="stat-cards-item">
+                      <div class="stat-cards-icon warning">
+                        <i data-feather="bar-chart" aria-hidden="true"></i>
+                      </div>
+                      <div class="stat-cards-info">
+                        <p class="stat-cards-info__num"> 1234565</p>
+                        <p class="stat-cards-info__title"> insert info here </p>
+                        <p class="stat-cards-info__progress">
+                          <span class="stat-cards-info__profit success">
+                            <i data-feather="trending-up" aria-hidden="true"></i>0.24%
+                          </span>
+                        </p>
+                      </div>
+                    </article>
+                  </a>
+                </div>
+
+                <div class="col-md-6 col-xl-3">
+                  <a href="#">
+                    <article class="stat-cards-item">
+                      <div class="stat-cards-icon warning">
+                        <i data-feather="pie-chart" aria-hidden="true"></i>
+                      </div>
+                      <div class="stat-cards-info">
+                        <p class="stat-cards-info__num"> 1234565</p>
+                        <p class="stat-cards-info__title"> insert info here </p>
+                        <p class="stat-cards-info__progress">
+                          <span class="stat-cards-info__profit danger">
+                            <i data-feather="trending-down" aria-hidden="true"></i>1.64%
+                          </span>
+                        </p>
+                      </div>
+                    </article>
+                  </a>
+                </div>
+              </div>
+
+              <div class="row stat-cards d-flex justify-content-center mt-5">
+
+                <div class="col-md-6 col-xl-3">
+                  <a href="#">
+                    <article class="stat-cards-item">
+                      <div class="stat-cards-icon warning">
+                        <i data-feather="bar-chart-2" aria-hidden="true"></i>
+                      </div>
+                      <div class="stat-cards-info">
+                        <p class="stat-cards-info__num"> 1234565</p>
+                        <p class="stat-cards-info__title"> insert info here </p>
+                        <p class="stat-cards-info__progress">
+                          <span class="stat-cards-info__profit success">
+                            <i data-feather="trending-up" aria-hidden="true"></i>4.07%
+                          </span>
+                        </p>
+                      </div>
+                    </article>
+                  </a>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                  <a href="#">
+                    <article class="stat-cards-item">
+                      <div class="stat-cards-icon warning">
+                        <i data-feather="bar-chart" aria-hidden="true"></i>
+                      </div>
+                      <div class="stat-cards-info">
+                        <p class="stat-cards-info__num"> 1234565</p>
+                        <p class="stat-cards-info__title"> insert info here </p>
+                        <p class="stat-cards-info__progress">
+                          <span class="stat-cards-info__profit success">
+                            <i data-feather="trending-up" aria-hidden="true"></i>0.24%
+                          </span>
+                        </p>
+                      </div>
+                    </article>
+                  </a>
+                </div>
+
+                <div class="col-md-6 col-xl-3">
+                  <a href="#">
+                    <article class="stat-cards-item">
+                      <div class="stat-cards-icon warning">
+                        <i data-feather="pie-chart" aria-hidden="true"></i>
+                      </div>
+                      <div class="stat-cards-info">
+                        <p class="stat-cards-info__num"> 1234565</p>
+                        <p class="stat-cards-info__title"> insert info here </p>
+                        <p class="stat-cards-info__progress">
+                          <span class="stat-cards-info__profit danger">
+                            <i data-feather="trending-down" aria-hidden="true"></i>1.64%
+                          </span>
+                        </p>
+                      </div>
+                    </article>
+                  </a>
+                </div>
+              </div>
+
             </div><!-- END OF CONTAINER -->
           </div><!-- END OF CONTAINER FLUID -->
 

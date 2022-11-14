@@ -61,7 +61,7 @@
                 <label for="s2" id="slide2"><img src="/Ohana/src/images/sliders/visit.png" alt=""></label>
                 <label for="s3" id="slide3"><img src="/Ohana/src/images/sliders/studservice.png" alt=""></label>
                 <label for="s4" id="slide4"><img src="/Ohana/src/images/sliders/rehome.png" alt=""></label>
-                <label for="s5" id="slide5"><img src="/Ohana/src/images/sliders/socials.png" alt=""></label>
+                <label for="s5" id="slide5"><img src="/Ohana/src/images/sliders/socialmed.png" alt=""></label>
             </section>
             <section>
                 <h1 style="font-size:90px; Margin-top:10%; color:#7d605c; font-family: 'Acme', sans-serif;"> Customer Reviews </h1>
