@@ -82,10 +82,10 @@ if (!isset($_SESSION["user"])) {
                   <img src="/Ohana/src/images/icons/doggy.png" /><a href="/ownedpets/get">Pet profile</a>
                 </li>
                 <li>
-                  <img src="/Ohana/src/images/icons/file.png" /><a href="/transactions">Transactions</a>
+                  <img src="/Ohana/src/images/icons/file.png" /><a href="/transactions/get">Transactions</a>
                 </li>
                 <li>
-                  <img src="/Ohana/src/images/icons/calendar.png" /><a href="/appointments">Appointment</a>
+                  <img src="/Ohana/src/images/icons/calendar.png" /><a href="/appointment-history">Appointment</a>
                 </li>
                 <li>
                   <img src="/Ohana/src/images/icons/log-out.png" />

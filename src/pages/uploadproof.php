@@ -3,7 +3,7 @@
 
 <head>
 
-    <title> STUD PROFILES </title>
+    <title> UPLOAD PROOF </title>
 
     <!-- META TAGS -->
     <meta charset="utf-8">
@@ -17,9 +17,10 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
 
     <!-- EXTERNAL CSS -->
-    <link rel="stylesheet" href="/Ohana/src/css/puppies.css">
+    <link rel="stylesheet" href="/Ohana/src/css/pawcart.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <link rel="stylesheet" href="/Ohana/src/css/footer.css">
+
     <!-- FONT AWESOME ICONS IMPORT -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -33,9 +34,7 @@
 
     <!-- MORE icons -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-    </style>
+
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -45,29 +44,41 @@
 
         <div class="container-fluid">
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-            <div class="message" style="margin-top:10%;">
-                <section class="services" id="services">
-                    <div class="service">
-                        <h1 style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800; text-align:center"> CHOOSE THE PERFECT PAIR </h1>
-                    </div><br><br>
-                    <!-- AVAILABLE PUPPIES CARD -->
-                    <div class="container-fluid d-flex justify-content-center">
 
-                        <div class="card" style="width: 20rem;">
-                            <a href="/studprofile"><img src="/Ohana/src/images/petprofile/stud.jpg" class="card-img-top" alt="..."></a>
-                            <div class="card-body">
-                                <h5 class="card-title" style="text-align:center"> FRENCH BULLDOG NAME </h5>
-                                <p class="card-text"> Stud success rate: 90% | Gender: Male </p>
-                                <form action="/stud-profile" method='get'>
-                                    <div class="btn-Learn" name="btn-Learn">
-                                        <center><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></center>
-                                    </div>
-                                </form>
-                            </div>
+            <section class="carthead" style="margin-top:10%; ">
+                <div class="cartheader">
+                    <img src="/Ohana/src/images/Pages/checkoutheader.png" width="100%">
+                </div>
+            </section>
+
+            <div class="container">
+                <section class="paymentnote">
+                    <center>
+                        <div class="card rounded-3 mb-4" style="width:75%;">
+
+                            <h1 class="mt-2 mb-2"> Upload Proof of Payment </h1>
+                            <form action="/action_page.php" style="background-color:transparent;">
+                                <label for="myfile">Upload Receipt:</label>
+                                <input type="file" id="myfile" name="myfile">
+                            </form>
+
                         </div>
-                    </div>
+                        <div class="card rounded-3 mb-4" style="width:75%;">
+
+                            <p class="mt-4" style="font-size:15px"> Note: TRANSACTIONS WILL BE DONE FACE TO FACE, YOU ONLY NEED TO SELECT A PAYMENT METHOD OF YOUR CHOICE </p>
+                            <p class="mt-2" style="font-size:15px"> Friendly Reminder: Kindly Read the <b>Terms and Conditions for Cancellation and Payment Policy.</b> </p>
+
+                        </div>
+                        <a href="/home"><button type="button" class="btn btn-dark btn-lg" style="width:300px;">Go Back</button></a>
+
+                        <a href="/invoice"><button type="button" name="btn-Payment" class="btn btn-block btn-lg" style="background-color:#c0b65a; color:white; width:300px;">
+                                Proceed </button></a>
+
+                    </center>
                 </section>
             </div>
+
+        </div>
     </main>
 
     <div class="container-fluid">
@@ -85,13 +96,12 @@
     <!-- Custom scripts -->
     <script src="/Ohana/src/dashboard/js/script.js"></script>
 
+
     <!-- JAVASCRIPT IMPORTS -->
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </body>
 

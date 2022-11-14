@@ -64,7 +64,7 @@
 
                         <!-- AVAILABLE PUPPIES CARD -->
                         <div class="container d-flex justify-content-center">
-                            <div class="row">
+                            <div class="row  d-flex justify-content-center">
 
                                 <?php foreach ($profiles as $profile) { ?>
                                     <div class="card m-3" style="width: 20rem;">

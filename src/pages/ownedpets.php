@@ -46,7 +46,7 @@
     <div class="container-fluid">
       <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
       <div class="container h-90" style="margin-top:10%;">
-        <h1 class="text-center"style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;"> Pet Profile </h1><br>
+        <h1 class="text-center" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;"> Pet Profile </h1><br>
         <div class="card mx-auto" style="max-width: 68vw; max-height:80vh; border-style: solid; border-color: #c0b65a; border-width:5px">
           <div class="row g-0">
             <div class="col-md-6 d-none d-md-block">
@@ -62,25 +62,32 @@
                     <div class="mb-3 row">
                       <label for="inputPetName" class="col-sm-2 col-form-label" style="color:#7d6056">Name:</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="petname">
+                        <input type="text" class="form-control" id="petname" disabled>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="mb-3 row ">
+                      <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Birthday: </label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="birthday" disabled>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="mb-3 row">
+                      <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Color:</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="color" disabled>
                       </div>
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="mb-3 row">
-                      <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Color:</label>
+                      <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Trait:</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="color">
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="mb-3 row ">
-                      <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Age: </label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="color">
+                        <input type="text" class="form-control" id="trait" disabled>
                       </div>
                     </div>
                   </div>
@@ -89,7 +96,7 @@
                     <div class="mb-3 row ">
                       <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Gender: </label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="color">
+                        <input type="text" class="form-control" id="gender" disabled>
                       </div>
                     </div>
                   </div>
@@ -98,7 +105,7 @@
                     <div class="mb-3 row ">
                       <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">PCCI: </label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="color">
+                        <input type="text" class="form-control" id="pcci" disabled>
                       </div>
                     </div>
                   </div>
@@ -107,17 +114,77 @@
                     <div class="mb-3 row ">
                       <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Vaccine : </label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="color">
+                        <input type="text" class="form-control" id="vaccine" disabled>
                       </div>
                     </div>
                   </div>
-                </form> 
+                </form>
               </div>
-             
+
               <div class="d-flex justify-content-end pt-2" style="margin-right:10%">
                 <button type="reset" class="btn btn-md mt-3" style="background-color: #db6551; color:white">Go Back</button>
-                <button type="submit" id="submitbtn" class="btn ms-2 mt-3" style="background-color: #c0b65a; color:white; margin-left:20px;">Edit</button>
+                <button type="submit" id="submitbtn" class="btn ms-2 mt-3" data-bs-toggle="modal" data-bs-target="#editModal" style="background-color: #c0b65a; color:white; margin-left:20px;">Edit</button>
               </div>
+
+              <!-- Modal -->
+              <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel"> Edit Pet Profile Information</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-left:60%;"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="mb-3 row">
+                        <label for="inputPetName" class="col-sm-2 col-form-label" style="color:#7d6056">Name:</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="petname">
+                        </div>
+                      </div>
+                      <div class="mb-3 row ">
+                        <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Birthday: </label>
+                        <div class="col-sm-10">
+                          <input type="date" class="form-control" id="color">
+                        </div>
+                      </div>
+                      <div class="mb-3 row">
+                        <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Color:</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="color">
+                        </div>
+                      </div>
+                      <div class="mb-3 row">
+                        <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Trait:</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="color">
+                        </div>
+                      </div>
+                      <div class="mb-3 row ">
+                        <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Gender: </label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="color">
+                        </div>
+                      </div>
+                      <div class="mb-3 row ">
+                        <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">PCCI: </label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="color">
+                        </div>
+                      </div>
+                      <div class="mb-3 row ">
+                        <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Vaccine : </label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="color">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-warning">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
           </form>

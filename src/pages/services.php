@@ -46,35 +46,29 @@
             <div class="message" style="margin-top:10%;">
                 <section class="services" id="services">
                     <div class="service">
-                            <h1 class="text-center" style="color:#DB6551; font-size: 120px; font-family: 'Acme', sans-serif; font-weight:800"> SERVICES </h1>
+                        <h1 class="text-center" style="color:#DB6551; font-size: 120px; font-family: 'Acme', sans-serif; font-weight:800"> SERVICES </h1>
                     </div><br><br>
-                    
-                        <div class="row" style="text-align:center; margin-left:10%; margin-right:10%;">
-                            <div class="col-lg-6">
-                                <a href="/puppies/rehoming/get" style="text-decoration:none;">
-                                    <img src="/Ohana/src/images/services/1.png" width="400" height="400" role="img" focusable="false">
-                                </a>
+
+                    <div class="row" style="text-align:center; margin-left:10%; margin-right:10%;">
+                        <div class="col-lg-6">
+                            <a href="/puppies/rehoming/get" style="text-decoration:none;">
+                                <img src="/Ohana/src/images/services/1.png" width="400" height="400" role="img" focusable="false">
                                 <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
-
-                                <a href="/puppies/rehoming/get" style="text-decoration:none;">
-                                    <h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Pet Rehoming </h2>
-                                </a>
+                                <h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Pet Rehoming </h2>
                                 <p style="color:#7d605c; font-size: 25px;"> Want to add another member to your family? We have the cutest and most loving frenchies waiting for you. </p>
-
-                            </div>
-                            <div class="col-lg-6">
-                                <a href="/stud" style="text-decoration:none;">
-                                    <img src="/Ohana/src/images/services/2.png" width="400" height="400" role="img" focusable="false">
-                                    <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
-                                </a>
-                                <a href="/stud" style="text-decoration:none;">
-                                    <h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Stud Service </h2>
-                                </a>
-                                <p style="color:#7d605c; font-size: 25px;"> Want to produce quality and compact french bulldogs? Choose from any of our male frenchies ready for mating. </p>
-                            </div>
-
+                            </a>
                         </div>
-                    
+                        <div class="col-lg-6">
+                            <a href="/stud" style="text-decoration:none;">
+                                <img src="/Ohana/src/images/services/2.png" width="400" height="400" role="img" focusable="false">
+                                <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
+                                <h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Stud Service </h2>
+                            </a>
+                            <p style="color:#7d605c; font-size: 25px;"> Want to produce quality and compact french bulldogs? Choose from any of our male frenchies ready for mating. </p>
+                        </div>
+
+                    </div>
+
                 </section>
                 <section class="reason" style="margin-top:5%;">
                     <div class="reasons">
@@ -96,16 +90,7 @@
                     </div>
                 </section>
 
-                <section class="appointment-section">
-                    <div class="appointment-section">
-                        <form action="/appointment" method='get'>
-                            <div class="btn-Send d-flex justify-content-center" name="btn-Checkout">
-                                <button id="btn-Send" name="btn-Send"><span> Book Appointment </span></button>
-                            </div>
-                        </form>
-                    </div>
-                </section>
-            
+
             </div>
 
         </div>
