@@ -16,14 +16,8 @@
     <a href="/dashboard" class="logo-wrapper" title="Home"> <img src="/Ohana/src/dashboard/img/Ohana Kennel.png" aria-hidden="true"></a>
     <div class="sidebar-head">
       <span class="sr-only">Home</span>
-<<<<<<< HEAD
-      <div class="logo-text">
-        <span class="logo-title"> DASHBOARD </span>
-      </div>
-=======
       <div class="logo-text"></div>
 
->>>>>>> f8a49a536783696e2b8f69b33f04120f1f06f57c
       <!-- COLLAPSE SIDEBAR-->
       <button class="sidebar-toggle transparent-btn" title="MENU" type="button">
         <span class="sr-only">Toggle menu</span>
