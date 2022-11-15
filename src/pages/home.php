@@ -12,7 +12,6 @@
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
 
-    <!-- EXTERNAL CSS -->
     <link rel="stylesheet" href="/Ohana/src/css/home.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <link rel="stylesheet" href="/Ohana/src/css/footer.css">
@@ -39,11 +38,11 @@
                 <input type="radio" name="slider" id="s4">
                 <input type="radio" name="slider" id="s5">
 
-                <label for="s1" id="slide1"><img src="/Ohana/src/images/sliders/aboutslide.png" alt=""></label>
-                <label for="s2" id="slide2"><img src="/Ohana/src/images/sliders/visit.png" alt=""></label>
-                <label for="s3" id="slide3"><img src="/Ohana/src/images/sliders/studservice.png" alt=""></label>
-                <label for="s4" id="slide4"><img src="/Ohana/src/images/sliders/rehome.png" alt=""></label>
-                <label for="s5" id="slide5"><img src="/Ohana/src/images/sliders/socialmed.png" alt=""></label>
+                <label for="s1" id="slide1"><img src="/Ohana/src/images/sliders/aboutslide.png" class="img-fluid" alt=""></label>
+                <label for="s2" id="slide2"><img src="/Ohana/src/images/sliders/visit.png" class="img-fluid" alt=""></label>
+                <label for="s3" id="slide3"><img src="/Ohana/src/images/sliders/studservice.png" class="img-fluid" alt=""></label>
+                <label for="s4" id="slide4"><img src="/Ohana/src/images/sliders/rehome.png" class="img-fluid" alt=""></label>
+                <label for="s5" id="slide5"><img src="/Ohana/src/images/sliders/socialmed.png" class="img-fluid" alt=""></label>
             </section>
             <section>
                 <h1 style="font-size:90px; Margin-top:10%; color:#7d605c; font-family: 'Acme', sans-serif;"> Customer Reviews </h1>
@@ -122,18 +121,15 @@
                                 </div>
                             </a>
                         </div>
-
                     </div>
                 </div>
             </section>
 
             <div id="chat-container"> </div>
-        </div> <!-- END OF CONTAINER FLUID -->
+        </div>
     </main>
 
-    <!-- PAGES FOOTER-->
     <?php include_once 'footer.php'; ?>
-
 
     <!-- SCIPTS -->
     <?php
@@ -145,22 +141,13 @@
         createChatBot(host = 'http://localhost:5005/webhooks/rest/webhook', botLogo = "/Ohana/src/images/Chatbot/bot-logo.png",
             title = "Lilo from Ohana", welcomeMessage = "Good Day, How can I help you?", inactiveMsg = "Waiting for the developers to update this", theme = "orange")
     </script>
-    <!-- Chart library -->
-    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-
-    <!-- Icons library -->
-    <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
 
     <!-- Custom scripts -->
     <script src="/Ohana/src/dashboard/js/script.js"></script>
 
-    <!-- JAVASCRIPT IMPORTS -->
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
-
-    <!-- SCRIPT FOR DROPDOWN -->
-
 
 </body>
 

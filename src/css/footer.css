@@ -8,7 +8,7 @@ footer {
 
 /* ----------------------------MOBILE RESPONSIVENESS------------------------------- */
 
-@media screen and (min-width: 350px) and (max-width: 900px) {
+@media screen and (min-width: 390px) and (max-width: 767.98px) {
   footer {
     position: relative;
     left: 0;

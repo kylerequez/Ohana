@@ -28,12 +28,10 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <h1 class="sign-up__title" style="font-size: 60px; margin-top: 15%; color:#ff914d">
+            <h1 class="sign-up__title" style="margin-top: 15%; color:#ff914d">
               Let's meet your new
             </h1>
-            <h1 class="sign-up__title" style="font-size: 120px; color:#ff5757;">
-              OHANA!
-            </h1>
+            <h1 class="sign-up__title"> OHANA! </h1>
             <!-- ALERT -->
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
               <div class="alert alert-success" role="alert">

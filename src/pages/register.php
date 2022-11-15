@@ -2,10 +2,7 @@
 <html lang="en" class="sign-up_form">
 
 <head>
-
   <title> OHANA REGISTER </title>
-
-  <!-- META TAGS -->
   <meta charset="utf-8">
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
@@ -16,6 +13,13 @@
   <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
   <?php include_once 'stylesheets.php'; ?>
+  <style>
+    @media screen and (min-width: 350px) and (max-width: 800px) {
+      .pagefooter {
+        margin-top: 20%;
+      }
+    }
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -27,14 +31,13 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-
-            <h1 class="sign-up__title mt-5" style="font-size: 100px; font-family: 'Acme', sans-serif;">
+            <h1 class="sign-up__title mt-5">
               Create An Account
             </h1>
-            <p class="sign-up__descr" style="font-size: 70px; color:#c0b65a; font-family: 'Acme', sans-serif;">
+            <p class="sign-up__descr">
               Welcome to Ohana!
             </p>
-            <p class="mt-3" style="font-size:20px;"> Fill up the fields below to create an account. </p>
+            <p class="register__desc mt-3"> Fill up the fields below to create an account. </p>
 
             <!-- ALERT -->
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
@@ -118,9 +121,7 @@
               <div class="input-checkbox">
                 <!-- CHECKBOX -->
                 <div class="input-checkbox__container">
-
                   <input type="checkbox" class="input-checkbox__field" id="agree" required="true;" /> <span class="input-checkbox__square"></span>
-
                   <label class="input-checkbox__label" for="agree"> I agree with the
                     <a href="#" style="text-decoration: none; color:#ff5757" data-bs-toggle="modal" data-bs-target="#termsModal">
                       Terms and Conditions </a> </label>
@@ -133,9 +134,7 @@
                   <button type="submit"><span>Register</span></button>
                 </div>
               </div>
-            </center>
-            <hr style="width:100%"><br>
-            <center>
+              <hr style="width:100%"><br>
               <div class="form__row">
                 <p style="font-size:20px;">Already have an account?&nbsp;<a class="link" name="login" style="text-decoration:none;" href="/login">Login</a></p>
               </div>
@@ -144,7 +143,9 @@
         </div>
       </div>
       <!-- FOOTER -->
-      <?php include_once dirname(__DIR__) . '/pages/footer.php';; ?>
+      <div name="pagefooter">
+        <?php include_once dirname(__DIR__) . '/pages/footer.php';; ?>
+      </div>
     </main>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
