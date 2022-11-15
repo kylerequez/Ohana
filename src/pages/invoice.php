@@ -10,30 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
-    <!-- END OF META TAGS -->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
-
     <!-- EXTERNAL CSS -->
     <link rel="stylesheet" href="/Ohana/src/css/pawcart.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
-    <!-- FONT AWESOME ICONS IMPORT -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Web Icon -->
-    <link rel="shortcut icon" href="/Ohana/src/images/Landing/ohana.png" type="image/x-icon">
-
-    <!-- Bootstrap CSS  CDN -->
-    <!-- 5.2.1 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous">
-
-    <!-- MORE icons -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
     </style>
@@ -50,15 +32,15 @@
             <div class="container">
                 <section class="h-6 h-custom" style="margin-top:10%;">
                     <div class="service">
-                        <br><h1 style="color:#DB6551; font-size: 60px; font-family: 'Acme', sans-serif; font-weight:800"> THANK YOU FOR TRUSTING OHANA </h1>
-                    </div><br>
+                        <h1 class="mt-3 mb-3" style="color:#DB6551; font-size: 60px; font-family: 'Acme', sans-serif; font-weight:800"> THANK YOU FOR TRUSTING OHANA </h1>
+                    </div>
                     <div class="container py-5 h-100">
                         <div class="row d-flex justify-content-center align-items-center h-100">
                             <div class="col-lg-8 col-xl-6">
                                 <div class="card border-top border-bottom border-3" style="border-color: #db6551 !important;">
                                     <div class="card-body p-5">
 
-                                        <p class="lead fw-bold mb-5" style="color: #db6551; font-size:30px;"> ORDER SUMMARY </p>
+                                        <p class="lead fw-bold mb-5 text-center" style="font-size:30px;"> ORDER SUMMARY </p>
 
                                         <div class="row">
                                             <div class="col mb-3">
@@ -83,7 +65,7 @@
                                         </div>
 
                                         <div class="mx-n5 px-5 py-4" style="background-color: #eed1c2;">
-                                        <p class="lead fw-bold mb-3" style="color: #db6551; font-size:20px;"> DETAILS </p>
+                                            <p class="lead fw-bold mb-3" style="color: #db6551; font-size:20px;"> DETAILS </p>
                                             <div class="row">
                                                 <div class="col-md-8 col-lg-9">
                                                     <p>FRENCH PUPPY</p>
@@ -110,15 +92,15 @@
                                                     <p>P100,000</p>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
 
                                         <div class="row my-4">
-                                        <center><p class="lead fw-bold mb-0"> TOTAL AMOUNT TO PAY: P260,000 </p></center>
+                                            <p class="lead fw-bold mb-0 text-center"> TOTAL AMOUNT TO PAY: P260,000 </p>
                                         </div>
-                                       <hr>
-                                       <p class="lead fw-bold mb-4 pb-2" > Order Status: PENDING </p>
-                                        <p class="lead fw-bold mb-4 pb-2" > Appointment Date and Time: <br> mm/dd/yyyy - 12:34pm </p>
+                                        <hr>
+                                        <p class="lead fw-bold mb-4 pb-2"> Order Status: PENDING </p>
+                                        <p class="lead fw-bold mb-4 pb-2"> Appointment Date and Time: <br> mm/dd/yyyy - 12:34pm </p>
                                         <p class="mt-4 pt-2 mb-0"> Don't Forget to Screenshot this page and show it during your scheduled appointment. </a></p>
                                         <br>
 
@@ -131,7 +113,7 @@
                                 </div>
                             </div>
                         </div>
-                </section> 
+                </section>
             </div>
         </div>
         </div>

@@ -271,16 +271,22 @@ input:-webkit-autofill {
 }
 
 .sign-up__title {
-  margin-bottom: 16px;
-  color: #db6551;
+  margin-top: 10%;
+  color: #ff5757;
+  font-size: 100px;
   font-family: "Acme", sans-serif;
   font-weight: bolder;
 }
 
 .sign-up__descr {
-  font-size: 25px;
+  font-size: 70px;
+  color: #c0b65a;
+  font-family: "Acme", sans-serif;
 }
 
+.register__desc {
+  font-size: 20px;
+}
 .sign-up__form {
   width: 100%;
 }

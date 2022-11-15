@@ -26,17 +26,10 @@
     <link rel="stylesheet" href="/Ohana/src/dashboard/css/adminpages.css">
 
     <style>
-        #box {
-            width: 700px;
-            margin: 10% auto;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.6);
-            padding: 20px 50px;
-            box-sizing: border-box;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
-            border-radius: 2%
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+    </style>
 
+    <style>
         h1 {
             margin-bottom: .75em;
             font-size: 50px;
@@ -159,78 +152,141 @@
 
         <div class="main-wrapper">
             <!-- END OF ADMIN DASHBOARD SIDE-->
+            <div class="layer"> </div>
+            <!-- Body -->
+            <div class="page-flex">
+                <!-- Dashboard Sidebar -->
+                <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
+                <div class="main-wrapper">
+                    <!-- ! Main nav -->
+                    <?php include_once dirname(__DIR__) . "/navbar.php" ?>
+                    <main class="main users chart-page" id="skip-target">
+                        <div class="container d-flex justify-content-center">
 
-            <!-- ! Main nav -->
-            <?php include_once dirname(__DIR__) . "/navbar.php" ?>
+                            <form id=" myform-search" method="post" autocomplete="off">
+                                <h1 class="text-center mt-5" style="font-family: 'Acme', sans-serif; color:#db6551; font-size:70px;">Change your Password</h1>
+                                <p class="text-center mb-5" style="font-size:20px;">Input a new password for your account</p>
 
-            <main class="main users chart-page" id="skip-target">
-                <div class="container">
-                    <br>
-
-                    <div id="box">
-                        <form id="myform-search" method="post" autocomplete="off">
-                            <h1>Change Password</h1>
-                            <form>
-                                <p>
-                                    <input type="password" value="" placeholder="Enter Password" id="p" class="password">
-                                    <button class="unmask" type="button"></button>
+                                <p><input type="password" value="" placeholder="Current Password" name="password" id="password" class="password" for="password" required style="background-color:#eed1c2"></p>
+                                <p><input type="password" value="" placeholder="Enter New Password" name="new-password" id="new-password" class="password" for="password" required style="background-color:#eed1c2"></p>
+                                <p><input type="password" value="" placeholder="Confirm Password" name="confirm-password" id="confirm-password" class="password" for="confirm-password" required style="background-color:#eed1c2">
+                                <div class="d-flex justify-content-start mt-3">
+                                    <input type="checkbox" name="" onclick="myFunction()">
+                                    <label> Show Password </label>
+                                </div>
                                 </p>
-                                <p>
-                                    <input type="password" value="" placeholder="Confirm Password" id="p-c" class="password">
-                                    <button class="unmask" type="button"></button>
-                                <div id="strong"><span></span></div>
-                                <div id="valid"></div>
-                                <br>
-                                <p>Must be 6+ characters long and contain at least 1 upper case letter, 1 number, 1 special character</p>
-                                </p>
-                                <span>
-                                    <div class="mb-5 text-center"><a href="/dashboard/adminprofile">
-                                            <button class="btn profile-button" type="button" style="background-color:#db6551; color:white; float:left">Back to profile</button></a></div>
-                                    <div class="mb-5 text-center"><button class="btn profile-button" type="button" style="background-color:#db6551; color:white; float:right">Save Changes</button></div>
-                                </span>
-                                <br><br>
-
+                                <div class="d-flex justify-content-center mt-5">
+                                    <a href="/userprofile">
+                                        <button class="btn btn-outline-secondary m-3" type="button">Back to profile</button></a>
+                                    <button class="btn profile-button m-3" type="submit" style="background-color:#db6551; color:white; ">Save Changes</button>
+                                </div>
                             </form>
-                    </div>
+                        </div>
                 </div>
                 <!-- CHANGE PASSWORD CONTENT -->
-            </main>
-            <!-- FOOTER -->
-            <?php include_once dirname(__DIR__) . '/footer.php'; ?>
+                </main>
+                <!-- FOOTER -->
+                <?php include_once dirname(__DIR__) . '/footer.php'; ?>
+            </div>
         </div>
     </div>
-    <!-- SCRIPTS -->
+
+    <!-- SCIPTS -->
     <script>
-        $('.unmask').on('click', function() {
-            if ($(this).prev('input').attr('type') == 'password')
-                $(this).prev('input').prop('type', 'text');
-            else
-                $(this).prev('input').prop('type', 'password');
-            return false;
-        });
-        //Begin supreme heuristics 
-        $('.password').on('keyup', function() {
-            var p_c = $('#p-c');
-            var p = $('#p');
-            console.log(p.val() + p_c.val());
-            if (p.val().length > 0) {
-                if (p.val() != p_c.val()) {
-                    $('#valid').php("Passwords Don't Match");
-                } else {
-                    $('#valid').php('');
-                }
-                var s = 'weak'
-                if (p.val().length > 5 && p.val().match(/\d+/g))
-                    s = 'medium';
-                if (p.val().length > 6 && p.val().match(/[^\w\s]/gi))
-                    s = 'strong';
-                $('#strong span').addClass(s).php(s);
+        //PASSWORD VALIDATION SCRIPT
+
+        var myInput = document.getElementById("password"),
+            letter = document.getElementById("letter"),
+            capital = document.getElementById("capital"),
+            number = document.getElementById("number"),
+            length = document.getElementById("length"),
+            confirmpass = document.getElementById("confirm-password");
+
+        // When the user clicks on the password field, show the message box
+        myInput.onfocus = function() {
+            document.getElementById("message").style.display = "block";
+        }
+
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function() {
+            document.getElementById("message").style.display = "none";
+        }
+
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function() {
+            // Validate lowercase letters
+            var lowerCaseLetters = /[a-z]/g;
+            if (myInput.value.match(lowerCaseLetters)) {
+                letter.classList.remove("invalid");
+                letter.classList.add("valid");
+            } else {
+                letter.classList.remove("valid");
+                letter.classList.add("invalid");
             }
-        });
+
+            // Validate capital letters
+            var upperCaseLetters = /[A-Z]/g;
+            if (myInput.value.match(upperCaseLetters)) {
+                capital.classList.remove("invalid");
+                capital.classList.add("valid");
+            } else {
+                capital.classList.remove("valid");
+                capital.classList.add("invalid");
+            }
+
+            // Validate numbers
+            var numbers = /[0-9]/g;
+            if (myInput.value.match(numbers)) {
+                number.classList.remove("invalid");
+                number.classList.add("valid");
+            } else {
+                number.classList.remove("valid");
+                number.classList.add("invalid");
+            }
+
+            // Validate length
+            if (myInput.value.length >= 8) {
+                length.classList.remove("invalid");
+                length.classList.add("valid");
+            } else {
+                length.classList.remove("valid");
+                length.classList.add("invalid");
+            }
+        }
+
+        //Validate if passwords match
+        confirmpass.onkeyup = function validatePassword() {
+            var pass = document.getElementById("password");
+            var confirmpass = document.getElementById("confirm-password");
+            if (confirmpass.value != pass.value) {
+                confirmpass.setCustomValidity("Password does not match");
+            } else {
+                confirmpass.setCustomValidity("");
+            }
+        }
     </script>
 
-    <!-- Chart library -->
-    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
+    <script>
+        // Show Password
+        const current = $("#password"),
+            newpass = $("#new-password"),
+            confirmpass = $("#confirm-password")
+
+        function myFunction() {
+            if (password.type == 'password') {
+                password.type = 'text';
+            } else {
+                password.type = 'password';
+            }
+            if (confirmpass.type == 'password') {
+                confirmpass.type = 'text';
+            } else {
+                confirmpass.type = 'password';
+            }
+
+        }
+    </script>
+
 
     <!-- Icons library -->
     <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>

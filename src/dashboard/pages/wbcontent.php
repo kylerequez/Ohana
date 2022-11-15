@@ -25,81 +25,99 @@
 </head>
 
 <body>
+<<<<<<< HEAD
   <div class="layer"> </div>
+=======
+  <?php
+  if (!isset($_SESSION)) session_start();
+  include_once dirname(__DIR__) . '/../models/Account.php';
 
-  <!-- Body -->
+  if (empty($_SESSION['user'])) {
+    session_unset();
+    session_destroy();
+    header("Location: http://localhost/login");
+    exit();
+  } else {
+    $user = unserialize($_SESSION['user']);
+  ?>
+    <div class="layer"> </div>
+>>>>>>> f8a49a536783696e2b8f69b33f04120f1f06f57c
 
-  <div class="page-flex">
+    <!-- Body -->
 
-    <!-- Dashboard Sidebar -->
-    <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
+    <div class="page-flex">
 
-    <div class="main-wrapper">
+      <!-- Dashboard Sidebar -->
+      <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
+
+      <div class="main-wrapper">
 
 
-      <!-- ! Main nav -->
-      <?php include_once dirname(__DIR__) . "/navbar.php" ?>
+        <!-- ! Main nav -->
+        <?php include_once dirname(__DIR__) . "/navbar.php" ?>
 
-      <!--  SYSTEM LOGS MAIN CONTENT -->
-      <main class="main users chart-page" id="skip-target">
-        <div class="container">
-          <br>
-          <center>
-            <h2 class="main-title"> WEBSITE CONTENT </h2>
-          </center>
-        </div>
-
-        <div class="users-table table-wrapper">
-          <div class="search-wrapper">
-            <i data-feather="search" aria-hidden="true"></i>
-            <input type="text" placeholder=" Search ">
-            <button type="filter"> FILTER </button>
-            <button type="sort"> SORT </button>
+        <!--  SYSTEM LOGS MAIN CONTENT -->
+        <main class="main users chart-page" id="skip-target">
+          <div class="container">
+            <br>
+            <center>
+              <h2 class="main-title"> WEBSITE CONTENT </h2>
+            </center>
           </div>
 
-          <br>
+          <div class="users-table table-wrapper">
+            <div class="search-wrapper">
+              <i data-feather="search" aria-hidden="true"></i>
+              <input type="text" placeholder=" Search ">
+              <button type="filter" style="color:white"> FILTER </button>
+              <button type="sort" style="color:white"> SORT </button>
+            </div>
 
-          <table class="posts-table">
-            <thead>
-              <tr class="users-table-info">
-                <th> <b> CONTENT I.D</b> </th>
-                <th> <b> CONTENT DESCRIPTION</b> </th>
-                <th> <b> CONTENT TYPE</b> </th>
-                <th> <b> DATE</b></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>I.D NUMBER 12345</td>
-                <td>Content Description </td>
-                <td><div class="pages-table-img">Jenny Wilson</div></td>
-                <td>17.04.2021</td>
-              </tr>
-              
-            </tbody>
-          </table>
-        </div>
+            <br>
 
-        <div class="paginations">
-          <li class="page-item previous-page"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">1</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
-          <li class="page-item dots"><a class="page-link" href="#">...</a></li>
-          <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
-        </div>
+            <table class="posts-table">
+              <thead>
+                <tr class="users-table-info">
+                  <th> <b> CONTENT I.D</b> </th>
+                  <th> <b> CONTENT DESCRIPTION</b> </th>
+                  <th> <b> CONTENT TYPE</b> </th>
+                  <th> <b> DATE</b></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>I.D NUMBER 12345</td>
+                  <td>Content Description </td>
+                  <td>
+                    <div class="pages-table-img">Jenny Wilson</div>
+                  </td>
+                  <td>17.04.2021</td>
+                </tr>
 
-      </main>
+              </tbody>
+            </table>
+          </div>
 
-      <!-- FOOTER -->
-      <?php include_once dirname(__DIR__) . '/footer.php'; ?>
+          <div class="paginations">
+            <li class="page-item previous-page"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">1</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
+            <li class="page-item dots"><a class="page-link" href="#">...</a></li>
+            <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
+          </div>
 
+        </main>
+
+        <!-- FOOTER -->
+        <?php include_once dirname(__DIR__) . '/footer.php'; ?>
+
+      </div>
     </div>
-  </div>
-   <!-- TOAST -->
-   <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+    <!-- TOAST -->
+    <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
       <div class="toast-container top-0 end-0 p-3">
         <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
           <div class="toast-header">
@@ -115,17 +133,26 @@
     }
     unset($_SESSION["msg"]);
     ?>
-  <!-- SCRIPTS -->
-  <!-- Custom scripts -->
-  <script src="/Ohana/src/dashboard/js/script.js"></script>
+    <!-- SCRIPTS -->
+    <!-- Custom scripts -->
+    <script src="/Ohana/src/dashboard/js/script.js"></script>
 
-  <!-- JavaScript BOOTSTRAP Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
-  </script>
+    <!-- JavaScript BOOTSTRAP Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+    </script>
 
+<<<<<<< HEAD
   <!--SCRIPT FOR BOOTSTRAP MODAL-->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
   </script>
+=======
+    <!--SCRIPT FOR BOOTSTRAP MODAL-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+  <?php
+  }
+  ?>
+>>>>>>> f8a49a536783696e2b8f69b33f04120f1f06f57c
 </body>
 
 </html>

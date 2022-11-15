@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-md fixed-top" id="navbar-spy">
   <div class="container-fluid">
     <div class="logo">
-      <a href="/"> <img src="/Ohana/src/images/Landing/navlogo.png" style="width: 100%; height: 100px;"> </a>
+      <a href="/"> <img src="/Ohana/src/images/Landing/navlogo.png" style="width: 100%; height: 90px;"> </a>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

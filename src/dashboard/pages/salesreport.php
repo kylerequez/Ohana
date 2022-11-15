@@ -51,12 +51,13 @@
     }
 
     .chartBox {
-      width: 280px;
+      width: 300px;
       /* WIDTH OF THE CHART BOX*/
       padding: 20px;
       border-radius: 20px;
       border: solid 3px #db6551;
       background: white;
+      margin: 25px;
     }
   </style>
 </head>
@@ -79,30 +80,25 @@
 
         <!--  TRANSACTIONS CONTENT -->
         <main class="main users chart-page" id="skip-target">
-          <div class="container">
-            <br>
-            <center>
-              <h2 class="main-title"> BUSINESS SALES REPORT </h2>
-            </center>
-
-            <div class="chartCard">
-              <div class="chartBox">
-                <!-- 1st chart-->
-                <canvas id="myChart"></canvas>
+          <div class="container-fluid">
+            <h2 class="main-title text-center"> BUSINESS SALES REPORT </h2>
+            <div class="container d-flex justify-content-center">
+              <div class="chartCard ">
+                <div class="chartBox">
+                  <!-- 1st chart-->
+                  <canvas id="myChart"></canvas>
+                </div>
+                <div class="chartBox" style="margin-left:20px; margin-right:20px;">
+                  <canvas id="myChartLine"></canvas><!-- 2nd chart-->
+                </div>
+                <div class="chartBox">
+                  <canvas id="myChartDoughnut"></canvas><!-- 3rd chart-->
+                </div>
+               
               </div>
-              <div class="chartBox" style="margin-left:20px; margin-right:20px;">
-                <canvas id="myChartLine"></canvas>
-              </div>
-              <div class="chartBox">
-                <canvas id="myChartDoughnut"></canvas><!-- 3rd chart-->
-              </div>
-            </div>
-            <div class="createstaff-wrapper">
-              <button type="create"><i data-feather="file-text" aria-hidden="true"></i><a class="export-btn" href="staffpopout.html"> Export Report </a></button>
             </div>
 
             <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script><!-- CHART JS IMPORT -->
-
             <script>
               // BAR CHART
               const data = {
@@ -230,11 +226,13 @@
                 document.getElementById('myChartDoughnut'),
                 configDoughnut
               );
+
+              
             </script>
+
+            
           </div>
         </main>
-        <br><br><br>
-        <!-- ! Footer -->
         <?php include_once dirname(__DIR__) . '/footer.php'; ?>
 
       </div>
@@ -244,9 +242,6 @@
 
     <!-- Chart library -->
     <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-
-    <!-- Icons library -->
-    <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
 
     <!-- Custom scripts -->
     <script src="/Ohana/src/dashboard/js/script.js"></script>

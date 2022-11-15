@@ -58,7 +58,7 @@
                             <div class="card-body">
                                 <h5 class="card-title" style="text-align:center"> FRENCH BULLDOG NAME </h5>
                                 <p class="card-text"> Stud success rate: 90% | Gender: Male </p>
-                                <form action="/studprofile" method='get'>
+                                <form action="/stud-profile" method='get'>
                                     <div class="btn-Learn" name="btn-Learn">
                                         <center><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></center>
                                     </div>

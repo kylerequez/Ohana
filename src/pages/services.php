@@ -28,11 +28,8 @@
     <!-- Web Icon -->
     <link rel="shortcut icon" href="/Ohana/src/images/Landing/ohana.png" type="image/x-icon">
 
-    <!-- Bootstrap CSS  CDN -->
-    <!-- 5.2.1 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous">
 
-    <!-- MORE icons -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
@@ -49,41 +46,33 @@
             <div class="message" style="margin-top:10%;">
                 <section class="services" id="services">
                     <div class="service">
-                        <center>
-                            <h1 style="color:#DB6551; font-size: 120px; font-family: 'Acme', sans-serif; font-weight:800"> SERVICES </h1>
-                        </center>
-                    </div><br><br>
-                    <center>
-                        <div class="row" style="text-align:center; margin-left:10%; margin-right:10%;">
-                            <div class="col-lg-6">
-                                <a href="/puppies/rehoming/get" style="text-decoration:none;">
-                                    <img src="/Ohana/src/images/services/rehome.png" width="540" height="400" role="img" focusable="false">
-                                </a>
+                        <h1 class="text-center mb-3" style="color:#DB6551; font-size: 100px; font-family: 'Acme', sans-serif; font-weight:800"> SERVICES </h1>
+                    </div>
+
+                    <div class="row" style="text-align:center; margin-left:10%; margin-right:10%;">
+                        <div class="col-lg-6">
+                            <a href="/puppies/rehoming/get" style="text-decoration:none;">
+                                <img src="/Ohana/src/images/services/1.png" width="400" height="400" role="img" focusable="false">
                                 <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
-
-                                <a href="/puppies/rehoming/get" style="text-decoration:none;">
-                                    <h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Pet Rehoming </h2>
-                                </a>
+                                <h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Pet Rehoming </h2>
                                 <p style="color:#7d605c; font-size: 25px;"> Want to add another member to your family? We have the cutest and most loving frenchies waiting for you. </p>
-
-                            </div>
-                            <div class="col-lg-6">
-                                <a href="/stud" style="text-decoration:none;">
-                                    <img src="/Ohana/src/images/services/stud.png" width="540" height="400" role="img" focusable="false">
-                                    <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
-                                </a>
-                                <a href="/stud" style="text-decoration:none;">
-                                    <h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Stud Service </h2>
-                                </a>
-                                <p style="color:#7d605c; font-size: 25px;"> Want to produce quality and compact french bulldogs? Choose from any of our male frenchies ready for mating. </p>
-                            </div>
-
+                            </a>
                         </div>
-                    </center>
+                        <div class="col-lg-6">
+                            <a href="/stud" style="text-decoration:none;">
+                                <img src="/Ohana/src/images/services/2.png" width="400" height="400" role="img" focusable="false">
+                                <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
+                                <h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Stud Service </h2>
+                            </a>
+                            <p style="color:#7d605c; font-size: 25px;"> Want to produce quality and compact french bulldogs? Choose from any of our male frenchies ready for mating. </p>
+                        </div>
+
+                    </div>
+
                 </section>
                 <section class="reason" style="margin-top:5%;">
                     <div class="reasons">
-                        <img src="/Ohana/src/images/services/reasons.png" style="width: 100%;">
+                        <img src="/Ohana/src/images/Landing/reasonsmain.png" class="img-fluid" style="width: 100%;">
                     </div>
                 </section>
                 <section class="pair-section">
@@ -100,12 +89,8 @@
                         </form>
                     </div>
                 </section>
-                <!-- 
-                <section class="reason"> 
-                    <div class="reasons">
-                        <img src="/Ohana/src/images/services/reasons.png" style="width: 100%;">
-                    </div>
-                </section>-->
+
+
             </div>
 
         </div>

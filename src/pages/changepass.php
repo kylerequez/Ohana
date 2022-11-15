@@ -8,26 +8,45 @@
   <!-- META TAGS -->
   <meta charset="utf-8">
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
-  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="keywords" content="Kennel Business, French Bulldogs">
+  <!-- END OF META TAGS -->
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+
+  <!-- FONT AWESOME ICONS IMPORT -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Web Icon -->
+  <link rel="shortcut icon" href="/Ohana/src/images/Landing/ohana.png" type="image/x-icon">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css" integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE" crossorigin="anonymous">
+
+  <!-- MORE icons -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+  <!-- EXTERNAL CSS -->
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
   <link rel="stylesheet" href="/Ohana/src/css/footer.css">
-  <?php include_once 'stylesheets.php'; ?>
+
 </head>
 
 <body style="background-color: #FAF8F0;">
 
   <!-- UNREGISTERED USERS NAVIGATION BAR-->
-  <?php include_once 'navbar.php'; ?>
+  <?php include_once 'Rnavbar.php'; ?>
   <!-- MAIN CONTENT -->
   <main class="sign-up">
     <div class="sign-up__container">
       <div class="sign-up__content">
         <header class="sign-up__header">
-          <h1 class="sign-up__title" style="font-size: 80px; margin-top: 5%;">
-            FORGOT PASSWORD
+          <h1 class="sign-up__title mt-5" style="font-size: 80px;">
+            CHANGE PASSWORD
           </h1>
           <p class="sign-up__descr" style="font-size: 25px;">
             Input a new password for your account.
@@ -44,23 +63,26 @@
           ?>
         </header>
 
-        <?php
-        if ($token != $_SESSION["token"]) {
-          header("Location: http://localhost/forgot-password/confirm");
-          session_destroy();
-        }
-        ?>
         <form id="form" method="POST" action="/forgotpassword" class="sign-up__form form">
           <div class="form__row form__row--two">
             <div class="input form__inline-input">
               <div class="input__container">
 
+                <div class="form__row">
+                  <div class="input">
+                    <div class="input__container mt-2">
+                      <input class="input__field" id="password" placeholder="Current password" required="" type="password" />
+                      <label class="input__label" for="password">Current Password</label>
+                    </div>
+                  </div>
+                </div>
+
                 <!-- PASSWORD INPUT BOX -->
                 <div class="form__row">
                   <div class="input">
-                    <div class="input__container">
-                      <input class="input__field" id="password" name="password" placeholder="Password" required="" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
-                      <label class="input__label" for="password">Password</label>
+                    <div class="input__container mt-2">
+                      <input class="input__field" id="new-password" name="new-password" placeholder="Password" required="" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
+                      <label class="input__label" for="new-password"> New Password</label>
                     </div>
                   </div>
                 </div>
@@ -73,13 +95,23 @@
                   <p id="number" class="invalid">At least one <b>number</b></p>
                   <p id="length" class="invalid">Minimum <b>8 characters</b></p>
                 </div>
-                <br>
-                <!-- PASSWORD INPUT BOX -->
+
                 <div class="form__row">
                   <div class="input">
-                    <div class="input__container">
+                    <div class="input__container mt-3">
                       <input class="input__field" id="confirm-password" placeholder="Confirm password" required="" type="password" />
                       <label class="input__label" for="confirm-password">Confirm password</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form__row">
+                  <div class="input-checkbox">
+                    <!-- CHECKBOX -->
+                    <div class="input-checkbox__container">
+
+                      <input type="checkbox" class="input-checkbox__field" id="agree" required="true;" name="" onclick="myFunction()" /> <span class="input-checkbox__square"></span>
+
+                      <label class="input-checkbox__label" for="agree"> Show Password </label>
                     </div>
                   </div>
                 </div>
@@ -90,29 +122,24 @@
                     </div>
                   </div>
                 </center>
-                <hr style="width:100%"><br>
-                <div class="form__row sign-up__sign">
-                  Don't have an account? &nbsp;<a class="link" href="/register" style="text-decoration: none;"> Register Now! </a>
-                </div>
+
+
         </form>
       </div>
     </div>
   </main>
   <!-- FOOTER -->
-  <div name="footer" style="margin-top:15%">
+  <div name="footer" style="margin-top:20%">
     <?php include_once 'footer.php'; ?>
   </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> f8a49a536783696e2b8f69b33f04120f1f06f57c
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <!-- START OF JAVASCRIPT-->
   <script>
     //PASSWORD VALIDATION SCRIPT
-    const passwordInput = $("#password"),
+    const currentpassword = $("#password"),
+      passwordInput = $("#new-password"),
       letter = $("#letter"),
       capital = $("#capital"),
       number = $("#number"),
@@ -160,11 +187,32 @@
     });
     confirmpassInput.keyup(() => {
       if (confirmpassInput.val() != passwordInput.val()) {
-        confirmpass.get(0).setCustomValidity("Password does not match");
+        confirmpass.setCustomValidity("Password does not match");
       } else {
-        confirmpass.get(0).setCustomValidity("");
+        confirmpass.setCustomValidity("");
       }
     });
+  </script>
+
+  <script>
+    // Show Password
+    function myFunction() {
+      if (currentpassword.type == 'password') {
+        currentpassword.type = 'text';
+      } else {
+        currentpassword.type = 'password';
+      }
+      if (password.type == 'new-password') {
+        password.type = 'text';
+      } else {
+        password.type = 'new-password';
+      }
+      if (confirmpass.type == 'confirm-password') {
+        confirmpass.type = 'text';
+      } else {
+        confirmpass.type = 'confirm-password';
+      }
+    }
   </script>
   </main>
 

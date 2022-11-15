@@ -53,7 +53,7 @@
               <input type="text" placeholder=" Search Dog">
             </div>
             <div class="createstaff-wrapper">
-              <a class="create-staff-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create">
+              <a class="create-staff-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white">
                   <i data-feather="plus" aria-hidden="true"></i>
                   Add Pet </button></a>
             </div>
@@ -264,7 +264,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn" id="ToastBtn" style="background-color:#db6551"> Add Pet </button>
+              <button type="submit" class="btn" id="ToastBtn" style="background-color:#db6551;color:white"> Add Pet </button>
             </div>
           </div>
         </div>

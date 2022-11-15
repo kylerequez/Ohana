@@ -19,6 +19,13 @@ body {
   position: relative !important;
 }
 
+.navbar-toggler:focus {
+  text-decoration: none;
+  outline: 0;
+  box-shadow: 0 0 0 var(--bs-navbar-toggler-focus-width);
+  color: #db6551;
+}
+
 h1 {
   color: #db6551;
   font-size: 30px;
@@ -163,7 +170,7 @@ input[type="radio"]:checked {
   color: #7d605c;
   font-family: "Poppins";
   font-size: 16px;
-  padding: 15px 50px;
+  padding: 15px 40px;
   text-decoration: none;
   text-shadow: 0px 1px 0px #ffffff;
   text-align: center;

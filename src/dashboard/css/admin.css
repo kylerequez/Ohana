@@ -6,7 +6,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 /* FOR headers bold - font-family: 'Anton', sans-serif; */
 
-
 html {
   line-height: 1.15;
   /* 1 */
@@ -18,30 +17,13 @@ body {
   margin: 0;
 }
 
-/**
- * Render the `main` element consistently in IE.
- */
-
 main {
   display: block;
 }
 
-/**
- * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
- */
-
 h1 {
   font-size: 2em;
 }
-
-/* Grouping content
-   ========================================================================== */
-
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
 
 hr {
   -webkit-box-sizing: content-box;
@@ -53,21 +35,12 @@ hr {
   /* 2 */
 }
 
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-
 pre {
   font-family: monospace, monospace;
   /* 1 */
   font-size: 1em;
   /* 2 */
 }
-
-/**
- * Remove the gray background on active links in IE 10.
- */
 
 a {
   background-color: transparent;
@@ -111,18 +84,9 @@ samp {
   /* 2 */
 }
 
-/**
- * Add the correct font size in all browsers.
- */
-
 small {
   font-size: 80%;
 }
-
-/**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
 
 sub,
 sup {
@@ -140,24 +104,10 @@ sup {
   top: -0.5em;
 }
 
-/* Embedded content
-   ========================================================================== */
-
-/**
- * Remove the border on images inside links in IE 10.
- */
-
 img {
   border-style: none;
 }
 
-/* Forms
-   ========================================================================== */
-
-/**
- * 1. Change the font styles in all browsers.
- * 2. Remove the margin in Firefox and Safari.
- */
 
 button,
 input,
@@ -174,21 +124,12 @@ textarea {
   /* 2 */
 }
 
-/**
- * Show the overflow in IE.
- * 1. Show the overflow in Edge.
- */
-
 button,
 input {
   /* 1 */
   overflow: visible;
 }
 
-/**
- * Remove the inheritance of text transform in Edge, Firefox, and IE.
- * 1. Remove the inheritance of text transform in Firefox.
- */
 
 button,
 select {
@@ -196,9 +137,6 @@ select {
   text-transform: none;
 }
 
-/**
- * Correct the inability to style clickable types in iOS and Safari.
- */
 
 button,
 [type="button"],
@@ -207,9 +145,6 @@ button,
   -webkit-appearance: button;
 }
 
-/**
- * Remove the inner border and padding in Firefox.
- */
 
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
@@ -219,9 +154,6 @@ button::-moz-focus-inner,
   padding: 0;
 }
 
-/**
- * Restore the focus styles unset by the previous rule.
- */
 
 button:-moz-focusring,
 [type="button"]:-moz-focusring,
@@ -230,20 +162,10 @@ button:-moz-focusring,
   outline: 1px dotted ButtonText;
 }
 
-/**
- * Correct the padding in Firefox.
- */
 
 fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
-
-/**
- * 1. Correct the text wrapping in Edge and IE.
- * 2. Correct the color inheritance from `fieldset` elements in IE.
- * 3. Remove the padding so developers are not caught out when they zero out
- *    `fieldset` elements in all browsers.
- */
 
 legend {
   -webkit-box-sizing: border-box;
@@ -316,20 +238,11 @@ textarea {
   -webkit-appearance: none;
 }
 
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
- */
 
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
-  /* 1 */
   font: inherit;
-  /* 2 */
 }
-
-/* Interactive
-   ========================================================================== */
 
 /*
  * Add the correct display in Edge, IE 10+, and Firefox.
@@ -347,9 +260,6 @@ summary {
   display: list-item;
 }
 
-/**
- * Add the correct display in IE 10.
- */
 
 [hidden] {
   display: none;
@@ -859,8 +769,6 @@ body {
   padding: 30px 15px;
 }
 
-/*! ################################ TOAST TESTER BUTTON ############################################ */
-
 
 /* * ################# MAIN WRAPPER FOR CONTENT ####################### */
 .main-wrapper {
@@ -868,6 +776,130 @@ body {
   width: 100%;
 }
 
+/* * CARDS IN DASHBOARD */
+
+.stat-cards {
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.stat-cards > div {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.stat-cards-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 24px 19px;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 0px 15px 50px rgba(160, 163, 189, 0.1);
+  box-shadow: 0px 15px 50px rgba(160, 163, 189, 0.1);
+  border-radius: 10px;
+  height: 100%;
+}
+
+.stat-cards-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 9px;
+}
+
+.stat-cards-icon.primary {
+  background-color: rgba(47, 73, 209, 0.1);
+  color: #2f49d1;
+}
+
+.stat-cards-icon.warning {
+  background-color: rgba(255, 182, 72, 0.1);
+  color: #ffb648;
+}
+
+.stat-cards-icon.purple {
+  background-color: rgba(95, 46, 234, 0.1);
+  color: #5f2eea;
+}
+
+.stat-cards-icon.success {
+  background-color: rgba(75, 222, 151, 0.1);
+  color: #4bde97;
+}
+
+.stat-cards-info__num {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.22;
+  color: #171717;
+  margin-bottom: 4px;
+}
+
+.stat-cards-info__title {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.22;
+  color: #b9b9b9;
+  margin-bottom: 6px;
+}
+
+.stat-cards-info__progress {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 1.22;
+  color: #b9b9b9;
+}
+
+.stat-cards-info__profit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 1.22;
+  margin-right: 10px;
+}
+
+.stat-cards-info__profit.success {
+  color: #4bde97;
+}
+
+.stat-cards-info__profit.danger {
+  color: #f26464;
+}
+
+.stat-cards-info__profit.warning {
+  color: #ffb648;
+}
+
+.stat-cards-info__profit svg {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
 /* * ####################### FOOTER PAGE #################################### */
 .footer {
   position: absolute;
@@ -888,94 +920,6 @@ body {
 
 .layer.active {
   display: block;
-}
-
-@font-face {
-  font-family: "demo";
-  font-display: swap;
-  src: url("../fonts/demo.woff") format("woff"), url("../fonts/demo.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter-Black";
-  font-display: swap;
-  src: url("../fonts/Inter-Black.woff") format("woff"), url("../fonts/Inter-Black.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter-ExtraBold";
-  font-display: swap;
-  src: url("../fonts/Inter-ExtraBold.woff") format("woff"), url("../fonts/Inter-ExtraBold.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter-Bold";
-  font-display: swap;
-  src: url("../fonts/Inter-Bold.woff") format("woff"), url("../fonts/Inter-Bold.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter-Light";
-  font-display: swap;
-  src: url("../fonts/Inter-Light.woff") format("woff"), url("../fonts/Inter-Light.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter-ExtraLight";
-  font-display: swap;
-  src: url("../fonts/Inter-ExtraLight.woff") format("woff"), url("../fonts/Inter-ExtraLight.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter-Regular";
-  font-display: swap;
-  src: url("../fonts/Inter-Regular.woff") format("woff"), url("../fonts/Inter-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter-Medium";
-  font-display: swap;
-  src: url("../fonts/Inter-Medium.woff") format("woff"), url("../fonts/Inter-Medium.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter-SemiBold";
-  font-display: swap;
-  src: url("../fonts/Inter-SemiBold.woff") format("woff"), url("../fonts/Inter-SemiBold.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "stylesheet";
-  font-display: swap;
-  src: url("../fonts/stylesheet.woff") format("woff"), url("../fonts/stylesheet.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter-Thin";
-  font-display: swap;
-  src: url("../fonts/Inter-Thin.woff") format("woff"), url("../fonts/Inter-Thin.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
 }
 
 /* Basic config for all custom icons: */

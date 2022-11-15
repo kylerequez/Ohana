@@ -1,13 +1,13 @@
-
 @import url(../fonts/stylesheet.css);
-@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
 /* font-family: 'Acme', sans-serif; FOR HEADERS */
 
 /*FONT FACE CSS*/
 @font-face {
   font-family: "demo";
   font-display: swap;
-  src: url("../fonts/demo.woff") format("woff"), url("../fonts/demo.woff2") format("woff2");
+  src: url("../fonts/demo.woff") format("woff"),
+    url("../fonts/demo.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -15,7 +15,8 @@
 @font-face {
   font-family: "Inter-Black";
   font-display: swap;
-  src: url("../fonts/Inter-Black.woff") format("woff"), url("../fonts/Inter-Black.woff2") format("woff2");
+  src: url("../fonts/Inter-Black.woff") format("woff"),
+    url("../fonts/Inter-Black.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -23,7 +24,8 @@
 @font-face {
   font-family: "Inter-ExtraBold";
   font-display: swap;
-  src: url("../fonts/Inter-ExtraBold.woff") format("woff"), url("../fonts/Inter-ExtraBold.woff2") format("woff2");
+  src: url("../fonts/Inter-ExtraBold.woff") format("woff"),
+    url("../fonts/Inter-ExtraBold.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -31,7 +33,8 @@
 @font-face {
   font-family: "Inter-Bold";
   font-display: swap;
-  src: url("../fonts/Inter-Bold.woff") format("woff"), url("../fonts/Inter-Bold.woff2") format("woff2");
+  src: url("../fonts/Inter-Bold.woff") format("woff"),
+    url("../fonts/Inter-Bold.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -39,7 +42,8 @@
 @font-face {
   font-family: "Inter-Light";
   font-display: swap;
-  src: url("../fonts/Inter-Light.woff") format("woff"), url("../fonts/Inter-Light.woff2") format("woff2");
+  src: url("../fonts/Inter-Light.woff") format("woff"),
+    url("../fonts/Inter-Light.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -47,7 +51,8 @@
 @font-face {
   font-family: "Inter-ExtraLight";
   font-display: swap;
-  src: url("../fonts/Inter-ExtraLight.woff") format("woff"), url("../fonts/Inter-ExtraLight.woff2") format("woff2");
+  src: url("../fonts/Inter-ExtraLight.woff") format("woff"),
+    url("../fonts/Inter-ExtraLight.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -55,7 +60,8 @@
 @font-face {
   font-family: "Inter-Regular";
   font-display: swap;
-  src: url("../fonts/Inter-Regular.woff") format("woff"), url("../fonts/Inter-Regular.woff2") format("woff2");
+  src: url("../fonts/Inter-Regular.woff") format("woff"),
+    url("../fonts/Inter-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -63,7 +69,8 @@
 @font-face {
   font-family: "Inter-Medium";
   font-display: swap;
-  src: url("../fonts/Inter-Medium.woff") format("woff"), url("../fonts/Inter-Medium.woff2") format("woff2");
+  src: url("../fonts/Inter-Medium.woff") format("woff"),
+    url("../fonts/Inter-Medium.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -71,7 +78,8 @@
 @font-face {
   font-family: "Inter-SemiBold";
   font-display: swap;
-  src: url("../fonts/Inter-SemiBold.woff") format("woff"), url("../fonts/Inter-SemiBold.woff2") format("woff2");
+  src: url("../fonts/Inter-SemiBold.woff") format("woff"),
+    url("../fonts/Inter-SemiBold.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -79,7 +87,8 @@
 @font-face {
   font-family: "stylesheet";
   font-display: swap;
-  src: url("../fonts/stylesheet.woff") format("woff"), url("../fonts/stylesheet.woff2") format("woff2");
+  src: url("../fonts/stylesheet.woff") format("woff"),
+    url("../fonts/stylesheet.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -87,7 +96,8 @@
 @font-face {
   font-family: "Inter-Thin";
   font-display: swap;
-  src: url("../fonts/Inter-Thin.woff") format("woff"), url("../fonts/Inter-Thin.woff2") format("woff2");
+  src: url("../fonts/Inter-Thin.woff") format("woff"),
+    url("../fonts/Inter-Thin.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -216,7 +226,6 @@ sub {
 sup {
   top: -0.5em;
 }
-
 
 /**
  * Remove the border on images inside links in IE 10.
@@ -445,17 +454,29 @@ template {
   -webkit-animation-name: animatebottom;
   -webkit-animation-duration: 1s;
   animation-name: animatebottom;
-  animation-duration: 1s
+  animation-duration: 1s;
 }
 
 @-webkit-keyframes animatebottom {
-  from { bottom:-100px; opacity:0 } 
-  to { bottom:0px; opacity:1 }
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0px;
+    opacity: 1;
+  }
 }
 
-@keyframes animatebottom { 
-  from{ bottom:-100px; opacity:0 } 
-  to{ bottom:0; opacity:1 }
+@keyframes animatebottom {
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
 }
 
 #myDiv {
@@ -720,7 +741,7 @@ html {
 
 html,
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 h1,
@@ -796,7 +817,7 @@ img {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
@@ -937,7 +958,7 @@ img {
 
 /* ############################## ADMIN PAGES BODY BACKGROUND ################################ */
 body {
-  background-color: #FAF8F0;
+  background-color: #faf8f0;
 }
 
 .page-flex {
@@ -993,48 +1014,49 @@ body {
 }
 
 /*PAGINATION*/
-.paginations{
+.paginations {
   text-align: center;
   margin: 30px 30px 60px;
   user-select: none;
   margin-top: 100px;
 }
-.paginations li{
-  display:inline-block;
+.paginations li {
+  display: inline-block;
   margin: 5px;
   box-shadow: 0 5px 25px rgba(1 1 1 / 10%);
 }
-.paginations li a{
-  color:black;
+.paginations li a {
+  color: black;
   text-decoration: none;
   font-size: 20px;
   line-height: 45px;
 }
-.paginations li:hover{
-  background:#C0B65A;
+.paginations li:hover {
+  background: #c0b65a;
 }
-.previous-page, .next-page{
+.previous-page,
+.next-page {
   color: #fff;
-  background-color: #DB6551;
+  background-color: #db6551;
   width: 100px;
   border-radius: 40px;
   cursor: pointer;
 }
-.previous-page:hover{
+.previous-page:hover {
   transform: translateX(-10px); /*GOES TO THE LEFT ANIMATION*/
 }
-.current-page, .dots{
-  background: #EED1C2;
+.current-page,
+.dots {
+  background: #eed1c2;
   width: 45px;
   border-radius: 50%;
   cursor: pointer;
 }
-.next-page:hover{
+.next-page:hover {
   transform: translateX(10px); /*GOES TO THE RIGHT ANIMATION*/
 }
 
 /* END OF PAGINATION*/
-
 
 /* Basic config for all custom icons: */
 
@@ -1246,7 +1268,7 @@ body {
 
 .theme-switcher circle {
   fill: yellow;
-  stroke: #D6D7E3;
+  stroke: #d6d7e3;
 }
 
 .theme-switcher line {
@@ -1335,14 +1357,15 @@ h3 {
   line-height: 1.06;
 }
 
-.main-title { /* ############################################ HEADER TEXT OF PAGES ################################################### */
+.main-title {
+  /* ############################################ HEADER TEXT OF PAGES ################################################### */
   font-weight: 900;
   font-size: 50px;
   line-height: 1.42;
-  color: #DB6551;
+  color: #db6551;
   margin-bottom: 20px;
   margin-top: 10px;
-  font-family: 'Acme', sans-serif; 
+  font-family: "Acme", sans-serif;
 }
 
 /* Buttons */
@@ -1357,7 +1380,7 @@ button {
 
 button:focus {
   outline: none;
-  border: 2px solid #AFBCFF !important;
+  border: 2px solid #afbcff !important;
 }
 
 button.disabled {
@@ -1387,7 +1410,7 @@ button.disabled:focus {
 
 .transparent-btn:focus {
   outline: none;
-  border: 2px solid #AFBCFF !important;
+  border: 2px solid #afbcff !important;
 }
 
 .primary-default-btn {
@@ -1409,7 +1432,7 @@ button.disabled:focus {
 }
 
 .primary-default-btn:hover {
-  background-color: #4661F0;
+  background-color: #4661f0;
   color: #fff;
 }
 
@@ -1435,7 +1458,7 @@ button.disabled:focus {
 }
 
 .primary-white-btn:hover {
-  color: #4661F0;
+  color: #4661f0;
 }
 
 .secondary-default-btn {
@@ -1546,7 +1569,7 @@ button.disabled:focus {
   height: 40px;
   border-radius: 50%;
   border-width: 0;
-  background-color: #F5EFFF;
+  background-color: #f5efff;
 }
 
 .lang-switcher {
@@ -1563,7 +1586,7 @@ button.disabled:focus {
 }
 
 .extentions-btn {
-  border: 1px solid #EEEEEE !important;
+  border: 1px solid #eeeeee !important;
   border-radius: 4px;
   background-color: transparent;
   padding: 5px 20px;
@@ -1607,8 +1630,8 @@ button.disabled:focus {
   justify-content: center;
   color: #d6d7e3;
   padding: 2px 8px;
-  background-color: #FFFFFF;
-  border: 1px solid #EEEEEE;
+  background-color: #ffffff;
+  border: 1px solid #eeeeee;
   border-radius: 4px;
 }
 
@@ -1637,7 +1660,7 @@ button.disabled:focus {
 .folder-btn svg {
   width: 16px;
   height: 16px;
-  color: #B9B9B9;
+  color: #b9b9b9;
 }
 
 .upgrade-btn {
@@ -1673,7 +1696,7 @@ button.disabled:focus {
 .media-table-btn {
   padding: 10px 20px;
   background-color: transparent;
-  border: 2px solid #EEEEEE;
+  border: 2px solid #eeeeee;
   border-radius: 4px;
   font-size: 16px;
   line-height: 1.5;
@@ -1690,10 +1713,10 @@ button.disabled:focus {
 
 .view-sort-btn:hover {
   color: #fff;
-  background-color: #E0E3F1;
+  background-color: #e0e3f1;
 }
 
-/*DROP DOWN BTN*/ 
+/*DROP DOWN BTN*/
 .dropdown-btn {
   color: #b9b9b9;
 }
@@ -1727,7 +1750,7 @@ button.disabled:focus {
 }
 
 .dropdown::before {
-  content: '';
+  content: "";
   position: absolute;
   right: 6px;
   top: -10px;
@@ -1747,7 +1770,7 @@ button.disabled:focus {
   font-size: 14px;
   line-height: 2.43;
   color: #767676;
-  border-bottom: 1px solid #EEEEEE;
+  border-bottom: 1px solid #eeeeee;
   text-align: left;
 }
 
@@ -1952,8 +1975,8 @@ label {
 
 .users-table td {
   background-color: #fff;
-  border-top: 1px solid #EEEEEE;
-  border-bottom: 1px solid #EEEEEE;
+  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee;
   padding-top: 15px;
   padding-bottom: 15px;
 }
@@ -2020,18 +2043,18 @@ label {
   min-width: 483px;
 }
 
-.table-wrapper .edit-btn{
+.table-wrapper .edit-btn {
   color: white;
   display: inline-block;
 }
-.table-wrapper .del-btn{
+.table-wrapper .del-btn {
   color: red;
   display: inline-block;
 }
 
- /* sidebar head */
-  /* sidebar body */
-  /* sidebar footer */
+/* sidebar head */
+/* sidebar body */
+/* sidebar footer */
 
 /*  ########################################################### ADMIN SIDE BAR ORIGINAL MODE ################################################## */
 .sidebar {
@@ -2050,7 +2073,7 @@ label {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  background-color: #7D605C !important;
+  background-color: #7d605c !important;
   padding: 20px 15px 37px 20px;
   -webkit-transition: 0.5s all;
   -o-transition: 0.5s all;
@@ -2106,7 +2129,7 @@ label {
 
 .sidebar-body-menu a::after {
   position: absolute;
-  content: '';
+  content: "";
   height: 22px;
   width: 5px;
   right: -11px;
@@ -2190,7 +2213,7 @@ label {
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 0.75px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .sidebar-user__subtitle {
@@ -2244,7 +2267,6 @@ label {
   letter-spacing: 0.86px;
 }
 /* END OF LOGO */
- 
 
 .system-menu__title {
   display: inline-block;
@@ -2317,7 +2339,7 @@ label {
   -webkit-transition: 0.2s all;
   -o-transition: 0.2s all;
   transition: 0.2s all;
-  background-color: #EED1C2;
+  background-color: #eed1c2;
 }
 
 .main-nav-end {
@@ -2364,7 +2386,8 @@ label {
   color: #f26464;
 }
 
-.main-nav .nav-user-img { /*USER DROPOWN IMAGE CSS*/
+.main-nav .nav-user-img {
+  /*USER DROPOWN IMAGE CSS*/
   border-radius: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2378,7 +2401,7 @@ label {
   overflow: hidden;
   width: 45px;
   height: 45px;
-  background-color: #F5EFFF;
+  background-color: #f5efff;
 }
 
 .main-nav .nav-user-img picture {
@@ -2396,26 +2419,26 @@ label {
   width: 100px;
   height: 50px;
   border-radius: 10%;
-  background-color: #DB6551;
+  background-color: #db6551;
   margin-left: 15px;
 }
 .search-wrapper button:hover {
-  background-color: #EED1C2;
+  background-color: #eed1c2;
 }
 /**/
-.createstaff-wrapper button{
+.createstaff-wrapper button {
   position: relative;
   float: right;
   margin-right: 15px;
   margin-bottom: 30px;
   margin-top: 20px;
   height: 50px;
-  background-color: #DB6551;
+  background-color: #db6551;
   border-radius: 10%;
   padding-left: 10px;
   padding-right: 10px;
+  color: white;
 }
-/* CALENDAR */
 
 /* ################################################### SEARCH BAR ################################################# */
 .search-wrapper {
@@ -2429,46 +2452,42 @@ label {
 .search-wrapper input {
   width: 500px;
   border-radius: 6px;
-  background-color: #EED1C2;
+  background-color: #eed1c2;
   padding: 3px 8px 3px 42px;
   height: 50px;
   border-width: 0;
 }
 
 .search-wrapper input::-webkit-input-placeholder {
-  background-color: #EED1C2;
+  background-color: #eed1c2;
   font-size: 18px;
   line-height: 2.43;
   color: black;
- 
 }
 
 .search-wrapper input::-moz-placeholder {
-  background-color: #EED1C2;
+  background-color: #eed1c2;
   font-size: 18px;
   line-height: 2.43;
   color: #d6d7e3;
- 
 }
 
 .search-wrapper input:-ms-input-placeholder {
-  background-color: #EED1C2;
+  background-color: #eed1c2;
   font-size: 18px;
   line-height: 2.43;
   color: #d6d7e3;
- 
 }
 
 .search-wrapper input::-ms-input-placeholder {
-  background-color: #EED1C2;
+  background-color: #eed1c2;
   font-size: 18px;
   line-height: 2.43;
   color: #d6d7e3;
- 
 }
 
 .search-wrapper input::placeholder {
-  background-color: #EED1C2;
+  background-color: #eed1c2;
   font-size: 18px;
   line-height: 2.43;
   color: black;
@@ -2489,9 +2508,9 @@ label {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   padding: 20px 36px 20px 20px;
-  background-color: #FFFFFF;
-  -webkit-box-shadow: 0px 1px 0px #DADBE4;
-  box-shadow: 0px 1px 0px #DADBE4;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0px 1px 0px #dadbe4;
+  box-shadow: 0px 1px 0px #dadbe4;
   border-radius: 10px 10px 0 0;
 }
 
@@ -2565,7 +2584,7 @@ label {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   padding: 24px 19px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   -webkit-box-shadow: 0px 15px 50px rgba(160, 163, 189, 0.1);
   box-shadow: 0px 15px 50px rgba(160, 163, 189, 0.1);
   border-radius: 10px;
@@ -2702,7 +2721,7 @@ label {
   -ms-flex-align: center;
   align-items: center;
   letter-spacing: -0.5px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 4px;
 }
 
@@ -2741,7 +2760,7 @@ label {
   display: block;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #EEEEEE;
+  border-bottom: 1px solid #eeeeee;
 }
 
 .top-cat-list__title {
@@ -2851,7 +2870,7 @@ label {
   min-height: 65vh;
 }
 
-.main-title-wrapper { 
+.main-title-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2911,7 +2930,7 @@ label {
   justify-content: space-between;
   height: 100%;
   border-radius: 10px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   text-align: center;
 }
 
@@ -2984,15 +3003,15 @@ label {
 }
 
 .users-item .primary-white-btn {
-  border-top: 1px solid #EEEEEE;
+  border-top: 1px solid #eeeeee;
   width: 100%;
 }
 /*START OF ADMIN FOOTER*/
 .footer {
-  border-top: 2px solid #DB6551;
+  border-top: 2px solid #db6551;
   padding-top: 14px;
   padding-bottom: 14px;
-  color: #DB6551;
+  color: #db6551;
   font-size: 15px;
 }
 
@@ -3037,8 +3056,8 @@ label {
 }
 
 .footer a:hover {
-  color: #C0B65A;
-  border-color: #C0B65A;
+  color: #c0b65a;
+  border-color: #c0b65a;
 }
 /*##################################  END OF ADMIN FOOTER STYLE #############################################################*/
 .form {
@@ -3046,7 +3065,7 @@ label {
   box-shadow: 0px 5px 10px rgba(160, 163, 189, 0.1);
   border-radius: 10px;
   padding: 40px 40px 56px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   text-align: left;
 }
 

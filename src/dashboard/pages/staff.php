@@ -54,14 +54,14 @@
             <div class="search-wrapper">
               <i data-feather="search" aria-hidden="true"></i>
               <input type="text" placeholder=" Search User Account">
-              <button type="filter"> FILTER </button>
-              <button type="sort"> SORT </button>
+              <button type="filter" style="color:white"> FILTER </button>
+              <button type="sort" style="color:white"> SORT </button>
             </div>
             <?php
             if ($user->getType() == "ADMINISTRATOR") {
             ?>
               <div class="createstaff-wrapper">
-                <a class="create-staff-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create"><i data-feather="plus" aria-hidden="true"></i>
+                <a class="create-staff-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white"><i data-feather="plus" aria-hidden="true"></i>
                     Add Staff </button></a>
               </div>
               <br>
@@ -204,7 +204,7 @@
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="submit" class="btn" id="ToastBtn" style="background-color:#db6551"> Add Staff </button>
+                    <button type="submit" class="btn" id="ToastBtn" style="background-color:#db6551;color:white"> Add Staff </button>
                   </div>
                 </div>
               </div>
