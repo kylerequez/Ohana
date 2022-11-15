@@ -178,13 +178,14 @@
                   </div>
                   <div class="modal-body">
                     <input name="type" type="hidden" value="STAFF">
+                    <input name="status" type="hidden" value="ACTIVE">
                     <div class="mb-3">
                       <label for="fname" class="col-form-label"> First Name: </label>
                       <input type="text" class="form-control" name="fname" placeholder="Enter First Name" required style="background-color:#eed1c2; color:black">
                     </div>
                     <div class="mb-3">
-                      <label for="mname" class="col-form-label"> Middle Name: </label>
-                      <input type="text" class="form-control" name="mname" placeholder="Enter Middle Name" required style="background-color:#eed1c2; color:black">
+                      <label for="mname" class="col-form-label"> Middle Name (optional): </label>
+                      <input type="text" class="form-control" name="mname" placeholder="Enter Middle Name" style="background-color:#eed1c2; color:black">
                     </div>
                     <div class="mb-3">
                       <label for="lname" class="col-form-label"> Surname: </label>

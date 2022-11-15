@@ -79,7 +79,6 @@
                     <h1> APPOINTMENT HISTORY </h1>
                 </div>
             </section>
-<<<<<<< HEAD
             <div class="container py-5" id="page-container" style="margin-top: 0%">
                 <div class="row">
                     <div class="col-md-9">
@@ -173,74 +172,6 @@
                     </div>
                 </div>
             </div>
-=======
-            <section class="orderhistory_section">
-                <div class="container">
-                    <table class="table table-hover table-bordered table-responsive text-center">
-                        <thead style="font-weight: bold">
-                            <tr>
-                                <th scope="col">Date</th>
-                                <th scope="col">Time</th>
-                                <th scope="col">Type of Appointment</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>11/22/2022</td>
-                                <td>8:00PM</td>
-                                <td>Stud-service</td>
-                                <td>Pending</td>
-                                <td>
-                                    <div class="text-center">
-                                        <button class="btn mx-2 text-white" data-bs-toggle="modal" data-bs-target="#reschedModal" style="background-color:#c0b65a"> Resched </button>
-                                        <button class="btn btn-danger mx-2" data-bs-toggle="modal" data-bs-target="#cancelModal"> Cancel </button>
-                                    </div>
-
-                                    <!-- Reschedule Appointment Modal -->
-                                    <div class="modal fade" id="reschedModal" tabindex="-1" aria-labelledby="reschedLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="cancelLabel"> Reschedule Appointment Confirmation </h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-left:10%;"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Are you sure you want to reschedule your appointment?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <a href="/set-appointment"><button type="button" class="btn btn-success">Confirm</button></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Cancel Modal -->
-                                    <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="cancelLabel"> Cancel Appointment Confirmation </h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-left:20%;"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Are you sure you want to cancel your appointment?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-success">Confirm</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </section>
->>>>>>> f8a49a536783696e2b8f69b33f04120f1f06f57c
         </div>
     </main>
     <div class="container-fluid">

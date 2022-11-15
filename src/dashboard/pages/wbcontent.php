@@ -25,23 +25,7 @@
 </head>
 
 <body>
-<<<<<<< HEAD
   <div class="layer"> </div>
-=======
-  <?php
-  if (!isset($_SESSION)) session_start();
-  include_once dirname(__DIR__) . '/../models/Account.php';
-
-  if (empty($_SESSION['user'])) {
-    session_unset();
-    session_destroy();
-    header("Location: http://localhost/login");
-    exit();
-  } else {
-    $user = unserialize($_SESSION['user']);
-  ?>
-    <div class="layer"> </div>
->>>>>>> f8a49a536783696e2b8f69b33f04120f1f06f57c
 
     <!-- Body -->
 
@@ -141,18 +125,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 
-<<<<<<< HEAD
   <!--SCRIPT FOR BOOTSTRAP MODAL-->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
   </script>
-=======
-    <!--SCRIPT FOR BOOTSTRAP MODAL-->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-  <?php
-  }
-  ?>
->>>>>>> f8a49a536783696e2b8f69b33f04120f1f06f57c
 </body>
 
 </html>
