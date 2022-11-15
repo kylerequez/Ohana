@@ -12,7 +12,6 @@ class AppointmentController
         $this->logservices = $logServices;
     }
 
-    // STAFF
     public function processRequest(string $method, ?string $id): void
     {
         if (isset($id)) {
@@ -57,6 +56,38 @@ class AppointmentController
             case "GET":
                 $_SESSION["appointments"] = serialize($this->services->getAllAppointments());
                 header("Location: http://localhost/dashboard/calendar");
+                break;
+        }
+    }
+
+    public function processUserRequest(string $method, ?int $id): void
+    {
+        if (isset($id)) {
+            $this->processUserResourceRequest($method, $id);
+        } else {
+            $this->processUserCollectionRequest($method);
+        }
+    }
+
+    public function processUserResourceRequest(string $method): void
+    {
+        switch ($method) {
+            case "GET":
+                break;
+            case "POST":
+                break;
+        }
+    }
+
+    public function processUserCollectionRequest(string $method): void
+    {
+        switch ($method) {
+            case "GET":
+                $account = unserialize($_SESSION["user"]);
+                $_SESSION["appointments"] = serialize($this->services->getAppointmentsByAccountId($account->getId()));
+                header("Location: http://localhost/appointments");
+                break;
+            case "POST":
                 break;
         }
     }

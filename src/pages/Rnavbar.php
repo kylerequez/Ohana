@@ -85,7 +85,7 @@ if (!isset($_SESSION["user"])) {
                   <img src="/Ohana/src/images/icons/file.png" /><a href="/transactions">Transactions</a>
                 </li>
                 <li>
-                  <img src="/Ohana/src/images/icons/calendar.png" /><a href="/appointments">Appointment</a>
+                  <img src="/Ohana/src/images/icons/calendar.png" /><a href="/appointments/get">Appointment</a>
                 </li>
                 <li>
                   <img src="/Ohana/src/images/icons/log-out.png" />

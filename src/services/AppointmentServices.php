@@ -14,6 +14,11 @@ class AppointmentServices
         return $this->dao->getAllAppointments();
     }
 
+    public function getAppointmentsByAccountId(string $id): mixed
+    {
+        return $this->dao->getAppointmentsByAccountId($id);
+    }
+
     public function deleteAppointment(int $id): bool
     {
         if (is_null($this->dao->searchById($id))) {
