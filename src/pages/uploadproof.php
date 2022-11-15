@@ -52,7 +52,6 @@
                         <a href="/checkout"><button type="button" class="btn btn-outline-dark btn-lg mt-2 mx-3" style="width:300px;">Go Back</button></a>
                         <a href="/invoice"><button type="button" name="btn-Payment" class="btn btn-block btn-lg mt-2 mx-3" style="background-color:#c0b65a; color:white; width:300px;">
                                 Proceed </button></a>
-
                     </center>
                 </section>
             </div>
