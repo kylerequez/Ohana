@@ -14,15 +14,17 @@ $logservices = new LogServices($logdao);
 $services = new PetProfileServices($dao);
 $controller = new PetProfileController($services, $logservices);
 
-if ($_SERVER["REQUEST_METHOD"] == "GET" && !isset($id)) {
-    // Display Own Pet Profiles
-    $controller->processCustomerRequest($_SERVER["REQUEST_METHOD"], null);
-} else if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($id)) {
-    echo "ELO";
-    // Display Individual Pet Profile
-    //$controller->processCustomerRequest($_SERVER["REQUEST_METHOD"], $id);
-} else if ($_SERVER["REQUEST_METHOD"] == "POST" && (!isset($type) && !isset($id))) {
-    // Add Customer Pet Profile
-    print_r($_POST);
-    $controller->processCustomerRequest($_SERVER["REQUEST_METHOD"], null);
+echo $type;
+if (isset($type)) {
+    switch ($type) {
+        case "rehoming":
+            if ($_SERVER["REQUEST_METHOD"] == "GET" && !isset($id)) {
+                // Display Rehoming Pet Profiles
+                $controller->processRehomingRequest($_SERVER["REQUEST_METHOD"], null);
+            } else if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($id)) {
+                // Display Pet Profile
+                $controller->processRehomingRequest($_SERVER["REQUEST_METHOD"], $id);
+            }
+            break;
+    }
 }

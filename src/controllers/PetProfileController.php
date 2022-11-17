@@ -80,28 +80,46 @@ class PetProfileController
         }
     }
 
-    public function displayPetProfile($method, $id): void
+    public function processRehomingRequest(string $method, ?string $id): void
     {
-        switch($type){
-            case "rehoming":
+        if ($id) {
+            $this->processRehomingResourceRequest($method, $id);
+        } else {
+            $this->processRehomingCollectionRequest($method);
+        }
+    }
+
+    public function processRehomingResourceRequest(string $method, string $id): void
+    {
+        switch ($method) {
+            case "GET":
+                $_SESSION["profile"] = serialize($this->services->getOhanaPet($id));
+                // $profile = $this->services->getOhanaPet($id);
+
+                // print_r($profile);
+                header("Location: http://localhost/puppy-info");
+                break;
+            case "POST":
+
+                break;
+        }
+    }
+
+    public function processRehomingCollectionRequest(string $method): void
+    {
+        switch ($method) {
+            case "GET":
                 $_SESSION["profiles"] = serialize($this->services->getOhanaPets());
                 header("Location: http://localhost/puppies");
                 break;
-            case "stud":
+            case "POST":
+
                 break;
         }
     }
 
     public function displayPetProfiles(string $type): void
     {
-        switch($type){
-            case "rehoming":
-                $_SESSION["profiles"] = serialize($this->services->getOhanaPets());
-                header("Location: http://localhost/puppies");
-                break;
-            case "stud":
-                break;
-        }
     }
 
     public function processCustomerRequest(string $method, ?string $id): void

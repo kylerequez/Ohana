@@ -26,37 +26,40 @@
 
         <?php include_once 'Rnavbar.php'; ?>
 
+        <?php
+        include_once dirname(__DIR__) . '/models/PetProfile.php';
+        $profile = unserialize($_SESSION["profile"]);
+        ?>
         <div class="container-fluid">
-
             <div class="message" style="margin-top:10%;">
                 <section class="services" id="services">
                     <div class="card mx-auto img-fluid" style="max-width: 60vw; max-height:60vh; background-color:#2f1f18">
                         <img class="card-img-top" src="/Ohana/src/images/Ohanapups/cardbg.png" alt="Card image" style="width:100%; height:70vh">
                         <div class="card-img-overlay">
                             <div class="card-header">
-                                <p style="font-size: 50px; text-align:center; font-family: 'Acme', sans-serif;"><b> KEONE </b></p>
+                                <p style="font-size: 50px; text-align:center; font-family: 'Acme', sans-serif;"><b> <?php echo $profile->getName(); ?> </b></p>
                             </div>
                             <div class=" row justify-content">
                                 <hr style="color:white">
                                 <div class="col-md-5 mx-auto">
-                                    <img src="/Ohana/src/images/Ohanapups/trans2.png" class="card-img">
+                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img">
                                 </div>
                                 <div class="col-md-5">
                                     <div class="card-body"><br>
-                                        <p class="card-text"> <b>BIRTHDAY:</b> June 13, 2022 </p>
-                                        <p class="card-text"> <b>COLOR:</b> Choco Tan Merle </p>
-                                        <p class="card-text"> <b>GENDER:</b> Male </p>
-                                        <p class="card-text"> <b>WEIGHT:</b> 6.1kg </p>
-                                        <p class="card-text"> <b>GENES:</b> Lilac Tan Carrier & Isabella Carrier </p>
-                                        <p class="card-text"> <b>PCCI PAPERS:</b> COMPLETE</p>
+                                        <p class="card-text"> <b>BIRTHDAY:</b> <?php echo $profile->getBirthdate()->format('M-d-Y'); ?> </p>
+                                        <p class="card-text"> <b>COLOR:</b> <?php echo $profile->getColor(); ?> </p>
+                                        <p class="card-text"> <b>GENDER:</b> <?php echo $profile->getSex(); ?> </p>
+                                        <p class="card-text"> <b>GENES:</b> <?php echo $profile->getTrait(); ?> </p>
+                                        <p class="card-text"> <b>PCCI PAPERS:</b> <?php echo $profile->getPcciStatus(); ?></p>
                                         <p class="card-text"> <b>Note: All french bulldog puppies are fully vaccinated before release.</b></p>
                                     </div>
                                     <div name="buttons" style="margin-top:10%">
                                         <a href="/set-appointment">
                                             <button type="button" class="btn mt-3" style="margin-left:25%; background-color:#db6551;color:white;"> Book Kennel Visit </button>
                                         </a>
-                                        <button type="button" class="btn mt-3" style="margin-left:5%; background-color:#c0b65a; color:white;"> Add to Paw Cart </button>
-
+                                        <a href="/add-to-cart/<?php echo $profile->getId(); ?>">
+                                            <button type="button" class="btn mt-3" style="margin-left:5%; background-color:#c0b65a; color:white;"> Add to Paw Cart </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
