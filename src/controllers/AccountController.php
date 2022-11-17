@@ -117,7 +117,7 @@ class AccountController
                     if ($account->getType() == "USER") {
                         unset($_SESSION["userOtp"]);
                         unset($_SESSION["email"]);
-                        $_SESSION["cart"] = array();
+                        $_SESSION["cart"] = new Cart();
                         header("Location: http://localhost/home");
                         break;
                     } else {
@@ -217,7 +217,7 @@ class AccountController
 
     public function resendRegistrationRequest(string $method, string $email, string $token): void
     {
-        switch ($method){
+        switch ($method) {
             case "GET":
                 $this->services->resendRegistrationRequest($email, $token);
                 header("Location: http://localhost/register/confirm");
