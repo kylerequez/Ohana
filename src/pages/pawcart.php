@@ -41,6 +41,14 @@
                                 $_SESSION["cart"] = serialize(new Cart());
                             }
                             $cart = unserialize($_SESSION["cart"]);
+                            if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+                                <div class="alert alert-success" role="alert">
+                                    <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
+                                    unset($_SESSION["msg"]); ?>
+                                </div>
+                            <?php
+                                unset($_SESSION["msg"]);
+                            }
                             if (empty($cart->getCart())) {
                             ?>
                                 <div class="form__row text-center mb-5">

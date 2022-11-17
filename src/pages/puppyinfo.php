@@ -33,6 +33,17 @@
         <div class="container-fluid">
             <div class="message" style="margin-top:10%;">
                 <section class="services" id="services">
+                    <!-- ALERT -->
+                    <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+                        <div class="alert alert-success" role="alert">
+                            <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
+                            unset($_SESSION["msg"]); ?>
+                        </div>
+                    <?php
+                        unset($_SESSION["msg"]);
+                    }
+
+                    ?>
                     <div class="card mx-auto img-fluid" style="max-width: 60vw; max-height:60vh; background-color:#2f1f18">
                         <img class="card-img-top" src="/Ohana/src/images/Ohanapups/cardbg.png" alt="Card image" style="width:100%; height:70vh">
                         <div class="card-img-overlay">
