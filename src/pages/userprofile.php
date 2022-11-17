@@ -14,6 +14,12 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+        @media screen and (min-width: 375px) and (max-width: 767.98px) { 
+           .userheader{
+            font-size:20px;
+           } 
+        }
     </style>
 </head>
 

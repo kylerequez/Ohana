@@ -18,6 +18,9 @@
 
 
     <?php include_once 'stylesheets.php'; ?>
+    <style>
+        @media screen and (min-width: 375px) and (max-width: 767.98px) { }
+    </style>
 </head>
 
 <body style="background-color: #FAF8F0;">

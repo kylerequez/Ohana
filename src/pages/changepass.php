@@ -2,37 +2,25 @@
 <html lang="en" class="sign-up_form">
 
 <head>
-
   <title> CHANGE PASSWORD </title>
-
   <!-- META TAGS -->
   <meta charset="utf-8">
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="keywords" content="Kennel Business, French Bulldogs">
-  <!-- END OF META TAGS -->
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900'>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
-
-  <!-- FONT AWESOME ICONS IMPORT -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- Web Icon -->
-  <link rel="shortcut icon" href="/Ohana/src/images/Landing/ohana.png" type="image/x-icon">
-
-  <!-- Bootstrap CSS CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css" integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE" crossorigin="anonymous">
-
-  <!-- MORE icons -->
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
   <!-- EXTERNAL CSS -->
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
   <link rel="stylesheet" href="/Ohana/src/css/footer.css">
+  <?php include_once 'stylesheets.php'; ?>
+  <style>
+    @media screen and (min-width: 375px) and (max-width: 767.98px) {
+      .sign-up__title {
+        font-size: 20px;
+      }
+    }
+  </style>
 
 </head>
 
@@ -86,7 +74,6 @@
                     </div>
                   </div>
                 </div>
-
                 <!-- VALIDATION BOX-->
                 <div id="message" style="background: white;">
                   <h3 class="text-center" style="font-size: 20px; color:#c0b65a;">Password must contain the following:</h3>
@@ -122,8 +109,9 @@
                     </div>
                   </div>
                 </center>
-
-
+              </div>
+            </div>
+          </div>
         </form>
       </div>
     </div>
@@ -132,7 +120,6 @@
   <div name="footer" style="margin-top:20%">
     <?php include_once 'footer.php'; ?>
   </div>
-
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <!-- START OF JAVASCRIPT-->

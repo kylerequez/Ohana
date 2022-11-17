@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+        @media screen and (min-width: 375px) and (max-width: 767.98px) { }
     </style>
 </head>
 

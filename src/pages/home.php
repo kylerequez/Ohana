@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
 
     <?php include_once 'stylesheets.php'; ?>
+    <style>
+        @media screen and (min-width: 375px) and (max-width: 767.98px) {}
+    </style>
 </head>
 
 <body style="background-color: #faf8f0">

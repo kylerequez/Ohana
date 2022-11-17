@@ -2,24 +2,17 @@
 <html lang="en">
 
 <head>
-    <!--meta tags-->
-
+  
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
 
-    <!-- end of meta tags-->
     <title> ADMIN PROFILE </title>
 
-    <!-- WEB ICON-->
     <link rel="shortcut icon" href="/Ohana/src/dashboard/img/ohana.png" type="image/x-icon">
-
-    <!-- ICONS IMPORT  -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
-    <!-- BOOTSTRAP CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
     <!-- Custom styles -->
@@ -48,18 +41,12 @@
             <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
 
             <div class="main-wrapper">
-                <!-- END OF ADMIN DASHBOARD SIDE-->
-
                 <!-- ! Main nav -->
                 <?php include_once dirname(__DIR__) . "/navbar.php" ?>
-
                 <!-- CALENDAR Main content -->
                 <main class="main users chart-page" id="skip-target">
                     <div class="container">
-                        <br>
-                        <center>
-                            <h2 class="main-title"> Admin Profile </h2>
-                        </center>
+                            <h2 class="main-title mt-2 text-center"> Admin Profile </h2>
                         <!-- ADMIN PROFILE CONTENT -->
                         <div class="main">
                             <div class="container rounded mb-5">
@@ -92,20 +79,9 @@
                         </div>
                     </div>
                 </main>
-
-                <!-- FOOTER -->
                 <?php include_once dirname(__DIR__) . '/footer.php'; ?>
-
             </div>
         </div>
-
-        <!-- SCRIPTS -->
-
-        <!-- Chart library -->
-        <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-
-        <!-- Icons library -->
-        <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
 
         <!-- Custom scripts -->
         <script src="/Ohana/src/dashboard/js/script.js"></script>
