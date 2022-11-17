@@ -1,16 +1,7 @@
 /*FONTS IMPORT*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
-
-@font-face {
-  font-family: "Bantayog-Regular";
-  src: url(/fonts/bantayog/Bantayog-Regular.otf);
-}
-
-@font-face {
-  font-family: "Tropika-Island";
-  src: url(/fonts/Tropika_Island/Aiyari\ -\ Tropika\ Island\ Int.otf);
-}
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
 * {
   margin: 0;
@@ -28,14 +19,17 @@ h1 {
   font-weight: bold;
 }
 
+#header {
+  font-size:100px; 
+  font-family: 'Acme', sans-serif; 
+  font-weight:800; 
+  color:#db6551;
+  margin-top:10%;
+}
+
 section {
   display: block;
   margin-top: 5%;
-}
-
-.amenities .row {
-  margin-left: 10%;
-  margin-right: 10%;
 }
 
 .contact-us {
@@ -49,6 +43,10 @@ form {
   text-align: center;
 }
 
+#gmap{
+  height:650px;
+  width:800px;
+}
 /* ########################################## BUTTON ######################################### */
 .btn-Send button {
   background-color: #db6551;

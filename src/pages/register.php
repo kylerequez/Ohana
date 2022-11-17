@@ -14,9 +14,42 @@
 
   <?php include_once 'stylesheets.php'; ?>
   <style>
-    @media screen and (min-width: 350px) and (max-width: 800px) {
-      .pagefooter {
-        margin-top: 20%;
+    @media screen and (min-width: 375px) and (max-width: 767.98px) {
+      .sign-up__title {
+        font-size: 40px;
+      }
+
+      .sign-up__descr {
+        font-size: 25px;
+      }
+
+      .register__desc {
+        font-size: 17px;
+      }
+
+      .input__label {
+        font-size: 15px;
+      }
+
+      .input__field {
+        font-size: 15px;
+      }
+
+      #passwordreq {
+        font-size: 15px;
+      }
+
+      .input-checkbox__label {
+        font-size: 15px;
+      }
+
+      #loginq {
+        font-size: 15px;
+      }
+
+      #message p {
+        margin-top: 5px;
+        font-size: 14px;
       }
     }
   </style>
@@ -102,7 +135,7 @@
               </div>
             </div>
             <div id="message" style="background: white;">
-              <h3 class="text-center" style="font-size: 20px; color:#c0b65a;">Password must contain the following:</h3>
+              <h3 class="text-center" id="passwordreq" style="color:#c0b65a;">Password must contain the following:</h3>
               <p id="letter" class="invalid">At least one <b>lowercase</b> letter</p>
               <p id="capital" class="invalid">At least one <b>capital</b> letter</p>
               <p id="number" class="invalid">At least one <b>number</b></p>
@@ -136,7 +169,7 @@
               </div>
               <hr style="width:100%"><br>
               <div class="form__row">
-                <p style="font-size:20px;">Already have an account?&nbsp;<a class="link" name="login" style="text-decoration:none;" href="/login">Login</a></p>
+                <p id="loginq">Already have an account?&nbsp;<a class="link" name="login" style="text-decoration:none;" href="/login">Login</a></p>
               </div>
             </center>
           </form>

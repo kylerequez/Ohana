@@ -15,6 +15,31 @@
   <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
   <?php include_once 'stylesheets.php'; ?>
+
+  <style>
+    @media screen and (min-width: 375px) and (max-width: 767.98px) {
+      .sign-up__title {
+        font-size: 33px;
+      }
+
+      #signup_title {
+        font-size: 33px;
+        margin-top: 15%;
+      }
+
+      .logbtn button {
+        display: block;
+        padding: 10px 60px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .input__label {
+        font-size: 15px;
+      }
+
+    }
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -28,10 +53,10 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <h1 class="sign-up__title" style="margin-top: 15%; color:#ff914d">
+            <h1 class="sign-up__title" id="signup_title" style="color:#ff914d">
               Let's meet your new
             </h1>
-            <h1 class="sign-up__title"> OHANA! </h1>
+            <h1 class="sign-up__title mt-3" id="ohanatitle"> OHANA! </h1>
             <!-- ALERT -->
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
               <div class="alert alert-success" role="alert">
@@ -87,7 +112,7 @@
     </main>
 
     <!-- FOOTER -->
-    <div class=" " style="margin-top:15%">
+    <div id="mbfooter" style="margin-top:15%">
       <?php include_once 'footer.php'; ?>
     </div>
 

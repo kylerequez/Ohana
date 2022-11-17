@@ -16,6 +16,20 @@
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
   <link rel="stylesheet" href="/Ohana/src/css/footer.css">
   <?php include_once 'stylesheets.php'; ?>
+
+  <style>
+    @media screen and (min-width: 375px) and (max-width: 767.98px) {
+      #forgottitle2 {
+        font-size: 35px;
+        margin-top: 15%;
+      }
+
+      .sign-up__descr {
+        font-size: 20px;
+        margin-top: 10px;
+      }
+    }
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -28,7 +42,7 @@
     <div class="sign-up__container">
       <div class="sign-up__content">
         <header class="sign-up__header">
-          <h1 class="sign-up__title" style="font-size: 80px; margin-top: 5%;">
+          <h1 class="sign-up__title" id="forgottitle2">
             FORGOT PASSWORD
           </h1><br>
           <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
@@ -40,8 +54,8 @@
             unset($_SESSION["msg"]);
           } else {
           ?>
-            <p class="sign-up__descr" style="font-size: 20px;">A link to change your password has been sent in your email. </p>
-            <p class="sign-up__descr" style="font-size: 20px;">Please check your inbox.</p>
+            <p class="sign-up__descr">A link to change your password has been sent in your email. </p>
+            <p class="sign-up__descr">Please check your inbox.</p>
           <?php
           }
           if (empty($_SESSION["email"]) || empty($_SESSION["token"])) {

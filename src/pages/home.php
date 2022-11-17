@@ -19,7 +19,36 @@
 
     <?php include_once 'stylesheets.php'; ?>
     <style>
-        @media screen and (min-width: 375px) and (max-width: 767.98px) {}
+        @media screen and (min-width: 375px) and (max-width: 767.98px) {
+            #slider {
+                position: relative;
+                width: 60%;
+                height: 35vw;
+                margin: 150px auto;
+                transform-style: preserve-3d;
+
+            }
+
+            #h1 {
+                font-size: 30px;
+                color: #7d605c;
+                font-family: 'Acme', sans-serif;
+            }
+
+            #welcome {
+                font-size: 30px;
+                Margin-top: 40%;
+                color: #db6551;
+                font-family: 'Acme', sans-serif;
+            }
+
+            #kauhale {
+                font-size: 30px;
+                font-family: 'Acme', sans-serif;
+                margin-top: 30px;
+                color: #7d605c;
+            }
+        }
     </style>
 </head>
 
@@ -27,28 +56,71 @@
     <main>
         <div class="container-fluid">
 
-            <!-- REGISTERED USERS NAVIGATION BAR-->
             <?php include_once 'Rnavbar.php'; ?>
 
-            <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
             <div class="message">
-                <h1 style="font-size:80px; Margin-top:10%; color:#c0b65a; font-family: 'Acme', sans-serif;"> WELCOME TO OHANA!</h1>
+                <h1 class="text-center" id="welcome"> WELCOME TO OHANA!</h1>
             </div>
-            <section id="slider">
-                <input type="radio" name="slider" id="s1" checked>
-                <input type="radio" name="slider" id="s2">
-                <input type="radio" name="slider" id="s3">
-                <input type="radio" name="slider" id="s4">
-                <input type="radio" name="slider" id="s5">
-
-                <label for="s1" id="slide1"><img src="/Ohana/src/images/sliders/aboutslide.png" class="img-fluid" alt=""></label>
-                <label for="s2" id="slide2"><img src="/Ohana/src/images/sliders/visit.png" class="img-fluid" alt=""></label>
-                <label for="s3" id="slide3"><img src="/Ohana/src/images/sliders/studservice.png" class="img-fluid" alt=""></label>
-                <label for="s4" id="slide4"><img src="/Ohana/src/images/sliders/rehome.png" class="img-fluid" alt=""></label>
-                <label for="s5" id="slide5"><img src="/Ohana/src/images/sliders/socialmed.png" class="img-fluid" alt=""></label>
+           
+            <section id="carousels">
+                <div id="carouselCaptions" class="carousel slide mt-5 me-5 ms-5" data-bs-ride="false">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="/Ohana/src/images/sliders/aboutslide.png" class="d-block w-100 img-fluid" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5> About Us</h5>
+                                <p>Some representative placeholder content for the first slide.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/Ohana/src/images/sliders/visit.png" class="d-block w-100 img-fluid" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5> Kennel Visit </h5>
+                                <p>Some representative placeholder content for the second slide.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/Ohana/src/images/sliders/studservice.png" class="d-block w-100 img-fluid" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5> Stud Service </h5>
+                                <p>Some representative placeholder content for the third slide.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/Ohana/src/images/sliders/studservice.png" class="d-block w-100 img-fluid" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5> Pet Rehoming </h5>
+                                <p>Some representative placeholder content for the third slide.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/Ohana/src/images/sliders/studservice.png" class="d-block w-100 img-fluid" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5> Follow us on Social Media </h5>
+                                <p>Some representative placeholder content for the third slide.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselCaptions" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselCaptions" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </section>
+
             <section>
-                <h1 style="font-size:90px; Margin-top:10%; color:#7d605c; font-family: 'Acme', sans-serif;"> Customer Reviews </h1>
+                <h1 class="text-center" id="h1"> Customer Reviews </h1>
                 <div class="container-xl mt-5">
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                         <div class="col">
@@ -80,7 +152,7 @@
             </section>
 
             <section>
-                <h1 style="font-size:90px; Margin-top:10%; color:#7d605c; font-family: 'Acme', sans-serif;"> I need a <strong style="color:#db6551"> KAUHALE </strong> </h1>
+                <h1 class="text-center" id="kauhale"> I need a <strong style="color:#db6551"> KAUHALE </strong> </h1>
                 <div class="container d-flex justify-content-center mt-5">
 
                     <div class="row">

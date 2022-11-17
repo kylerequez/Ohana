@@ -18,6 +18,27 @@
   <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
   <?php include_once 'stylesheets.php'; ?>
+  <style>
+    @media screen and (min-width: 375px) and (max-width: 767.98px) {
+      .sign-up__title {
+        font-size: 38px;
+      }
+
+      #confirmtext {
+        margin-top: 10px;
+      }
+      #resendotp {
+        margin-top: 10px;
+      }
+      #btnLogin {
+        display: block;
+        padding: 10px 60px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+    }
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -29,10 +50,10 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <h1 class="sign-up__title" style="font-size: 100px; margin-top: 10%; font-family: Bantayog-Regular;">
+            <h1 class="sign-up__title">
               Welcome to Ohana!
             </h1>
-            <p style="font-size:20px;"> Complete registration by entering the OTP sent to your email. </p>
+            <p id="confirmtext"> Complete registration by entering the OTP sent to your email. </p>
             <!-- ALERT -->
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
               <div class="alert alert-success" role="alert">
@@ -63,12 +84,12 @@
               </div>
             </div>
             <div class="form__row">
-              <p class="text-center mt-2" style="font-size:20px;">Did not receive OTP? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="##">Resend OTP</a></p>
+              <p id="resendotp" class="text-center" style="font-size:15px;">Did not receive OTP? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="##">Resend OTP</a></p>
             </div>
             <center>
               <div class="form__row">
                 <div class="logbtn">
-                  <button><span> Submit </span></button>
+                  <button id="btnLogin"><span> Submit </span></button>
                 </div>
               </div>
             </center>
@@ -80,36 +101,15 @@
         </div>
       </div>
 
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-scrollable">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel"> OHANA KENNEL PH</h3>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-left:800px"></button>
-            </div>
-            <div class="modal-body">
-              <?php include_once 'terms.php'; ?>
-            </div>
-          </div>
-        </div>
-      </div>
       <!-- FOOTER -->
       <?php include_once 'footer.php'; ?>
 
     </main>
 
     <!-- SCRIPTS -->
-
-    <!-- SCRIPTS IMPORT-->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
-    <script src="../js/privacyscript.js"></script>
-    <script src="../js/termsscript.js"></script>
 </body>
 
 </body>

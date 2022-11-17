@@ -1,4 +1,4 @@
-<div class="container-fluid" style="width:75%; margin-top: 4%; color:#db6551">
+<div class="container-fluid" style="width:75%; color:#db6551">
   <footer class="py-3 my-4 border-top border-warning bottom-0">
     <p class="text-center" style="font-size:15px"><br> &copy; 2022 Ohana Kennel PH. All Rights Reserved</p>
     <ul class="nav justify-content-center pb-3 mb-3 mt-3">

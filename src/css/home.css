@@ -26,14 +26,26 @@ body {
   color: #db6551;
 }
 
-h1 {
-  color: #db6551;
-  font-size: 30px;
-  text-align: center;
-  font-weight: bold;
-  font-family: "Acme", sans-serif;
+#h1 {
+  font-size:90px; 
+  Margin-top:10%; 
+  color:#7d605c; 
+  font-family: 'Acme', sans-serif;
 }
 
+#welcome {
+  font-size:90px; 
+  Margin-top:10%; 
+  color:#db6551; 
+  font-family: 'Acme', sans-serif;
+}
+
+#kauhale {
+  font-size:90px; 
+  font-family: 'Acme', sans-serif;
+  margin-top:30px; 
+  color:#7d605c;  
+}
 section {
   display: block;
   margin-top: 5%;
