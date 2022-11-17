@@ -8,8 +8,14 @@ if ($profile->getId() != $id) {
     echo "ERROR";
 }
 
-$newOrder = new Order("REHOMING", 1, $profile->getId(), $profile->getName(), $profile->getImage(), $profile->getPrice());
 $cart = unserialize($_SESSION["cart"]);
-$cart->addToCart($newOrder);
+$cart->deleteOrder($id);
+
+// $newOrder = new Order("REHOMING", 1, $profile->getId(), $profile->getName(), $profile->getImage(), $profile->getPrice());
+// $newOrder->setPetColor($profile->getColor());
+// $newOrder->setPetSex($profile->getSex());
+// $newOrder->setPetTrait($profile->getTrait());
+// $cart = unserialize($_SESSION["cart"]);
+// $cart->addToCart($newOrder);
+print_r($cart);
 $_SESSION["cart"] = serialize($cart);
-print_r($_SESSION["cart"]);

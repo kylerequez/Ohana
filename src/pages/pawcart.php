@@ -53,7 +53,6 @@
                                     <h3 class="fw-normal mb-0 text-black"> Order Descripion </h3>
                                 </div>
                                 <?php
-
                                 foreach ($cart->getCart() as $order) {
                                 ?>
                                     <div class="card rounded-3 mb-4">
@@ -64,18 +63,15 @@
                                                 </div>
                                                 <div class="col-md-3 col-lg-3 col-xl-3">
                                                     <p class="lead fw-normal mb-2"><?php echo $order->getPetName() ?></p>
-                                                    <p><span class="text-muted">Gender: </span><?php //echo $order->getSex() 
-                                                                                                ?> <span class="text-muted">Color: </span><?php //echo $order->getColor() 
+                                                    <p><span class="text-muted">Gender: </span><?php echo $order->getPetSex()
+                                                                                                ?> <span class="text-muted">Color: </span><?php echo $order->getPetColor()
                                                                                                                                             ?></p>
-                                                </div>
-                                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                    <p class="lead fw-normal mb-2">Quantity: 1</p>
                                                 </div>
                                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                                     <h5 class="mb-0"><?php echo $order->getPrice() ?></h5>
                                                 </div>
                                                 <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                    <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+                                                    <a href="/delete-item/<?php echo $order->getPetId(); ?>" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
                                                 </div>
                                             </div>
                                         </div>

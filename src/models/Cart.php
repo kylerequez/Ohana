@@ -25,6 +25,18 @@ class Cart
         }
     }
 
+    public function deleteOrder(string $id): bool
+    {
+        if (empty($this->cart)) {
+            return false;
+        }
+        if (empty($this->cart[$id])) {
+            return false;
+        }
+        unset($this->cart[$id]);
+        return true;
+    }
+
     /**
      * Get the value of id
      */
