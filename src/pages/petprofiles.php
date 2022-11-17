@@ -31,19 +31,20 @@
 
             <section class="abouthead" style="margin-top:10%;">
                 <h1 class="text-center" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800"> Your Pets </h1><br>
-                <div class="form__row text-center mb-5">
-                    <p style="font-size:20px;">Do not have a pet profile?&nbsp;<a class="link" name="login" style="text-decoration:none; color:#db6551" href="/createpetprofile">Create now!</a></p>
-                    <p style="font-size:20px;"><a class="text-decoration-none" name="login" style="color:#db6551" href="/createpetprofile">Add another Pet Profile</a></p>
-                </div>
-
                 <div class="container-fluid d-flex justify-content-center">
                     <?php
                     include_once dirname(__DIR__) . '/models/PetProfile.php';
                     $profiles = unserialize($_SESSION["profiles"]);
-
-                    if (!empty($profiles)) {
-                        foreach ($profiles as $profile) {
+                    if (!empty($profiles) && count($profiles) <= 3) {
+                        if (count($profiles) < 3) {
                     ?>
+                            <div class="form__row text-center mb-5">
+                                <p style="font-size:20px;"><a class="text-decoration-none" name="login" style="color:#db6551" href="/createpetprofile">Add another Pet Profile</a></p>
+                            </div>
+                        <?php
+                        }
+                        foreach ($profiles as $profile) {
+                        ?>
                             <a href="/ownedpets/profile/<?php echo $profile->getId(); ?>" style="text-decoration: none; color:black">
                                 <div class="card m-3" style="width: 20rem;">
                                     <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image" width="250px" height="250px;">
@@ -56,9 +57,11 @@
                             </a>
                         <?php
                         }
-                    } else {
+                    } else if (empty($profiles)) {
                         ?>
-                        <div class="alert alert-info">You currently do not have any pet profiles</div>
+                        <div class="form__row text-center mb-5">
+                            <p style="font-size:20px;">Do not have a pet profile?&nbsp;<a class="link" name="login" style="text-decoration:none; color:#db6551" href="/createpetprofile">Create now!</a></p>
+                        </div>
                     <?php
                     }
                     ?>

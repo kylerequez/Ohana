@@ -33,14 +33,19 @@
                 <div class="container h-100 py-5">
                     <div class="row d-flex justify-content-center align-items-center h-100">
                         <div class="col-10">
-
+                        <?php
+                        $cart = $_SESSION["cart"];
+                        if(empty($cart)){
+                        ?>
+                        <div class="form__row text-center mb-5">
+                            <p style="font-size:20px;">Your cart seems to be empty. &nbsp;<a class="link" name="login" style="text-decoration:none; color:#db6551" href="/puppies">Add an item now!</a></p>
+                        </div>
+                        <?php
+                        } else {
+                        ?>
                             <div class="d-flex justify-content-between align-items-center mb-4">
                                 <h3 class="fw-normal mb-0 text-black"> Order Descripion </h3>
-                                <!-- <div>
-                                    <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
-                                </div> -->
                             </div>
-
                             <div class="card rounded-3 mb-4">
                                 <div class="card-body p-4">
                                     <div class="row d-flex justify-content-between align-items-center">
@@ -67,6 +72,9 @@
                             <a href="/home"><button type="button" class="btn btn-outline-dark btn-lg me-2"> Back to Home</button></a>
                             <a href="/checkout"><button type="button" name="btn-Payment" class="btn btn-block btn-lg" style="float:right; background-color:#c0b65a; color:white;">
                                     Proceed to Select Payment Method </button></a>
+                        <?php
+                        }
+                        ?>
                         </div>
                     </div>
                 </div>

@@ -24,4 +24,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && (isset($type) && !isset($id)))
 } else if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($id)) {
     // Display Individual Pet Profile
     $controller->processCustomerRequest($_SERVER["REQUEST_METHOD"], $id);
+} else if ($_SERVER["REQUEST_METHOD"] == "POST" && (!isset($type) && !isset($id))) {
+    // Add Customer Pet Profile
+    print_r($_POST);
+    $controller->processCustomerRequest($_SERVER["REQUEST_METHOD"], null);
 }

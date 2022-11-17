@@ -228,8 +228,8 @@
               </div>
               <div class="mb-3">
                 <label> DOG GENDER </label><br>
-                <label for="sex1" class="radio-inline"> <input type="radio" id="sex1" name="sex" value="Male"> Male </label>
-                <label for="sex2" class="radio-inline"> <input type="radio" id="sex2" name="sex" value="Female"> Female </label>
+                <label for="sex1" class="radio-inline"> <input type="radio" id="sex1" name="sex" value="MALE"> Male </label>
+                <label for="sex2" class="radio-inline"> <input type="radio" id="sex2" name="sex" value="FEMALE"> Female </label>
               </div>
               <div class="mb-3">
                 <label for="birthdate" class="col-form-label"> BIRTHDAY </label>
@@ -245,13 +245,13 @@
               </div>
               <div class="mb-3">
                 <label for="isVaccinated" class="col-form-label"> IS VACCINATED </label><br>
-                <label for="yes" class="radio-inline"> <input type="radio" id="yes" name="isVaccinated" value="Yes">Yes </label>
-                <label for="no" class="radio-inline"> <input type="radio" id="no" name="isVaccinated" value="No"> No </label>
+                <label for="yes" class="radio-inline"> <input type="radio" id="yes" name="isVaccinated" value="YES">Yes </label>
+                <label for="no" class="radio-inline"> <input type="radio" id="no" name="isVaccinated" value="NO"> No </label>
               </div>
               <div class="mb-3">
                 <label for="pcciStatus" class="col-form-label"> PCCI STATUS </label><br>
-                <label for="pcci1" class="radio-inline"> <input type="radio" id="pcci1" name="pcciStatus" value="Registered"> Registered </label>
-                <label for="pcci2" class="radio-inline"> <input type="radio" id="pcci2" name="pcciStatus" value="Pending"> Pending </label>
+                <label for="pcci1" class="radio-inline"> <input type="radio" id="pcci1" name="pcciStatus" value="REGISTERED"> Registered </label>
+                <label for="pcci2" class="radio-inline"> <input type="radio" id="pcci2" name="pcciStatus" value="PENDING"> Pending </label>
               </div>
               <div class="mb-3">
                 <label for="price" class="col-form-label"> PRICE </label>

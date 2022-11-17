@@ -117,9 +117,10 @@ class PetProfileController
     {
         switch ($method) {
             case "GET":
-                
+                // DELETE
                 break;
             case "POST":
+                // EDIT
                 break;
         }
     }
@@ -134,6 +135,16 @@ class PetProfileController
                 header("Location: http://localhost/ownedpets");
                 break;
             case "POST":
+                $account = unserialize($_SESSION["user"]);
+                $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
+                $_POST["accountId"] = $account->getType() != "USER" ? 1 : $account->getId();
+                $_POST["ownerName"] = $account->getFname() . " " . $account->getLname();
+                $_POST["price"] = 0;
+                if (!$this->services->addPetProfile($_POST)) {
+                    echo "ERROR IN ADDING PET PROFILE";
+                }
+                unset($_SESSION["msg"]);
+                $this->processCustomerCollectionRequest("GET");
                 break;
         }
     }

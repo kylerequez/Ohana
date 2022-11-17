@@ -41,7 +41,7 @@ if (!isset($_SESSION["user"])) {
 }
 ?>
 <!-- NAVIGATION BAR FOR UNREGISTERED USERS -->
-<nav class="navbar navbar-expand-md fixed-top">
+<nav class="navbar navbar-expand-xl fixed-top">
   <div class="container-fluid">
     <div class="logo">
       <a href="/home"> <img src="/Ohana/src/images/Landing/navlogo.png" style="width: 100%; height: 90px;"> </a>

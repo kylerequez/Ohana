@@ -116,6 +116,8 @@ class AccountController
                     $account = unserialize($_SESSION["user"]);
                     if ($account->getType() == "USER") {
                         unset($_SESSION["userOtp"]);
+                        unset($_SESSION["email"]);
+                        $_SESSION["cart"] = array();
                         header("Location: http://localhost/home");
                         break;
                     } else {
@@ -142,7 +144,6 @@ class AccountController
     public function logoutRequest(): void
     {
         // Account logout
-        if (!isset($_SESSION)) session_start();
         if ($this->services->logoutAccount()) {
             header("Location: http://localhost/login");
         } else {

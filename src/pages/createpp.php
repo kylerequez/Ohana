@@ -35,93 +35,78 @@
             <div class="col-md-6 d-none d-md-block">
               <img src="/Ohana/src/images/sideimg.png" alt="Side photo" class="img-fluid" style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height: 60vh; " />
             </div>
-
             <div class="col-md-6">
               <div class="card-body p-md-5 text-black">
                 <h3 class="mb-3 text-uppercase">
                 </h3>
-                <form action="/pages/home.php" method="post">
+                <form action="/ownedpets/new" method="POST" enctype="multipart/form-data">
                   <div class="row">
                     <div class="mb-3 row">
                       <label for="inputPetName" class="col-sm-2 col-form-label" style="color:#7d6056">Name:</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="petname">
+                        <input type="text" class="form-control" id="name" name="name">
                       </div>
                     </div>
                   </div>
-
                   <div class="row">
                     <div class="mb-3 row ">
                       <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Birthday: </label>
                       <div class="col-sm-10">
-                        <input type="date" class="form-control" id="birthday">
+                        <input type="date" class="form-control" id="birthdate" name="birthdate">
                       </div>
                     </div>
                   </div>
-
                   <div class="row">
                     <div class="mb-3 row">
                       <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Color:</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="color">
+                        <input type="text" class="form-control" id="color" name="color">
                       </div>
                     </div>
                   </div>
-
                   <div class="row">
                     <div class="mb-3 row">
                       <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Trait:</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="trait">
+                        <input type="text" class="form-control" id="trait" name="trait">
                       </div>
                     </div>
                   </div>
-
                   <div class="row " style="margin-top:10px">
                     <div class="d-flex justify-content-start mb-2 ">
-
                       <h6 class="mb-0" style="color:#7d6056">Dog Gender: </h6>
-
                       <div class="form-check form-check-inline mb-0 me-6">
-                        <input class="form-check-input" type="radio" name="Gender" id="femaleGender" value="option1" />
-                        <label class="form-check-label" for="femaleGender"> Female</label>
-                      </div>
-                      <div class="form-check form-check-inline mb-0 me-6">
-                        <input class="form-check-input" type="radio" name="Gender" id="maleGender" value="option2" />
+                        <input class="form-check-input" type="radio" name="sex" id="maleGender" value="MALE" />
                         <label class="form-check-label" for="maleGender">Male</label>
                       </div>
-
+                      <div class="form-check form-check-inline mb-0 me-6">
+                        <input class="form-check-input" type="radio" name="sex" id="femaleGender" value="FEMALE" />
+                        <label class="form-check-label" for="femaleGender"> Female</label>
+                      </div>
                     </div>
                   </div>
-
                   <div class="row">
                     <div class="d-flex justify-content-start mb-2">
-
                       <h6 class="mb-0" style="color:#7d6056">PCCI Papers?</h6>
-
                       <div class="form-check form-check-inline mb-0 me-6">
-                        <input class="form-check-input" type="radio" name="pcciStatus" id="pcciStatus" value="option1" />
+                        <input class="form-check-input" type="radio" name="pcciStatus" id="pcciStatus" value="REGISTERED" />
                         <label class="form-check-label" for="registered">Registered</label>
                       </div>
-
                       <div class="form-check form-check-inline mb-0 me-6">
-                        <input class="form-check-input" type="radio" name="pcciStatus" id="pcciStatus" value="option2" />
+                        <input class="form-check-input" type="radio" name="pcciStatus" id="pcciStatus" value="PENDING" />
                         <label class="form-check-label" for="pending">Pending</label>
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="d-flex justify-content-start mb-2">
-
                       <h6 class="mb-0" style="color:#7d6056">Vaccinated?</h6>
-
                       <div class="form-check form-check-inline mb-0 me-6">
-                        <input class="form-check-input" type="radio" name="isVaccinated" id="isVaccinated" value="option1" />
+                        <input class="form-check-input" type="radio" name="isVaccinated" id="isVaccinated" value="YES" />
                         <label class="form-check-label" for="papersYes">Yes</label>
                       </div>
-
                       <div class="form-check form-check-inline mb-0 me-6">
-                        <input class="form-check-input" type="radio" name="isVaccinated" id="isVaccinated" value="option2" />
+                        <input class="form-check-input" type="radio" name="isVaccinated" id="isVaccinated" value="NO" />
                         <label class="form-check-label" for="papersNo">No</label>
                       </div>
                     </div>
@@ -129,7 +114,7 @@
               </div>
               <div class="mb-3 ms-3 me-3">
                 <label for="formFile" class="form-label"> Choose and Upload an image of your Dog.</label>
-                <input class="form-control" type="file" id="formFile">
+                <input class="form-control" type="file" id="formFile" name="image">
               </div>
               <div class="d-flex justify-content-end pt-2" style="margin-right:10%;">
                 <button type="reset" class="btn btn-md " style="background-color: #db6551; color:white">Reset</button>

@@ -163,7 +163,6 @@ class AccountServices
         if (!isset($_SESSION["user"])) {
             return false;
         }
-        session_unset();
         session_destroy();
         return true;
     }
