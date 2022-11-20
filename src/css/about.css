@@ -13,18 +13,12 @@ body {
   position: relative !important;
 }
 
-h1 {
-  color: #db6551;
-  font-size: 30px;
-  text-align: center;
-  font-weight: bold;
-}
 #head {
   color:#DB6551; 
   font-size: 100px; 
   font-family: 'Acme', sans-serif; 
   font-weight:800; 
-  margin-top:10%
+  margin-top:15%;
 }
 
 section {

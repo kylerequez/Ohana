@@ -18,7 +18,8 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-        @media screen and (min-width: 375px) and (max-width: 767.98px) { }
+
+        @media screen and (min-width: 375px) and (max-width: 767.98px) {}
     </style>
 </head>
 
@@ -28,14 +29,13 @@
         <?php include_once 'Rnavbar.php'; ?>
 
         <div class="container-fluid">
-            <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-            <div class="message" style="margin-top:10%;">
-                <section class="services" id="services">
+            <section class="services" id="services">
+                <div class="stud-details mb-5" id="stud-details">
                     <div class="card mx-auto img-fluid" style="max-width: 60vw; max-height:60vh; background-color:#2f1f18">
                         <img class="card-img-top" src="/Ohana/src/images/Ohanapups/cardbg.png" alt="Card image" style="width:100%; height:70vh">
                         <div class="card-img-overlay">
                             <div class="card-header">
-                                <p style="font-size: 40px; text-align:center"><b> FRENCH BULLDOG NAME </b></p>
+                                <p class="text-center" style="font-size: 40px"><b> FRENCH BULLDOG NAME </b></p>
                             </div>
                             <div class="row justify-content">
                                 <hr style="color:white">
@@ -44,11 +44,10 @@
                                 </div>
                                 <div class="col-md-5">
                                     <div class="card-body"><br>
-                                        <p class="card-text"> <b>BIRTHDAY:</b> June 13, 2018 </p>
-                                        <p class="card-text"> <b>COLOR:</b> Brown Tan </p>
-                                        <p class="card-text"> <b>GENDER:</b> Male </p>
-                                        <p class="card-text"> <b>WEIGHT:</b> 12 kg </p>
-                                        <p class="card-text"> <b>GENES:</b> Lilac Tan Carrier & Isabella Carrier </p>
+                                        <p class="card-text"> <b>BIRTHDAY :</b> June 13, 2018 </p>
+                                        <p class="card-text"> <b>COLOR :</b> Brown Tan </p>
+                                        <p class="card-text"> <b>GENDER :</b> Male </p>
+                                        <p class="card-text"> <b>TRAIT :</b> Lilac Tan Carrier & Isabella Carrier </p>
                                         <p class="card-text"> <b>PCCI PAPERS:</b> COMPLETE</p>
                                         <p class="card-text"> <b>Note: Our Adult Frenchies are fully vaccinated. </b></p>
                                     </div>
@@ -60,8 +59,8 @@
                             </div>
                         </div>
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </div>
     </main>
 
@@ -69,25 +68,14 @@
         <?php include_once 'footer.php'; ?>
     </div>
 
-    <!-- SCIPTS -->
-
-    <!-- Chart library -->
-    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-
-    <!-- Icons library -->
-    <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
-
     <!-- Custom scripts -->
     <script src="/Ohana/src/dashboard/js/script.js"></script>
-
-    <!-- JAVASCRIPT IMPORTS -->
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
 </body>
 
 </html>

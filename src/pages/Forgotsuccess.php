@@ -37,7 +37,6 @@
 <body style="background-color: #FAF8F0;">
 
   <?php include_once 'navbar.php'; ?>
-
   <div class="container-fluid">
 
     <?php unset($_SESSION);
@@ -64,7 +63,6 @@
         </div>
     </main>
 
-    <!-- FOOTER -->
     <?php include_once 'footer.php'; ?>
     </main>
 

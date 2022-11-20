@@ -18,7 +18,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
-        @media screen and (min-width: 375px) and (max-width: 767.98px) {
+        @media screen and (min-width: 360px) and (max-width: 767.98px) {
             .mainabout {
                 background-image: url(/Ohana/src/images/Pages/mbaboutdesc.jpg);
                 min-width:375px;
@@ -31,7 +31,7 @@
                 min-height:400px; 
             }
 
-            #aboutheading {
+            #head {
                 font-size:50px;
                 font-family: 'Acme', sans-serif; 
                 color:#DB6551; 
@@ -46,7 +46,7 @@
         <?php include_once 'Rnavbar.php'; ?>
 
         <div class="container-fluid">
-            <h1 id="aboutheading" class="text-center" id="head"> ABOUT US </h1>
+            <h1 class="text-center" id="head"> ABOUT US </h1>
             <section class="mainabout">
             </section>
             <section class="values">

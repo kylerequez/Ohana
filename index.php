@@ -5,7 +5,7 @@
     <title> OHANA </title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
@@ -24,7 +24,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
-        @media screen and (min-width: 375px) and (max-width: 767.98px) {
+        @media screen and (min-width: 360px) and (max-width: 930px) {
             .title {
                 font-size: 40px;
                 color: #db6551;
@@ -161,7 +161,7 @@
             </section>
             <section class="services" id="services">
                 <div class="service text-center">
-                    <h1 class="title mb-3"> WHY CHOOSE US? </h1>
+                    <h1 class="title mb-3"> Why Choose Us? </h1>
                 </div>
                 <div class="row text-center ms-4 me-4">
                     <div class="col-lg-4">
@@ -198,43 +198,44 @@
             </section>
             <section class="reviews">
                 <div class="customer-review">
-                    <h1 class="cr text-center mt-5">CUSTOMER REVIEWS </h1>
+                    <h1 class="cr text-center mt-5"> What our Customer Says </h1>
                 </div>
                 <div class="container-xl mt-5">
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
                                 <div class="card-body">
-                                    <h5 class="card-title"> NAME OF CUSTOMER </h5>
-                                    <p class="card-text">customer review to be inserted</p>
+                                    <h5 class="card-text text-center mt-2 mb-2"> Maraming Salamat! Alagaan ko to. Ang ganda niya. Thank you ulit 👌🏻” </h5><br>
+                                    <h4 class="card-title text-center mt-2"> Edrich Pineda </h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
                                 <div class="card-body">
-                                    <h5 class="card-title"> NAME OF CUSTOMER </h5>
-                                    <p class="card-text">customer review to be inserted</p>
+
+                                    <h5 class="card-text text-center mt-2 mb-2">"Thank you so much! So happy with my puppy!”</h5><br>
+                                    <h4 class="card-title text-center"> Ron Ilao</h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
                                 <div class="card-body">
-                                    <h5 class="card-title"> NAME OF CUSTOMER </h5>
-                                    <p class="card-text">customer review to be inserted</p>
+
+                                    <h5 class="card-text text-center mt-2 mb-2">“Thank you sir. Quality talaga yung puppy at napaka-cute. Solid!”</h5><br>
+                                    <h4 class="card-title text-center"> Ralph Hernandez </h4>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <br><br>
             </section>
 
             <section class="contact-us" id="contact">
                 <div class="container-fluid">
                     <div class="message text-center">
-                        <h1 class="contact mt-5"> CONTACT US! </h1>
+                        <h1 class="contact mt-5"> Contact Us! </h1>
                     </div>
 
                     <form id="contactform" class="topBefore">
