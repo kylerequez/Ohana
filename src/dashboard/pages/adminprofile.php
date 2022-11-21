@@ -33,9 +33,6 @@
         $user = unserialize($_SESSION['user']);
     ?>
         <div class="layer"> </div>
-
-        <!-- Body -->
-
         <div class="page-flex">
             <!-- Dashboard Sidebar -->
             <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
@@ -52,7 +49,7 @@
                             <div class="container rounded mb-5">
                                 <div class="row">
                                     <div class="col-md-3 border-right">
-                                        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                                        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="/Ohana/src/dashboard/img/avatar/administrator.png">
                                             <span class="font-weight-bold">Admin Name</span><span class="text-black-50">Administrator</span><span> </span><br>
                                             <input type="file" id="myFile" name="filename" style="background-color: #FAF8F0;margin-left:25%">
                                         </div>

@@ -14,7 +14,7 @@
                     <span class="sr-only">My profile</span>
                     <span class="nav-user-img">
                         <picture>
-                            <source srcset="/Ohana/src/dashboard/img/avatar/avatar-illustrated-02.webp" type="image/webp"><img src="/Ohana/src/dashboard/img/avatar/avatar-illustrated-02.png" alt="User name">
+                            <img src="/Ohana/src/dashboard/img/avatar/administrator.png" alt="User name">
                         </picture>
                     </span>
                 </button>

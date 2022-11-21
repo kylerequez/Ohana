@@ -44,10 +44,9 @@
         <!--  TRANSACTIONS CONTENT -->
         <main class="main users chart-page" id="skip-target">
           <div class="container">
-            <br>
-            <center>
-              <h2 class="main-title"> CUSTOMER TRANSACTIONS </h2>
-            </center>
+
+            <h2 class="main-title text-center mt-4"> CUSTOMER TRANSACTIONS </h2>
+
           </div>
           <div class="users-table table-wrapper">
             <div class="search-wrapper">
@@ -84,9 +83,8 @@
                   </td>
                   <td>17.04.2021</td>
                   <td>
-                    <button class="view-btn transparent-btn" type="view" style="color:#7d605c; margin-right: 15px; font-size: 25px;"> <i class="uil uil-eye"></i> </button>
-                    <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
-
+                    <button class="view-btn transparent-btn" type="view" data-bs-toggle="modal" data-bs-target="#viewModal" style="color:#7d605c; margin-right: 15px; font-size: 25px;"> <i class="uil uil-eye"></i> </button>
+                    <button class="edit-btn transparent-btn" type="edit" data-bs-toggle="modal" data-bs-target="#editModal" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
                   </td>
                 </tr>
               </tbody>
@@ -97,8 +95,6 @@
             <li class="page-item current-page"><a class="page-link" href="#">1</a></li>
             <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
             <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
             <li class="page-item dots"><a class="page-link" href="#">...</a></li>
             <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
           </div>
@@ -107,6 +103,90 @@
         <?php include_once dirname(__DIR__) . '/footer.php'; ?>
       </div>
     </div>
+
+    <!-- VIEW MODAL -->
+    <form method="POST" action="">
+      <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewTransactionsModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addStaffTitle"> Customer Transaction </h5>
+              <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+            </div>
+            <div class="modal-body">
+              <input name="type" type="hidden" value="TRANSACTIONS">
+              <div class="mb-3">
+                <label for="number" class="col-form-label"> Date </label>
+                <input type="text" class="form-control" name="number" disabled style="background-color:#eed1c2; color:black">
+              </div>
+              <div class="mb-3">
+                <label for="fname" class="col-form-label"> Transaction I.D </label>
+                <input type="text" class="form-control" name="fname" disabled style="background-color:#eed1c2; color:black">
+              </div>
+              <div class="mb-3">
+                <label for="mname" class="col-form-label"> Email Address </label>
+                <input type="text" class="form-control" name="mname" disabled style="background-color:#eed1c2; color:black">
+              </div>
+              <div class="mb-3">
+                <label for="lname" class="col-form-label"> Name of User </label>
+                <input type="text" class="form-control" name="lname" disabled style="background-color:#eed1c2; color:black">
+              </div>
+              <div class="mb-3">
+                <label for="email" class="col-form-label"> Email Address: </label>
+                <input type="email" class="form-control" name="email" disabled style="background-color:#eed1c2; color:black">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- EDIT MODAL -->
+    <form method="POST" action="">
+      <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editTransactionModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addStaffTitle"> Customer Transaction </h5>
+              <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+            </div>
+            <div class="modal-body">
+              <input name="type" type="hidden" value="TRANSACTIONS">
+              <div class="mb-3">
+                <label for="number" class="col-form-label"> Date </label>
+                <input type="text" class="form-control" name="number" style="background-color:#eed1c2; color:black">
+              </div>
+              <div class="mb-3">
+                <label for="fname" class="col-form-label"> Transaction I.D </label>
+                <input type="text" class="form-control" name="fname" style="background-color:#eed1c2; color:black">
+              </div>
+              <div class="mb-3">
+                <label for="mname" class="col-form-label"> Email Address </label>
+                <input type="text" class="form-control" name="mname" style="background-color:#eed1c2; color:black">
+              </div>
+              <div class="mb-3">
+                <label for="lname" class="col-form-label"> Name of User </label>
+                <input type="text" class="form-control" name="lname" style="background-color:#eed1c2; color:black">
+              </div>
+              <div class="mb-3">
+                <label for="email" class="col-form-label"> Email Address: </label>
+                <input type="email" class="form-control" name="email" style="background-color:#eed1c2; color:black">
+              </div>
+              <div class="mb-3">
+                <label for="status" class="col-form-label"> Status: </label>
+                <select class="form-select" name="status" aria-label="Default select example" style="background-color:#eed1c2;">
+                  <option value="PENDING">PENDING</option>
+                  <option value="COMPLETED">COMPLETED</option>
+                </select>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Save Changes </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
     <!-- TOAST -->
     <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
       <div class="toast-container top-0 end-0 p-3">
@@ -124,9 +204,7 @@
     }
     unset($_SESSION["msg"]);
     ?>
-    <!-- SCRIPTS -->
-    <!-- Chart library -->
-    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
+
     <!-- Icons library -->
     <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
     <!-- Custom scripts -->

@@ -59,10 +59,6 @@
         <!-- MAIN CONTENT -->
         <div class="container-fluid">
           <main class="main users chart-page" id="skip-target">
-            <br>
-            <center>
-
-            </center><br>
             <div class="users-table table-wrapper">
 
               <?php
@@ -74,25 +70,29 @@
               ?>
                 <center>
                   <form method="POST" class="form-inline" action="/dashboard/chatbot-settings/update" enctype="multipart/form-data">
-                    <h2 class="main-title"> CHATBOT SETTINGS </h2>
+                    <h2 class="main-title mt-5"> CHATBOT SETTINGS </h2>
 
                     <div class="chatbot-image">
                       <img src="data:image/jpeg;base64,<?php echo base64_encode($information->getBlob()); ?>" style="width:150px; height:150px;">
                       <br><input type="file" id="myFile" name="filename" style="background-color: #FAF8F0;">
                       <input type="hidden" class="form-control" name="old_image" value="<?php echo base64_encode($information->getBlob()); ?>">
                     </div>
-                </center><br>
-                <label for="name" style="font-size:20px; margin-left:10%;"> <b>CHATBOT NAME:</b> </label>
-                <input type="text" id="name" value="<?php echo $information->getName(); ?>" name="name" size="100" style="background:#eed1c2; float:right; margin-right:10%;"><br>
-
-                <br><label for="introduction" style="font-size:20px; margin-left:10%;"> <b>CHATBOT GREETING:</b> </label>
-                <input type="text" id="introduction" value="<?php echo $information->getIntroduction(); ?>" name="introduction" size="100" style="background:#eed1c2; float:right; margin-right:10%;"><br>
-
-                <br><label for="noResponse" style="font-size:20px; margin-left:10%;"> <b>CHATBOT NO REPLY:</b> </label>
-                <input type="text" id="noResponse" value="<?php echo $information->getNoResponse(); ?>" name="noResponse" size="100" style="background:#eed1c2; float:right; margin-right:10%;"><br>
-
-                <input class="btn" type="submit" value="Save Changes" id="btn-Submit" style="margin-top:5%; margin-left:65%; background-color:#db6551; color:white; width:25%; font-size:20px;">
-
+                </center>
+                <div id="cb-settings" style="margin-left:25%">
+                  <span style="display:inline-block">
+                    <label class="mb-2" for="name" style="font-size:20px;display:block"> <b>CHATBOT NAME:</b> </label>
+                    <input type="text" id="name" value="<?php echo $information->getName(); ?>" name="name" size="100" style="background:#eed1c2;">
+                  </span>
+                  <span style="display:inline-block">
+                    <label class="mb-2" for="introduction" style="font-size:20px;display:block"> <b>CHATBOT GREETING:</b> </label>
+                    <input type="text" id="introduction" value="<?php echo $information->getIntroduction(); ?>" name="introduction" size="100" style="background:#eed1c2; "><br>
+                  </span>
+                  <span style="display:inline-block">
+                    <label class="mb-2" for="noResponse" style="font-size:20px;display:block"> <b>CHATBOT NO REPLY:</b> </label>
+                    <input type="text" id="noResponse" value="<?php echo $information->getNoResponse(); ?>" name="noResponse" size="100" style="background:#eed1c2;"><br>
+                  </span>
+                  <input class="btn mt-5" type="submit" value="Save Changes" id="btn-Submit" style=" margin-left:50%; background-color:#db6551; color:white; width:25%; font-size:20px;">
+                </div>
                 </form>
 
               <?php
@@ -127,9 +127,6 @@
     </div>
 
     <!-- SCRIPTS -->
-
-    <!-- Chart library -->
-    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
 
     <!-- Icons library -->
     <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>

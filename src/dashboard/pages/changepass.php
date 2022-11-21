@@ -185,7 +185,7 @@
                             </p>
                             <div class="d-flex justify-content-center mt-5">
                                 <a href="/userprofile">
-                                    <button class="btn btn-outline-secondary m-3" type="button">Back to profile</button></a>
+                                    <button class="btn btn-outline-dark m-3" type="button">Back to profile</button></a>
                                 <button class="btn profile-button m-3" type="submit" style="background-color:#db6551; color:white; ">Save Changes</button>
                             </div>
                         </form>

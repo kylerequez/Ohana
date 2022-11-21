@@ -14,24 +14,14 @@
 
   <!-- WEB ICON-->
   <link rel="shortcut icon" href="/Ohana/src/dashboard/img/ohana.png" type="image/x-icon">
-
-  <!-- VERSION 4.5.3 FOR MODAL-->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-  <!-- BOOTSTRAP CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
-  <!-- Custom styles -->
   <link rel="stylesheet" href="/Ohana/src/dashboard/css/adminpages.css">
-
-  <!-- ICONS IMPORT  -->
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
 </head>
 
 <body>
   <?php
-
-
   if (empty($_SESSION['user'])) {
     session_unset();
     session_destroy();
@@ -56,10 +46,9 @@
         <!--  STAFF ACCOUNTS CONTENT -->
         <main class="main users chart-page" id="skip-target">
           <div class="container">
-            <br>
-            <center>
-              <h2 class="main-title"> STAFF ACCOUNTS </h2>
-            </center>
+            
+              <h2 class="main-title mt-3 text-center"> STAFF ACCOUNTS </h2>
+           
           </div>
 
           <div class="users-table table-wrapper">
@@ -131,27 +120,27 @@
                               <div class="modal-body">
                                 <div class="mb-3">
                                   <label for="fname" class="col-form-label"> First Name: </label>
-                                  <input type="text" class="form-control" name="fname" value="<?php echo $staff->getFname(); ?>" required>
+                                  <input type="text" class="form-control" name="fname" value="<?php echo $staff->getFname(); ?>" required style="background-color:#eed1c2;">
                                 </div>
                                 <div class="mb-3">
                                   <label for="mname" class="col-form-label"> Middle Name: </label>
-                                  <input type="text" class="form-control" name="mname" value="<?php echo $staff->getMname(); ?>" required>
+                                  <input type="text" class="form-control" name="mname" value="<?php echo $staff->getMname(); ?>" required style="background-color:#eed1c2;">
                                 </div>
                                 <div class="mb-3">
                                   <label for="lname" class="col-form-label"> Surname: </label>
-                                  <input type="text" class="form-control" name="lname" value="<?php echo $staff->getLname(); ?>" required>
+                                  <input type="text" class="form-control" name="lname" value="<?php echo $staff->getLname(); ?>" required style="background-color:#eed1c2;">
                                 </div>
                                 <div class="mb-3">
                                   <label for="email" class="col-form-label"> Email Address: </label>
-                                  <input type="email" class="form-control" name="email" value="<?php echo $staff->getEmail(); ?>" required>
+                                  <input type="email" class="form-control" name="email" value="<?php echo $staff->getEmail(); ?>" required style="background-color:#eed1c2;">
                                 </div>
                                 <div class="mb-3">
                                   <label for="number" class="col-form-label"> Contact Number: </label>
-                                  <input type="text" class="form-control" name="number" value="<?php echo $staff->getNumber(); ?>" required>
+                                  <input type="text" class="form-control" name="number" value="<?php echo $staff->getNumber(); ?>" required style="background-color:#eed1c2;">
                                 </div>
                                 <div class="mb-3">
                                   <label for="status" class="col-form-label"> Status: </label>
-                                  <select class="form-select" name="status" aria-label="Default select example">
+                                  <select class="form-select" name="status" aria-label="Default select example" style="background-color:#eed1c2;">
                                     <option <?php if ($staff->getStatus() === "ACTIVE") echo "selected"; ?> value="ACTIVE">Active</option>
                                     <option <?php if ($staff->getStatus() === "DISABLED") echo "selected"; ?> value="DISABLED">Disabled</option>
                                   </select>
@@ -247,7 +236,6 @@
       </div>
     </div>
 
-    <!-- SCRIPTS -->
     <script>
       //TOAST SCRIPT TRIGGER 
       const toastTrigger = document.getElementById('ToastBtn')
@@ -259,12 +247,7 @@
         })
       }
     </script>
-    <!-- Chart library -->
-    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-
-    <!-- Icons library -->
-    <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
-
+   
     <!-- Custom scripts -->
     <script src="/Ohana/src/dashboard/js/script.js"></script>
 
