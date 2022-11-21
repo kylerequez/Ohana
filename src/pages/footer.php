@@ -1,5 +1,5 @@
 <style>
-   @media screen and (min-width: 360px) and (max-width: 930px) { 
+   @media screen and (min-width: 360px) and (max-width: 929.98px) { 
     #paragraph {
       font-size:12px;
     }

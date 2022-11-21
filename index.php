@@ -24,7 +24,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
-        @media screen and (min-width: 360px) and (max-width: 930px) {
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {
             .title {
                 font-size: 40px;
                 color: #db6551;

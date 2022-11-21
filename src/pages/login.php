@@ -17,7 +17,7 @@
   <?php include_once 'stylesheets.php'; ?>
 
   <style>
-    @media screen and (min-width: 375px) and (max-width: 767.98px) {
+    @media screen and (min-width: 360px) and (max-width: 929.98px) {
       .sign-up__title {
         font-size: 33px;
       }
@@ -87,7 +87,8 @@
                   <div class="form__row">
                     <div class="input">
                       <div class="input__container">
-                        <input class="input__field" id="password" name="password" placeholder="Password" required="" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
+                        <input class="input__field" id="password" name="password" placeholder="Password" required="" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
                         <label class="input__label" for="password">Password</label>
                       </div>
                     </div>
@@ -159,8 +160,6 @@
 
     <!-- SCIPTS -->
     <script src="/Ohana/src/dashboard/js/script.js"></script>
-
-    <!-- JAVASCRIPT IMPORTS -->
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
