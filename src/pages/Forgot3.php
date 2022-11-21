@@ -15,6 +15,30 @@
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
   <link rel="stylesheet" href="/Ohana/src/css/footer.css">
   <?php include_once 'stylesheets.php'; ?>
+
+  <style>
+    @media screen and (min-width: 375px) and (max-width: 767.98px) {
+      .sign-up__title {
+        font-size: 30px;
+      }
+
+      #btncpass {
+        display: block;
+        padding: 10px 60px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .input__label {
+        font-size: 15px;
+      }
+
+      #message p {
+        margin-top: 5px;
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -26,7 +50,7 @@
     <div class="sign-up__container">
       <div class="sign-up__content">
         <header class="sign-up__header">
-          <h1 class="sign-up__title" style="font-size: 80px; margin-top: 5%;">
+          <h1 class="sign-up__title">
             FORGOT PASSWORD
           </h1>
           <p class="sign-up__descr" style="font-size: 25px;">
@@ -86,7 +110,7 @@
                 <center><br>
                   <div class="form__row">
                     <div class="logbtn">
-                      <button name="btnChange" type="submit"> <span> Change Password </span></button>
+                      <button name="btnChange" type="submit" id="btncpass"> <span> Change Password </span></button>
                     </div>
                   </div>
                 </center>

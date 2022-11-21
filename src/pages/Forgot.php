@@ -16,6 +16,30 @@
   <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
   <?php include_once 'stylesheets.php'; ?>
+  <style>
+    @media screen and (min-width: 375px) and (max-width: 767.98px) {
+      #forgottitle {
+        font-size: 35px;
+        margin-top: 15%;
+      }
+
+      #forgotdesc {
+        font-size: 20px;
+        margin-top: 10px;
+      }
+
+      #btnReset {
+        display: block;
+        padding: 10px 60px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .input__label {
+        font-size: 15px;
+      }
+    }
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -30,10 +54,10 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <h1 class="sign-up__title" style="font-size: 80px; margin-top: 5%;">
+            <h1 class="sign-up__title" id="forgottitle">
               FORGOT PASSWORD
             </h1>
-            <p class="sign-up__descr" style="font-size: 20px;">
+            <p class="sign-up__descr" id="forgotdesc">
               To reset your password, please enter your <b>Email</b> and click reset password.
             </p>
             <!-- ALERT -->
@@ -68,7 +92,7 @@
                   <center>
                     <div class="form__row">
                       <div class="logbtn">
-                        <button type="submit" name="btnSubmit"><span> Reset password </span></button>
+                        <button type="submit" name="btnSubmit" id="btnReset"><span> Reset password </span></button>
                       </div>
                     </div>
                   </center>

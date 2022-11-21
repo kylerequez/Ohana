@@ -20,9 +20,30 @@ h1 {
   color: #c0b65a;
   font-size: 100px;
 }
+.title {
+  color: #db6551;
+  font-size: 90px;
+}
+.cr {
+  color: #db6551;
+  font-size: 90px;
+
+}
+.contact {
+  color: #db6551;
+  font-size: 90px;
+}
 
 section {
   display: block;
+}
+/* SECTIONS */
+.about-us {
+  background-image: url(../images/Landing/aboutindex.png);
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  min-height: 1000px;
 }
 
 .reasons {
@@ -84,7 +105,8 @@ form {
   text-decoration: none;
   text-shadow: 0px 1px 0px #ffffff;
   text-align: center;
-  margin-left: 28%;
+  margin-left: 50%;
+  margin-top: 50%
 }
 
 .btn-Adopt button:hover {
@@ -119,6 +141,15 @@ form {
 .btn-Send button:active {
   position: relative;
   top: 1px;
+}
+/** PARAGRAPH IN SERVICES */
+.p-4 {
+  font-size: 60px;
+  font-weight: bolder;
+}
+
+.p-2 {
+  font-size: 25px;
 }
 
 /*############################## CONTACT FORM  #################################*/
@@ -274,11 +305,3 @@ textarea:hover {
   opacity: 0.8;
 }
 
-.p-4 {
-  font-size: 60px;
-  font-weight: bolder;
-}
-
-.p-2 {
-  font-size: 25px;
-}

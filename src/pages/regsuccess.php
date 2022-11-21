@@ -16,7 +16,23 @@
 
   <?php include_once 'stylesheets.php'; ?>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+    @media screen and (min-width: 375px) and (max-width: 767.98px) {
+      .sign-up__title {
+        font-size: 42px;
+      }
+
+      #accdesc {
+        font-size: 20px;
+        margin-top: 10px;
+      }
+
+      #btnLogin {
+        display: block;
+        padding: 10px 60px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+    }
   </style>
 </head>
 
@@ -31,17 +47,17 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <img src="/Ohana/src/images/pages/check.png" width="250" height="250" style="margin-top: 5%;">
-            <h1 class="sign-up__title" style="font-size: 100px; margin-top: 5%; font-family: 'Acme', sans-serif;">
+            <img src="/Ohana/src/images/pages/check.png" width="200" height="200" style="margin-top: 5%;">
+            <h1 class="sign-up__title">
               Account Created!
             </h1>
-            <p style="font-size:25px;"> Your Ohana account has been Successfully Created. </p>
+            <p id="accdesc"> Your Ohana account has been Successfully Created. </p>
           </header>
 
           <center>
             <div class="form__row">
               <div class="logbtn">
-                <a href="/login" style="text-decoration: none;"><button><span>Login</span></button></a>
+                <a href="/login" style="text-decoration: none;"><button id="btnLogin"><span>Login</span></button></a>
               </div>
             </div>
           </center>

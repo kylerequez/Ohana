@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
     <?php include_once 'stylesheets.php'; ?>
+    <style>
+        @media screen and (min-width: 375px) and (max-width: 767.98px) {}
+    </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -52,7 +55,6 @@
                         <a href="/checkout"><button type="button" class="btn btn-outline-dark btn-lg mt-2 mx-3" style="width:300px;">Go Back</button></a>
                         <a href="/invoice"><button type="button" name="btn-Payment" class="btn btn-block btn-lg mt-2 mx-3" style="background-color:#c0b65a; color:white; width:300px;">
                                 Proceed </button></a>
-
                     </center>
                 </section>
             </div>

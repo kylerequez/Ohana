@@ -1,5 +1,5 @@
-<h1>Privacy Policy for Ohana Kennel PH</h1>
-		<p>At OhanaKennelPH, accessible from OhanaKennelPH.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by OhanaKennelPH and how we use it.</p>
+<h1 class="text-center">Privacy Policy for Ohana Kennel PH</h1>
+<p>At OhanaKennelPH, accessible from OhanaKennelPH.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by OhanaKennelPH and how we use it.</p>
 
 <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p>
 

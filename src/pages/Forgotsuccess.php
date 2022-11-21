@@ -13,12 +13,30 @@
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
   <link rel="stylesheet" href="/Ohana/src/css/footer.css">
   <?php include_once 'stylesheets.php'; ?>
+  <style>
+    @media screen and (min-width: 375px) and (max-width: 767.98px) {
+      .sign-up__title {
+        font-size: 31px;
+      }
+
+      #pupdated {
+        font-size: 17px;
+        margin-top: 10px;
+      }
+
+      #btnLogin {
+        display: block;
+        padding: 10px 60px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+    }
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
 
   <?php include_once 'navbar.php'; ?>
-
   <div class="container-fluid">
 
     <?php unset($_SESSION);
@@ -27,17 +45,17 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <img src="/Ohana/src/images/pages/check.png" width="250" height="250" style="margin-top: 5%;">
-            <h1 class="sign-up__title" style="font-size: 80px; margin-top: 5%;">
+            <img src="/Ohana/src/images/pages/check.png" width="200" height="200" style="margin-top: 5%;">
+            <h1 class="sign-up__title">
               PASSWORD UPDATED!
             </h1>
-            <p style="font-size:20px;"> Your Ohana account password has been Successfully Updated. </p>
+            <p id="pupdated"> Your Ohana account password has been Successfully Updated. </p>
           </header>
 
           <center>
             <div class="form__row">
               <div class="logbtn">
-                <a href="/login" style="text-decoration:none;"><button type="submit" name="btnSubmit"><span> Login </span></button></a>
+                <a href="/login" style="text-decoration:none;"><button type="submit" name="btnSubmit" id="btnLogin"><span> Login </span></button></a>
               </div>
             </div>
           </center>
@@ -45,7 +63,6 @@
         </div>
     </main>
 
-    <!-- FOOTER -->
     <?php include_once 'footer.php'; ?>
     </main>
 

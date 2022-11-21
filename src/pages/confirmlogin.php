@@ -18,7 +18,27 @@
 
   <?php include_once 'stylesheets.php'; ?>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+  @media screen and (min-width: 375px) and (max-width: 767.98px) {
+      #cnfrmtitle {
+        font-size: 45px;
+        margin-top: 15%;
+      }
+
+      #cnfrmcontent {
+        font-size: 18px;
+        margin-top: 5%;
+      }
+
+      #resend {
+        margin-top: 5%;
+      }
+
+      .input__label {
+        font-size: 20px;
+      }
+
+
+    }
   </style>
 </head>
 
@@ -31,10 +51,10 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <h1 class="sign-up__title" style="font-size: 80px; margin-top: 10%; font-family: 'Acme', sans-serif;">
+            <h1 class="sign-up__title" id="cnfrmtitle">
               Welcome Back!
             </h1>
-            <p style="font-size:20px;"> Please enter the OTP sent to your email to proceed. </p>
+            <p class="mt-2" id="cnfrmcontent"> Please enter the OTP sent to your email to proceed. </p>
             <!-- ALERT -->
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
               <div class="alert alert-success" role="alert">
@@ -66,7 +86,7 @@
             </div>
             <center><br><br>
               <div class="form__row">
-                <p style="font-size:20px;">Did not receive OTP? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="##">Resend OTP</a></p>
+                <p style="font-size:20px;">Did not receive OTP? &nbsp;<a class="link" name="login" id="resend" style="text-decoration:none;" href="##">Resend OTP</a></p>
               </div>
             </center>
             <center>

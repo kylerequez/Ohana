@@ -18,6 +18,10 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+        @media screen and (min-width: 375px) and (max-width: 767.98px) {
+        
+        }
     </style>
 </head>
 
@@ -37,12 +41,12 @@
                     if (empty($profiles)) {
                     ?>
                         <div class="service">
-                            <h1 style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;text-align:center"> THERE IS CURRENTLY NO AVAILABLE SLOTS FOR PET BOARDING</h1>
-                        </div><br><br>
+                            <h1 class="mb-2 text-center" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;"> THERE IS CURRENTLY NO AVAILABLE SLOTS FOR PET BOARDING</h1>
+                        </div><
                     <?php } else { ?>
                         <div class="service">
-                            <h1 style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;text-align:center"> CHOOSE PET BOARDING SLOT </h1>
-                        </div><br><br>
+                            <h1 class="mb-2 text-center" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;"> CHOOSE PET BOARDING SLOT </h1>
+                        </div>
 
                         <!-- AVAILABLE PUPPIES CARD -->
                         <div class="container d-flex justify-content-center">

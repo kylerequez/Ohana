@@ -2,24 +2,17 @@
 <html lang="en">
 
 <head>
-    <!--meta tags-->
-
+  
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
 
-    <!-- end of meta tags-->
     <title> ADMIN PROFILE </title>
 
-    <!-- WEB ICON-->
     <link rel="shortcut icon" href="/Ohana/src/dashboard/img/ohana.png" type="image/x-icon">
-
-    <!-- ICONS IMPORT  -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
-    <!-- BOOTSTRAP CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
     <!-- Custom styles -->
@@ -29,6 +22,7 @@
 <body>
     <div class="layer"> </div>
 
+<<<<<<< HEAD
     <!-- Body -->
 
     <div class="page-flex">
@@ -56,6 +50,37 @@
                                     <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
                                         <span class="font-weight-bold">Admin Name</span><span class="text-black-50">Administrator</span><span> </span><br>
                                         <input type="file" id="myFile" name="filename" style="background-color: #FAF8F0;margin-left:25%">
+=======
+    if (empty($_SESSION['user'])) {
+        session_unset();
+        session_destroy();
+        header("Location: http://localhost/login");
+        exit();
+    } else {
+        $user = unserialize($_SESSION['user']);
+    ?>
+        <div class="layer"> </div>
+        <div class="page-flex">
+            <!-- Dashboard Sidebar -->
+            <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
+
+            <div class="main-wrapper">
+                <!-- ! Main nav -->
+                <?php include_once dirname(__DIR__) . "/navbar.php" ?>
+                <!-- CALENDAR Main content -->
+                <main class="main users chart-page" id="skip-target">
+                    <div class="container">
+                            <h2 class="main-title mt-2 text-center"> Admin Profile </h2>
+                        <!-- ADMIN PROFILE CONTENT -->
+                        <div class="main">
+                            <div class="container rounded mb-5">
+                                <div class="row">
+                                    <div class="col-md-3 border-right">
+                                        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="/Ohana/src/dashboard/img/avatar/administrator.png">
+                                            <span class="font-weight-bold">Admin Name</span><span class="text-black-50">Administrator</span><span> </span><br>
+                                            <input type="file" id="myFile" name="filename" style="background-color: #FAF8F0;margin-left:25%">
+                                        </div>
+>>>>>>> da2961b4d47efe43c4a6928f4fc4c2acc83e0dd4
                                     </div>
                                 </div>
                                 <div class="col-md-5" style="margin-left:5%">
@@ -78,15 +103,22 @@
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
                 </div>
             </main>
 
             <!-- FOOTER -->
             <?php include_once dirname(__DIR__) . '/footer.php'; ?>
 
+=======
+                </main>
+                <?php include_once dirname(__DIR__) . '/footer.php'; ?>
+            </div>
+>>>>>>> da2961b4d47efe43c4a6928f4fc4c2acc83e0dd4
         </div>
     </div>
 
+<<<<<<< HEAD
     <!-- SCRIPTS -->
 
     <!-- Chart library -->
@@ -97,6 +129,10 @@
 
     <!-- Custom scripts -->
     <script src="/Ohana/src/dashboard/js/script.js"></script>
+=======
+        <!-- Custom scripts -->
+        <script src="/Ohana/src/dashboard/js/script.js"></script>
+>>>>>>> da2961b4d47efe43c4a6928f4fc4c2acc83e0dd4
 
     <!-- JavaScript BOOTSTRAP Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">

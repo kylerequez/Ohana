@@ -167,6 +167,7 @@
                                 <h1 class="text-center mt-5" style="font-family: 'Acme', sans-serif; color:#db6551; font-size:70px;">Change your Password</h1>
                                 <p class="text-center mb-5" style="font-size:20px;">Input a new password for your account</p>
 
+<<<<<<< HEAD
                                 <p><input type="password" value="" placeholder="Current Password" name="password" id="password" class="password" for="password" required style="background-color:#eed1c2"></p>
                                 <p><input type="password" value="" placeholder="Enter New Password" name="new-password" id="new-password" class="password" for="password" required style="background-color:#eed1c2"></p>
                                 <p><input type="password" value="" placeholder="Confirm Password" name="confirm-password" id="confirm-password" class="password" for="confirm-password" required style="background-color:#eed1c2">
@@ -184,6 +185,34 @@
                         </div>
                 </div>
                 <!-- CHANGE PASSWORD CONTENT -->
+=======
+                <!-- ! Main nav -->
+                <?php include_once dirname(__DIR__) . "/navbar.php" ?>
+
+                <main class="main users chart-page" id="skip-target">
+                    <div class="container d-flex justify-content-center">
+
+                        <form id=" myform-search" method="post" autocomplete="off">
+                            <h1 class="text-center mt-5" style="font-family: 'Acme', sans-serif; color:#db6551; font-size:70px;">Change your Password</h1>
+                            <p class="text-center mb-5" style="font-size:20px;">Input a new password for your account</p>
+
+                            <p><input type="password" value="" placeholder="Current Password" name="password" id="password" class="password" for="password" required style="background-color:#eed1c2"></p>
+                            <p><input type="password" value="" placeholder="Enter New Password" name="new-password" id="new-password" class="password" for="password" required style="background-color:#eed1c2"></p>
+                            <p><input type="password" value="" placeholder="Confirm Password" name="confirm-password" id="confirm-password" class="password" for="confirm-password" required style="background-color:#eed1c2">
+                            <div class="d-flex justify-content-start mt-3">
+                                <input type="checkbox" name="" onclick="myFunction()">
+                                <label> Show Password </label>
+                            </div>
+                            </p>
+                            <div class="d-flex justify-content-center mt-5">
+                                <a href="/userprofile">
+                                    <button class="btn btn-outline-dark m-3" type="button">Back to profile</button></a>
+                                <button class="btn profile-button m-3" type="submit" style="background-color:#db6551; color:white; ">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- CHANGE PASSWORD CONTENT -->
+>>>>>>> da2961b4d47efe43c4a6928f4fc4c2acc83e0dd4
                 </main>
                 <!-- FOOTER -->
                 <?php include_once dirname(__DIR__) . '/footer.php'; ?>

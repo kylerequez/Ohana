@@ -2,77 +2,78 @@
 <html lang="en">
 
 <head>
-
     <title> OHANA SERVICES </title>
-
-    <!-- META TAGS -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
-    <!-- END OF META TAGS -->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
-
-    <!-- EXTERNAL CSS -->
+ 
     <link rel="stylesheet" href="/Ohana/src/css/service.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-    <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
-    <!-- FONT AWESOME ICONS IMPORT -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Web Icon -->
-    <link rel="shortcut icon" href="/Ohana/src/images/Landing/ohana.png" type="image/x-icon">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+        @media screen and (min-width: 360px) and (max-width: 767.98px) {
+            #servicesheader {
+                font-size:50px;
+                font-family: 'Acme', sans-serif; 
+                color:#DB6551; 
+                margin-top:40%;
+            }
+            .p-4 {
+                font-size: 30px;
+                font-weight: bolder;
+            }
+
+            .p-2 {
+                font-size: 20px;
+            }
+
+            .reasons {
+                background-image: url(/Ohana/src/images/Landing/mbreasons.png);
+                min-height: 510px;
+            }
+            .pair-section {
+                /* background-image: url(/Ohana/src/images/Landing/mbreasons.png);
+                min-height: 510px; */
+            }
+        }
     </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
-    <main>
-        <!-- REGISTERED USERS NAVIGATION BAR-->
+    <main> 
         <?php include_once 'Rnavbar.php'; ?>
 
-        <div class="container-fluid">
-            <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-            <div class="message" style="margin-top:10%;">
+        <div class="container-fluid">    
+            <div class="message">
                 <section class="services" id="services">
                     <div class="service">
-                        <h1 class="text-center mb-3" style="color:#DB6551; font-size: 100px; font-family: 'Acme', sans-serif; font-weight:800"> SERVICES </h1>
+                        <h1 id="servicesheader" class="text-center mb-3"> SERVICES </h1>
                     </div>
 
                     <div class="row" style="text-align:center; margin-left:10%; margin-right:10%;">
                         <div class="col-lg-6">
                             <a href="/puppies/rehoming/get" style="text-decoration:none;">
-                                <img src="/Ohana/src/images/services/1.png" width="400" height="400" role="img" focusable="false">
-                                <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
-                                <h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Pet Rehoming </h2>
-                                <p style="color:#7d605c; font-size: 25px;"> Want to add another member to your family? We have the cutest and most loving frenchies waiting for you. </p>
+                                <img src="/Ohana/src/images/services/1.png" class="img-fluid" focusable="false"></img>
+                                <h2 class="p-4" style="color:#7d605c;"> Pet Rehoming </h2>
+                                <p class="p-2" style="color:#7d605c;"> Want to add another member to your family? We have the cutest and most loving frenchies waiting for you. </p>
                             </a>
                         </div>
                         <div class="col-lg-6">
                             <a href="/stud" style="text-decoration:none;">
-                                <img src="/Ohana/src/images/services/2.png" width="400" height="400" role="img" focusable="false">
-                                <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
-                                <h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Stud Service </h2>
+                                <img src="/Ohana/src/images/services/2.png" class="img-fluid" focusable="false"></img>
+                                <h2 class="p-4" style="color:#7d605c;"> Stud Service </h2>
+                                <p class="p-2" style="color:#7d605c; "> Want to produce quality and compact french bulldogs? Choose from any of our male frenchies ready for mating. </p>
                             </a>
-                            <p style="color:#7d605c; font-size: 25px;"> Want to produce quality and compact french bulldogs? Choose from any of our male frenchies ready for mating. </p>
+                           
                         </div>
-
                     </div>
-
                 </section>
-                <section class="reason" style="margin-top:5%;">
+                <section class="reason">
                     <div class="reasons">
-                        <img src="/Ohana/src/images/Landing/reasonsmain.png" class="img-fluid" style="width: 100%;">
+                   <!-- bg image is declared in css -->
                     </div>
                 </section>
                 <section class="pair-section">
@@ -89,10 +90,7 @@
                         </form>
                     </div>
                 </section>
-
-
             </div>
-
         </div>
     </main>
 
@@ -100,26 +98,8 @@
         <?php include_once 'footer.php'; ?>
     </div>
 
-    <!-- SCIPTS -->
-
-    <!-- Chart library -->
-    <script src="../plugins/chart.min.js"></script>
-
-    <!-- Icons library -->
-    <script src="../plugins/feather.min.js"></script>
-
-    <!-- Custom scripts -->
-    <script src="../js/script.js"></script>
-    <script src="../js/privacyscript.js"></script>
-    <script src="../js/termsscript.js"></script>
-
-    <!-- JAVASCRIPT IMPORTS -->
-    <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
-
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </body>
 

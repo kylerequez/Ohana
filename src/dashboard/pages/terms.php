@@ -1,7 +1,6 @@
 
-<center><h1 style="font-size:70px;">Terms and Conditions</h1><br></center>
-		<h1> Welcome to Ohana Kennel PH! </h1>
-        
+<h1 class="text-center" style="font-size:70px;">Terms and Conditions</h>
+  
 <p>These terms and conditions outline the rules and regulations for the use of Ohana Kennel PH’s Website, located at ohanakennelph.com.</p>
 
 <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use Ohana if you do not agree to take all of the terms and conditions stated on this page.</p>
