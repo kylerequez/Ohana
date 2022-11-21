@@ -1,11 +1,8 @@
 <?php
-
 $servername = "localhost";
 $database = "Ohana_DB";
 $username = "root";
 $password = "";
-
-
 
 // $servername = "epiz_32957955_Ohana_DB";
 // $database = "sql309.epizy.com";

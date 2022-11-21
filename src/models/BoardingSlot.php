@@ -1,5 +1,4 @@
 <?php
-
 class BoardingSlot
 {
     private ?int $id = null;

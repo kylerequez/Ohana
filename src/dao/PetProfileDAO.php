@@ -1,6 +1,5 @@
 <?php
 require_once dirname(__DIR__) . "/models/PetProfile.php";
-
 class PetProfileDAO
 {
     private PDO $conn;
@@ -109,6 +108,61 @@ class PetProfileDAO
                 }
             }
             return $petProfiles;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function getOhanaPetsPagination(string $limit, string $offset): mixed
+    {
+        try {
+            $sql = "SELECT * FROM ohana_pet_profiles
+                    WHERE owner_name = 'OHANA'
+                    LIMIT :limit OFFSET :offset;";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
+            $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
+
+            $petProfiles = null;
+            if ($stmt->execute() > 0) {
+                while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $existingPetProfile = new PetProfile(
+                        $petProfile["pet_image"],
+                        $petProfile["pet_name"],
+                        new DateTime($petProfile["pet_birthdate"]),
+                        $petProfile["pet_sex"],
+                        $petProfile["pet_color"],
+                        $petProfile["pet_trait"],
+                        $petProfile["is_vaccinated"],
+                        $petProfile["pcci_status"],
+                        $petProfile["account_id"],
+                        $petProfile["owner_name"],
+                        $petProfile["pet_price"],
+                        $petProfile["pet_status"]
+                    );
+                    $existingPetProfile->setId($petProfile["pet_id"]);
+                    $petProfiles[] = $existingPetProfile;
+                }
+            }
+            return $petProfiles;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function getTotalPetProfilesCount(): mixed
+    {
+        try {
+            $sql = "SELECT count(*) FROM ohana_pet_profiles
+                    WHERE owner_name = 'OHANA';";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchColumn();
         } catch (Exception $e) {
             echo $e;
             return null;

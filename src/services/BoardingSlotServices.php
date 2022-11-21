@@ -1,5 +1,4 @@
 <?php
-
 class BoardingSlotServices
 {
     private ?BoardingSlotDAO $dao = null;
@@ -12,6 +11,16 @@ class BoardingSlotServices
     public function getAllBoardingSlots(): mixed
     {
         return $this->dao->getAllBoardingSlots();
+    }
+
+    public function getBoardingSlotsPagination(string $limit, string $offset): mixed
+    {
+        return  $this->dao->getBoardingSlotsPagination($limit, $offset);
+    }
+
+    public function getTotalSlots(): mixed
+    {
+        return $this->dao->getTotalSlots();
     }
 
     public function deleteSlot($id): bool

@@ -86,6 +86,10 @@
 
     <!-- START OF JAVASCRIPT-->
     <script>
+      $("form").submit(function() {
+        $(this).find(":submit").attr('disabled', 'disabled');
+      });
+
       const input = document.querySelector("input"),
         emailIcon = document.querySelector(".email-icon")
 

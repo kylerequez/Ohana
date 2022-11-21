@@ -22,7 +22,7 @@ if (isset($type)) {
                 // Display Rehoming Pet Profiles
                 $controller->processRehomingRequest($_SERVER["REQUEST_METHOD"], null);
             } else if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($id)) {
-                // Display Pet Profile
+                // Display Individual Pet Profile For Rehoming
                 $controller->processRehomingRequest($_SERVER["REQUEST_METHOD"], $id);
             }
             break;

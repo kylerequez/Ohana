@@ -151,6 +151,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- START OF JAVASCRIPT-->
     <script>
+      $("form").submit(function() {
+        $(this).find(":submit").attr('disabled', 'disabled');
+      });
+      
       const emailInput = $("#email"),
         emailIcon = $(".email-icon");
 

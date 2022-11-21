@@ -1,6 +1,5 @@
 <?php
 require_once dirname(__DIR__) . "/models/Account.php";
-
 class AccountDAO
 {
     private PDO $conn;
@@ -73,6 +72,57 @@ class AccountDAO
         }
     }
 
+    public function getUserAccountsPagination(string $limit, string $offset): mixed
+    {
+        try {
+            $sql = "SELECT * FROM ohana_account
+                    WHERE account_type='USER'
+                    LIMIT :limit OFFSET :offset;";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
+            $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
+            $accounts = null;
+            if ($stmt->execute() > 0) {
+                while ($account = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $existingAccount = new Account(
+                        $account["account_type"],
+                        $account["fname"],
+                        $account["mname"],
+                        $account["lname"],
+                        $account["number"],
+                        $account["email"],
+                        $account["status"],
+                        $account["password"],
+                    );
+                    $existingAccount->setId($account["account_id"]);
+
+                    $accounts[] = $existingAccount;
+                }
+            }
+            return $accounts;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function getTotalUserCount(): mixed
+    {
+        try {
+            $sql = "SELECT count(*) FROM ohana_account
+                    WHERE account_type='USER';";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchColumn();
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }    
+    }
+
     public function getStaffAccounts(): mixed
     {
         try {
@@ -103,6 +153,57 @@ class AccountDAO
             echo $e;
             return null;
         }
+    }
+
+    public function getStaffAccountsPagination(string $limit, string $offset): mixed
+    {
+        try {
+            $sql = "SELECT * FROM ohana_account
+                    WHERE account_type='STAFF'
+                    LIMIT :limit OFFSET :offset;";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
+            $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
+            $accounts = null;
+            if ($stmt->execute() > 0) {
+                while ($account = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $existingAccount = new Account(
+                        $account["account_type"],
+                        $account["fname"],
+                        $account["mname"],
+                        $account["lname"],
+                        $account["number"],
+                        $account["email"],
+                        $account["status"],
+                        $account["password"],
+                    );
+                    $existingAccount->setId($account["account_id"]);
+
+                    $accounts[] = $existingAccount;
+                }
+            }
+            return $accounts;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function getTotalStaffCount(): mixed
+    {
+        try {
+            $sql = "SELECT count(*) FROM ohana_account
+                    WHERE account_type='STAFF';";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchColumn();
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }    
     }
 
     public function searchUserByEmailAndPassword(string $email, string $password): mixed

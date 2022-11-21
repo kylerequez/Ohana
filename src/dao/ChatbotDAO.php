@@ -1,8 +1,6 @@
 <?php
-
 require_once dirname(__DIR__) . "/models/ChatbotResponse.php";
 require_once dirname(__DIR__) . "/models/ChatbotInformation.php";
-
 class ChatbotDAO
 {
     private PDO $conn;
@@ -25,6 +23,49 @@ class ChatbotDAO
                 }
             }
             return $information;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function getResponsesPagination(string $limit, string $offset): mixed
+    {
+        try {
+            $sql = "SELECT * FROM chatbot_responses
+                    LIMIT :limit OFFSET :offset;";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
+            $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
+            $responses = null;
+            if ($stmt->execute() > 0) {
+                while ($response = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $existingResponse = new ChatbotResponse(
+                        $response["response"],
+                        $response["query"],
+                        $response["times_asked"],
+                    );
+                    $existingResponse->setId($response["response_id"]);
+                    $responses[] = $existingResponse;
+                }
+            }
+            return $responses;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function getTotalResponses(): mixed
+    {
+        try {
+            $sql = "SELECT count(*) FROM chatbot_responses;";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchColumn();
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -87,7 +128,7 @@ class ChatbotDAO
             $sql = "INSERT INTO chatbot_responses
                     (response, query, timesAsked)
                     VALUES (:response, :query, :timesAsked);";
-            
+
             $res = $response->getResponse();
             $query = $response->getQuery();
             $timesAsked = $response->getTimesAsked();

@@ -1,5 +1,6 @@
 <?php
 require_once dirname(__DIR__) . "/models/Account.php";
+require_once dirname(__DIR__) . '/config/app-config.php';
 class ChatbotController
 {
     private ?ChatbotServices $services = null;
@@ -91,8 +92,10 @@ class ChatbotController
     {
         switch ($method) {
             case "GET":
-                $_SESSION["cb_responses"] = serialize($this->services->getAllResponses());
-                header("Location: http://localhost/dashboard/chatbot-responses");
+                $_SESSION["cb_responses"] = serialize($this->services->getResponsesPagination(!isset($_GET["limit"]) ? _RESOURCE_PER_PAGE_ : $_GET["limit"], !isset($_GET["offset"]) ? _BASE_OFFSET_ : $_GET["offset"]));
+                $page = !isset($_GET["page"]) ? 1 : $_GET["page"];
+                $_SESSION["totalResponses"] = $this->services->getTotalResponses();
+                header("Location: http://localhost/dashboard/chatbot-responses?page=$page");
                 break;
             case "POST":
                 if (!$this->services->addResponse($_POST)) {

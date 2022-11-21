@@ -1,5 +1,4 @@
 <?php
-
 class PetProfile
 {
     private ?int $id = null;

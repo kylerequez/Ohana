@@ -1,5 +1,4 @@
 <?php
-
 class Appointment implements JsonSerializable
 {
     // Instance Variable

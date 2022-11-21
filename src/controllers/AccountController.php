@@ -1,6 +1,6 @@
 <?php
 require_once dirname(__DIR__) . '/models/Account.php';
-
+require_once dirname(__DIR__) . '/config/app-config.php';
 class AccountController
 {
     private ?AccountServices $services = null;
@@ -29,10 +29,11 @@ class AccountController
     public function processUserCollectionRequest(string $method): void
     {
         switch ($method) {
-                // User Display
             case "GET":
-                $_SESSION["users"] = serialize($this->services->getUserAccounts());
-                header("Location: http://localhost/dashboard/customers");
+                $_SESSION["users"] = serialize($this->services->getUserAccountsPagination(!isset($_GET["limit"]) ? _RESOURCE_PER_PAGE_ : $_GET["limit"], !isset($_GET["offset"]) ? _BASE_OFFSET_ : $_GET["offset"]));
+                $page = !isset($_GET["page"]) ? 1 : $_GET["page"];
+                $_SESSION["totalUsers"] = $this->services->getTotalUserCount();
+                header("Location: http://localhost/dashboard/customers?page=$page");
                 break;
         }
     }
@@ -86,9 +87,10 @@ class AccountController
         switch ($method) {
                 // Staff Display
             case "GET":
-                if (!isset($_SESSION)) session_start();
-                $_SESSION["staff"] = serialize($this->services->getStaffAccounts());
-                header("Location: http://localhost/dashboard/staff");
+                $_SESSION["staff"] = serialize($this->services->getStaffAccountsPagination(!isset($_GET["limit"]) ? _RESOURCE_PER_PAGE_ : $_GET["limit"], !isset($_GET["offset"]) ? _BASE_OFFSET_ : $_GET["offset"]));
+                $page = !isset($_GET["page"]) ? 1 : $_GET["page"];
+                $_SESSION["totalStaff"] = $this->services->getTotalStaffCount();
+                header("Location: http://localhost/dashboard/staff?page=$page");
                 break;
                 // Add Staff
             case "POST":

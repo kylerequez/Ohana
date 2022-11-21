@@ -1,5 +1,4 @@
 <?php
-
 class PetProfileServices
 {
     private ?PetProfileDAO $dao = null;
@@ -29,6 +28,16 @@ class PetProfileServices
         return $this->dao->searchByAccountId($id);
     }
 
+    public function getOhanaPetsPagination(string $limit, string $offset): mixed
+    {
+        return $this->dao->getOhanaPetsPagination($limit, $offset);
+    }
+
+    public function getTotalPetProfilesCount(): mixed
+    {
+        return $this->dao->getTotalPetProfilesCount();
+    }
+
     public function addPetProfile(array $data): mixed
     {
         // ADD IMAGE VALIDATION SOON !!! IMPORTANT
@@ -43,7 +52,7 @@ class PetProfileServices
         $pcciStatus = strtoupper($data["pcciStatus"]);
         $accountId = $data["accountId"];
         $ownerName = strtoupper($data["ownerName"]);
-        $price = $data["price"];
+        $price = (float) $data["price"];
         $status = "AVAILABLE";
 
         $petProfile = new PetProfile($image, $name, $birthdate, $sex, $color, $trait, $isVaccinated, $pcciStatus, $accountId, $ownerName, $price, $status);
@@ -72,7 +81,7 @@ class PetProfileServices
         $pcciStatus = strtoupper($data["pcciStatus"]);
         $accountId = $data["accountId"];
         $ownerName = strtoupper($data["ownerName"]);
-        $price = $data["price"];
+        $price = (float) $data["price"];
         $status = $data["status"];
 
         $profile = new PetProfile($image, $name, $birthdate, $sex, $color, $trait, $isVaccinated, $pcciStatus, $accountId, $ownerName, $price, $status);

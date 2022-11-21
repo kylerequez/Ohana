@@ -58,6 +58,16 @@
           include_once dirname(__DIR__) . '/../models/Log.php';
           $logs = unserialize($_SESSION["logs"]);
 
+          if (!isset($_GET['page'])) {
+            $current_page = 1;
+          } else {
+            $current_page = $_GET['page'];
+          }
+
+          $results_per_page = _RESOURCE_PER_PAGE_;
+          $count = $_SESSION["totalLogs"];
+          $number_of_page = ceil($count / $results_per_page) > 1 ? ceil($count / $results_per_page) : 1;
+
           if (!empty($logs)) {
           ?>
             <table class="posts-table">
@@ -85,14 +95,13 @@
         </div>
 
         <div class="paginations">
-          <li class="page-item previous-page"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">1</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
-          <li class="page-item dots"><a class="page-link" href="#">...</a></li>
-          <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
+          <?php
+            for ($page = 1; $page <= $number_of_page; $page++) {
+          ?>
+            <li class="page-item <?php echo ($current_page == $page) ? "next-page" : "current-page"; ?>"><a class="page-link" href="/dashboard/logs/get?page=<?php echo $page ?>&limit=<?php echo $results_per_page ?>&offset=<?php echo ($page == 1) ? 0 : $results_per_page * ($page - 1) ?>"><?php echo $page ?></a></li>
+          <?php
+            }
+          ?>
         </div>
 
       <?php

@@ -95,6 +95,10 @@
 
     <!-- START OF JAVASCRIPT-->
     <script>
+      $("form").submit(function() {
+        $(this).find(":submit").attr('disabled', 'disabled');
+      });
+
       const emailInput = $("#email"),
         emailIcon = $(".email-icon");
       emailInput.change("autocompletechange",

@@ -18,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && !isset($id)) {
     // Display Own Pet Profiles
     $controller->processCustomerRequest($_SERVER["REQUEST_METHOD"], null);
 } else if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($id)) {
-    echo "ELO";
     // Display Individual Pet Profile
     //$controller->processCustomerRequest($_SERVER["REQUEST_METHOD"], $id);
 } else if ($_SERVER["REQUEST_METHOD"] == "POST" && (!isset($type) && !isset($id))) {

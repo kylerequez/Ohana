@@ -1,5 +1,5 @@
 <?php
-
+require_once dirname(__DIR__) . '/config/app-config.php';
 class LogController
 {
     private ?LogServices $services = null;
@@ -20,17 +20,16 @@ class LogController
 
     public function processLogResourceRequest(string $method, ?string $id): void
     {
-
     }
 
     public function processLogCollectionRequest(string $method): void
     {
-        switch ($method)
-        {
+        switch ($method) {
             case "GET":
-                if(!isset($_SESSION)) session_start();
-                $_SESSION["logs"] = serialize($this->services->getAllLogs());
-                header("Location: http://localhost/dashboard/logs");
+                $_SESSION["logs"] = serialize($this->services->getLogsPagination(!isset($_GET["limit"]) ? _RESOURCE_PER_PAGE_ : $_GET["limit"], !isset($_GET["offset"]) ? _BASE_OFFSET_ : $_GET["offset"]));
+                $page = !isset($_GET["page"]) ? 1 : $_GET["page"];
+                $_SESSION["totalLogs"] = $this->services->getTotalLogCount();
+                header("Location: http://localhost/dashboard/logs?page=$page");
                 break;
         }
     }

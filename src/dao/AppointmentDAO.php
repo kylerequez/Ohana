@@ -1,6 +1,5 @@
 <?php
 require_once dirname(__DIR__) . "/models/Appointment.php";
-
 class AppointmentDAO
 {
     private PDO $conn;

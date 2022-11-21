@@ -8,6 +8,7 @@
     exit();
   } else {
     include_once dirname(__DIR__) . '/models/Account.php';
+    include_once dirname(__DIR__) . '/config/app-config.php';
     $user = unserialize($_SESSION['user']);
     $user->getType() == "USER" ? header("Location: http://localhost/home") : null;
   }

@@ -1,5 +1,4 @@
 <?php
-
 class AppointmentServices
 {
     private ?AppointmentDAO $dao = null;

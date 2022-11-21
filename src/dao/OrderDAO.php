@@ -1,7 +1,5 @@
 <?php
-
 require_once dirname(__DIR__) . "/models/Order.php";
-
 class OrderDAO
 {
     private PDO $conn;

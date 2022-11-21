@@ -1,5 +1,6 @@
 <?php
 require_once dirname(__DIR__) . "/models/Account.php";
+require_once dirname(__DIR__) . '/config/app-config.php';
 class PetProfileController
 {
     private ?PetProfileServices $services = null;
@@ -60,11 +61,16 @@ class PetProfileController
         switch ($method) {
                 // Display Pet Profiles
             case "GET":
-                $_SESSION["profiles"] = serialize($this->services->getOhanaPets());
-                header("Location: http://localhost/dashboard/petprofiles");
+                $_SESSION["profiles"] = serialize($this->services->getOhanaPetsPagination(!isset($_GET["limit"]) ? _RESOURCE_PER_PAGE_ : $_GET["limit"], !isset($_GET["offset"]) ? _BASE_OFFSET_ : $_GET["offset"]));
+                $page = !isset($_GET["page"]) ? 1 : $_GET["page"];
+                $_SESSION["totalProfiles"] = $this->services->getTotalPetProfilesCount();
+                header("Location: http://localhost/dashboard/petprofiles?page=$page");
                 break;
                 // Add Pet Profile
             case "POST":
+                ini_set('display_errors', 1);
+                ini_set('display_startup_errors', 1);
+                error_reporting(E_ALL);
                 $account = unserialize($_SESSION["user"]);
                 $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
                 $_POST["accountId"] = $account->getType() != "USER" ? 1 : $account->getId();

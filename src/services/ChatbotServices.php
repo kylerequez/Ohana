@@ -1,5 +1,4 @@
 <?php
-
 class ChatbotServices
 {
     private ?ChatbotDAO $dao = null;
@@ -12,6 +11,16 @@ class ChatbotServices
     public function getAllSettings(): mixed
     {
         return $this->dao->getAllSettings();
+    }
+
+    public function getResponsesPagination(string $limit, string $offset): mixed
+    {
+        return $this->dao->getResponsesPagination($limit, $offset);
+    }
+
+    public function getTotalResponses(): mixed
+    {
+        return $this->dao->getTotalResponses();
     }
 
     public function updateSettings(array $data): bool
