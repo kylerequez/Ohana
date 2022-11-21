@@ -21,26 +21,10 @@
 </head>
 
 <body>
-<<<<<<< HEAD
   <div class="layer"> </div>
-
   <!-- Body -->
-
   <div class="page-flex">
     <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
-=======
-  <?php
-  if (empty($_SESSION['user'])) {
-    session_unset();
-    session_destroy();
-    header("Location: http://localhost/login");
-    exit();
-  } else {
-    include_once dirname(__DIR__) . '/../models/Account.php';
-    $user = unserialize($_SESSION['user']);
-  ?>
-    <div class="layer"> </div>
->>>>>>> da2961b4d47efe43c4a6928f4fc4c2acc83e0dd4
 
     <div class="main-wrapper">
 
@@ -50,30 +34,16 @@
       <!--  STAFF ACCOUNTS CONTENT -->
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <br>
-          <center>
-            <h2 class="main-title"> STAFF ACCOUNTS </h2>
-          </center>
+
+          <h2 class="main-title mt-3 text-center"> STAFF ACCOUNTS </h2>
         </div>
 
-<<<<<<< HEAD
         <div class="users-table table-wrapper">
           <div class="search-wrapper">
             <i data-feather="search" aria-hidden="true"></i>
             <input type="text" placeholder=" Search User Account">
             <button type="filter" style="color:white"> FILTER </button>
             <button type="sort" style="color:white"> SORT </button>
-=======
-        <!-- ! Main nav -->
-        <?php include_once dirname(__DIR__) . "/navbar.php" ?>
-
-        <!--  STAFF ACCOUNTS CONTENT -->
-        <main class="main users chart-page" id="skip-target">
-          <div class="container">
-            
-              <h2 class="main-title mt-3 text-center"> STAFF ACCOUNTS </h2>
-           
->>>>>>> da2961b4d47efe43c4a6928f4fc4c2acc83e0dd4
           </div>
           <?php
           if ($user->getType() == "ADMINISTRATOR") {
@@ -110,72 +80,7 @@
                   <?php
                   if ($user->getType() == "ADMINISTRATOR") {
                   ?>
-<<<<<<< HEAD
                     <th>ACTION</th>
-=======
-                    <tr>
-                      <td><?php echo $staff->getId(); ?></td>
-                      <td><?php echo $staff->getFullName(); ?></td>
-                      <td><?php echo $staff->getEmail(); ?></td>
-                      <td><?php echo $staff->getStatus(); ?></td>
-                      <?php
-                      if ($user->getType() == "ADMINISTRATOR") {
-                      ?>
-                        <td>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $staff->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button></a>
-                          <a href="/dashboard/staff/delete/<?php echo $staff->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Account ID <?php echo $staff->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>
-                        </td>
-                      <?php
-                      }
-                      ?>
-
-                      <!-- EDIT STAFF POP UP MODAL -->
-                      <form method="POST" action="/dashboard/staff/update/<?php echo $staff->getId(); ?>">
-                        <div class="modal fade" id="editModalId<?php echo $staff->getId(); ?>" tabindex="-1" aria-labelledby="editstaffmodal" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="editingModal"> EDIT STAFF ACCOUNT </h5>
-                                <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
-                              </div>
-                              <div class="modal-body">
-                                <div class="mb-3">
-                                  <label for="fname" class="col-form-label"> First Name: </label>
-                                  <input type="text" class="form-control" name="fname" value="<?php echo $staff->getFname(); ?>" required style="background-color:#eed1c2;">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="mname" class="col-form-label"> Middle Name: </label>
-                                  <input type="text" class="form-control" name="mname" value="<?php echo $staff->getMname(); ?>" required style="background-color:#eed1c2;">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="lname" class="col-form-label"> Surname: </label>
-                                  <input type="text" class="form-control" name="lname" value="<?php echo $staff->getLname(); ?>" required style="background-color:#eed1c2;">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="email" class="col-form-label"> Email Address: </label>
-                                  <input type="email" class="form-control" name="email" value="<?php echo $staff->getEmail(); ?>" required style="background-color:#eed1c2;">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="number" class="col-form-label"> Contact Number: </label>
-                                  <input type="text" class="form-control" name="number" value="<?php echo $staff->getNumber(); ?>" required style="background-color:#eed1c2;">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="status" class="col-form-label"> Status: </label>
-                                  <select class="form-select" name="status" aria-label="Default select example" style="background-color:#eed1c2;">
-                                    <option <?php if ($staff->getStatus() === "ACTIVE") echo "selected"; ?> value="ACTIVE">Active</option>
-                                    <option <?php if ($staff->getStatus() === "DISABLED") echo "selected"; ?> value="DISABLED">Disabled</option>
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Save Changes </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </form>
-                    </tr>
->>>>>>> da2961b4d47efe43c4a6928f4fc4c2acc83e0dd4
                   <?php
                   }
                   ?>
@@ -214,27 +119,27 @@
                               <input type="hidden" name="type" value="<?php echo $staff->getType(); ?>">
                               <div class="mb-3">
                                 <label for="fname" class="col-form-label"> First Name: </label>
-                                <input type="text" class="form-control" name="fname" value="<?php echo $staff->getFname(); ?>" required>
+                                <input type="text" class="form-control" name="fname" value="<?php echo $staff->getFname(); ?>" required style="background-color:#eed1c2;">
                               </div>
                               <div class="mb-3">
                                 <label for="mname" class="col-form-label"> Middle Name: </label>
-                                <input type="text" class="form-control" name="mname" value="<?php echo $staff->getMname(); ?>" required>
+                                <input type="text" class="form-control" name="mname" value="<?php echo $staff->getMname(); ?>" required style="background-color:#eed1c2;">
                               </div>
                               <div class="mb-3">
                                 <label for="lname" class="col-form-label"> Surname: </label>
-                                <input type="text" class="form-control" name="lname" value="<?php echo $staff->getLname(); ?>" required>
+                                <input type="text" class="form-control" name="lname" value="<?php echo $staff->getLname(); ?>" required style="background-color:#eed1c2;">
                               </div>
                               <div class="mb-3">
                                 <label for="email" class="col-form-label"> Email Address: </label>
-                                <input type="email" class="form-control" name="email" value="<?php echo $staff->getEmail(); ?>" required>
+                                <input type="email" class="form-control" name="email" value="<?php echo $staff->getEmail(); ?>" required style="background-color:#eed1c2;">
                               </div>
                               <div class="mb-3">
                                 <label for="number" class="col-form-label"> Contact Number: </label>
-                                <input type="text" class="form-control" name="number" value="<?php echo $staff->getNumber(); ?>" required>
+                                <input type="text" class="form-control" name="number" value="<?php echo $staff->getNumber(); ?>" required style="background-color:#eed1c2;">
                               </div>
                               <div class="mb-3">
                                 <label for="status" class="col-form-label"> Status: </label>
-                                <select class="form-select" name="status" aria-label="Default select example">
+                                <select class="form-select" name="status" aria-label="Default select example" style="background-color:#eed1c2;">
                                   <option <?php if ($staff->getStatus() === "ACTIVE") echo "selected"; ?> value="ACTIVE">Active</option>
                                   <option <?php if ($staff->getStatus() === "DISABLED") echo "selected"; ?> value="DISABLED">Disabled</option>
                                 </select>
@@ -341,8 +246,6 @@
     </div>
   </div>
 
-<<<<<<< HEAD
-  <!-- SCRIPTS -->
   <script>
     //TOAST SCRIPT TRIGGER 
     const toastTrigger = document.getElementById('ToastBtn')
@@ -354,30 +257,9 @@
       })
     }
   </script>
-  <!-- Chart library -->
-  <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-
-  <!-- Icons library -->
-  <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
 
   <!-- Custom scripts -->
   <script src="/Ohana/src/dashboard/js/script.js"></script>
-=======
-    <script>
-      //TOAST SCRIPT TRIGGER 
-      const toastTrigger = document.getElementById('ToastBtn')
-      const toastLiveExample = document.getElementById('liveToast')
-      if (toastTrigger) {
-        toastTrigger.addEventListener('click', () => {
-          const toast = new bootstrap.Toast(toastLiveExample)
-          toast.show()
-        })
-      }
-    </script>
-   
-    <!-- Custom scripts -->
-    <script src="/Ohana/src/dashboard/js/script.js"></script>
->>>>>>> da2961b4d47efe43c4a6928f4fc4c2acc83e0dd4
 
   <!-- JavaScript BOOTSTRAP Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
