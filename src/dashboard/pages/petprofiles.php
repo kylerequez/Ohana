@@ -40,11 +40,7 @@
       <!--  PET PROFILES MAIN CONTENT -->
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-
-          <br>
-          <center>
-            <h2 class="main-title"> INVENTORY - PET PROFILES </h2>
-          </center>
+          <h2 class="main-title text-center mt-3">PET PROFILES</h2>
         </div>
         <div class="users-table table-wrapper">
 
@@ -171,7 +167,6 @@
                 ?>
               </tbody>
             </table>
-
             <div class="paginations">
               <?php
               for ($page = 1; $page <= $number_of_page; $page++) {
@@ -192,7 +187,6 @@
     <?php include_once dirname(__DIR__) . '/footer.php'; ?>
     </div><!-- main wrapper END -->
   </div> <!-- PAGE FLEX END-->
-
   <!-- MODALS -->
   <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
     <div class="toast-container top-0 end-0 p-3">
@@ -210,27 +204,6 @@
   }
   unset($_SESSION["msg"]);
   ?>
-
-  <!-- BOOTSTRAP LOGOUT MODAL -->
-  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutmodal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel"> Do you want to logout? </h5>
-          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          Make sure to double check the changess made in the system. All the unsaved changes will be lost.
-        </div>
-        <div class="modal-footer">
-          <a href="/landing.html"><button type="button" class="btn btn-secondary ">Logout</button></a>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- ADD PET PROFILE MODAL -->
   <form method="POST" action="/dashboard/petprofiles/add?page=<?php echo $current_page; ?>&limit=<?php echo $results_per_page; ?>&offset=<?php echo ($current_page == 1) ? 0 : $results_per_page * ($current_page - 1) ?>" enctype="multipart/form-data">
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addProfileModal" aria-hidden="true">
@@ -290,8 +263,6 @@
     </div>
   </form>
 
-  <!-- Chart library -->
-  <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
 
   <!-- Icons library -->
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>

@@ -3,14 +3,13 @@
   <div class="container-fluid">
     <div class="footer-start">
       <p> Ohana Kennel PH &copy; Copyright 2022. |
-      <a href="#" rel="noopener noreferrer" data-bs-toggle="modal" data-bs-target="#termsModal"> Terms and
+        <a href="#" rel="noopener noreferrer" data-bs-toggle="modal" data-bs-target="#termsModal"> Terms and
           Conditions </a> <a href="#" rel="noopener noreferrer" data-bs-toggle="modal" data-bs-target="#privacyModal"> | Data Privacy </a>
-          <a href="#" rel="noopener noreferrer" data-bs-toggle="modal" data-bs-target="#"> | User Manual |</a> 
-          </p>
+        <a href="#" rel="noopener noreferrer" data-bs-toggle="modal" data-bs-target="#"> | User Manual |</a>
+      </p>
     </div>
   </div>
 </footer>
-
 <!-- TERMS Modal -->
 <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsandconditions" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-scrollable">
@@ -19,14 +18,12 @@
         <h3 class="modal-title" id="ModalLabel"> OHANA KENNEL PH</h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-left:800px"></button>
       </div>
-
       <div class="modal-body">
-        <?php include_once dirname(__DIR__) . '/dashboard/pages/terms.php'; ?>
+        <?php include_once dirname(__DIR__) . '/pages/terms.php'; ?>
       </div>
     </div>
   </div>
 </div>
-
 <!-- DATA PRIVACY Modal -->
 <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="dataprivacy" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-scrollable">
@@ -36,7 +33,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-left:800px"></button>
       </div>
       <div class="modal-body">
-      <?php include_once dirname(__DIR__) . '/dashboard/pages/privacy.php'; ?>
+        <?php include_once dirname(__DIR__) . '/pages/privacy.php'; ?>
       </div>
     </div>
   </div>

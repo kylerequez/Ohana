@@ -28,52 +28,40 @@
 
 <body>
   <div class="layer"></div>
-
   <!-- Body -->
-
   <div class="page-flex">
-
     <!-- Dashboard Sidebar -->
     <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
-
     <div class="main-wrapper">
       <!-- ! Main nav -->
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
-
-      <!--  PET BOARDING MAIN CONTENT -->
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <br>
-          <center>
-            <h2 class="main-title"> INVENTORY - PET BOARDING SLOTS </h2>
-          </center>
+          <h2 class="main-title text-center mt-3"> PET BOARDING SLOTS </h2>
         </div>
-
         <div class="users-table table-wrapper">
           <div class="search-wrapper">
             <i data-feather="search" aria-hidden="true"></i>
             <input type="text" placeholder=" Search">
+            <button type="filter" class="text-white"> FILTER </button>
+            <button type="sort" class="text-white"> SORT </button>
           </div>
           <div class="createstaff-wrapper">
             <a class="create-staff-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create">
                 <i data-feather="plus" aria-hidden="true"></i>
                 Add Slot </button></a>
           </div>
-
           <?php
           require_once dirname(__DIR__) . '/../models/BoardingSlot.php';
           $slots = unserialize($_SESSION["slots"]);
-
           if (!isset($_GET['page'])) {
             $current_page = 1;
           } else {
             $current_page = $_GET['page'];
           }
-
           $results_per_page = _RESOURCE_PER_PAGE_;
           $count = $_SESSION["totalSlots"];
           $number_of_page = ceil($count / $results_per_page) > 1 ? ceil($count / $results_per_page) : 1;
-
           if (!empty($slots)) {
           ?>
             <table class="posts-table">
@@ -145,7 +133,6 @@
                 ?>
               </tbody>
             </table>
-
             <div class="paginations">
               <?php
               for ($page = 1; $page <= $number_of_page; $page++) {
@@ -155,36 +142,34 @@
               }
               ?>
             </div>
-        </div>
-      <?php
+          <?php
           } else {
             echo "<h1>NULL</h1>";
           }
-      ?>
-      <!-- MODALS -->
-      <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-        <div class="toast-container top-0 end-0 p-3">
-          <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
-            <div class="toast-header">
-              <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
-              <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
-              <small> JUST NOW </small>
-              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
-          </div>
+          ?>
         </div>
-      <?php
-      }
-      unset($_SESSION["msg"]);
-      ?>
       </main>
-
       <!-- FOOTER -->
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
-
     </div><!-- main wrapper END -->
   </div> <!-- PAGE FLEX END-->
+  <!-- TOAST -->
+  <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+    <div class="toast-container top-0 end-0 p-3">
+      <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+        <div class="toast-header">
+          <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+          <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
+          <small> JUST NOW </small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
+      </div>
+    </div>
+  <?php
+  }
+  unset($_SESSION["msg"]);
+  ?>
 
   <!-- ADD SLOTS MODAL -->
   <form method="POST" action="/dashboard/petboarding/add?page=<?php echo $current_page; ?>&limit=<?php echo $results_per_page; ?>&offset=<?php echo ($current_page == 1) ? 0 : $results_per_page * ($current_page - 1) ?>" enctype="multipart/form-data">
@@ -218,30 +203,7 @@
     </div>
   </form>
 
-  <!-- BOOTSTRAP LOGOUT MODAL -->
-  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutmodal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel"> Do you want to logout? </h5>
-          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          Make sure to double check the changess made in the system. All the unsaved changes will be lost.
-        </div>
-        <div class="modal-footer">
-          <a href="/landing.html"><button type="button" class="btn btn-secondary ">Logout</button></a>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- SCRIPTS -->
-
-  <!-- Chart library -->
-  <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
 
   <!-- Icons library -->
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>

@@ -32,10 +32,7 @@
       <!--  TRANSACTIONS CONTENT -->
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <br>
-          
-            <h2 class="main-title text-center"> CUSTOMER TRANSACTIONS </h2>
-   
+          <h2 class="main-title text-center mt-3"> CUSTOMER TRANSACTIONS </h2>
         </div>
         <div class="users-table table-wrapper">
           <div class="search-wrapper">

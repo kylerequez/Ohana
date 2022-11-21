@@ -23,44 +23,29 @@
 
 <body>
   <div class="layer"> </div>
-
   <!-- Body -->
-
   <div class="page-flex">
     <!-- Dashboard Sidebar -->
     <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
-
     <div class="main-wrapper">
-
       <!-- ! Main nav -->
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
-
-      <!--  CUSTOMER ACCOUNTS CONTENT -->
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <br>
-          <center>
-            <h2 class="main-title"> USER FEEDBACK </h2>
-          </center>
+          <h2 class="main-title text-center mt-3">USER FEEDBACKS</h2>
         </div>
-
         <div class="users-table table-wrapper">
           <div class="search-wrapper">
             <i data-feather="search" aria-hidden="true"></i>
             <input type="text" placeholder=" Search..">
           </div>
-
-          <br>
-
           <table class="posts-table">
             <thead>
               <tr class="users-table-info">
-
                 <th>FEEDBACK I.D </th>
                 <th>NAME OF USER</th>
                 <th>DATE</th>
                 <th>ACTION</th>
-
               </tr>
             </thead>
             <tbody>
@@ -108,19 +93,12 @@
             </tbody>
           </table>
         </div>
-
       </main>
-
       <!-- ! Footer -->
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
-
     </div>
   </div>
-
   <!-- SCRIPTS -->
-
-  <!-- Chart library -->
-  <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
 
   <!-- Icons library -->
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>

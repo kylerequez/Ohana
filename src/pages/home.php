@@ -18,57 +18,158 @@
     <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
 
     <?php include_once 'stylesheets.php'; ?>
+    <style>
+        #carouselCaptions {
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        @media screen and (min-width: 360px) and (max-width: 767.98px) {
+            #slider {
+                position: relative;
+                width: 60%;
+                height: 35vw;
+                margin: 150px auto;
+                transform-style: preserve-3d;
+
+            }
+
+            #h1 {
+                font-size: 30px;
+                color: #7d605c;
+                font-family: 'Acme', sans-serif;
+            }
+
+            #welcome {
+                font-size: 35px;
+                Margin-top: 40%;
+                color: #db6551;
+                font-family: 'Acme', sans-serif;
+            }
+
+            #kauhale {
+                font-size: 35px;
+                font-family: 'Acme', sans-serif;
+                margin-top: 30px;
+                color: #7d605c;
+            }
+
+            .btn-Learn button {
+                background-color: white;
+                border: 1px solid #ffffff;
+                display: inline-block;
+                cursor: pointer;
+                color: #7d605c;
+                font-family: "Poppins";
+                font-size: 12px;
+                padding: 12px 30px;
+                text-decoration: none;
+                text-shadow: 0px 1px 0px #ffffff;
+                text-align: center;
+            }
+
+            .card {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        }
+    </style>
 </head>
 
 <body style="background-color: #faf8f0">
     <main>
         <div class="container-fluid">
 
-            <!-- REGISTERED USERS NAVIGATION BAR-->
             <?php include_once 'Rnavbar.php'; ?>
 
-            <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
             <div class="message">
-                <h1 style="font-size:80px; Margin-top:10%; color:#c0b65a; font-family: 'Acme', sans-serif;"> WELCOME TO OHANA!</h1>
+                <h1 class="text-center" id="welcome"> WELCOME TO OHANA!</h1>
             </div>
-            <section id="slider">
-                <input type="radio" name="slider" id="s1" checked>
-                <input type="radio" name="slider" id="s2">
-                <input type="radio" name="slider" id="s3">
-                <input type="radio" name="slider" id="s4">
-                <input type="radio" name="slider" id="s5">
 
-                <label for="s1" id="slide1"><img src="/Ohana/src/images/sliders/aboutslide.png" class="img-fluid" alt=""></label>
-                <label for="s2" id="slide2"><img src="/Ohana/src/images/sliders/visit.png" class="img-fluid" alt=""></label>
-                <label for="s3" id="slide3"><img src="/Ohana/src/images/sliders/studservice.png" class="img-fluid" alt=""></label>
-                <label for="s4" id="slide4"><img src="/Ohana/src/images/sliders/rehome.png" class="img-fluid" alt=""></label>
-                <label for="s5" id="slide5"><img src="/Ohana/src/images/sliders/socialmed.png" class="img-fluid" alt=""></label>
+            <section id="carousels">
+                <div id="carouselCaptions" class="carousel slide mt-5" data-bs-ride="false">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="/Ohana/src/images/sliders/aboutus.png" class="d-block w-100 img-fluid" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h1 class="text-light" style="font-size:70px;font-family: 'Acme', sans-serif;"> About Us </h1>
+
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/Ohana/src/images/sliders/visitslide.png" class="d-block w-100 img-fluid" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h1 class="text-light" style="font-size:70px;font-family: 'Acme', sans-serif;"> Kennel Visit</h1>
+
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/Ohana/src/images/sliders/studslide.png" class="d-block w-100 img-fluid" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h1 class="text-light" style="font-size:70px;font-family: 'Acme', sans-serif;"> Stud Service</h1>
+
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/Ohana/src/images/sliders/rehomeslide.png" class="d-block w-100 img-fluid" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h1 class="text-light" style="font-size:70px;font-family: 'Acme', sans-serif;"> Pet Rehoming </h1>
+
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/Ohana/src/images/sliders/contactslide.png" class="d-block w-100 img-fluid" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselCaptions" data-bs-slide="prev">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselCaptions" data-bs-slide="next">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                </div>
             </section>
+
             <section>
-                <h1 style="font-size:90px; Margin-top:10%; color:#7d605c; font-family: 'Acme', sans-serif;"> Customer Reviews </h1>
+                <h1 class="text-center" id="h1"> What our Customer Says </h1>
                 <div class="container-xl mt-5">
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
-                                <div class="card-body m-3">
-                                    <h5 class="card-title"> NAME OF CUSTOMER </h5>
-                                    <p class="card-text">customer review to be inserted</p>
+                                <div class="card-body">
+                                    <h5 class="card-text text-center mt-2 mb-2"> Maraming Salamat! Alagaan ko to. Ang ganda niya. Thank you ulit 👌🏻” </h5><br>
+                                    <h4 class="card-title text-center mt-2"> Edrich Pineda </h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
-                                <div class="card-body m-3">
-                                    <h5 class="card-title"> NAME OF CUSTOMER </h5>
-                                    <p class="card-text">customer review to be inserted</p>
+                                <div class="card-body">
+
+                                    <h5 class="card-text text-center mt-2 mb-2">"Thank you so much! So happy with my puppy!”</h5><br>
+                                    <h4 class="card-title text-center"> Ron Ilao</h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
-                                <div class="card-body m-3">
-                                    <h5 class="card-title"> NAME OF CUSTOMER </h5>
-                                    <p class="card-text">customer review to be inserted</p>
+                                <div class="card-body">
+
+                                    <h5 class="card-text text-center mt-2 mb-2">“Thank you sir. Quality talaga yung puppy at napaka-cute. Solid!”</h5><br>
+                                    <h4 class="card-title text-center"> Ralph Hernandez </h4>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +178,7 @@
             </section>
 
             <section>
-                <h1 style="font-size:90px; Margin-top:10%; color:#7d605c; font-family: 'Acme', sans-serif;"> I need a <strong style="color:#db6551"> KAUHALE </strong> </h1>
+                <h1 class="text-center" id="kauhale"> I need a <strong style="color:#db6551"> KAUHALE </strong> </h1>
                 <div class="container d-flex justify-content-center mt-5">
 
                     <div class="row">

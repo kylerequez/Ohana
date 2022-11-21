@@ -16,6 +16,30 @@
   <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
   <?php include_once 'stylesheets.php'; ?>
+  <style>
+    @media screen and (min-width: 360px) and (max-width: 929.98px) {
+      #forgottitle {
+        font-size: 35px;
+        margin-top: 15%;
+      }
+
+      #forgotdesc {
+        font-size: 20px;
+        margin-top: 10px;
+      }
+
+      #btnReset {
+        display: block;
+        padding: 10px 60px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .input__label {
+        font-size: 15px;
+      }
+    }
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0;">

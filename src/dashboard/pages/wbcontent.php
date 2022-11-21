@@ -26,29 +26,18 @@
 
 <body>
   <div class="layer"> </div>
-
   <!-- Body -->
-
   <div class="page-flex">
-
     <!-- Dashboard Sidebar -->
     <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
-
     <div class="main-wrapper">
-
-
       <!-- ! Main nav -->
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
-
       <!--  SYSTEM LOGS MAIN CONTENT -->
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <br>
-          <center>
-            <h2 class="main-title"> WEBSITE CONTENT </h2>
-          </center>
+          <h2 class="main-title text-center mt-3"> WEBSITE CONTENT </h2>
         </div>
-
         <div class="users-table table-wrapper">
           <div class="search-wrapper">
             <i data-feather="search" aria-hidden="true"></i>
@@ -56,9 +45,6 @@
             <button type="filter" style="color:white"> FILTER </button>
             <button type="sort" style="color:white"> SORT </button>
           </div>
-
-          <br>
-
           <table class="posts-table">
             <thead>
               <tr class="users-table-info">
@@ -80,7 +66,6 @@
             </tbody>
           </table>
         </div>
-
         <div class="paginations">
           <li class="page-item previous-page"><a class="page-link" href="#">Previous</a></li>
           <li class="page-item current-page"><a class="page-link" href="#">1</a></li>
@@ -91,12 +76,9 @@
           <li class="page-item dots"><a class="page-link" href="#">...</a></li>
           <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
         </div>
-
       </main>
-
       <!-- FOOTER -->
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
-
     </div>
   </div>
   <!-- TOAST -->

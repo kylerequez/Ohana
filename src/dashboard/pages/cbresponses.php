@@ -23,25 +23,18 @@
 
 <body>
   <div class="layer"> </div>
-
   <!-- Body -->
-
   <div class="page-flex">
     <!-- Dashboard Sidebar -->
     <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
-
     <div class="main-wrapper">
-
       <!-- ! Main nav -->
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
 
       <!--  CUSTOMER ACCOUNTS CONTENT -->
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <br>
-          <center>
-            <h2 class="main-title"> CHATBOT RESPONSES </h2>
-          </center>
+          <h2 class="main-title text-center mt-3">CHATBOT RESPONSES</h2>
         </div>
         <div class="users-table table-wrapper">
           <div class="search-wrapper">
@@ -142,57 +135,56 @@
             echo "<h1>NULL</h1>";
           }
           ?>
-          <!-- ADD PET PROFILE MODAL -->
-          <form method="POST" action="/dashboard/chatbot-responses/add?page=<?php echo $current_page; ?>&limit=<?php echo $results_per_page; ?>&offset=<?php echo ($current_page == 1) ? 0 : $results_per_page * ($current_page - 1) ?>">
-            <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addResponseModal" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="addStaffTitle"> ADD CHATBOT RESPONSE </h5>
-                    <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
-                  </div>
-                  <input name="timesAsked" type="hidden" value="0">
-                  <div class="modal-body">
-                    <div class="mb-3">
-                      <label for="query" class="col-form-label"> QUERY </label>
-                      <input type="text" class="form-control" name="query" placeholder="Enter User Query" required style="background-color:#eed1c2; color:black">
-                    </div>
-                    <div class="mb-3">
-                      <label for="response" class="col-form-label"> RESPONSE </label>
-                      <input type="text" class="form-control" name="response" placeholder="Enter Dog Name" required style="background-color:#eed1c2; color:black">
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="submit" class="btn" style="background-color:#db6551; color:white"> Add Response </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
         </div>
       </main>
-
       <!-- ! Footer -->
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
-
-      <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-        <div class="toast-container top-0 end-0 p-3">
-          <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
-            <div class="toast-header">
-              <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
-              <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
-              <small> JUST NOW </small>
-              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
-          </div>
-        </div>
-      <?php
-      }
-      unset($_SESSION["msg"]);
-      ?>
     </div>
   </div>
+  <!-- TOAST -->
+  <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+    <div class="toast-container top-0 end-0 p-3">
+      <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+        <div class="toast-header">
+          <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+          <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
+          <small> JUST NOW </small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
+      </div>
+    </div>
+  <?php
+  }
+  unset($_SESSION["msg"]);
+  ?>
+  <!-- ADD PET PROFILE MODAL -->
+  <form method="POST" action="/dashboard/chatbot-responses/add?page=<?php echo $current_page; ?>&limit=<?php echo $results_per_page; ?>&offset=<?php echo ($current_page == 1) ? 0 : $results_per_page * ($current_page - 1) ?>">
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addResponseModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addStaffTitle"> ADD CHATBOT RESPONSE </h5>
+            <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+          </div>
+          <input name="timesAsked" type="hidden" value="0">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="query" class="col-form-label"> QUERY </label>
+              <input type="text" class="form-control" name="query" placeholder="Enter User Query" required style="background-color:#eed1c2; color:black">
+            </div>
+            <div class="mb-3">
+              <label for="response" class="col-form-label"> RESPONSE </label>
+              <input type="text" class="form-control" name="response" placeholder="Enter Dog Name" required style="background-color:#eed1c2; color:black">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn" style="background-color:#db6551; color:white"> Add Response </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 
   <!-- SCRIPTS -->
 

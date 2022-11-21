@@ -26,27 +26,19 @@
 </head>
 
 <body>
-  <div class="layer"> </div>
-
+  <div class="layer"></div>
   <!-- Body -->
-
   <div class="page-flex">
     <!-- Dashboard Sidebar -->
     <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
-
     <div class="main-wrapper">
       <!-- ! Main nav -->
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
-
       <!--  CUSTOMER ACCOUNTS CONTENT -->
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <br>
-          <center>
-            <h2 class="main-title"> REGISTERED USER ACCOUNTS </h2>
-          </center>
+          <h2 class="main-title text-center mt-3">REGISTERED USER ACCOUNTS</h2>
         </div>
-
         <div class="users-table table-wrapper">
           <div class="search-wrapper">
             <i data-feather="search" aria-hidden="true"></i>
@@ -66,7 +58,7 @@
           $results_per_page = _RESOURCE_PER_PAGE_;
           $count = $_SESSION["totalUsers"];
           $number_of_page = ceil($count / $results_per_page) > 1 ? ceil($count / $results_per_page) : 1;
-          
+
           if (!empty($users)) {
           ?>
             <table class="posts-table">
@@ -118,8 +110,6 @@
                 ?>
               </tbody>
             </table>
-
-            
             <div class="paginations">
               <?php
               for ($page = 1; $page <= $number_of_page; $page++) {
@@ -140,7 +130,6 @@
       </main>
       <!-- ! Footer -->
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
-
     </div>
   </div>
   <!-- TOAST -->
@@ -161,9 +150,6 @@
   unset($_SESSION["msg"]);
   ?>
   <!-- SCRIPTS -->
-
-  <!-- Chart library -->
-  <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
 
   <!-- Icons library -->
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>

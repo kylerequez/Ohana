@@ -28,7 +28,7 @@
     <div class="sidebar-body">
       <ul class="sidebar-body-menu">
         <li><a href="/dashboard"><span class="icon home" aria-hidden="true"></span>Dashboard Home</a></li>
-        <li><a href="/dashboard/petprofiles/get"><span class="icon document" aria-hidden="true"></span>Inventory - Pet Profiles</span></a></li>
+        <li><a href="/dashboard/petprofiles/get"><span class="icon document" aria-hidden="true"></span>Pet Profiles</span></a></li>
         <li><a href="/dashboard/petboarding/get"><span class="icon paperplus" aria-hidden="true"></span>Pet Boarding Slots</span></a></li>
         <li><a href="/dashboard/appointments/get"><span class="icon calendar" aria-hidden="true"></span>Appointments</a></li>
         <li><a href="/dashboard/website-content"><span class="icon image" aria-hidden="true"></span>Website Content</a></li>

@@ -30,26 +30,17 @@
 
 <body>
   <div class="layer"> </div>
-
   <!-- Body -->
-
   <div class="page-flex">
     <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
-
     <div class="main-wrapper">
-
       <!-- ! Main nav -->
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
-
       <!--  STAFF ACCOUNTS CONTENT -->
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <br>
-          <center>
-            <h2 class="main-title"> STAFF ACCOUNTS </h2>
-          </center>
+          <h2 class="main-title text-center mt-3"> STAFF ACCOUNTS </h2>
         </div>
-
         <div class="users-table table-wrapper">
           <div class="search-wrapper">
             <i data-feather="search" aria-hidden="true"></i>
@@ -64,22 +55,17 @@
               <a class="create-staff-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white"><i data-feather="plus" aria-hidden="true"></i>
                   Add Staff </button></a>
             </div>
-            <br>
           <?php
           }
-
           if (!isset($_GET['page'])) {
             $current_page = 1;
           } else {
             $current_page = $_GET['page'];
           }
-
           $results_per_page = _RESOURCE_PER_PAGE_;
           $count = $_SESSION["totalStaff"];
           $number_of_page = ceil($count / $results_per_page) > 1 ? ceil($count / $results_per_page) : 1;
-
           $staffs = unserialize($_SESSION["staff"]);
-
           if (!empty($staffs)) {
           ?>
             <table class="posts-table">
@@ -117,7 +103,6 @@
                     <?php
                     }
                     ?>
-
                     <!-- EDIT STAFF POP UP MODAL -->
                     <form method="POST" action="/dashboard/staff/update/<?php echo $staff->getId(); ?>?page=<?php echo $current_page; ?>&limit=<?php echo $results_per_page; ?>&offset=<?php echo ($current_page == 1) ? 0 : $results_per_page * ($current_page - 1) ?>">
                       <div class="modal fade" id="editModalId<?php echo $staff->getId(); ?>" tabindex="-1" aria-labelledby="editstaffmodal" aria-hidden="true">
@@ -170,7 +155,6 @@
                 ?>
               </tbody>
             </table>
-
             <div class="paginations">
               <?php
               for ($page = 1; $page <= $number_of_page; $page++) {
@@ -188,9 +172,13 @@
           }
           ?>
         </div>
-
-        <!-- ADD STAFF POP UP MODAL -->
-        <form method="POST" action="/dashboard/staff/add?page=<?php echo $current_page; ?>&limit=<?php echo $results_per_page; ?>&offset=<?php echo ($current_page == 1) ? 0 : $results_per_page * ($current_page - 1) ?>">
+      </main>
+      <!-- ! Footer -->
+      <?php include_once dirname(__DIR__) . '/footer.php'; ?>
+    </div>
+  </div>
+  <!-- ADD STAFF POP UP MODAL -->
+  <form method="POST" action="/dashboard/staff/add?page=<?php echo $current_page; ?>&limit=<?php echo $results_per_page; ?>&offset=<?php echo ($current_page == 1) ? 0 : $results_per_page * ($current_page - 1) ?>">
           <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addStaffModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
@@ -250,13 +238,6 @@
           }
           unset($_SESSION["msg"]);
           ?>
-      </main>
-
-      <!-- ! Footer -->
-      <?php include_once dirname(__DIR__) . '/footer.php'; ?>
-
-    </div>
-  </div>
 
   <!-- SCRIPTS -->
   <script>

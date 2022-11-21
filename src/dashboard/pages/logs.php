@@ -40,34 +40,26 @@
       <!--  SYSTEM LOGS MAIN CONTENT -->
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <br>
-          <center>
-            <h2 class="main-title"> SYSTEM LOGS </h2>
-          </center>
+          <h2 class="main-title text-center mt-3"> SYSTEM LOGS </h2>
         </div>
-
         <div class="users-table table-wrapper">
           <div class="search-wrapper">
             <i data-feather="search" aria-hidden="true"></i>
             <input type="text" placeholder=" Search ">
-            <button type="filter"> FILTER </button>
-            <button type="sort"> SORT </button>
+            <button type="filter" class="text-white"> FILTER </button>
+            <button type="sort" class="text-white"> SORT </button>
           </div>
-          <br>
           <?php
           include_once dirname(__DIR__) . '/../models/Log.php';
           $logs = unserialize($_SESSION["logs"]);
-
           if (!isset($_GET['page'])) {
             $current_page = 1;
           } else {
             $current_page = $_GET['page'];
           }
-
           $results_per_page = _RESOURCE_PER_PAGE_;
           $count = $_SESSION["totalLogs"];
           $number_of_page = ceil($count / $results_per_page) > 1 ? ceil($count / $results_per_page) : 1;
-
           if (!empty($logs)) {
           ?>
             <table class="posts-table">
@@ -85,41 +77,35 @@
                   <tr>
                     <td><?php echo $log->getId(); ?></td>
                     <td><?php echo $log->getLog(); ?></td>
-                    <td><?php echo $log->getDate()->format('m-d-Y H:i:s'); ?></td>
+                    <td><?php echo $log->getDate()->format('M-d-Y H:i:s'); ?></td>
                   </tr>
                 <?php
                 }
                 ?>
               </tbody>
             </table>
-        </div>
-
-        <div class="paginations">
+            <div class="paginations">
+              <?php
+              for ($page = 1; $page <= $number_of_page; $page++) {
+              ?>
+                <li class="page-item <?php echo ($current_page == $page) ? "next-page" : "current-page"; ?>"><a class="page-link" href="/dashboard/logs/get?page=<?php echo $page ?>&limit=<?php echo $results_per_page ?>&offset=<?php echo ($page == 1) ? 0 : $results_per_page * ($page - 1) ?>"><?php echo $page ?></a></li>
+              <?php
+              }
+              ?>
+            </div>
           <?php
-            for ($page = 1; $page <= $number_of_page; $page++) {
-          ?>
-            <li class="page-item <?php echo ($current_page == $page) ? "next-page" : "current-page"; ?>"><a class="page-link" href="/dashboard/logs/get?page=<?php echo $page ?>&limit=<?php echo $results_per_page ?>&offset=<?php echo ($page == 1) ? 0 : $results_per_page * ($page - 1) ?>"><?php echo $page ?></a></li>
-          <?php
-            }
-          ?>
-        </div>
-
-      <?php
           } else {
             echo "NULL";
           }
-      ?>
+          ?>
+        </div>
       </main>
       <!-- FOOTER -->
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
-
     </div>
   </div>
 
   <!-- SCRIPTS -->
-
-  <!-- Chart library -->
-  <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
 
   <!-- Icons library -->
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>

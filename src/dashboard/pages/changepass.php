@@ -29,167 +29,72 @@
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
     </style>
 
-    <style>
-        h1 {
-            margin-bottom: .75em;
-            font-size: 50px;
-            color: #db6551;
-            font-weight: bold;
-        }
 
-        h1 span,
-        small {
-            display: block;
-            font-size: 14px;
-            color: #989598;
-        }
-
-        small {
-            font-style: italic;
-            font-size: 11px;
-        }
-
-        form p {
-            position: relative;
-        }
-
-        .password {
-            width: 90%;
-            padding: 15px 12px;
-            margin-bottom: 5px;
-            border: 1px solid #e5e5e5;
-            border-bottom: 2px solid #ddd;
-            background: rgba(255, 255, 255, 0.2) !important;
-            color: #555;
-        }
-
-        .password+.unmask {
-            position: absolute;
-            right: 5%;
-            top: 10px;
-            width: 25px;
-            height: 25px;
-            background: transparent;
-            border-radius: 50%;
-            cursor: pointer;
-            border: none;
-            font-family: 'fontawesome';
-            font-size: 14px;
-            line-height: 24px;
-            -webkit-appearance: none;
-            outline: none
-        }
-
-        .password+.unmask:before {
-            content: "\f06e";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 25px;
-            height: 25px;
-            background: rgba(205, 205, 205, 0.2);
-            z-index: 1;
-            color: #aaa;
-            border: 2px solid;
-            border-radius: 50%;
-        }
-
-        .password[type="text"]+.unmask:before {
-            content: "\f070";
-            background: rgba(105, 205, 255, 0.2);
-            color: #06a
-        }
-
-        #valid {
-            font-size: 12px;
-            color: #daa;
-            height: 15px
-        }
-
-        #strong {
-            height: 20px;
-            font-size: 12px;
-            color: #daa;
-            text-transform: capitalize;
-            background: rgba(205, 205, 205, 0.1);
-            border-radius: 5px;
-            overflow: hidden
-        }
-
-        #strong span {
-            display: block;
-            box-shadow: 0 0 0 #fff inset;
-            height: 100%;
-            transition: all 0.8s
-        }
-
-        #strong .weak {
-            box-shadow: 5em 0 0 #daa inset;
-        }
-
-        #strong .medium {
-            color: #da6;
-            box-shadow: 10em 0 0 #da6 inset
-        }
-
-        #strong .strong {
-            color: #595;
-            box-shadow: 50em 0 0 #ada inset
-        }
-
-        .lists {
-            padding: 0%;
-        }
-    </style>
 </head>
 
 <body>
     <div class="layer"> </div>
     <!-- Body -->
-    <div class="page-flex">
-        <!-- Dashboard Sidebar -->
-        <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
+    <!-- Dashboard Sidebar -->
+    <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
 
-        <div class="main-wrapper">
-            <!-- END OF ADMIN DASHBOARD SIDE-->
-            <div class="layer"> </div>
-            <!-- Body -->
-            <div class="page-flex">
-                <!-- Dashboard Sidebar -->
-                <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
-                <div class="main-wrapper">
-                    <!-- ! Main nav -->
-                    <?php include_once dirname(__DIR__) . "/navbar.php" ?>
-                    <main class="main users chart-page" id="skip-target">
-                        <div class="container d-flex justify-content-center">
+    <div class="main-wrapper">
+        <!-- END OF ADMIN DASHBOARD SIDE-->
+        <div class="layer"> </div>
+        <!-- Body -->
+        <div class="page-flex">
+            <!-- Dashboard Sidebar -->
+            <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
+            <div class="main-wrapper">
+                <!-- ! Main nav -->
+                <?php include_once dirname(__DIR__) . "/navbar.php" ?>
+                <main class="main users chart-page" id="skip-target">
+                    <div class="container d-flex justify-content-center">
 
-                            <form id=" myform-search" method="post" autocomplete="off">
-                                <h1 class="text-center mt-5" style="font-family: 'Acme', sans-serif; color:#db6551; font-size:70px;">Change your Password</h1>
-                                <p class="text-center mb-5" style="font-size:20px;">Input a new password for your account</p>
+                        <form id=" myform-search" method="post" autocomplete="off">
+                            <h1 class="text-center mt-5" style="font-family: 'Acme', sans-serif; color:#db6551; font-size:70px;">Change your Password</h1>
+                            <p class="text-center mb-5" style="font-size:20px;">Input a new password for your account</p>
 
-                                <p><input type="password" value="" placeholder="Current Password" name="password" id="password" class="password" for="password" required style="background-color:#eed1c2"></p>
-                                <p><input type="password" value="" placeholder="Enter New Password" name="new-password" id="new-password" class="password" for="password" required style="background-color:#eed1c2"></p>
-                                <p><input type="password" value="" placeholder="Confirm Password" name="confirm-password" id="confirm-password" class="password" for="confirm-password" required style="background-color:#eed1c2">
-                                <div class="d-flex justify-content-start mt-3">
-                                    <input type="checkbox" name="" onclick="myFunction()">
-                                    <label> Show Password </label>
-                                </div>
-                                </p>
-                                <div class="d-flex justify-content-center mt-5">
-                                    <a href="/userprofile">
-                                        <button class="btn btn-outline-secondary m-3" type="button">Back to profile</button></a>
-                                    <button class="btn profile-button m-3" type="submit" style="background-color:#db6551; color:white; ">Save Changes</button>
-                                </div>
-                            </form>
-                        </div>
-                </div>
-                <!-- CHANGE PASSWORD CONTENT -->
-                </main>
-                <!-- FOOTER -->
-                <?php include_once dirname(__DIR__) . '/footer.php'; ?>
+                            <p><input type="password" value="" placeholder="Current Password" name="password" id="password" class="password" for="password" required style="background-color:#eed1c2"></p>
+                            <p><input type="password" value="" placeholder="Enter New Password" name="new-password" id="new-password" class="password" for="password" required style="background-color:#eed1c2"></p>
+                            <p><input type="password" value="" placeholder="Confirm Password" name="confirm-password" id="confirm-password" class="password" for="confirm-password" required style="background-color:#eed1c2">
+                            <div class="d-flex justify-content-start mt-3">
+                                <input type="checkbox" name="" onclick="myFunction()">
+                                <label> Show Password </label>
+                            </div>
+                            </p>
+                            <div class="d-flex justify-content-center mt-5">
+                                <a href="/dashboard/profile">
+                                    <button class="btn btn-outline-dark m-3" type="button">Back to profile</button></a>
+                                <button class="btn profile-button m-3" type="submit" style="background-color:#db6551; color:white; ">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
             </div>
+            <!-- CHANGE PASSWORD CONTENT -->
+            </main>
+            <!-- FOOTER -->
+            <?php include_once dirname(__DIR__) . '/footer.php'; ?>
         </div>
     </div>
+    <!-- TOAST -->
+    <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+        <div class="toast-container top-0 end-0 p-3">
+            <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+                <div class="toast-header">
+                    <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+                    <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
+                    <small> JUST NOW </small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
+            </div>
+        </div>
+    <?php
+    }
+    unset($_SESSION["msg"]);
+    ?>
+
 
     <!-- SCIPTS -->
     <script>
