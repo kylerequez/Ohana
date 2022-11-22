@@ -7,10 +7,15 @@
     #terms {
       font-size: 12px;
     }
+
+    .container-fluid {
+      margin-top: 20%
+    }
+
   }
 </style>
 <div class="container-fluid" style="width:75%; color:#db6551">
-  <footer class="py-3 my-4 border-top border-warning bottom-0">
+  <footer id="webfooter" class="py-3 my-4 border-top border-warning bottom-0">
     <p id="paragraph" class="text-center mt-4"> &copy; 2022 Ohana Kennel PH. All Rights Reserved</p>
     <ul class="nav justify-content-center pb-3 mb-3 mt-3">
       <a href="#" id="terms" style="text-decoration:none; color:#c0b65a;" data-bs-toggle="modal" data-bs-target="#termsModal"> TERMS AND CONDITIONS </a>

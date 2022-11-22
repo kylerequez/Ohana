@@ -15,11 +15,33 @@
   <!-- EXTERNAL CSS IMPORT-->
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-  <link rel="stylesheet" href="/Ohana/src/css/footer.css">
   <?php include_once 'stylesheets.php'; ?>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-    @media screen and (min-width: 360px) and (max-width: 929.98px) {}
+
+    #ohanafooter {
+      margin-top: 5%;
+    }
+
+    @media screen and (min-width: 360px) and (max-width: 929.98px) {
+      #cnfrmtitle {
+        font-size: 45px;
+        margin-top: 15%;
+      }
+
+      #cnfrmcontent {
+        font-size: 18px;
+        margin-top: 5%;
+      }
+
+      #resend {
+        margin-top: 5%;
+      }
+
+      .input__label {
+        font-size: 20px;
+      }
+    }
   </style>
 </head>
 
@@ -32,10 +54,10 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <h1 class="sign-up__title" style="font-size: 80px; margin-top: 10%; font-family: 'Acme', sans-serif;">
+            <h1 class="sign-up__title" id="cnfrmtitle">
               Welcome Back!
             </h1>
-            <p style="font-size:20px;"> Please enter the OTP sent to your email to proceed. </p>
+            <p class="mt-2" id="cnfrmcontent"> Please enter the OTP sent to your email to proceed. </p>
             <!-- ALERT -->
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
               <div class="alert alert-warning" role="alert">
@@ -80,23 +102,10 @@
           </form>
         </div>
       </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-scrollable">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel"> OHANA KENNEL PH</h3>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-left:800px"></button>
-            </div>
-            <div class="modal-body">
-              <?php include_once 'terms.php'; ?>
-            </div>
-          </div>
-        </div>
-      </div>
       <!-- FOOTER -->
-      <?php include_once 'footer.php'; ?>
+      <div id="ohanafooter">
+        <?php include_once 'footer.php'; ?>
+      </div>
     </main>
   </div>
 
