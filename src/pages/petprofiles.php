@@ -13,11 +13,10 @@
 
     <link rel="stylesheet" href="/Ohana/src/css/petprofiles.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-    <link rel="stylesheet" href="/Ohana/src/css/footer.css">
-
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
 </head>
 
@@ -30,7 +29,7 @@
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
 
             <section class="abouthead" style="margin-top:10%;">
-                <h1 class="text-center" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800"> Your Pets </h1><br>
+                <h1 class="text-center mb-2" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800"> Your Pets </h1>
                 <div class="container-fluid d-flex justify-content-center">
                     <?php
                     include_once dirname(__DIR__) . '/models/PetProfile.php';

@@ -99,11 +99,11 @@
                           <div class="modal-body">
                             <div class="mb-3">
                               <label for="name" class="col-form-label"> SLOT NAME: </label>
-                              <input type="text" class="form-control" name="name" value="<?php echo $slot->getName(); ?>" required>
+                              <input type="text" class="form-control" name="name" value="<?php echo $slot->getName(); ?>" required style="background-color:#eed1c2; color:black">
                             </div>
                             <div class="mb-3">
                               <label for="information" class="col-form-label"> SLOT INFORMATION: </label>
-                              <input type="text" class="form-control" name="information" value="<?php echo $slot->getInformation(); ?>" required>
+                              <input type="text" class="form-control" name="information" value="<?php echo $slot->getInformation(); ?>" required style="background-color:#eed1c2; color:black">
                             </div>
                             <div class="mb-3">
                               <label for="isAvailable" class="col-form-label"> SLOT AVAILABILITY: </label><br>

@@ -14,9 +14,11 @@
   <!-- EXTERNAL CSS -->
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-  <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
   <?php include_once 'stylesheets.php'; ?>
+  <style>
+  @media screen and (min-width: 360px) and (max-width: 929.98px) {}
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -28,7 +30,7 @@
     <div class="sign-up__container">
       <div class="sign-up__content">
         <header class="sign-up__header">
-          <h1 class="sign-up__title mt-5" style="font-size: 80px;">
+          <h1 class="sign-up__title mt-5" style="font-size: 60px;">
             CHANGE PASSWORD
           </h1>
           <p class="sign-up__descr" style="font-size: 25px;">
@@ -87,22 +89,16 @@
                     </div>
                   </div>
                 </div>
-                <div class="form__row">
-                  <div class="input-checkbox">
-                    <!-- CHECKBOX -->
-                    <div class="input-checkbox__container">
-
-                      <input type="checkbox" class="input-checkbox__field" id="agree" required="true;" name="" onclick="myFunction()" /> <span class="input-checkbox__square"></span>
-
-                      <label class="input-checkbox__label" for="agree"> Show Password </label>
-                    </div>
-                  </div>
-                </div>
-                <center><br>
-                  <div class="form__row">
+              
+                <center>
+                  <div class="form__row mt-2">
                     <div class="logbtn">
                       <button name="btnChange" type="submit"> <span> Change Password </span></button>
                     </div>
+                  </div>
+                  <hr>
+                  <div class="form__row mt-4">
+                  <a href="/userprofile" class="fs-4" style="text-decoration:none;color:#db6551"> Go Back </a>
                   </div>
                 </center>
 
@@ -112,7 +108,7 @@
     </div>
   </main>
   <!-- FOOTER -->
-  <div name="footer" style="margin-top:20%">
+  <div name="footer" style="margin-top:15%">
     <?php include_once 'footer.php'; ?>
   </div>
 
@@ -177,26 +173,6 @@
     });
   </script>
 
-  <script>
-    // Show Password
-    function myFunction() {
-      if (currentpassword.type == 'password') {
-        currentpassword.type = 'text';
-      } else {
-        currentpassword.type = 'password';
-      }
-      if (password.type == 'new-password') {
-        password.type = 'text';
-      } else {
-        password.type = 'new-password';
-      }
-      if (confirmpass.type == 'confirm-password') {
-        confirmpass.type = 'text';
-      } else {
-        confirmpass.type = 'confirm-password';
-      }
-    }
-  </script>
   </main>
 
 </body>

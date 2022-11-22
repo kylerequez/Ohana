@@ -59,7 +59,7 @@
             <h1 class="sign-up__title mt-3" id="ohanatitle"> OHANA! </h1>
             <!-- ALERT -->
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-              <div class="alert alert-success" role="alert">
+              <div class="alert alert-warning" role="alert">
                 <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
                 unset($_SESSION["msg"]); ?>
               </div>
@@ -87,7 +87,7 @@
                   <div class="form__row">
                     <div class="input">
                       <div class="input__container">
-                        <input class="input__field" id="password" name="password" placeholder="Password" required="" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                        <input class="input__field" id="password" name="password" placeholder="Password" minlength="8" maxlength="49" required="" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
                         title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
                         <label class="input__label" for="password">Password</label>
                       </div>

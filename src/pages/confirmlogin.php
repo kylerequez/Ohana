@@ -19,6 +19,7 @@
   <?php include_once 'stylesheets.php'; ?>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+    @media screen and (min-width: 360px) and (max-width: 929.98px) {}
   </style>
 </head>
 
@@ -37,7 +38,7 @@
             <p style="font-size:20px;"> Please enter the OTP sent to your email to proceed. </p>
             <!-- ALERT -->
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-              <div class="alert alert-success" role="alert">
+              <div class="alert alert-warning" role="alert">
                 <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
                 unset($_SESSION["msg"]); ?>
               </div>

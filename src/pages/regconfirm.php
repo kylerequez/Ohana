@@ -15,9 +15,11 @@
   <!-- EXTERNAL CSS IMPORT-->
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-  <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
   <?php include_once 'stylesheets.php'; ?>
+  <style>
+  @media screen and (min-width: 360px) and (max-width: 929.98px) {}
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0;">

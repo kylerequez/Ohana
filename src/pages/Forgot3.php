@@ -15,6 +15,29 @@
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
   <link rel="stylesheet" href="/Ohana/src/css/footer.css">
   <?php include_once 'stylesheets.php'; ?>
+  <style>
+    @media screen and (min-width: 360px) and (max-width: 929.98px) {
+      .sign-up__title {
+        font-size: 30px;
+      }
+
+      #btncpass {
+        display: block;
+        padding: 10px 60px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .input__label {
+        font-size: 15px;
+      }
+
+      #message p {
+        margin-top: 5px;
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -34,7 +57,7 @@
           </p>
           <!-- ALERT -->
           <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-warning" role="alert">
               <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
               unset($_SESSION["msg"]); ?>
             </div>
@@ -59,7 +82,8 @@
                 <div class="form__row">
                   <div class="input">
                     <div class="input__container">
-                      <input class="input__field" id="password" name="password" placeholder="Password" required="" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
+                      <input class="input__field" id="password" name="password" placeholder="Password" required="" type="password" 
+                      minlength="8" maxlength="49" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
                       <label class="input__label" for="password">Password</label>
                     </div>
                   </div>
@@ -67,7 +91,7 @@
 
                 <!-- VALIDATION BOX-->
                 <div id="message" style="background: white;">
-                  <h3 class="text-center" style="font-size: 20px; color:#c0b65a;">Password must contain the following:</h3>
+                  <h3 class="text-center" style="font-size: 16px;">Password must contain the following:</h3>
                   <p id="letter" class="invalid">At least one <b>lowercase</b> letter</p>
                   <p id="capital" class="invalid">At least one <b>capital</b> letter</p>
                   <p id="number" class="invalid">At least one <b>number</b></p>
@@ -78,7 +102,7 @@
                 <div class="form__row">
                   <div class="input">
                     <div class="input__container">
-                      <input class="input__field" id="confirm-password" placeholder="Confirm password" required="" type="password" />
+                      <input class="input__field" id="confirm-password" placeholder="Confirm password" required="" type="password" minlength="8" maxlength="49"  />
                       <label class="input__label" for="confirm-password">Confirm password</label>
                     </div>
                   </div>
@@ -102,12 +126,6 @@
   <div name="footer" style="margin-top:15%">
     <?php include_once 'footer.php'; ?>
   </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> f8a49a536783696e2b8f69b33f04120f1f06f57c
-
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <!-- START OF JAVASCRIPT-->
   <script>

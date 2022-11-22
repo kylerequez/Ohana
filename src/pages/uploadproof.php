@@ -12,7 +12,6 @@
     <meta name="keywords" content="Kennel Business, French Bulldogs">
 
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-    <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
     <?php include_once 'stylesheets.php'; ?>
 </head>
@@ -66,15 +65,11 @@
 
     <!-- SCIPTS -->
 
-    <!-- Chart library -->
-    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-
     <!-- Icons library -->
     <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
 
     <!-- Custom scripts -->
     <script src="/Ohana/src/dashboard/js/script.js"></script>
-
 
     <!-- JAVASCRIPT IMPORTS -->
     <!-- Bootstrap Bundle with Popper -->

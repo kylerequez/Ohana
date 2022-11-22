@@ -17,6 +17,7 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
     <!-- CALENDAR BS-->
     <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>

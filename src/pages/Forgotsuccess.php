@@ -13,6 +13,25 @@
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
   <link rel="stylesheet" href="/Ohana/src/css/footer.css">
   <?php include_once 'stylesheets.php'; ?>
+  <style>
+    @media screen and (min-width: 360px) and (max-width: 929.98px) {
+      .sign-up__title {
+        font-size: 31px;
+      }
+
+      #pupdated {
+        font-size: 17px;
+        margin-top: 10px;
+      }
+
+      #btnLogin {
+        display: block;
+        padding: 10px 60px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+    }
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0;">

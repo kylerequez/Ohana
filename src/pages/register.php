@@ -41,7 +41,7 @@
 
             <!-- ALERT -->
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-              <div class="alert alert-success" role="alert">
+              <div class="alert alert-warning" role="alert">
                 <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
                 unset($_SESSION["msg"]); ?>
               </div>
@@ -98,23 +98,22 @@
               <div class="input">
                 <div class="input__container">
                   <input class="input__field" id="password" name="password" placeholder="Password" required="" type="password" 
-                  minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
+                  minlength="8" maxlength="49" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
                   <label class="input__label" for="password">Password</label>
                 </div>
               </div>
             </div>
-            <div id="message" style="background: white;">
-              <h3 class="text-center" style="font-size: 20px; color:#c0b65a;">Password must contain the following:</h3>
+            <div id="message" style="background: white;" class="mb-3">
+              <h3 class="text-center mb-2" style="font-size: 16px;">Password must contain the following:</h3>
               <p id="letter" class="invalid">At least one <b>lowercase</b> letter</p>
               <p id="capital" class="invalid">At least one <b>capital</b> letter</p>
               <p id="number" class="invalid">At least one <b>number</b></p>
               <p id="length" class="invalid">Minimum <b>8 characters</b></p>
             </div>
-            <br>
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
-                  <input class="input__field" id="confirm-password" placeholder="Confirm password" required="" type="password" minlength="8"/>
+                  <input class="input__field" id="confirm-password" placeholder="Confirm password" required="" type="password" minlength="8" maxlength="49"/>
                   <label class="input__label" for="confirm-password">Confirm password</label>
                 </div>
               </div>

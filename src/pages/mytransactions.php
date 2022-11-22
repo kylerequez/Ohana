@@ -17,6 +17,8 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
 </head>
 
@@ -53,24 +55,45 @@
                                         &nbsp;&nbsp; &nbsp;
                                         <a href="#" data-bs-toggle="modal" data-bs-target="#uploadModal" style="text-decoration:none; color:#db6551"><i class="uil uil-upload-alt"></i> </a>
 
-                                        <!-- Upload Modal -->
-                                        <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModal" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="exampleModalLabel"> Upload Proof of Payment</h1>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <label for="proofOfPayment" class="my-2">Please upload your proof of payment for Transaction #</label>
-                                                        <input type="file" class="my-2" name="proofOfPayment">
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn" style="background-color:#db6551;color:white;">Upload</button>
+                                        <form method="POST" action="">
+                                            <div class="modal fade" id="uploadModal" aria-hidden="true" aria-labelledby="uploadModal" tabindex="-1">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="ModalToggleLabel"> Upload Proof of Payment </h1>
+
+                                                        </div>
+                                                        <div class="modal-body">
+
+                                                            <label for="proofOfPayment" class="my-2">Please upload your proof of payment for Transaction #</label>
+                                                            <input type="file" class="my-2" name="proofOfPayment">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn" data-bs-target="#ModalToggle2" data-bs-toggle="modal" style="background-color:#db6551;color:white;"> Confirm </button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                            <div class="modal fade" id="ModalToggle2" aria-hidden="true" aria-labelledby="ModalToggleLabel2" tabindex="-1">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title text-danger fs-5" id="ModalToggleLabel2"> Warning! </h1>
+
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Make sure that the image file containts the necessary information for the payment verification.
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-outline-dark" data-bs-target="#uploadModal" data-bs-toggle="modal">Go Back </button>
+                                                            <button type="submit" class="btn" style="background-color:#db6551;color:white;">Upload</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+
                                         <!-- VIEW MODAL -->
                                         <div class="modal modal-xl fade" id="orderModal" tabindex="-1" aria-labelledby="orderModal" aria-hidden="true">
                                             <div class="modal-dialog">
@@ -114,11 +137,9 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
+                </section>
             </center>
-
-            </section>
         </div>
     </main>
     <div class="container-fluid">

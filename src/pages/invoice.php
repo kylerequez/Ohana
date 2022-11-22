@@ -18,6 +18,11 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {
+            #thank-you {
+                font-size:30px;
+            }
+        }
     </style>
 </head>
 
@@ -32,7 +37,7 @@
             <div class="container">
                 <section class="h-6 h-custom" style="margin-top:10%;">
                     <div class="service">
-                        <h1 class="mt-3 mb-3" style="color:#DB6551; font-size: 60px; font-family: 'Acme', sans-serif; font-weight:800"> THANK YOU FOR TRUSTING OHANA </h1>
+                        <h1 class="mt-3 mb-3" id="thank-you" style="color:#DB6551; font-size: 60px; font-family: 'Acme', sans-serif; font-weight:800"> THANK YOU FOR TRUSTING OHANA </h1>
                     </div>
                     <div class="container py-5 h-100">
                         <div class="row d-flex justify-content-center align-items-center h-100">

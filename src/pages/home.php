@@ -14,7 +14,6 @@
 
     <link rel="stylesheet" href="/Ohana/src/css/home.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-    <link rel="stylesheet" href="/Ohana/src/css/footer.css">
     <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
 
     <?php include_once 'stylesheets.php'; ?>
@@ -24,7 +23,7 @@
             margin-right: 5%;
         }
 
-        @media screen and (min-width: 360px) and (max-width: 767.98px) {
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {
             #slider {
                 position: relative;
                 width: 60%;

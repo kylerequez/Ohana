@@ -13,11 +13,11 @@
 
     <link rel="stylesheet" href="/Ohana/src/css/puppies.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-    <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
 </head>
 
@@ -36,9 +36,9 @@
 
                     if (empty($profiles)) {
                     ?>
-                        <div class="service">
+                        <div class="service mb-4">
                             <h1 style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;text-align:center"> THERE IS CURRENTLY NO AVAILABLE PUPPY FOR REHOMING</h1>
-                        </div><br><br>
+                        </div>
                     <?php } else { ?>
                         <div class="service">
                             <h1 class="mb-2" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;text-align:center"> ADD TO YOUR OHANA NOW</h1>

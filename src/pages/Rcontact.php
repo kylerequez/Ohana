@@ -15,11 +15,11 @@
     <!-- EXTERNAL CSS -->
     <link rel="stylesheet" href="/Ohana/src/css/Ucontact.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-    <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
 </head>
 

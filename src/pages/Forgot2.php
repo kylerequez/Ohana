@@ -16,6 +16,19 @@
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
   <link rel="stylesheet" href="/Ohana/src/css/footer.css">
   <?php include_once 'stylesheets.php'; ?>
+  <style>
+    @media screen and (min-width: 360px) and (max-width: 929.98px) {
+      #forgottitle2 {
+        font-size: 35px;
+        margin-top: 15%;
+      }
+
+      .sign-up__descr {
+        font-size: 20px;
+        margin-top: 10px;
+      }
+    }
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -32,7 +45,7 @@
             FORGOT PASSWORD
           </h1><br>
           <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-warning" role="alert">
               <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
               unset($_SESSION["msg"]); ?>
             </div>
