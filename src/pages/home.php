@@ -80,13 +80,10 @@
 <body style="background-color: #faf8f0">
     <main>
         <div class="container-fluid">
-
             <?php include_once 'Rnavbar.php'; ?>
-
             <div class="message">
                 <h1 class="text-center" id="welcome"> WELCOME TO OHANA!</h1>
             </div>
-
             <section id="carousels">
                 <div id="carouselCaptions" class="carousel slide mt-5" data-bs-ride="false">
                     <div class="carousel-indicators">
@@ -233,13 +230,10 @@
     <?php include_once 'footer.php'; ?>
 
     <!-- SCIPTS -->
-    <?php
-    $test = file_get_contents('http:/localhost/dashboard/chatbot-responses/get');
-    echo $test;
-    ?>
     <script src="/Ohana/src/js/chatbot-ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        createChatBot(host = 'http://localhost:5005/webhooks/rest/webhook', botLogo = "/Ohana/src/images/Chatbot/bot-logo.png",
+        createChatBot(host = '', botLogo = "/Ohana/src/images/Chatbot/bot-logo.png",
             title = "Lilo from Ohana", welcomeMessage = "Good Day, How can I help you?", inactiveMsg = "Waiting for the developers to update this", theme = "orange")
     </script>
 

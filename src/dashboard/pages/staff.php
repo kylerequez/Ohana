@@ -132,7 +132,7 @@
                               </div>
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="contact-no">+63</span>
-                                <input type="text" class="form-control" name="number" value="<?php echo $staff->getNumber(); ?>" maxlength="10" aria-label="Contact-Number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" style="background-color:#eed1c2; color:black" />
+                                <input type="text" class="form-control" name="number" value="<?php echo str_replace("+63", "", $staff->getNumber()); ?>" required style="background-color:#eed1c2; color:black" maxlength="10" ; oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                               </div>
                               <div class="mb-3">
                                 <label for="status" class="col-form-label"> Status: </label>

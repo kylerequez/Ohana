@@ -1,5 +1,5 @@
 <?php
-class ChatbotInformation
+class ChatbotInformation implements JsonSerializable
 {
     private ?int $id = null;
     private $blob = null;
@@ -14,6 +14,12 @@ class ChatbotInformation
         $this->name = $name;
         $this->introduction = $introduction;
         $this->noResponse = $noResponse;
+    }
+
+    // Implement JsonSerialize
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**

@@ -49,56 +49,59 @@
                         <div class="row">
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="/Ohana/src/dashboard/img/avatar/administrator.png">
                                 <span class="font-weight-bold">Admin Name</span><span class="text-black-50">Administrator</span><span> </span><br>
-                                <input type="file" class="ms-5" id="myFile" name="filename" style="background-color: #FAF8F0;">
                             </div>
                         </div>
-                        <div class="d-flex justify-content-center">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col ">
-                                        <label class="labels">Name</label>
-                                        <input type="text" class="form-control" placeholder="First Name" value="<?php echo $user->getFname(); ?>" style="background-color:#eed1c2;">
+                        <form action="/accounts/update" method="POST">
+                            <div class="d-flex justify-content-center">
+                                <div class="container">
+                                    <input type="hidden" name="status" value="<?php echo $user->getStatus(); ?>">
+                                    <input type="hidden" name="type" value="<?php echo $user->getType(); ?>">
+                                    <div class="row">
+                                        <div class="col ">
+                                            <label class="labels">Name</label>
+                                            <input type="text" class="form-control" name="fname" value="<?php echo $user->getFname(); ?>" style="background-color:#eed1c2;">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col mt-3">
-                                        <label class="labels">Middle Name</label>
-                                        <input type="text" class="form-control" placeholder="Middle Name" value="<?php echo $user->getMname(); ?>" style="background-color:#eed1c2;">
+                                    <div class="row">
+                                        <div class="col mt-3">
+                                            <label class="labels">Middle Name</label>
+                                            <input type="text" class="form-control" name="mname" value="<?php echo $user->getMname(); ?>" style="background-color:#eed1c2;">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col mt-3">
-                                        <label class="labels">Last Name</label>
-                                        <input type="text" class="form-control" placeholder="Last Name" value="<?php echo $user->getLname(); ?>" style="background-color:#eed1c2;">
+                                    <div class="row">
+                                        <div class="col mt-3">
+                                            <label class="labels">Last Name</label>
+                                            <input type="text" class="form-control" name="lname" value="<?php echo $user->getLname(); ?>" style="background-color:#eed1c2;">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col mt-3">
-                                        <label class="labels">Mobile Number</label>
-                                        <span class="input-group-text" id="contact-no">+63</span>
-                                        <input type="text" class="form-control" name="number" value="<?php echo $user->getNumber(); ?>" style="background-color:#eed1c2;">
+                                    <div class="row">
+                                        <div class="col mt-3">
+                                            <label class="labels">Mobile Number</label>
+                                            <span class="input-group-text" id="contact-no">+63</span>
+                                            <input type="text" class="form-control" name="number" value="<?php echo str_replace("+63", "", $user->getNumber()); ?>" style="background-color:#eed1c2;" maxlength="10" ; oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col mt-3">
-                                        <label class="labels">Email</label>
-                                        <input type="text" class="form-control" placeholder="Enter email " value="<?php echo $user->getEmail(); ?>" style="background-color:#eed1c2;">
+                                    <div class="row">
+                                        <div class="col mt-3">
+                                            <label class="labels">Email</label>
+                                            <input type="text" class="form-control" name="email" value="<?php echo $user->getEmail(); ?>" style="background-color:#eed1c2;">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="text-center">
-                                        <a href="/dashboard/adminpass"><button class="btn btn-outline-dark" type="button" style="float:left; margin-top:20px;">Change Password</button></a>
+                                    <div class="row">
+                                        <div class="text-center">
+                                            <a href="/dashboard/adminpass"><button class="btn btn-outline-dark" type="button" style="float:left; margin-top:20px;">Change Password</button></a>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="row mt-5 text-center">
-                                    <button class="btn profile-button" type="button" style="background-color:#db6551; color:white;">Save Profile</button>
+                                    <div class="row mt-5 text-center">
+                                        <button class="btn profile-button" type="submit" style="background-color:#db6551; color:white;">Save Profile</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
 
                     </div>
                 </div>

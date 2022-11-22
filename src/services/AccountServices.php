@@ -1,6 +1,8 @@
 <?php
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
+
 include_once dirname(__DIR__) . '/vendor/autoload.php';
 class AccountServices
 {
@@ -9,6 +11,11 @@ class AccountServices
     public function __construct(AccountDAO $dao)
     {
         $this->dao = $dao;
+    }
+
+    public function searchById(string $id): mixed
+    {
+        return $this->dao->searchById($id);
     }
 
     public function getAllAccounts(): mixed
@@ -53,7 +60,7 @@ class AccountServices
         $mname = !empty($data["mname"]) ? trim($data["mname"]) : null;
         $lname = trim($data["lname"]);
         $email = trim($data["email"]);
-        $number = trim($data["number"]);
+        $number = "+63" . trim($data["number"]);
         $password = password_hash(trim($data["password"]), PASSWORD_DEFAULT);
         $status = trim($data["status"]);
         $account = new Account($type, $fname, $mname, $lname, $number, $email, $status, $password);
@@ -80,7 +87,7 @@ class AccountServices
         $mname = trim($data["mname"]);
         $lname = trim($data["lname"]);
         $email = trim($data["email"]);
-        $number = trim($data["number"]);
+        $number = "+63" . trim($data["number"]);
         $status = trim($data["status"]);
         $account = new Account($type, $fname, $mname, $lname, $number, $email, $status, null);
         $account->setId($id);

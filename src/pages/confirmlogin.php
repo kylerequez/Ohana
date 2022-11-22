@@ -66,7 +66,7 @@
             </div>
             <center><br><br>
               <div class="form__row">
-                <p style="font-size:20px;">Did not receive OTP? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="##">Resend OTP</a></p>
+                <p style="font-size:20px;">Did not receive OTP? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="">Resend OTP</a></p>
               </div>
             </center>
             <center>

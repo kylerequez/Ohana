@@ -22,27 +22,61 @@
         <?php include_once 'Rnavbar.php'; ?>
 
         <div class="container-fluid">
-
+            <!-- TOAST -->
+            <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+                <div class="toast-container top-0 end-0 p-3">
+                    <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+                        <div class="toast-header">
+                            <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+                            <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
+                            <small> JUST NOW </small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
+                    </div>
+                </div>
+            <?php
+            }
+            unset($_SESSION["msg"]);
+            ?>
             <section class="userprofile" style="margin-top:10%;">
                 <div class="userheader">
                     <h1> USER PROFILE </h1>
                 </div>
             </section>
             <section class="profilesection">
-                <form action="" method="">
+                <form action="/accounts/update" method="POST">
                     <div class="container d-flex justify-content-center">
                         <div class="col-md-5">
                             <div class="p-3 py-5">
                                 <div class="mb-3"></div>
                                 <div class="row mt-3">
-                                    <div class="col-md-12"><label class="labels" style="color:#c0b65a; font-size:20px">Name</label><input type="text" class="form-control" placeholder="<?php echo $account->getFname(); ?>" value="<?php echo $account->getFname(); ?>" id="" name=""></div>
-                                    <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px"><label class="labels">Middle Name</label><input type="text" class="form-control" placeholder="<?php echo $account->getMname(); ?>" value="<?php echo $account->getMname(); ?>" id="" name=""></div>
-                                    <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px"><label class="labels">Last Name</label><input type="text" class="form-control" placeholder="<?php echo $account->getLname(); ?>" value="<?php echo $account->getLname(); ?>" id="" name=""></div>
-                                    <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px"><label class="labels">Mobile Number (+63)</label><input type="text" class="form-control" placeholder="+63<?php echo $account->getNumber(); ?>" value="<?php echo $account->getNumber(); ?>" id="" name=""></div>
-                                    <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px"><label class="labels">Email</label><input type="text" class="form-control" placeholder="<?php echo $account->getEmail(); ?>" value="<?php echo $account->getEmail(); ?>" id="email" name="email"></div>
+                                    <input type="hidden" name="status" value="<?php echo $user->getStatus(); ?>">
+                                    <input type="hidden" name="type" value="<?php echo $user->getType(); ?>">
+                                    <div class="col-md-12">
+                                        <label class="labels" style="color:#c0b65a; font-size:20px">Name</label>
+                                        <input type="text" class="form-control" value="<?php echo $user->getFname(); ?>" id="" name="fname">
+                                    </div>
+                                    <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px">
+                                        <label class="labels">Middle Name</label>
+                                        <input type="text" class="form-control" value="<?php echo $user->getMname(); ?>" id="" name="mname">
+                                    </div>
+                                    <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px">
+                                        <label class="labels">Last Name</label>
+                                        <input type="text" class="form-control" value="<?php echo $user->getLname(); ?>" id="" name="lname">
+                                    </div>
+                                    <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px">
+                                        <label class="labels">Mobile Number (+63)</label>
+                                        <input type="text" class="form-control" value="<?php echo str_replace("+63", "", $user->getNumber()); ?>" maxlength="10" ; oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="number">
+                                    </div>
+                                    <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px">
+                                        <label class="labels">Email</label>
+                                        <span class="input-group-text" id="contact-no">+63</span>
+                                        <input type="text" class="form-control" value="<?php echo $user->getEmail(); ?>" id="email" name="email">
+                                    </div>
                                 </div>
                                 <span>
-                                    <div class="text-center"><button class="btn profile-button" type="button" style="background-color:#db6551; color:white; float:right">Save changes</button>
+                                    <div class="text-center"><button class="btn profile-button" type="submit" style="background-color:#db6551; color:white; float:right">Save changes</button>
                                     </div>
                                     <div class="mt-5 text-center"><a href="/changepassword"><button class="btn profile-button" type="button" style="background-color:#db6551; color:white; float:right; margin-right:10px;"> Change Password</button></a></div>
                                 </span>

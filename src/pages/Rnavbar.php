@@ -37,7 +37,7 @@ if (!isset($_SESSION["user"])) {
   header("Location: http://localhost/login");
 } else {
   include_once dirname(__DIR__) . '/models/Account.php';
-  $account = unserialize($_SESSION['user']);
+  $user = unserialize($_SESSION['user']);
 }
 ?>
 <!-- NAVIGATION BAR FOR UNREGISTERED USERS -->
@@ -73,7 +73,7 @@ if (!isset($_SESSION["user"])) {
               <img src="/Ohana/src/images/icons/customer.png" style="width:50px; height:40px;">
             </div>
             <div class="menu">
-              <h3 class="text-center mt-3 font-weight-bold"><?php echo $account->getFullName(); ?></h3>
+              <h3 class="text-center mt-3 font-weight-bold"><?php echo $user->getFullName(); ?></h3>
               <ul>
                 <li>
                   <img src="/Ohana/src/images/icons/pencil.png" /><a href="/userprofile">My profile</a>

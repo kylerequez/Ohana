@@ -38,6 +38,22 @@ class AccountController
         }
     }
 
+    public function processEditAccount(string $method): void
+    {
+        switch ($method) {
+            case "POST":
+                $user = unserialize($_SESSION["user"]);
+                if (!$this->services->updateAccount($user->getId(), $_POST)) {
+                    header('Location: ' . $_SERVER['HTTP_REFERER']);
+                    break;
+                }
+                $_SESSION["msg"] = "You have successfully updated your account!";
+                $_SESSION["user"] = serialize($this->services->searchById($user->getId()));
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+                break;
+        }
+    }
+
     // STAFF
     public function processStaffRequest(string $method, ?string $id): void
     {
