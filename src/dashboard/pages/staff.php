@@ -132,7 +132,8 @@
                               </div>
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="contact-no">+63</span>
-                                <input type="text" class="form-control" name="number" value="<?php echo str_replace("+63", "", $staff->getNumber()); ?>" required style="background-color:#eed1c2; color:black" maxlength="10" ; oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                <input type="text" class="form-control" name="number" value="<?php echo str_replace("+63", "", $staff->getNumber()); ?>" required 
+                                style="background-color:#eed1c2; color:black" maxlength="10" ; oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                               </div>
                               <div class="mb-3">
                                 <label for="status" class="col-form-label"> Status: </label>
@@ -168,7 +169,7 @@
           } else {
           ?>
             <div class="alert text-light text-center ms-5 me-5" role="alert" style="margin-top:10%;background-color:#db6551">
-               NULL 
+              No existing Staff Account
             </div>
           <?php
           }

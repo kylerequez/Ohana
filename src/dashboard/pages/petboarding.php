@@ -144,7 +144,12 @@
             </div>
           <?php
           } else {
-            echo "<h1>NULL</h1>";
+          ?>
+            <div class="alert text-light text-center ms-5 me-5" role="alert" style="margin-top:10%;background-color:#db6551">
+              No existing Pet Boarding Slots
+            </div>
+
+          <?php
           }
           ?>
         </div>

@@ -14,7 +14,7 @@
 
   <?php include_once 'stylesheets.php'; ?>
   <style>
-    @media screen and (min-width: 350px) and (max-width: 800px) {
+    @media screen and (min-width: 350px) and (max-width: 929.98px) {
       .pagefooter {
         margin-top: 20%;
       }
@@ -78,7 +78,8 @@
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
-                  <input class="input__field" id="contact-no" name="number" placeholder="Contact Number" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;" /><label class="input__label" for="contact-no">Contact Number (+63)</label>
+                  <input class="input__field" id="contact-no" name="number" placeholder="Contact Number" type="text" maxlength="10"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /><label class="input__label" for="contact-no">Contact Number (+63)</label>
                 </div>
               </div>
             </div>
@@ -96,7 +97,8 @@
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
-                  <input class="input__field" id="password" name="password" placeholder="Password" required="" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
+                  <input class="input__field" id="password" name="password" placeholder="Password" required="" type="password" 
+                  minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
                   <label class="input__label" for="password">Password</label>
                 </div>
               </div>
@@ -112,7 +114,7 @@
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
-                  <input class="input__field" id="confirm-password" placeholder="Confirm password" required="" type="password" />
+                  <input class="input__field" id="confirm-password" placeholder="Confirm password" required="" type="password" minlength="8"/>
                   <label class="input__label" for="confirm-password">Confirm password</label>
                 </div>
               </div>
