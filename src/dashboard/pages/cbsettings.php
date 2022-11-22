@@ -41,37 +41,52 @@
       <!-- MAIN CONTENT -->
       <div class="container-fluid">
         <main class="main users chart-page" id="skip-target">
-          <div class="users-table table-wrapper">
+          <div class="d-flex justify-content-center">
             <?php
             require_once dirname(__DIR__) . '/../models/ChatbotInformation.php';
             $information = unserialize($_SESSION["cb_settings"]);
             if (!empty($information)) {
             ?>
-              <center>
-                <form method="POST" class="form-inline" action="/dashboard/chatbot-settings/update" enctype="multipart/form-data">
-                  <h2 class="main-title"> CHATBOT SETTINGS </h2>
 
-                  <div class="chatbot-image">
+              <form method="POST" class="form-inline" action="/dashboard/chatbot-settings/update" enctype="multipart/form-data">
+                <h2 class="main-title text-center"> CHATBOT SETTINGS </h2>
+
+                <div class="row">
+                  <div class="col d-flex justify-content-center">
                     <img src="data:image/jpeg;base64,<?php echo base64_encode($information->getBlob()); ?>" style="width:150px; height:150px;">
-                    <br><input type="file" id="myFile" name="filename" style="background-color: #FAF8F0;">
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col d-flex justify-content-center">
+                    <input type="file" id="myFile" name="filename" style="background-color: #FAF8F0;">
                     <input type="hidden" class="form-control" name="old_image" value="<?php echo base64_encode($information->getBlob()); ?>">
                   </div>
-              </center>
-              <div id="cb-settings" style="margin-left:20%">
-                <span style="display:inline-block">
-                  <label class="mb-2" for="name" style="font-size:20px;display:block"> <b>CHATBOT NAME:</b> </label>
-                  <input type="text" id="name" value="<?php echo $information->getName(); ?>" name="name" size="100" style="background:#eed1c2;">
-                </span>
-                <span style="display:inline-block">
-                  <label class="mb-2" for="introduction" style="font-size:20px;display:block"> <b>CHATBOT GREETING:</b> </label>
-                  <input type="text" id="introduction" value="<?php echo $information->getIntroduction(); ?>" name="introduction" size="100" style="background:#eed1c2; "><br>
-                </span>
-                <span style="display:inline-block">
-                  <label class="mb-2" for="noResponse" style="font-size:20px;display:block"> <b>CHATBOT NO REPLY:</b> </label>
-                  <input type="text" id="noResponse" value="<?php echo $information->getNoResponse(); ?>" name="noResponse" size="100" style="background:#eed1c2;"><br>
-                </span>
-                <input class="btn mt-5" type="submit" value="Save Changes" id="btn-Submit" style=" margin-left:50%; background-color:#db6551; color:white; width:25%; font-size:20px;">
-              </div>
+                </div>
+
+                <div id="cb-settings">
+                  <div class="row">
+                    <div class="col">
+                      <label class="mb-2 mt-4" for="name" style="font-size:20px;display:block"> <b>CHATBOT NAME:</b> </label>
+                      <input class="form-control" type="text" id="name" value="<?php echo $information->getName(); ?>" name="name" style="background:#eed1c2;">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <label class="mb-2 mt-4" for="introduction" style="font-size:20px;display:block"> <b>CHATBOT GREETING:</b> </label>
+                      <input class="form-control" type="text" id="introduction" value="<?php echo $information->getIntroduction(); ?>" name="introduction"  style="background:#eed1c2; ">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <label class="mb-2 mt-4" for="noResponse" style="font-size:20px;display:block"> <b>CHATBOT NO REPLY:</b> </label>
+                      <input class="form-control" type="text" id="noResponse" value="<?php echo $information->getNoResponse(); ?>" name="noResponse"  style="background:#eed1c2;">
+                    </div>
+                  </div>
+                  <div class="row d-flex justify-content-center">
+                    <input class="btn mt-5" type="submit" value="Save Changes" id="btn-Submit" style="background-color:#db6551; width:250px; color:white; font-size:16px;">
+                  </div>
+                </div>
               </form>
             <?php
             }

@@ -24,6 +24,11 @@
 
     <!-- Custom styles -->
     <link rel="stylesheet" href="/Ohana/src/dashboard/css/adminpages.css">
+    <style>
+        .labels {
+            font-size: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -37,39 +42,67 @@
             <!-- ! Main nav -->
             <?php include_once dirname(__DIR__) . "/navbar.php" ?>
             <main class="main users chart-page" id="skip-target">
-                <div class="container">
-                    <h2 class="main-title mt-2 text-center"> Admin Profile </h2>
-                </div>
+
                 <!-- ADMIN PROFILE CONTENT -->
                 <div class="main">
-                    <div class="container rounded mb-5">
+                    <div class="container rounded">
                         <div class="row">
-                            <div class="col-md-3 border-right">
-                                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="/Ohana/src/dashboard/img/avatar/administrator.png">
-                                    <span class="font-weight-bold">Admin Name</span><span class="text-black-50">Administrator</span><span> </span><br>
-                                    <input type="file" id="myFile" name="filename" style="background-color: #FAF8F0;margin-left:25%">
-                                </div>
+                            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="/Ohana/src/dashboard/img/avatar/administrator.png">
+                                <span class="font-weight-bold">Admin Name</span><span class="text-black-50">Administrator</span><span> </span><br>
+                                <input type="file" class="ms-5" id="myFile" name="filename" style="background-color: #FAF8F0;">
                             </div>
-                            <div class="col-md-5" style="margin-left:5%">
-                                <div class="p-3 py-5">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col ">
+                                        <label class="labels">Name</label>
+                                        <input type="text" class="form-control" placeholder="First Name" value="<?php echo $user->getFname(); ?>" style="background-color:#eed1c2;">
                                     </div>
-                                    <div class="row mt-3">
-                                        <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" placeholder="First Name" value="<?php echo $user->getFname(); ?>" style="background-color:#eed1c2;"></div>
-                                        <div class="col-md-12 mt-3"><label class="labels">Middle Name</label><input type="text" class="form-control" placeholder="Middle Name" value="<?php echo $user->getMname(); ?>" style="background-color:#eed1c2;"></div>
-                                        <div class="col-md-12 mt-3"><label class="labels">Last Name</label><input type="text" class="form-control" placeholder="Last Name" value="<?php echo $user->getLname(); ?>" style="background-color:#eed1c2;"></div>
-                                        <div class="col-md-12 mt-3"><label class="labels">Mobile Number (+63)</label><input type="text" class="form-control" placeholder="+63" value="<?php echo $user->getNumber(); ?>" style="background-color:#eed1c2;"></div>
-                                        <div class="col-md-12 mt-3"><label class="labels">Email</label><input type="text" class="form-control" placeholder="Enter email " value="<?php echo $user->getEmail(); ?>" style="background-color:#eed1c2;"></div>
-                                        <div class="text-center">
-                                            <a href="/dashboard/adminpass"><button class="btn profile-button" type="button" style="background-color:#db6551; color:white; float:left; margin-top:20px;">Change Password</button></a>
-                                        </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col mt-3">
+                                        <label class="labels">Middle Name</label>
+                                        <input type="text" class="form-control" placeholder="Middle Name" value="<?php echo $user->getMname(); ?>" style="background-color:#eed1c2;">
                                     </div>
-                                    <div class="mt-5 text-center"><button class="btn profile-button" type="button" style="background-color:#db6551; color:white; float:right">Save Profile</button></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col mt-3">
+                                        <label class="labels">Last Name</label>
+                                        <input type="text" class="form-control" placeholder="Last Name" value="<?php echo $user->getLname(); ?>" style="background-color:#eed1c2;">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col mt-3">
+                                        <label class="labels">Mobile Number</label>
+                                        <span class="input-group-text" id="contact-no">+63</span>
+                                        <input type="text" class="form-control" name="number" value="<?php echo $user->getNumber(); ?>" style="background-color:#eed1c2;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col mt-3">
+                                        <label class="labels">Email</label>
+                                        <input type="text" class="form-control" placeholder="Enter email " value="<?php echo $user->getEmail(); ?>" style="background-color:#eed1c2;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="text-center">
+                                        <a href="/dashboard/adminpass"><button class="btn btn-outline-dark" type="button" style="float:left; margin-top:20px;">Change Password</button></a>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-5 text-center">
+                                    <button class="btn profile-button" type="button" style="background-color:#db6551; color:white;">Save Profile</button>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
+
             </main>
             <!-- FOOTER -->
             <?php include_once dirname(__DIR__) . '/footer.php'; ?>

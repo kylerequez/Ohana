@@ -116,23 +116,23 @@
                               <input type="hidden" name="type" value="<?php echo $staff->getType(); ?>">
                               <div class="mb-3">
                                 <label for="fname" class="col-form-label"> First Name: </label>
-                                <input type="text" class="form-control" name="fname" value="<?php echo $staff->getFname(); ?>" required>
+                                <input type="text" class="form-control" name="fname" value="<?php echo $staff->getFname(); ?>" required style="background-color:#eed1c2; color:black">
                               </div>
                               <div class="mb-3">
                                 <label for="mname" class="col-form-label"> Middle Name: </label>
-                                <input type="text" class="form-control" name="mname" value="<?php echo $staff->getMname(); ?>" required>
+                                <input type="text" class="form-control" name="mname" value="<?php echo $staff->getMname(); ?>" required style="background-color:#eed1c2; color:black">
                               </div>
                               <div class="mb-3">
                                 <label for="lname" class="col-form-label"> Surname: </label>
-                                <input type="text" class="form-control" name="lname" value="<?php echo $staff->getLname(); ?>" required>
+                                <input type="text" class="form-control" name="lname" value="<?php echo $staff->getLname(); ?>" required style="background-color:#eed1c2; color:black">
                               </div>
                               <div class="mb-3">
                                 <label for="email" class="col-form-label"> Email Address: </label>
-                                <input type="email" class="form-control" name="email" value="<?php echo $staff->getEmail(); ?>" required>
+                                <input type="email" class="form-control" name="email" value="<?php echo $staff->getEmail(); ?>" required style="background-color:#eed1c2; color:black">
                               </div>
-                              <div class="mb-3">
-                                <label for="number" class="col-form-label"> Contact Number: </label>
-                                <input type="text" class="form-control" name="number" value="<?php echo $staff->getNumber(); ?>" required>
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="contact-no">+63</span>
+                                <input type="text" class="form-control" name="number" value="<?php echo $staff->getNumber(); ?>" maxlength="10" aria-label="Contact-Number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" style="background-color:#eed1c2; color:black" />
                               </div>
                               <div class="mb-3">
                                 <label for="status" class="col-form-label"> Status: </label>
@@ -167,7 +167,9 @@
           <?php
           } else {
           ?>
-            NULL
+            <div class="alert text-light text-center ms-5 me-5" role="alert" style="margin-top:10%;background-color:#db6551">
+               NULL 
+            </div>
           <?php
           }
           ?>
@@ -179,94 +181,94 @@
   </div>
   <!-- ADD STAFF POP UP MODAL -->
   <form method="POST" action="/dashboard/staff/add?page=<?php echo $current_page; ?>&limit=<?php echo $results_per_page; ?>&offset=<?php echo ($current_page == 1) ? 0 : $results_per_page * ($current_page - 1) ?>">
-          <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addStaffModal" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="addStaffTitle"> ADD STAFF ACCOUNT </h5>
-                  <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
-                </div>
-                <div class="modal-body">
-                  <input name="type" type="hidden" value="STAFF">
-                  <input name="status" type="hidden" value="ACTIVE">
-                  <div class="mb-3">
-                    <label for="fname" class="col-form-label"> First Name: </label>
-                    <input type="text" class="form-control" name="fname" placeholder="Enter First Name" required style="background-color:#eed1c2; color:black">
-                  </div>
-                  <div class="mb-3">
-                    <label for="mname" class="col-form-label"> Middle Name (optional): </label>
-                    <input type="text" class="form-control" name="mname" placeholder="Enter Middle Name" style="background-color:#eed1c2; color:black">
-                  </div>
-                  <div class="mb-3">
-                    <label for="lname" class="col-form-label"> Surname: </label>
-                    <input type="text" class="form-control" name="lname" placeholder="Enter Surname" required style="background-color:#eed1c2; color:black">
-                  </div>
-                  <div class="mb-3">
-                    <label for="email" class="col-form-label"> Email Address: </label>
-                    <input type="email" class="form-control" name="email" placeholder="Enter Email Address" required style="background-color:#eed1c2; color:black">
-                  </div>
-                  <div class="mb-3">
-                    <label for="number" class="col-form-label"> Contact Number: </label>
-                    <input type="text" class="form-control" name="number" placeholder="Enter Contact Number" required style="background-color:#eed1c2; color:black">
-                  </div>
-                  <div class="mb-3">
-                    <label for="password" class="col-form-label"> Password: </label>
-                    <input type="password" class="form-control" name="password" placeholder="Enter Password" required style="background-color:#eed1c2; color:black">
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="submit" class="btn" id="ToastBtn" style="background-color:#db6551;color:white"> Add Staff </button>
-                </div>
-              </div>
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addStaffModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addStaffTitle"> ADD STAFF ACCOUNT </h5>
+            <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+          </div>
+          <div class="modal-body">
+            <input name="type" type="hidden" value="STAFF">
+            <input name="status" type="hidden" value="ACTIVE">
+            <div class="mb-3">
+              <label for="fname" class="col-form-label"> First Name: </label>
+              <input type="text" class="form-control" name="fname" placeholder="Enter First Name" required style="background-color:#eed1c2; color:black">
+            </div>
+            <div class="mb-3">
+              <label for="mname" class="col-form-label"> Middle Name (optional): </label>
+              <input type="text" class="form-control" name="mname" placeholder="Enter Middle Name" style="background-color:#eed1c2; color:black">
+            </div>
+            <div class="mb-3">
+              <label for="lname" class="col-form-label"> Surname: </label>
+              <input type="text" class="form-control" name="lname" placeholder="Enter Surname" required style="background-color:#eed1c2; color:black">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="col-form-label"> Email Address: </label>
+              <input type="email" class="form-control" name="email" placeholder="Enter Email Address" required style="background-color:#eed1c2; color:black">
+            </div>
+            <div class="mb-3">
+              <label for="number" class="col-form-label"> Contact Number: </label>
+              <input type="text" class="form-control" name="number" placeholder="Enter Contact Number" required style="background-color:#eed1c2; color:black">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="col-form-label"> Password: </label>
+              <input type="password" class="form-control" name="password" placeholder="Enter Password" required style="background-color:#eed1c2; color:black">
             </div>
           </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn" id="ToastBtn" style="background-color:#db6551;color:white"> Add Staff </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-          <!-- TOAST -->
-          <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-            <div class="toast-container top-0 end-0 p-3">
-              <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
-                <div class="toast-header">
-                  <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
-                  <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
-                  <small> JUST NOW </small>
-                  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
-              </div>
-            </div>
-          <?php
-          }
-          unset($_SESSION["msg"]);
-          ?>
-
-  <!-- SCRIPTS -->
-  <script>
-    //TOAST SCRIPT TRIGGER 
-    const toastTrigger = document.getElementById('ToastBtn')
-    const toastLiveExample = document.getElementById('liveToast')
-    if (toastTrigger) {
-      toastTrigger.addEventListener('click', () => {
-        const toast = new bootstrap.Toast(toastLiveExample)
-        toast.show()
-      })
+    <!-- TOAST -->
+    <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+      <div class="toast-container top-0 end-0 p-3">
+        <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+          <div class="toast-header">
+            <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+            <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
+            <small> JUST NOW </small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
+        </div>
+      </div>
+    <?php
     }
-  </script>
-  <!-- Chart library -->
-  <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
+    unset($_SESSION["msg"]);
+    ?>
 
-  <!-- Icons library -->
-  <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
+    <!-- SCRIPTS -->
+    <script>
+      //TOAST SCRIPT TRIGGER 
+      const toastTrigger = document.getElementById('ToastBtn')
+      const toastLiveExample = document.getElementById('liveToast')
+      if (toastTrigger) {
+        toastTrigger.addEventListener('click', () => {
+          const toast = new bootstrap.Toast(toastLiveExample)
+          toast.show()
+        })
+      }
+    </script>
+    <!-- Chart library -->
+    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
 
-  <!-- Custom scripts -->
-  <script src="/Ohana/src/dashboard/js/script.js"></script>
+    <!-- Icons library -->
+    <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
 
-  <!-- JavaScript BOOTSTRAP Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
-  </script>
+    <!-- Custom scripts -->
+    <script src="/Ohana/src/dashboard/js/script.js"></script>
 
-  <!--SCRIPT FOR BOOTSTRAP MODAL-->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-  </script>
+    <!-- JavaScript BOOTSTRAP Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+    </script>
+
+    <!--SCRIPT FOR BOOTSTRAP MODAL-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

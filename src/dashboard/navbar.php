@@ -18,8 +18,8 @@
                     </span>
                 </button>
                 <ul class="users-item-dropdown nav-user-dropdown dropdown">
-                    <li><span><?php echo $user->getType(); ?></span></li>
-                    <li><span> <?php echo $user->getFullName(); ?></span></li>
+                    <li class="text-center mt-2" style="color:#db6551"><span><?php echo $user->getType(); ?></span></li>
+                    <li class="text-center mt-2 mb-2"><span> <?php echo $user->getFullName(); ?></span></li>
                     <li><a href="/dashboard/profile"><i data-feather="user" aria-hidden="true"></i><span>Profile</span></a></li>
                     <li><a class="danger" data-bs-toggle="modal" data-bs-target="#logoutModal">
                             <i data-feather="log-out" aria-hidden="true"></i>

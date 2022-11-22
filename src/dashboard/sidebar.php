@@ -42,7 +42,7 @@
           </a>
           <ul class="cat-sub-menu">
             <li><a href="/dashboard/chatbot-settings/get">Settings </a></li>
-            <li><a href="/dashboard/chatbot-responses/get">Queries and Responses</a></li>
+            <li><a href="/dashboard/chatbot-responses/get">Responses</a></li>
           </ul>
         </li>
         <li><a href="/dashboard/logs/get"><span class="icon edit" aria-hidden="true"></span>System Logs</a></li>
