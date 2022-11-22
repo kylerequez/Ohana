@@ -1,5 +1,6 @@
 <?php
 require_once dirname(__DIR__) . '/models/Account.php';
+require_once dirname(__DIR__) . '/models/Cart.php';
 require_once dirname(__DIR__) . '/config/app-config.php';
 class AccountController
 {
@@ -135,7 +136,7 @@ class AccountController
                     if ($account->getType() == "USER") {
                         unset($_SESSION["userOtp"]);
                         unset($_SESSION["email"]);
-                        $_SESSION["cart"] = new Cart();
+                        $_SESSION["cart"] = serialize(new Cart());
                         header("Location: http://localhost/home");
                         break;
                     } else {

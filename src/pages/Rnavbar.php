@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
   <meta name="keywords" content="Kennel Business, French Bulldogs">
-  
+
   <?php include_once 'stylesheets.php'; ?>
 
   <!-- EXTERNAL CSS -->
@@ -50,7 +50,7 @@ if (!isset($_SESSION["user"])) {
           <a class="nav-link" href="/contact">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/pawcart"> Paw Cart <i class="uil uil-shopping-bag"></i></a>
+          <a class="nav-link" href="/pawcart/get"> Paw Cart <i class="uil uil-shopping-bag"></i></a>
         </li>
 
         <li class="nav-item">
@@ -87,7 +87,7 @@ if (!isset($_SESSION["user"])) {
 </nav>
 
 <!-- BOOTSTRAP LOGOUT MODAL -->
-<form method="GET" action="/login">
+<form method="POST" action="/accounts/logout">
   <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">

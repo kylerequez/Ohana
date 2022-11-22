@@ -38,7 +38,7 @@
 
                     <div class="row" style="text-align:center; margin-left:10%; margin-right:10%;">
                         <div class="col-lg-6">
-                            <a href="/puppies/rehoming/get" style="text-decoration:none;">
+                            <a href="/rehoming/get" style="text-decoration:none;">
                                 <img src="/Ohana/src/images/services/1.png" width="400" height="400" role="img" focusable="false">
                                 <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
                                 <h2 class="p-4" style="color:#7d605c; font-size: 60px; font-weight:bolder;"> Pet Rehoming </h2>

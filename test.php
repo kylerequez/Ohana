@@ -1,1 +1,5 @@
+DONT BE ALARMED, THIS IS A TEST PAGE <br>
+
 <?php
+
+echo $_SERVER["REQUEST_URI"];
