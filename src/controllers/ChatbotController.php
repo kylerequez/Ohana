@@ -92,6 +92,9 @@ class ChatbotController
     {
         switch ($method) {
             case "GET":
+                ini_set('display_errors', 1);
+                ini_set('display_startup_errors', 1);
+                error_reporting(E_ALL);
                 $_SESSION["cb_responses"] = serialize($this->services->getResponsesPagination(!isset($_GET["limit"]) ? _RESOURCE_PER_PAGE_ : $_GET["limit"], !isset($_GET["offset"]) ? _BASE_OFFSET_ : $_GET["offset"]));
                 $page = !isset($_GET["page"]) ? 1 : $_GET["page"];
                 $_SESSION["totalResponses"] = $this->services->getTotalResponses();

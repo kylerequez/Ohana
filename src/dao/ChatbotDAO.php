@@ -122,11 +122,39 @@ class ChatbotDAO
         }
     }
 
+    public function getResponse(string $query): mixed
+    {
+        try {
+            $sql = "SELECT * FROM chatbot_responses
+                    WHERE query LIKE ?
+                    LIMIT 1";
+
+            $stmt = $this->conn->prepare($sql);
+            $param = array("%$query%");
+
+            $searchedResponse = null;
+            if ($stmt->execute($param) > 0) {
+                while ($response = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $searchedResponse = new ChatbotResponse(
+                        $response["response"],
+                        $response["query"],
+                        $response["times_asked"],
+                    );
+                    $searchedResponse->setId($response["response_id"]);
+                }
+            }
+            return $searchedResponse;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
     public function addResponse(ChatbotResponse $response): bool
     {
         try {
             $sql = "INSERT INTO chatbot_responses
-                    (response, query, timesAsked)
+                    (response, query, times_asked)
                     VALUES (:response, :query, :timesAsked);";
 
             $res = $response->getResponse();

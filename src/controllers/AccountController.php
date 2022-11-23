@@ -42,6 +42,14 @@ class AccountController
     public function processEditAccount(string $method): void
     {
         switch ($method) {
+            case "GET":
+                $user = unserialize($_SESSION["user"]);
+                if (!$this->services->changePassword($user->getEmail(), $_POST)) {
+                    //header('Location: ' . $_SERVER['HTTP_REFERER']);
+                    break;
+                }
+                //header('Location: ' . $_SERVER['HTTP_REFERER']);
+                break;
             case "POST":
                 $user = unserialize($_SESSION["user"]);
                 if (!$this->services->updateAccount($user->getId(), $_POST)) {

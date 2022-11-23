@@ -124,10 +124,9 @@
                 <main class="main users chart-page" id="skip-target">
                     <div class="container d-flex justify-content-center">
 
-                        <form id="myform-search" method="post" autocomplete="off">
+                        <form id="myform-search" method="GET" action="/accounts/update" autocomplete="off">
                             <h1 class="text-center mt-5" style="font-family: 'Acme', sans-serif; color:#db6551; font-size:70px;">Change your Password</h1>
                             <p class="text-center mb-5" style="font-size:20px;">Input a new password for your account</p>
-
                             <div class="row">
                                 <div class="col">
                                     <label class="mb-2" for="name" style="font-size:20px;display:block"> <b>Current Password:</b> </label>
@@ -137,17 +136,13 @@
                             <div class="row">
                                 <div class="col">
                                     <label class="mb-2 mt-4" for="name" style="font-size:20px;display:block"> <b>New Password:</b> </label>
-                                    <input type="password" value="" name="new-password" id="new-password" class="password" for="password" required
-                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                                    style="background-color:#eed1c2;width:100%" minlength="8" maxlength="49">
+                                    <input type="password" value="" name="new-password" id="new-password" class="password" for="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" style="background-color:#eed1c2;width:100%" minlength="8" maxlength="49">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <label class="mb-2 mt-4" for="name" style="font-size:20px;display:block"> <b>Confirm Password:</b> </label>
-                                    <input type="password" value="" name="confirm-password" id="confirm-password" class="password" for="confirm-password" required 
-                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" 
-                                    style="background-color:#eed1c2;;width:100%" minlength="8" maxlength="49">
+                                    <input type="password" value="" name="confirm-password" id="confirm-password" class="password" for="confirm-password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" style="background-color:#eed1c2;;width:100%" minlength="8" maxlength="49">
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end mt-5">
@@ -168,7 +163,7 @@
         <script>
             //PASSWORD VALIDATION SCRIPT
 
-            var myInput = document.getElementById("password"),
+            var myInput = document.getElementById("new-password"),
                 letter = document.getElementById("letter"),
                 capital = document.getElementById("capital"),
                 number = document.getElementById("number"),

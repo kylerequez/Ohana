@@ -78,15 +78,14 @@
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
-                  <input class="input__field" id="contact-no" name="number" placeholder="Contact Number" type="text" maxlength="10"
-                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /><label class="input__label" for="contact-no">Contact Number (+63)</label>
+                  <input class="input__field" id="contact-no" name="number" placeholder="Contact Number" type="text" maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /><label class="input__label" for="contact-no" required>Contact Number (+63)</label>
                 </div>
               </div>
             </div>
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
-                  <input type="email" class="input__field" id="email" name="email" placeholder="Email" required="" />
+                  <input type="email" class="input__field" id="email" name="email" placeholder="Email" required />
                   <label class="input__label" for="email">Email
                     <i class="uil uil-envelope email-icon"></i>
                   </label>
@@ -97,8 +96,7 @@
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
-                  <input class="input__field" id="password" name="password" placeholder="Password" required="" type="password" 
-                  minlength="8" maxlength="49" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
+                  <input class="input__field" id="password" name="password" placeholder="Password" required type="password" minlength="8" maxlength="49" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
                   <label class="input__label" for="password">Password</label>
                 </div>
               </div>
@@ -113,7 +111,7 @@
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
-                  <input class="input__field" id="confirm-password" placeholder="Confirm password" required="" type="password" minlength="8" maxlength="49"/>
+                  <input class="input__field" id="confirm-password" placeholder="Confirm password" required type="password" minlength="8" maxlength="49" />
                   <label class="input__label" for="confirm-password">Confirm password</label>
                 </div>
               </div>
@@ -122,7 +120,7 @@
               <div class="input-checkbox">
                 <!-- CHECKBOX -->
                 <div class="input-checkbox__container">
-                  <input type="checkbox" class="input-checkbox__field" id="agree" required="true;" /> <span class="input-checkbox__square"></span>
+                  <input type="checkbox" class="input-checkbox__field" id="agree" required /> <span class="input-checkbox__square"></span>
                   <label class="input-checkbox__label" for="agree"> I agree with the
                     <a href="#" style="text-decoration: none; color:#ff5757" data-bs-toggle="modal" data-bs-target="#termsModal">
                       Terms and Conditions </a> </label>
@@ -155,7 +153,7 @@
       $("form").submit(function() {
         $(this).find(":submit").attr('disabled', 'disabled');
       });
-      
+
       const emailInput = $("#email"),
         emailIcon = $(".email-icon");
 
@@ -233,6 +231,11 @@
         } else {
           length.removeClass("valid");
           length.addClass("invalid");
+        }
+        if (confirmpassInput.val() != passwordInput.val()) {
+          confirmpass.setCustomValidity("Password does not match");
+        } else {
+          confirmpass.setCustomValidity("");
         }
       });
       confirmpassInput.keyup(() => {

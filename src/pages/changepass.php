@@ -17,7 +17,7 @@
 
   <?php include_once 'stylesheets.php'; ?>
   <style>
-  @media screen and (min-width: 360px) and (max-width: 929.98px) {}
+    @media screen and (min-width: 360px) and (max-width: 929.98px) {}
   </style>
 </head>
 
@@ -56,7 +56,7 @@
                 <div class="form__row">
                   <div class="input">
                     <div class="input__container mt-2">
-                      <input class="input__field" id="password" placeholder="Current password" required="" type="password" />
+                      <input class="input__field" id="password" placeholder="Current password" required type="password" />
                       <label class="input__label" for="password">Current Password</label>
                     </div>
                   </div>
@@ -66,7 +66,7 @@
                 <div class="form__row">
                   <div class="input">
                     <div class="input__container mt-2">
-                      <input class="input__field" id="new-password" name="new-password" placeholder="Password" required="" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
+                      <input class="input__field" id="new-password" name="new-password" placeholder="Password" required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
                       <label class="input__label" for="new-password"> New Password</label>
                     </div>
                   </div>
@@ -84,12 +84,12 @@
                 <div class="form__row">
                   <div class="input">
                     <div class="input__container mt-3">
-                      <input class="input__field" id="confirm-password" placeholder="Confirm password" required="" type="password" />
+                      <input class="input__field" id="confirm-password" placeholder="Confirm password" required type="password" />
                       <label class="input__label" for="confirm-password">Confirm password</label>
                     </div>
                   </div>
                 </div>
-              
+
                 <center>
                   <div class="form__row mt-2">
                     <div class="logbtn">
@@ -98,7 +98,7 @@
                   </div>
                   <hr>
                   <div class="form__row mt-4">
-                  <a href="/userprofile" class="fs-4" style="text-decoration:none;color:#db6551"> Go Back </a>
+                    <a href="/userprofile" class="fs-4" style="text-decoration:none;color:#db6551"> Go Back </a>
                   </div>
                 </center>
 
@@ -162,6 +162,11 @@
       } else {
         length.removeClass("valid");
         length.addClass("invalid");
+      }
+      if (confirmpassInput.val() != passwordInput.val()) {
+        confirmpass.setCustomValidity("Password does not match");
+      } else {
+        confirmpass.setCustomValidity("");
       }
     });
     confirmpassInput.keyup(() => {

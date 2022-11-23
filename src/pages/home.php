@@ -230,10 +230,22 @@
 
     <!-- SCIPTS -->
     <script src="/Ohana/src/js/chatbot-ui.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-        createChatBot(host = '', botLogo = "/Ohana/src/images/Chatbot/bot-logo.png",
-            title = "Lilo from Ohana", welcomeMessage = "Good Day, How can I help you?", inactiveMsg = "Waiting for the developers to update this", theme = "orange")
+        $.ajax({
+            url: '/chatbot/settings/get',
+            type: "GET",
+            error: function(error) {
+                console.log("Error in retrieving the Chatbot Information.");
+            }
+        }).done(function(data) {
+            info = JSON.parse(data);
+            name = info.name;
+            intro = info.intro;
+            noResponse = info.noResponse;
+            createChatBot(host = '/chatbot/responses/get', botLogo = "/Ohana/src/images/Chatbot/bot-logo.png",
+                title = name, welcomeMessage = intro, inactiveMsg = noResponse, theme = "orange")
+        });
     </script>
 
     <!-- Custom scripts -->

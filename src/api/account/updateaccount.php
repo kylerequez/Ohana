@@ -16,4 +16,6 @@ $controller = new AccountController($services, $logservices);
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_SESSION["user"])) {
     $controller->processEditAccount($_SERVER["REQUEST_METHOD"]);
-}
+} else if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_SESSION["user"])) {
+    $controller->processEditAccount($_SERVER["REQUEST_METHOD"]);
+} 

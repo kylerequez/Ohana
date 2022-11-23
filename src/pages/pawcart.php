@@ -91,7 +91,6 @@
                                                 <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                                     <form method="POST" action="/delete-item/<?php echo $order->getPetId(); ?>">
                                                         <button type="submit" class="text-danger"><i class="fas fa-trash fa-lg " onclick="return confirm('Are you sure you want to remove this item from your cart?');"></i></button>
-
                                                     </form>
                                                 </div>
                                             </div>
