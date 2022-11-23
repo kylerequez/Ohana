@@ -18,9 +18,10 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
             #thank-you {
-                font-size:30px;
+                font-size: 30px;
             }
         }
     </style>
@@ -32,8 +33,6 @@
         <?php include_once 'Rnavbar.php'; ?>
 
         <div class="container-fluid">
-            <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-
             <div class="container">
                 <section class="h-6 h-custom" style="margin-top:10%;">
                     <div class="service">
@@ -57,7 +56,6 @@
                                                 <p>012j1gvs356c</p>
                                             </div>
                                         </div>
-
                                         <div class="row">
                                             <div class="col mb-3">
                                                 <p class="small text-muted mb-1"> Customer Name:</p>
@@ -68,7 +66,6 @@
                                                 <p> *Chosen payment method*</p>
                                             </div>
                                         </div>
-
                                         <div class="mx-n5 px-5 py-4" style="background-color: #eed1c2;">
                                             <p class="lead fw-bold mb-3" style="color: #db6551; font-size:20px;"> DETAILS </p>
                                             <div class="row">
@@ -79,7 +76,6 @@
                                                     <p>P80,000</p>
                                                 </div>
                                             </div>
-
                                             <div class="row">
                                                 <div class="col-md-8 col-lg-9">
                                                     <p class="mb-0">FRENCH PUPPY</p>
@@ -87,8 +83,7 @@
                                                 <div class="col-md-4 col-lg-3">
                                                     <p class="mb-0">P80,000</p>
                                                 </div>
-                                            </div><br>
-
+                                            </div>
                                             <div class="row">
                                                 <div class="col-md-8 col-lg-9">
                                                     <p>FRENCH PUPPY</p>
@@ -97,7 +92,6 @@
                                                     <p>P100,000</p>
                                                 </div>
                                             </div>
-
                                         </div>
 
                                         <div class="row my-4">
@@ -125,14 +119,11 @@
         </div>
         </div>
         </section>
-        </div>
-
-        </div>
     </main>
 
     <div id="ohanafooter">
-    <?php include_once 'footer.php'; ?>
-  </div>
+        <?php include_once 'footer.php'; ?>
+    </div>
     <!-- JAVASCRIPT IMPORTS -->
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">

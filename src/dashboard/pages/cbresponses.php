@@ -108,7 +108,7 @@
                               </div>
                             </div>
                             <div class="modal-footer">
-                              <button type="submit" class="btn" style="background-color:#db6551"> Save Changes </button>
+                              <button type="submit" class="btn text-white" style="background-color:#db6551"> Save Changes </button>
                             </div>
                           </div>
                         </div>
@@ -187,9 +187,6 @@
   </form>
 
   <!-- SCRIPTS -->
-
-  <!-- Chart library -->
-  <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
 
   <!-- Icons library -->
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>

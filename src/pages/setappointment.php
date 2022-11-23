@@ -16,6 +16,7 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
         @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
 </head>
@@ -41,14 +42,11 @@
             </section>
         </div>
     </main>
-    <div class=" container-fluid">
+    
+    <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-    <!-- SCIPTS -->
-    <!-- Chart library -->
-    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-    <!-- Icons library -->
-    <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
+
     <!-- Custom scripts -->
     <script src="/Ohana/src/dashboard/js/script.js"></script>
     <!-- Bootstrap Bundle with Popper -->

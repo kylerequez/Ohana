@@ -42,7 +42,7 @@ class PetProfileServices
     {
         // ADD IMAGE VALIDATION SOON !!! IMPORTANT
         $image = $data["image"];
-
+        
         $name = strtoupper($data["name"]);
         $trait = strtoupper($data["trait"]);
         $birthdate = DateTime::createFromFormat("Y-m-d", $data["birthdate"]);
@@ -54,7 +54,7 @@ class PetProfileServices
         $ownerName = strtoupper($data["ownerName"]);
         $price = (float) $data["price"];
         $status = "AVAILABLE";
-
+        
         $petProfile = new PetProfile($image, $name, $birthdate, $sex, $color, $trait, $isVaccinated, $pcciStatus, $accountId, $ownerName, $price, $status);
         if (!$this->dao->addPetProfile($petProfile)) {
             $_SESSION["msg"] = "There was an error in adding the Pet Profile.";

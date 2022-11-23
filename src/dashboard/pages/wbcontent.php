@@ -39,12 +39,7 @@
           <h2 class="main-title text-center mt-3"> WEBSITE CONTENT </h2>
         </div>
         <div class="users-table table-wrapper">
-          <div class="search-wrapper">
-            <i data-feather="search" aria-hidden="true"></i>
-            <input type="text" placeholder=" Search ">
-            <button type="filter" style="color:white"> FILTER </button>
-            <button type="sort" style="color:white"> SORT </button>
-          </div>
+    
           <table class="posts-table">
             <thead>
               <tr class="users-table-info">
@@ -66,16 +61,7 @@
             </tbody>
           </table>
         </div>
-        <div class="paginations">
-          <li class="page-item previous-page"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">1</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
-          <li class="page-item dots"><a class="page-link" href="#">...</a></li>
-          <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
-        </div>
+        
       </main>
       <!-- FOOTER -->
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
@@ -98,11 +84,7 @@
   }
   unset($_SESSION["msg"]);
   ?>
-  <!-- SCRIPTS -->
-
-  <!-- Chart library -->
-  <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-
+  
   <!-- Icons library -->
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
 

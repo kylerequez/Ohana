@@ -107,7 +107,7 @@
 
     <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
-      </div>
+    </div>
 
     <!-- START OF JAVASCRIPT-->
     <script>

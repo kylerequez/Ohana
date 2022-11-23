@@ -5,7 +5,6 @@
 
     <title> UPLOAD PROOF </title>
 
-    <!-- META TAGS -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
@@ -14,19 +13,21 @@
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
 
     <?php include_once 'stylesheets.php'; ?>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {}
+    </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <!-- REGISTERED USERS NAVIGATION BAR-->
         <?php include_once 'Rnavbar.php'; ?>
-
         <div class="container-fluid">
-            <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-
             <section class="carthead" style="margin-top:5%;">
                 <div class="cartheader mb-4">
-                    <img src="/Ohana/src/images/Pages/checkoutheader.png" class="img-fluid" width="100%">
+                    <img src="/Ohana/src/images/Pages/checkoutheader.png" class="img-fluid" width="100%" id="#cartheader">
                 </div>
             </section>
 
@@ -59,17 +60,9 @@
         </div>
     </main>
 
-    <div class="container-fluid">
+    <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-
-    <!-- SCIPTS -->
-
-    <!-- Icons library -->
-    <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
-
-    <!-- Custom scripts -->
-    <script src="/Ohana/src/dashboard/js/script.js"></script>
 
     <!-- JAVASCRIPT IMPORTS -->
     <!-- Bootstrap Bundle with Popper -->

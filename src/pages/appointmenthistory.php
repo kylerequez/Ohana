@@ -9,11 +9,9 @@
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
 
-    <!-- EXTERNAL CSS -->
     <link rel="stylesheet" href="/Ohana/src/css/userprofile.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-    <link rel="stylesheet" href="/Ohana/src/css/footer.css">
-
+   
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
@@ -29,25 +27,21 @@
         :root {
             --bs-success-rgb: 71, 222, 152 !important;
         }
-
         html,
         body {
             height: 100%;
             width: 100%;
-
         }
 
         .btn-info.text-light:hover,
         .btn-info.text-light:focus {
             background: #000;
         }
-
         .fc .fc-button-primary {
             background-color: #db6551;
             color: white;
             border-color: white;
         }
-
         .fc .fc-button-primary:not(:disabled).fc-button-active,
         .fc .fc-button-primary:not(:disabled):active,
         .fc .fc-button-primary:disabled {
@@ -77,7 +71,7 @@
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
             <section class="userprofile" style="margin-top:10%;">
                 <div class="userheader mb-5">
-                    <h1> APPOINTMENT HISTORY </h1>
+                    <h1 id="header" class="text-center"> APPOINTMENT HISTORY </h1>
                 </div>
             </section>
             <div class="container py-5" id="page-container" style="margin-top: 0%">
@@ -168,14 +162,10 @@
             </div>
         </div>
     </main>
-    <div class="container-fluid">
+    <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-    <!-- SCIPTS -->
-    <!-- Chart library -->
-    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-    <!-- Icons library -->
-    <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
+
     <!-- Custom scripts -->
     <script src="/Ohana/src/dashboard/js/script.js"></script>
     <!-- Bootstrap Bundle with Popper -->
@@ -189,7 +179,9 @@
         var scheds = $.parseJSON('<?= json_encode($sched_res) ?>');
         console.log(scheds)
     </script>
+
     <script src="/Ohana/src/dashboard/js/calendar-script.js"></script>
+
 </body>
 
 </html>

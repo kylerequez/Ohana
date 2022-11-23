@@ -18,7 +18,7 @@
 
   <?php include_once 'stylesheets.php'; ?>
   <style>
-  @media screen and (min-width: 360px) and (max-width: 929.98px) {}
+    @media screen and (min-width: 360px) and (max-width: 929.98px) {}
   </style>
 </head>
 
@@ -31,12 +31,12 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <h1 class="sign-up__title" style="font-size: 100px; margin-top: 10%; font-family: Bantayog-Regular;">
+            <h1 id="header" class="sign-up__title" style="font-size: 100px; margin-top: 10%; font-family: 'Acme', sans-serif;">
               Welcome to Ohana!
             </h1>
             <!-- ALERT -->
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-              <div class="alert alert-success" role="alert">
+              <div class="alert alert-warning" role="alert">
                 <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
                 unset($_SESSION["msg"]); ?>
               </div>
@@ -90,26 +90,11 @@
         </div>
       </div>
 
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-scrollable">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel"> OHANA KENNEL PH</h3>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-left:800px"></button>
-            </div>
-            <div class="modal-body">
-              <?php include_once 'terms.php'; ?>
-            </div>
-          </div>
-        </div>
+      <div id="ohanafooter">
+        <?php include_once 'footer.php'; ?>
       </div>
-      <!-- FOOTER -->
-      <?php include_once 'footer.php'; ?>
-
     </main>
 
-    <!-- SCRIPTS -->
 
     <!-- SCRIPTS IMPORT-->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
@@ -118,8 +103,6 @@
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
-    <script src="../js/privacyscript.js"></script>
-    <script src="../js/termsscript.js"></script>
 </body>
 
 </body>

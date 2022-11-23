@@ -109,7 +109,7 @@
                 <button type="submit" id="submitbtn" class="btn ms-2 mt-3" data-bs-toggle="modal" data-bs-target="#editModal" style="background-color: #c0b65a; color:white; margin-left:20px;">Edit</button>
               </div>
 
-              <!-- Modal -->
+              <!-- Edit Modal -->
               <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                   <div class="modal-content">
@@ -175,7 +175,6 @@
       </div>
     </div>
     </section>
-    </div>
     </div>
   </main>
 

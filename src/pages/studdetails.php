@@ -62,12 +62,9 @@
         </div>
     </main>
 
-    <div class="container-fluid">
+    <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-
-    <!-- Custom scripts -->
-    <script src="/Ohana/src/dashboard/js/script.js"></script>
 
     <!-- JAVASCRIPT IMPORTS -->
     <!-- Bootstrap Bundle with Popper -->

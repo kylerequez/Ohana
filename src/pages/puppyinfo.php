@@ -17,7 +17,12 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-
+        #links{
+            text-decoration: none;
+        }
+        .img-fluid{
+            height:300px;
+        }
         @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
 </head>
@@ -48,29 +53,33 @@
                     <div class="card mx-auto img-fluid" style="max-width: 60vw; max-height:60vh; background-color:#2f1f18">
                         <img class="card-img-top" src="/Ohana/src/images/Ohanapups/cardbg.png" alt="Card image" style="width:100%; height:70vh">
                         <div class="card-img-overlay">
-                            <div class="card-header">
-                                <p style="font-size: 50px; text-align:center; font-family: 'Acme', sans-serif;"><b> <?php echo $profile->getName(); ?> </b></p>
+                            <div class="header">
+                                <p class="text-center fs-1" style="font-family: 'Acme', sans-serif;"><b> <?php echo $profile->getName(); ?> </b></p>
                             </div>
-                            <div class=" row justify-content">
-                                <hr style="color:white">
+                            <div class="row justify-content">
                                 <div class="col-md-5 mx-auto">
-                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img">
+                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img img-fluid mt-5" width="200px" height="250px;">
                                 </div>
                                 <div class="col-md-5">
-                                    <div class="card-body"><br>
+                                    <div class="card-body mt-5 mb-5">
                                         <p class="card-text"> <b>BIRTHDAY:</b> <?php echo $profile->getBirthdate()->format('M-d-Y'); ?> </p>
                                         <p class="card-text"> <b>COLOR:</b> <?php echo $profile->getColor(); ?> </p>
                                         <p class="card-text"> <b>GENDER:</b> <?php echo $profile->getSex(); ?> </p>
                                         <p class="card-text"> <b>GENES:</b> <?php echo $profile->getTrait(); ?> </p>
                                         <p class="card-text"> <b>PCCI PAPERS:</b> <?php echo $profile->getPcciStatus(); ?></p>
-                                        <p class="card-text"> <b>Note: All french bulldog puppies are fully vaccinated before release.</b></p>
+                                        <p class="card-text"> <b>VACCINE:</b></p>
+                                        <p class="card-text"> <b>PRICE:</b></p>
+                                        <p class="card-text fw-bold"> Note: All french bulldog puppies are fully vaccinated before release.</p>
                                     </div>
                                     <div name="buttons" style="margin-top:10%">
-                                        <a href="/set-appointment">
-                                            <button type="button" class="btn mt-3" style="margin-left:25%; background-color:#db6551;color:white;"> Book Kennel Visit </button>
+                                        <a id="links" href="/puppies">
+                                            <button type="button" class="btn-outline-dark btn mt-3 me-3 ms-2"> Go Back </button>
                                         </a>
-                                        <a href="/add-to-cart/<?php echo $profile->getId(); ?>">
-                                            <button type="button" class="btn mt-3" style="margin-left:5%; background-color:#c0b65a; color:white;"> Add to Paw Cart </button>
+                                        <a id="links" href="/set-appointment">
+                                            <button type="button" class="btn mt-3 ms-2" style="background-color:#db6551;color:white;"> Book Kennel Visit </button>
+                                        </a>
+                                        <a id="links" href="/add-to-cart/<?php echo $profile->getId(); ?>">
+                                            <button type="button" class="btn mt-3" style="background-color:#c0b65a; color:white;"> Add to Paw Cart </button>
                                         </a>
                                     </div>
                                 </div>
@@ -82,13 +91,9 @@
         </div>
     </main>
 
-    <div id="ohanafooter">
+    <div id="ohanafooter" style="margin-top:20%">
         <?php include_once 'footer.php'; ?>
     </div>
-
-    <!-- SCIPTS -->
-    <!-- Custom scripts -->
-    <script src="/Ohana/src/dashboard/js/script.js"></script>
 
     <!-- JAVASCRIPT IMPORTS -->
     <!-- Bootstrap Bundle with Popper -->

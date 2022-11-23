@@ -23,9 +23,8 @@
 
 <body style="background-color: #FAF8F0;">
 
-  <!-- UNREGISTERED USERS NAVIGATION BAR-->
   <?php include_once 'Rnavbar.php'; ?>
-  <!-- MAIN CONTENT -->
+
   <main class="sign-up">
     <div class="sign-up__container">
       <div class="sign-up__content">
@@ -74,7 +73,7 @@
 
                 <!-- VALIDATION BOX-->
                 <div id="message" style="background: white;">
-                  <h3 class="text-center" style="font-size: 20px; color:#c0b65a;">Password must contain the following:</h3>
+                  <h3 class="text-center text-white" style="font-size: 20px;">Password must contain the following:</h3>
                   <p id="letter" class="invalid">At least one <b>lowercase</b> letter</p>
                   <p id="capital" class="invalid">At least one <b>capital</b> letter</p>
                   <p id="number" class="invalid">At least one <b>number</b></p>
@@ -93,7 +92,7 @@
                 <center>
                   <div class="form__row mt-2">
                     <div class="logbtn">
-                      <button name="btnChange" type="submit"> <span> Change Password </span></button>
+                      <button name="btnChange" type="submit" style="border-radius:30px;"> <span> Change Password </span></button>
                     </div>
                   </div>
                   <hr>
@@ -108,10 +107,9 @@
     </div>
   </main>
   <!-- FOOTER -->
-  <div name="footer" style="margin-top:15%">
+  <div id="ohanafooter">
     <?php include_once 'footer.php'; ?>
   </div>
-
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <!-- START OF JAVASCRIPT-->

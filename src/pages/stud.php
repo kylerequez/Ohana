@@ -39,7 +39,7 @@
                     <!-- AVAILABLE PUPPIES CARD -->
                     <div class="container-fluid d-flex justify-content-center">
                         <div class="card mt-5" style="width: 20rem;">
-                            <a href="/studprofile"><img src="/Ohana/src/images/petprofile/stud.jpg" class="card-img-top" alt="Dog for Stud Service"></a>
+                            <a href="/stud-profile"><img src="/Ohana/src/images/petprofile/stud.jpg" class="card-img-top" alt="Dog for Stud Service"></a>
                             <div class="card-body">
                                 <h5 class="card-title text-center fw-bold"> FRENCH BULLDOG NAME </h5>
                                 <p class="card-text mb-4 text-center"> Stud success rate: 90% </p>
@@ -54,19 +54,9 @@
                 </section>
             </div>
     </main>
-
-    <div class="container-fluid">
+    <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-
-    <!-- SCIPTS -->
-
-    <!-- Chart library -->
-    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-
-    <!-- Icons library -->
-    <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
-
     <!-- Custom scripts -->
     <script src="/Ohana/src/dashboard/js/script.js"></script>
 
