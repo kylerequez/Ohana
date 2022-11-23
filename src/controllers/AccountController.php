@@ -44,7 +44,7 @@ class AccountController
         switch ($method) {
             case "GET":
                 $user = unserialize($_SESSION["user"]);
-                if (!$this->services->changePassword($user->getEmail(), $_POST)) {
+                if (!$this->services->changePassword($user->getEmail(), $_GET)) {
                     //header('Location: ' . $_SERVER['HTTP_REFERER']);
                     break;
                 }

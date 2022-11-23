@@ -115,7 +115,7 @@ class AccountServices
 
     public function changePassword(string $id, array $data): bool
     {
-        print_r($_POST);
+        print_r($data);
         return true;
     }
 
