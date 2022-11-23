@@ -12,7 +12,7 @@ class Order
     private $image = null;
     private ?float $price = null;
 
-    public function __construct(string $type, int $transactionId, int $petId, string $petName, $image, float $price)
+    public function __construct(string $type, ?int $transactionId, int $petId, string $petName, $image, float $price)
     {
         $this->type = $type;
         $this->transactionId = $transactionId;

@@ -13,6 +13,11 @@ class ChatbotServices
         return $this->dao->getAllSettings();
     }
 
+    public function getResponse(string $query): mixed
+    {
+        return $this->dao->getResponse($query);
+    }
+    
     public function getResponsesPagination(string $limit, string $offset): mixed
     {
         return $this->dao->getResponsesPagination($limit, $offset);

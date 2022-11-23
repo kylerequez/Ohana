@@ -16,6 +16,7 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
         @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
 </head>
@@ -70,11 +71,10 @@
         </div>
     </main>
 
-    <div class="container-fluid" style="margin-top:10%">
+    <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-
-    <!-- SCIPTS -->
+   
     <!-- Custom scripts -->
     <script src="/Ohana/src/dashboard/js/script.js"></script>
     <!-- JAVASCRIPT IMPORTS -->

@@ -12,11 +12,14 @@
 
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-  <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
   <?php include_once 'stylesheets.php'; ?>
 
   <style>
+    #ohanafooter {
+      margin-top: 5%;
+    }
+
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
       .sign-up__title {
         font-size: 33px;
@@ -37,7 +40,6 @@
       .input__label {
         font-size: 15px;
       }
-
     }
   </style>
 </head>
@@ -87,8 +89,7 @@
                   <div class="form__row">
                     <div class="input">
                       <div class="input__container">
-                        <input class="input__field" id="password" name="password" placeholder="Password" minlength="8" maxlength="49" required="" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
+                        <input class="input__field" id="password" name="password" placeholder="Password" minlength="8" maxlength="49" required="" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
                         <label class="input__label" for="password">Password</label>
                       </div>
                     </div>
@@ -113,7 +114,7 @@
     </main>
 
     <!-- FOOTER -->
-    <div id="mbfooter" style="margin-top:15%">
+    <div id="ohanafooter">
       <?php include_once 'footer.php'; ?>
     </div>
 

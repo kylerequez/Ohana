@@ -179,17 +179,9 @@
     </div>
   </main>
 
-  <div class="container-fluid">
+  <div id="ohanafooter">
     <?php include_once 'footer.php'; ?>
   </div>
-
-  <!-- SCIPTS -->
-
-  <!-- Chart library -->
-  <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-
-  <!-- Icons library -->
-  <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
 
   <!-- Custom scripts -->
   <script src="/Ohana/src/dashboard/js/script.js"></script>

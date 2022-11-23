@@ -100,9 +100,6 @@ class PetProfileController
         switch ($method) {
             case "GET":
                 $_SESSION["profile"] = serialize($this->services->getOhanaPet($id));
-                // $profile = $this->services->getOhanaPet($id);
-
-                // print_r($profile);
                 header("Location: http://localhost/puppy-info");
                 break;
             case "POST":

@@ -113,6 +113,12 @@ class AccountServices
         return true;
     }
 
+    public function changePassword(string $id, array $data): bool
+    {
+        print_r($data);
+        return true;
+    }
+
     public function loginRequest(array $data): bool
     {
         $email = trim($data["email"]);

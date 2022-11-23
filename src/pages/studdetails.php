@@ -17,6 +17,7 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
         @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
 </head>
@@ -30,30 +31,27 @@
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
             <div class="message" style="margin-top:10%;">
                 <section class="services" id="services">
-                    <div class="card mx-auto img-fluid" style="max-width: 60vw; max-height:60vh; background-color:#2f1f18">
-                        <img class="card-img-top" src="/Ohana/src/images/Ohanapups/cardbg.png" alt="Card image" style="width:100%; height:70vh">
+                    <div class="card mx-auto img-fluid" style="max-width: 60vw; max-height:120vh; background-color:#2f1f18">
+                        <img class="card-img-top img-fluid" src="/Ohana/src/images/Ohanapups/cardbg.png" alt="Card image" style="width:100%; height:70vh">
                         <div class="card-img-overlay">
-                            <div class="card-header">
-                                <p style="font-size: 40px; text-align:center"><b> FRENCH BULLDOG NAME </b></p>
-                            </div>
+                            <p class="text-center fs-2 fw-bold" style="font-family: 'Acme', sans-serif;"><b> FRENCH BULLDOG NAME </b></p>
                             <div class="row justify-content">
-                                <hr style="color:white">
                                 <div class="col-md-5 mx-auto">
                                     <img src="/Ohana/src/images/petprofile/studog.png" class="card-img">
                                 </div>
                                 <div class="col-md-5">
-                                    <div class="card-body"><br>
-                                        <p class="card-text"> <b>BIRTHDAY:</b> June 13, 2018 </p>
-                                        <p class="card-text"> <b>COLOR:</b> Brown Tan </p>
-                                        <p class="card-text"> <b>GENDER:</b> Male </p>
-                                        <p class="card-text"> <b>WEIGHT:</b> 12 kg </p>
-                                        <p class="card-text"> <b>GENES:</b> Lilac Tan Carrier & Isabella Carrier </p>
-                                        <p class="card-text"> <b>PCCI PAPERS:</b> COMPLETE</p>
-                                        <p class="card-text"> <b>Note: Our Adult Frenchies are fully vaccinated. </b></p>
+                                    <div class="card-body mt-5"><br>
+                                        <p class="card-text"> <b>BIRTHDAY:</b> insert php code here </p>
+                                        <p class="card-text"> <b>COLOR:</b><p>
+                                        <p class="card-text"> <b>GENDER:</b> </p>
+                                        <p class="card-text"> <b>GENES:</b> </p>
+                                        <p class="card-text"> <b>PCCI PAPERS:</b> </p>
+                                        <p class="card-text"> <b>SUCCESS RATE:</b> </p>
+                                        <p class="card-text fw-bold mt-3"> <b>Note: Our Adult Frenchies are fully vaccinated. </b></p>
                                     </div>
-                                    <div name="buttons" style="margin-top:10%">
-                                        <button type="button" class="btn btn-outline-secondary mt-5" style="margin-left:25%"> Back to Home</button>
-                                        <button type="button" class="btn mt-5" style="margin-left:5%; background-color:#c0b65a"> Choose as Pair </button>
+                                    <div id="buttons">
+                                        <a href="/stud"><button type="button" class="btn btn-outline-dark mt-3" style="margin-left:5%"> Go Back</button></a>
+                                        <button type="button" class="btn mt-3 text-white" style="margin-left:5%; background-color:#c0b65a; "> Choose as Pair </button>
                                     </div>
                                 </div>
                             </div>
@@ -67,14 +65,6 @@
     <div class="container-fluid">
         <?php include_once 'footer.php'; ?>
     </div>
-
-    <!-- SCIPTS -->
-
-    <!-- Chart library -->
-    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-
-    <!-- Icons library -->
-    <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
 
     <!-- Custom scripts -->
     <script src="/Ohana/src/dashboard/js/script.js"></script>

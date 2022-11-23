@@ -28,7 +28,7 @@
 
 <body>
 	<div class="container">
-		<h1 class="text-center" style="font-size:50px;">Privacy Policy for Ohana Kennel PH</h1><br>
+		<h1 class="text-center" style="font-size:40px;">Privacy Policy for Ohana Kennel PH</h1><br>
 		<p>At OhanaKennelPH, accessible from OhanaKennelPH.com, one of our main priorities is the privacy of our visitors.
 			This Privacy Policy document contains types of information that is collected and recorded by OhanaKennelPH and how we use it.</p>
 
@@ -53,13 +53,13 @@
 		<p>We use the information we collect in various ways, including to:</p>
 
 		<ul>
-			<li>Provide, operate, and maintain our website</li>
-			<li>Improve, personalize, and expand our website</li>
-			<li>Understand and analyze how you use our website</li>
-			<li>Develop new products, services, features, and functionality</li>
-			<li>Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes</li>
-			<li>Send you emails</li>
-			<li>Find and prevent fraud</li>
+			<li>● Provide, operate, and maintain our website</li>
+			<li>● Improve, personalize, and expand our website</li>
+			<li>● Understand and analyze how you use our website</li>
+			<li>● Develop new products, services, features, and functionality</li>
+			<li>● Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes</li>
+			<li>● Send you emails</li>
+			<li>● Find and prevent fraud</li>
 		</ul>
 
 		<h3>Log Files</h3>

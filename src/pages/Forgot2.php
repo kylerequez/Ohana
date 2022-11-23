@@ -78,7 +78,9 @@
   </main>
 
   <!-- FOOTER -->
-  <?php include_once 'footer.php'; ?>
+  <div id="ohanafooter">
+    <?php include_once 'footer.php'; ?>
+  </div>
 
   <!-- SCIPTS -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>

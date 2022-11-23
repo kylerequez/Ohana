@@ -65,8 +65,9 @@
     </main>
 
     <!-- FOOTER -->
-    <?php include_once 'footer.php'; ?>
-    </main>
+    <div id="ohanafooter">
+      <?php include_once 'footer.php'; ?>
+    </div>
 
 </body>
 

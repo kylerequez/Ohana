@@ -17,6 +17,7 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
         @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
 </head>
@@ -43,7 +44,6 @@
                         <div class="service">
                             <h1 class="mb-2" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;text-align:center"> ADD TO YOUR OHANA NOW</h1>
                         </div>
-
                         <!-- AVAILABLE PUPPIES CARD -->
                         <div class="container d-flex justify-content-center">
                             <div class="row  d-flex justify-content-center">
@@ -55,7 +55,7 @@
                                             <p class="card-text"> <?php echo $profile->getBirthdate()->format('Y-m-d'); ?> </p>
                                             <p class="card-text"> <?php echo $profile->getPrice(); ?> </p>
                                             <div class="btn-Learn" name="btn-Learn">
-                                                <center><a href="/puppy-info/rehoming/get/<?php echo $profile->getId(); ?>"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
+                                                <center><a href="/rehoming/get/<?php echo $profile->getId(); ?>"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
                                             </div>
                                         </div>
                                     </div>
@@ -69,17 +69,9 @@
         </div>
     </main>
 
-    <div class="container-fluid">
+    <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-
-    <!-- SCIPTS -->
-
-    <!-- Chart library -->
-    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-
-    <!-- Icons library -->
-    <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
 
     <!-- Custom scripts -->
     <script src="/Ohana/src/dashboard/js/script.js"></script>

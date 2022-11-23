@@ -10,18 +10,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
-    
+
     <link rel="stylesheet" href="/Ohana/src/css/service.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-    <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
     <?php include_once 'stylesheets.php'; ?>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {
-
+        .btn-outline-info {
+            color: #db6551;
+            background-color: transparent;
+            background-image: none;
+            border-color: #db6551;
+            font-size:25px;
+            --bs-btn-hover-border-color: #c0b65a;
+            --bs-btn-hover-bg: #c0b65a;
+            --bs-btn-hover-color: white;
+            border-radius: 30px;
+            padding: 15px 70px;
         }
+
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
 </head>
 
@@ -32,32 +41,29 @@
 
         <div class="container-fluid">
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-            <div class="message" style="margin-top:10%;">
+            <div class="message">
                 <section class="services" id="services">
                     <div class="service">
                         <h1 id="serviceheader" class="text-center mb-3"> SERVICES </h1>
                     </div>
-
                     <div class="row text-center">
                         <div class="col-lg-6">
                             <a href="/puppies/rehoming/get" style="text-decoration:none;">
                                 <img src="/Ohana/src/images/services/1.png" class="img-fluid" role="img" focusable="false"></img>
-                                <button type="button" class="btn btn-outline-info"> PET REHOMING </button>
-                                <p id="paragraph" style="color:#7d605c;"> Want to add another member to your family? We have the cutest and most loving frenchies waiting for you. </p>
+                                <center><button type="button" class="btn btn-outline-info"> PET REHOMING </button></center>
+                                <p class="mt-4" id="paragraph" style="color:#7d605c;"> Want to add another member to your family? We have the cutest and most loving frenchies waiting for you. </p>
                             </a>
                         </div>
                         <div class="col-lg-6">
                             <a href="/stud" style="text-decoration:none;">
                                 <img src="/Ohana/src/images/services/2.png" class="img-fluid" role="img" focusable="false"></img>
-                                <button type="button" class="btn btn-outline-info"> PET REHOMING </button>
+                                <center><button type="button" class="btn btn-outline-info"> STUD SERVICE </button></center>
+                                <p class="mt-4" id="paragraph" style="color:#7d605c;"> Want to produce quality and compact french bulldogs? Choose from any of our male frenchies ready for mating. </p>
                             </a>
-                            <p id="paragraph" style="color:#7d605c;"> Want to produce quality and compact french bulldogs? Choose from any of our male frenchies ready for mating. </p>
                         </div>
-
                     </div>
-
                 </section>
-                <section class="reason" style="margin-top:5%;">
+                <section class="reason">
                     <div class="reasons">
                         <img src="/Ohana/src/images/Landing/reasonsmain.png" class="img-fluid" style="width: 100%;">
                     </div>
@@ -66,12 +72,12 @@
                     <div class="pair-section">
                         <form action="/stud" method='get'>
                             <div class="btn-Learn" name="btn-Checkout" style="float:right; margin-right:17%; margin-top:13%;">
-                                <button id="btnCheckout" name="btnCheckout"><span> Find the perfect pair now </span></button>
+                                <button id="btnCheckout" name="btnPair"><span> Find the perfect pair now </span></button>
                             </div>
                         </form>
                         <form action="/stud" method='get'>
                             <div class="btn-Learn" name="btn-Checkout" style="float:right; margin-right:12%; margin-top:30%;">
-                                <button id="btnCheckout" name="btnCheckout"><span> Find the perfect pair now </span></button>
+                                <button id="btnCheckout" name="btnPair"><span> Find the perfect pair now </span></button>
                             </div>
                         </form>
                     </div>
@@ -83,22 +89,9 @@
         </div>
     </main>
 
-    <div class="container-fluid">
+    <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-
-    <!-- SCIPTS -->
-
-    <!-- Chart library -->
-    <script src="../plugins/chart.min.js"></script>
-
-    <!-- Icons library -->
-    <script src="../plugins/feather.min.js"></script>
-
-    <!-- Custom scripts -->
-    <script src="../js/script.js"></script>
-    <script src="../js/privacyscript.js"></script>
-    <script src="../js/termsscript.js"></script>
 
     <!-- JAVASCRIPT IMPORTS -->
     <!-- Bootstrap Bundle with Popper -->

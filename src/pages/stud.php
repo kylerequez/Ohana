@@ -18,7 +18,9 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {}
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {
+
+        }
     </style>
 </head>
 
@@ -29,19 +31,18 @@
 
         <div class="container-fluid">
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-            <div class="message" style="margin-top:10%;">
+            <div class="message">
                 <section class="services" id="services">
                     <div class="service">
-                        <h1 style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800; text-align:center"> CHOOSE THE PERFECT PAIR </h1>
-                    </div><br><br>
+                        <h1 class="mt-4" id="studtitle"> CHOOSE THE PERFECT PAIR </h1>
+                    </div>
                     <!-- AVAILABLE PUPPIES CARD -->
                     <div class="container-fluid d-flex justify-content-center">
-
-                        <div class="card" style="width: 20rem;">
-                            <a href="/studprofile"><img src="/Ohana/src/images/petprofile/stud.jpg" class="card-img-top" alt="..."></a>
+                        <div class="card mt-5" style="width: 20rem;">
+                            <a href="/studprofile"><img src="/Ohana/src/images/petprofile/stud.jpg" class="card-img-top" alt="Dog for Stud Service"></a>
                             <div class="card-body">
-                                <h5 class="card-title" style="text-align:center"> FRENCH BULLDOG NAME </h5>
-                                <p class="card-text"> Stud success rate: 90% | Gender: Male </p>
+                                <h5 class="card-title text-center fw-bold"> FRENCH BULLDOG NAME </h5>
+                                <p class="card-text mb-4 text-center"> Stud success rate: 90% </p>
                                 <form action="/stud-profile" method='get'>
                                     <div class="btn-Learn" name="btn-Learn">
                                         <center><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></center>

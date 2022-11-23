@@ -1,5 +1,6 @@
 <?php
 require_once dirname(__DIR__) . '/models/Account.php';
+require_once dirname(__DIR__) . '/models/Cart.php';
 require_once dirname(__DIR__) . '/config/app-config.php';
 class AccountController
 {
@@ -41,6 +42,14 @@ class AccountController
     public function processEditAccount(string $method): void
     {
         switch ($method) {
+            case "GET":
+                $user = unserialize($_SESSION["user"]);
+                if (!$this->services->changePassword($user->getEmail(), $_GET)) {
+                    //header('Location: ' . $_SERVER['HTTP_REFERER']);
+                    break;
+                }
+                //header('Location: ' . $_SERVER['HTTP_REFERER']);
+                break;
             case "POST":
                 $user = unserialize($_SESSION["user"]);
                 if (!$this->services->updateAccount($user->getId(), $_POST)) {
@@ -135,7 +144,7 @@ class AccountController
                     if ($account->getType() == "USER") {
                         unset($_SESSION["userOtp"]);
                         unset($_SESSION["email"]);
-                        $_SESSION["cart"] = new Cart();
+                        $_SESSION["cart"] = serialize(new Cart());
                         header("Location: http://localhost/home");
                         break;
                     } else {
