@@ -40,8 +40,8 @@
             <input type="text" placeholder=" Search User Account">
           </div>
           <div class="createstaff-wrapper">
-            <button type="create" style="color:white"><i data-feather="bar-chart" aria-hidden="true"></i><a class="generate-sales-btn" href="/dashboard/sales"> Generate Sales Report </a></button>
-            <button type="create" style="color:white"><i data-feather="file-text" aria-hidden="true"></i><a class="export-btn" href="/"> Export Report </a></button>
+            <button type="create"><i data-feather="bar-chart" aria-hidden="true"></i><a class="generate-sales-btn" href="/dashboard/sales"> Generate Sales Report </a></button>
+            <button type="create"><i data-feather="file-text" aria-hidden="true"></i><a class="export-btn" href="##"> Export Report </a></button>
           </div>
           <br>
           <table class="posts-table">
@@ -56,12 +56,8 @@
             </thead>
             <tbody>
               <tr>
-                <td>
-                  I.D NUMBER 12345
-                </td>
-                <td>
-                  CUSTOMER EMAIL ADDRESS
-                </td>
+                <td>I.D NUMBER 12345</td>
+                <td>CUSTOMER EMAIL ADDRESS</td>
                 <td>
                   <div class="pages-table-img">
                     Jenny Wilson
@@ -110,8 +106,6 @@
   unset($_SESSION["msg"]);
   ?>
   <!-- SCRIPTS -->
-  <!-- Chart library -->
-  <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
   <!-- Icons library -->
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
   <!-- Custom scripts -->

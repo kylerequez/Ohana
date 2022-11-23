@@ -228,6 +228,7 @@ class AccountController
                 if (!isset($_SESSION)) session_start();
                 if ($this->services->addAccount($_POST)) {
                     if ($this->services->registrationRequest($_POST)) {
+                        unset($_SESSION["msg"]);
                         header("Location: http://localhost/register/confirm");
                         break;
                     } else {

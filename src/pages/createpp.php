@@ -13,11 +13,11 @@
   <!-- END OF META TAGS -->
   <link rel="stylesheet" href="/Ohana/src/css/puppies.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-  <link rel="stylesheet" href="/Ohana/src/css/footer.css">
-
+ 
   <?php include_once 'stylesheets.php'; ?>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
     @media screen and (min-width: 360px) and (max-width: 929.98px) {}
   </style>
 </head>
@@ -45,7 +45,7 @@
                     <div class="mb-3 row">
                       <label for="inputPetName" class="col-sm-2 col-form-label" style="color:#7d6056">Name:</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="name" name="name">
+                        <input type="text" class="form-control" id="name" name="name" required>
                       </div>
                     </div>
                   </div>
@@ -53,7 +53,7 @@
                     <div class="mb-3 row ">
                       <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Birthday: </label>
                       <div class="col-sm-10">
-                        <input type="date" class="form-control" id="birthdate" name="birthdate">
+                        <input type="date" class="form-control" id="birthdate" name="birthdate" required>
                       </div>
                     </div>
                   </div>
@@ -61,7 +61,7 @@
                     <div class="mb-3 row">
                       <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Color:</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="color" name="color">
+                        <input type="text" class="form-control" id="color" name="color" required>
                       </div>
                     </div>
                   </div>
@@ -115,10 +115,10 @@
               </div>
               <div class="mb-3 ms-3 me-3">
                 <label for="formFile" class="form-label"> Choose and Upload an image of your Dog.</label>
-                <input class="form-control" type="file" id="formFile" name="image">
+                <input class="form-control" type="file" id="formFile" name="image" required>
               </div>
               <div class="d-flex justify-content-end pt-2" style="margin-right:10%;">
-                <button type="reset" class="btn btn-md " style="background-color: #db6551; color:white">Reset</button>
+                <button type="reset" class="btn btn-outline-dark">Reset</button>
                 <button type="submit" id="submitbtn" class="btn ms-2" style="background-color: #c0b65a; color:white; margin-left:20px;">Create</button>
               </div>
             </div>
@@ -132,22 +132,10 @@
     </div>
   </main>
 
-  <div class="container-fluid">
+  <div id="ohanafooter">
     <?php include_once 'footer.php'; ?>
   </div>
 
-  <!-- SCIPTS -->
-
-  <!-- Chart library -->
-  <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-
-  <!-- Icons library -->
-  <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
-
-  <!-- Custom scripts -->
-  <script src="/Ohana/src/dashboard/js/script.js"></script>
-
-  <!-- JAVASCRIPT IMPORTS -->
   <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
   </script>

@@ -142,7 +142,8 @@
             </center>
         </div>
     </main>
-    <div class="container-fluid">
+    
+    <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
 

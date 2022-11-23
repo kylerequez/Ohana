@@ -10,14 +10,11 @@
 
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-  <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
   <?php include_once 'stylesheets.php'; ?>
   <style>
-    @media screen and (min-width: 350px) and (max-width: 929.98px) {
-      .pagefooter {
-        margin-top: 20%;
-      }
+    @media screen and (min-width: 360px) and (max-width: 929.98px) {
+    
     }
   </style>
 </head>
@@ -142,8 +139,8 @@
         </div>
       </div>
       <!-- FOOTER -->
-      <div name="pagefooter">
-        <?php include_once dirname(__DIR__) . '/pages/footer.php';; ?>
+      <div id="ohanafooter">
+        <?php include_once 'footer.php'; ?>
       </div>
     </main>
 

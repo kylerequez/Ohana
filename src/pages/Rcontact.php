@@ -15,10 +15,11 @@
     <!-- EXTERNAL CSS -->
     <link rel="stylesheet" href="/Ohana/src/css/Ucontact.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-
+    <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
         @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
 </head>
@@ -29,8 +30,8 @@
         <?php include_once 'Rnavbar.php'; ?>
 
         <div class="container-fluid">
-            <div class="message" style="margin-top:10%">
-                <h1 style="font-size:100px; font-family: 'Acme', sans-serif; font-weight:800; color:#db6551"> CONTACT US! </h1>
+            <div class="message">
+                <h1 id="header" class="text-center"> CONTACT US! </h1>
             </div>
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
             <section class="contact-us" id="contact" style="margin-top:5%">
@@ -49,35 +50,42 @@
                 </div>
         </div>
         </section>
-        <section class="maps">
+        <section class="maps mb-5">
             <div class="message" style="margin-top:10%">
-                <h1 style="font-size:80px; font-family: 'Acme', sans-serif; font-weight:800; color:#db6551"> YOU CAN FIND US HERE </h1>
+                <h1 id="find" class="mb-5 text-center"> YOU CAN FIND US HERE </h1>
             </div><br>
             <center>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1623.2871555101196!2d121.00392295489537!3d14.607660960531538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b61dfbade45d%3A0x87e58f7a0f4c89c3!2s1026%20Mindoro%2C%20Sampaloc%2C%20Maynila%2C%201008%20Kalakhang%20Maynila!5e0!3m2!1sen!2sph!4v1665068149424!5m2!1sen!2sph" width="800" height="650" style="border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </center>
         </section>
+        <div id="chat-container"> </div>
         </div>
     </main>
 
-    <div class="container-fluid">
+    <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
 
-    <!-- SCIPTS -->
-
-    <!-- Chart library -->
-    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-
-    <!-- Icons library -->
-    <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
-
-    <!-- Custom scripts -->
-    <script src="/Ohana/src/dashboard/js/script.js"></script>
-
-
     <!-- JAVASCRIPT IMPORTS -->
+    <script src="/Ohana/src/js/chatbot-ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $.ajax({
+            url: '/chatbot/settings/get',
+            type: "GET",
+            error: function(error) {
+                console.log("Error in retrieving the Chatbot Information.");
+            }
+        }).done(function(data) {
+            info = JSON.parse(data);
+            name = info.name;
+            intro = info.intro;
+            noResponse = info.noResponse;
+            createChatBot(host = '/chatbot/responses/get', botLogo = "/Ohana/src/images/Chatbot/bot-logo.png",
+                title = name, welcomeMessage = intro, inactiveMsg = noResponse, theme = "orange")
+        });
+    </script>
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>

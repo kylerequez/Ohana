@@ -28,6 +28,14 @@ section {
   text-align:center;
 }
 
+.message {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+#buttons {
+  margin-top: 35%;
+}
 /* ########################################## BUTTON ######################################### */
 .btn-Learn button {
   background-color: #75605c;

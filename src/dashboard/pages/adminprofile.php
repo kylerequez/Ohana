@@ -48,7 +48,7 @@
                     <div class="container rounded">
                         <div class="row">
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="/Ohana/src/dashboard/img/avatar/administrator.png">
-                                <span class="font-weight-bold">Admin Name</span><span class="text-black-50">Administrator</span>
+                                <span class="text-black-50">Administrator</span>
                             </div>
                         </div>
                         <div class="container-sm">

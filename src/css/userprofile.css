@@ -17,7 +17,7 @@ body {
   position: relative !important;
 }
 
-.userheader h1 {
+#header {
   color: #db6551;
   font-size: 60px;
   text-align: center;
@@ -28,6 +28,9 @@ body {
 section {
   display: block;
   margin-top: 5%;
+}
+.userprofile {
+  margin-top: 10%;
 }
 
 table,
@@ -48,50 +51,4 @@ th {
 .container {
   max-width: 50%;
   margin-top: 10px;
-}
-
-/* ----------------------------MOBILE RESPONSIVENESS------------------------------- */
-
-@media screen and (min-width: 350px) and (max-width: 900px) {
-  * {
-    margin: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    position: relative !important;
-  }
-
-  .userheader h1 {
-    color: #db6551;
-    font-size: 30px;
-    text-align: center;
-    font-weight: bold;
-    font-family: "Acme", sans-serif;
-  }
-
-  section {
-    display: block;
-    margin-top: 5%;
-  }
-
-  table,
-  tr,
-  td,
-  th {
-    table-layout: fixed;
-    word-wrap: break-word;
-    margin-top: 5px;
-    border-collapse: collapse;
-    border-spacing: 0;
-    border-left: 1.5px solid #db6551 !important;
-    border-right: 1.5px solid #db6551 !important;
-    border-top: 1.5px solid #db6551 !important;
-    border-bottom: 1.5px solid #db6551 !important;
-  }
-
-  .container {
-    max-width: 25%;
-    margin-top: 5px;
-  }
 }

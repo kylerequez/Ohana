@@ -165,6 +165,7 @@ class PetProfileController
                     echo "ERROR IN ADDING PET PROFILE";
                 }
                 unset($_SESSION["msg"]);
+               
                 $this->processCustomerCollectionRequest("GET");
                 break;
         }
