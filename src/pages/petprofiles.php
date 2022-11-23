@@ -16,6 +16,7 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
         @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
 </head>
@@ -42,22 +43,28 @@
                             </div>
                         <?php
                         }
+                        ?>
+                        <div class="d-flex justify-content-center>
+                        <?php
                         foreach ($profiles as $profile) {
                         ?>
                             <a href="/ownedpets/profile/<?php echo $profile->getId(); ?>" style="text-decoration: none; color:black">
-                                <div class="card m-3" style="width: 20rem;">
-                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image" width="250px" height="250px;">
-                                    <div class="card-body">
-                                        <h5 class="card-title"> <?php echo $profile->getName(); ?></h5>
-                                        <p class="card-text"> <?php echo $profile->getBirthdate()->format('Y-m-d'); ?> </p>
-                                        <p class="card-text"> <?php echo $profile->getPrice(); ?> </p>
-                                    </div>
+                            <div class="card m-3" style="width: 20rem;">
+                                <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image" width="250px" height="250px;">
+                                <div class="card-body">
+                                    <h5 class="card-title"> <?php echo $profile->getName(); ?></h5>
+                                    <p class="card-text"> <?php echo $profile->getBirthdate()->format('Y-m-d'); ?> </p>
+                                    <p class="card-text"> <?php echo $profile->getPrice(); ?> </p>
                                 </div>
+                            </div>
                             </a>
                         <?php
                         }
-                    } else if (empty($profiles)) {
                         ?>
+                        </div>
+                    <?php
+                    } else if (empty($profiles)) {
+                    ?>
                         <div class="form__row text-center mb-5">
                             <p style="font-size:20px;">Do not have a pet profile?&nbsp;<a class="link" name="login" style="text-decoration:none; color:#db6551" href="/createpetprofile">Create now!</a></p>
                         </div>
