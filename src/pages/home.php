@@ -146,7 +146,8 @@
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
                                 <div class="card-body">
-                                    <h5 class="card-text text-center mt-2 mb-2"> Maraming Salamat! Alagaan ko to. Ang ganda niya. Thank you ulit 👌🏻” </h5><br>
+                                    <img src="/Ohana/src/images/services/1.png" class="img-fluid" role="img" focusable="false"></img>
+                                    <h5 class="card-text text-center mt-2 mb-2"> Maraming Salamat! Alagaan ko to. Ang ganda niya. Thank you ulit!</h5><br>
                                     <h4 class="card-title text-center mt-2"> Edrich Pineda </h4>
                                 </div>
                             </div>
@@ -154,8 +155,8 @@
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
                                 <div class="card-body">
-
-                                    <h5 class="card-text text-center mt-2 mb-2">"Thank you so much! So happy with my puppy!”</h5><br>
+                                    <img src="/Ohana/src/images/services/1.png" class="img-fluid" role="img" focusable="false"></img>
+                                    <h5 class="card-text text-center mt-2 mb-2">Thank you so much! So happy with my puppy!</h5><br>
                                     <h4 class="card-title text-center"> Ron Ilao</h4>
                                 </div>
                             </div>
@@ -163,8 +164,8 @@
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
                                 <div class="card-body">
-
-                                    <h5 class="card-text text-center mt-2 mb-2">“Thank you sir. Quality talaga yung puppy at napaka-cute. Solid!”</h5><br>
+                                    <img src="/Ohana/src/images/services/1.png" class="img-fluid" role="img" focusable="false"></img>
+                                    <h5 class="card-text text-center mt-2 mb-2">Thank you sir. Quality talaga yung puppy at napaka-cute. Solid!</h5><br>
                                     <h4 class="card-title text-center"> Ralph Hernandez </h4>
                                 </div>
                             </div>

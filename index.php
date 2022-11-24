@@ -164,22 +164,19 @@
                 </div>
                 <div class="row text-center ms-4 me-4">
                     <div class="col-lg-4">
-                        <img src="/Ohana/src/images/services/1.png" class="img-fluid" role="img" focusable="false">
-                        <text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
+                        <img src="/Ohana/src/images/services/1.png" class="img-fluid" role="img" focusable="false"></img>
                         <h2 class="p-4" style="color:#7d605c;"> Pet Rehoming </h2>
                         <p class="p-2" style="color:#7d605c;"> Want to add another member to your family? We have the cutest and most loving frenchies waiting for you. </p>
                     </div>
                     <div class="col-lg-4">
                         <div class="stud">
-                            <img src="/Ohana/src/images/services/2.png" class="img-fluid" role="img" focusable="false">
-                            <text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
+                            <img src="/Ohana/src/images/services/2.png" class="img-fluid" role="img" focusable="false"></img>
                             <h2 class="p-4" style="color:#7d605c;"> Stud Service </h2>
                             <p class="p-2" style="color:#7d605c;"> Want to produce quality and compact french bulldogs? Choose from any of our male frenchies ready for mating. </p>
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <img src="/Ohana/src/images/services/3.png" class="img-fluid" role="img" focusable="false">
-                        <text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
+                        <img src="/Ohana/src/images/services/3.png" class="img-fluid" role="img" focusable="false"></img>
                         <h2 class="p-4" style="color:#7d605c;"> Pet Boarding </h2>
                         <p class="p-2" style="color:#7d605c;"> Want to increase chances of your pet fertility after stud? We offer pet boarding to prevent your pet from getting stressed. </p>
                     </div>
@@ -204,7 +201,8 @@
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
                                 <div class="card-body">
-                                    <h5 class="card-text text-center mt-2 mb-2"> Maraming Salamat! Alagaan ko to. Ang ganda niya. Thank you ulit 👌🏻” </h5><br>
+                                    <img src="/Ohana/src/images/icons/quote.png" class="me-3 img-fluid" width="50" height="50"></img>
+                                    <h5 class="card-text text-center mt-2 mb-2"> Maraming Salamat! Alagaan ko to. Ang ganda niya. Thank you ulit! </h5><br>
                                     <h4 class="card-title text-center mt-2"> Edrich Pineda </h4>
                                 </div>
                             </div>
@@ -212,8 +210,8 @@
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
                                 <div class="card-body">
-
-                                    <h5 class="card-text text-center mt-2 mb-2">"Thank you so much! So happy with my puppy!”</h5><br>
+                                    <img src="/Ohana/src/images/icons/quote.png" class="me-3 img-fluid" width="50" height="50"></img>
+                                    <h5 class="card-text text-center mt-2 mb-2">Thank you so much! So happy with my puppy!</h5><br>
                                     <h4 class="card-title text-center"> Ron Ilao</h4>
                                 </div>
                             </div>
@@ -221,8 +219,8 @@
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
                                 <div class="card-body">
-
-                                    <h5 class="card-text text-center mt-2 mb-2">“Thank you sir. Quality talaga yung puppy at napaka-cute. Solid!”</h5><br>
+                                    <img src="/Ohana/src/images/icons/quote.png" class="me-3 img-fluid" width="50" height="50"></img>
+                                    <h5 class="card-text text-center mt-2 mb-2">Thank you sir. Quality talaga yung puppy at napaka-cute. Solid!</h5><br>
                                     <h4 class="card-title text-center"> Ralph Hernandez </h4>
                                 </div>
                             </div>
