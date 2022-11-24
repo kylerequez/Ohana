@@ -10,10 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
-   
+
     <link rel="stylesheet" href="/Ohana/src/css/puppies.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-  
+
     <?php include_once 'stylesheets.php'; ?>
 
     <style>

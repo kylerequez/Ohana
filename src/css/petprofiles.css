@@ -16,31 +16,16 @@ section {
   display: block;
   margin-top: 5%;
 }
-
+.abouthead {
+  margin-top: 10%;
+}
+#header {
+  color: #db6551;
+  font-size: 80px;
+  font-family: "Acme", sans-serif;
+  font-weight: 800;
+}
 .card:hover {
   transform: scale(1.1);
   box-shadow: 5px 5px 15px rgba(192, 182, 90);
-}
-
-/* ----------------------------MOBILE RESPONSIVENESS------------------------------- */
-
-@media screen and (min-width: 350px) and (max-width: 900px) {
-  * {
-    margin: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    position: relative !important;
-  }
-
-  section {
-    display: block;
-    margin-top: 2.5%;
-  }
-
-  .card:hover {
-    transform: scale(1.1);
-    box-shadow: 2.5px 2.5px 7.5px rgba(192, 182, 90);
-  }
 }

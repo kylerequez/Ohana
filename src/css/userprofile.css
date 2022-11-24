@@ -52,3 +52,28 @@ th {
   max-width: 50%;
   margin-top: 10px;
 }
+
+#labels {
+  color: #c0b65a;
+  font-size: 20px;
+}
+
+#name {
+  color: #c0b65a;
+  font-size: 20px;
+}
+
+#change {
+  float: right;
+  margin-right: 10px;
+}
+
+#save {
+  background-color: #db6551;
+  color: white;
+  float: right;
+}
+/* SET AN APPOINTMENT PAGE*/
+#customer-book {
+  margin-top: 10%;
+}

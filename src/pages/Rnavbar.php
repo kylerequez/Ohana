@@ -11,18 +11,28 @@
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
 
   <style>
+    #navlogo {
+      width: 100%;
+      height: 90px;
+    }
+
     #customerprofile {
       width: 50px;
       height: 40px;
     }
 
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
-      .container-fluid {
-        height:100px;
-        width:100%;
+      .navbar.navbar-expand-xl {
+        height: 110px;
+      }
+
+      #navlogo.img-fluid {
+        margin-top:-40%;
+      }
+      .navbar-toggler {
+        margin-top:-20%;
       }
     }
-
   </style>
 </head>
 <?php
@@ -39,7 +49,7 @@ if (!isset($_SESSION["user"])) {
 <nav class="navbar navbar-expand-xl fixed-top">
   <div class="container-fluid">
     <div class="logo">
-      <a href="/home"> <img src="/Ohana/src/images/Landing/navlogo.png" class="img-fluid" style="width: 100%; height: 90px;"> </a>
+      <a href="/home"> <img src="/Ohana/src/images/Landing/navlogo.png" class="img-fluid" id="navlogo"></a>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -102,7 +112,7 @@ if (!isset($_SESSION["user"])) {
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="logoutTitle"> Do you want to logout? </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-left: 45%;"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-left: 55%;"></button>
         </div>
         <div class="modal-body">
           All the unsaved changes will be lost. Are you sure you would like to log-out?

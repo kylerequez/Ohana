@@ -17,7 +17,52 @@
 
   <?php include_once 'stylesheets.php'; ?>
   <style>
-    @media screen and (min-width: 360px) and (max-width: 929.98px) {}
+    #changeheader {
+      font-size: 60px;
+      margin-top: 10%;
+    }
+
+    .sign-up__descr {
+      font-size: 25px;
+    }
+
+    h3 {
+      font-size: 20px;
+    }
+
+    @media screen and (min-width: 360px) and (max-width: 929.98px) {
+      #changeheader {
+        margin-top: 20%;
+        font-size: 35px;
+      }
+
+      .sign-up__descr {
+        font-size: 20px;
+      }
+
+      .input__label {
+        font-size: 15px;
+      }
+
+      #ohanafooter {
+        margin-top: 50%;
+      }
+
+      h3 {
+        font-size: 15px;
+      }
+
+      .logbtn button {
+        display: block;
+        padding: 10px 60px;
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      #message p {
+        font-size: 15px;
+      }
+    }
   </style>
 </head>
 
@@ -29,10 +74,10 @@
     <div class="sign-up__container">
       <div class="sign-up__content">
         <header class="sign-up__header">
-          <h1 class="sign-up__title mt-5" style="font-size: 60px;">
+          <h1 class="sign-up__title" id="changeheader">
             CHANGE PASSWORD
           </h1>
-          <p class="sign-up__descr" style="font-size: 25px;">
+          <p class="sign-up__descr">
             Input a new password for your account.
           </p>
           <!-- ALERT -->
@@ -73,7 +118,7 @@
 
                 <!-- VALIDATION BOX-->
                 <div id="message" style="background: white;">
-                  <h3 class="text-center text-white" style="font-size: 20px;">Password must contain the following:</h3>
+                  <h3 class="text-center">Password must contain the following:</h3>
                   <p id="letter" class="invalid">At least one <b>lowercase</b> letter</p>
                   <p id="capital" class="invalid">At least one <b>capital</b> letter</p>
                   <p id="number" class="invalid">At least one <b>number</b></p>
@@ -110,7 +155,8 @@
   <div id="ohanafooter">
     <?php include_once 'footer.php'; ?>
   </div>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+  </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <!-- START OF JAVASCRIPT-->
   <script>

@@ -9,15 +9,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
-   
+
     <link rel="stylesheet" href="/Ohana/src/css/pawcart.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-  
+
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {}
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {
+            #cartheader {
+                margin-top: 20%;
+            }
+        }
     </style>
 </head>
 
@@ -28,7 +32,7 @@
 
         <div class="container-fluid">
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-            <img src="/Ohana/src/images/Pages/cartheader.png" class="img-fluid" width="100%" style="margin-top:5%">
+            <img src="/Ohana/src/images/Pages/cartheader.png" id="cartheader" class="img-fluid" width="100%">
             <section class="h-100">
                 <div class="container h-100 py-5">
                     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -44,7 +48,7 @@
                             if (empty($cart->getCart())) {
                             ?>
                                 <div class="form__row text-center mb-5">
-                                    <p style="font-size:20px;">Your cart seems to be empty. &nbsp;<a class="link" name="login" style="text-decoration:none; color:#db6551" href="/services">Add an item now!</a></p>
+                                    <p class="fs-4">Your cart seems to be empty. &nbsp;<a class="link" name="login" style="text-decoration:none; color:#db6551" href="/services"><br><br>Add an item now!</a></p>
                                 </div>
 
                                 <?php
@@ -59,7 +63,7 @@
                             } else {
                                 ?>
                                 <div class="d-flex justify-content-between align-items-center mb-4">
-                                    <h3 class="fw-normal mb-0 text-black"> Order Descripion </h3>
+                                    <h3 class="fw-bold mb-0 text-black fs-3"> Order Description </h3>
                                 </div>
                                 <?php
                                 if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
@@ -85,11 +89,11 @@
                                                                                                                                             ?></p>
                                                 </div>
                                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                    <h5 class="mb-0"><?php echo $order->getPrice() ?></h5>
+                                                    <h5 class="mb-0 fw-bold"> Price: P<?php echo $order->getPrice() ?></h5>
                                                 </div>
                                                 <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                                     <form method="POST" action="/delete-item/<?php echo $order->getPetId(); ?>">
-                                                        <button type="submit" class="text-danger"><i class="fas fa-trash fa-lg " onclick="return confirm('Are you sure you want to remove this item from your cart?');"></i></button>
+                                                        <button type="submit" class="text-danger" style="border:none;background-color:transparent"><i class="fas fa-trash fa-lg " onclick="return confirm('Are you sure you want to remove this item from your cart?');"></i></button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -109,7 +113,7 @@
                     </div>
                 </div>
             </section>
-            
+
         </div><!-- END -->
     </main>
     <div id="ohanafooter">

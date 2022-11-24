@@ -18,7 +18,38 @@
 
   <?php include_once 'stylesheets.php'; ?>
   <style>
-    @media screen and (min-width: 360px) and (max-width: 929.98px) {}
+    #confirmtext {
+      font-size: 20px;
+    }
+
+    #already {
+      font-size: 20px;
+    }
+
+    @media screen and (min-width: 360px) and (max-width: 929.98px) {
+      .sign-up__title {
+        font-size: 38px;
+      }
+
+      #confirmtext {
+        margin-top: 10px;
+      }
+
+      #resendotp {
+        margin-top: 10px;
+      }
+
+      #btnsubmit {
+        display: block;
+        padding: 10px 60px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      #already {
+        font-size: 18px;
+      }
+    }
   </style>
 </head>
 
@@ -31,7 +62,7 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <h1 id="header" class="sign-up__title" style="font-size: 100px; margin-top: 10%; font-family: 'Acme', sans-serif;">
+            <h1 id="header" class="sign-up__title" style="margin-top: 10%; font-family: 'Acme', sans-serif;">
               Welcome to Ohana!
             </h1>
             <!-- ALERT -->
@@ -44,7 +75,7 @@
               unset($_SESSION["msg"]);
             } else {
             ?>
-              <p style="font-size:20px;"> Complete registration by entering the OTP sent to your email. </p>
+              <p id="confirmtext"> Complete registration by entering the OTP sent to your email. </p>
             <?php
             }
             if (empty($_SESSION["email"]) && empty($_SESSION["userOtp"]) && empty($_SESSION["token"])) {
@@ -72,19 +103,19 @@
             </div>
             <center><br>
               <div class="form__row">
-                <p style="font-size:20px;">Did not receive an OTP? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="/register/resend/<?php echo $_SESSION["token"] ?>">Resend OTP</a></p>
+                <p id="resendotp" style="font-size:20px;">Did not receive an OTP? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="/register/resend/<?php echo $_SESSION["token"] ?>">Resend OTP</a></p>
               </div>
             </center>
             <center>
               <div class="form__row">
                 <div class="logbtn">
-                  <button><span> Submit </span></button>
+                  <button id="btnsubmit"><span> Submit </span></button>
                 </div>
               </div>
             </center>
             <hr style="width:100%"><br>
             <div class="form__row">
-              <p class="text-center" style="font-size:20px;">Already have an account? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="/login">Login</a></p>
+              <p class="text-center" id="already">Already have an account? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="/login">Login</a></p>
             </div>
           </form>
         </div>

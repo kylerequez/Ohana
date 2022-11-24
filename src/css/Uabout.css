@@ -3,16 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"); /* FOR PARAGRAPHS */
 @import url("https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap"); /* FOR HEADERS */
-@font-face {
-  font-family: "Bantayog-Regular";
-  src: url(/fonts/bantayog/Bantayog-Regular.otf);
-}
-
-@font-face {
-  font-family: "Tropika-Island";
-  src: url(/fonts/Tropika_Island/Aiyari\ -\ Tropika\ Island\ Int.otf);
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
 * {
   margin: 0;
   box-sizing: border-box;
@@ -23,22 +14,25 @@ body {
 }
 
 #header {
-  color:#DB6551; font-size: 100px; 
-  font-family: 'Acme', sans-serif; 
-  font-weight:800; 
-  margin-top:10%;
+  color: #db6551;
+  font-size: 100px;
+  font-family: "Acme", sans-serif;
+  font-weight: 800;
+  margin-top: 10%;
 }
 
 section {
   display: block;
   margin-top: 5%;
 }
-.amenities .row {
-  margin-left: 10%;
-  margin-right: 10%;
+#mainabout {
+  background-image: url(../images/Pages/aboutmain.png);
+  background-position: center;
+  height: 100%;
+  min-height: 1000px;
 }
-.contact-us {
-  background-image: url(../images/Landing/contact.png);
+#values {
+  background-image: url(../images/Pages/values.png);
   background-position: center;
   height: 100%;
   min-height: 1000px;

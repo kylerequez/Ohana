@@ -17,7 +17,32 @@
 
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
             #header {
-                font-size:30px;
+                font-size: 40px;
+                margin-top: 40%;
+            }
+
+            #labels {
+                width: 200px;
+            }
+
+            #name {
+                margin-top: -50px;
+            }
+
+            #save {
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+                float: none;
+                margin-top: 40px;
+            }
+
+            #change {
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+                float: none;
+                margin-top: -50px;
             }
         }
     </style>
@@ -55,34 +80,34 @@
                                     <input type="hidden" name="status" value="<?php echo $user->getStatus(); ?>">
                                     <input type="hidden" name="type" value="<?php echo $user->getType(); ?>">
                                     <div class="col-md-12">
-                                        <label class="labels mb-3" style="color:#c0b65a; font-size:20px">Name</label>
-                                        <input type="text" class="form-control" value="<?php echo $user->getFname(); ?>" id="" name="fname">
+                                        <label class="labels mb-3" id="name">Name</label>
+                                        <input type="text" class="form-control" value="<?php echo $user->getFname(); ?>" id="fname" name="fname">
                                     </div>
-                                    <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px">
-                                        <label class="labels mb-3">Middle Name</label>
-                                        <input type="text" class="form-control" value="<?php echo $user->getMname(); ?>" id="" name="mname">
+                                    <div class="col-md-12" style="margin-top:10px;">
+                                        <label class="labels mb-3" id="labels">Middle Name</label>
+                                        <input type="text" class="form-control" value="<?php echo $user->getMname(); ?>" id="mname" name="mname">
                                     </div>
-                                    <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px">
-                                        <label class="labels mb-3">Last Name</label>
-                                        <input type="text" class="form-control" value="<?php echo $user->getLname(); ?>" id="" name="lname">
+                                    <div class="col-md-12" style="margin-top:10px;">
+                                        <label class="labels mb-3" id="labels">Last Name</label>
+                                        <input type="text" class="form-control" value="<?php echo $user->getLname(); ?>" id="lname" name="lname">
                                     </div>
-                                    <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px">
-                                        <label class="labels mb-3">Mobile Number</label>
+                                    <div class="col-md-12" style="margin-top:10px;">
+                                        <label class="labels mb-3" id="labels">Mobile Number</label>
                                         <div class="input-group">
                                             <span class="input-group-text" id="contact-no">+63</span>
                                             <input type="text" class="form-control" value="<?php echo str_replace("+63", "", $user->getNumber()); ?>" maxlength="10" ; oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="number">
                                         </div>
                                     </div>
-                                    <div class="col-md-12" style="margin-top:10px;color:#c0b65a; font-size:20px">
-                                        <label class="labels mb-3">Email</label>
+                                    <div class="col-md-12" style="margin-top:10px;">
+                                        <label class="labels mb-3" id="labels">Email</label>
 
                                         <input type="text" class="form-control" value="<?php echo $user->getEmail(); ?>" id="email" name="email">
                                     </div>
                                 </div>
                                 <span>
-                                    <div class="text-center"><button class="btn profile-button" type="submit" style="background-color:#db6551; color:white; float:right">Save changes</button>
+                                    <div class="text-center"><button class="btn profile-button" id="save" type="submit">Save changes</button>
                                     </div>
-                                    <div class="mt-5 text-center"><a href="/change-password"><button class="btn btn-outline-dark" type="button" style="float:right; margin-right:10px;"> Change Password</button></a></div>
+                                    <div class="mt-5 text-center"><a href="/change-password"><button class="btn btn-outline-dark" type="button" id="change"> Change Password</button></a></div>
                                 </span>
                             </div>
                         </div>

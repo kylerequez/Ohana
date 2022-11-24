@@ -17,10 +17,19 @@
 
   <?php include_once 'stylesheets.php'; ?>
   <style>
+    #forgottitle {
+      font-size: 80px;
+      margin-top: 5%;
+    }
+
+    #forgotdesc {
+      font-size: 20px;
+    }
+
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
       #forgottitle {
         font-size: 35px;
-        margin-top: 15%;
+        margin-top: 0%;
       }
 
       #forgotdesc {
@@ -38,6 +47,24 @@
       .input__label {
         font-size: 15px;
       }
+
+      #email {
+        margin-left: 30px;
+        margin-right: 30px;
+      }
+
+      #eadd {
+        margin-left: 30px;
+      }
+
+      #btnreset {
+        display: block;
+        padding: 10px 60px;
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+
     }
   </style>
 </head>
@@ -54,10 +81,10 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <h1 class="sign-up__title" style="font-size: 80px; margin-top: 5%;">
+            <h1 class="sign-up__title" id="forgottitle">
               FORGOT PASSWORD
             </h1>
-            <p class="sign-up__descr" style="font-size: 20px;">
+            <p class="sign-up__descr" id="forgotdesc">
               To reset your password, please enter your <b>Email</b> and click reset password.
             </p>
             <!-- ALERT -->
@@ -82,7 +109,7 @@
                     <div class="input">
                       <div class="input__container">
                         <input type="email" class="input__field" id="email" name="email" placeholder="Email/Contact Number" required="" />
-                        <label class="input__label" for="email">Email Address
+                        <label class="input__label" id="eadd" for="email">Email Address
                           <i class="uil uil-envelope email-icon"></i>
                         </label>
                       </div>
@@ -92,7 +119,7 @@
                   <center>
                     <div class="form__row">
                       <div class="logbtn">
-                        <button type="submit" name="btnSubmit"><span> Reset password </span></button>
+                        <button type="submit" name="btnSubmit" id="btnreset"><span> Reset password </span></button>
                       </div>
                     </div>
                   </center>
@@ -106,7 +133,7 @@
     </main>
 
     <div id="ohanafooter">
-        <?php include_once 'footer.php'; ?>
+      <?php include_once 'footer.php'; ?>
     </div>
 
     <!-- START OF JAVASCRIPT-->

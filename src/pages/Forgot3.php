@@ -16,9 +16,15 @@
   <link rel="stylesheet" href="/Ohana/src/css/footer.css">
   <?php include_once 'stylesheets.php'; ?>
   <style>
+    .sign-up__title {
+      font-size: 80px;
+      margin-top: 5%;
+    }
+
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
       .sign-up__title {
-        font-size: 30px;
+        font-size: 37px;
+        margin-top: 25%;
       }
 
       #btncpass {
@@ -49,7 +55,7 @@
     <div class="sign-up__container">
       <div class="sign-up__content">
         <header class="sign-up__header">
-          <h1 class="sign-up__title" style="font-size: 80px; margin-top: 5%;">
+          <h1 class="sign-up__title">
             FORGOT PASSWORD
           </h1>
           <p class="sign-up__descr" style="font-size: 25px;">
@@ -109,7 +115,7 @@
                 <center><br>
                   <div class="form__row">
                     <div class="logbtn">
-                      <button name="btnChange" type="submit"> <span> Change Password </span></button>
+                      <button name="btnChange" id="btncpass" type="submit"> <span> Change Password </span></button>
                     </div>
                   </div>
                 </center>
@@ -127,7 +133,7 @@
     <?php include_once 'footer.php'; ?>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  
+
   <!-- START OF JAVASCRIPT-->
   <script>
     //PASSWORD VALIDATION SCRIPT

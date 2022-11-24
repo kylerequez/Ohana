@@ -1,9 +1,7 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"); /* FOR PARAGRAPHS */
 @import url("https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap"); /* FOR HEADERS */
-
 
 * {
   margin: 0;
@@ -34,12 +32,11 @@ body {
   border-bottom: 3px solid #db6551;
   background-color: #faf8f0;
 }
-
 .navbar-nav li a {
   color: #7d605c;
   font-size: 20px;
-  margin-left: 50px !important;
-  margin-right: 70px;
+  margin-left: 25px !important;
+  margin-right: 35px;
   text-decoration: none;
   font-family: "DM Sans", sans-serif;
   font-weight: bold;
@@ -152,159 +149,4 @@ body {
 }
 .navbar-nav li .action .menu ul li:hover a {
   color: #db6551;
-}
-
-/* end of nav-user*/
-
-/* ----------------------------MOBILE RESPONSIVENESS------------------------------- */
-
-@media screen and (min-width: 350px) and (max-width: 900px) {
-  * {
-    margin: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    position: relative;
-  }
-
-  /* custom scroll bar */
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #db6551;
-  }
-
-  /* END OF CUSTOM SCROLLBAR */
-
-  /* NAVIGATION BAR */
-  .navbar {
-    border-bottom: 3px solid #db6551;
-    background-color: #faf8f0;
-  }
-
-  .navbar-nav li a {
-    color: #7d605c;
-    font-size: 20px;
-    margin-left: 50px !important;
-    margin-right: 70px;
-    text-decoration: none;
-    font-family: "DM Sans", sans-serif;
-    font-weight: bold;
-  }
-
-  .navbar-nav li a:hover {
-    color: #db6551;
-  }
-
-  .navbar-nav .btnLogin {
-    background-color: #db6551;
-    border-radius: 28px;
-    display: inline-block;
-    cursor: pointer;
-    color: #ffffff;
-    font-family: "DM Sans", sans-serif;
-    font-size: 20px;
-    padding: 10px 25px;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px #2f1f18;
-  }
-
-  .navbar-nav .btnLogin:hover {
-    background-color: #eed1c2;
-  }
-
-  .navbar-nav .btnLogin:active {
-    position: relative;
-    top: 1px;
-  }
-
-  /* ######################## USER DROPDOWN IMPROVISE = RESIZE BOX AND FONTS #########################*/
-  .navbar-nav li .action {
-    position: relative;
-  }
-  .navbar-nav li .action .profile {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .navbar-nav li .action .profile img {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .navbar-nav li .action .menu {
-    position: absolute;
-    top: 120px;
-    right: -10px;
-    padding: 10px 20px;
-    background: white;
-    width: 320px;
-    box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    transition: 0.2s;
-    visibility: hidden;
-    opacity: 0;
-  }
-  .navbar-nav li .action .menu.active {
-    top: 80px;
-    visibility: visible;
-    opacity: 1;
-  }
-  .navbar-nav li .action .menu::before {
-    content: "";
-    position: relative;
-    top: -5px;
-    right: 28px;
-    width: 20px;
-    height: 20px;
-    background: #fff;
-    transform: rotate(45deg);
-  }
-  .navbar-nav li .action .menu h3 {
-    width: 100%;
-    font-size: 20px;
-    padding: 20px 0;
-    font-weight: 500;
-    color: black;
-    line-height: 1.5em;
-    text-align: center;
-  }
-  .navbar-nav li .action .menu ul li {
-    list-style: none;
-    padding: 12px 0;
-    display: flex;
-    align-items: center;
-  }
-  .navbar-nav li .action .menu ul li img {
-    max-width: 20px;
-    margin-left: 20px !important;
-    opacity: 0.5;
-    transition: 0.5s;
-  }
-  .navbar-nav li .action .menu ul li:hover img {
-    opacity: 1;
-  }
-  .navbar-nav li .action .menu ul li a {
-    display: inline-block;
-    text-decoration: none;
-    color: #000000;
-    font-size: 16px;
-    transition: 0.5s;
-  }
-  .navbar-nav li .action .menu ul li:hover a {
-    color: #db6551;
-  }
 }

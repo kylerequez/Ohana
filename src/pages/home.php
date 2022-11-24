@@ -24,15 +24,6 @@
         }
 
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
-            #slider {
-                position: relative;
-                width: 60%;
-                height: 35vw;
-                margin: 150px auto;
-                transform-style: preserve-3d;
-
-            }
-
             #h1 {
                 font-size: 30px;
                 color: #7d605c;
@@ -70,6 +61,10 @@
             .card {
                 margin-left: auto;
                 margin-right: auto;
+            }
+
+            #ohanafooter {
+                margin-top: 30%;
             }
 
         }
@@ -146,7 +141,7 @@
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
                                 <div class="card-body">
-                                    <img src="/Ohana/src/images/services/1.png" class="img-fluid" role="img" focusable="false"></img>
+                                    <img src="/Ohana/src/images/icons/quote.png" class="me-3 img-fluid" width="50" height="50"></img>
                                     <h5 class="card-text text-center mt-2 mb-2"> Maraming Salamat! Alagaan ko to. Ang ganda niya. Thank you ulit!</h5><br>
                                     <h4 class="card-title text-center mt-2"> Edrich Pineda </h4>
                                 </div>
@@ -155,7 +150,7 @@
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
                                 <div class="card-body">
-                                    <img src="/Ohana/src/images/services/1.png" class="img-fluid" role="img" focusable="false"></img>
+                                    <img src="/Ohana/src/images/icons/quote.png" class="me-3 img-fluid" width="50" height="50"></img>
                                     <h5 class="card-text text-center mt-2 mb-2">Thank you so much! So happy with my puppy!</h5><br>
                                     <h4 class="card-title text-center"> Ron Ilao</h4>
                                 </div>
@@ -164,7 +159,7 @@
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
                                 <div class="card-body">
-                                    <img src="/Ohana/src/images/services/1.png" class="img-fluid" role="img" focusable="false"></img>
+                                    <img src="/Ohana/src/images/icons/quote.png" class="me-3 img-fluid" width="50" height="50"></img>
                                     <h5 class="card-text text-center mt-2 mb-2">Thank you sir. Quality talaga yung puppy at napaka-cute. Solid!</h5><br>
                                     <h4 class="card-title text-center"> Ralph Hernandez </h4>
                                 </div>
@@ -181,12 +176,12 @@
                     <div class="row">
                         <div class="col m-3">
                             <a href="/puppies" style="text-decoration: none;">
-                                <div class=" card rounded" style="width: 15rem;background-color:#c0b65a">
+                                <div class="card rounded" style="width: 15rem;background-color:#c0b65a">
                                     <img src="/Ohana/src/images/Ohanapups/trans2.png" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title mb-3 text-center" style="color:white"> FRENCH PUPPY 1 </h5>
                                         <div class="btn-Learn" name="btn-Learn">
-                                            <center><a href="/dog1"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
+                                            <center><a href="/puppies"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
                                         </div>
                                     </div>
                                 </div>
@@ -200,7 +195,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title mb-3 text-center" style="color:white"> FRENCH PUPPY 2</h5>
                                         <div class="btn-Learn" name="btn-Learn">
-                                            <center><a href="/dog1"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
+                                            <center><a href="/puppies"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
                                         </div>
                                     </div>
                                 </div>
@@ -213,7 +208,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title mb-3 text-center" style="color:white"> FRENCH PUPPY 3 </h5>
                                         <div class="btn-Learn" name="btn-Learn">
-                                            <center><a href="/dog1"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
+                                            <center><a href="/puppies"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
                                         </div>
                                     </div>
                                 </div>

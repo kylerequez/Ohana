@@ -27,13 +27,13 @@
 
       #signup_title {
         font-size: 33px;
-        margin-top: 15%;
+        margin-top: -5%;
       }
 
       .logbtn button {
         display: block;
         padding: 10px 60px;
-        font-size: 18px;
+        font-size: 15px;
         font-weight: 700;
       }
 

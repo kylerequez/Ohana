@@ -83,7 +83,8 @@
             }
 
             #intro {
-                margin-top: 25%;
+                margin-top: 15%;
+                width:auto;
             }
 
             #contactform {
@@ -122,6 +123,7 @@
                 min-height: 500px;
                 margin-left: auto;
                 margin-right: auto;
+                background-position: center;
             }
 
             .reasons {
@@ -152,7 +154,7 @@
         <?php include_once dirname(__DIR__) . '/Ohana/src/pages/navbar.php'; ?>
         <div class="container-fluid">
             <section class="introduction" id="home">
-                <div class="intro mt-3">
+                <div class="intro">
                     <img src="/Ohana/src/images/Landing/introduction.png" class="img-fluid" id="intro">
                 </div>
             </section>

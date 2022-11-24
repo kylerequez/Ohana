@@ -13,8 +13,58 @@
 
   <?php include_once 'stylesheets.php'; ?>
   <style>
+    #already {
+      font-size: 20px;
+    }
+
+    #passwordreq {
+      font-size: 18px;
+    }
+
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
-    
+      .sign-up__title {
+        font-size: 40px;
+      }
+
+      .sign-up__descr {
+        font-size: 40px;
+      }
+
+      .register__desc {
+        font-size: 20px;
+      }
+
+      .input__label {
+        font-size: 15px;
+      }
+
+      .input-checkbox__label {
+        font-size: 15px;
+      }
+
+      #passwordreq {
+        font-size: 16px;
+      }
+
+      #message p {
+        margin-top: 5px;
+        font-size: 13px;
+      }
+
+      #letter {
+        font-size: 20px;
+      }
+
+      .logbtn button {
+        display: block;
+        padding: 10px 60px;
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      #already {
+        font-size: 15px;
+      }
     }
   </style>
 </head>
@@ -99,7 +149,7 @@
               </div>
             </div>
             <div id="message" style="background: white;" class="mb-3">
-              <h3 class="text-center mb-2" style="font-size: 16px;">Password must contain the following:</h3>
+              <h3 class="text-center mb-2" id="passwordreq">Password must contain the following:</h3>
               <p id="letter" class="invalid">At least one <b>lowercase</b> letter</p>
               <p id="capital" class="invalid">At least one <b>capital</b> letter</p>
               <p id="number" class="invalid">At least one <b>number</b></p>
@@ -132,7 +182,7 @@
               </div>
               <hr style="width:100%"><br>
               <div class="form__row">
-                <p style="font-size:20px;">Already have an account?&nbsp;<a class="link" name="login" style="text-decoration:none;" href="/login">Login</a></p>
+                <p id="already">Already have an account?&nbsp;<a class="link" name="login" style="text-decoration:none;" href="/login">Login</a></p>
               </div>
             </center>
           </form>
