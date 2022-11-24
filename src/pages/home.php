@@ -24,14 +24,6 @@
         }
 
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
-            #slider {
-                position: relative;
-                width: 60%;
-                height: 35vw;
-                margin: 150px auto;
-                transform-style: preserve-3d;
-
-            }
 
             #h1 {
                 font-size: 30px;
@@ -70,6 +62,10 @@
             .card {
                 margin-left: auto;
                 margin-right: auto;
+            }
+
+            #ohanafooter {
+                margin-top: 30%;
             }
 
         }
@@ -185,7 +181,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title mb-3 text-center" style="color:white"> FRENCH PUPPY 1 </h5>
                                         <div class="btn-Learn" name="btn-Learn">
-                                            <center><a href="/dog1"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
+                                            <center><a href="/puppies"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
                                         </div>
                                     </div>
                                 </div>
@@ -199,7 +195,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title mb-3 text-center" style="color:white"> FRENCH PUPPY 2</h5>
                                         <div class="btn-Learn" name="btn-Learn">
-                                            <center><a href="/dog1"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
+                                            <center><a href="/puppies"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
                                         </div>
                                     </div>
                                 </div>
@@ -212,7 +208,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title mb-3 text-center" style="color:white"> FRENCH PUPPY 3 </h5>
                                         <div class="btn-Learn" name="btn-Learn">
-                                            <center><a href="/dog1"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
+                                            <center><a href="/puppies"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
                                         </div>
                                     </div>
                                 </div>

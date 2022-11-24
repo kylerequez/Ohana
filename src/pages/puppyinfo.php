@@ -17,12 +17,15 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-        #links{
+
+        #links {
             text-decoration: none;
         }
-        .img-fluid{
-            height:300px;
+
+        .img-fluid {
+            height: 300px;
         }
+
         @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
 </head>
@@ -41,7 +44,7 @@
                 <section class="services" id="services">
                     <!-- ALERT -->
                     <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-warning text-center" role="alert">
                             <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
                             unset($_SESSION["msg"]); ?>
                         </div>

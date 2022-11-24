@@ -46,7 +46,7 @@
                                     <img src="/Ohana/src/images/payment/pay1.png" width="150px" height="150px">
                                     <h5 class="card-title"> GCASH</h5>
                                     <p class="card-text"> No. of users who chose this: 5</p>
-                                    <a href="#" class="btn" style="background-color:#db6551; color:white;"> Select </a>
+                                    <a href="#" class="btn mt-3" style="background-color:#db6551; color:white;"> Select </a>
                                 </div>
                             </div>
 
@@ -55,7 +55,7 @@
                                     <img src="/Ohana/src/images/payment/pay2.png" width="150px" height="150px">
                                     <h5 class="card-title"> BANK TRANSFER </h5>
                                     <p class="card-text"> No. of users who chose this: 10</p>
-                                    <a href="#" class="btn" style="background-color:#db6551; color:white;"> Select</a>
+                                    <a href="#" class="btn mt-3" style="background-color:#db6551; color:white;"> Select</a>
                                 </div>
                             </div>
 
@@ -64,22 +64,22 @@
                                     <img src="/Ohana/src/images/payment/pay3.png" width="150px" height="150px">
                                     <h5 class="card-title"> CASH </h5>
                                     <p class="card-text"> No. of users who chose this: 15</p>
-                                    <a href="#" class="btn" style="background-color:#db6551; color:white;"> Select</a>
+                                    <a href="#" class="btn mt-3" style="background-color:#db6551; color:white;"> Select</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="paymentselected">
-                        <h1 class="text-center mt-3 mb-5" style="font-size:20px"> YOU HAVE SELECTED: *PAYMENT METHOD* </h1>
+                        <h1 class="text-center mt-3 mb-5 fs-5"> YOU HAVE SELECTED: *PAYMENT METHOD* </h1>
                     </div>
 
                 </section>
                 <section class="paymentnote">
                     <center>
                         <div class="card rounded-3 mb-4" style="width:75%;">
-                            <p style="font-size:15px"> Note: TRANSACTIONS WILL BE DONE FACE TO FACE, YOU ONLY NEED TO SELECT A PAYMENT METHOD OF YOUR CHOICE </p>
-                            <p style="font-size:15px"> Friendly Reminder: Kindly Read the <b>Terms and Conditions for Cancellation and Payment Policy.</b> </p>
+                            <p class="fs-6 mt-5"> Note: TRANSACTIONS WILL BE DONE FACE TO FACE, YOU ONLY NEED TO SELECT A PAYMENT METHOD OF YOUR CHOICE </p>
+                            <p class="fs-6 mt-3 mb-5"> Friendly Reminder: Kindly Read the <b>Terms and Conditions for Cancellation and Payment Policy.</b> </p>
                         </div>
                         <a href="/upload-proof"><button type="button" name="btn-Payment" class="btn btn-block btn-lg" style="background-color:#c0b65a; color:white; width:300px;">
                                 Proceed </button></a> <br><br>

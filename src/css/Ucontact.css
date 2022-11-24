@@ -1,17 +1,7 @@
 /*FONTS IMPORT*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
-
-@font-face {
-  font-family: "Bantayog-Regular";
-  src: url(/fonts/bantayog/Bantayog-Regular.otf);
-}
-
-@font-face {
-  font-family: "Tropika-Island";
-  src: url(/fonts/Tropika_Island/Aiyari\ -\ Tropika\ Island\ Int.otf);
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
 * {
   margin: 0;
   box-sizing: border-box;
@@ -24,17 +14,17 @@ body {
   margin-top: 10%;
 }
 #find {
-  font-size:80px; 
-  font-family: 'Acme', sans-serif;
-  font-weight:800;
-  color:#db6551;
+  font-size: 80px;
+  font-family: "Acme", sans-serif;
+  font-weight: 800;
+  color: #db6551;
 }
 
 #header {
-  font-size:100px;
-  font-family: 'Acme', sans-serif; 
-  font-weight:800; 
-  color:#db6551;
+  font-size: 100px;
+  font-family: "Acme", sans-serif;
+  font-weight: 800;
+  color: #db6551;
 }
 section {
   display: block;
@@ -108,7 +98,7 @@ textarea::placeholder {
 }
 
 input:focus::placeholder,
-textarea::focus:placeholder {
+textarea:focus:placeholder {
   color: #bbb5af;
 }
 
@@ -198,7 +188,7 @@ input {
 }
 
 input:hover {
-  background: #db6551;
+  background: white;
   color: black;
 }
 
@@ -225,226 +215,6 @@ textarea {
 }
 
 textarea:hover {
-  background: #db6551;
-  color: black;
-}
-
-/* ----------------------------MOBILE RESPONSIVENESS------------------------------- */
-
-@media screen and (min-width: 350px) and (max-width: 900px) {
-  * {
-    margin: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    position: relative !important;
-  }
-
-  h1 {
-    color: #db6551;
-    font-size: 30px;
-    text-align: center;
-    font-weight: bold;
-  }
-
-  section {
-    display: block;
-    margin-top: 5%;
-  }
-
-  .amenities .row {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-
-  .contact-us {
-    background-image: url(../images/Landing/contact.png);
-    background-position: center;
-    height: 100%;
-    min-height: 1000px;
-  }
-
-  form {
-    text-align: center;
-  }
-
-  /* ########################################## BUTTON ######################################### */
-  .btn-Send button {
-    background-color: #db6551;
-    border-radius: 30px;
-    border: 1px solid #ffffff;
-    display: inline-block;
-    cursor: pointer;
-    color: #ffffff;
-    font-family: "Poppins";
-    font-size: 20px;
-    padding: 20px 100px;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px #ffffff;
-    text-align: center;
-    margin-left: 28%;
-  }
-
-  .btn-Send button:hover {
-    background-color: #c0b65a;
-  }
-
-  .btn-Send button:active {
-    position: relative;
-    top: 1px;
-  }
-
-  /*############################## CONTACT FORM  #################################*/
-input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
-  color: #c0b65a;
-  font-size: 15px;
-}
-
-input:focus::-webkit-input-placeholder,
-textarea:focus::-webkit-input-placeholder {
-  color: #bbb5af;
-}
-
-input::-moz-placeholder,
-textarea::-moz-placeholder {
-  color: #c0b65a;
-  font-size: 15px;
-}
-
-input:focus::-moz-placeholder,
-textarea:focus::-moz-placeholder {
-  color: #bbb5af;
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: #c0b65a;
-  font-size: 15px;
-}
-
-input:focus::placeholder,
-textarea::focus:placeholder {
-  color: #bbb5af;
-}
-
-input::-ms-placeholder,
-textarea::-ms-placeholder {
-  color: #c0b65a;
-  font-size: 15px;
-}
-
-input:focus::-ms-placeholder,
-textarea:focus::-ms-placeholder {
-  color: #bbb5af;
-}
-
-/* on hover placeholder */
-
-input:hover::-webkit-input-placeholder,
-textarea:hover::-webkit-input-placeholder {
-  color: #c0b65a;
-  font-size: 15px;
-}
-
-input:hover:focus::-webkit-input-placeholder,
-textarea:hover:focus::-webkit-input-placeholder {
-  color: black;
-}
-
-input:hover::-moz-placeholder,
-textarea:hover::-moz-placeholder {
-  color: #c0b65a;
-  font-size: 15px;
-}
-
-input:hover:focus::-moz-placeholder,
-textarea:hover:focus::-moz-placeholder {
-  color: black;
-}
-
-input:hover::placeholder,
-textarea:hover::placeholder {
-  color: #c0b65a;
-  font-size: 15px;
-}
-
-input:hover:focus::placeholder,
-textarea:hover:focus::placeholder {
-  color: black;
-}
-
-input:hover::placeholder,
-textarea:hover::placeholder {
-  color: #c0b65a;
-  font-size: 15px;
-}
-
-input:hover:focus::-ms-placeholder,
-textarea:hover::focus:-ms-placeholder {
-  color: black;
-}
-
-#contactform {
-  position: relative !important;
-  width: 500px;
-  margin: 50px auto 100px auto;
-  margin-right: 25%;
-  margin-top: 5%;
-}
-
-input {
-  font-family: "Lato", sans-serif;
-  font-size: 40px;
-  width: 625px;
-  height: 75px;
-  padding: 0px 15px 0px 15px;
-
-  background: transparent;
-  outline: none;
-  color: black;
-
-  border: solid 1px #db6551;
-  border-bottom: none;
-
-  transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-}
-
-input:hover {
   background: white;
   color: black;
-  opacity: 0.8;
 }
-
-textarea {
-  width: 625px;
-  max-width: 1000px;
-  height: 350px;
-  max-height: 350px;
-  padding: 15px;
-
-  background: transparent;
-  outline: none;
-
-  color: black;
-  font-family: "Poppins";
-  font-size: 0.875em;
-
-  border: solid 1px #db6551;
-
-  transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-}
-
-textarea:hover {
-  background: white;
-  color: black;
-  opacity: 0.8;
-}
-

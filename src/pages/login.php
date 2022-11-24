@@ -33,7 +33,7 @@
       .logbtn button {
         display: block;
         padding: 10px 60px;
-        font-size: 18px;
+        font-size: 15px;
         font-weight: 700;
       }
 

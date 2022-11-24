@@ -10,17 +10,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
-   
+
     <link rel="stylesheet" href="/Ohana/src/css/puppies.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-  
+
     <?php include_once 'stylesheets.php'; ?>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {
 
-        }
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
 </head>
 
@@ -57,16 +56,11 @@
     <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-    <!-- Custom scripts -->
-    <script src="/Ohana/src/dashboard/js/script.js"></script>
 
     <!-- JAVASCRIPT IMPORTS -->
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
-
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </body>
 

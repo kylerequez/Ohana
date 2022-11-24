@@ -17,10 +17,24 @@
     <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
+            #mainabout {
+                background-image: url(/Ohana/src/images/Pages/mbaboutmain.png);
+                min-width: 375px;
+                min-height: 400px;
+                background-position: center;
+            }
+
+            #values {
+                background-image: url(/Ohana/src/images/Pages/mbvalues.png);
+                min-width: 375px;
+                min-height: 400px;
+                background-position: center;
+            }
+
             #header {
-                font-size:30px;
+                font-size: 30px;
+                margin-top: 10%;
             }
         }
     </style>
@@ -33,22 +47,16 @@
 
         <div class="container-fluid">
             <h1 id="header" class="text-center"> ABOUT US </h1>
-            <section class="abouthead">
-                <div class="aboutheader">
-                    <img src="/Ohana/src/images/Pages/aboutmain.png" class="img-fluid" style="width: 100%;">
-                </div>
+            <section class="mainabout" id="mainabout">
             </section>
-            <section class="aboutbody">
-                <div class="aboutcontent">
-                    <img src="/Ohana/src/images/Pages/values.png" class="img-fluid" style="width: 100%;">
-                </div>
+            <section class="values" id="values">
             </section>
 
             <div id="chat-container"> </div>
         </div>
     </main>
 
-    <div class="container-fluid">
+    <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
 
