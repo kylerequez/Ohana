@@ -55,12 +55,11 @@
                                             <h5 class="card-title fs-3" style="font-family: 'Acme', sans-serif; color:#db6551"> <?php echo $profile->getName(); ?></h5>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </a>
-                        <?php
-                        }
-                        ?>
+
+                                </a>
+                            <?php
+                            }
+                            ?>
                         </div>
                     <?php
                     } else if (empty($profiles)) {

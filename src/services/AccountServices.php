@@ -265,6 +265,30 @@ class AccountServices
         return true;
     }
 
+    public function updatePassword(array $data): bool
+    {
+        $user = unserialize($_SESSION["user"]);
+        if(!password_verify($data["old-password"], $user->getPassword())){
+            $_SESSION["msg"] = "You've entered the wrong current password.";
+            return false;
+        }
+        if(password_verify($data["password"], $user->getPassword())) {
+            $_SESSION["msg"] = "New password cannot be same as the old password.";
+            return false;
+        }
+        if($data["password"] !=  $data["confirm-password"]) {
+            $_SESSION["msg"] = "New Password and Confirm Password must match.";
+            return false;
+        }
+        $password = password_hash(trim($_GET["password"]), PASSWORD_DEFAULT);
+        if(!$this->dao->updatePassword($user->getId(), $password)) {
+            $_SESSION["msg"] = "There was an error in changing the password. The password was not changed.";
+            return false;
+        }
+        $_SESSION["msg"] = "Your password was successfully changed!";
+        return true;
+    }
+
     public function changePasswordRequest(string $email): bool
     {
         $account = $this->dao->searchByEmail(trim($email));

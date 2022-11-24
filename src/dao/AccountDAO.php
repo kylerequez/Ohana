@@ -120,7 +120,7 @@ class AccountDAO
         } catch (Exception $e) {
             echo $e;
             return null;
-        }    
+        }
     }
 
     public function getStaffAccounts(): mixed
@@ -203,7 +203,7 @@ class AccountDAO
         } catch (Exception $e) {
             echo $e;
             return null;
-        }    
+        }
     }
 
     public function searchUserByEmailAndPassword(string $email, string $password): mixed
@@ -432,13 +432,31 @@ class AccountDAO
         }
     }
 
+    public function updatePassword(string $id, string $password): mixed
+    {
+        try {
+            $sql = "UPDATE ohana_account
+                    SET password=:password
+                    WHERE account_id=:id";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":password", $password, PDO::PARAM_STR);
+            $stmt->bindParam(":id", $id, PDO::PARAM_STR);
+
+            return $stmt->execute() > 0;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
     public function changePassword(string $email, string $password): mixed
     {
         try {
             $sql = "UPDATE ohana_account
                     SET password=:password
                     WHERE email=:email";
-            
+
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":password", $password, PDO::PARAM_STR);
             $stmt->bindParam(":email", $email, PDO::PARAM_STR);
@@ -456,7 +474,7 @@ class AccountDAO
             $sql = "UPDATE ohana_account
                     SET status='ACTIVE'
                     WHERE email=:email";
-            
+
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":email", $email, PDO::PARAM_STR);
 

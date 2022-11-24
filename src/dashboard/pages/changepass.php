@@ -130,13 +130,13 @@
                             <div class="row">
                                 <div class="col">
                                     <label class="mb-2" for="name" style="font-size:20px;display:block"> <b>Current Password:</b> </label>
-                                    <input type="password" value="" name="password" id="password" class="password" for="password" required style="background-color:#eed1c2;width:100%" minlength="8"></p>
+                                    <input type="password" value="" name="old-password" id="password" class="password" for="password" required style="background-color:#eed1c2;width:100%" minlength="8"></p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <label class="mb-2 mt-4" for="name" style="font-size:20px;display:block"> <b>New Password:</b> </label>
-                                    <input type="password" value="" name="new-password" id="new-password" class="password" for="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" style="background-color:#eed1c2;width:100%" minlength="8" maxlength="49">
+                                    <input type="password" value="" name="password" id="new-password" class="password" for="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" style="background-color:#eed1c2;width:100%" minlength="8" maxlength="49">
                                 </div>
                             </div>
                             <div class="row">
@@ -158,6 +158,23 @@
                 <?php include_once dirname(__DIR__) . '/footer.php'; ?>
             </div>
         </div>
+        <!-- TOAST -->
+        <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+            <div class="toast-container top-0 end-0 p-3">
+                <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+                    <div class="toast-header">
+                        <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+                        <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
+                        <small> JUST NOW </small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
+                </div>
+            </div>
+        <?php
+        }
+        unset($_SESSION["msg"]);
+        ?>
 
         <!-- SCIPTS -->
         <script>
@@ -180,58 +197,64 @@
                 document.getElementById("message").style.display = "none";
             }
 
-            // When the user starts to type something inside the password field
-            myInput.onkeyup = function() {
-                // Validate lowercase letters
-                var lowerCaseLetters = /[a-z]/g;
-                if (myInput.value.match(lowerCaseLetters)) {
-                    letter.classList.remove("invalid");
-                    letter.classList.add("valid");
+            //PASSWORD VALIDATION SCRIPT
+            const passwordInput = $("#password"),
+                letter = $("#letter"),
+                capital = $("#capital"),
+                number = $("#number"),
+                length = $("#length"),
+                confirmpassInput = $("#confirm-password");
+            passwordInput.focus(() => {
+                $("#message").css("display", "block");
+            });
+            passwordInput.blur(() => {
+                $("#message").css("display", "none");
+            });
+            passwordInput.keyup(() => {
+                const lowerCaseLetters = /[a-z]/g;
+                if (passwordInput.val().match(lowerCaseLetters)) {
+                    letter.removeClass("invalid");
+                    letter.addClass("valid");
                 } else {
-                    letter.classList.remove("valid");
-                    letter.classList.add("invalid");
+                    letter.removeClass("valid");
+                    letter.addClass("invalid");
                 }
-
-                // Validate capital letters
-                var upperCaseLetters = /[A-Z]/g;
-                if (myInput.value.match(upperCaseLetters)) {
-                    capital.classList.remove("invalid");
-                    capital.classList.add("valid");
+                const upperCaseLetters = /[A-Z]/g;
+                if (passwordInput.val().match(upperCaseLetters)) {
+                    capital.removeClass("invalid");
+                    capital.addClass("valid");
                 } else {
-                    capital.classList.remove("valid");
-                    capital.classList.add("invalid");
+                    capital.removeClass("valid");
+                    capital.addClass("invalid");
                 }
-
-                // Validate numbers
-                var numbers = /[0-9]/g;
-                if (myInput.value.match(numbers)) {
-                    number.classList.remove("invalid");
-                    number.classList.add("valid");
+                const numbers = /[0-9]/g;
+                if (passwordInput.val().match(numbers)) {
+                    number.removeClass("invalid");
+                    number.addClass("valid");
                 } else {
-                    number.classList.remove("valid");
-                    number.classList.add("invalid");
+                    number.removeClass("valid");
+                    number.addClass("invalid");
                 }
-
-                // Validate length
-                if (myInput.value.length >= 8) {
-                    length.classList.remove("invalid");
-                    length.classList.add("valid");
+                if (passwordInput.val().length >= 8) {
+                    length.removeClass("invalid");
+                    length.addClass("valid");
                 } else {
-                    length.classList.remove("valid");
-                    length.classList.add("invalid");
+                    length.removeClass("valid");
+                    length.addClass("invalid");
                 }
-            }
-
-            //Validate if passwords match
-            confirmpass.onkeyup = function validatePassword() {
-                var pass = document.getElementById("password");
-                var confirmpass = document.getElementById("confirm-password");
-                if (confirmpass.value != pass.value) {
+                if (confirmpassInput.val() != passwordInput.val()) {
                     confirmpass.setCustomValidity("Password does not match");
                 } else {
                     confirmpass.setCustomValidity("");
                 }
-            }
+            });
+            confirmpassInput.keyup(() => {
+                if (confirmpassInput.val() != passwordInput.val()) {
+                    confirmpass.setCustomValidity("Password does not match");
+                } else {
+                    confirmpass.setCustomValidity("");
+                }
+            });
         </script>
 
 

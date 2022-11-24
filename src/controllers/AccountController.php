@@ -44,11 +44,12 @@ class AccountController
         switch ($method) {
             case "GET":
                 $user = unserialize($_SESSION["user"]);
-                if (!$this->services->changePassword($user->getEmail(), $_GET)) {
-                    //header('Location: ' . $_SERVER['HTTP_REFERER']);
+                if (!$this->services->updatePassword($_GET)) {
+                    header('Location: ' . $_SERVER['HTTP_REFERER']);
                     break;
                 }
-                //header('Location: ' . $_SERVER['HTTP_REFERER']);
+                $_SESSION["user"] = serialize($this->services->searchById($user->getId()));
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
                 break;
             case "POST":
                 $user = unserialize($_SESSION["user"]);

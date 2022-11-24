@@ -22,9 +22,7 @@
 </head>
 
 <body style="background-color: #FAF8F0;">
-
   <?php include_once 'Rnavbar.php'; ?>
-
   <main class="sign-up">
     <div class="sign-up__container">
       <div class="sign-up__content">
@@ -47,7 +45,7 @@
           ?>
         </header>
 
-        <form id="form" method="POST" action="/forgotpassword" class="sign-up__form form">
+        <form id="form" method="GET" action="/accounts/update" class="sign-up__form form">
           <div class="form__row form__row--two">
             <div class="input form__inline-input">
               <div class="input__container">
@@ -55,7 +53,7 @@
                 <div class="form__row">
                   <div class="input">
                     <div class="input__container mt-2">
-                      <input class="input__field" id="password" placeholder="Current password" required type="password" />
+                      <input class="input__field" id="password" name="old-password" placeholder="Current password" required type="password" />
                       <label class="input__label" for="password">Current Password</label>
                     </div>
                   </div>
@@ -65,7 +63,7 @@
                 <div class="form__row">
                   <div class="input">
                     <div class="input__container mt-2">
-                      <input class="input__field" id="new-password" name="new-password" placeholder="Password" required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
+                      <input class="input__field" id="new-password" name="password" placeholder="Password" required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
                       <label class="input__label" for="new-password"> New Password</label>
                     </div>
                   </div>
@@ -83,7 +81,7 @@
                 <div class="form__row">
                   <div class="input">
                     <div class="input__container mt-3">
-                      <input class="input__field" id="confirm-password" placeholder="Confirm password" required type="password" />
+                      <input class="input__field" id="confirm-password" name="confirm-password" placeholder="Confirm password" required type="password" />
                       <label class="input__label" for="confirm-password">Confirm password</label>
                     </div>
                   </div>
@@ -92,7 +90,7 @@
                 <center>
                   <div class="form__row mt-2">
                     <div class="logbtn">
-                      <button name="btnChange" type="submit" style="border-radius:30px;"> <span> Change Password </span></button>
+                      <button type="submit" style="border-radius:30px;"> <span> Change Password </span></button>
                     </div>
                   </div>
                   <hr>
