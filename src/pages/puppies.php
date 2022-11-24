@@ -42,7 +42,7 @@
                         </div>
                     <?php } else { ?>
                         <div class="service">
-                            <h1 class="mb-4 text-center" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;"> ADD TO YOUR OHANA NOW</h1>
+                            <h1 class="mb-4 text-center" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;"> Add to your Ohana now!</h1>
                         </div>
                         <!-- AVAILABLE PUPPIES CARD -->
                         <div class="container d-flex justify-content-center">

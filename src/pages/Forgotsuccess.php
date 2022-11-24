@@ -14,7 +14,22 @@
   <link rel="stylesheet" href="/Ohana/src/css/footer.css">
   <?php include_once 'stylesheets.php'; ?>
   <style>
+    #check {
+      width: 250px;
+      height: 250px;
+    }
+
+    .sign-up__title {
+      font-size: 80px;
+      margin-top: 5%;
+    }
+
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
+      #check {
+        width: 185px;
+        height: 185px;
+      }
+
       .sign-up__title {
         font-size: 31px;
       }
@@ -46,8 +61,8 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <img src="/Ohana/src/images/pages/check.png" width="250" height="250" style="margin-top: 5%;">
-            <h1 class="sign-up__title" style="font-size: 80px; margin-top: 5%;">
+            <img src="/Ohana/src/images/pages/check.png" id="check" style="margin-top: 5%;">
+            <h1 class="sign-up__title">
               PASSWORD UPDATED!
             </h1>
             <p style="font-size:20px;"> Your Ohana account password has been Successfully Updated. </p>
@@ -56,7 +71,7 @@
           <center>
             <div class="form__row">
               <div class="logbtn">
-                <a href="/login" style="text-decoration:none;"><button type="submit" name="btnSubmit"><span> Login </span></button></a>
+                <a href="/login" style="text-decoration:none;"><button type="submit" id="btnLogin" name="btnSubmit"><span> Login </span></button></a>
               </div>
             </div>
           </center>

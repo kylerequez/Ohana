@@ -41,6 +41,17 @@
       .input__label {
         font-size: 20px;
       }
+
+      #rsnd {
+        margin-top: 10px;
+      }
+
+      #sbmt {
+        display: block;
+        padding: 10px 60px;
+        font-size: 18px;
+        font-weight: 700;
+      }
     }
   </style>
 </head>
@@ -74,8 +85,8 @@
               <div class="input">
                 <div class="input__container">
                   <label class="input__label" for="confirm-password"> <b>Enter OTP <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
-                                                                                    unset($_SESSION["msg"]); ?></b> </label><br>
-                  <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
+                                                                                    unset($_SESSION["msg"]); ?></b> </label>
+                  <div id="otp" class="inputs d-flex flex-row justify-content-center mt-3">
                     <!-- OTP 6 BOXES FOR USER INPUT -->
                     <input class="m-2 text-center form-control rounded" type="text" name="otpFirst" id="otpFirst" maxlength="1" />
                     <input class="m-2 text-center form-control rounded" type="text" name="otpSecond" id="otpSecond" maxlength="1" />
@@ -87,15 +98,15 @@
                 </div>
               </div>
             </div>
-            <center><br><br>
+            <center>
               <div class="form__row">
-                <p style="font-size:20px;">Did not receive OTP? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="">Resend OTP</a></p>
+                <p style="font-size:20px;" class="mt-5">Did not receive OTP? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="" id="rsnd">Resend OTP</a></p>
               </div>
             </center>
             <center>
               <div class="form__row">
                 <div class="logbtn">
-                  <button><span>Submit</span></button>
+                  <button id="sbmt"><span>Submit</span></button>
                 </div>
               </div>
             </center>

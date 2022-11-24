@@ -44,45 +44,157 @@
             <button type="create"><i data-feather="file-text" aria-hidden="true"></i><a class="export-btn" href="##"> Export Report </a></button>
           </div>
           <br>
-          <table class="posts-table">
-            <thead>
-              <tr class="users-table-info">
-                <th><b>TRANSACTION I.D </b></th>
-                <th><b>EMAIL ADDRESS</b></th>
-                <th><b>NAME OF USER</b></th>
-                <th><b>DATE</b></th>
-                <th><b>ACTION</b></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>I.D NUMBER 12345</td>
-                <td>CUSTOMER EMAIL ADDRESS</td>
-                <td>
-                  <div class="pages-table-img">
-                    Jenny Wilson
-                  </div>
-                </td>
-                <td>17.04.2021</td>
-                <td>
-                  <button class="view-btn transparent-btn" type="view" style="color:#7d605c; margin-right: 15px; font-size: 25px;"> <i class="uil uil-eye"></i> </button>
-                  <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
+          <?php
+          include_once dirname(__DIR__) . '/../models/Transaction.php';
+          include_once dirname(__DIR__) . '/../models/Order.php';
+          if (!isset($_GET['page'])) {
+            $current_page = 1;
+          } else {
+            $current_page = $_GET['page'];
+          }
+          $results_per_page = _RESOURCE_PER_PAGE_;
+          $count = $_SESSION["totalTransactions"];
+          $number_of_page = ceil($count / $results_per_page) > 1 ? ceil($count / $results_per_page) : 1;
+          $transactions = unserialize($_SESSION["transactions"]);
+          if (!empty($transactions)) {
+          ?>
+            <table class="posts-table">
+              <thead>
+                <tr class="users-table-info">
+                  <th><b>TRANSACTION I.D </b></th>
+                  <th><b>EMAIL ADDRESS</b></th>
+                  <th><b>NAME OF USER</b></th>
+                  <th><b>DATE</b></th>
+                  <th><b>STATUS</b></th>
+                  <th><b>ACTION</b></th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                foreach ($transactions as $transaction) {
+                ?>
+                  <tr>
+                    <td><?php echo $transaction->getId(); ?></td>
+                    <td><?php echo $transaction->getEmail(); ?></td>
+                    <td><?php echo $transaction->getFname() . " " . $transaction->getMname() . " " . $transaction->getLname(); ?></td>
+                    <td><?php echo $transaction->getDate()->format('M-d-Y H:i:s'); ?></td>
+                    <td><?php echo $transaction->getStatus(); ?></td>
+                    <td>
+                      <button class="view-btn transparent-btn fs-4" type="view" style="color:#7d605c; margin-right: 15px;" data-bs-toggle="modal" data-bs-target="#viewModalId<?php echo $transaction->getId(); ?>"> <i class="uil uil-eye"></i> </button>
+                      <button class="edit-btn transparent-btn fs-4" type="edit" style="color:#C0B65A; margin-right: 15px;" data-bs-toggle="modal" data-bs-target="#editModal"> <i class="uil uil-edit"> </i> </button>
+                    </td>
+                    <!-- VIEW POP UP MODAL -->
+                    <form method="" action="" enctype="multipart/form-data">
+                      <div class="modal fade" id="viewModalId<?php echo $transaction->getId(); ?>" tabindex="-1" aria-labelledby="editprofilemodal" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="viewModal">List of Orders for Transaction #<?php echo $transaction->getId() ?></h5>
+                              <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                            </div>
+                            <div class="modal-body">
+                              <?php
+                              $orders = $transaction->getListOfOrders();
 
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="paginations">
-          <li class="page-item previous-page"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">1</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
-          <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
-          <li class="page-item dots"><a class="page-link" href="#">...</a></li>
-          <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
-        </div>
+                              if (!empty($orders)) {
+                                foreach ($orders as $order) {
+                              ?>
+                                  <div class="card rounded-3 mb-4">
+                                    <div class="card-body p-4">
+                                      <div class="row d-flex justify-content-between align-items-center">
+                                        <div class="col">
+                                          <img src="data:image/jpeg;base64,<?php echo base64_encode($order->getImage()); ?>" style="width:200px;height:200px;" class="rounded-3" alt="Cotton T-shirt">
+                                        </div>
+                                        <div class="col">
+                                          <p class="lead fw-normal mb-2"><?php echo $order->getPetName(); ?></p>
+                                        </div>
+                                        <div class="col">
+                                          <p class="lead fw-normal mb-2"><?php echo $order->getType(); ?></p>
+                                        </div>
+                                        <div class="col">
+                                          <p class="lead fw-normal mb-2"><?php $order->getPrice(); ?></p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                              <?php
+                                }
+                              }
+                              ?>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="submit" class="btn text-white" style="background-color:#db6551"> Save Changes </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- EDIT TRANSACTION -->
+                      <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="editModal"> EDIT TRANSACTION </h5>
+                              <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                            </div>
+                            <div class="modal-body">
+                              <input type="hidden" name="type" value="">
+                              <div class="mb-3">
+                                <label for="fname" class="col-form-label"> TRANSACTION I.D </label>
+                                <input type="text" class="form-control text-dark" name="transaction" value="" disabled style="background-color:#eed1c2; ">
+                              </div>
+                              <div class="mb-3">
+                                <label for="mname" class="col-form-label"> FULL NAME </label>
+                                <input type="text" class="form-control text-dark" name="name" value="" disabled style="background-color:#eed1c2; ">
+                              </div>
+                              <div class="mb-3">
+                                <label for="lname" class="col-form-label"> EMAIL ADDRESS </label>
+                                <input type="text" class="form-control text-dark" name="email" value="" disabled style="background-color:#eed1c2; ">
+                              </div>
+                              <div class="mb-3">
+                                <label for="email" class="col-form-label"> CONTACT NUMBER </label>
+                                <input type="email" class="form-control text-dark" name="number" value="" disabled style="background-color:#eed1c2; ">
+                              </div>
+
+                              <div class="mb-3">
+                                <label for="status" class="col-form-label"> Status: </label>
+                                <select class="form-select" name="status" aria-label="Default select example">
+                                  <option value="PENDING">PENDING</option>
+                                  <option value="COMPLETED">COMPLETED</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Save Changes </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </tr>
+                <?php
+                }
+                ?>
+              </tbody>
+            </table>
+            <div class="paginations">
+              <?php
+              for ($page = 1; $page <= $number_of_page; $page++) {
+              ?>
+                <li class="page-item <?php echo ($current_page == $page) ? "next-page" : "current-page"; ?>"><a class="page-link" href="/dashboard/transactions/get?page=<?php echo $page ?>&limit=<?php echo $results_per_page ?>&offset=<?php echo ($page == 1) ? 0 : $results_per_page * ($page - 1) ?>"><?php echo $page ?></a></li>
+              <?php
+              }
+              ?>
+            </div>
+          <?php
+          } else {
+          ?>
+            <div class="alert text-light text-center ms-5 me-5" role="alert" style="margin-top:10%;background-color:#db6551">
+              No existing System Logs
+            </div>
+          <?php
+          }
+          ?>
       </main>
       <!-- ! Footer -->
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
@@ -105,6 +217,7 @@
   }
   unset($_SESSION["msg"]);
   ?>
+
   <!-- SCRIPTS -->
   <!-- Icons library -->
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>

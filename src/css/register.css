@@ -49,24 +49,19 @@ input:-webkit-autofill {
 
 /*END OF WEBKITS*/
 
-#passwordreq {
-  font-size: 20px;
-  color: #c0b65a;
-}
-
 /* Forgot Success */
 #pupdated {
-  font-size:20px;
+  font-size: 20px;
 }
 
 /* END OF Forgot Success */
 
-#confirmtext{
+#confirmtext {
   font-size: 20px;
 }
 
 #accdesc {
-  font-size:25px;
+  font-size: 25px;
 }
 
 .input {
@@ -431,11 +426,11 @@ button span {
 }
 
 #cnfrmtitle {
-  font-size: 80px; 
-  margin-top: 10%; 
-  font-family: 'Acme', sans-serif;
+  font-size: 80px;
+  margin-top: 10%;
+  font-family: "Acme", sans-serif;
 }
 
 #cnfrmcontent {
-  font-size:20px;
+  font-size: 20px;
 }

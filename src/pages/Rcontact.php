@@ -18,9 +18,82 @@
     <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+        #address {
+            width: 800px;
+            height: 650px;
+        }
 
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {}
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {
+            #header {
+                font-size: 45px;
+                margin-top: 40%;
+            }
+
+            .contact-us {
+                background-color: #faf8f0;
+                min-height: 500px;
+            }
+
+            #contactform {
+                position: relative !important;
+                width: 10px;
+                float: left;
+            }
+
+            textarea {
+                width: 330px;
+                max-width: 900px;
+                max-height: 200px;
+                padding: 10px;
+            }
+
+            #name {
+                margin-top: -50px;
+                width: 330px;
+                max-width: 900px;
+                max-height: 200px;
+                padding: 10px;
+            }
+
+            #email {
+                width: 330px;
+                max-width: 900px;
+                max-height: 200px;
+                padding: 10px;
+            }
+
+            .btn-Send button {
+                background-color: #db6551;
+                border-radius: 30px;
+                border: 1px solid #ffffff;
+                display: inline-block;
+                cursor: pointer;
+                color: #ffffff;
+                font-family: "Poppins";
+                font-size: 12px;
+                padding: 10px 40px;
+                text-decoration: none;
+                text-shadow: 0px 1px 0px #ffffff;
+                margin-top: 120%;
+                margin-right: 65px;
+                margin-left: auto;
+            }
+
+            #address {
+                max-width: 300px;
+                max-height: 300px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #find {
+                font-size: 45px;
+            }
+
+
+
+
+        }
     </style>
 </head>
 
@@ -55,7 +128,7 @@
                 <h1 id="find" class="mb-5 text-center"> YOU CAN FIND US HERE </h1>
             </div><br>
             <center>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1623.2871555101196!2d121.00392295489537!3d14.607660960531538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b61dfbade45d%3A0x87e58f7a0f4c89c3!2s1026%20Mindoro%2C%20Sampaloc%2C%20Maynila%2C%201008%20Kalakhang%20Maynila!5e0!3m2!1sen!2sph!4v1665068149424!5m2!1sen!2sph" width="800" height="650" style="border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1623.2871555101196!2d121.00392295489537!3d14.607660960531538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b61dfbade45d%3A0x87e58f7a0f4c89c3!2s1026%20Mindoro%2C%20Sampaloc%2C%20Maynila%2C%201008%20Kalakhang%20Maynila!5e0!3m2!1sen!2sph!4v1665068149424!5m2!1sen!2sph" style="border:0;" id="address" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </center>
         </section>

@@ -34,7 +34,7 @@
         <li><a href="/dashboard/website-content"><span class="icon image" aria-hidden="true"></span>Website Content</a></li>
         <li><a href="/dashboard/customers/get"><span class="icon user-3" aria-hidden="true"></span>Customer Accounts</a></li>
         <li><a href="/dashboard/staff/get"> <span class="icon user2" aria-hidden="true"></span>Staff Accounts</a></li>
-        <li><a href="/dashboard/transactions"><span class="icon chartico" aria-hidden="true"></span>User Transactions</span></a></li>
+        <li><a href="/dashboard/transactions/get"><span class="icon chartico" aria-hidden="true"></span>User Transactions</span></a></li>
         <li><a href="/dashboard/feedbacks"><span class="icon message" aria-hidden="true"></span>User Feedback</a></li>
         <li>
           <a class="show-cat-btn" href="##">

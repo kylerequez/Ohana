@@ -14,18 +14,30 @@
   <!-- EXTERNAL CSS -->
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-  <link rel="stylesheet" href="/Ohana/src/css/footer.css">
   <?php include_once 'stylesheets.php'; ?>
   <style>
+    #forgottitle2 {
+      font-size: 80px;
+    }
+
+    .sign-up__descr {
+      font-size: 25px;
+      margin-top: 25px;
+    }
+
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
       #forgottitle2 {
-        font-size: 35px;
-        margin-top: 15%;
+        font-size: 37px;
+        margin-top: 35%;
       }
 
       .sign-up__descr {
         font-size: 20px;
-        margin-top: 10px;
+        margin-top: 15px;
+      }
+
+      #checkinbx {
+        margin-top: 10%;
       }
     }
   </style>
@@ -41,7 +53,7 @@
     <div class="sign-up__container">
       <div class="sign-up__content">
         <header class="sign-up__header">
-          <h1 class="sign-up__title" style="font-size: 80px; margin-top: 5%;">
+          <h1 class="sign-up__title" id="forgottitle2">
             FORGOT PASSWORD
           </h1><br>
           <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
@@ -53,8 +65,8 @@
             unset($_SESSION["msg"]);
           } else {
           ?>
-            <p class="sign-up__descr" style="font-size: 20px;">A link to change your password has been sent in your email. </p>
-            <p class="sign-up__descr" style="font-size: 20px;">Please check your inbox.</p>
+            <p class="sign-up__descr">A link to change your password has been sent in your email. </p>
+            <p class="sign-up__descr" id="checkinbx">Please check your inbox.</p>
           <?php
           }
           if (empty($_SESSION["email"]) || empty($_SESSION["token"])) {

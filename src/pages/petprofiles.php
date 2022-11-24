@@ -17,29 +17,31 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {}
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {
+            #header {
+                font-size: 40px;
+            }
+        }
     </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <!-- REGISTERED USERS NAVIGATION BAR-->
         <?php include_once 'Rnavbar.php'; ?>
 
         <div class="container-fluid">
-            <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-
-            <section class="abouthead" style="margin-top:10%;">
-                <h1 id="header" class="text-center mb-2" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800"> Your Pets </h1>
+            <section class="abouthead">
+                <h1 id="header" class="text-center mb-2"> Your Pets </h1>
                 <div class="container-fluid">
                     <?php
                     include_once dirname(__DIR__) . '/models/PetProfile.php';
+                    echo "TEST";
                     $profiles = unserialize($_SESSION["profiles"]);
                     if (!empty($profiles) && count($profiles) <= 3) {
                         if (count($profiles) < 3) {
                     ?>
                             <div class="form__row text-center mb-5">
-                                <p class="text-center" style="font-size:20px;"><a class="text-decoration-none" name="login" style="color:#db6551" href="/createpetprofile">Add another Pet Profile</a></p>
+                                <p class="text-center fs-4"><a class="text-decoration-none" name="login" style="color:#db6551" href="/createpetprofile">Add another Pet Profile</a></p>
                             </div>
                         <?php
                         }
@@ -55,7 +57,6 @@
                                             <h5 class="card-title fs-3" style="font-family: 'Acme', sans-serif; color:#db6551"> <?php echo $profile->getName(); ?></h5>
                                         </div>
                                     </div>
-
                                 </a>
                             <?php
                             }
