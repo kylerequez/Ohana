@@ -35,6 +35,7 @@
                 <div class="container-fluid">
                     <?php
                     include_once dirname(__DIR__) . '/models/PetProfile.php';
+                    echo "TEST";
                     $profiles = unserialize($_SESSION["profiles"]);
                     if (!empty($profiles) && count($profiles) <= 3) {
                         if (count($profiles) < 3) {
@@ -49,7 +50,7 @@
                             <?php
                             foreach ($profiles as $profile) {
                             ?>
-                                <a href=" /ownedpets/profile/<?php echo $profile->getId(); ?>" style="text-decoration: none; color:black">
+                                <a href="/ownedpets/profile/<?php echo $profile->getId(); ?>" style="text-decoration: none; color:black">
                                     <div class="card m-3 mb-5" style="width: 20rem;">
                                         <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image" width="200px" height="250px;">
                                         <div class="card-body text-center">

@@ -8,6 +8,11 @@ class Transaction
     private ?string $status = null;
     private $paymentConfirmation = null;
     private ?array $listOfOrders = null;
+    private ?string $fname = null;
+    private ?string $mname = null;
+    private ?string $lname = null;
+    private ?string $number = null;
+    private ?string $email = null;
 
     public function __construct(int $accountId, float $price, DateTime $date, string $status, $paymentConfirmation)
     {
@@ -134,6 +139,126 @@ class Transaction
     public function setPaymentConfirmation($paymentConfirmation)
     {
         $this->paymentConfirmation = $paymentConfirmation;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of listOfOrders
+     */
+    public function getListOfOrders()
+    {
+        return $this->listOfOrders;
+    }
+
+    /**
+     * Set the value of listOfOrders
+     *
+     * @return  self
+     */
+    public function setListOfOrders($listOfOrders)
+    {
+        $this->listOfOrders = $listOfOrders;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of fname
+     */
+    public function getFname()
+    {
+        return $this->fname;
+    }
+
+    /**
+     * Set the value of fname
+     *
+     * @return  self
+     */
+    public function setFname($fname)
+    {
+        $this->fname = $fname;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of mname
+     */
+    public function getMname()
+    {
+        return $this->mname;
+    }
+
+    /**
+     * Set the value of mname
+     *
+     * @return  self
+     */
+    public function setMname($mname)
+    {
+        $this->mname = $mname;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of lname
+     */
+    public function getLname()
+    {
+        return $this->lname;
+    }
+
+    /**
+     * Set the value of lname
+     *
+     * @return  self
+     */
+    public function setLname($lname)
+    {
+        $this->lname = $lname;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of number
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * Set the value of number
+     *
+     * @return  self
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of email
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set the value of email
+     *
+     * @return  self
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
 
         return $this;
     }

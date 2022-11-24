@@ -21,6 +21,7 @@
                     <li class="text-center mt-2" style="color:#db6551"><span><?php echo $user->getType(); ?></span></li>
                     <li class="text-center mt-2 mb-2"><span> <?php echo $user->getFullName(); ?></span></li>
                     <li><a href="/dashboard/profile"><i data-feather="user" aria-hidden="true"></i><span>Profile</span></a></li>
+                    <li><a href="/home"><i data-feather="home" aria-hidden="true"></i><span>Ohana Website</span></a></li>
                     <li><a class="danger" data-bs-toggle="modal" data-bs-target="#logoutModal">
                             <i data-feather="log-out" aria-hidden="true"></i>
                             <span>Log out</span>
@@ -31,7 +32,7 @@
     </div>
 </nav>
 
-<!-- BOOTSTRAP 5.2.1 LOGOUT MODAL FIXED -->
+<!--  LOGOUT MODAL FIXED -->
 <form method="POST" action="/accounts/logout">
     <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
