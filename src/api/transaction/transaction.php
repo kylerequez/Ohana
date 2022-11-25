@@ -22,6 +22,7 @@ $logservices = new LogServices($logDAO);
 $controller = new TransactionController($services, $logservices);
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && !isset($id)) {
-    echo "HERE";
     $controller->processRequest($_SERVER["REQUEST_METHOD"], null);
+} else if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($id)) {
+    $controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
 }

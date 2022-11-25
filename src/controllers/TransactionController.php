@@ -28,6 +28,11 @@ class TransactionController
 
                 break;
             case "POST":
+                if (!$this->services->updateStatus($id, $_POST)) {
+                    $this->processCollectionRequest("GET");
+                    break;
+                }
+                $this->processCollectionRequest("GET");
                 break;
         }
     }

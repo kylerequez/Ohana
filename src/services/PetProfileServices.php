@@ -38,11 +38,21 @@ class PetProfileServices
         return $this->dao->getTotalPetProfilesCount();
     }
 
+    public function getPetProfileById(string $id, string $accountId): mixed
+    {
+        $profile = $this->dao->getPetProfileById($id, $accountId);
+        if (empty($profile)) {
+            $_SESSION["msg"] = "The Pet Profile does not exist.";
+            return null;
+        }
+        return $profile;
+    }
+
     public function addPetProfile(array $data): mixed
     {
         // ADD IMAGE VALIDATION SOON !!! IMPORTANT
         $image = $data["image"];
-        
+
         $name = strtoupper($data["name"]);
         $trait = strtoupper($data["trait"]);
         $birthdate = DateTime::createFromFormat("Y-m-d", $data["birthdate"]);
@@ -54,7 +64,7 @@ class PetProfileServices
         $ownerName = strtoupper($data["ownerName"]);
         $price = (float) $data["price"];
         $status = "AVAILABLE";
-        
+
         $petProfile = new PetProfile($image, $name, $birthdate, $sex, $color, $trait, $isVaccinated, $pcciStatus, $accountId, $ownerName, $price, $status);
         if (!$this->dao->addPetProfile($petProfile)) {
             $_SESSION["msg"] = "There was an error in adding the Pet Profile.";

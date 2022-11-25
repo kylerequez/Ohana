@@ -35,7 +35,6 @@
                 <div class="container-fluid">
                     <?php
                     include_once dirname(__DIR__) . '/models/PetProfile.php';
-                    echo "TEST";
                     $profiles = unserialize($_SESSION["profiles"]);
                     if (!empty($profiles) && count($profiles) <= 3) {
                         if (count($profiles) < 3) {

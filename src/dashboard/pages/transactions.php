@@ -80,57 +80,86 @@
                     <td><?php echo $transaction->getDate()->format('M-d-Y H:i:s'); ?></td>
                     <td><?php echo $transaction->getStatus(); ?></td>
                     <td>
-                      <button class="view-btn transparent-btn fs-4" type="view" style="color:#7d605c; margin-right: 15px;" data-bs-toggle="modal" data-bs-target="#viewModalId<?php echo $transaction->getId(); ?>"> <i class="uil uil-eye"></i> </button>
-                      <button class="edit-btn transparent-btn fs-4" type="edit" style="color:#C0B65A; margin-right: 15px;" data-bs-toggle="modal" data-bs-target="#editModal"> <i class="uil uil-edit"> </i> </button>
+                      <button class="view-btn transparent-btn fs-4" type="view" style="color:#7d605c; margin-right: 15px;" data-bs-toggle="modal" data-bs-target="#viewModalId<?php echo $transaction->getId(); ?>"><i class="uil uil-eye"></i></button>
+                      <button class="view-btn transparent-btn fs-4" type="view" style="color:#7d605c; margin-right: 15px;" data-bs-toggle="modal" data-bs-target="#confirmationModalId<?php echo $transaction->getId(); ?>"><i class="uil uil-image-v"></i></button> 
+                      <button class="edit-btn transparent-btn fs-4" type="edit" style="color:#C0B65A; margin-right: 15px;" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $transaction->getId(); ?>"><i class="uil uil-edit"></i></button>
                     </td>
                     <!-- VIEW POP UP MODAL -->
-                    <form method="" action="" enctype="multipart/form-data">
-                      <div class="modal fade" id="viewModalId<?php echo $transaction->getId(); ?>" tabindex="-1" aria-labelledby="editprofilemodal" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-xl">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="viewModal">List of Orders for Transaction #<?php echo $transaction->getId() ?></h5>
-                              <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
-                            </div>
-                            <div class="modal-body">
-                              <?php
-                              $orders = $transaction->getListOfOrders();
-
-                              if (!empty($orders)) {
-                                foreach ($orders as $order) {
-                              ?>
-                                  <div class="card rounded-3 mb-4">
-                                    <div class="card-body p-4">
-                                      <div class="row d-flex justify-content-between align-items-center">
-                                        <div class="col">
-                                          <img src="data:image/jpeg;base64,<?php echo base64_encode($order->getImage()); ?>" style="width:200px;height:200px;" class="rounded-3" alt="Cotton T-shirt">
-                                        </div>
-                                        <div class="col">
-                                          <p class="lead fw-normal mb-2"><?php echo $order->getPetName(); ?></p>
-                                        </div>
-                                        <div class="col">
-                                          <p class="lead fw-normal mb-2"><?php echo $order->getType(); ?></p>
-                                        </div>
-                                        <div class="col">
-                                          <p class="lead fw-normal mb-2"><?php $order->getPrice(); ?></p>
-                                        </div>
+                    <div class="modal fade" id="viewModalId<?php echo $transaction->getId(); ?>" tabindex="-1" aria-labelledby="editprofilemodal" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered modal-xl">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="viewModal">List of Orders for Transaction #<?php echo $transaction->getId() ?></h5>
+                            <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                          </div>
+                          <div class="modal-body">
+                            <?php
+                            $orders = $transaction->getListOfOrders();
+                            if (!empty($orders)) {
+                              foreach ($orders as $order) {
+                            ?>
+                                <div class="card rounded-3 mb-4">
+                                  <div class="card-body p-4">
+                                    <div class="row d-flex justify-content-between align-items-center">
+                                      <div class="col">
+                                        <img src="data:image/jpeg;base64,<?php echo base64_encode($order->getImage()); ?>" style="width:200px;height:200px;" class="rounded-3" alt="Cotton T-shirt">
+                                      </div>
+                                      <div class="col">
+                                        <p class="lead fw-normal mb-2"><?php echo $order->getPetName(); ?></p>
+                                      </div>
+                                      <div class="col">
+                                        <p class="lead fw-normal mb-2"><?php echo $order->getType(); ?></p>
+                                      </div>
+                                      <div class="col">
+                                        <p class="lead fw-normal mb-2"><?php $order->getPrice(); ?></p>
                                       </div>
                                     </div>
                                   </div>
+                                </div>
                               <?php
-                                }
                               }
+                            } else {
                               ?>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="submit" class="btn text-white" style="background-color:#db6551"> Save Changes </button>
-                            </div>
+                              <div class="row m-auto">
+                                There are currently no orders within the transaction.
+                              </div>
+                            <?php
+                            }
+                            ?>
                           </div>
                         </div>
                       </div>
-
-                      <!-- EDIT TRANSACTION -->
-                      <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+                    </div>
+                    <div class="modal fade" id="confirmationModalId<?php echo $transaction->getId(); ?>" tabindex="-1" aria-labelledby="editprofilemodal" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered modal-xl">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="viewModal">Payment Confirmation for Transaction #<?php echo $transaction->getId() ?></h5>
+                            <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                          </div>
+                          <div class="modal-body">
+                            <?php
+                            if (!empty($transaction->getPaymentConfirmation())) {
+                            ?>
+                              <div class="mb-3">
+                                <img class="h-100 w-100 rounded-4 img-responsive" id="paymentConfirmation" name="paymentConfirmation" src="data:image/jpeg;base64,<?php echo base64_encode($transaction->getPaymentConfirmation()); ?>">
+                              </div>
+                            <?php
+                            } else {
+                            ?>
+                              <div class="row m-auto">
+                                There is currently no proof of payment sent by <?php echo $transaction->getFname() . " " . $transaction->getMname() . " " . $transaction->getLname(); ?>.
+                              </div>
+                            <?php
+                            }
+                            ?>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- EDIT TRANSACTION -->
+                    <form method="POST" action="/dashboard/transactions/update/<?php echo $transaction->getId(); ?>?page=<?php echo $current_page; ?>&limit=<?php echo $results_per_page; ?>&offset=<?php echo ($current_page == 1) ? 0 : $results_per_page * ($current_page - 1) ?>">
+                      <div class="modal fade" id="editModalId<?php echo $transaction->getId(); ?>" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -138,29 +167,27 @@
                               <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
                             </div>
                             <div class="modal-body">
-                              <input type="hidden" name="type" value="">
                               <div class="mb-3">
                                 <label for="fname" class="col-form-label"> TRANSACTION I.D </label>
-                                <input type="text" class="form-control text-dark" name="transaction" value="" disabled style="background-color:#eed1c2; ">
+                                <input type="text" class="form-control text-dark" name="transactionId" value="<?php echo $transaction->getId(); ?>" disabled style="background-color:#eed1c2; ">
                               </div>
                               <div class="mb-3">
                                 <label for="mname" class="col-form-label"> FULL NAME </label>
-                                <input type="text" class="form-control text-dark" name="name" value="" disabled style="background-color:#eed1c2; ">
+                                <input type="text" class="form-control text-dark" name="accountName" value="<?php echo $transaction->getFname() . " " . $transaction->getMname() . " " . $transaction->getLname(); ?>" disabled style="background-color:#eed1c2; ">
                               </div>
                               <div class="mb-3">
                                 <label for="lname" class="col-form-label"> EMAIL ADDRESS </label>
-                                <input type="text" class="form-control text-dark" name="email" value="" disabled style="background-color:#eed1c2; ">
+                                <input type="text" class="form-control text-dark" name="email" value="<?php echo $transaction->getEmail(); ?>" disabled style="background-color:#eed1c2; ">
                               </div>
                               <div class="mb-3">
                                 <label for="email" class="col-form-label"> CONTACT NUMBER </label>
-                                <input type="email" class="form-control text-dark" name="number" value="" disabled style="background-color:#eed1c2; ">
+                                <input type="email" class="form-control text-dark" name="number" value="<?php echo $transaction->getNumber(); ?>" disabled style="background-color:#eed1c2; ">
                               </div>
-
                               <div class="mb-3">
                                 <label for="status" class="col-form-label"> Status: </label>
                                 <select class="form-select" name="status" aria-label="Default select example">
-                                  <option value="PENDING">PENDING</option>
-                                  <option value="COMPLETED">COMPLETED</option>
+                                  <option value="PENDING" <?php if ($transaction->getStatus() == "PENDING") echo "selected"; ?>>PENDING</option>
+                                  <option value="COMPLETED" <?php if ($transaction->getStatus() == "COMPLETED") echo "selected"; ?>>COMPLETED</option>
                                 </select>
                               </div>
                             </div>
@@ -190,7 +217,7 @@
           } else {
           ?>
             <div class="alert text-light text-center ms-5 me-5" role="alert" style="margin-top:10%;background-color:#db6551">
-              No existing System Logs
+              No existing transactions.
             </div>
           <?php
           }

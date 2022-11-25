@@ -68,9 +68,6 @@ class PetProfileController
                 break;
                 // Add Pet Profile
             case "POST":
-                ini_set('display_errors', 1);
-                ini_set('display_startup_errors', 1);
-                error_reporting(E_ALL);
                 $account = unserialize($_SESSION["user"]);
                 $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
                 $_POST["accountId"] = $account->getType() != "USER" ? 1 : $account->getId();
@@ -121,8 +118,15 @@ class PetProfileController
         }
     }
 
-    public function displayPetProfiles(string $type): void
+    public function displayPetProfile(string $id): void
     {
+        $user = unserialize($_SESSION["user"]);
+        $profile = $this->services->getPetProfileById($id, $user->getId());
+        if (empty($profile)) {
+            header("Location: http://localhost/ownedpets");
+        }
+        $_SESSION["profile"] = serialize($profile);
+        header("Location: http://localhost/ownedpets/" . $profile->getName());
     }
 
     public function processCustomerRequest(string $method, ?string $id): void
@@ -141,7 +145,18 @@ class PetProfileController
                 // DELETE
                 break;
             case "POST":
-                // EDIT
+                $account = unserialize($_SESSION["user"]);
+                $_POST["accountId"] = $account->getId();
+                $_POST["ownerName"] = $account->getFname() . " " . $account->getLname();
+                if (!empty($_FILES["image"]["tmp_name"])) {
+                    $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
+                } else {
+                    $_POST["image"] = base64_decode($_POST["old_image"]);
+                }
+                if (!$this->services->updatePetProfile($id, $_POST)) {
+                    $this->processCustomerCollectionRequest("GET");
+                }
+                $this->processCustomerCollectionRequest("GET");
                 break;
         }
     }
