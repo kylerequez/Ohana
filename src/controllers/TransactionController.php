@@ -1,5 +1,6 @@
 <?php
 require_once dirname(__DIR__) . "/models/Transaction.php";
+require_once dirname(__DIR__) . "/models/Account.php";
 require_once dirname(__DIR__) . '/config/app-config.php';
 class TransactionController
 {
@@ -11,6 +12,40 @@ class TransactionController
         $this->services = $services;
         $this->logservices = $logservices;
     }
+
+    public function processCustomerRequest(string $method, ?string $id): void
+    {
+        if ($id) {
+            $this->processCustomerResourceRequest($method, $id);
+        } else {
+            $this->processCustomerCollectionRequest($method);
+        }
+    }
+
+    public function processCustomerResourceRequest(string $method, ?string $id): void
+    {
+        switch ($method) {
+            case "GET":
+
+                break;
+            case "POST":
+                break;
+        }
+    }
+
+    public function processCustomerCollectionRequest(string $method): void
+    {
+        switch ($method) {
+            case "GET":
+                $user = unserialize($_SESSION["user"]);
+                $_SESSION["transactions"] = serialize($this->services->getUserTransactions($user->getId()));
+                header("Location: http://localhost/transactions");
+                break;
+            case "POST":
+                break;
+        }
+    }
+
 
     public function processRequest(string $method, ?string $id): void
     {

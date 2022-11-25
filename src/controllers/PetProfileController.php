@@ -166,8 +166,7 @@ class PetProfileController
         switch ($method) {
             case "GET":
                 $account = unserialize($_SESSION['user']);
-                $id = $account->getId();
-                $_SESSION["profiles"] = serialize($this->services->getUserPetProfile($id));
+                $_SESSION["profiles"] = serialize($this->services->getUserPetProfile(($account->getType() == "USER") ? $account->getId() : "1"));
                 header("Location: http://localhost/ownedpets");
                 break;
             case "POST":

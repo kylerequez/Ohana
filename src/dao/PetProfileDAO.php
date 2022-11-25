@@ -48,7 +48,7 @@ class PetProfileDAO
     {
         try {
             $sql = "SELECT * FROM ohana_pet_profiles
-                    WHERE owner_name = 'OHANA' AND pet_status='AVAILABLE' AND pet_id=:id;";
+                    WHERE owner_name = 'OHANA KENNEL BUSINESS' AND pet_status='AVAILABLE' AND pet_id=:id;";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
@@ -84,7 +84,7 @@ class PetProfileDAO
     {
         try {
             $sql = "SELECT * FROM ohana_pet_profiles
-                    WHERE owner_name = 'OHANA' AND pet_status='AVAILABLE';";
+                    WHERE owner_name = 'OHANA KENNEL BUSINESS' AND pet_status='AVAILABLE';";
             $stmt = $this->conn->query($sql);
             $petProfiles = null;
             if ($stmt->execute() > 0) {
@@ -156,7 +156,7 @@ class PetProfileDAO
     {
         try {
             $sql = "SELECT * FROM ohana_pet_profiles
-                    WHERE owner_name = 'OHANA'
+                    WHERE owner_name = 'OHANA KENNEL BUSINESS' 
                     LIMIT :limit OFFSET :offset;";
 
             $stmt = $this->conn->prepare($sql);

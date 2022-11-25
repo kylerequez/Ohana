@@ -254,7 +254,7 @@
               <label for="price" class="col-form-label"> PRICE </label>
               <input type="text" class="form-control" name="price" placeholder="Enter Price" required style="background-color:#eed1c2; color:black">
             </div>
-            <input type="hidden" class="form-control" name="ownerName" value="Ohana">
+            <input type="hidden" class="form-control" name="ownerName" value="OHANA KENNEL BUSINESS">
             <div class="mb-3">
               <label for="image" class="col-form-label"> DOG IMAGE </label><br>
               <input type="file" name="image" id="image" style="background-color:transparent;">

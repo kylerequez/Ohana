@@ -20,13 +20,9 @@ class TransactionServices
         return $transactions;
     }
 
-    public function getAllTransactions(): mixed
+    public function getUserTransactions(string $id): mixed
     {
-        $transactions = $this->dao->getAllTransactions();
-        if(empty($transactions)){
-            return null;
-        }
-
+        $transactions = $this->dao->searchByAccountId($id);
         foreach ($transactions as $transaction) {
             $orders = $this->order->searchByTransactionId($transaction->getId());
             $transaction->setListOfOrders($orders);
@@ -41,11 +37,11 @@ class TransactionServices
 
     public function updateStatus(string $id, array $data): bool
     {
-        if(empty($this->dao->searchByTransactionId($id))) {
+        if (empty($this->dao->searchByTransactionId($id))) {
             $_SESSION["msg"] = "The transaction does not exist.";
             return false;
         }
-        if(!$this->dao->updateStatus($id, $data["status"])){
+        if (!$this->dao->updateStatus($id, $data["status"])) {
             $_SESSION["msg"] = "There was an error in updating the transaction status.";
             return false;
         }

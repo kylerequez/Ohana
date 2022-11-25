@@ -36,8 +36,8 @@
                     <?php
                     include_once dirname(__DIR__) . '/models/PetProfile.php';
                     $profiles = unserialize($_SESSION["profiles"]);
-                    if (!empty($profiles) && count($profiles) <= 3) {
-                        if (count($profiles) < 3) {
+                    if (!empty($profiles)) {
+                        if (count($profiles) < 3 && $user->getType() == "USER") {
                     ?>
                             <div class="form__row text-center mb-5">
                                 <p class="text-center fs-4"><a class="text-decoration-none" name="login" style="color:#db6551" href="/createpetprofile">Add another Pet Profile</a></p>
