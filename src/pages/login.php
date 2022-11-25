@@ -17,7 +17,7 @@
 
   <style>
     #ohanafooter {
-      margin-top: 5%;
+      margin-top: 8%;
     }
 
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
@@ -40,6 +40,7 @@
       .input__label {
         font-size: 15px;
       }
+
     }
   </style>
 </head>

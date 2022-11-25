@@ -5,7 +5,6 @@
 
     <title> OHANA SERVICES </title>
 
-    <!-- META TAGS -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
@@ -18,6 +17,7 @@
     <?php include_once 'stylesheets.php'; ?>
 
     <style>
+
         .btn-outline-info {
             color: #db6551;
             background-color: transparent;
@@ -35,6 +35,11 @@
             text-decoration: none;
         }
 
+        #perfectpair {
+            margin-top: 47%;
+            align-items: center;
+        }
+        
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
             #serviceheader {
                 font-size: 50px;
@@ -59,7 +64,7 @@
             <div class="message">
                 <section class="services" id="services">
                     <div class="service">
-                        <h1 id="serviceheader" class="text-center mb-3"> SERVICES </h1>
+                        <h1 id="serviceheader" class="text-center mb-3"> Services </h1>
                     </div>
                     <div class="row text-center">
                         <div class="col-lg-6">
@@ -84,16 +89,9 @@
                 </section>
                 <section class="pair-section">
                     <div class="pair-section">
-                        <form action="/stud" method='get'>
-                            <div class="btn-Learn" name="btn-Checkout" id="btn-pair" style="float:right; margin-right:17%; margin-top:13%;">
-                                <button id="btnCheckout" name="btnPair"><span> Find the perfect pair now </span></button>
-                            </div>
-                        </form>
-                        <form action="/stud" method='get'>
-                            <div class="btn-Learn" name="btn-Checkout" id="btn-pair2" style="float:right; margin-right:12%; margin-top:30%;">
-                                <button id="btnCheckout" name="btnPair"><span> Find the perfect pair now </span></button>
-                            </div>
-                        </form>
+                        <a href="/stud" id="links">
+                            <center><button type="button" class="btn btn-outline-info" id="perfectpair"> Find the perfect pair now! </button></center>
+                        </a>
                     </div>
                 </section>
             </div>

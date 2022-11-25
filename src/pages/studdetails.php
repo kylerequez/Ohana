@@ -28,10 +28,10 @@
         <?php include_once 'Rnavbar.php'; ?>
 
         <div class="container-fluid">
-            <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-            <div class="message" style="margin-top:10%;">
+          
+            <div class="message">
                 <section class="services" id="services">
-                    <div class="card mx-auto img-fluid" style="max-width: 60vw; max-height:120vh; background-color:#2f1f18">
+                    <div class="card mx-auto img-fluid" style="max-width: 60vw; max-height:100vh; background-color:#2f1f18">
                         <img class="card-img-top img-fluid" src="/Ohana/src/images/Ohanapups/cardbg.png" alt="Card image" style="width:100%; height:70vh">
                         <div class="card-img-overlay">
                             <p class="text-center fs-2 fw-bold" style="font-family: 'Acme', sans-serif;"><b> FRENCH BULLDOG NAME </b></p>
@@ -51,7 +51,7 @@
                                     </div>
                                     <div id="buttons">
                                         <a href="/stud"><button type="button" class="btn btn-outline-dark mt-3" style="margin-left:5%"> Go Back</button></a>
-                                        <button type="button" class="btn mt-3 text-white" style="margin-left:5%; background-color:#c0b65a; "> Choose as Pair </button>
+                                        <a href="/select-stud-dog"><button type="button" class="btn mt-3 text-white" style="margin-left:5%; background-color:#c0b65a; "> Choose as Pair </button></a>
                                     </div>
                                 </div>
                             </div>

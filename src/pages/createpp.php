@@ -16,6 +16,9 @@
  
   <?php include_once 'stylesheets.php'; ?>
   <style>
+    #ohanafooter {
+      margin-top: 5%;
+    }
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
     @media screen and (min-width: 360px) and (max-width: 929.98px) {}
@@ -24,14 +27,14 @@
 
 <body style="background-color: #FAF8F0;">
   <main>
-    <!-- REGISTERED USERS NAVIGATION BAR-->
+  
     <?php include_once 'Rnavbar.php'; ?>
 
     <div class="container-fluid">
-      <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
+
       <div class="container h-90" style="margin-top:10%;">
-        <h1 style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;text-align:center;"> Create Pet Profile </h1><br>
-        <div class="card mx-auto" style="max-width: 68vw; max-height:80vh; border-style: solid; border-color: #c0b65a; border-width:5px">
+        <h1 class="mb-5"style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;text-align:center;"> Create Pet Profile </h1><br>
+        <div class="card mx-auto" style="max-width: 68vw; max-height:80vh; border-style: solid; border-color: #c0b65a; border-width:3px">
           <div class="row g-0">
             <div class="col-md-6 d-none d-md-block">
               <img src="/Ohana/src/images/sideimg.png" alt="Side photo" class="img-fluid" style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height: 60vh; " />

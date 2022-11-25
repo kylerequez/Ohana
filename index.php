@@ -83,7 +83,8 @@
             }
 
             #intro {
-                margin-top: 25%;
+                margin-top: 15%;
+                width:auto;
             }
 
             #contactform {
@@ -122,6 +123,7 @@
                 min-height: 500px;
                 margin-left: auto;
                 margin-right: auto;
+                background-position: center;
             }
 
             .reasons {
@@ -135,13 +137,6 @@
                 margin-right: auto;
             }
 
-            #footer {
-                position: relative;
-                left: 0;
-                bottom: 0;
-                width: 50%;
-                height: 50px;
-            }
         }
     </style>
 </head>
@@ -152,7 +147,7 @@
         <?php include_once dirname(__DIR__) . '/Ohana/src/pages/navbar.php'; ?>
         <div class="container-fluid">
             <section class="introduction" id="home">
-                <div class="intro mt-3">
+                <div class="intro">
                     <img src="/Ohana/src/images/Landing/introduction.png" class="img-fluid" id="intro">
                 </div>
             </section>
@@ -201,7 +196,8 @@
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
                                 <div class="card-body">
-                                    <h5 class="card-text text-center mt-2 mb-2"> Maraming Salamat! Alagaan ko to. Ang ganda niya. Thank you ulit 👌🏻” </h5><br>
+                                    <img src="/Ohana/src/images/icons/quote.png" class="me-3 img-fluid" width="50" height="50"></img>
+                                    <h5 class="card-text text-center mt-2 mb-2"> Maraming Salamat! Alagaan ko to. Ang ganda niya. Thank you ulit! </h5><br>
                                     <h4 class="card-title text-center mt-2"> Edrich Pineda </h4>
                                 </div>
                             </div>
@@ -209,8 +205,8 @@
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
                                 <div class="card-body">
-
-                                    <h5 class="card-text text-center mt-2 mb-2">"Thank you so much! So happy with my puppy!”</h5><br>
+                                    <img src="/Ohana/src/images/icons/quote.png" class="me-3 img-fluid" width="50" height="50"></img>
+                                    <h5 class="card-text text-center mt-2 mb-2">Thank you so much! So happy with my puppy!</h5><br>
                                     <h4 class="card-title text-center"> Ron Ilao</h4>
                                 </div>
                             </div>
@@ -218,8 +214,8 @@
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
                                 <div class="card-body">
-
-                                    <h5 class="card-text text-center mt-2 mb-2">“Thank you sir. Quality talaga yung puppy at napaka-cute. Solid!”</h5><br>
+                                    <img src="/Ohana/src/images/icons/quote.png" class="me-3 img-fluid" width="50" height="50"></img>
+                                    <h5 class="card-text text-center mt-2 mb-2">Thank you sir. Quality talaga yung puppy at napaka-cute. Solid!</h5><br>
                                     <h4 class="card-title text-center"> Ralph Hernandez </h4>
                                 </div>
                             </div>
@@ -233,13 +229,11 @@
                     <div class="message text-center">
                         <h1 class="contact mt-5"> Contact Us! </h1>
                     </div>
-
                     <form id="contactform" class="topBefore">
                         <input id="name" type="text" placeholder="FULL NAME">
                         <input id="email" type="text" placeholder="E-MAIL ADDRESS ">
                         <textarea id="message" type="text" placeholder="ENTER MESSAGE"></textarea>
                     </form>
-
                     <form action="/pages/login.php" method='get'>
                         <div class="btn-Send" name="btn-Send">
                             <button id="btnSend" name="btnSend" type="submit"><span> Send Message </span></button>
@@ -248,10 +242,8 @@
                 </div>
             </section>
         </div>
-
         <div id="chat-container"> </div>
     </main>
-
     <?php include_once dirname(__DIR__) . '/Ohana/src/pages/footer.php'; ?>
     <!-- JAVASCRIPT IMPORTS -->
     <script src="/Ohana/src/js/chatbot-ui.js"></script>
@@ -277,5 +269,4 @@
     </script>
 
 </body>
-
 </html>

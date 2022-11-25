@@ -71,7 +71,7 @@
             <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
             <section class="userprofile" style="margin-top:10%;">
                 <div class="userheader mb-5">
-                    <h1 id="header" class="text-center"> APPOINTMENT HISTORY </h1>
+                    <h1 id="header" class="text-center"> Appointment History </h1>
                 </div>
             </section>
             <div class="container py-5" id="page-container" style="margin-top: 0%">
@@ -82,7 +82,7 @@
                     <div class="col-md-3">
                         <div class="cardt rounded-0 shadow">
                             <div class="card-header text-light p-3" style="background-color:#db6551;">
-                                <h5 class="card-title mt-4 text-center">Schedule Form</h5><br>
+                                <h4 class="card-title mt-4 text-center"> Appointment </h4><br>
                             </div>
                             <div class="card-body">
                                 <div class="container-fluid">

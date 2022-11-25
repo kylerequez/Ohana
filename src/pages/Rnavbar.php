@@ -22,11 +22,16 @@
     }
 
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
-      .navbar {
-        height: auto;
-        width: 100%;
+      .navbar.navbar-expand-xl {
+        height: 110px;
       }
 
+      #navlogo.img-fluid {
+        margin-top:-40%;
+      }
+      .navbar-toggler {
+        margin-top:-20%;
+      }
     }
   </style>
 </head>

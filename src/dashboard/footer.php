@@ -15,8 +15,8 @@
   <div class="modal-dialog modal-xl modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="ModalLabel"> OHANA KENNEL PH</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-left:800px"></button>
+      
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <?php include_once dirname(__DIR__) . '/pages/terms.php'; ?>
@@ -29,8 +29,8 @@
   <div class="modal-dialog modal-xl modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="ModalLabel"> OHANA KENNEL PH</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-left:800px"></button>
+       
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <?php include_once dirname(__DIR__) . '/pages/privacy.php'; ?>

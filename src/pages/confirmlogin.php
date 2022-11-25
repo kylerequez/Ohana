@@ -3,21 +3,21 @@
 
 <head>
 
-
   <title> CONFIRM LOGIN </title>
 
-  <!-- META TAGS -->
   <meta charset="utf-8">
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
   <meta name="keywords" content="Kennel Business, French Bulldogs">
 
-  <!-- EXTERNAL CSS IMPORT-->
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
   <?php include_once 'stylesheets.php'; ?>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+    #cnfrmtitle {
+      font-size:80px;
+    }
 
     #ohanafooter {
       margin-top: 5%;
@@ -100,7 +100,7 @@
             </div>
             <center>
               <div class="form__row">
-                <p style="font-size:20px;" class="mt-5">Did not receive OTP? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="" id="rsnd">Resend OTP</a></p>
+                <p class="mt-5 fs-5">Did not receive OTP? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="" id="rsnd">Resend OTP</a></p>
               </div>
             </center>
             <center>

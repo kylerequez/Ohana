@@ -5,13 +5,11 @@
 
     <title> OHANA ABOUT </title>
 
-    <!-- META TAGS -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
 
-    <!-- EXTERNAL CSS -->
     <link rel="stylesheet" href="/Ohana/src/css/Uabout.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
@@ -20,21 +18,21 @@
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
             #mainabout {
                 background-image: url(/Ohana/src/images/Pages/mbaboutmain.png);
-                min-width: 375px;
-                min-height: 400px;
+                min-width: 360px;
+                min-height: 450px;
                 background-position: center;
             }
 
             #values {
                 background-image: url(/Ohana/src/images/Pages/mbvalues.png);
-                min-width: 375px;
+                min-width: 360px;
                 min-height: 400px;
                 background-position: center;
             }
-
-            #header {
-                font-size: 30px;
-                margin-top: 10%;
+            #header{
+                font-size: 50px;
+                margin-top: 40%;
+                margin-bottom:30px;
             }
         }
     </style>
@@ -42,11 +40,10 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <!-- REGISTERED USERS NAVIGATION BAR-->
         <?php include_once 'Rnavbar.php'; ?>
 
         <div class="container-fluid">
-            <h1 id="header" class="text-center"> ABOUT US </h1>
+            <h1 id="header" class="text-center"> About Us </h1>
             <section class="mainabout" id="mainabout">
             </section>
             <section class="values" id="values">

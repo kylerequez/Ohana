@@ -16,6 +16,9 @@
 
     <?php include_once 'stylesheets.php'; ?>
     <style>
+        #ohanafooter {
+            margin-top:10%;
+        }
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
         @media screen and (min-width: 360px) and (max-width: 929.98px) {}
@@ -24,11 +27,10 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <!-- REGISTERED USERS NAVIGATION BAR-->
+     
         <?php include_once 'Rnavbar.php'; ?>
 
         <div class="container-fluid">
-            <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
             <div class="message" style="margin-top:10%;">
                 <section class="services" id="services">
                     <?php
@@ -38,7 +40,7 @@
                     if (empty($profiles)) {
                     ?>
                         <div class="service mb-4">
-                            <h1 class="text-center" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;"> THERE IS CURRENTLY NO AVAILABLE PUPPY FOR REHOMING</h1>
+                            <h1 class="text-center fs-1 mt-5" style="color:#DB6551; font-family: 'Acme', sans-serif; "> There are currently NO AVAILABLE <br><br> french bulldog puppies for rehoming</h1>
                         </div>
                     <?php } else { ?>
                         <div class="service">
@@ -73,7 +75,6 @@
         <?php include_once 'footer.php'; ?>
     </div>
 
-    <!-- JAVASCRIPT IMPORTS -->
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>

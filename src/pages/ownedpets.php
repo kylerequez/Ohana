@@ -37,12 +37,12 @@
   }
   ?>
   <main>
-    <!-- REGISTERED USERS NAVIGATION BAR-->
+   
     <?php include_once 'Rnavbar.php'; ?>
     <div class="container-fluid">
-      <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
+   
       <div class="container h-90" style="margin-top:10%;">
-        <h1 class="text-center" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;"> Pet Profile </h1><br>
+        <h1 class="text-center" id="header" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;"> Pet Profile </h1><br>
         <div class="card mx-auto" style="max-width: 68vw; max-height:80vh; border-style: solid; border-color: #c0b65a; border-width:5px">
           <div class="row g-0">
             <div class="col-md-6 d-none d-md-block">
@@ -185,8 +185,8 @@
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="submit" class="btn btn-warning">Save changes</button>
-                      </div>
+                        <button type="submit" class="btn text-light" style="background-color:#DB6551">Save changes</button>
+                      </div> 
                     </div>
                   </div>
                 </div>
@@ -205,10 +205,6 @@
     <?php include_once 'footer.php'; ?>
   </div>
 
-  <!-- Custom scripts -->
-  <script src="/Ohana/src/dashboard/js/script.js"></script>
-
-  <!-- JAVASCRIPT IMPORTS -->
   <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
   </script>
