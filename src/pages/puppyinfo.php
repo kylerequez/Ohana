@@ -17,6 +17,9 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
+        #ohanafooter {
+            margin-top:20%;
+        }
         #links {
             text-decoration: none;
         }
@@ -92,12 +95,10 @@
         </div>
     </main>
 
-    <div id="ohanafooter" style="margin-top:20%">
+    <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
 
-    <!-- JAVASCRIPT IMPORTS -->
-    <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 

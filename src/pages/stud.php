@@ -25,17 +25,17 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <!-- REGISTERED USERS NAVIGATION BAR-->
+      
         <?php include_once 'Rnavbar.php'; ?>
 
         <div class="container-fluid">
-            <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
+           
             <div class="message">
                 <section class="services" id="services">
                     <div class="service">
                         <h1 class="mt-4" id="studtitle"> CHOOSE THE PERFECT PAIR </h1>
                     </div>
-                    <!-- AVAILABLE PUPPIES CARD -->
+                  
                     <div class="container-fluid d-flex justify-content-center">
                         <div class="card mt-5" style="width: 20rem;">
                             <a href="/stud-profile"><img src="/Ohana/src/images/petprofile/stud.jpg" class="card-img-top" alt="Dog for Stud Service"></a>

@@ -5,7 +5,6 @@
 
     <title> OWNED PETS </title>
 
-    <!-- META TAGS -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
@@ -16,7 +15,9 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-
+        #ohanafooter {
+            margin-top:10%;
+        }
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
             #header {
                 font-size: 40px;
@@ -45,7 +46,7 @@
                         <?php
                         }
                         ?>
-                        <div class="d-flex justify-content-center">
+                        <div class=" d-flex justify-content-center mt-5">
                             <?php
                             foreach ($profiles as $profile) {
                             ?>
@@ -65,7 +66,7 @@
                     } else if (empty($profiles)) {
                     ?>
                         <div class="form__row text-center mb-5">
-                            <p style="font-size:20px;">Do not have a pet profile?&nbsp;<a class="link" name="login" style="text-decoration:none; color:#db6551" href="/createpetprofile">Create now!</a></p>
+                            <p class="fs-4">Do not have a pet profile?&nbsp;<a class="link" name="login" style="text-decoration:none; color:#db6551" href="/createpetprofile">Create now!</a></p>
                         </div>
                     <?php
                     }
@@ -79,8 +80,6 @@
         <?php include_once 'footer.php'; ?>
     </div>
 
-    <!-- JAVASCRIPT IMPORTS -->
-    <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 

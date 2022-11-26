@@ -65,13 +65,11 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <h1 class="sign-up__title" id="cnfrmtitle">
-              Welcome Back!
-            </h1>
-            <p class="mt-2" id="cnfrmcontent"> Please enter the OTP sent to your email to proceed. </p>
+            <h1 class="sign-up__title" id="cnfrmtitle"> Welcome Back! </h1>
+            <p class="mt-2" id="cnfrmcontent" style="color:c0b65a;"> Please enter the OTP sent to your email to proceed. </p>
             <!-- ALERT -->
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-              <div class="alert alert-warning" role="alert">
+              <div class="alert alert-warning mt-3" role="alert">
                 <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
                 unset($_SESSION["msg"]); ?>
               </div>
@@ -87,7 +85,7 @@
                   <label class="input__label" for="confirm-password"> <b>Enter OTP <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
                                                                                     unset($_SESSION["msg"]); ?></b> </label>
                   <div id="otp" class="inputs d-flex flex-row justify-content-center mt-3">
-                    <!-- OTP 6 BOXES FOR USER INPUT -->
+                  
                     <input class="m-2 text-center form-control rounded" type="text" name="otpFirst" id="otpFirst" maxlength="1" />
                     <input class="m-2 text-center form-control rounded" type="text" name="otpSecond" id="otpSecond" maxlength="1" />
                     <input class="m-2 text-center form-control rounded" type="text" name="otpThird" id="otpThird" maxlength="1" />
@@ -113,14 +111,13 @@
           </form>
         </div>
       </div>
-      <!-- FOOTER -->
+     
       <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
       </div>
     </main>
   </div>
 
-  <!-- SCRIPTS IMPORT-->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 

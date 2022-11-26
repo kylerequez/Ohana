@@ -5,20 +5,23 @@
 
   <title> CREATE YOUR PET PROFILE </title>
 
-  <!-- META TAGS -->
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
   <meta name="keywords" content="Kennel Business, French Bulldogs">
-  <!-- END OF META TAGS -->
+
   <link rel="stylesheet" href="/Ohana/src/css/puppies.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
- 
+
   <?php include_once 'stylesheets.php'; ?>
   <style>
+    #create-profile {}
+
     #ohanafooter {
       margin-top: 5%;
     }
+
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
     @media screen and (min-width: 360px) and (max-width: 929.98px) {}
@@ -27,13 +30,13 @@
 
 <body style="background-color: #FAF8F0;">
   <main>
-  
+
     <?php include_once 'Rnavbar.php'; ?>
 
     <div class="container-fluid">
 
-      <div class="container h-90" style="margin-top:10%;">
-        <h1 class="mb-5"style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;text-align:center;"> Create Pet Profile </h1><br>
+      <div class="container h-90" id="create-profile">
+        <h1 class="mb-5 text-center" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif;"> Create Pet Profile </h1><br>
         <div class="card mx-auto" style="max-width: 68vw; max-height:80vh; border-style: solid; border-color: #c0b65a; border-width:3px">
           <div class="row g-0">
             <div class="col-md-6 d-none d-md-block">
@@ -129,9 +132,6 @@
           </form>
         </div>
       </div>
-    </div>
-    </section>
-    </div>
     </div>
   </main>
 

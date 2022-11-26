@@ -16,6 +16,13 @@
 
   <?php include_once 'stylesheets.php'; ?>
   <style>
+    #header {
+      margin-top:15%;
+      font-size:80px;
+    }
+    #ohanafooter {
+      margin-top:10%;
+    }
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
     @media screen and (min-width: 360px) and (max-width: 929.98px) {}
@@ -41,12 +48,13 @@
     <?php include_once 'Rnavbar.php'; ?>
     <div class="container-fluid">
    
-      <div class="container h-90" style="margin-top:10%;">
-        <h1 class="text-center" id="header" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;"> Pet Profile </h1><br>
+      <div class="container h-90">
+        <h1 class="text-center mb-5" id="header" style="color:#DB6551; font-family: 'Acme', sans-serif; "> Pet Profile </h1><br>
         <div class="card mx-auto" style="max-width: 68vw; max-height:80vh; border-style: solid; border-color: #c0b65a; border-width:5px">
+
           <div class="row g-0">
             <div class="col-md-6 d-none d-md-block">
-              <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="img-fluid" style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height: 60vh; " />
+              <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="img-fluid p-5" style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height: 60vh; " />
             </div>
             <div class="col-md-6">
               <div class="card-body p-md-5 text-black">
@@ -54,7 +62,7 @@
                 <form action="/pages/home.php" method="post">
                   <div class="row">
                     <div class="mb-3 row">
-                      <label for="inputPetName" class="col-sm-2 col-form-label" style="color:#7d6056">Name:</label>
+                      <label for="inputPetName" class="col-sm-2 col-form-label" style="color:#7d6056;font-family: 'Acme', sans-serif;">Name:</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" id="petname" value="<?php echo $profile->getName(); ?>" disabled>
                       </div>
@@ -62,7 +70,7 @@
                   </div>
                   <div class="row">
                     <div class="mb-3 row ">
-                      <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Birthday: </label>
+                      <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056;font-family: 'Acme', sans-serif;">Birthday: </label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" id="birthday" value="<?php echo $profile->getBirthdate()->format('M-d-Y'); ?>" disabled>
                       </div>
@@ -70,7 +78,7 @@
                   </div>
                   <div class="row">
                     <div class="mb-3 row">
-                      <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Color:</label>
+                      <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056;font-family: 'Acme', sans-serif;">Color:</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" id="color" value="<?php echo $profile->getColor(); ?>" disabled>
                       </div>
@@ -78,7 +86,7 @@
                   </div>
                   <div class="row">
                     <div class="mb-3 row">
-                      <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Trait:</label>
+                      <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056;font-family: 'Acme', sans-serif;">Trait:</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" id="trait" value="<?php echo $profile->getTrait(); ?>" disabled>
                       </div>
@@ -86,7 +94,7 @@
                   </div>
                   <div class="row">
                     <div class="mb-3 row ">
-                      <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Sex: </label>
+                      <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056;font-family: 'Acme', sans-serif;">Sex: </label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" id="gender" value="<?php echo $profile->getSex(); ?>" disabled>
                       </div>
@@ -94,7 +102,7 @@
                   </div>
                   <div class="row">
                     <div class="mb-3 row ">
-                      <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">PCCI: </label>
+                      <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056;font-family: 'Acme', sans-serif;">PCCI: </label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" id="pcci" value="<?php echo $profile->getPcciStatus(); ?>" disabled>
                       </div>
@@ -102,7 +110,7 @@
                   </div>
                   <div class="row">
                     <div class="mb-3 row ">
-                      <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056">Vaccine: </label>
+                      <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056;font-family: 'Acme', sans-serif;">Vaccine: </label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" id="vaccine" value="<?php echo ($profile->getIsVaccinated() == true) ? "COMPLETE" : "NO VACCINATION"; ?>" disabled>
                       </div>
@@ -112,7 +120,7 @@
               </div>
 
               <div class="d-flex justify-content-end pt-2" style="margin-right:10%">
-                <a href="/ownedpets" type="reset" class="btn btn-md mt-3" style="background-color: #db6551; color:white">Go Back</a>
+                <a href="/ownedpets" type="reset" class="btn btn-outline-dark mt-3">Go Back</a>
                 <button type="submit" id="submitbtn" class="btn ms-2 mt-3" data-bs-toggle="modal" data-bs-target="#editModal" style="background-color: #c0b65a; color:white; margin-left:20px;">Edit</button>
               </div>
 
@@ -205,7 +213,6 @@
     <?php include_once 'footer.php'; ?>
   </div>
 
-  <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
   </script>
 

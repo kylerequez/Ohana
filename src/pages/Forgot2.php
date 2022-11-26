@@ -5,13 +5,11 @@
 
   <title> OHANA- FORGOT PASSWORD </title>
 
-  <!-- META TAGS -->
   <meta charset="utf-8">
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
   <meta name="keywords" content="Kennel Business, French Bulldogs">
 
-  <!-- EXTERNAL CSS -->
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
   <?php include_once 'stylesheets.php'; ?>
@@ -45,10 +43,8 @@
 
 <body style="background-color: #FAF8F0;">
 
-  <!-- UNREGISTERED USERS NAVIGATION BAR-->
   <?php include_once 'navbar.php'; ?>
 
-  <!-- MAIN CONTENT -->
   <main class="sign-up">
     <div class="sign-up__container">
       <div class="sign-up__content">
@@ -57,7 +53,7 @@
             FORGOT PASSWORD
           </h1><br>
           <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-            <div class="alert alert-warning" role="alert">
+            <div class="alert alert-warning mt-5" role="alert">
               <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
               unset($_SESSION["msg"]); ?>
             </div>
@@ -89,14 +85,13 @@
     </div>
   </main>
 
-  <!-- FOOTER -->
   <div id="ohanafooter">
     <?php include_once 'footer.php'; ?>
   </div>
 
-  <!-- SCIPTS -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
 </body>
 

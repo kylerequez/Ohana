@@ -5,15 +5,12 @@
 
   <title> OHANA- FORGOT PASSWORD </title>
 
-  <!-- META TAGS -->
   <meta charset="utf-8">
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
   <meta name="keywords" content="Kennel Business, French Bulldogs">
-  <!-- EXTERNAL CSS -->
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-  <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
   <?php include_once 'stylesheets.php'; ?>
   <style>
@@ -71,25 +68,18 @@
 
 <body style="background-color: #FAF8F0;">
 
-  <!-- UNREGISTERED USERS NAVIGATION BAR-->
   <?php include_once 'navbar.php'; ?>
 
   <div class="container-fluid">
-
-    <!-- MAIN CONTENT -->
     <main class="sign-up">
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <h1 class="sign-up__title" id="forgottitle">
-              FORGOT PASSWORD
-            </h1>
-            <p class="sign-up__descr" id="forgotdesc">
-              To reset your password, please enter your <b>Email</b> and click reset password.
-            </p>
-            <!-- ALERT -->
+            <h1 class="sign-up__title" id="forgottitle">FORGOT PASSWORD</h1>
+            <p class="sign-up__descr" id="forgotdesc">To reset your password, please enter your <b>Email</b> and click reset password. </p>
+
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-              <div class="alert alert-warning" role="alert">
+              <div class="alert alert-warning mt-5" role="alert">
                 <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
                 unset($_SESSION["msg"]); ?>
               </div>
@@ -104,7 +94,7 @@
             <div class="form__row form__row--two">
               <div class="input form__inline-input">
                 <div class="input__container">
-                  <!-- EMAIL INPUT BOX -->
+
                   <div class="form__row mt-4">
                     <div class="input">
                       <div class="input__container">
@@ -125,8 +115,7 @@
                   </center>
 
                   <hr style="width:100%"><br>
-                  <div class="form__row sign-up__sign">
-                    Dont have an account? &nbsp;<a class="link" href="/register" style="text-decoration: none;"> Register Now! </a>
+                  <div class="form__row sign-up__sign"> Dont have an account? &nbsp;<a class="link" href="/register" style="text-decoration: none;"> Register Now! </a>
           </form>
         </div>
       </div>
@@ -159,13 +148,9 @@
         return emailIcon.style.color = "red"
       })
     </script>
-    </main>
-
-</body>
-
-<!-- SCIPTS -->
-<!-- Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
 </body>
 

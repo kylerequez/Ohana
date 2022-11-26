@@ -5,13 +5,11 @@
 
   <title> CHANGE PASSWORD </title>
 
-  <!-- META TAGS -->
   <meta charset="utf-8">
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="keywords" content="Kennel Business, French Bulldogs">
 
-  <!-- EXTERNAL CSS -->
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
 
@@ -221,13 +219,6 @@
   </script>
 
   </main>
-
-</body>
-
-<!-- SCIPTS -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
 </body>
 
 </html>

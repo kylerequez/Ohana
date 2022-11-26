@@ -23,7 +23,6 @@
     </ul>
   </footer>
 </div>
-<!-- TERMS Modal -->
 <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsandconditions" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-scrollable">
     <div class="modal-content">
@@ -36,7 +35,6 @@
     </div>
   </div>
 </div>
-<!-- DATA PRIVACY Modal -->
 <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="dataprivacy" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-scrollable">
     <div class="modal-content">

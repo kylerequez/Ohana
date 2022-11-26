@@ -75,19 +75,14 @@
 
 <body>
   <div class="layer"> </div>
-
-  <!-- Body -->
-
   <div class="page-flex">
-    <!-- Dashboard Sidebar -->
+  
     <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
 
     <div class="main-wrapper">
 
-      <!-- ! Main nav -->
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
 
-      <!--  CUSTOMER ACCOUNTS CONTENT -->
       <main class="main users chart-page" id="skip-target">
         <div class="container">
           <h2 class="main-title text-center mt-3">APPOINTMENTS</h2>
@@ -213,8 +208,6 @@
   }
   unset($_SESSION["msg"]);
   ?>
-
-  <!-- SCRIPTS -->
 
   <!-- Icons library -->
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>

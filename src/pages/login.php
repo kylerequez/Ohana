@@ -47,10 +47,8 @@
 
 <body style="background-color: #FAF8F0;">
 
-  <!-- UNREGISTERED USERS NAVIGATION BAR-->
   <?php include_once 'navbar.php'; ?>
 
-  <!-- MAIN CONTENT -->
   <div class=container-fluid>
     <main class="sign-up">
       <div class="sign-up__container">
@@ -60,9 +58,9 @@
               Let's meet your new
             </h1>
             <h1 class="sign-up__title mt-3" id="ohanatitle"> OHANA! </h1>
-            <!-- ALERT -->
+           
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-              <div class="alert alert-warning" role="alert">
+              <div class="alert alert-warning mt-5" role="alert">
                 <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
                 unset($_SESSION["msg"]); ?>
               </div>
@@ -114,14 +112,12 @@
       </div>
     </main>
 
-    <!-- FOOTER -->
     <div id="ohanafooter">
       <?php include_once 'footer.php'; ?>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <!-- START OF JAVASCRIPT-->
     <script>
       const emailInput = $("#email"),
         emailIcon = $(".email-icon");
@@ -160,8 +156,6 @@
       });
     </script>
 
-    <!-- SCIPTS -->
-    <script src="/Ohana/src/dashboard/js/script.js"></script>
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>

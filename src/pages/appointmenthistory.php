@@ -60,6 +60,18 @@
             border-style: solid;
             border-width: 1px !important;
         }
+        .fc-daygrid-day-number {
+            text-decoration: none;
+            color:black;
+        }
+        .fc-col-header-cell-cushion {
+            text-decoration: none;
+            color:black;
+            font-weight: bold;
+        }
+        #header {
+            margin-top: 10%;
+        }
     </style>
 </head>
 
@@ -68,13 +80,13 @@
         <?php include_once 'Rnavbar.php'; ?>
 
         <div class="container-fluid">
-            <!-- FULL WIDTH OF THE PAGE - BOOTSTRAP COMPONENT-->
-            <section class="userprofile" style="margin-top:10%;">
+           
+            <section class="userprofile">
                 <div class="userheader mb-5">
                     <h1 id="header" class="text-center"> Appointment History </h1>
                 </div>
             </section>
-            <div class="container py-5" id="page-container" style="margin-top: 0%">
+            <div class="container py-5 mb-5" id="page-container">
                 <div class="row">
                     <div class="col-md-9">
                         <div id="calendar"></div>
@@ -82,59 +94,53 @@
                     <div class="col-md-3">
                         <div class="cardt rounded-0 shadow">
                             <div class="card-header text-light p-3" style="background-color:#db6551;">
-                                <h4 class="card-title mt-4 text-center"> Appointment </h4><br>
+                                <h4 class="card-title mt-4 text-center"> Appointment Information </h4><br>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body mb-5">
                                 <div class="container-fluid">
                                     <form action="" method="post" id="schedule-form">
                                         <input type="hidden" name="id" value="">
                                         <div class="form-group my-2">
-                                            <label for="title" class="control-label">Title</label>
+                                            <label for="title" class="control-label mt-2 mb-2">Title</label>
                                             <input type="text" class="form-control form-control-sm rounded-0" name="title" id="title" required readonly="readonly">
                                         </div>
                                         <div class="form-group mb-2">
-                                            <label for="type" class="control-label">Type</label>
+                                            <label for="type" class="control-label mt-2 mb-2">Type</label>
                                             <input type="text" class="form-control form-control-sm rounded-0" name="type" id="type" required readonly="readonly">
                                         </div>
                                         <div class="form-group mb-2">
-                                            <label for="description" class="control-label">Description</label>
+                                            <label for="description" class="control-label mt-2 mb-2">Description</label>
                                             <textarea rows="3" class="form-control form-control-sm rounded-0" name="description" id="description" required readonly="readonly"></textarea>
                                         </div>
                                         <div class="form-group mb-2">
-                                            <label for="accountId" class="control-label">Account ID</label>
+                                            <label for="accountId" class="control-label mt-2 mb-2">Account ID</label>
                                             <input type="text" class="form-control form-control-sm rounded-0" name="accountId" id="accountId" required readonly="readonly">
                                         </div>
                                         <div class="form-group mb-2">
-                                            <label for="customerName" class="control-label">Customer</label>
+                                            <label for="customerName" class="control-label mt-2 mb-2">Customer</label>
                                             <input type="text" class="form-control form-control-sm rounded-0" name="customerName" id="customerName" required readonly="readonly">
                                         </div>
                                         <div class="form-group mb-2">
-                                            <label for="startDate" class="control-label">Start Time</label>
+                                            <label for="startDate" class="control-label mt-2 mb-2">Start Time</label>
                                             <input type="datetime-local" step="60" class="form-control form-control-sm rounded-0" name="startDate" id="startDate" required readonly="readonly">
                                         </div>
                                         <div class="form-group mb-2">
-                                            <label for="endDate" class="control-label">End Time</label>
+                                            <label for="endDate" class="control-label mt-2 mb-2">End Time</label>
                                             <input type="datetime-local" step="60" class="form-control form-control-sm rounded-0" name="endDate" id="endDate" required readonly="readonly">
                                         </div>
                                     </form>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="text-center">
-                                    <button class="btn btn-md rounded-0 my-4" name="btnSave" id="btnSave" type="submit" form="schedule-form" style="background-color:#db6551;color:white" disabled><i class="fa fa-save"></i>Save</button>
-                                    <button class="btn btn-default border btn-md rounded-0 my-4" type="reset" form="schedule-form"><i class="fa fa-reset"></i>Cancel</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Event Details Modal -->
+          
             <div class="modal fade" tabindex="-1" data-bs-backdrop="static" id="event-details-modal">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content rounded-0">
                         <div class="modal-header rounded-0">
-                            <h5 class="modal-title">Schedule Details</h5>
+                            <h5 class="modal-title"> Appointment Information </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body rounded-0">
@@ -166,9 +172,6 @@
         <?php include_once 'footer.php'; ?>
     </div>
 
-    <!-- Custom scripts -->
-    <script src="/Ohana/src/dashboard/js/script.js"></script>
-    <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
     <?php

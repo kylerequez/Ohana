@@ -2,10 +2,8 @@
 <html lang="en">
 
 <head>
-
     <title> BOARDING SLOTS </title>
 
-    <!-- META TAGS -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
@@ -13,10 +11,13 @@
 
     <link rel="stylesheet" href="/Ohana/src/css/puppies.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-    <link rel="stylesheet" href="/Ohana/src/css/footer.css">
 
     <?php include_once 'stylesheets.php'; ?>
     <style>
+        .message {
+            margin-top:10%;
+        }
+
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
         @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
@@ -29,7 +30,7 @@
 
         <div class="container-fluid">
 
-            <div class="message" style="margin-top:10%;">
+            <div class="message">
                 <section class="services" id="services">
                     <?php
                     include_once dirname(__DIR__) . '/models/PetProfile.php';
@@ -37,11 +38,11 @@
                     if (empty($profiles)) {
                     ?>
                         <div class="service">
-                            <h1 class="mb-2 text-center" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;"> THERE IS CURRENTLY NO AVAILABLE SLOTS FOR PET BOARDING</h1>
+                            <h1 class="mb-2 text-center fs-4" style="color:#DB6551; font-family: 'Acme', sans-serif;"> THERE IS CURRENTLY NO AVAILABLE SLOTS FOR PET BOARDING</h1>
                         </div>
                     <?php } else { ?>
                         <div class="service">
-                            <h1 class="mb-2 text-center" style="color:#DB6551; font-size: 80px; font-family: 'Acme', sans-serif; font-weight:800;"> CHOOSE PET BOARDING SLOT </h1>
+                            <h1 class="mb-2 text-center fs-1" style="color:#DB6551; font-family: 'Acme', sans-serif;"> CHOOSE PET BOARDING SLOT </h1>
                         </div>
                         <!-- AVAILABLE PUPPIES CARD -->
                         <div class="container d-flex justify-content-center">

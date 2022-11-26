@@ -70,7 +70,7 @@
 </head>
 
 <body style="background-color: #FAF8F0;">
-  <!-- UNREGISTERED USERS NAVIGATION BAR-->
+  
   <?php include_once dirname(__DIR__) . '/pages/navbar.php'; ?>
 
   <div class="container-fluid">
@@ -78,15 +78,10 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <h1 class="sign-up__title mt-5">
-              Create An Account
-            </h1>
-            <p class="sign-up__descr">
-              Welcome to Ohana!
-            </p>
+            <h1 class="sign-up__title mt-5">Create An Account</h1>
+            <p class="sign-up__descr">Welcome to Ohana!</p>
             <p class="register__desc mt-3"> Fill up the fields below to create an account. </p>
 
-            <!-- ALERT -->
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
               <div class="alert alert-warning" role="alert">
                 <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
@@ -165,12 +160,10 @@
             </div>
             <div class="form__row">
               <div class="input-checkbox">
-                <!-- CHECKBOX -->
                 <div class="input-checkbox__container">
                   <input type="checkbox" class="input-checkbox__field" id="agree" required /> <span class="input-checkbox__square"></span>
                   <label class="input-checkbox__label" for="agree"> I agree with the
-                    <a href="#" style="text-decoration: none; color:#ff5757" data-bs-toggle="modal" data-bs-target="#termsModal">
-                      Terms and Conditions </a> </label>
+                    <a href="#" style="text-decoration: none; color:#ff5757" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a> </label>
                 </div>
               </div>
             </div>
@@ -188,14 +181,13 @@
           </form>
         </div>
       </div>
-      <!-- FOOTER -->
       <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
       </div>
     </main>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- START OF JAVASCRIPT-->
+    
     <script>
       $("form").submit(function() {
         $(this).find(":submit").attr('disabled', 'disabled');
@@ -293,12 +285,8 @@
         }
       });
     </script>
-
-    <!-- SCRIPTS IMPORT-->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
-    <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 

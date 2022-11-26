@@ -5,15 +5,13 @@
 
   <title> CHANGE PASSWORD </title>
 
-  <!-- META TAGS -->
   <meta charset="utf-8">
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
   <meta name="keywords" content="Kennel Business, French Bulldogs">
-
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-  <link rel="stylesheet" href="/Ohana/src/css/footer.css">
+
   <?php include_once 'stylesheets.php'; ?>
   <style>
     .sign-up__title {
@@ -48,9 +46,8 @@
 
 <body style="background-color: #FAF8F0;">
 
-  <!-- UNREGISTERED USERS NAVIGATION BAR-->
   <?php include_once 'navbar.php'; ?>
-  <!-- MAIN CONTENT -->
+
   <main class="sign-up">
     <div class="sign-up__container">
       <div class="sign-up__content">
@@ -61,9 +58,9 @@
           <p class="sign-up__descr" style="font-size: 25px;">
             Input a new password for your account.
           </p>
-          <!-- ALERT -->
+
           <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-            <div class="alert alert-warning" role="alert">
+            <div class="alert alert-warning mt-5" role="alert">
               <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
               unset($_SESSION["msg"]); ?>
             </div>
@@ -123,18 +120,19 @@
                 <div class="form__row sign-up__sign">
                   Don't have an account? &nbsp;<a class="link" href="/register" style="text-decoration: none;"> Register Now! </a>
                 </div>
+              </div>
+            </div>
+          </div>
         </form>
       </div>
     </div>
   </main>
 
-  <!-- FOOTER -->
   <div id="ohanafooter">
     <?php include_once 'footer.php'; ?>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-  <!-- START OF JAVASCRIPT-->
   <script>
     //PASSWORD VALIDATION SCRIPT
     const passwordInput = $("#password"),
@@ -193,11 +191,8 @@
   </script>
   </main>
 
-</body>
-
-<!-- SCIPTS -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </body>
 
