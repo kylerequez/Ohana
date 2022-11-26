@@ -74,7 +74,6 @@ class BoardingSlotServices
         $information = strtoupper($data["information"]);
         $isAvailable = $data["isAvailable"] == "AVAILABLE" ? 1 : 0;
         if ($isAvailable == 1) {
-            echo "Empty 1";
             $petId = null;
             $petName = null;
         } else {

@@ -168,13 +168,11 @@ class AccountServices
     public function verifyLogin(array $data): mixed
     {
         if (is_null($_SESSION["userOtp"])) {
-            echo "No OTP";
             $_SESSION["msg"] = "There was no OTP issued in your account. Please try again.";
             return false;
         }
         $otp = implode($data);
         if ($otp != $_SESSION["userOtp"]) {
-            echo "The OTP entered was incorrect. Please try again.";
             $_SESSION["msg"] = "The OTP entered was incorrect. Please try again.";
             return false;
         }
@@ -350,13 +348,11 @@ class AccountServices
     public function verifyRegistration(array $data): mixed
     {
         if (is_null($_SESSION["userOtp"])) {
-            echo "No OTP";
             $_SESSION["msg"] = "There was no OTP issued in your account. Please try again.";
             return false;
         }
         $otp = implode($data);
         if ($otp != $_SESSION["userOtp"]) {
-            echo "The OTP entered was incorrect. Please try again.";
             $_SESSION["msg"] = "The OTP entered was incorrect. Please try again.";
             return false;
         }

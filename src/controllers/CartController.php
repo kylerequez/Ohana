@@ -1,6 +1,7 @@
 <?php
 require_once dirname(__DIR__) . '/models/Account.php';
 require_once dirname(__DIR__) . '/models/Cart.php';
+require_once dirname(__DIR__) . '/config/app-config.php';
 
 class CartController
 {
@@ -40,7 +41,7 @@ class CartController
     {
         switch($method) {
             case "GET":
-                header("Location: http://localhost/pawcart");
+                header("Location: http://" . DOMAIN_NAME . "/pawcart");
                 break;
             case "POST":
                 break;

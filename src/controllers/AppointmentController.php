@@ -1,6 +1,6 @@
 <?php
 require_once dirname(__DIR__) . '/models/Account.php';
-
+require_once dirname(__DIR__) . '/config/app-config.php';
 class AppointmentController
 {
     private ?AppointmentServices $services = null;
@@ -26,7 +26,6 @@ class AppointmentController
         switch ($method) {
             case "GET":
                 if (!$this->services->deleteAppointment($id)) {
-                    echo "Error";
                     $this->processCollectionRequest($method);
                 }
                 $user = unserialize($_SESSION["user"]);
@@ -55,7 +54,7 @@ class AppointmentController
         switch ($method) {
             case "GET":
                 $_SESSION["appointments"] = serialize($this->services->getAllAppointments());
-                header("Location: http://localhost/dashboard/calendar");
+                header("Location: http://" . DOMAIN_NAME . "/dashboard/calendar");
                 break;
         }
     }
@@ -85,7 +84,7 @@ class AppointmentController
             case "GET":
                 $account = unserialize($_SESSION["user"]);
                 $_SESSION["appointments"] = serialize($this->services->getAppointmentsByAccountId($account->getId()));
-                header("Location: http://localhost/appointments");
+                header("Location: http://" . DOMAIN_NAME . "/appointments");
                 break;
             case "POST":
                 break;

@@ -39,7 +39,7 @@ class TransactionController
             case "GET":
                 $user = unserialize($_SESSION["user"]);
                 $_SESSION["transactions"] = serialize($this->services->getUserTransactions($user->getId()));
-                header("Location: http://localhost/transactions");
+                header("Location: http://" . DOMAIN_NAME . "/transactions");
                 break;
             case "POST":
                 break;
@@ -79,7 +79,7 @@ class TransactionController
                 $_SESSION["transactions"] = serialize($this->services->getAllTransactionsPagination(!isset($_GET["limit"]) ? _RESOURCE_PER_PAGE_ : $_GET["limit"], !isset($_GET["offset"]) ? _BASE_OFFSET_ : $_GET["offset"]));
                 $page = !isset($_GET["page"]) ? 1 : $_GET["page"];
                 $_SESSION["totalTransactions"] = $this->services->getTotalTransactionsCount();
-                header("Location: http://localhost/dashboard/transactions?page=$page");
+                header("Location: http://" . DOMAIN_NAME . "/dashboard/transactions?page=$page");
                 break;
             case "POST":
                 break;
