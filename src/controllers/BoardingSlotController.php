@@ -60,14 +60,13 @@ class BoardingSlotController
 
     public function processCollectionRequest(string $method): void
     {
-        echo "$method";
         switch ($method) {
                 // Boarding Slot Display
             case "GET":
                 $_SESSION["slots"] = serialize($this->services->getBoardingSlotsPagination(!isset($_GET["limit"]) ? _RESOURCE_PER_PAGE_ : $_GET["limit"], !isset($_GET["offset"]) ? _BASE_OFFSET_ : $_GET["offset"]));
                 $page = !isset($_GET["page"]) ? 1 : $_GET["page"];
                 $_SESSION["totalSlots"] = $this->services->getTotalSlots();
-                header("Location: http://localhost/dashboard/petboarding?page=$page");
+                header("Location: http://" . DOMAIN_NAME . "/dashboard/petboarding?page=$page");
                 break;
                 // Add Boarding Slot
             case "POST":

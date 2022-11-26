@@ -13,6 +13,7 @@ $(function() {
                 description: row.description,
                 start: row.startDate.date,
                 end: row.endDate.date,
+                status: row.status,
             });
         });
     }
@@ -45,6 +46,7 @@ $(function() {
                 _details.find("#title").text(scheds[id].title);
                 _details.find("#description").text(scheds[id].description);
                 _details.find("#type").text(scheds[id].type);
+                _details.find("#status").text(scheds[id].status);
                 _details.find("#accountId").text(scheds[id].accountId);
                 _details.find("#customerName").text(scheds[id].customerName);
                 _details
@@ -53,6 +55,7 @@ $(function() {
                 _details
                     .find("#end")
                     .val(String(scheds[id].endDate.date.replace(/\.\d+/, "")));
+
                 _details.find("#edit,#delete").attr("data-id", id);
                 _details.modal("show");
             } else {
@@ -72,8 +75,8 @@ $(function() {
         $(this).attr("action", "");
         $(this).find("input:hidden").val("");
         $(this).find("input:visible").first().focus();
-        $(this).find("input:visible").attr('readonly', 'readonly');
-        $("#btnSave").prop('disabled', true);
+        $(this).find("input:visible").attr("readonly", "readonly");
+        $("#btnSave").prop("disabled", true);
     });
 
     // Edit Button
@@ -82,11 +85,12 @@ $(function() {
         if (!!scheds[id]) {
             var _form = $("#schedule-form");
             _form.attr("action", "/dashboard/appointments/update/" + id);
-            $("#btnSave").removeAttr('disabled');
+            $("#btnSave").removeAttr("disabled");
             _form.find('[name="id"]').val(id);
             _form.find('[name="title"]').val(scheds[id].title);
             _form.find('[name="type"]').val(scheds[id].type);
             _form.find('[name="description"]').val(scheds[id].description);
+            _form.find('[name="status"]').val(scheds[id].status);
             _form.find('[name="accountId"]').val(scheds[id].accountId);
             _form.find('[name="customerName"]').val(scheds[id].customerName);
             _form
@@ -96,13 +100,13 @@ $(function() {
                         scheds[id].startDate.date.replace(" ", "T").replace(/\.\d+/, "")
                     )
                 )
-                .attr('readonly', false);
+                .attr("readonly", false);
             _form
                 .find('[name="endDate"]')
                 .val(
                     String(scheds[id].endDate.date.replace(" ", "T").replace(/\.\d+/, ""))
                 )
-                .attr('readonly', false);
+                .attr("readonly", false);
             $("#event-details-modal").modal("hide");
         } else {
             alert("The event does not exist!");

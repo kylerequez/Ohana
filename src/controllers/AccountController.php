@@ -13,7 +13,6 @@ class AccountController
         $this->logservices = $logServices;
     }
 
-    // USER
     public function processUserRequest(string $method, ?string $id): void
     {
         if ($id) {
@@ -34,7 +33,7 @@ class AccountController
                 $_SESSION["users"] = serialize($this->services->getUserAccountsPagination(!isset($_GET["limit"]) ? _RESOURCE_PER_PAGE_ : $_GET["limit"], !isset($_GET["offset"]) ? _BASE_OFFSET_ : $_GET["offset"]));
                 $page = !isset($_GET["page"]) ? 1 : $_GET["page"];
                 $_SESSION["totalUsers"] = $this->services->getTotalUserCount();
-                header("Location: http://localhost/dashboard/customers?page=$page");
+                header("Location: http://" . DOMAIN_NAME . "/dashboard/customers?page=$page");
                 break;
         }
     }
@@ -64,14 +63,11 @@ class AccountController
         }
     }
 
-    // STAFF
     public function processStaffRequest(string $method, ?string $id): void
     {
         if ($id) {
-            echo "STAFF RESOURCE";
             $this->processStaffResourceRequest($method, $id);
         } else {
-            echo "STAFF COLLECTION";
             $this->processStaffCollectionRequest($method);
         }
     }
@@ -79,9 +75,7 @@ class AccountController
     public function processStaffResourceRequest(string $method, ?string $id): void
     {
         switch ($method) {
-                // Staff Delete
             case "GET":
-                echo "DELETE";
                 if (!$this->services->deleteAccount($id)) {
                     $this->processStaffCollectionRequest($method);
                 }
@@ -92,9 +86,7 @@ class AccountController
                 }
                 $this->processStaffCollectionRequest($method);
                 break;
-                // Staff Update
             case "POST":
-                echo "UPDATE";
                 if (!$this->services->updateAccount($id, $_POST)) {
                     $this->processStaffCollectionRequest("GET");
                 }
@@ -111,12 +103,12 @@ class AccountController
     public function processStaffCollectionRequest(string $method): void
     {
         switch ($method) {
-                // Staff Display
+
             case "GET":
                 $_SESSION["staff"] = serialize($this->services->getStaffAccountsPagination(!isset($_GET["limit"]) ? _RESOURCE_PER_PAGE_ : $_GET["limit"], !isset($_GET["offset"]) ? _BASE_OFFSET_ : $_GET["offset"]));
                 $page = !isset($_GET["page"]) ? 1 : $_GET["page"];
                 $_SESSION["totalStaff"] = $this->services->getTotalStaffCount();
-                header("Location: http://localhost/dashboard/staff?page=$page");
+                header("Location: http://" . DOMAIN_NAME . "/dashboard/staff?page=$page");
                 break;
                 // Add Staff
             case "POST":
@@ -146,34 +138,32 @@ class AccountController
                         unset($_SESSION["userOtp"]);
                         unset($_SESSION["email"]);
                         $_SESSION["cart"] = serialize(new Cart());
-                        header("Location: http://localhost/home");
+                        header("Location: http://" . DOMAIN_NAME . "/home");
                         break;
                     } else {
-                        header("Location: http://localhost/dashboard");
+                        header("Location: http://" . DOMAIN_NAME . "/dashboard");
                         break;
                     }
                 } else {
-                    header("Location: http://localhost/verifylogin");
+                    header("Location: http://" . DOMAIN_NAME . "/verifylogin");
                     break;
                 }
                 break;
-                // Account login request
             case "POST":
                 if (!isset($_SESSION)) session_start();
                 if (!$this->services->loginRequest($_POST)) {
-                    header("Location: http://localhost/login");
+                    header("Location: http://" . DOMAIN_NAME . "/login");
                     break;
                 }
-                header("Location: http://localhost/verifylogin");
+                header("Location: http://" . DOMAIN_NAME . "/verifylogin");
                 break;
         }
     }
 
     public function logoutRequest(): void
     {
-        // Account logout
         if ($this->services->logoutAccount()) {
-            header("Location: http://localhost/login");
+            header("Location: http://" . DOMAIN_NAME . "/login");
         } else {
             $_SESSION["msg"] = "There was an error on log out. Please try again.";
         }
@@ -184,19 +174,19 @@ class AccountController
         switch ($method) {
             case "GET":
                 if ($this->services->forgotPasswordRequest($email)) {
-                    header("Location: http://localhost/forgot-password/confirm");
+                    header("Location: http://" . DOMAIN_NAME . "/forgot-password/confirm");
                     break;
                 } else {
-                    header("Location: http://localhost/forgot-password");
+                    header("Location: http://" . DOMAIN_NAME . "/forgot-password");
                     break;
                 }
                 break;
             case "POST":
                 if ($this->services->changePasswordRequest($email)) {
-                    header("Location: http://localhost/forgot-password/success");
+                    header("Location: http://" . DOMAIN_NAME . "/forgot-password/success");
                     break;
                 } else {
-                    header("Location: http://localhost/forgot-password/change/" . $_SESSION["token"]);
+                    header("Location: http://" . DOMAIN_NAME . "/forgot-password/change/" . $_SESSION["token"]);
                     break;
                 }
                 break;
@@ -208,7 +198,7 @@ class AccountController
         switch ($method) {
             case "GET":
                 $this->services->resendForgotPasswordRequest($email, $token);
-                header("Location: http://localhost/forgot-password/confirm");
+                header("Location: http://" . DOMAIN_NAME . "/forgot-password/confirm");
                 break;
         }
     }
@@ -218,10 +208,10 @@ class AccountController
         switch ($method) {
             case "GET":
                 if ($this->services->verifyRegistration($_GET)) {
-                    header("Location: http://localhost/register/success");
+                    header("Location: http://" . DOMAIN_NAME . "/register/success");
                     break;
                 } else {
-                    header("Location: http://localhost/register/confirm");
+                    header("Location: http://" . DOMAIN_NAME . "/register/confirm");
                     break;
                 }
                 break;
@@ -230,14 +220,14 @@ class AccountController
                 if ($this->services->addAccount($_POST)) {
                     if ($this->services->registrationRequest($_POST)) {
                         unset($_SESSION["msg"]);
-                        header("Location: http://localhost/register/confirm");
+                        header("Location: http://" . DOMAIN_NAME . "/register/confirm");
                         break;
                     } else {
-                        header("Location: http://localhost/register");
+                        header("Location: http://" . DOMAIN_NAME . "/register");
                         break;
                     }
                 } else {
-                    header("Location: http://localhost/register");
+                    header("Location: http://" . DOMAIN_NAME . "/register");
                     break;
                 }
                 break;
@@ -249,7 +239,7 @@ class AccountController
         switch ($method) {
             case "GET":
                 $this->services->resendRegistrationRequest($email, $token);
-                header("Location: http://localhost/register/confirm");
+                header("Location: http://" . DOMAIN_NAME . "/register/confirm");
                 break;
         }
     }

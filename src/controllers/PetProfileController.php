@@ -64,7 +64,7 @@ class PetProfileController
                 $_SESSION["profiles"] = serialize($this->services->getOhanaPetsPagination(!isset($_GET["limit"]) ? _RESOURCE_PER_PAGE_ : $_GET["limit"], !isset($_GET["offset"]) ? _BASE_OFFSET_ : $_GET["offset"]));
                 $page = !isset($_GET["page"]) ? 1 : $_GET["page"];
                 $_SESSION["totalProfiles"] = $this->services->getTotalPetProfilesCount();
-                header("Location: http://localhost/dashboard/petprofiles?page=$page");
+                header("Location: http://" . DOMAIN_NAME . "/dashboard/petprofiles?page=$page");
                 break;
                 // Add Pet Profile
             case "POST":
@@ -97,7 +97,7 @@ class PetProfileController
         switch ($method) {
             case "GET":
                 $_SESSION["profile"] = serialize($this->services->getOhanaPet($id));
-                header("Location: http://localhost/puppy-info");
+                header("Location: http://" . DOMAIN_NAME . "/puppy-info");
                 break;
             case "POST":
 
@@ -110,7 +110,7 @@ class PetProfileController
         switch ($method) {
             case "GET":
                 $_SESSION["profiles"] = serialize($this->services->getOhanaPets());
-                header("Location: http://localhost/puppies");
+                header("Location: http://" . DOMAIN_NAME . "/puppies");
                 break;
             case "POST":
 
@@ -123,10 +123,10 @@ class PetProfileController
         $user = unserialize($_SESSION["user"]);
         $profile = $this->services->getPetProfileById($id, $user->getId());
         if (empty($profile)) {
-            header("Location: http://localhost/ownedpets");
+            header("Location: http://" . DOMAIN_NAME . "/ownedpets");
         }
         $_SESSION["profile"] = serialize($profile);
-        header("Location: http://localhost/ownedpets/" . $profile->getName());
+        header("Location: http://" . DOMAIN_NAME . "/ownedpets/" . $profile->getName());
     }
 
     public function processCustomerRequest(string $method, ?string $id): void
@@ -167,7 +167,7 @@ class PetProfileController
             case "GET":
                 $account = unserialize($_SESSION['user']);
                 $_SESSION["profiles"] = serialize($this->services->getUserPetProfile(($account->getType() == "USER") ? $account->getId() : "1"));
-                header("Location: http://localhost/ownedpets");
+                header("Location: http://" . DOMAIN_NAME . "/ownedpets");
                 break;
             case "POST":
                 $account = unserialize($_SESSION["user"]);
@@ -176,7 +176,6 @@ class PetProfileController
                 $_POST["ownerName"] = $account->getFname() . " " . $account->getLname();
                 $_POST["price"] = 0;
                 if (!$this->services->addPetProfile($_POST)) {
-                    echo "ERROR IN ADDING PET PROFILE";
                 }
                 unset($_SESSION["msg"]);
 

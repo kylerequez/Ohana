@@ -10,6 +10,8 @@ class Appointment implements JsonSerializable
     private ?string $description = null;
     private ?DateTime $startDate = null;
     private ?DateTime $endDate = null;
+    private ?string $status = null;
+    private ?string $number = null;
 
     // Constructor
     public function __construct(string $title, string $type, ?int $accountId, ?string $customerName, string $description, DateTime $startDate, DateTime $endDate)
@@ -185,6 +187,46 @@ class Appointment implements JsonSerializable
     public function setType($type)
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of status
+     */ 
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set the value of status
+     *
+     * @return  self
+     */ 
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of number
+     */ 
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * Set the value of number
+     *
+     * @return  self
+     */ 
+    public function setNumber($number)
+    {
+        $this->number = $number;
 
         return $this;
     }

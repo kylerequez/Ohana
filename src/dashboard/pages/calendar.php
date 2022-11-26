@@ -100,12 +100,13 @@
             <div class="col-md-3">
               <div class="cardt rounded-0 shadow">
                 <div class="card-header text-light p-3" style="background-color:#db6551;">
-                  <h5 class="card-title mt-4 text-center">Schedule Form</h5><br>
+                  <h5 class="card-title mt-4 text-center">Appointment Information</h5><br>
                 </div>
                 <div class="card-body">
                   <div class="container-fluid">
                     <form action="" method="post" id="schedule-form">
                       <input type="hidden" name="id" value="">
+                      <input type="hidden" name="accountId" id="accountId" value="">
                       <div class="form-group my-2">
                         <label for="title" class="control-label">Title</label>
                         <input type="text" class="form-control form-control-sm rounded-0" name="title" id="title" required readonly="readonly">
@@ -119,8 +120,11 @@
                         <textarea rows="3" class="form-control form-control-sm rounded-0" name="description" id="description" required readonly="readonly"></textarea>
                       </div>
                       <div class="form-group mb-2">
-                        <label for="accountId" class="control-label">Account ID</label>
-                        <input type="text" class="form-control form-control-sm rounded-0" name="accountId" id="accountId" required readonly="readonly">
+                        <label for="type" class="control-label">Status</label>
+                        <select class="form-control form-control-sm rounded-0" name="status" id="status" required disabled>
+                          <option value="PENDING">PENDING</option>
+                          <option value="COMPLETED">COMPLETED</option>
+                        </select>
                       </div>
                       <div class="form-group mb-2">
                         <label for="customerName" class="control-label">Customer</label>
@@ -164,6 +168,8 @@
                     <dd id="type" class=""></dd>
                     <dt class="text-muted">Description</dt>
                     <dd id="description" class=""></dd>
+                    <dt class="text-muted">Status</dt>
+                    <dd id="status" class=""></dd>
                     <dt class="text-muted">Account ID</dt>
                     <dd id="accountId" class=""></dd>
                     <dt class="text-muted">Customer Name</dt>
