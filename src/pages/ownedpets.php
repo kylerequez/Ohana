@@ -17,12 +17,14 @@
   <?php include_once 'stylesheets.php'; ?>
   <style>
     #header {
-      margin-top:15%;
-      font-size:80px;
+      margin-top: 15%;
+      font-size: 80px;
     }
+
     #ohanafooter {
-      margin-top:10%;
+      margin-top: 10%;
     }
+
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
     @media screen and (min-width: 360px) and (max-width: 929.98px) {}
@@ -34,7 +36,7 @@
   include_once dirname(__DIR__) . '/models/PetProfile.php';
   $profile = unserialize($_SESSION["profile"]);
 
-  if ($profile->getName() != $name) {
+  if ($profile->getName() != str_replace("%20", " ", $name)) {
     unset($_SESSION["profile"]);
   ?>
     <script type="text/javascript">
@@ -44,10 +46,10 @@
   }
   ?>
   <main>
-   
+
     <?php include_once 'Rnavbar.php'; ?>
     <div class="container-fluid">
-   
+
       <div class="container h-90">
         <h1 class="text-center mb-5" id="header" style="color:#DB6551; font-family: 'Acme', sans-serif; "> Pet Profile </h1><br>
         <div class="card mx-auto" style="max-width: 68vw; max-height:80vh; border-style: solid; border-color: #c0b65a; border-width:5px">
@@ -194,7 +196,7 @@
                       </div>
                       <div class="modal-footer">
                         <button type="submit" class="btn text-light" style="background-color:#DB6551">Save changes</button>
-                      </div> 
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -1,4 +1,5 @@
 <?php
+require_once dirname(__DIR__) . '/config/app-config.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -153,6 +154,7 @@ class AccountServices
         $mail->addAddress($email);
         $mail->Subject = 'Ohana Account Login OTP';
         $otp = rand(100000, 999999);
+        $token = uniqid();
         $mail->Body = "Your Ohana Account Login OTP is: $otp";
         $mail->AltBody = 'Ohana Account Login OTP';
         if (!$mail->send()) {
@@ -160,12 +162,53 @@ class AccountServices
             return false;
         } else {
             $_SESSION["userOtp"] = $otp;
+            $_SESSION["token"] = $token;
             $_SESSION["email"] = $email;
             return true;
         }
     }
 
-    public function verifyLogin(array $data): mixed
+    public function resendLoginRequest(string $email, string $token): bool
+    {
+        if (is_null($_SESSION["userOtp"])) {
+            $_SESSION["msg"] = "There was no OTP issued in your account. Please try again.";
+            header("Location: http://" . DOMAIN_NAME . "/login");
+            return false;
+        }
+        if ($token != $_SESSION["token"]) {
+            $_SESSION["msg"] = "The login request does not exist. Please try again.";
+            header("Location: http://" . DOMAIN_NAME . "/login");
+            return false;
+        }
+        if (is_null($this->dao->searchByEmail($email))) {
+            $_SESSION["msg"] = "The account does not exist. Please try again";
+            return false;
+        }
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;
+        $mail->Host = 'smtp.gmail.com';
+        $mail->Port = 465;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->SMTPAuth = true;
+        $mail->Username = 'ohana.kennel.business@gmail.com';
+        $mail->Password = 'ctdlqnibzafgmwyj';
+        $mail->setFrom('ohana.kennel.business@gmail.com');
+        $mail->addAddress($email);
+        $mail->Subject = 'Ohana Account Login OTP';
+        $otp = $_SESSION["userOtp"];
+        $token = $_SESSION["token"];
+        $mail->Body = "Your Ohana Account Login OTP is: $otp";
+        $mail->AltBody = 'Ohana Account Login OTP';
+        if (!$mail->send()) {
+            $_SESSION["msg"] = "There was an error in sending the otp to your mail.";
+            return false;
+        }
+        $_SESSION["msg"] = "The OTP was successfully resent to your email. Please check your inbox.";
+        return true;
+    }
+
+    public function verifyLogin(array $data): bool
     {
         if (is_null($_SESSION["userOtp"])) {
             $_SESSION["msg"] = "There was no OTP issued in your account. Please try again.";
@@ -215,7 +258,7 @@ class AccountServices
         $mail->addAddress($email);
         $mail->Subject = 'Ohana Account Password Reset';
         $token = uniqid();
-        $mail->Body = 'Your Ohana Account password reset link: <a href="localhost/forgot-password/change/' . $token . '">Click Here</a>';
+        $mail->Body = 'Your Ohana Account password reset link: <a href="" . DOMAIN_NAME . "/forgot-password/change/' . $token . '">Click Here</a>';
         $mail->AltBody = 'Reset Password Link for Ohana Account';
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in sending the reset link to your mail.";
@@ -230,13 +273,11 @@ class AccountServices
     public function resendForgotPasswordRequest(string $email, string $token): bool
     {
         if ($token != $_SESSION["token"]) {
-            session_destroy();
             $_SESSION["msg"] = "The password reset request does not exist. Please try again.";
-            header("Location: http://localhost/forgot-password");
+            header("Location: http://" . DOMAIN_NAME . "/forgot-password");
             return false;
         }
         if (is_null($this->dao->searchByEmail($email))) {
-            if (!isset($_SESSION)) session_start();
             $_SESSION["msg"] = "The account does not exist. Please try again";
             return false;
         }
@@ -253,33 +294,33 @@ class AccountServices
         $mail->addAddress($email);
         $mail->Subject = 'Ohana Account Password Reset';
         $token = $_SESSION["token"];
-        $mail->Body = 'Your Ohana Account password reset link: <a href="localhost/forgot-password/change/' . $token . '">Click Here</a>';
+        $mail->Body = 'Your Ohana Account password reset link: <a href="" . DOMAIN_NAME . "/forgot-password/change/' . $token . '">Click Here</a>';
         $mail->AltBody = 'Reset Password Link for Ohana Account';
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in resending the reset link to your mail.";
             return false;
         }
-        $_SESSION["msg"] = "The email was successfully resent to your email. Please check your inbox.";
+        $_SESSION["msg"] = "The reset link was successfully resent to your email. Please check your inbox.";
         return true;
     }
 
     public function updatePassword(array $data): bool
     {
         $user = unserialize($_SESSION["user"]);
-        if(!password_verify($data["old-password"], $user->getPassword())){
+        if (!password_verify($data["old-password"], $user->getPassword())) {
             $_SESSION["msg"] = "You've entered the wrong current password.";
             return false;
         }
-        if(password_verify($data["password"], $user->getPassword())) {
+        if (password_verify($data["password"], $user->getPassword())) {
             $_SESSION["msg"] = "New password cannot be same as the old password.";
             return false;
         }
-        if($data["password"] !=  $data["confirm-password"]) {
+        if ($data["password"] !=  $data["confirm-password"]) {
             $_SESSION["msg"] = "New Password and Confirm Password must match.";
             return false;
         }
         $password = password_hash(trim($_GET["password"]), PASSWORD_DEFAULT);
-        if(!$this->dao->updatePassword($user->getId(), $password)) {
+        if (!$this->dao->updatePassword($user->getId(), $password)) {
             $_SESSION["msg"] = "There was an error in changing the password. The password was not changed.";
             return false;
         }
@@ -369,7 +410,7 @@ class AccountServices
         if ($token != $_SESSION["token"]) {
             session_destroy();
             $_SESSION["msg"] = "The account registration request does not exist. Please try again.";
-            header("Location: http://localhost/register");
+            header("Location: http://" . DOMAIN_NAME . "/register");
             return false;
         }
         $account = $this->dao->searchByEmail($email);

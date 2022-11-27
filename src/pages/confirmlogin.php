@@ -15,8 +15,9 @@
   <?php include_once 'stylesheets.php'; ?>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
     #cnfrmtitle {
-      font-size:80px;
+      font-size: 80px;
     }
 
     #ohanafooter {
@@ -85,7 +86,7 @@
                   <label class="input__label" for="confirm-password"> <b>Enter OTP <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
                                                                                     unset($_SESSION["msg"]); ?></b> </label>
                   <div id="otp" class="inputs d-flex flex-row justify-content-center mt-3">
-                  
+
                     <input class="m-2 text-center form-control rounded" type="text" name="otpFirst" id="otpFirst" maxlength="1" />
                     <input class="m-2 text-center form-control rounded" type="text" name="otpSecond" id="otpSecond" maxlength="1" />
                     <input class="m-2 text-center form-control rounded" type="text" name="otpThird" id="otpThird" maxlength="1" />
@@ -98,7 +99,7 @@
             </div>
             <center>
               <div class="form__row">
-                <p class="mt-5 fs-5">Did not receive OTP? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="" id="rsnd">Resend OTP</a></p>
+                <p class="mt-5 fs-5">Did not receive OTP? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="/login/resend/<?php echo $_SESSION["token"] ?>" id="rsnd">Resend OTP</a></p>
               </div>
             </center>
             <center>
@@ -111,7 +112,7 @@
           </form>
         </div>
       </div>
-     
+
       <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
       </div>

@@ -137,6 +137,7 @@ class AccountController
                     if ($account->getType() == "USER") {
                         unset($_SESSION["userOtp"]);
                         unset($_SESSION["email"]);
+                        unset($_SESSION["token"]);
                         $_SESSION["cart"] = serialize(new Cart());
                         header("Location: http://" . DOMAIN_NAME . "/home");
                         break;
@@ -153,6 +154,19 @@ class AccountController
                 if (!isset($_SESSION)) session_start();
                 if (!$this->services->loginRequest($_POST)) {
                     header("Location: http://" . DOMAIN_NAME . "/login");
+                    break;
+                }
+                header("Location: http://" . DOMAIN_NAME . "/verifylogin");
+                break;
+        }
+    }
+
+    public function resendLoginRequest(string $method, string $email, string $token): void
+    {
+        switch ($method) {
+            case "GET":
+                if (!$this->services->resendLoginRequest($email, $token)) {
+                    header("Location: http://" . DOMAIN_NAME . "/verifylogin");
                     break;
                 }
                 header("Location: http://" . DOMAIN_NAME . "/verifylogin");
