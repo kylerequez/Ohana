@@ -7,39 +7,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
   <meta name="keywords" content="Kennel Business, French Bulldogs">
-
   <title> DASHBOARD - WEBSITE CONTENT </title>
-
-  <!-- WEB ICON-->
   <link rel="shortcut icon" href="/Ohana/src/dashboard/img/ohana.png" type="image/x-icon">
-
-  <!-- ICONS IMPORT  -->
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
-  <!-- BOOTSTRAP CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
-  <!-- Custom styles -->
   <link rel="stylesheet" href="/Ohana/src/dashboard/css/adminpages.css">
-
 </head>
 
 <body>
   <div class="layer"> </div>
-  <!-- Body -->
   <div class="page-flex">
-    <!-- Dashboard Sidebar -->
     <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
     <div class="main-wrapper">
-      <!-- ! Main nav -->
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
-      <!--  SYSTEM LOGS MAIN CONTENT -->
       <main class="main users chart-page" id="skip-target">
         <div class="container">
           <h2 class="main-title text-center mt-3"> WEBSITE CONTENT </h2>
         </div>
         <div class="users-table table-wrapper">
-    
           <table class="posts-table">
             <thead>
               <tr class="users-table-info">
@@ -61,19 +46,16 @@
             </tbody>
           </table>
         </div>
-        
       </main>
-      <!-- FOOTER -->
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
     </div>
   </div>
-  <!-- TOAST -->
   <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
     <div class="toast-container top-0 end-0 p-3">
       <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
         <div class="toast-header">
           <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
-          <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
+          <strong class="me-auto fs-4"> &nbsp; Notification </strong>
           <small> JUST NOW </small>
           <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
@@ -84,20 +66,10 @@
   }
   unset($_SESSION["msg"]);
   ?>
-  
-  <!-- Icons library -->
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
-
-  <!-- Custom scripts -->
   <script src="/Ohana/src/dashboard/js/script.js"></script>
-
-  <!-- JavaScript BOOTSTRAP Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
-  </script>
-
-  <!--SCRIPT FOR BOOTSTRAP MODAL-->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 </body>
 
 </html>

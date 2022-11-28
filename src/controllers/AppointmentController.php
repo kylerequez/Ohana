@@ -90,4 +90,19 @@ class AppointmentController
                 break;
         }
     }
+
+    public function processVisitRequest(string $method): void
+    {
+        switch ($method) {
+            case "GET":
+
+                break;
+            case "POST":
+                if (!$this->services->addAppointment($_POST)) {
+                }
+                echo $_SESSION["msg"];
+                // REDIRECT TO CONFIRMATION
+                break;
+        }
+    }
 }

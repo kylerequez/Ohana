@@ -13,9 +13,9 @@ class PetProfileServices
         return $this->dao->getAllPetProfiles();
     }
 
-    public function getOhanaPets(): mixed
+    public function getRehomingPets(): mixed
     {
-        return $this->dao->getOhanaPets();
+        return $this->dao->getRehomingPets();
     }
 
     public function getOhanaPet(string $id): mixed
@@ -54,6 +54,7 @@ class PetProfileServices
         $image = $data["image"];
 
         $name = strtoupper($data["name"]);
+        $type = strtoupper($data["type"]);
         $trait = strtoupper($data["trait"]);
         $birthdate = DateTime::createFromFormat("Y-m-d", $data["birthdate"]);
         $sex = strtoupper($data["sex"]);
@@ -66,6 +67,7 @@ class PetProfileServices
         $status = "AVAILABLE";
 
         $petProfile = new PetProfile($image, $name, $birthdate, $sex, $color, $trait, $isVaccinated, $pcciStatus, $accountId, $ownerName, $price, $status);
+        $petProfile->setType($type);
         if (!$this->dao->addPetProfile($petProfile)) {
             $_SESSION["msg"] = "There was an error in adding the Pet Profile.";
             return false;
@@ -83,6 +85,7 @@ class PetProfileServices
 
         $image = $data["image"];
         $name = strtoupper($data["name"]);
+        $type = strtoupper($data["type"]);
         $trait = strtoupper($data["trait"]);
         $birthdate = DateTime::createFromFormat("Y-m-d", $data["birthdate"]);
         $sex = strtoupper($data["sex"]);
@@ -95,6 +98,7 @@ class PetProfileServices
         $status = $data["status"];
 
         $profile = new PetProfile($image, $name, $birthdate, $sex, $color, $trait, $isVaccinated, $pcciStatus, $accountId, $ownerName, $price, $status);
+        $profile->setType($type);
         $profile->setId($id);
         if (!$this->dao->updatePetProfile($profile)) {
             $_SESSION["msg"] = "There was an error in updating the Pet Profile.";

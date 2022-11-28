@@ -20,127 +20,7 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous">
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {
-            .title {
-                font-size: 40px;
-                color: #db6551;
-            }
-
-            .btn-Adopt button {
-                background-color: #7d605c;
-                border-radius: 30px;
-                border: 1px solid #ffffff;
-                cursor: pointer;
-                color: #ffffff;
-                font-family: "Poppins";
-                font-size: 10px;
-                padding: 10px 40px;
-                text-decoration: none;
-                text-shadow: 0px 1px 0px #ffffff;
-                text-align: center;
-                margin-top: 65%;
-                margin-right: auto;
-                margin-left: auto;
-            }
-
-            .btn-Send button {
-                background-color: #db6551;
-                border-radius: 30px;
-                border: 1px solid #ffffff;
-                display: inline-block;
-                cursor: pointer;
-                color: #ffffff;
-                font-family: "Poppins";
-                font-size: 12px;
-                padding: 10px 40px;
-                text-decoration: none;
-                text-shadow: 0px 1px 0px #ffffff;
-                margin-top: 110%;
-                margin-right: 65px;
-                margin-left: auto;
-            }
-
-            .intro {
-                margin-top: 30px;
-            }
-
-            .cr {
-                color: #db6551;
-                font-size: 35px;
-            }
-
-            .contact {
-                color: #db6551;
-                font-size: 35px;
-            }
-
-            .contact-us {
-                background-color: #faf8f0;
-                min-height: 500px;
-            }
-
-            #intro {
-                margin-top: 15%;
-                width:auto;
-            }
-
-            #contactform {
-                position: relative !important;
-                width: 10px;
-                float: left;
-            }
-
-            input {
-                font-family: "Lato", sans-serif;
-                font-size: 15px;
-                width: 340px;
-                height: 60px;
-                padding: 0px 10px 0px 10px;
-            }
-
-            textarea {
-                width: 340px;
-                max-width: 900px;
-                max-height: 200px;
-                padding: 10px;
-            }
-
-            .p-4 {
-                font-size: 30px;
-                font-weight: bolder;
-            }
-
-            .p-2 {
-                font-size: 20px;
-            }
-
-            .about-us {
-                background-image: url(/Ohana/src/images/Landing/mbaboutus.jpg);
-                min-width: 350px;
-                min-height: 500px;
-                margin-left: auto;
-                margin-right: auto;
-                background-position: center;
-            }
-
-            .reasons {
-                background-image: url(/Ohana/src/images/Landing/mbreasons.png);
-                min-height: 500px;
-            }
-
-            .col {
-                width: 300px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-        }
-    </style>
 </head>
-
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-smooth-scroll="true" style="background-color: #FAF8F0;">
     <main>
 
@@ -155,7 +35,7 @@
             </section>
             <section class="services" id="services">
                 <div class="service text-center">
-                    <h1 class="title mb-3"> Why Choose Us? </h1>
+                    <h1 class="title mb-3" id="sectionheaders"> Why Choose Us? </h1>
                 </div>
                 <div class="row text-center ms-4 me-4">
                     <div class="col-lg-4">
@@ -189,7 +69,7 @@
             </section>
             <section class="reviews">
                 <div class="customer-review">
-                    <h1 class="cr text-center mt-5"> What our Customer Says </h1>
+                    <h1 class="cr text-center mt-5" id="sectionheaders"> What our Customer Says </h1>
                 </div>
                 <div class="container-xl mt-5">
                     <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -227,7 +107,7 @@
             <section class="contact-us" id="contact">
                 <div class="container-fluid">
                     <div class="message text-center">
-                        <h1 class="contact mt-5"> Contact Us! </h1>
+                        <h1 class="contact mt-5" id="sectionheaders"> Contact Us! </h1>
                     </div>
                     <form id="contactform" class="topBefore">
                         <input id="name" type="text" placeholder="FULL NAME">
@@ -245,7 +125,7 @@
         <div id="chat-container"> </div>
     </main>
     <?php include_once dirname(__DIR__) . '/Ohana/src/pages/footer.php'; ?>
-    <!-- JAVASCRIPT IMPORTS -->
+  
     <script src="/Ohana/src/js/chatbot-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
@@ -264,7 +144,6 @@
                 title = name, welcomeMessage = intro, inactiveMsg = noResponse, theme = "orange")
         });
     </script>
-    <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 

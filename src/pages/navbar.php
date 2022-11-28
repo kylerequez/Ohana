@@ -5,29 +5,23 @@
       width: 100%;
       height: 90px;
     }
-
     #customerprofile {
       width: 50px;
       height: 40px;
     }
-
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
       .navbar.navbar-expand-xl {
         height: 100px;
       }
-
       #navlogo.img-fluid {
         margin-top: -30%;
       }
-
       .navbar-toggler {
         margin-top: -20%;
       }
-
       .nav-item {
         margin-left: 40%;
       }
-
       #login-btn {
         background-color: #db6551;
         border-radius: 20px;

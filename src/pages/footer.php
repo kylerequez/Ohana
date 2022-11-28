@@ -3,15 +3,12 @@
     #paragraph {
       font-size: 12px;
     }
-
     #terms {
       font-size: 12px;
     }
-
     .container-fluid {
       margin-top: 20%
     }
-
   }
 </style>
 <div class="container-fluid" style="width:75%; color:#db6551">

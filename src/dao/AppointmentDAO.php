@@ -149,6 +149,35 @@ class AppointmentDAO
         }
     }
 
+    public function addAppointment(Appointment $appointment): bool
+    {
+        try {
+            $sql = "INSERT INTO ohana_appointments
+                    (appointment_type, account_id, appointment_title, appointment_description, appointment_start, appointment_end)
+                    VALUES (:type, :id, :title, :description, :start, :end);";
+
+            $type = $appointment->getType();
+            $accountId = $appointment->getAccountId();
+            $title = $appointment->getTitle();
+            $description = $appointment->getDescription();
+            $start = $appointment->getStartDate()->format('Y-m-d H:i:s');
+            $end = $appointment->getEndDate()->format('Y-m-d H:i:s');
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":type", $type, PDO::PARAM_STR);
+            $stmt->bindParam(":id", $accountId, PDO::PARAM_INT);
+            $stmt->bindParam(":title", $title, PDO::PARAM_STR);
+            $stmt->bindParam(":description", $description, PDO::PARAM_STR);
+            $stmt->bindParam(":start", $start, PDO::PARAM_STR);
+            $stmt->bindParam(":end", $end, PDO::PARAM_STR);
+
+            return $stmt->execute() > 0;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
     public function deleteById(string $id): mixed
     {
         try {

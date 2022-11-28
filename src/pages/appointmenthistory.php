@@ -3,7 +3,7 @@
 
 <head>
     <title> USER PROFILE </title>
-    <!-- META TAGS -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
@@ -11,10 +11,11 @@
 
     <link rel="stylesheet" href="/Ohana/src/css/userprofile.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-   
+
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
         @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
     <!-- CALENDAR BS-->
@@ -27,6 +28,7 @@
         :root {
             --bs-success-rgb: 71, 222, 152 !important;
         }
+
         html,
         body {
             height: 100%;
@@ -37,11 +39,13 @@
         .btn-info.text-light:focus {
             background: #000;
         }
+
         .fc .fc-button-primary {
             background-color: #db6551;
             color: white;
             border-color: white;
         }
+
         .fc .fc-button-primary:not(:disabled).fc-button-active,
         .fc .fc-button-primary:not(:disabled):active,
         .fc .fc-button-primary:disabled {
@@ -60,15 +64,18 @@
             border-style: solid;
             border-width: 1px !important;
         }
+
         .fc-daygrid-day-number {
             text-decoration: none;
-            color:black;
+            color: black;
         }
+
         .fc-col-header-cell-cushion {
             text-decoration: none;
-            color:black;
+            color: black;
             font-weight: bold;
         }
+
         #header {
             margin-top: 10%;
         }
@@ -80,7 +87,7 @@
         <?php include_once 'Rnavbar.php'; ?>
 
         <div class="container-fluid">
-           
+
             <section class="userprofile">
                 <div class="userheader mb-5">
                     <h1 id="header" class="text-center"> Appointment History </h1>
@@ -113,8 +120,8 @@
                                             <textarea rows="3" class="form-control form-control-sm rounded-0" name="description" id="description" required readonly="readonly"></textarea>
                                         </div>
                                         <div class="form-group mb-2">
-                                            <label for="accountId" class="control-label mt-2 mb-2">Account ID</label>
-                                            <input type="text" class="form-control form-control-sm rounded-0" name="accountId" id="accountId" required readonly="readonly">
+
+                                            <input type="hidden" class="form-control form-control-sm rounded-0" name="accountId" id="accountId" required readonly="readonly">
                                         </div>
                                         <div class="form-group mb-2">
                                             <label for="customerName" class="control-label mt-2 mb-2">Customer</label>
@@ -128,6 +135,12 @@
                                             <label for="endDate" class="control-label mt-2 mb-2">End Time</label>
                                             <input type="datetime-local" step="60" class="form-control form-control-sm rounded-0" name="endDate" id="endDate" required readonly="readonly">
                                         </div>
+                                        <div class="card-footer">
+                                            <div class="text-center">
+                                                <button class="btn btn-md rounded-0 my-4" name="btnSave" id="btnSave" type="submit" form="schedule-form" style="background-color:#db6551;color:white"><i class="fa fa-save"></i> Confirm Book </button>
+                                                <button class="btn btn-default border btn-md rounded-0 my-4" type="reset" form="schedule-form"><i class="fa fa-reset"></i>Clear</button>
+                                            </div>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -135,7 +148,7 @@
                     </div>
                 </div>
             </div>
-          
+
             <div class="modal fade" tabindex="-1" data-bs-backdrop="static" id="event-details-modal">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content rounded-0">

@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <title> PAW CART </title>
-
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
-
     <link rel="stylesheet" href="/Ohana/src/css/pawcart.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-
     <?php include_once 'stylesheets.php'; ?>
     <style>
+        .img-fluid {
+            width:100px;
+            height:100px;
+        }
         #ohanafooter {
-            margin-top:5%;
+            margin-top: 5%;
         }
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
@@ -27,14 +26,10 @@
         }
     </style>
 </head>
-
 <body style="background-color: #FAF8F0;">
     <main>
-    
         <?php include_once 'Rnavbar.php'; ?>
-
         <div class="container-fluid">
-        
             <img src="/Ohana/src/images/Pages/cartheader.png" id="cartheader" class="img-fluid" width="100%">
             <section class="h-100">
                 <div class="container h-100 py-5">
@@ -56,7 +51,7 @@
 
                                 <?php
                                 if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-                                    <div class="alert alert-success" role="alert">
+                                    <div class="alert alert-warning text-center" role="alert">
                                         <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
                                         unset($_SESSION["msg"]); ?>
                                     </div>
@@ -70,7 +65,7 @@
                                 </div>
                                 <?php
                                 if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-                                    <div class="alert alert-success" role="alert">
+                                    <div class="alert alert-warning text-center" role="alert">
                                         <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
                                         unset($_SESSION["msg"]); ?>
                                     </div>
@@ -87,12 +82,11 @@
                                                 </div>
                                                 <div class="col-md-3 col-lg-3 col-xl-3">
                                                     <p class="lead fw-normal mb-2"><?php echo $order->getPetName() ?></p>
-                                                    <p><span class="text-muted">Gender: </span><?php echo $order->getPetSex()
-                                                                                                ?> <span class="text-muted">Color: </span><?php echo $order->getPetColor()
-                                                                                                                                            ?></p>
+                                                    <p><?php echo $order->getPetSex() ?>
+                                                        <?php echo $order->getPetColor() ?></p>
                                                 </div>
                                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                    <h5 class="mb-0 fw-bold"> Price: P<?php echo $order->getPrice() ?></h5>
+                                                    <h5 class="mb-0 fw-bold"> Price: ₱<?php echo $order->getPrice() ?></h5>
                                                 </div>
                                                 <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                                     <form method="POST" action="/delete-item/<?php echo $order->getPetId(); ?>">
@@ -105,7 +99,6 @@
                                 <?php
                                 }
                                 ?>
-
                                 <a href="/home"><button type="button" class="btn btn-outline-dark btn-lg me-2"> Back to Home</button></a>
                                 <a href="/checkout"><button type="button" name="btn-Payment" class="btn btn-block btn-lg" style="float:right; background-color:#c0b65a; color:white;">
                                         Proceed to Select Payment Method </button></a>
@@ -116,16 +109,12 @@
                     </div>
                 </div>
             </section>
-
-        </div><!-- END -->
+        </div>
     </main>
     <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
-
 </body>
-
 </html>

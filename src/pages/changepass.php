@@ -70,15 +70,10 @@
     <div class="sign-up__container">
       <div class="sign-up__content">
         <header class="sign-up__header">
-          <h1 class="sign-up__title" id="changeheader">
-            CHANGE PASSWORD
-          </h1>
-          <p class="sign-up__descr">
-            Input a new password for your account.
-          </p>
-          <!-- ALERT -->
+          <h1 class="sign-up__title" id="changeheader">CHANGE PASSWORD</h1>
+          <p class="sign-up__descr">Input a new password for your account.</p>
           <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-warning mt-5" role="alert">
               <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
               unset($_SESSION["msg"]); ?>
             </div>
@@ -101,7 +96,6 @@
                     </div>
                   </div>
                 </div>
-
                 <!-- PASSWORD INPUT BOX -->
                 <div class="form__row">
                   <div class="input">
@@ -111,16 +105,14 @@
                     </div>
                   </div>
                 </div>
-
                 <!-- VALIDATION BOX-->
                 <div id="message" style="background: white;">
-                  <h3 class="text-center">Password must contain the following:</h3>
+                  <h3 class="text-center" style="font-family: 'Acme', sans-serif;">Password must contain the following:</h3>
                   <p id="letter" class="invalid">At least one <b>lowercase</b> letter</p>
                   <p id="capital" class="invalid">At least one <b>capital</b> letter</p>
                   <p id="number" class="invalid">At least one <b>number</b></p>
                   <p id="length" class="invalid">Minimum <b>8 characters</b></p>
                 </div>
-
                 <div class="form__row">
                   <div class="input">
                     <div class="input__container mt-3">
@@ -129,7 +121,6 @@
                     </div>
                   </div>
                 </div>
-
                 <center>
                   <div class="form__row mt-2">
                     <div class="logbtn">
@@ -141,20 +132,18 @@
                     <a href="/userprofile" class="fs-4" style="text-decoration:none;color:#db6551"> Go Back </a>
                   </div>
                 </center>
-
-
         </form>
       </div>
     </div>
   </main>
-  <!-- FOOTER -->
+
   <div id="ohanafooter">
     <?php include_once 'footer.php'; ?>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
   </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <!-- START OF JAVASCRIPT-->
+
   <script>
     //PASSWORD VALIDATION SCRIPT
     const currentpassword = $("#password"),

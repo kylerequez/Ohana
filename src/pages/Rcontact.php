@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <title> OHANA CONTACT </title>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
@@ -33,7 +30,6 @@
                 font-size: 45px;
                 margin-top: 40%;
             }
-
             .reasons {
                 background-image: url(/Ohana/src/images/Pages/rcontact.png);
                 max-height: 700px;
@@ -44,14 +40,12 @@
                 float: left;
                 margin-left:10px;
             }
-
             textarea {
                 width: 330px;
                 max-width: 900px;
                 max-height: 150px;
                 padding: 10px;
             }
-
             #name {
                 margin-top: -50px;
                 width: 330px;
@@ -59,14 +53,12 @@
                 max-height: 200px;
                 padding: 10px;
             }
-
             #email {
                 width: 330px;
                 max-width: 900px;
                 max-height: 200px;
                 padding: 10px;
             }
-
             .btn-Send button {
                 background-color: #db6551;
                 border-radius: 30px;
@@ -83,26 +75,21 @@
                 margin-right: 67px;
                 margin-left: auto;
             }
-
             #address {
                 max-width: 320px;
                 max-height: 300px;
                 margin-left: auto;
                 margin-right: auto;
             }
-
             #find {
                 font-size: 45px;
             }
         }
     </style>
 </head>
-
 <body style="background-color: #FAF8F0;">
     <main>
-
         <?php include_once 'Rnavbar.php'; ?>
-
         <div class="container-fluid">
             <div class="message">
                 <h1 id="header" class="text-center"> Contact Us! </h1>
@@ -134,12 +121,9 @@
         <div id="chat-container"> </div>
         </div>
     </main>
-
     <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-
-    <!-- JAVASCRIPT IMPORTS -->
     <script src="/Ohana/src/js/chatbot-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
@@ -158,10 +142,7 @@
                 title = name, welcomeMessage = intro, inactiveMsg = noResponse, theme = "orange")
         });
     </script>
-    <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
-
 </body>
-
 </html>

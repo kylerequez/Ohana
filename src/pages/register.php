@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" class="sign-up_form">
-
 <head>
   <title> OHANA REGISTER </title>
   <meta charset="utf-8">
@@ -16,52 +15,41 @@
     #already {
       font-size: 20px;
     }
-
     #passwordreq {
       font-size: 18px;
     }
-
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
       .sign-up__title {
         font-size: 40px;
       }
-
       .sign-up__descr {
         font-size: 40px;
       }
-
       .register__desc {
         font-size: 20px;
       }
-
       .input__label {
         font-size: 15px;
       }
-
       .input-checkbox__label {
         font-size: 15px;
       }
-
       #passwordreq {
         font-size: 16px;
       }
-
       #message p {
         margin-top: 5px;
         font-size: 13px;
       }
-
       #letter {
         font-size: 20px;
       }
-
       .logbtn button {
         display: block;
         padding: 10px 60px;
         font-size: 15px;
         font-weight: 700;
       }
-
       #already {
         font-size: 15px;
       }
@@ -70,9 +58,7 @@
 </head>
 
 <body style="background-color: #FAF8F0;">
-  
   <?php include_once dirname(__DIR__) . '/pages/navbar.php'; ?>
-
   <div class="container-fluid">
     <main class="sign-up">
       <div class="sign-up__container">
@@ -81,7 +67,6 @@
             <h1 class="sign-up__title mt-5">Create An Account</h1>
             <p class="sign-up__descr">Welcome to Ohana!</p>
             <p class="register__desc mt-3"> Fill up the fields below to create an account. </p>
-
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
               <div class="alert alert-warning" role="alert">
                 <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
@@ -134,7 +119,6 @@
                 </div>
               </div>
             </div>
-
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
@@ -144,7 +128,7 @@
               </div>
             </div>
             <div id="message" style="background: white;" class="mb-3">
-              <h3 class="text-center mb-2" id="passwordreq">Password must contain the following:</h3>
+              <h3 class="text-center mb-2" id="passwordreq" style="font-family: 'Acme', sans-serif;">Password must contain the following:</h3>
               <p id="letter" class="invalid">At least one <b>lowercase</b> letter</p>
               <p id="capital" class="invalid">At least one <b>capital</b> letter</p>
               <p id="number" class="invalid">At least one <b>number</b></p>
@@ -185,23 +169,17 @@
         <?php include_once 'footer.php'; ?>
       </div>
     </main>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    
     <script>
       $("form").submit(function() {
         $(this).find(":submit").attr('disabled', 'disabled');
       });
-
       const emailInput = $("#email"),
         emailIcon = $(".email-icon");
-
       emailInput.change("autocompletechange",
         function(event, ui) {
           let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-
           if (emailInput.val() === "") {}
-
           if (emailInput.val().match(pattern)) {
             emailIcon.removeClass('uil-envelope');
             emailIcon.addClass('uil-check-circle');
@@ -213,9 +191,7 @@
         });
       emailInput.keypress(() => {
         let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-
         if (emailInput.val() === "") {}
-
         if (emailInput.val().match(pattern)) {
           emailIcon.removeClass('uil-envelope');
           emailIcon.addClass('uil-check-circle');
@@ -225,8 +201,6 @@
         emailIcon.addClass('uil-envelope');
         return emailIcon.css('color', 'red');
       });
-
-      //PASSWORD VALIDATION SCRIPT
       const passwordInput = $("#password"),
         letter = $("#letter"),
         capital = $("#capital"),

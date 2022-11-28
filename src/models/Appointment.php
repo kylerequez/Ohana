@@ -173,7 +173,7 @@ class Appointment implements JsonSerializable
 
     /**
      * Get the value of type
-     */ 
+     */
     public function getType()
     {
         return $this->type;
@@ -183,7 +183,7 @@ class Appointment implements JsonSerializable
      * Set the value of type
      *
      * @return  self
-     */ 
+     */
     public function setType($type)
     {
         $this->type = $type;
@@ -193,7 +193,7 @@ class Appointment implements JsonSerializable
 
     /**
      * Get the value of status
-     */ 
+     */
     public function getStatus()
     {
         return $this->status;
@@ -203,7 +203,7 @@ class Appointment implements JsonSerializable
      * Set the value of status
      *
      * @return  self
-     */ 
+     */
     public function setStatus($status)
     {
         $this->status = $status;
@@ -213,7 +213,7 @@ class Appointment implements JsonSerializable
 
     /**
      * Get the value of number
-     */ 
+     */
     public function getNumber()
     {
         return $this->number;
@@ -223,7 +223,7 @@ class Appointment implements JsonSerializable
      * Set the value of number
      *
      * @return  self
-     */ 
+     */
     public function setNumber($number)
     {
         $this->number = $number;

@@ -1,34 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title> USER PROFILE </title>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
     <link rel="stylesheet" href="/Ohana/src/css/userprofile.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
             #header {
                 font-size: 40px;
                 margin-top: 40%;
             }
-
             #labels {
                 width: 200px;
             }
-
             #name {
                 margin-top: -50px;
             }
-
             #save {
                 max-width: 500px;
                 margin-left: auto;
@@ -36,7 +29,6 @@
                 float: none;
                 margin-top: 40px;
             }
-
             #change {
                 max-width: 500px;
                 margin-left: auto;
@@ -47,17 +39,13 @@
         }
     </style>
 </head>
-
 <body style="background-color: #FAF8F0;">
     <main>
         <?php include_once 'Rnavbar.php'; ?>
-
         <div class="container-fluid">
-
             <section class="userprofile">
                 <div class="userheader">
                     <h1 id="header"> USER PROFILE </h1>
-                    <!-- alert -->
                     <div class="container-sm">
                         <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
                             <div class="alert alert-warning mt-3" role="alert">
@@ -119,9 +107,7 @@
     <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 </body>
-
 </html>

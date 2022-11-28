@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title> USER PROFILE </title>
-   
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
     <link rel="stylesheet" href="/Ohana/src/css/userprofile.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-
     <?php include_once 'stylesheets.php'; ?>
     <style>
+        .userprofile {
+            margin-top: 10%;
+        }
+        #header {
+            font-family: 'Acme', sans-serif;
+        }
+        #ohanafooter {
+            margin-top: 10%;
+        }
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-
         @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
 </head>
-
 <body style="background-color: #FAF8F0;">
     <main>
         <?php include_once 'Rnavbar.php'; ?>
         <div class="container-fluid">
-            <section class="userprofile" style="margin-top:10%;">
+            <section class="userprofile">
                 <div class="userheader mb-5">
-                    <h1> My Transactions </h1>
+                    <h1 class="text-center" id="header" style="color:#db6551;"> My Transactions </h1>
                 </div>
             </section>
             <center>
                 <section class="orderhistory_section">
                     <div class="container">
-
                         <?php
                         include_once dirname(__DIR__) . '/models/Transaction.php';
                         $transactions = unserialize($_SESSION["transactions"]);
-
                         if (!empty($transactions)) {
                             foreach ($transactions as $transaction) {
                         ?>
@@ -66,7 +68,7 @@
                                                         <div class="modal-dialog modal-dialog-centered">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h1 class="modal-title fs-5" id="ModalToggleLabel"> Upload Proof of Payment </h1>
+                                                                    <h1 class="modal-title fs-5" id="ModalToggleLabel" style="font-family: 'Acme', sans-serif; "> Upload Proof of Payment </h1>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <label for="proofOfPayment" class="my-2">Please upload your proof of payment for Transaction #<?php echo $transaction->getId(); ?></label>
@@ -86,7 +88,7 @@
                                                                     <h1 class="modal-title text-danger fs-5" id="ModalToggleLabel2"> Warning! </h1>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    Make sure that the image file containts the necessary information for the payment verification.
+                                                                    Make sure that the image file contains the necessary information for the payment verification.
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button class="btn btn-outline-dark" data-bs-target="#uploadModalId<?php echo $transaction->getId(); ?>" data-bs-toggle="modal">Go Back </button>
@@ -96,13 +98,12 @@
                                                         </div>
                                                     </div>
                                                 </form>
-
                                                 <!-- VIEW MODAL -->
                                                 <div class="modal modal-xl fade" id="orderModalId<?php echo $transaction->getId(); ?>" tabindex="-1" aria-labelledby="orderModal" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Transaction #<?php echo $transaction->getId(); ?></h1>
+                                                                <h1 class="modal-title fs-5" id="transactionModalLabel">Transaction #<?php echo $transaction->getId(); ?></h1>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <?php
@@ -162,18 +163,10 @@
             </center>
         </div>
     </main>
-
     <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-
-
-    <!-- SCIPTS -->
-    <!-- Custom scripts -->
-    <script src="/Ohana/src/dashboard/js/script.js"></script>
-    <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 </body>
-
 </html>

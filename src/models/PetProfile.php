@@ -4,6 +4,7 @@ class PetProfile
     private ?int $id = null;
     private $image = null;
     private ?string $name = null;
+    private ?string $type = null;
     private ?DateTime $birthdate = null;
     private ?string $sex = null;
     private ?string $color = null;
@@ -296,6 +297,26 @@ class PetProfile
     public function setPcciStatus($pcciStatus)
     {
         $this->pcciStatus = $pcciStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of type
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set the value of type
+     *
+     * @return  self
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
 
         return $this;
     }

@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <title> PAYMENT METHOD </title>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
@@ -16,12 +13,11 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         #head {
-            margin-top:10%;
+            margin-top: 10%;
         }
         @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
 </head>
-
 <body style="background-color: #FAF8F0;">
     <main>
         <?php include_once 'Rnavbar.php'; ?>
@@ -31,7 +27,6 @@
                     <img src="/Ohana/src/images/Pages/checkoutheader.png" class="img-fluid" width="100%">
                 </div>
             </section>
-
             <div class="container">
                 <section class="paymentsection">
                     <div class="paymentmethod" id="paymentmethod">
@@ -62,7 +57,6 @@
                     </div>
                 </section>
             </div>
-          
             <section class="paymentnote mb-5">
                 <center>
                     <div class="card rounded-3 mb-5" style="width:75%;">
@@ -75,19 +69,13 @@
                 </center>
             </section>
         </div>
-
         </div>
     </main>
 
     <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-
-    <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
-
-
 </body>
-
 </html>

@@ -1,76 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <title> HOME </title>
-
-    <!-- META TAGS -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
-
     <link rel="stylesheet" href="/Ohana/src/css/home.css">
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
-
     <?php include_once 'stylesheets.php'; ?>
-    <style>
-        #carouselCaptions {
-            margin-left: 5%;
-            margin-right: 5%;
-        }
-
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {
-            #h1 {
-                font-size: 30px;
-                color: #7d605c;
-                font-family: 'Acme', sans-serif;
-            }
-
-            #welcome {
-                font-size: 35px;
-                Margin-top: 40%;
-                color: #db6551;
-                font-family: 'Acme', sans-serif;
-            }
-
-            #kauhale {
-                font-size: 35px;
-                font-family: 'Acme', sans-serif;
-                margin-top: 30px;
-                color: #7d605c;
-            }
-
-            .btn-Learn button {
-                background-color: white;
-                border: 1px solid #ffffff;
-                display: inline-block;
-                cursor: pointer;
-                color: #7d605c;
-                font-family: "Poppins";
-                font-size: 12px;
-                padding: 12px 30px;
-                text-decoration: none;
-                text-shadow: 0px 1px 0px #ffffff;
-                text-align: center;
-            }
-
-            .card {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            #ohanafooter {
-                margin-top: 30%;
-            }
-
-        }
-    </style>
 </head>
-
 <body style="background-color: #faf8f0">
     <main>
         <div class="container-fluid">
@@ -92,34 +33,29 @@
                             <img src="/Ohana/src/images/sliders/aboutus.png" class="d-block w-100 img-fluid" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h1 class="text-light" style="font-size:70px;font-family: 'Acme', sans-serif;"> About Us </h1>
-
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="/Ohana/src/images/sliders/visitslide.png" class="d-block w-100 img-fluid" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h1 class="text-light" style="font-size:70px;font-family: 'Acme', sans-serif;"> Kennel Visit</h1>
-
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="/Ohana/src/images/sliders/studslide.png" class="d-block w-100 img-fluid" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h1 class="text-light" style="font-size:70px;font-family: 'Acme', sans-serif;"> Stud Service</h1>
-
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="/Ohana/src/images/sliders/rehomeslide.png" class="d-block w-100 img-fluid" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h1 class="text-light" style="font-size:70px;font-family: 'Acme', sans-serif;"> Pet Rehoming </h1>
-
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="/Ohana/src/images/sliders/contactslide.png" class="d-block w-100 img-fluid" alt="...">
                             <div class="carousel-caption d-none d-md-block">
-
                             </div>
                         </div>
                     </div>
@@ -133,7 +69,6 @@
                     </button>
                 </div>
             </section>
-
             <section class="mb-5">
                 <h1 class="text-center" id="h1"> What our Customer Says </h1>
                 <div class="container-xl mt-5">
@@ -168,11 +103,9 @@
                     </div>
                 </div>
             </section>
-
             <section class="mb-5">
                 <h1 class="text-center mt-5" id="kauhale"> I need a <strong style="color:#db6551"> KAUHALE </strong> </h1>
                 <div class="container d-flex justify-content-center mt-5">
-
                     <div class="row">
                         <div class="col m-3">
                             <a href="/puppies" style="text-decoration: none;">
@@ -191,15 +124,12 @@
                     </div>
                 </div>
             </section>
-
             <div id="chat-container"> </div>
         </div>
     </main>
-
     <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-
     <script src="/Ohana/src/js/chatbot-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
@@ -218,10 +148,7 @@
                 title = name, welcomeMessage = intro, inactiveMsg = noResponse, theme = "orange")
         });
     </script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
-
 </body>
-
 </html>

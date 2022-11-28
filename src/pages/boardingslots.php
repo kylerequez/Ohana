@@ -5,7 +5,7 @@
     <title> BOARDING SLOTS </title>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
 
@@ -14,12 +14,27 @@
 
     <?php include_once 'stylesheets.php'; ?>
     <style>
+
+        h1 {
+            color:#DB6551; 
+            font-family: 'Acme', sans-serif;
+        }
         .message {
-            margin-top:10%;
+            margin-top: 10%;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {}
+        #header {
+            font-size: 80px;
+        }
+        .card {
+            width:20rem;
+        }
+
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {
+            .card {
+                width:10rem;
+            }
+        }
     </style>
 </head>
 
@@ -33,39 +48,45 @@
             <div class="message">
                 <section class="services" id="services">
                     <?php
-                    include_once dirname(__DIR__) . '/models/PetProfile.php';
-                    $profiles = unserialize($_SESSION["profiles"]);
-                    if (empty($profiles)) {
+                    require dirname(__DIR__) . '/models/BoardingSlot.php';
+                    require dirname(__DIR__) . '/config/db-config.php';
+                    require dirname(__DIR__) . '/database/Database.php';
+                    require dirname(__DIR__) . '/dao/BoardingSlotDAO.php';
+                    require dirname(__DIR__) . '/services/BoardingSlotServices.php';
+
+                    $database = new Database($servername, $database, $username, $password);
+                    $dao = new BoardingSlotDAO($database);
+                    $services = new BoardingSlotServices($dao);
+
+                    $slots = $services->getAvailableSlots();
+                    if (empty($slots)) {
                     ?>
                         <div class="service">
-                            <h1 class="mb-2 text-center fs-4" style="color:#DB6551; font-family: 'Acme', sans-serif;"> THERE IS CURRENTLY NO AVAILABLE SLOTS FOR PET BOARDING</h1>
+                            <h1 class="mb-2 text-center fs-4"> THERE IS CURRENTLY NO AVAILABLE SLOTS FOR PET BOARDING</h1>
                         </div>
                     <?php } else { ?>
                         <div class="service">
-                            <h1 class="mb-2 text-center fs-1" style="color:#DB6551; font-family: 'Acme', sans-serif;"> CHOOSE PET BOARDING SLOT </h1>
+                            <h1 class="mb-2 text-center" id="header"> Choose a pet boarding slot </h1>
                         </div>
-                        <!-- AVAILABLE PUPPIES CARD -->
-                        <div class="container d-flex justify-content-center">
-                            <div class="row">
-                                <?php foreach ($profiles as $profile) { ?>
-                                    <div class="card m-3" style="width: 20rem;">
-                                        <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image" width="250px" height="250px;" style="margin-top:10px;">
+                        <div class="container-fluid d-flex justify-content-center">
+                            <div class="row d-flex justify-content-center">
+                                <?php foreach ($slots as $slot) { ?>
+                                    <div class="card m-3 mt-5">
+                                        <img src="data:image/jpeg;base64,<?php echo base64_encode($slot->getImage()); ?>" class="card-img-top" alt="<?php echo $slot->getName(); ?> Image" width="250px" height="250px;" style="margin-top:10px;">
                                         <div class="card-body">
-                                            <h5 class="card-title"> <?php echo $profile->getName(); ?></h5>
-                                            <p class="card-text"> <?php echo $profile->getBirthdate()->format('Y-m-d'); ?> </p>
-                                            <p class="card-text"> <?php echo $profile->getPrice(); ?> </p>
-                                            <div class="btn-Learn" name="btn-Learn">
-                                                <center><a href="/puppy1"><button id="btnLearn" name="btnLearn"><span> Select </span></button></a></center>
-                                            </div>
+                                            <h5 class="card-title text-center mb-3"> <?php echo $slot->getName(); ?></h5>
+                                            <center>
+                                                <input class="form-check-input mt-3" type="radio" name="inlineRadioOptions" id="<?php echo $slot->getId(); ?>" value="<?php echo $slot->getId(); ?>" />
+                                                <label class="form-check-label mt-3 mb-3" for="payment-method"> SELECT <?php echo $slot->getName(); ?></label>
+                                            </center>
                                         </div>
                                     </div>
                                 <?php } ?>
-
                             </div>
                         </div>
                     <?php } ?>
                 </section>
-
+                <center> <a href="/select-stud-dog"><button class="btn mt-5 text-light" style="background-color:#DB6551"> Go Back </button> </a></center>
             </div>
         </div>
     </main>
@@ -73,10 +94,8 @@
         <?php include_once 'footer.php'; ?>
     </div>
 
-    <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
-
     <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 

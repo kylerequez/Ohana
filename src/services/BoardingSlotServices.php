@@ -13,6 +13,11 @@ class BoardingSlotServices
         return $this->dao->getAllBoardingSlots();
     }
 
+    public function getAvailableSlots(): mixed
+    {
+        return $this->dao->getAvailableSlots();
+    }
+
     public function getBoardingSlotsPagination(string $limit, string $offset): mixed
     {
         return  $this->dao->getBoardingSlotsPagination($limit, $offset);
@@ -46,7 +51,7 @@ class BoardingSlotServices
         $information = strtoupper($data["information"]);
         $isAvailable = $data["isAvailable"];
 
-        if(!is_null($this->dao->searchByName($name))){
+        if (!is_null($this->dao->searchByName($name))) {
             $_SESSION["msg"] = "The pet boarding slot already exists.";
             return false;
         }
@@ -70,7 +75,7 @@ class BoardingSlotServices
         // ADD IMAGE VALIDATION !!! IMPORTANT
         $image = $data["image"];
 
-        $name = strtoupper($data["name"]);  
+        $name = strtoupper($data["name"]);
         $information = strtoupper($data["information"]);
         $isAvailable = $data["isAvailable"] == "AVAILABLE" ? 1 : 0;
         if ($isAvailable == 1) {

@@ -3,7 +3,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
-/* font-family: 'Acme', sans-serif; FOR HEADERS */
 
 * {
   margin: 0;
@@ -14,16 +13,7 @@ body {
   position: relative !important;
 }
 
-h1 {
-  font-family: "Acme", sans-serif;
-  font-weight: 800;
-  color: #c0b65a;
-  font-size: 100px;
-}
-.title {
-  color: #db6551;
-  font-size: 90px;
-}
+
 .cr {
   color: #db6551;
   font-size: 90px;
@@ -36,6 +26,12 @@ h1 {
 
 section {
   display: block;
+}
+
+#sectionheaders {
+  color: #db6551;
+  font-size: 80px;
+  font-family: 'Acme', sans-serif;
 }
 /* SECTIONS */
 .about-us {
@@ -66,7 +62,6 @@ form {
   text-align: center;
 }
 
-/* ########################################## BUTTON ######################################### */
 .btn-Learn button {
   background-color: #db6551;
   border-radius: 30px;
@@ -305,3 +300,116 @@ textarea:hover {
   opacity: 0.8;
 }
 
+@media screen and (min-width: 360px) and (max-width: 929.98px) {
+  .title {
+      font-size: 40px;
+      color: #db6551;
+  }
+
+  .btn-Adopt button {
+      background-color: #7d605c;
+      border-radius: 30px;
+      border: 1px solid #ffffff;
+      cursor: pointer;
+      color: #ffffff;
+      font-family: "Poppins";
+      font-size: 10px;
+      padding: 10px 40px;
+      text-decoration: none;
+      text-shadow: 0px 1px 0px #ffffff;
+      text-align: center;
+      margin-top: 65%;
+      margin-right: auto;
+      margin-left: auto;
+  }
+
+  .btn-Send button {
+      background-color: #db6551;
+      border-radius: 30px;
+      border: 1px solid #ffffff;
+      display: inline-block;
+      cursor: pointer;
+      color: #ffffff;
+      font-family: "Poppins";
+      font-size: 12px;
+      padding: 10px 40px;
+      text-decoration: none;
+      text-shadow: 0px 1px 0px #ffffff;
+      margin-top: 110%;
+      margin-right: 65px;
+      margin-left: auto;
+  }
+
+  .intro {
+      margin-top: 30px;
+  }
+
+  .cr {
+      color: #db6551;
+      font-size: 35px;
+  }
+
+  .contact {
+      color: #db6551;
+      font-size: 35px;
+  }
+
+  .contact-us {
+      background-color: #faf8f0;
+      min-height: 500px;
+  }
+
+  #intro {
+      margin-top: 15%;
+      width:auto;
+  }
+
+  #contactform {
+      position: relative !important;
+      width: 10px;
+      float: left;
+  }
+
+  input {
+      font-family: "Lato", sans-serif;
+      font-size: 15px;
+      width: 340px;
+      height: 60px;
+      padding: 0px 10px 0px 10px;
+  }
+
+  textarea {
+      width: 340px;
+      max-width: 900px;
+      max-height: 200px;
+      padding: 10px;
+  }
+
+  .p-4 {
+      font-size: 30px;
+      font-weight: bolder;
+  }
+
+  .p-2 {
+      font-size: 20px;
+  }
+
+  .about-us {
+      background-image: url(/Ohana/src/images/Landing/mbaboutus.jpg);
+      min-width: 350px;
+      min-height: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      background-position: center;
+  }
+
+  .reasons {
+      background-image: url(/Ohana/src/images/Landing/mbreasons.png);
+      min-height: 500px;
+  }
+
+  .col {
+      width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+  }

@@ -2,33 +2,20 @@
 <html lang="en">
 
 <head>
-    <!--meta tags-->
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
-
-    <!-- end of meta tags-->
     <title> CHANGE PASSWORD </title>
-
-    <!-- WEB ICON-->
     <link rel="shortcut icon" href="/Ohana/src/dashboard/img/ohana.png" type="image/x-icon">
-
-    <!-- ICONS IMPORT  -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
-    <!-- BOOTSTRAP CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
-    <!-- Custom styles -->
     <link rel="stylesheet" href="/Ohana/src/dashboard/css/adminpages.css">
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
     </style>
-
     <style>
         h1 {
             margin-bottom: .75em;
@@ -95,12 +82,10 @@
         }
     </style>
 </head>
-
 <body>
     <?php
     if (!isset($_SESSION)) session_start();
     include_once dirname(__DIR__) . '/../models/Account.php';
-
     if (empty($_SESSION['user'])) {
         session_unset();
         session_destroy();
@@ -110,23 +95,15 @@
         $user = unserialize($_SESSION['user']);
     ?>
         <div class="layer"> </div>
-        <!-- Body -->
         <div class="page-flex">
-            <!-- Dashboard Sidebar -->
             <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
-
             <div class="main-wrapper">
-                <!-- END OF ADMIN DASHBOARD SIDE-->
-
-                <!-- ! Main nav -->
                 <?php include_once dirname(__DIR__) . "/navbar.php" ?>
-
                 <main class="main users chart-page" id="skip-target">
                     <div class="container d-flex justify-content-center">
-
                         <form id="myform-search" method="GET" action="/accounts/update" autocomplete="off">
                             <h1 class="text-center mt-5" style="font-family: 'Acme', sans-serif; color:#db6551; font-size:70px;">Change your Password</h1>
-                            <p class="text-center mb-5" style="font-size:20px;">Input a new password for your account</p>
+                            <p class="text-center mb-5 fs-4">Input a new password for your account</p>
                             <div class="row">
                                 <div class="col">
                                     <label class="mb-2" for="name" style="font-size:20px;display:block"> <b>Current Password:</b> </label>
@@ -152,19 +129,16 @@
                             </div>
                         </form>
                     </div>
-                    <!-- CHANGE PASSWORD CONTENT -->
                 </main>
-                <!-- FOOTER -->
                 <?php include_once dirname(__DIR__) . '/footer.php'; ?>
             </div>
         </div>
-        <!-- TOAST -->
         <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
             <div class="toast-container top-0 end-0 p-3">
                 <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
                     <div class="toast-header">
                         <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
-                        <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
+                        <strong class="me-auto fs-4"> &nbsp; Notification </strong>
                         <small> JUST NOW </small>
                         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>
@@ -175,29 +149,19 @@
         }
         unset($_SESSION["msg"]);
         ?>
-
-        <!-- SCIPTS -->
         <script>
-            //PASSWORD VALIDATION SCRIPT
-
             var myInput = document.getElementById("new-password"),
                 letter = document.getElementById("letter"),
                 capital = document.getElementById("capital"),
                 number = document.getElementById("number"),
                 length = document.getElementById("length"),
                 confirmpass = document.getElementById("confirm-password");
-
-            // When the user clicks on the password field, show the message box
             myInput.onfocus = function() {
                 document.getElementById("message").style.display = "block";
             }
-
-            // When the user clicks outside of the password field, hide the message box
             myInput.onblur = function() {
                 document.getElementById("message").style.display = "none";
             }
-
-            //PASSWORD VALIDATION SCRIPT
             const passwordInput = $("#password"),
                 letter = $("#letter"),
                 capital = $("#capital"),
@@ -256,25 +220,12 @@
                 }
             });
         </script>
-
-
-
-        <!-- Icons library -->
         <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
-
-        <!-- Custom scripts -->
         <script src="/Ohana/src/dashboard/js/script.js"></script>
-
-        <!-- JavaScript BOOTSTRAP Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
-        </script>
-
-        <!--SCRIPT FOR BOOTSTRAP MODAL-->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <?php
     }
     ?>
 </body>
-
 </html>

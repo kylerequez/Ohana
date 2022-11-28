@@ -2,34 +2,24 @@
 <html lang="en">
 
 <head>
-  <!-- META TAGS-->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
   <meta name="keywords" content="Kennel Business, French Bulldogs">
-  <!-- END OF META TAGS-->
   <title> DASHBOARD - CUSTOMER TRANSACTIONS </title>
-  <!-- WEB ICON-->
   <link rel="shortcut icon" href="/Ohana/src/dashboard/img/ohana.png" type="image/x-icon">
-  <!-- ICONS IMPORT  -->
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-  <!-- BOOTSTRAP CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  <!-- Custom styles -->
   <link rel="stylesheet" href="/Ohana/src/dashboard/css/adminpages.css">
 </head>
 
 <body>
   <div class="layer"> </div>
-  <!-- Body -->
   <div class="page-flex">
-    <!-- Dashboard Sidebar -->
     <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
     <div class="main-wrapper">
-      <!-- ! Main nav -->
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
-      <!--  TRANSACTIONS CONTENT -->
       <main class="main users chart-page" id="skip-target">
         <div class="container">
           <h2 class="main-title text-center mt-3"> CUSTOMER TRANSACTIONS </h2>
@@ -81,15 +71,14 @@
                     <td><?php echo $transaction->getStatus(); ?></td>
                     <td>
                       <button class="view-btn transparent-btn fs-4" type="view" style="color:#7d605c; margin-right: 15px;" data-bs-toggle="modal" data-bs-target="#viewModalId<?php echo $transaction->getId(); ?>"><i class="uil uil-eye"></i></button>
-                      <button class="view-btn transparent-btn fs-4" type="view" style="color:#7d605c; margin-right: 15px;" data-bs-toggle="modal" data-bs-target="#confirmationModalId<?php echo $transaction->getId(); ?>"><i class="uil uil-image-v"></i></button> 
+                      <button class="view-btn transparent-btn fs-4" type="view" style="color:#7d605c; margin-right: 15px;" data-bs-toggle="modal" data-bs-target="#confirmationModalId<?php echo $transaction->getId(); ?>"><i class="uil uil-image-v"></i></button>
                       <button class="edit-btn transparent-btn fs-4" type="edit" style="color:#C0B65A; margin-right: 15px;" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $transaction->getId(); ?>"><i class="uil uil-edit"></i></button>
                     </td>
-                    <!-- VIEW POP UP MODAL -->
                     <div class="modal fade" id="viewModalId<?php echo $transaction->getId(); ?>" tabindex="-1" aria-labelledby="editprofilemodal" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered modal-xl">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="viewModal">List of Orders for Transaction #<?php echo $transaction->getId() ?></h5>
+                            <h5 class="modal-title" id="viewModal" style="font-family:'Acme', sans-serif;">List of Orders for Transaction #<?php echo $transaction->getId() ?></h5>
                             <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
                           </div>
                           <div class="modal-body">
@@ -157,13 +146,12 @@
                         </div>
                       </div>
                     </div>
-                    <!-- EDIT TRANSACTION -->
                     <form method="POST" action="/dashboard/transactions/update/<?php echo $transaction->getId(); ?>?page=<?php echo $current_page; ?>&limit=<?php echo $results_per_page; ?>&offset=<?php echo ($current_page == 1) ? 0 : $results_per_page * ($current_page - 1) ?>">
                       <div class="modal fade" id="editModalId<?php echo $transaction->getId(); ?>" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="editModal"> EDIT TRANSACTION </h5>
+                              <h5 class="modal-title" id="editModal" style="font-family:'Acme', sans-serif;"> EDIT TRANSACTION </h5>
                               <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
                             </div>
                             <div class="modal-body">
@@ -223,17 +211,15 @@
           }
           ?>
       </main>
-      <!-- ! Footer -->
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
     </div>
   </div>
-  <!-- TOAST -->
   <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
     <div class="toast-container top-0 end-0 p-3">
       <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
         <div class="toast-header">
           <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
-          <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
+          <strong class="me-auto fs-4"> &nbsp; Notification </strong>
           <small> JUST NOW </small>
           <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
@@ -244,18 +230,10 @@
   }
   unset($_SESSION["msg"]);
   ?>
-
-  <!-- SCRIPTS -->
-  <!-- Icons library -->
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
-  <!-- Custom scripts -->
   <script src="/Ohana/src/dashboard/js/script.js"></script>
-  <!-- JavaScript BOOTSTRAP Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
-  </script>
-  <!--SCRIPT FOR BOOTSTRAP MODAL-->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 </body>
 
 </html>

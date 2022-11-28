@@ -96,7 +96,7 @@ class PetProfileController
     {
         switch ($method) {
             case "GET":
-                $_SESSION["profile"] = serialize($this->services->getOhanaPet($id));
+                $_SESSION["rehoming-profile"] = serialize($this->services->getOhanaPet($id));
                 header("Location: http://" . DOMAIN_NAME . "/puppy-info");
                 break;
             case "POST":
@@ -109,7 +109,7 @@ class PetProfileController
     {
         switch ($method) {
             case "GET":
-                $_SESSION["profiles"] = serialize($this->services->getOhanaPets());
+                $_SESSION["rehoming"] = serialize($this->services->getRehomingPets());
                 header("Location: http://" . DOMAIN_NAME . "/puppies");
                 break;
             case "POST":
@@ -146,8 +146,8 @@ class PetProfileController
                 break;
             case "POST":
                 $account = unserialize($_SESSION["user"]);
-                $_POST["accountId"] = $account->getId();
-                $_POST["ownerName"] = $account->getFname() . " " . $account->getLname();
+                $_POST["accountId"] = $account->getType() != "USER" ? 1 : $account->getId();
+                $_POST["ownerName"] = $account->getType() != "USER" ? $account->getFname() . " " . $account->getLname() : "OHANA KENNEL BUSINESS";
                 if (!empty($_FILES["image"]["tmp_name"])) {
                     $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
                 } else {
@@ -173,11 +173,10 @@ class PetProfileController
                 $account = unserialize($_SESSION["user"]);
                 $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
                 $_POST["accountId"] = $account->getType() != "USER" ? 1 : $account->getId();
-                $_POST["ownerName"] = $account->getFname() . " " . $account->getLname();
+                $_POST["ownerName"] = ($account->getType() == "USER") ? $account->getFname() . " " . $account->getLname() : "OHANA KENNEL BUSINESS";
                 $_POST["price"] = 0;
                 if (!$this->services->addPetProfile($_POST)) {
                 }
-                unset($_SESSION["msg"]);
 
                 $this->processCustomerCollectionRequest("GET");
                 break;

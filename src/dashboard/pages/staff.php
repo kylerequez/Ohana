@@ -2,41 +2,25 @@
 <html lang="en">
 
 <head>
-  <!-- META TAGS -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
   <meta name="keywords" content="Kennel Business, French Bulldogs">
-  <!-- END OF META TAGS-->
-
   <title> DASHBOARD - STAFF MANAGEMENT </title>
-
-  <!-- WEB ICON-->
   <link rel="shortcut icon" href="/Ohana/src/dashboard/img/ohana.png" type="image/x-icon">
-
-  <!-- VERSION 4.5.3 FOR MODAL-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-  <!-- BOOTSTRAP CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
-  <!-- Custom styles -->
   <link rel="stylesheet" href="/Ohana/src/dashboard/css/adminpages.css">
-
-  <!-- ICONS IMPORT  -->
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
 </head>
 
 <body>
   <div class="layer"> </div>
-  <!-- Body -->
   <div class="page-flex">
     <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
     <div class="main-wrapper">
-      <!-- ! Main nav -->
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
-      <!--  STAFF ACCOUNTS CONTENT -->
       <main class="main users chart-page" id="skip-target">
         <div class="container">
           <h2 class="main-title text-center mt-3"> STAFF ACCOUNTS </h2>
@@ -103,7 +87,6 @@
                     <?php
                     }
                     ?>
-                    <!-- EDIT STAFF POP UP MODAL -->
                     <form method="POST" action="/dashboard/staff/update/<?php echo $staff->getId(); ?>?page=<?php echo $current_page; ?>&limit=<?php echo $results_per_page; ?>&offset=<?php echo ($current_page == 1) ? 0 : $results_per_page * ($current_page - 1) ?>">
                       <div class="modal fade" id="editModalId<?php echo $staff->getId(); ?>" tabindex="-1" aria-labelledby="editstaffmodal" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -132,8 +115,7 @@
                               </div>
                               <div class="input-group mb-3">
                                 <span class="input-group-text" id="contact-no">+63</span>
-                                <input type="text" class="form-control" name="number" value="<?php echo str_replace("+63", "", $staff->getNumber()); ?>" required 
-                                style="background-color:#eed1c2; color:black" maxlength="10" ; oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                <input type="text" class="form-control" name="number" value="<?php echo str_replace("+63", "", $staff->getNumber()); ?>" required style="background-color:#eed1c2; color:black" maxlength="10" ; oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                               </div>
                               <div class="mb-3">
                                 <label for="status" class="col-form-label"> Status: </label>
@@ -176,17 +158,15 @@
           ?>
         </div>
       </main>
-      <!-- ! Footer -->
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
     </div>
   </div>
-  <!-- ADD STAFF POP UP MODAL -->
   <form method="POST" action="/dashboard/staff/add?page=<?php echo $current_page; ?>&limit=<?php echo $results_per_page; ?>&offset=<?php echo ($current_page == 1) ? 0 : $results_per_page * ($current_page - 1) ?>">
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addStaffModal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="addStaffTitle"> ADD STAFF ACCOUNT </h5>
+            <h5 class="modal-title" id="addStaffTitle" style="font-family:'Acme', sans-serif;"> ADD STAFF ACCOUNT </h5>
             <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
           </div>
           <div class="modal-body">
@@ -223,8 +203,6 @@
         </div>
       </div>
     </div>
-
-    <!-- TOAST -->
     <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
       <div class="toast-container top-0 end-0 p-3">
         <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
@@ -241,35 +219,11 @@
     }
     unset($_SESSION["msg"]);
     ?>
-
-    <!-- SCRIPTS -->
-    <script>
-      //TOAST SCRIPT TRIGGER 
-      const toastTrigger = document.getElementById('ToastBtn')
-      const toastLiveExample = document.getElementById('liveToast')
-      if (toastTrigger) {
-        toastTrigger.addEventListener('click', () => {
-          const toast = new bootstrap.Toast(toastLiveExample)
-          toast.show()
-        })
-      }
-    </script>
-    <!-- Chart library -->
     <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-
-    <!-- Icons library -->
     <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
-
-    <!-- Custom scripts -->
     <script src="/Ohana/src/dashboard/js/script.js"></script>
-
-    <!-- JavaScript BOOTSTRAP Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
-    </script>
-
-    <!--SCRIPT FOR BOOTSTRAP MODAL-->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 </body>
 
 </html>

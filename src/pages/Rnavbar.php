@@ -1,31 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <title> OHANA - NAVBAR </title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <?php include_once 'stylesheets.php'; ?>
-
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-
   <style>
     #navlogo {
       width: 100%;
       height: 90px;
     }
-
     #customerprofile {
       width: 50px;
       height: 40px;
     }
-
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
       .navbar.navbar-expand-xl {
         height: 110px;
       }
-
       #navlogo.img-fluid {
         margin-top:-40%;
       }
@@ -45,7 +38,6 @@ if (!isset($_SESSION["user"])) {
   $user = unserialize($_SESSION['user']);
 }
 ?>
-
 <nav class="navbar navbar-expand-xl fixed-top">
   <div class="container-fluid">
     <div class="logo">
@@ -71,7 +63,6 @@ if (!isset($_SESSION["user"])) {
         <li class="nav-item">
           <a class="nav-link" href="/pawcart/get"> Paw Cart <i class="uil uil-shopping-bag"></i></a>
         </li>
-
         <li class="nav-item">
           <div class="action" style="margin-right:25px;">
             <div class="profile" onclick="menuToggle();">
@@ -99,13 +90,10 @@ if (!isset($_SESSION["user"])) {
               </ul>
             </div>
         </li>
-        <!-- END OF USER DROPDOWN-->
       </ul>
     </div>
   </div>
 </nav>
-
-<!-- LOGOUT MODAL -->
 <form method="POST" action="/accounts/logout">
   <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -124,15 +112,11 @@ if (!isset($_SESSION["user"])) {
     </div>
   </div>
 </form>
-
-<!-- SCRIPTS -->
 <script>
   function menuToggle() {
     const toggleMenu = document.querySelector(".menu");
     toggleMenu.classList.toggle("active");
   }
 </script>
-
 </body>
-
 </html>

@@ -2,8 +2,8 @@
 require_once dirname(__DIR__) . '/../config/app-config.php';
 require_once dirname(__DIR__) . '/../config/db-config.php';
 require_once dirname(__DIR__) . '/../database/Database.php';
-require dirname(__DIR__) . '/../dao/AppointmentDAO.php';
-require dirname(__DIR__) . '/../services/AppointmentServices.php';
+require_once dirname(__DIR__) . '/../dao/AppointmentDAO.php';
+require_once dirname(__DIR__) . '/../services/AppointmentServices.php';
 require_once dirname(__DIR__) . '/../vendor/autoload.php';
 
 $client = new \GuzzleHttp\Client();

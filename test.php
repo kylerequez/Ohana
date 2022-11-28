@@ -1,13 +1,20 @@
 <?php
 
-$OldDate = new DateTime('2022-11-27');
-$now = new DateTime();
-print_r($OldDate->diff($now));
 
-echo $now->format("M-d-Y");
 
-// SELECT * FROM ohana_appointments a JOIN ohana_account b 
-// WHERE 
-// 	DAY(a.appointment_start) = DAY(CURRENT_DATE + 3)
-// AND a.appointment_status = "PENDING"
-// AND a.account_id = b.account_id;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    echo "POST";
+    print_r($_POST);
+    $time = $_POST["appointmentTime"];
+
+    $time = explode(" - ", $_POST["appointmentTime"]);
+    print_r($time);
+
+    $start = new DateTime($_POST["date"] . " " . $time[0]);
+    $end = new DateTime($_POST["date"] . " " . $time[1]);
+
+    echo $start->format('M-d-Y H:i A');
+    echo $end->format('M-d-Y H:i A');
+} else {
+    echo "GET";
+}

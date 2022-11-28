@@ -18,6 +18,54 @@ class AppointmentServices
         return $this->dao->getAppointmentsByAccountId($id);
     }
 
+    public function addAppointment(array $data): bool
+    {
+        date_default_timezone_set('Asia/Manila');
+        $now = new DateTime("now");
+
+        $user = unserialize($_SESSION["user"]);
+
+        $type = strtoupper(trim($data["type"]));
+        $accountId = $user->getId();
+        $customerName = $user->getFname() . " " . $user->getLname();
+
+        $time = explode(" - ", $_POST["appointmentTime"]);
+        print_r($time);
+        $start = new DateTime($_POST["date"] . " " . $time[0]);
+        $end = new DateTime($_POST["date"] . " " . $time[1]);
+
+        if (date_diff($now, $start)->format('%a') < 4) {
+            $_SESSION["msg"] = "Invalid date. You must select a day that is 3 days from now.";
+            return false;
+        }
+
+        $title = "";
+        if ($type == "REHOMING") {
+            $title = "$customerName's Rehoming Appointment";
+        } else if ($type == "STUD") {
+            $title = "$customerName's Stud Service Appointment";
+        } else {
+            $title = "$customerName's Kennel Visit";
+        }
+
+        $description = "";
+        if ($type == "REHOMING") {
+            $description = "$customerName will be bringing a new dog in their ohana.";
+        } else if ($type == "STUD") {
+            $description = "$customerName will be availailing for a stud service to make their ohana larger.";
+        } else {
+            $description = "$customerName will be visiting one of our dogs. Who will it be?";
+        }
+
+        $appointment = new Appointment($title, $type, $accountId, $customerName, $description, $start, $end);
+        if (!$this->dao->addAppointment($appointment)) {
+            $_SESSION["msg"] = "There was an error in setting the appointment.";
+            return false;
+        }
+        $_SESSION["msg"] = "You successfully set an appointment.";
+        return true;
+    }
+
     public function deleteAppointment(int $id): bool
     {
         if (is_null($this->dao->searchById($id))) {

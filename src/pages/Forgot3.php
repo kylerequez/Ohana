@@ -1,41 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" class="sign-up_form">
-
 <head>
-
   <title> CHANGE PASSWORD </title>
-
   <meta charset="utf-8">
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
   <meta name="keywords" content="Kennel Business, French Bulldogs">
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-
   <?php include_once 'stylesheets.php'; ?>
   <style>
     .sign-up__title {
       font-size: 80px;
       margin-top: 5%;
     }
-
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
       .sign-up__title {
         font-size: 37px;
         margin-top: 25%;
       }
-
       #btncpass {
         display: block;
         padding: 10px 60px;
         font-size: 18px;
         font-weight: 700;
       }
-
       .input__label {
         font-size: 15px;
       }
-
       #message p {
         margin-top: 5px;
         font-size: 14px;
@@ -43,11 +35,8 @@
     }
   </style>
 </head>
-
 <body style="background-color: #FAF8F0;">
-
   <?php include_once 'navbar.php'; ?>
-
   <main class="sign-up">
     <div class="sign-up__container">
       <div class="sign-up__content">
@@ -69,7 +58,6 @@
           unset($_SESSION["msg"]);
           ?>
         </header>
-
         <?php
         if ($token != $_SESSION["token"]) {
           header("Location: http://localhost/forgot-password/confirm");
@@ -80,8 +68,6 @@
           <div class="form__row form__row--two">
             <div class="input form__inline-input">
               <div class="input__container">
-
-                <!-- PASSWORD INPUT BOX -->
                 <div class="form__row">
                   <div class="input">
                     <div class="input__container">
@@ -90,17 +76,14 @@
                     </div>
                   </div>
                 </div>
-
-                <!-- VALIDATION BOX-->
                 <div id="message" style="background: white;">
-                  <h3 class="text-center" style="font-size: 16px;">Password must contain the following:</h3>
+                  <h3 class="text-center fs-5" style="font-family: 'Acme', sans-serif;">Password must contain the following:</h3>
                   <p id="letter" class="invalid">At least one <b>lowercase</b> letter</p>
                   <p id="capital" class="invalid">At least one <b>capital</b> letter</p>
                   <p id="number" class="invalid">At least one <b>number</b></p>
                   <p id="length" class="invalid">Minimum <b>8 characters</b></p>
                 </div>
                 <br>
-                <!-- PASSWORD INPUT BOX -->
                 <div class="form__row">
                   <div class="input">
                     <div class="input__container">
@@ -127,14 +110,11 @@
       </div>
     </div>
   </main>
-
   <div id="ohanafooter">
     <?php include_once 'footer.php'; ?>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
   <script>
-    //PASSWORD VALIDATION SCRIPT
     const passwordInput = $("#password"),
       letter = $("#letter"),
       capital = $("#capital"),
@@ -190,10 +170,7 @@
     });
   </script>
   </main>
-
   <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
 </body>
-
 </html>
