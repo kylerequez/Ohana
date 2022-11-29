@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title> PAW CART </title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
     <link rel="stylesheet" href="/Ohana/src/css/pawcart.css">
@@ -11,12 +12,14 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         .img-fluid {
-            width:100px;
-            height:100px;
+            width: 100px;
+            height: 100px;
         }
+
         #ohanafooter {
             margin-top: 5%;
         }
+
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
@@ -26,11 +29,12 @@
         }
     </style>
 </head>
+
 <body style="background-color: #FAF8F0;">
     <main>
         <?php include_once 'Rnavbar.php'; ?>
         <div class="container-fluid">
-            <img src="/Ohana/src/images/Pages/cartheader.png" id="cartheader" class="img-fluid" width="100%">
+            <img src="/Ohana/src/images/Pages/cartheader.png" id="cartheader" class="img-responsive" width="100%">
             <section class="h-100">
                 <div class="container h-100 py-5">
                     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -117,4 +121,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 </body>
+
 </html>

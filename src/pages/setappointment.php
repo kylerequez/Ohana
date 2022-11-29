@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title> USER PROFILE </title>
     <meta charset="utf-8">
@@ -16,38 +17,46 @@
         :root {
             --bs-success-rgb: 71, 222, 152 !important;
         }
+
         html,
         body {
             height: 100%;
             width: 100%;
         }
+
         .btn-info.text-light:hover,
         .btn-info.text-light:focus {
             background: #000;
         }
+
         .fc .fc-button-primary {
             background-color: #db6551;
             color: white;
             border-color: white;
         }
+
         .fc .fc-button-primary:not(:disabled).fc-button-active,
         .fc .fc-button-primary:not(:disabled):active,
         .fc .fc-button-primary:disabled {
             background-color: #c0b65a;
             color: white;
         }
+
         .fc-daygrid-event {
             text-decoration: none;
             color: black;
         }
+
         .fc-event-time {
             text-decoration: none;
             color: black;
         }
+
         .fc-event-title {
             text-decoration: none;
             color: black;
         }
+
         table,
         tbody,
         td,
@@ -59,20 +68,24 @@
             border-style: solid;
             border-width: 1px !important;
         }
+
         .fc-daygrid-day-number {
             text-decoration: none;
             color: black;
         }
+
         .fc-col-header-cell-cushion {
             text-decoration: none;
             color: black;
             font-weight: bold;
         }
+
         #header {
             margin-top: 10%;
         }
     </style>
 </head>
+
 <body style="background-color: #FAF8F0;">
     <main>
         <?php include_once 'Rnavbar.php'; ?>
@@ -107,7 +120,7 @@
                         </div>
                     </div>
                 </div>
-                <form method="POST" action="/appointment/set">
+                <form method="POST" action="/appointment/set/<?php echo empty($_GET["type"]) || ($_GET["type"] != "REHOMING" || $_GET["type"] != "VISIT" || $_GET["type"] != "STUD") ? "VISIT" : $_GET["type"]; ?>">
                     <div class="modal fade" tabindex="-1" id="day-details-modal">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
@@ -116,6 +129,15 @@
                                 </div>
                                 <div class="modal-body">
                                     <input type="hidden" name="type" value="<?php echo empty($_GET["type"]) || ($_GET["type"] != "REHOMING" || $_GET["type"] != "VISIT" || $_GET["type"] != "STUD") ? "VISIT" : $_GET["type"]; ?>">
+                                    <?php
+                                    if ($_GET["type"] == "STUD") {
+                                    ?>
+                                        <input type="hidden" name="type" value="">
+                                        <input type="hidden" name="type" value="">
+                                        <input type="hidden" name="type" value="">
+                                    <?php
+                                    }
+                                    ?>
                                     <div class="form-group mb-2">
                                         <label for="appointmentTime" class="control-label mt-2 mb-2">Appointment Date</label>
                                         <input class="form-control form-control-sm rounded-0" type="date" id="date" name="date" value="" readonly="readonly">
@@ -135,7 +157,23 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn text-light" style="background-color:#db6551">Save changes</button>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#appointmentConfirmation" class="btn text-light" style="background-color:#db6551">Book Appointment</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="appointmentConfirmation" tabindex="-1" aria-labelledby="appointmentConfirmation" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-2" id="appointmentConfirmationTitle" style="font-family: 'Acme', sans-serif;"> Appointment Confirmation </h1>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure about the appointment details?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="reset" data-bs-dismiss="modal" class="btn btn-outline-dark">Cancel</button>
+                                    <button type="submit" class="btn text-light" style="background-color:#db6551">Confirm</button>
                                 </div>
                             </div>
                         </div>
@@ -167,4 +205,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 </body>
+
 </html>

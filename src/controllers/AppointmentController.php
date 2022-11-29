@@ -99,9 +99,10 @@ class AppointmentController
                 break;
             case "POST":
                 if (!$this->services->addAppointment($_POST)) {
+                    header("Location: http://" . DOMAIN_NAME . "/set-appointment?type=VISIT");
+                    break;
                 }
-                echo $_SESSION["msg"];
-                // REDIRECT TO CONFIRMATION
+                header("Location: http://" . DOMAIN_NAME . "/appointments/get");
                 break;
         }
     }

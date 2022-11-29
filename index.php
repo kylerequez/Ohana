@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous">
 
 </head>
+
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-smooth-scroll="true" style="background-color: #FAF8F0;">
     <main>
 
@@ -103,20 +104,17 @@
                     </div>
                 </div>
             </section>
-
             <section class="contact-us" id="contact">
                 <div class="container-fluid">
                     <div class="message text-center">
                         <h1 class="contact mt-5" id="sectionheaders"> Contact Us! </h1>
                     </div>
-                    <form id="contactform" class="topBefore">
-                        <input id="name" type="text" placeholder="FULL NAME">
-                        <input id="email" type="text" placeholder="E-MAIL ADDRESS ">
-                        <textarea id="message" type="text" placeholder="ENTER MESSAGE"></textarea>
-                    </form>
-                    <form action="/pages/login.php" method='get'>
+                    <form id="contactform" class="topBefore" method="POST" action="/contact-us/send">
+                        <input id="name" name="name" type="text" placeholder="FULL NAME">
+                        <input id="email" name="email" type="text" placeholder="E-MAIL ADDRESS ">
+                        <textarea id="message" name="message" type="text" placeholder="ENTER MESSAGE"></textarea>
                         <div class="btn-Send" name="btn-Send">
-                            <button id="btnSend" name="btnSend" type="submit"><span> Send Message </span></button>
+                            <button type="submit"><span> Send Message </span></button>
                         </div>
                     </form>
                 </div>
@@ -125,7 +123,7 @@
         <div id="chat-container"> </div>
     </main>
     <?php include_once dirname(__DIR__) . '/Ohana/src/pages/footer.php'; ?>
-  
+
     <script src="/Ohana/src/js/chatbot-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
@@ -148,4 +146,5 @@
     </script>
 
 </body>
+
 </html>

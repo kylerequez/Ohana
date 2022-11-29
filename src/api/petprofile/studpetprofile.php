@@ -15,8 +15,7 @@ $services = new PetProfileServices($dao);
 $controller = new PetProfileController($services, $logservices);
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && !isset($id)) {
-    $controller->processRehomingRequest($_SERVER["REQUEST_METHOD"], null);
+    $controller->processStudRequest($_SERVER["REQUEST_METHOD"], null);
 } else if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($id)) {
-    $controller->processRehomingRequest($_SERVER["REQUEST_METHOD"], $id);
+    $controller->processStudRequest($_SERVER["REQUEST_METHOD"], $id);
 }
-

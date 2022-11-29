@@ -1,4 +1,5 @@
 <?php
+
 require dirname(__DIR__) . '/../config/db-config.php';
 require dirname(__DIR__) . '/../database/Database.php';
 require dirname(__DIR__) . '/../dao/PetProfileDAO.php';
@@ -14,9 +15,6 @@ $logservices = new LogServices($logdao);
 $services = new PetProfileServices($dao);
 $controller = new PetProfileController($services, $logservices);
 
-if ($_SERVER["REQUEST_METHOD"] == "GET" && !isset($id)) {
-    $controller->processRehomingRequest($_SERVER["REQUEST_METHOD"], null);
-} else if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($id)) {
-    $controller->processRehomingRequest($_SERVER["REQUEST_METHOD"], $id);
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($id)) {
+    $controller->displayPetProfile($id);
 }
-

@@ -17,6 +17,5 @@ $logservices = new LogServices($logDAO);
 $controller = new TransactionController($services, $logservices);
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && !isset($id)) {
-    echo "1";
     $controller->processCustomerRequest($_SERVER["REQUEST_METHOD"], null);
 }

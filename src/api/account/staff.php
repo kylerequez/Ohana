@@ -15,15 +15,11 @@ $logservices = new LogServices($logdao);
 $controller = new AccountController($services, $logservices);
 
 if ($_SERVER["REQUEST_METHOD"] === "GET" && empty($id)) {
-    // get staff accounts
     $controller->processStaffRequest($_SERVER["REQUEST_METHOD"], null);
 } else if ($_SERVER["REQUEST_METHOD"] === "POST" && empty($id)) {
-    // add staff account
     $controller->processStaffRequest($_SERVER["REQUEST_METHOD"], null);
 } else if ($_SERVER["REQUEST_METHOD"] === "GET" && !empty($id)) {
-    // delete staff account
     $controller->processStaffRequest($_SERVER["REQUEST_METHOD"], $id);
 } else if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($id)) {
-    // update staff account
     $controller->processStaffRequest($_SERVER["REQUEST_METHOD"], $id);
 }

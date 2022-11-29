@@ -92,6 +92,19 @@
                 <div class="userheader mb-5">
                     <h1 id="header" class="text-center"> Appointment History </h1>
                 </div>
+                <div class="container">
+                    <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+                        <center>
+                            <div class="alert alert-warning text-center" role="alert" style="width:400px;">
+                                <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
+                                unset($_SESSION["msg"]); ?>
+                            </div>
+                        </center>
+                    <?php
+                        unset($_SESSION["msg"]);
+                    }
+                    ?>
+                </div>
             </section>
             <div class="container py-5 mb-5" id="page-container">
                 <div class="row">
@@ -99,83 +112,42 @@
                         <div id="calendar"></div>
                     </div>
                     <div class="col-md-3">
-                        <div class="cardt rounded-0 shadow">
-                            <div class="card-header text-light p-3" style="background-color:#db6551;">
-                                <h4 class="card-title mt-4 text-center"> Appointment Information </h4><br>
-                            </div>
-                            <div class="card-body mb-5">
-                                <div class="container-fluid">
-                                    <form action="" method="post" id="schedule-form">
+                        <form id="appointmentDetails">
+                            <div class="cardt rounded-0 shadow">
+                                <div class="card-header text-light p-3" style="background-color:#db6551;">
+                                    <h4 class="card-title mt-4 text-center"> Appointment Information </h4><br>
+                                </div>
+                                <div class="card-body mb-5 pb-4">
+                                    <div class="container-fluid">
                                         <input type="hidden" name="id" value="">
                                         <div class="form-group my-2">
                                             <label for="title" class="control-label mt-2 mb-2">Title</label>
-                                            <input type="text" class="form-control form-control-sm rounded-0" name="title" id="title" required readonly="readonly">
+                                            <input type="text" class="form-control form-control-sm rounded-0" name="title" id="title" disabled>
                                         </div>
                                         <div class="form-group mb-2">
                                             <label for="type" class="control-label mt-2 mb-2">Type</label>
-                                            <input type="text" class="form-control form-control-sm rounded-0" name="type" id="type" required readonly="readonly">
+                                            <input type="text" class="form-control form-control-sm rounded-0" name="type" id="type" disabled>
                                         </div>
                                         <div class="form-group mb-2">
                                             <label for="description" class="control-label mt-2 mb-2">Description</label>
-                                            <textarea rows="3" class="form-control form-control-sm rounded-0" name="description" id="description" required readonly="readonly"></textarea>
-                                        </div>
-                                        <div class="form-group mb-2">
-
-                                            <input type="hidden" class="form-control form-control-sm rounded-0" name="accountId" id="accountId" required readonly="readonly">
-                                        </div>
-                                        <div class="form-group mb-2">
-                                            <label for="customerName" class="control-label mt-2 mb-2">Customer</label>
-                                            <input type="text" class="form-control form-control-sm rounded-0" name="customerName" id="customerName" required readonly="readonly">
+                                            <textarea rows="3" class="form-control form-control-sm rounded-0" name="description" id="description" disabled></textarea>
                                         </div>
                                         <div class="form-group mb-2">
                                             <label for="startDate" class="control-label mt-2 mb-2">Start Time</label>
-                                            <input type="datetime-local" step="60" class="form-control form-control-sm rounded-0" name="startDate" id="startDate" required readonly="readonly">
+                                            <input type="datetime-local" step="60" class="form-control form-control-sm rounded-0" name="startDate" id="startDate" disabled>
                                         </div>
                                         <div class="form-group mb-2">
                                             <label for="endDate" class="control-label mt-2 mb-2">End Time</label>
-                                            <input type="datetime-local" step="60" class="form-control form-control-sm rounded-0" name="endDate" id="endDate" required readonly="readonly">
+                                            <input type="datetime-local" step="60" class="form-control form-control-sm rounded-0" name="endDate" id="endDate" disabled>
                                         </div>
-                                        <div class="card-footer">
-                                            <div class="text-center">
-                                                <button class="btn btn-md rounded-0 my-4" name="btnSave" id="btnSave" type="submit" form="schedule-form" style="background-color:#db6551;color:white"><i class="fa fa-save"></i> Confirm Book </button>
-                                                <button class="btn btn-default border btn-md rounded-0 my-4" type="reset" form="schedule-form"><i class="fa fa-reset"></i>Clear</button>
-                                            </div>
+                                        <div class="form-group mb-2">
+                                            <label for="status" class="control-label mt-2 mb-2">Status</label>
+                                            <input type="text" class="form-control form-control-sm rounded-0" name="status" id="status" disabled>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal fade" tabindex="-1" data-bs-backdrop="static" id="event-details-modal">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content rounded-0">
-                        <div class="modal-header rounded-0">
-                            <h5 class="modal-title"> Appointment Information </h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body rounded-0">
-                            <div class="container-fluid">
-                                <dl>
-                                    <dt class="text-muted">Title</dt>
-                                    <dd id="title" class="fw-bold fs-4"></dd>
-                                    <dt class="text-muted">Type</dt>
-                                    <dd id="type" class=""></dd>
-                                    <dt class="text-muted">Description</dt>
-                                    <dd id="description" class=""></dd>
-                                    <dt class="text-muted">Account ID</dt>
-                                    <dd id="accountId" class=""></dd>
-                                    <dt class="text-muted">Customer Name</dt>
-                                    <dd id="customerName" class=""></dd>
-                                    <dt class="text-muted">Start Time</dt>
-                                    <input type="datetime-local" id="start" class="" disabled></input>
-                                    <dt class="text-muted">End Time</dt>
-                                    <input type="datetime-local" id="end" class="" disabled></input>
-                                </dl>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -192,12 +164,9 @@
     $sched_res = unserialize($_SESSION["appointments"]);
     ?>
     <script>
-        var scheds = $.parseJSON('<?= json_encode($sched_res) ?>');
-        console.log(scheds)
+        var scheds = $.parseJSON(JSON.stringify(<?= json_encode($sched_res) ?>));
     </script>
-
-    <script src="/Ohana/src/dashboard/js/calendar-script.js"></script>
-
+    <script src="/Ohana/src/dashboard/js/appointment-history.js"></script>
 </body>
 
 </html>

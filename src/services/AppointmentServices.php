@@ -34,8 +34,13 @@ class AppointmentServices
         $start = new DateTime($_POST["date"] . " " . $time[0]);
         $end = new DateTime($_POST["date"] . " " . $time[1]);
 
+        if ($start < $now) {
+            $_SESSION["msg"] = "Invalid date. You must select a day that is 4 days from now.";
+            return false;
+        }
+
         if (date_diff($now, $start)->format('%a') < 4) {
-            $_SESSION["msg"] = "Invalid date. You must select a day that is 3 days from now.";
+            $_SESSION["msg"] = "Invalid date. You must select a day that is 4 days from now.";
             return false;
         }
 
@@ -62,7 +67,7 @@ class AppointmentServices
             $_SESSION["msg"] = "There was an error in setting the appointment.";
             return false;
         }
-        $_SESSION["msg"] = "You successfully set an appointment.";
+        $_SESSION["msg"] = "You successfully set an appointment at {$start->format("M-d-Y")} from {$start->format("H:i A")} to {$end->format("H:i A")}";
         return true;
     }
 

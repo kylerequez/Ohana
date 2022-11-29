@@ -42,6 +42,24 @@ class BoardingSlotController
             case "POST":
                 if (!empty($_FILES["image"]["tmp_name"])) {
                     $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
+                    $finfo = new finfo(FILEINFO_MIME_TYPE);
+                    if (false === $ext = array_search(
+                        $finfo->file($_FILES['image']['tmp_name']),
+                        array(
+                            'jpg' => 'image/jpeg',
+                            'png' => 'image/png',
+                        ),
+                        true
+                    )) {
+                        $_SESSION["msg"] = "The file type is not accepted. Please upload a file with the following format: JPG and PNG.";
+                        $this->processCollectionRequest("GET");
+                        break;
+                    }
+                    if ($_FILES['image']['size'] > 1000000) {
+                        $_SESSION["msg"] = "The image size must not be greater than 1 MB.";
+                        $this->processCollectionRequest("GET");
+                        break;
+                    }
                 } else {
                     $_POST["image"] = base64_decode($_POST["old_image"]);
                 }
@@ -70,6 +88,24 @@ class BoardingSlotController
                 break;
                 // Add Boarding Slot
             case "POST":
+                $finfo = new finfo(FILEINFO_MIME_TYPE);
+                if (false === $ext = array_search(
+                    $finfo->file($_FILES['image']['tmp_name']),
+                    array(
+                        'jpg' => 'image/jpeg',
+                        'png' => 'image/png',
+                    ),
+                    true
+                )) {
+                    $_SESSION["msg"] = "The file type is not accepted. Please upload a file with the following format: JPG and PNG.";
+                    $this->processCollectionRequest("GET");
+                    break;
+                }
+                if ($_FILES['image']['size'] > 1000000) {
+                    $_SESSION["msg"] = "The image size must not be greater than 1 MB.";
+                    $this->processCollectionRequest("GET");
+                    break;
+                }
                 $user = unserialize($_SESSION["user"]);
                 $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
                 $_POST["accountId"] = $user->getType() != "USER" ? 1 : $user->getId();

@@ -16,14 +16,11 @@ $services = new PetProfileServices($dao);
 $controller = new PetProfileController($services, $logservices);
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && !isset($id)) {
-    // Display Own Pet Profiles
     $controller->processCustomerRequest($_SERVER["REQUEST_METHOD"], null);
 } else if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($id)) {
-    // Add Customer Pet Profile
     $controller->processCustomerRequest($_SERVER["REQUEST_METHOD"], null);
 } else if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($id)) {
-    // Edit Customer Pet Profile
     $controller->processCustomerRequest($_SERVER["REQUEST_METHOD"], $id);
 } else if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($id)) {
-    $controller->displayPetProfile($id);
+    $controller->processCustomerRequest($_SERVER["REQUEST_METHOD"], $id);
 }

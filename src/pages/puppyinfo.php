@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title> OHANA PUPPIES </title>
     <meta charset="utf-8">
@@ -10,15 +11,17 @@
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
-        .card{
+        .card {
             max-width: 60vw;
-            max-height:60vh; 
-            background-color:#2f1f18;
+            max-height: 60vh;
+            background-color: #2f1f18;
             border-color: none;
         }
+
         .message {
             margin-top: 10%;
         }
+
         #cardbg {
             width: 100%;
             height: 70vh;
@@ -27,22 +30,42 @@
         #ohanafooter {
             margin-top: 20%;
         }
+
         #links {
             text-decoration: none;
         }
+
         .img-fluid {
             height: 300px;
         }
+
         @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
 </head>
+
 <body style="background-color: #FAF8F0;">
     <main>
         <?php include_once 'Rnavbar.php'; ?>
         <?php
         include_once dirname(__DIR__) . '/models/PetProfile.php';
-        $profile = unserialize($_SESSION["rehoming-profile"]);
+        include_once dirname(__DIR__) . '/config/app-config.php';
+        $profile = isset($_SESSION["rehoming-profile"]) ? unserialize($_SESSION["rehoming-profile"]) : null;
+        if (empty($profile)) {
+            unset($_SESSION["profile"]);
         ?>
+            <script type="text/javascript">
+                const url = "http://<?= DOMAIN_NAME ?>/ownedpets";
+                window.location.href = url;
+            </script>
+        <?php
+        } else if ($profile->getName() != str_replace("%20", " ", $name)) {
+            unset($_SESSION["profile"]);
+        ?>
+            <script type="text/javascript">
+                const url = "http://<?= DOMAIN_NAME ?>/ownedpets";
+                window.location.href = url;
+            </script>
+        <?php } ?>
         <div class="container-fluid">
             <div class="message">
                 <section class="services" id="services">
@@ -103,4 +126,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 </body>
+
 </html>

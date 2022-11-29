@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title> STUD PROFILES </title>
     <meta charset="utf-8">
@@ -13,25 +14,51 @@
         #paragraph {
             font-family: 'Acme', sans-serif;
         }
-        .card-img-top {
-            width:100%; 
-            height:70vh;
+
+        .card-img-overlay {
+            width: 100%;
+            height: 70vh;
+           
         }
+
         #studinfo {
-            max-width: 60vw;
+            max-width: 50vw;
             max-height: 80vh;
             background-color: #2f1f18;
         }
+
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
-            .card-img-top {
-            width:100%; 
-            height:30vh;
-        }
+            .card-img-overlay {
+                width: 100%;
+                height: 30vh;
+            }
         }
     </style>
 </head>
+
 <body style="background-color: #FAF8F0;">
+    <?php
+    include_once dirname(__DIR__) . '/models/PetProfile.php';
+    include_once dirname(__DIR__) . '/config/app-config.php';
+    $profile = isset($_SESSION["stud-profile"]) ? unserialize($_SESSION["stud-profile"]) : null;
+    if (empty($profile)) {
+        unset($_SESSION["stud-profile"]);
+    ?>
+        <script type="text/javascript">
+            const url = "http://<?= DOMAIN_NAME ?>/stud";
+            window.location.href = url;
+        </script>
+    <?php
+    } else if ($profile->getName() != str_replace("%20", " ", $name)) {
+        unset($_SESSION["stud-profile"]);
+    ?>
+        <script type="text/javascript">
+            const url = "http://<?= DOMAIN_NAME ?>/stud";
+            window.location.href = url;
+        </script>
+    <?php } ?>
     <main>
         <?php include_once 'Rnavbar.php'; ?>
         <div class="container-fluid">
@@ -40,24 +67,24 @@
                     <div class="card mx-auto img-fluid" id="studinfo">
                         <img class="card-img-top img-fluid" src="/Ohana/src/images/Ohanapups/cardbg.png" alt="Card image">
                         <div class="card-img-overlay">
-                            <p class="text-center fs-2 fw-bold" id="paragraph"><b> FRENCH BULLDOG NAME </b></p>
+                            <p class="text-center fs-2 fw-bold mb-3" id="paragraph"><b><?php echo $profile->getName(); ?></b></p>
                             <div class="row justify-content">
-                                <div class="col-md-5 mx-auto">
-                                    <img src="/Ohana/src/images/petprofile/studog.png" class="card-img">
+                                <div class="col-md-5 mx-auto mt-5">
+                                    <center> <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="img-fluid" style="width:200px;height:200px"> </center>
                                 </div>
                                 <div class="col-md-5">
-                                    <div class="card-body mt-5"><br>
-                                        <p class="card-text"> <b>BIRTHDAY:</b> insert php code here </p>
-                                        <p class="card-text"> <b>COLOR:</b>
-                                        <p class="card-text"> <b>GENDER:</b> </p>
-                                        <p class="card-text"> <b>GENES:</b> </p>
-                                        <p class="card-text"> <b>PCCI PAPERS:</b> </p>
-                                        <p class="card-text"> <b>SUCCESS RATE:</b> </p>
-                                        <p class="card-text fw-bold mt-3"> <b>Note: Our Adult Frenchies are fully vaccinated. </b></p>
+                                    <div class="card-body"><br>
+                                        <p class="card-text"> <b>BIRTHDAY:</b><?php echo $profile->getBirthdate()->format('M-d-Y'); ?></p>
+                                        <p class="card-text"> <b>COLOR:</b><?php echo $profile->getColor(); ?></b>
+                                        <p class="card-text"> <b>TRAIT:</b><?php echo $profile->getTrait(); ?></p>
+                                        <p class="card-text"> <b>PCCI PAPERS:</b><?php echo ($profile->getPcciStatus() == "REGISTERED") ? "Registered" : "Pending"; ?></p>
+                                        <p class="card-text"> <b>SUCCESS RATE:</b><?php //echo $profile->getSuccessRate(); 
+                                                                                    ?></p>
+                                        <p class="card-text fw-bold mt-3"> <b>NOTE: Our Adult Frenchies are fully vaccinated. </b></p>
                                     </div>
                                     <div id="buttons">
-                                        <a href="/stud"><button type="button" class="btn btn-outline-dark mt-3" style="margin-left:5%"> Go Back</button></a>
-                                        <a href="/select-stud-dog"><button type="button" class="btn mt-3 text-white" style="margin-left:5%; background-color:#c0b65a; "> Book as Stud</button></a>
+                                        <a href="/stud"><button type="button" class="btn btn-outline-dark" style="margin-left:5%"> Go Back</button></a>
+                                        <a href="/select-stud-dog?id=<?php echo $profile->getId(); ?>"><button type="button" class="btn text-white" style="margin-left:5%; background-color:#c0b65a; ">Book as Stud</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -75,4 +102,5 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 </body>
+
 </html>

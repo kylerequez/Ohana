@@ -29,17 +29,6 @@
             ?>
               <form method="POST" class="form-inline" action="/dashboard/chatbot-settings/update" enctype="multipart/form-data">
                 <h2 class="main-title text-center"> CHATBOT SETTINGS </h2>
-                <div class="row">
-                  <div class="col d-flex justify-content-center">
-                    <img src="data:image/jpeg;base64,<?php echo base64_encode($information->getBlob()); ?>" style="width:150px; height:150px;">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col d-flex justify-content-center">
-                    <input type="file" id="myFile" name="filename" style="background-color: #FAF8F0;">
-                    <input type="hidden" class="form-control" name="old_image" value="<?php echo base64_encode($information->getBlob()); ?>">
-                  </div>
-                </div>
                 <div id="cb-settings">
                   <div class="row">
                     <div class="col">

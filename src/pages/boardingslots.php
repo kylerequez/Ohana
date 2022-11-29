@@ -14,17 +14,14 @@
 
     <?php include_once 'stylesheets.php'; ?>
     <style>
-
-        h1 {
-            color:#DB6551; 
-            font-family: 'Acme', sans-serif;
-        }
         .message {
             margin-top: 10%;
         }
 
         #header {
             font-size: 80px;
+            color:#DB6551; 
+            font-family: 'Acme', sans-serif;
         }
         .card {
             width:20rem;
@@ -40,11 +37,8 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-
         <?php include_once 'Rnavbar.php'; ?>
-
         <div class="container-fluid">
-
             <div class="message">
                 <section class="services" id="services">
                     <?php
@@ -62,7 +56,7 @@
                     if (empty($slots)) {
                     ?>
                         <div class="service">
-                            <h1 class="mb-2 text-center fs-4"> THERE IS CURRENTLY NO AVAILABLE SLOTS FOR PET BOARDING</h1>
+                            <h1 class="mb-2 text-center fs-4"> There is currenly no available slots for pet boarding</h1>
                         </div>
                     <?php } else { ?>
                         <div class="service">
@@ -74,10 +68,10 @@
                                     <div class="card m-3 mt-5">
                                         <img src="data:image/jpeg;base64,<?php echo base64_encode($slot->getImage()); ?>" class="card-img-top" alt="<?php echo $slot->getName(); ?> Image" width="250px" height="250px;" style="margin-top:10px;">
                                         <div class="card-body">
-                                            <h5 class="card-title text-center mb-3"> <?php echo $slot->getName(); ?></h5>
+                                            <h5 class="card-title text-center mb-3"> Slot: <?php echo $slot->getName(); ?></h5>
                                             <center>
                                                 <input class="form-check-input mt-3" type="radio" name="inlineRadioOptions" id="<?php echo $slot->getId(); ?>" value="<?php echo $slot->getId(); ?>" />
-                                                <label class="form-check-label mt-3 mb-3" for="payment-method"> SELECT <?php echo $slot->getName(); ?></label>
+                                                <label class="form-check-label mt-3 mb-3" for="payment-method"> Select <?php echo $slot->getName(); ?></label>
                                             </center>
                                         </div>
                                     </div>
@@ -86,16 +80,17 @@
                         </div>
                     <?php } ?>
                 </section>
-                <center> <a href="/select-stud-dog"><button class="btn mt-5 text-light" style="background-color:#DB6551"> Go Back </button> </a></center>
+                <center> <a href="/select-stud-dog"><button class="btn btn-outline-dark mt-5 px-4 py-2 ms-3"> Go Back </button> </a>
+               <button type="submit" class="btn mt-5 text-light px-4 py-2" style="background-color:#DB6551"> Proceed </button></center>
             </div>
         </div>
     </main>
+
     <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 

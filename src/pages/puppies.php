@@ -38,7 +38,23 @@
                 <section class="services" id="services">
                     <?php
                     include_once dirname(__DIR__) . '/models/PetProfile.php';
-                    $profiles = unserialize($_SESSION["rehoming"]);
+
+                    if(!isset($_SESSION["profiles"])){
+                        require dirname(__DIR__) . '/config/db-config.php';
+                        require dirname(__DIR__) . '/database/Database.php';
+                        require dirname(__DIR__) . '/dao/PetProfileDAO.php';
+                        require dirname(__DIR__) . '/services/PetProfileServices.php';
+                        
+                        $database = new Database($servername, $database, $username, $password);
+                        $dao = new PetProfileDAO($database);
+                        $services = new PetProfileServices($dao);
+        
+                        $profiles = $services->getRehomingPets();
+                        $_SESSION["rehoming"] = $profiles;
+                    } else {
+                        $profiles = unserialize($_SESSION["rehoming"]);
+                    }
+
                     if (empty($profiles)) {
                     ?>
                         <div class="service mb-4">

@@ -20,7 +20,11 @@
             margin-top: 10%;
         }
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {}
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {
+            #header {
+            margin-top:50%;
+        }
+        }
     </style>
 </head>
 <body style="background-color: #FAF8F0;">
@@ -103,7 +107,7 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="transactionModalLabel">Transaction #<?php echo $transaction->getId(); ?></h1>
+                                                                <h1 class="modal-title fs-5" id="transactionModalLabel" style="font-family: 'Acme', sans-serif;">Transaction #<?php echo $transaction->getId(); ?></h1>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <?php

@@ -30,7 +30,23 @@
             <h1 id="header" class="text-center mb-2"> Your Pets </h1>
             <?php
             include_once dirname(__DIR__) . '/models/PetProfile.php';
-            $profiles = unserialize($_SESSION["profiles"]);
+
+            if(!isset($_SESSION["profiles"])){
+                require dirname(__DIR__) . '/config/db-config.php';
+                require dirname(__DIR__) . '/database/Database.php';
+                require dirname(__DIR__) . '/dao/PetProfileDAO.php';
+                require dirname(__DIR__) . '/services/PetProfileServices.php';
+                
+                $database = new Database($servername, $database, $username, $password);
+                $dao = new PetProfileDAO($database);
+                $services = new PetProfileServices($dao);
+
+                $profiles = $services->getUserPetProfile($user->getId());
+                $_SESSION["profiles"] = $profiles;
+            } else {
+                $profiles = unserialize($_SESSION["profiles"]);
+            }
+            
             if (empty($profiles)) {
             ?>
                 <div class="form__row text-center mb-5">

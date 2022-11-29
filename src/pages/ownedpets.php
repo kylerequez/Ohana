@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title> OWNED PETS </title>
   <meta charset="utf-8">
@@ -14,26 +15,39 @@
       margin-top: 15%;
       font-size: 80px;
     }
+
     #ohanafooter {
       margin-top: 10%;
     }
+
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
     @media screen and (min-width: 360px) and (max-width: 929.98px) {}
   </style>
 </head>
+
 <body style="background-color: #FAF8F0;">
   <?php
+  include_once dirname(__DIR__) . '/models/Order.php';
   include_once dirname(__DIR__) . '/models/PetProfile.php';
-  $profile = unserialize($_SESSION["profile"]);
-  if ($profile->getName() != str_replace("%20", " ", $name)) {
+  include_once dirname(__DIR__) . '/config/app-config.php';
+  $profile = isset($_SESSION["profile"]) ? unserialize($_SESSION["profile"]) : null;
+  if (empty($profile)) {
     unset($_SESSION["profile"]);
   ?>
     <script type="text/javascript">
-      window.location.href = 'http://localhost/ownedpets';
+      const url = "http://<?= DOMAIN_NAME ?>/ownedpets";
+      window.location.href = url;
     </script>
   <?php
-  }
+  } else if ($profile->getName() != str_replace("%20", " ", $name)) {
+    unset($_SESSION["profile"]);
   ?>
+    <script type="text/javascript">
+      const url = "http://<?= DOMAIN_NAME ?>/ownedpets";
+      window.location.href = url;
+    </script>
+  <?php } ?>
   <main>
     <?php include_once 'Rnavbar.php'; ?>
     <div class="container-fluid">
@@ -106,7 +120,7 @@
               </div>
               <div class="d-flex justify-content-end pt-2" id="button-group" style="margin-right:10%">
                 <a href="/ownedpets" type="reset" class="btn btn-outline-dark mt-3">Go Back</a>
-                <a href="/ownedpets/delete/<?php echo $profile->getId(); ?>"><button id="deletebtn" class="btn btn-danger me-4 mt-3" data-bs-toggle="modal" data-bs-target="#editModal">Delete</button> </a>
+                <a href="/ownedpets/delete/<?php echo $profile->getId(); ?>" onclick="return confirm('Are you sure you want to delete this pet profile?');"><button id="deletebtn" class="btn btn-danger me-4 mt-3">Delete</button></a>
                 <button type="submit" id="submitbtn" class="btn ms-2 mt-3" data-bs-toggle="modal" data-bs-target="#editModal" style="background-color: #c0b65a; color:white; margin-left:20px;">Edit</button>
               </div>
               <form method="POST" action="/ownedpets/update/<?php echo $profile->getId(); ?>" enctype="multipart/form-data">
@@ -201,4 +215,5 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 </body>
+
 </html>

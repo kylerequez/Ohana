@@ -14,7 +14,6 @@ $services = new AppointmentServices($dao);
 $logservices = new LogServices($logdao);
 $controller = new AppointmentController($services, $logservices);
 
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && $type == "VISIT") {
     $controller->processVisitRequest($_SERVER["REQUEST_METHOD"]);
 }

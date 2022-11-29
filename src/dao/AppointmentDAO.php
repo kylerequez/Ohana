@@ -26,7 +26,7 @@ class AppointmentDAO
                         a.appointment_status
                     FROM ohana_appointments a, ohana_account b
                     WHERE 
-                    DATEDIFF(a.appointment_start, :current_date) = 3
+                    DATEDIFF(a.appointment_start, :current_date) = 2
                     AND a.appointment_status = 'PENDING'
                     AND a.account_id = b.account_id;";
 

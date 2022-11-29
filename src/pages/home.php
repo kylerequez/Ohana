@@ -144,6 +144,7 @@
             name = info.name;
             intro = info.intro;
             noResponse = info.noResponse;
+            console.log(info)
             createChatBot(host = '/chatbot/responses/get', botLogo = "/Ohana/src/images/Chatbot/bot-logo.png",
                 title = name, welcomeMessage = intro, inactiveMsg = noResponse, theme = "orange")
         });

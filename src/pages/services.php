@@ -61,7 +61,7 @@
                             </a>
                         </div>
                         <div class="col-lg-6">
-                            <a href="/stud" id="links">
+                            <a href="/stud/get" id="links">
                                 <img src="/Ohana/src/images/services/2.png" class="img-fluid" role="img" focusable="false"></img>
                                 <center><button type="button" class="btn btn-outline-info"> STUD SERVICE </button></center>
                                 <p class="mt-4" id="paragraph" style="color:#7d605c;"> Want to produce quality and compact french bulldogs? Choose from any of our male frenchies ready for mating. </p>

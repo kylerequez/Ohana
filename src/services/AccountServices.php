@@ -114,12 +114,6 @@ class AccountServices
         return true;
     }
 
-    public function changePassword(string $id, array $data): bool
-    {
-        print_r($data);
-        return true;
-    }
-
     public function loginRequest(array $data): bool
     {
         $email = trim($data["email"]);
@@ -148,9 +142,9 @@ class AccountServices
         $mail->Port = 465;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->SMTPAuth = true;
-        $mail->Username = 'ohana.kennel.business@gmail.com';
-        $mail->Password = 'ctdlqnibzafgmwyj';
-        $mail->setFrom('ohana.kennel.business@gmail.com');
+        $mail->Username = EMAIL_USERNAME;
+        $mail->Password = EMAIL_KEY;
+        $mail->setFrom(EMAIL_USERNAME);
         $mail->addAddress($email);
         $mail->Subject = 'Ohana Account Login OTP';
         $otp = rand(100000, 999999);
@@ -191,9 +185,9 @@ class AccountServices
         $mail->Port = 465;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->SMTPAuth = true;
-        $mail->Username = 'ohana.kennel.business@gmail.com';
-        $mail->Password = 'ctdlqnibzafgmwyj';
-        $mail->setFrom('ohana.kennel.business@gmail.com');
+        $mail->Username = EMAIL_USERNAME;
+        $mail->Password = EMAIL_KEY;
+        $mail->setFrom(EMAIL_USERNAME);
         $mail->addAddress($email);
         $mail->Subject = 'Ohana Account Login OTP';
         $otp = $_SESSION["userOtp"];
@@ -252,13 +246,13 @@ class AccountServices
         $mail->Port = 465;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->SMTPAuth = true;
-        $mail->Username = 'ohana.kennel.business@gmail.com';
-        $mail->Password = 'ctdlqnibzafgmwyj';
-        $mail->setFrom('ohana.kennel.business@gmail.com');
+        $mail->Username = EMAIL_USERNAME;
+        $mail->Password = EMAIL_KEY;
+        $mail->setFrom(EMAIL_USERNAME);
         $mail->addAddress($email);
         $mail->Subject = 'Ohana Account Password Reset';
         $token = uniqid();
-        $mail->Body = 'Your Ohana Account password reset link: <a href="" . DOMAIN_NAME . "/forgot-password/change/' . $token . '">Click Here</a>';
+        $mail->Body = 'Your Ohana Account password reset link: <a href="' . DOMAIN_NAME . '/forgot-password/change/' . $token . '">Click Here</a>';
         $mail->AltBody = 'Reset Password Link for Ohana Account';
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in sending the reset link to your mail.";
@@ -288,13 +282,13 @@ class AccountServices
         $mail->Port = 465;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->SMTPAuth = true;
-        $mail->Username = 'ohana.kennel.business@gmail.com';
-        $mail->Password = 'ctdlqnibzafgmwyj';
-        $mail->setFrom('ohana.kennel.business@gmail.com');
+        $mail->Username = EMAIL_USERNAME;
+        $mail->Password = EMAIL_KEY;
+        $mail->setFrom(EMAIL_USERNAME);
         $mail->addAddress($email);
         $mail->Subject = 'Ohana Account Password Reset';
         $token = $_SESSION["token"];
-        $mail->Body = 'Your Ohana Account password reset link: <a href="" . DOMAIN_NAME . "/forgot-password/change/' . $token . '">Click Here</a>';
+        $mail->Body = 'Your Ohana Account password reset link: <a href="' . DOMAIN_NAME . '/forgot-password/change/' . $token . '">Click Here</a>';
         $mail->AltBody = 'Reset Password Link for Ohana Account';
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in resending the reset link to your mail.";
@@ -367,9 +361,9 @@ class AccountServices
         $mail->Port = 465;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->SMTPAuth = true;
-        $mail->Username = 'ohana.kennel.business@gmail.com';
-        $mail->Password = 'ctdlqnibzafgmwyj';
-        $mail->setFrom('ohana.kennel.business@gmail.com');
+        $mail->Username = EMAIL_USERNAME;
+        $mail->Password = EMAIL_KEY;
+        $mail->setFrom(EMAIL_USERNAME);
         $mail->addAddress($email);
         $mail->Subject = 'Ohana Account Verification OTP';
         $otp = rand(100000, 999999);
@@ -429,9 +423,9 @@ class AccountServices
         $mail->Port = 465;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->SMTPAuth = true;
-        $mail->Username = 'ohana.kennel.business@gmail.com';
-        $mail->Password = 'ctdlqnibzafgmwyj';
-        $mail->setFrom('ohana.kennel.business@gmail.com');
+        $mail->Username = EMAIL_USERNAME;
+        $mail->Password = EMAIL_KEY;
+        $mail->setFrom(EMAIL_USERNAME);
         $mail->addAddress($email);
         $mail->Subject = 'Ohana Account Verification OTP';
         $otp = $_SESSION["userOtp"];
