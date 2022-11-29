@@ -1,21 +1,25 @@
 <head>
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
 		.container {
 			text-align: justify;
-			font-family: 'Playfair Display', serif;
+			font-family: "DM Sans", sans-serif;
 		}
+
 		p {
 			font-size: 14px;
 			margin-top: 10px;
 			margin-left: 5px;
 			margin-right: 5px;
 		}
+
 		ul {
 			font-size: 14px;
 			margin-left: 20px;
 			margin-right: 5px;
 		}
+
 		h1,
 		h3 {
 			font-weight: bold;
@@ -23,10 +27,11 @@
 		}
 	</style>
 </head>
+
 <body>
 	<div class="container">
-		<h1 class="text-center" style="font-size:40px;">Privacy Policy for Ohana Kennel PH</h1><br>
-		<p>At OhanaKennelPH, accessible from OhanaKennelPH.com, one of our main priorities is the privacy of our visitors.
+		<h1 class="text-center" style="font-size:40px;">Data Privacy Policy</h1><br>
+		<p>At OhanaKennelPH, one of our main priorities is the privacy of our visitors.
 			This Privacy Policy document contains types of information that is collected and recorded by OhanaKennelPH and how we use it.</p>
 		<p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p>
 		<p>This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the
@@ -63,18 +68,18 @@
 		<h3>CCPA Privacy Rights</h3>
 		<h3>(Do Not Sell My Personal Information)</h3>
 		<p>Under the CCPA, among other rights, California consumers have the right to:</p>
-		<p>Request that a business that collects a consumer's personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.</p>
-		<p>Request that a business delete any personal data about the consumer that a business has collected.</p>
-		<p>Request that a business that sells a consumer's personal data, not sell the consumer's personal data.</p>
-		<p>If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.</p>
+		<p>●Request that a business that collects a consumer's personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.</p>
+		<p>●Request that a business delete any personal data about the consumer that a business has collected.</p>
+		<p>●Request that a business that sells a consumer's personal data, not sell the consumer's personal data.</p>
+		<p>●If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.</p>
 		<h3>GDPR Data Protection Rights</h3>
 		<p>We would like to make sure you are fully aware of all of your data protection rights. Every user is entitled to the following:</p>
-		<p>The right to access – You have the right to request copies of your personal data. We may charge you a small fee for this service.</p>
-		<p>The right to rectification – You have the right to request that we correct any information you believe is inaccurate. You also have the right to request that we complete the information you believe is incomplete.</p>
-		<p>The right to erasure – You have the right to request that we erase your personal data, under certain conditions.</p>
-		<p>The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions.</p>
-		<p>The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions.</p>
-		<p>The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.</p>
+		<p>●The right to access – You have the right to request copies of your personal data. We may charge you a small fee for this service.</p>
+		<p>●The right to rectification – You have the right to request that we correct any information you believe is inaccurate. You also have the right to request that we complete the information you believe is incomplete.</p>
+		<p>●The right to erasure – You have the right to request that we erase your personal data, under certain conditions.</p>
+		<p>●The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions.</p>
+		<p>●The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions.</p>
+		<p>●The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.</p>
 		<p>If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.</p>
 		<h3>Children's Information</h3>
 		<p>Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe,

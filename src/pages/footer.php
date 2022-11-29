@@ -1,4 +1,7 @@
 <style>
+  .container-fluid {
+    font-family: "DM Sans", sans-serif;
+  }
   @media screen and (min-width: 360px) and (max-width: 929.98px) {
     #paragraph {
       font-size: 12px;

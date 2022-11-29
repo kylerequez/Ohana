@@ -3,7 +3,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
         .container {
             text-align: justify;
-            font-family: 'Playfair Display', serif;
+            font-family: "DM Sans", sans-serif;
         }
         p {
             font-size: 14px;

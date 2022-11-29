@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="sign-up_form">
+
 <head>
   <title> CONFIRM LOGIN </title>
   <meta charset="utf-8">
@@ -11,12 +12,15 @@
   <?php include_once 'stylesheets.php'; ?>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
     #cnfrmtitle {
       font-size: 80px;
     }
+
     #ohanafooter {
       margin-top: 5%;
     }
+
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
       #cnfrmtitle {
         font-size: 45px;
@@ -49,6 +53,7 @@
     }
   </style>
 </head>
+
 <body style="background-color: #FAF8F0;">
   <?php include_once 'navbar.php'; ?>
   <div class="container-fluid">
@@ -57,8 +62,8 @@
         <div class="sign-up__content">
           <header class="sign-up__header">
             <h1 class="sign-up__title" id="cnfrmtitle"> Welcome Back! </h1>
-            <p class="mt-2" id="cnfrmcontent" style="color:c0b65a;"> Please enter the OTP sent to your email to proceed. </p>
-           
+            <p class="mt-2 mb-4" id="cnfrmcontent" style="color:c0b65a;"> Please enter the OTP sent to your email to proceed. </p>
+
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
               <div class="alert alert-warning mt-3" role="alert">
                 <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
@@ -75,8 +80,7 @@
                 <div class="input__container">
                   <label class="input__label" for="confirm-password"> <b>Enter OTP <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
                                                                                     unset($_SESSION["msg"]); ?></b> </label>
-                  <div id="otp" class="inputs d-flex flex-row justify-content-center mt-3">
-
+                  <div id="otp" class="inputs d-flex flex-row justify-content-center mt-3 mb-3">
                     <input class="m-2 text-center form-control rounded" type="text" name="otpFirst" id="otpFirst" maxlength="1" />
                     <input class="m-2 text-center form-control rounded" type="text" name="otpSecond" id="otpSecond" maxlength="1" />
                     <input class="m-2 text-center form-control rounded" type="text" name="otpThird" id="otpThird" maxlength="1" />

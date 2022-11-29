@@ -30,31 +30,31 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="/Ohana/src/images/sliders/aboutus.png" class="d-block w-100 img-fluid" alt="...">
+                            <img src="/Ohana/src/images/sliders/aboutus.png" class="d-block w-100 img-fluid">
                             <div class="carousel-caption d-none d-md-block">
                                 <h1 class="text-light" style="font-size:70px;font-family: 'Acme', sans-serif;"> About Us </h1>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="/Ohana/src/images/sliders/visitslide.png" class="d-block w-100 img-fluid" alt="...">
+                            <img src="/Ohana/src/images/sliders/visitslide.png" class="d-block w-100 img-fluid">
                             <div class="carousel-caption d-none d-md-block">
                                 <h1 class="text-light" style="font-size:70px;font-family: 'Acme', sans-serif;"> Kennel Visit</h1>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="/Ohana/src/images/sliders/studslide.png" class="d-block w-100 img-fluid" alt="...">
+                            <img src="/Ohana/src/images/sliders/studslide.png" class="d-block w-100 img-fluid">
                             <div class="carousel-caption d-none d-md-block">
                                 <h1 class="text-light" style="font-size:70px;font-family: 'Acme', sans-serif;"> Stud Service</h1>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="/Ohana/src/images/sliders/rehomeslide.png" class="d-block w-100 img-fluid" alt="...">
+                            <img src="/Ohana/src/images/sliders/rehomeslide.png" class="d-block w-100 img-fluid">
                             <div class="carousel-caption d-none d-md-block">
                                 <h1 class="text-light" style="font-size:70px;font-family: 'Acme', sans-serif;"> Pet Rehoming </h1>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="/Ohana/src/images/sliders/contactslide.png" class="d-block w-100 img-fluid" alt="...">
+                            <img src="/Ohana/src/images/sliders/contactslide.png" class="d-block w-100 img-fluid">
                             <div class="carousel-caption d-none d-md-block">
                             </div>
                         </div>

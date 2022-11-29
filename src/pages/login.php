@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
   <?php include_once 'stylesheets.php'; ?>
   <style>
+    body {
+      font-family: "DM Sans", sans-serif;
+    }
     #ohanafooter {
       margin-top: 8%;
     }

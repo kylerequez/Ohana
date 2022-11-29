@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +14,7 @@
   <link rel="stylesheet" href="/Ohana/src/dashboard/css/adminpages.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" charset="UTF-8"> </script>
 </head>
+
 <body>
   <div class="layer"> </div>
   <div class="page-flex">
@@ -28,24 +30,24 @@
             if (!empty($information)) {
             ?>
               <form method="POST" class="form-inline" action="/dashboard/chatbot-settings/update" enctype="multipart/form-data">
-                <h2 class="main-title text-center"> CHATBOT SETTINGS </h2>
+                <h2 class="main-title text-center mt-5"> CHATBOT SETTINGS </h2>
                 <div id="cb-settings">
                   <div class="row">
                     <div class="col">
-                      <label class="mb-2 mt-4" for="name" style="font-size:20px;display:block"> <b>CHATBOT NAME:</b> </label>
+                      <label class="mb-2 mt-4 fs-5" for="name" style="display:block"> <b>CHATBOT NAME:</b> </label>
                       <input class="form-control" type="text" id="name" value="<?php echo $information->getName(); ?>" name="name" style="background:#eed1c2;">
                     </div>
                   </div>
                   <div class="row">
                     <div class="col">
-                      <label class="mb-2 mt-4" for="introduction" style="font-size:20px;display:block"> <b>CHATBOT GREETING:</b> </label>
-                      <input class="form-control" type="text" id="introduction" value="<?php echo $information->getIntroduction(); ?>" name="introduction"  style="background:#eed1c2; ">
+                      <label class="mb-2 mt-4 fs-5" for="introduction" style="display:block"> <b>CHATBOT GREETING:</b> </label>
+                      <input class="form-control" type="text" id="introduction" value="<?php echo $information->getIntroduction(); ?>" name="introduction" style="background:#eed1c2; ">
                     </div>
                   </div>
                   <div class="row">
                     <div class="col">
-                      <label class="mb-2 mt-4" for="noResponse" style="font-size:20px;display:block"> <b>CHATBOT NO REPLY:</b> </label>
-                      <input class="form-control" type="text" id="noResponse" value="<?php echo $information->getNoResponse(); ?>" name="noResponse"  style="background:#eed1c2;">
+                      <label class="mb-2 mt-4 fs-5" for="noResponse" style="display:block"> <b>CHATBOT NO REPLY:</b> </label>
+                      <input class="form-control" type="text" id="noResponse" value="<?php echo $information->getNoResponse(); ?>" name="noResponse" style="background:#eed1c2;">
                     </div>
                   </div>
                   <div class="row d-flex justify-content-center">
