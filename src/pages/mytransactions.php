@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title> USER PROFILE </title>
+    <title> USER TRANSACTIONS </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
@@ -58,12 +58,12 @@
                                                 <p class="lead fw-normal mb-2">Status</p>
                                             </div>
                                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#orderModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:green"><i class="uil uil-eye"></i> </a>
-                                                &nbsp;&nbsp; &nbsp;
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#orderModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#c0b65a"><i class="uil uil-eye fs-3"></i> </a>
+                                               
                                                 <?php
                                                 if ($transaction->getStatus() != "COMPLETED") {
                                                 ?>
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#uploadModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#db6551"><i class="uil uil-upload-alt"></i> </a>
+                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#uploadModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#db6551"><i class="uil uil-upload-alt fs-3"></i> </a>
                                                 <?php
                                                 }
                                                 ?>
@@ -167,7 +167,7 @@
             </center>
         </div>
     </main>
-    <div id="ohanafooter">
+    <div id="ohanafooter" class="fixed-bottom">
         <?php include_once 'footer.php'; ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">

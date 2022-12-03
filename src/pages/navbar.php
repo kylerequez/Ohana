@@ -20,7 +20,7 @@
         margin-top: -20%;
       }
       .nav-item {
-        margin-left: 40%;
+        margin-left: 20%;
       }
       #login-btn {
         background-color: #db6551;
@@ -37,6 +37,7 @@
     }
   </style>
 </head>
+
 <nav class="navbar navbar-expand-md fixed-top" id="navbar-spy">
   <div class="container-fluid">
     <div class="logo">
@@ -60,7 +61,7 @@
           <a class="nav-link" href="/#contact">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="btnLogin" href="/login" name="btnLogin" id="login-btn"> Login <i class='fa-solid fa-right-to-bracket'> </i></a>
+          <a class="btnLogin" href="/login" name="btnLogin" id="login-btn"> Login </a>
         </li>
       </ul>
     </div>

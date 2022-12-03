@@ -28,15 +28,10 @@
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <h2 class="main-title text-center mt-3"> STAFF ACCOUNTS </h2>
+          <h2 class="main-title text-center mt-3"> Staff Accounts</h2>
         </div>
         <div class="users-table table-wrapper">
-          <div class="search-wrapper">
-            <i data-feather="search" aria-hidden="true"></i>
-            <input type="text" placeholder=" Search User Account">
-            <button type="filter" style="color:white"> FILTER </button>
-            <button type="sort" style="color:white"> SORT </button>
-          </div>
+       
           <?php
           if ($user->getType() == "ADMINISTRATOR") {
           ?>
@@ -86,8 +81,8 @@
                     if ($user->getType() == "ADMINISTRATOR") {
                     ?>
                       <td>
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $staff->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button></a>
-                        <a href="/dashboard/staff/delete/<?php echo $staff->getId(); ?>" type="delete" style="color:red; font-size: 25px;"><button ><i class="uil uil-trash-alt"></i></button></a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $staff->getId(); ?>"><button class="edit-btn transparent-btn fs-4" type="edit" style="color:#C0B65A; margin-right: 15px;"> <i class="uil uil-edit"> </i> </button></a>
+                        <a href="/dashboard/staff/delete/<?php echo $staff->getId(); ?>" type="delete" style="color:red;background-color:transparent"><button ><i class="uil uil-trash-alt fs-4"></i></button></a>
                       </td>
                     <?php
                     }

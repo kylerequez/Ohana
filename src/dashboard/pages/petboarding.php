@@ -25,7 +25,7 @@
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <h2 class="main-title text-center mt-3"> PET BOARDING SLOTS </h2>
+          <h2 class="main-title text-center mt-3"> Pet Boarding Slots </h2>
         </div>
         <div class="users-table table-wrapper">
           <!-- <div class="search-wrapper">

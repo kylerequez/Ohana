@@ -30,7 +30,7 @@
             if (!empty($information)) {
             ?>
               <form method="POST" class="form-inline" action="/dashboard/chatbot-settings/update" enctype="multipart/form-data">
-                <h2 class="main-title text-center mt-5"> CHATBOT SETTINGS </h2>
+                <h2 class="main-title text-center mt-5"> Chatbot Settings </h2>
                 <div id="cb-settings">
                   <div class="row">
                     <div class="col">

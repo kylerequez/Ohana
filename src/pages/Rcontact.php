@@ -114,7 +114,7 @@
                         <input id="name" name="name" type="text" placeholder="FULL NAME">
                         <input id="email" name="email" type="text" placeholder="E-MAIL ADDRESS ">
                         <textarea id="message" name="message" type="text" placeholder="ENTER MESSAGE"></textarea>
-                        <div class="btn-Send" name="btn-Send">
+                        <div class="btn-Send mt-4 ms-3" name="btn-Send">
                             <button type="submit"><span> Send Message </span></button>
                         </div>
                     </form>
@@ -124,7 +124,7 @@
         <section class="maps mb-5">
             <div class="message" id="find">
                 <h1 id="find" class="mb-5 text-center"> You can find us here </h1>
-            </div><br>
+            </div>
             <center>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1623.2871555101196!2d121.00392295489537!3d14.607660960531538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b61dfbade45d%3A0x87e58f7a0f4c89c3!2s1026%20Mindoro%2C%20Sampaloc%2C%20Maynila%2C%201008%20Kalakhang%20Maynila!5e0!3m2!1sen!2sph!4v1665068149424!5m2!1sen!2sph" style="border:0;" id="address" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
@@ -136,6 +136,20 @@
     <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
+    <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+        <div class="toast-container top-0 start-0 ms-2" style="margin-top:8%;">
+            <div id="liveToast" class="toast show d-flex" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="4000">
+                <div class="toast-body fs-6" id="toastbody" style="color:#db6551">
+                    <p class="fs-5"> <?php echo $_SESSION["msg"] ?> </p>
+                </div>
+                <button type="button" class="btn-close m-2" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    <?php
+    }
+    unset($_SESSION["msg"]);
+    ?>
+
     <script src="/Ohana/src/js/chatbot-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>

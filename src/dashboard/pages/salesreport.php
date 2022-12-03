@@ -47,6 +47,10 @@
       background: white;
       margin: 25px;
     }
+
+    #chartcontainer {
+      margin-top: -5%;
+    }
   </style>
 </head>
 
@@ -57,16 +61,14 @@
     <div class="main-wrapper">
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
       <main class="main users chart-page" id="skip-target">
-        <div class="container-fluid">
-          <div class="container">
-            <h2 class="main-title text-center mt-3"> BUSINESS SALES REPORT </h2>
-          </div>
-          <div class="container d-flex justify-content-center">
+        <div class="container-fluid"> 
+          <h2 class="main-title text-center mt-5"> Business Sales Report </h2>
+          <div class="container d-flex justify-content-center" id="chartcontainer">
             <div class="chartCard ">
               <div class="chartBox">
                 <canvas id="myChart"></canvas>
               </div>
-              <div class="chartBox" style="margin-left:20px; margin-right:20px;">
+              <div class="chartBox mx-3">
                 <canvas id="myChartLine"></canvas>
               </div>
               <div class="chartBox">

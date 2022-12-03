@@ -32,11 +32,6 @@
             <i data-feather="search" aria-hidden="true"></i>
             <input type="text" placeholder=" Search Dog">
           </div>
-          <div class="createstaff-wrapper">
-            <a class="create-staff-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white">
-                <i data-feather="plus" aria-hidden="true"></i>Add Pet </button></a>
-          </div>
-          <br>
           <?php
           include_once dirname(__DIR__) . '/../models/PetProfile.php';
           $profiles = unserialize($_SESSION["c-profiles"]);

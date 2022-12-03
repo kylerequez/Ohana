@@ -11,6 +11,9 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+        #ohanafooter {
+            margin-top:10%;
+        }
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
             #header {
                 font-size: 40px;

@@ -66,9 +66,9 @@
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <h2 class="main-title text-center mt-3">APPOINTMENTS</h2>
+          <h2 class="main-title text-center mt-3">Appointments</h2>
         </div>
-        <div class="container py-5" id="page-container" style="margin-top: 0%">
+        <div class="container py-5" id="page-container">
           <div class="row">
             <div class="col-md-9">
               <div id="calendar"></div>

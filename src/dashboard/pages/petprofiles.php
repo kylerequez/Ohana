@@ -25,17 +25,14 @@
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <h2 class="main-title text-center mt-3">PET PROFILES</h2>
+          <h2 class="main-title text-center mt-3">Ohana Pet Profiles</h2>
         </div>
         <div class="users-table table-wrapper">
           <div class="search-wrapper">
-            <i data-feather="search" aria-hidden="true"></i>
-            <input type="text" placeholder=" Search Dog">
           </div>
           <div class="createstaff-wrapper">
             <a class="create-staff-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white">
-                <i data-feather="plus" aria-hidden="true"></i>
-                Add Pet </button></a>
+                <i data-feather="plus" aria-hidden="true"></i>Add Pet </button></a>
           </div>
           <br>
           <?php

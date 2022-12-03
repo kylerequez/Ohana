@@ -52,7 +52,7 @@
         <main class="main users chart-page" id="skip-target"><br>
           <div class="container-fluid">
             <div class="container">
-              <h2 class="main-title text-center"> WELCOME BACK ADMIN!</h2>
+              <h2 class="main-title text-center"> Welcome Back Admin! </h2>
 
               <div class="row stat-cards d-flex justify-content-center mt-5">
 
@@ -64,10 +64,7 @@
                       </div>
                       <div class="stat-cards-info">
                         <p class="stat-cards-info__num"> Total: 1</p>
-                        <p class="stat-cards-info__title"> Pet Profiles </p>
-                        <p class="stat-cards-info__progress">
-
-                        </p>
+                        <p class="stat-cards-info__title"> Ohana Pet Profiles </p>
                       </div>
                     </article>
                   </a>
@@ -80,10 +77,7 @@
                       </div>
                       <div class="stat-cards-info">
                         <p class="stat-cards-info__num"> Total: 12</p>
-                        <p class="stat-cards-info__title"> Stud Profiles </p>
-                        <p class="stat-cards-info__progress">
-
-                        </p>
+                        <p class="stat-cards-info__title"> Customer Pet Profiles </p>
                       </div>
                     </article>
                   </a>
@@ -98,9 +92,6 @@
                       <div class="stat-cards-info">
                         <p class="stat-cards-info__num"> Total:1</p>
                         <p class="stat-cards-info__title"> Pet Boarding Slots </p>
-                        <p class="stat-cards-info__progress">
-
-                        </p>
                       </div>
                     </article>
                   </a>
@@ -108,7 +99,6 @@
               </div>
 
               <div class="row stat-cards d-flex justify-content-center mt-5">
-
                 <div class="col-md-6 col-xl-3">
                   <a href="#">
                     <article class="stat-cards-item">
@@ -118,9 +108,6 @@
                       <div class="stat-cards-info">
                         <p class="stat-cards-info__num"> Total:12</p>
                         <p class="stat-cards-info__title"> Registered Users </p>
-                        <p class="stat-cards-info__progress">
-
-                        </p>
                       </div>
                     </article>
                   </a>

@@ -15,6 +15,7 @@
 
     #cnfrmtitle {
       font-size: 80px;
+      color:#db6551;
     }
 
     #ohanafooter {

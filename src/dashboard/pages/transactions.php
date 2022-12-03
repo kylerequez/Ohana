@@ -22,13 +22,9 @@
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <h2 class="main-title text-center mt-3"> CUSTOMER TRANSACTIONS </h2>
+          <h2 class="main-title text-center mt-3"> Customer Transactions</h2>
         </div>
-        <div class="users-table table-wrapper">
-          <div class="search-wrapper">
-            <i data-feather="search" aria-hidden="true"></i>
-            <input type="text" placeholder=" Search User Account">
-          </div>
+        <div class="users-table table-wrapper"> 
           <div class="createstaff-wrapper">
             <button type="create"><i data-feather="bar-chart" aria-hidden="true"></i><a class="generate-sales-btn" href="/dashboard/sales"> Generate Sales Report </a></button>
             <button type="create"><i data-feather="file-text" aria-hidden="true"></i><a class="export-btn" href="##"> Export Report </a></button>

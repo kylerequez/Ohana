@@ -20,6 +20,20 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css" integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous">
 
+    <style>
+        #toastbody {
+            color:#db6551;
+            width:500px;
+        }
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {
+            #sectionheaders {
+                color: #db6551;
+                font-size: 40px;
+                font-family: 'Acme', sans-serif;
+            }
+        }
+    </style>
+
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-smooth-scroll="true" style="background-color: #FAF8F0;">
@@ -41,19 +55,19 @@
                 <div class="row text-center ms-4 me-4">
                     <div class="col-lg-4">
                         <img src="/Ohana/src/images/services/1.png" class="img-fluid" role="img" focusable="false"></img>
-                        <h2 class="p-4" style="color:#7d605c;"> Pet Rehoming </h2>
+                        <h2 class="p-4" style="color:#7d605c;font-family: 'Acme', sans-serif;"> Pet Rehoming </h2>
                         <p class="p-2" style="color:#7d605c;"> Want to add another member to your family? We have the cutest and most loving frenchies waiting for you. </p>
                     </div>
                     <div class="col-lg-4">
                         <div class="stud">
                             <img src="/Ohana/src/images/services/2.png" class="img-fluid" role="img" focusable="false"></img>
-                            <h2 class="p-4" style="color:#7d605c;"> Stud Service </h2>
+                            <h2 class="p-4" style="color:#7d605c;font-family: 'Acme', sans-serif;"> Stud Service </h2>
                             <p class="p-2" style="color:#7d605c;"> Want to produce quality and compact french bulldogs? Choose from any of our male frenchies ready for mating. </p>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <img src="/Ohana/src/images/services/3.png" class="img-fluid" role="img" focusable="false"></img>
-                        <h2 class="p-4" style="color:#7d605c;"> Pet Boarding </h2>
+                        <h2 class="p-4" style="color:#7d605c;font-family: 'Acme', sans-serif;   "> Pet Boarding </h2>
                         <p class="p-2" style="color:#7d605c;"> Want to increase chances of your pet fertility after stud? We offer pet boarding to prevent your pet from getting stressed. </p>
                     </div>
                 </div>
@@ -113,7 +127,7 @@
                         <input id="name" name="name" type="text" placeholder="FULL NAME">
                         <input id="email" name="email" type="text" placeholder="E-MAIL ADDRESS ">
                         <textarea id="message" name="message" type="text" placeholder="ENTER MESSAGE"></textarea>
-                        <div class="btn-Send" name="btn-Send">
+                        <div class="btn-Send mt-4 ms-3" name="btn-Send">
                             <button type="submit"><span> Send Message </span></button>
                         </div>
                     </form>
@@ -122,7 +136,21 @@
         </div>
         <div id="chat-container"> </div>
     </main>
-    <?php include_once dirname(__DIR__) . '/Ohana/src/pages/footer.php'; ?>
+    <div class="mt-5"> <?php include_once dirname(__DIR__) . '/Ohana/src/pages/footer.php'; ?> </div>
+
+    <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+        <div class="toast-container top-0 start-0 ms-2" style="margin-top:8%;">
+            <div id="liveToast" class="toast show d-flex" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="4000">
+                <div class="toast-body fs-6" id="toastbody">
+                    <?php echo $_SESSION["msg"] ?>
+                </div>
+                <button type="button" class="btn-close m-2" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    <?php
+    }
+    unset($_SESSION["msg"]);
+    ?>
 
     <script src="/Ohana/src/js/chatbot-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -142,6 +170,7 @@
                 title = name, welcomeMessage = intro, inactiveMsg = noResponse, theme = "orange")
         });
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 

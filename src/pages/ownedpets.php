@@ -15,7 +15,16 @@
       margin-top: 15%;
       font-size: 80px;
     }
-
+    #editcard   {
+      max-width: 65   vw; max-height:80vh; 
+      border-style: solid; 
+      border-color: #c0b65a; 
+      border-width:5px;
+    }
+    #picture {
+      height:60vh;
+      width:60vh;
+    }
     #ohanafooter {
       margin-top: 10%;
     }
@@ -53,10 +62,10 @@
     <div class="container-fluid">
       <div class="container h-90">
         <h1 class="text-center mb-5" id="header" style="color:#DB6551; font-family: 'Acme', sans-serif; "> Pet Profile </h1><br>
-        <div class="card mx-auto" style="max-width: 68vw; max-height:80vh; border-style: solid; border-color: #c0b65a; border-width:5px">
+        <div class="card mx-auto" id="editcard">
           <div class="row g-0">
             <div class="col-md-6 d-none d-md-block">
-              <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="img-fluid p-5" style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height: 60vh; " />
+              <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="img-fluid p-5" id="picture"/>
             </div>
             <div class="col-md-6">
               <div class="card-body p-md-5 text-black">

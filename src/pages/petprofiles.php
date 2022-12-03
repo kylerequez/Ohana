@@ -12,6 +12,9 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
+        #profilecard {
+            width: 20rem;
+        }
         #ohanafooter {
             margin-top: 10%;
         }
@@ -19,6 +22,10 @@
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
             #header {
                 font-size: 40px;
+                margin-top:30%;
+            }
+            .card {
+                margin-top:-20px;
             }
         }
     </style>
@@ -70,7 +77,7 @@
                     <div class="container-fluid d-flex justify-content-center">
                         <div class="row d-flex justify-content-center">
                             <?php foreach ($profiles as $profile) { ?>
-                                <div class="card m-3 mb-5" style="width: 20rem;">
+                                <div class="card m-3 mb-5" id="profilecard">
                                     <a href="/ownedpets/profile/<?php echo $profile->getId(); ?>" style="text-decoration: none; color:black">
                                         <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image" width="200px" height="250px;">
                                         <div class="card-body text-center">

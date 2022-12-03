@@ -18,13 +18,15 @@
         .card-img-overlay {
             width: 100%;
             height: 70vh;
-           
         }
-
+        .card {
+            border:none;
+        }
         #studinfo {
             max-width: 50vw;
             max-height: 80vh;
             background-color: #2f1f18;
+
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
