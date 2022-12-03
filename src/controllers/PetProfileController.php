@@ -24,7 +24,6 @@ class PetProfileController
     public function processResourceRequest(string $method, ?string $id): void
     {
         switch ($method) {
-                // Delete Pet Profile
             case "GET":
                 if (!$this->services->deletePetProfile($id)) {
                     $this->processCollectionRequest("GET");
@@ -36,7 +35,6 @@ class PetProfileController
                 }
                 $this->processCollectionRequest("GET");
                 break;
-                // Update Pet Profile
             case "POST":
                 if (!empty($_FILES["image"]["tmp_name"])) {
                     $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
@@ -77,14 +75,10 @@ class PetProfileController
     public function processCollectionRequest(string $method): void
     {
         switch ($method) {
-                // Display Pet Profiles
             case "GET":
-                $_SESSION["profiles"] = serialize($this->services->getOhanaPetsPagination(!isset($_GET["limit"]) ? _RESOURCE_PER_PAGE_ : $_GET["limit"], !isset($_GET["offset"]) ? _BASE_OFFSET_ : $_GET["offset"]));
-                $page = !isset($_GET["page"]) ? 1 : $_GET["page"];
-                $_SESSION["totalProfiles"] = $this->services->getTotalPetProfilesCount();
-                header("Location: http://" . DOMAIN_NAME . "/dashboard/petprofiles?page=$page");
+                $_SESSION["profiles"] = serialize($this->services->getOhanaPets());
+                header("Location: http://" . DOMAIN_NAME . "/dashboard/pet-profiles");
                 break;
-                // Add Pet Profile
             case "POST":
                 $finfo = new finfo(FILEINFO_MIME_TYPE);
                 if (false === $ext = array_search(
@@ -115,6 +109,37 @@ class PetProfileController
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest("GET");
+                break;
+        }
+    }
+
+    public function processAdminStudRequest(string $method, ?string $id): void
+    {
+        if ($id) {
+            $this->processAdminStudResourceRequest($method, $id);
+        } else {
+            $this->processAdminStudCollectionRequest($method);
+        }
+    }
+
+    public function processAdminStudResourceRequest(string $method, string $id): void
+    {
+        switch ($method) {
+            case "GET":
+                $_SESSION["c-profiles"] = serialize($this->services->getCustomerPets());
+                header("Location: http://" . DOMAIN_NAME . "/dashboard/stud-profiles");
+                break;
+            case "POST":
+                break;
+        }
+    }
+
+    public function processAdminStudCollectionRequest(string $method): void
+    {
+        switch ($method) {
+            case "GET":
+                break;
+            case "POST":
                 break;
         }
     }

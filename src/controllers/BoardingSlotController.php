@@ -81,10 +81,8 @@ class BoardingSlotController
         switch ($method) {
                 // Boarding Slot Display
             case "GET":
-                $_SESSION["slots"] = serialize($this->services->getBoardingSlotsPagination(!isset($_GET["limit"]) ? _RESOURCE_PER_PAGE_ : $_GET["limit"], !isset($_GET["offset"]) ? _BASE_OFFSET_ : $_GET["offset"]));
-                $page = !isset($_GET["page"]) ? 1 : $_GET["page"];
-                $_SESSION["totalSlots"] = $this->services->getTotalSlots();
-                header("Location: http://" . DOMAIN_NAME . "/dashboard/petboarding?page=$page");
+                $_SESSION["slots"] = serialize($this->services->getAllBoardingSlots());
+                header("Location: http://" . DOMAIN_NAME . "/dashboard/petboarding");
                 break;
                 // Add Boarding Slot
             case "POST":

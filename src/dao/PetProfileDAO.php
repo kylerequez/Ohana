@@ -45,6 +45,82 @@ class PetProfileDAO
         }
     }
 
+    public function getCustomerPets(): mixed
+    {
+        try {
+            $sql = "SELECT * FROM ohana_pet_profiles
+                    WHERE account_id != 1;";
+
+            $stmt = $this->conn->query($sql);
+
+            $petProfiles = null;
+            if ($stmt->execute() > 0) {
+                while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $searchedPetProfile = new PetProfile(
+                        $petProfile["pet_image"],
+                        $petProfile["pet_name"],
+                        new DateTime($petProfile["pet_birthdate"]),
+                        $petProfile["pet_sex"],
+                        $petProfile["pet_color"],
+                        $petProfile["pet_trait"],
+                        $petProfile["is_vaccinated"],
+                        $petProfile["pcci_status"],
+                        $petProfile["account_id"],
+                        $petProfile["owner_name"],
+                        $petProfile["pet_price"],
+                        $petProfile["pet_status"]
+                    );
+                    $searchedPetProfile->setType($petProfile["pet_type"]);
+                    $searchedPetProfile->setId($petProfile["pet_id"]);
+
+                    $petProfiles[] = $searchedPetProfile;
+                }
+            }
+            return $petProfiles;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function getOhanaPets(): mixed
+    {
+        try {
+            $sql = "SELECT * FROM ohana_pet_profiles
+                    WHERE account_id = 1;";
+
+            $stmt = $this->conn->query($sql);
+
+            $petProfiles = null;
+            if ($stmt->execute() > 0) {
+                while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $searchedPetProfile = new PetProfile(
+                        $petProfile["pet_image"],
+                        $petProfile["pet_name"],
+                        new DateTime($petProfile["pet_birthdate"]),
+                        $petProfile["pet_sex"],
+                        $petProfile["pet_color"],
+                        $petProfile["pet_trait"],
+                        $petProfile["is_vaccinated"],
+                        $petProfile["pcci_status"],
+                        $petProfile["account_id"],
+                        $petProfile["owner_name"],
+                        $petProfile["pet_price"],
+                        $petProfile["pet_status"]
+                    );
+                    $searchedPetProfile->setType($petProfile["pet_type"]);
+                    $searchedPetProfile->setId($petProfile["pet_id"]);
+
+                    $petProfiles[] = $searchedPetProfile;
+                }
+            }
+            return $petProfiles;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
     public function getOhanaPet(string $id): mixed
     {
         try {

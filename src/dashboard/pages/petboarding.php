@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +12,11 @@
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <link rel="stylesheet" href="/Ohana/src/dashboard/css/adminpages.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 </head>
+
 <body>
   <div class="layer"></div>
   <div class="page-flex">
@@ -23,12 +28,12 @@
           <h2 class="main-title text-center mt-3"> PET BOARDING SLOTS </h2>
         </div>
         <div class="users-table table-wrapper">
-          <div class="search-wrapper">
+          <!-- <div class="search-wrapper">
             <i data-feather="search" aria-hidden="true"></i>
             <input type="text" placeholder=" Search">
             <button type="filter" class="text-white"> FILTER </button>
             <button type="sort" class="text-white"> SORT </button>
-          </div>
+          </div> -->
           <div class="createstaff-wrapper">
             <a class="create-staff-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create">
                 <i data-feather="plus" aria-hidden="true"></i>
@@ -37,17 +42,9 @@
           <?php
           require_once dirname(__DIR__) . '/../models/BoardingSlot.php';
           $slots = unserialize($_SESSION["slots"]);
-          if (!isset($_GET['page'])) {
-            $current_page = 1;
-          } else {
-            $current_page = $_GET['page'];
-          }
-          $results_per_page = _RESOURCE_PER_PAGE_;
-          $count = $_SESSION["totalSlots"];
-          $number_of_page = ceil($count / $results_per_page) > 1 ? ceil($count / $results_per_page) : 1;
           if (!empty($slots)) {
           ?>
-            <table class="posts-table">
+            <table id="slots" class="posts-table">
               <thead>
                 <tr class="users-table-info">
                   <th><b>SLOT I.D</b></th>
@@ -67,10 +64,10 @@
                     <td><?php echo $slot->getIsAvailable() == 1 ? "AVAILABLE" : "UNAVAILABLE"; ?></td>
                     <td>
                       <a href="" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $slot->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"></i></button></a>
-                      <a href="/dashboard/petboarding/delete/<?php echo $slot->getId(); ?>?page=<?php echo $current_page; ?>&limit=<?php echo $results_per_page; ?>&offset=<?php echo ($current_page == 1) ? 0 : $results_per_page * ($current_page - 1) ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Slot ID <?php echo $slot->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>
+                      <a href="/dashboard/petboarding/delete/<?php echo $slot->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Slot ID <?php echo $slot->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>
                     </td>
                   </tr>
-                  <form method="POST" action="/dashboard/petboarding/update/<?php echo $slot->getId(); ?>?page=<?php echo $current_page; ?>&limit=<?php echo $results_per_page; ?>&offset=<?php echo ($current_page == 1) ? 0 : $results_per_page * ($current_page - 1) ?>" enctype="multipart/form-data">
+                  <form method="POST" action="/dashboard/petboarding/update/<?php echo $slot->getId(); ?>" enctype="multipart/form-data">
                     <div class="modal fade" id="editModalId<?php echo $slot->getId(); ?>" tabindex="-1" aria-labelledby="editslotmodal" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -119,15 +116,6 @@
                 ?>
               </tbody>
             </table>
-            <div class="paginations">
-              <?php
-              for ($page = 1; $page <= $number_of_page; $page++) {
-              ?>
-                <li class="page-item <?php echo ($current_page == $page) ? "next-page" : "current-page"; ?>"><a class="page-link" href="/dashboard/petboarding/get?page=<?php echo $page ?>&limit=<?php echo $results_per_page ?>&offset=<?php echo ($page == 1) ? 0 : $results_per_page * ($page - 1) ?>"><?php echo $page ?></a></li>
-              <?php
-              }
-              ?>
-            </div>
           <?php
           } else {
           ?>
@@ -141,7 +129,7 @@
       </main>
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
     </div>
-  </div> 
+  </div>
   <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
     <div class="toast-container top-0 end-0 p-3">
       <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
@@ -158,7 +146,7 @@
   }
   unset($_SESSION["msg"]);
   ?>
-  <form method="POST" action="/dashboard/petboarding/add?page=<?php echo $current_page; ?>&limit=<?php echo $results_per_page; ?>&offset=<?php echo ($current_page == 1) ? 0 : $results_per_page * ($current_page - 1) ?>" enctype="multipart/form-data">
+  <form method="POST" action="/dashboard/petboarding/add" enctype="multipart/form-data">
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -188,9 +176,17 @@
       </div>
     </div>
   </form>
+  <script>
+    $(document).ready(function() {
+      $('#slots').DataTable({
+        "searching": true,
+        "processing": true,
+      });
+    });
+  </script>
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
   <script src="/Ohana/src/dashboard/js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 </body>
+
 </html>
