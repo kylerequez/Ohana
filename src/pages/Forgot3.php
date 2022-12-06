@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="sign-up_form">
+
 <head>
   <title> CHANGE PASSWORD </title>
   <meta charset="utf-8">
@@ -14,20 +15,24 @@
       font-size: 80px;
       margin-top: 5%;
     }
+
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
       .sign-up__title {
         font-size: 37px;
         margin-top: 25%;
       }
+
       #btncpass {
         display: block;
         padding: 10px 60px;
         font-size: 18px;
         font-weight: 700;
       }
+
       .input__label {
         font-size: 15px;
       }
+
       #message p {
         margin-top: 5px;
         font-size: 14px;
@@ -35,8 +40,12 @@
     }
   </style>
 </head>
+
 <body style="background-color: #FAF8F0;">
-  <?php include_once 'navbar.php'; ?>
+  <?php
+  include_once 'navbar.php';
+  include_once dirname(__DIR__) . '/config/app-config.php';
+  ?>
   <main class="sign-up">
     <div class="sign-up__container">
       <div class="sign-up__content">
@@ -60,7 +69,7 @@
         </header>
         <?php
         if ($token != $_SESSION["token"]) {
-          header("Location: http://localhost/forgot-password/confirm");
+          header("Location: http://" . DOMAIN_NAME . "/forgot-password/confirm");
           session_destroy();
         }
         ?>
@@ -173,4 +182,5 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 </body>
+
 </html>

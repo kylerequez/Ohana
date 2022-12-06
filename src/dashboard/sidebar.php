@@ -1,14 +1,14 @@
 <aside class="sidebar">
   <!-- PHP ADMIN/STAFF SESSION -->
   <?php
+  include_once dirname(__DIR__) . '/config/app-config.php';
   if (empty($_SESSION['user'])) {
     session_unset();
     session_destroy();
-    header("Location: http://localhost/login");
+    header("Location: http://" . DOMAIN_NAME . "/login");
     exit();
   } else {
     include_once dirname(__DIR__) . '/models/Account.php';
-    include_once dirname(__DIR__) . '/config/app-config.php';
     $user = unserialize($_SESSION['user']);
     $user->getType() == "USER" ? header("Location: http://" . DOMAIN_NAME . "/home") : null;
   }

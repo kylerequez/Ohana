@@ -37,7 +37,7 @@
 if (!isset($_SESSION["user"])) {
   session_unset();
   session_destroy();
-  header("Location: http://localhost/login");
+  header("Location: http://" . DOMAIN_NAME  . "/login");
 } else {
   include_once dirname(__DIR__) . '/models/Account.php';
   $user = unserialize($_SESSION['user']);
