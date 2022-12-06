@@ -6,57 +6,63 @@ require_once dirname(__DIR__) . '/../dao/AppointmentDAO.php';
 require_once dirname(__DIR__) . '/../services/AppointmentServices.php';
 require_once dirname(__DIR__) . '/../vendor/autoload.php';
 
-$client = new \GuzzleHttp\Client();
-$response = $client->request('POST', 'https://api.movider.co/v1/balance', [
-    'form_params' => [
-        'api_secret' => API_SECRET,
-        'api_key' => API_KEY
-    ],
-    'headers' => [
-        'accept' => 'application/json',
-        'content-type' => 'application/x-www-form-urlencoded',
-    ],
-]);
-$balance = json_decode($response->getBody(), true);
+// $client = new \GuzzleHttp\Client();
+// $response = $client->request('POST', 'https://api.movider.co/v1/balance', [
+//     'form_params' => [
+//         'api_secret' => API_SECRET,
+//         'api_key' => API_KEY
+//     ],
+//     'headers' => [
+//         'accept' => 'application/json',
+//         'content-type' => 'application/x-www-form-urlencoded',
+//     ],
+// ]);
+// $balance = json_decode($response->getBody(), true);
 
-print_r($balance);
+// print_r($balance);
 
-if ($balance["amount"] > 0.10) {
-    date_default_timezone_set('Asia/Manila');
-    $database = new Database($servername, $database, $username, $password);
-    $dao = new AppointmentDAO($database);
-    $services = new AppointmentServices($dao);
-    $now = new DateTime();
-    $appointments = $services->getScheduledAppointments($now->format('Y-m-d H-i-s'));
-    if (!empty($appointments) && !is_null($appointments)) {
-        foreach ($appointments as $appointment) {
-            $type = strtolower($appointment->getType());
-            $text =
-                ($appointment->getType() == "REHOMING") ?
-                "Aloha, {$appointment->getCustomerName()}!
+// if ($balance["amount"] > 0.10) {
+//     date_default_timezone_set('Asia/Manila');
+//     $database = new Database($servername, $database, $username, $password);
+//     $dao = new AppointmentDAO($database);
+//     $services = new AppointmentServices($dao);
+//     $now = new DateTime();
+//     $appointments = $services->getScheduledAppointments($now->format('Y-m-d H-i-s'));
+//     if (!empty($appointments) && !is_null($appointments)) {
+//         foreach ($appointments as $appointment) {
+//             $type = strtolower($appointment->getType());
+//             $text =
+//                 ($appointment->getType() == "REHOMING") ?
+//                 "Aloha, {$appointment->getCustomerName()}!
             
-            Please be advised that you have a scheduled {$type} at {$appointment->getStartDate()->format('M-d-Y H:i A')} to {$appointment->getEndDate()->format('H:i A')}"
-                :
-                "Aloha, {$appointment->getCustomerName()}
+//             Please be advised that you have a scheduled {$type} at {$appointment->getStartDate()->format('M-d-Y H:i A')} to {$appointment->getEndDate()->format('H:i A')}"
+//                 :
+//                 "Aloha, {$appointment->getCustomerName()}
             
-            Please be advised that you have a scheduled {$type} at {$appointment->getStartDate()->format('M-d-Y H:i A')} to {$appointment->getEndDate()->format('H:i A')}";
+//             Please be advised that you have a scheduled {$type} at {$appointment->getStartDate()->format('M-d-Y H:i A')} to {$appointment->getEndDate()->format('H:i A')}";
 
-            // $response = $client->request('POST', 'https://api.movider.co/v1/sms', [
-            //     'form_params' => [
-            //         'api_key' => API_KEY,
-            //         'api_secret' => API_SECRET,
-            //         'from' => 'MVDSMS',
-            //         'to' => $appointment->getNumber(),
-            //         'text' => $text
-            //     ],
-            //     'headers' => [
-            //         'accept' => 'application/json',
-            //         'content-type' => 'application/x-www-form-urlencoded',
-            //     ],
-            // ]);
-        }
-    }
-}
+            
+//         }
+//     }
+// }
+
+$ch = curl_init();
+$parameters = array(
+    'apikey' => 'ac52fa794b80cecfc29fe5c3cbcd00cb', //Your API KEY
+    'number' => '+639950244626',
+    'message' => 'I just sent my first message with Semaphore',
+    'sendername' => 'SEMAPHORE'
+);
+curl_setopt( $ch, CURLOPT_URL,'https://semaphore.co/api/v4/messages' );
+curl_setopt( $ch, CURLOPT_POST, 1 );
+
+//Send the parameters set above with the request
+curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query( $parameters ) );
+
+// Receive response from server
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+$output = curl_exec( $ch );
+curl_close ($ch);
 
 // $database = new Database($servername, $database, $username, $password);
 // $dao = new AppointmentDAO($database);
