@@ -13,6 +13,80 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
   <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+  <style>
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+      background-color: #db6551;
+      border: #db6551;
+      border-radius: 30px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+      color: white !important;
+      background-color: #C0B65A;
+      border: #C0B65A;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+      cursor: default;
+      color: white !important;
+      background-color: #C0B65A;
+      box-shadow: none;
+      margin-left: 10px;
+      margin-right: 10px;
+      border-radius: 30px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
+      cursor: default;
+      color: white !important;
+      border: none;
+      background: #db6551;
+      box-shadow: none;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+      box-sizing: border-box;
+      display: inline-block;
+      min-width: 1.5em;
+      padding: 0.5em 1em;
+      margin-left: 2px;
+      text-align: center;
+      text-decoration: none !important;
+      cursor: pointer;
+      color: white !important;
+      border: 1px solid #db6551;
+      border-radius: 30px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+      background-color: #C0B65A;
+    }
+
+    .paginate_button {
+      background-color: #db6551;
+      border-radius: 30px;
+      margin-top: 20px;
+    }
+
+    .paginate_button:hover {
+      background-color: #C0B65A;
+    }
+
+    #logs_next {
+      background: #C0B65A;
+      border-radius: 30px;
+      margin-top: 20px;
+      border: none;
+    }
+
+    #logs_previous {
+      background: #C0B65A;
+      border-radius: 30px;
+      margin-top: 20px;
+      border: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -26,10 +100,6 @@
           <h2 class="main-title text-center mt-3">Chatbot Responses</h2>
         </div>
         <div class="users-table table-wrapper">
-          <!-- <div class="search-wrapper">
-            <i data-feather="search" aria-hidden="true"></i>
-            <input type="text" placeholder=" Search..">
-          </div> -->
           <div class="createstaff-wrapper">
             <a class="create-response-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white">
                 <i data-feather="plus" aria-hidden="true"></i>
@@ -37,7 +107,16 @@
           </div>
           <?php
           include_once dirname(__DIR__) . '/../models/ChatbotResponse.php';
-          $responses = unserialize($_SESSION["cb_responses"]);
+          require dirname(__DIR__) . '/../config/db-config.php';
+          require dirname(__DIR__) . '/../database/Database.php';
+          require dirname(__DIR__) . '/../dao/ChatbotDAO.php';
+          require dirname(__DIR__) . '/../services/ChatbotServices.php';
+
+          $database = new Database($servername, $database, $username, $password);
+          $dao = new ChatbotDAO($database);
+          $services = new ChatbotServices($dao);
+
+          $responses = $services->getAllResponses();
           if (!empty($responses)) {
           ?>
             <table id="responses" class="posts-table">
@@ -126,7 +205,7 @@
   }
   unset($_SESSION["msg"]);
   ?>
-  <form method="POST" action="/dashboard/chatbot-responses/add?page=<?php echo $current_page; ?>&limit=<?php echo $results_per_page; ?>&offset=<?php echo ($current_page == 1) ? 0 : $results_per_page * ($current_page - 1) ?>">
+  <form method="POST" action="/dashboard/chatbot-responses/add">
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addResponseModal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

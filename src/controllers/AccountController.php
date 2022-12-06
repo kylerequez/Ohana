@@ -30,10 +30,7 @@ class AccountController
     {
         switch ($method) {
             case "GET":
-                $_SESSION["users"] = serialize($this->services->getUserAccountsPagination(!isset($_GET["limit"]) ? _RESOURCE_PER_PAGE_ : $_GET["limit"], !isset($_GET["offset"]) ? _BASE_OFFSET_ : $_GET["offset"]));
-                $page = !isset($_GET["page"]) ? 1 : $_GET["page"];
-                $_SESSION["totalUsers"] = $this->services->getTotalUserCount();
-                header("Location: http://" . DOMAIN_NAME . "/dashboard/customers?page=$page");
+                header("Location: http://" . DOMAIN_NAME . "/dashboard/customers");
                 break;
         }
     }
@@ -105,10 +102,6 @@ class AccountController
         switch ($method) {
 
             case "GET":
-                $_SESSION["staff"] = serialize($this->services->getStaffAccounts());
-                // $page = !isset($_GET["page"]) ? 1 : $_GET["page"];
-                // $_SESSION["totalStaff"] = $this->services->getTotalStaffCount();
-                // header("Location: http://" . DOMAIN_NAME . "/dashboard/staff?page=$page");
                 header("Location: http://" . DOMAIN_NAME . "/dashboard/staff");
                 break;
                 // Add Staff
@@ -143,7 +136,7 @@ class AccountController
                         header("Location: http://" . DOMAIN_NAME . "/home");
                         break;
                     } else {
-                        header("Location: http://" . DOMAIN_NAME . "/dashboard");
+                        header("Location: http://" . DOMAIN_NAME . "/dashboard/home");
                         break;
                     }
                 } else {

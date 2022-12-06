@@ -18,6 +18,11 @@ class AppointmentServices
         return $this->dao->getAppointmentsByAccountId($id);
     }
 
+    public function getAppointmentsCount(): mixed
+    {
+        return $this->dao->getAppointmentsCount();
+    }
+
     public function addAppointment(array $data): bool
     {
         date_default_timezone_set('Asia/Manila');

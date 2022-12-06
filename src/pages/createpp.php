@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title> CREATE YOUR PET PROFILE </title>
   <meta charset="utf-8">
@@ -11,29 +12,35 @@
   <?php include_once 'stylesheets.php'; ?>
   <style>
     #header {
-      color:#DB6551; 
-      font-size: 80px; 
+      color: #DB6551;
+      font-size: 80px;
       font-family: 'Acme', sans-serif;
     }
-    .card{
+
+    .card {
       max-width: 68vw;
-      max-height:80vh; 
+      max-height: 80vh;
       border-style: solid;
-      border-color: #c0b65a; 
-      border-width:3px;
+      border-color: #c0b65a;
+      border-width: 3px;
     }
-    #pet-image{
-      border-top-left-radius: .25rem; 
-      border-bottom-left-radius: .25rem; 
+
+    #pet-image {
+      border-top-left-radius: .25rem;
+      border-bottom-left-radius: .25rem;
       height: 60vh;
     }
+
     #ohanafooter {
       margin-top: 5%;
     }
+
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
     @media screen and (min-width: 360px) and (max-width: 929.98px) {}
   </style>
 </head>
+
 <body style="background-color: #FAF8F0;">
   <main>
     <?php include_once 'Rnavbar.php'; ?>
@@ -43,7 +50,7 @@
         <div class="card mx-auto">
           <div class="row g-0">
             <div class="col-md-6 d-none d-md-block">
-              <img src="/Ohana/src/images/sideimg.png" alt="Side photo" class="img-fluid" id="pet-image"/>
+              <img src="/Ohana/src/images/sideimg.png" alt="Side photo" class="img-fluid" id="pet-image" />
             </div>
             <div class="col-md-6">
               <div class="card-body p-md-5 text-black">
@@ -146,4 +153,5 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 </body>
+
 </html>

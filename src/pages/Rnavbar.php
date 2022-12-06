@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title> OHANA - NAVBAR </title>
   <meta charset="utf-8">
@@ -11,19 +12,23 @@
       width: 100%;
       height: 90px;
     }
+
     #customerprofile {
       width: 50px;
       height: 40px;
     }
+
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
       .navbar.navbar-expand-xl {
         height: 110px;
       }
+
       #navlogo.img-fluid {
-        margin-top:-40%;
+        margin-top: -40%;
       }
+
       .navbar-toggler {
-        margin-top:-20%;
+        margin-top: -20%;
       }
     }
   </style>
@@ -61,7 +66,7 @@ if (!isset($_SESSION["user"])) {
           <a class="nav-link" href="/contact">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/pawcart/get"> Paw Cart <i class="uil uil-shopping-bag"></i></a>
+          <a class="nav-link" href="/pawcart"> Paw Cart <i class="uil uil-shopping-bag"></i></a>
         </li>
         <li class="nav-item">
           <div class="action" style="margin-right:25px;">
@@ -75,7 +80,7 @@ if (!isset($_SESSION["user"])) {
                   <img src="/Ohana/src/images/icons/pencil.png" /><a href="/userprofile">My profile</a>
                 </li>
                 <li>
-                  <img src="/Ohana/src/images/icons/doggy.png" /><a href="/ownedpets/get">Pet profile</a>
+                  <img src="/Ohana/src/images/icons/doggy.png" /><a href="/ownedpets">Pet profile</a>
                 </li>
                 <li>
                   <img src="/Ohana/src/images/icons/file.png" /><a href="/transactions/get">Transactions</a>
@@ -119,4 +124,5 @@ if (!isset($_SESSION["user"])) {
   }
 </script>
 </body>
+
 </html>

@@ -76,10 +76,7 @@ class TransactionController
     {
         switch ($method) {
             case "GET":
-                $_SESSION["transactions"] = serialize($this->services->getAllTransactionsPagination(!isset($_GET["limit"]) ? _RESOURCE_PER_PAGE_ : $_GET["limit"], !isset($_GET["offset"]) ? _BASE_OFFSET_ : $_GET["offset"]));
-                $page = !isset($_GET["page"]) ? 1 : $_GET["page"];
-                $_SESSION["totalTransactions"] = $this->services->getTotalTransactionsCount();
-                header("Location: http://" . DOMAIN_NAME . "/dashboard/transactions?page=$page");
+                header("Location: http://" . DOMAIN_NAME . "/dashboard/transactions");
                 break;
             case "POST":
                 break;

@@ -15,6 +15,80 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
   <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+  <style>
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+      background-color: #db6551;
+      border: #db6551;
+      border-radius: 30px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+      color: white !important;
+      background-color: #C0B65A;
+      border: #C0B65A;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+      cursor: default;
+      color: white !important;
+      background-color: #C0B65A;
+      box-shadow: none;
+      margin-left: 10px;
+      margin-right: 10px;
+      border-radius: 30px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
+      cursor: default;
+      color: white !important;
+      border: none;
+      background: #db6551;
+      box-shadow: none;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+      box-sizing: border-box;
+      display: inline-block;
+      min-width: 1.5em;
+      padding: 0.5em 1em;
+      margin-left: 2px;
+      text-align: center;
+      text-decoration: none !important;
+      cursor: pointer;
+      color: white !important;
+      border: 1px solid #db6551;
+      border-radius: 30px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+      background-color: #C0B65A;
+    }
+
+    .paginate_button {
+      background-color: #db6551;
+      border-radius: 30px;
+      margin-top: 20px;
+    }
+
+    .paginate_button:hover {
+      background-color: #C0B65A;
+    }
+
+    #logs_next {
+      background: #C0B65A;
+      border-radius: 30px;
+      margin-top: 20px;
+      border: none;
+    }
+
+    #logs_previous {
+      background: #C0B65A;
+      border-radius: 30px;
+      margin-top: 20px;
+      border: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -28,14 +102,16 @@
           <h2 class="main-title text-center mt-3">Registered User Accounts</h2>
         </div>
         <div class="users-table table-wrapper">
-          <!-- <div class="search-wrapper">
-            <i data-feather="search" aria-hidden="true"></i>
-            <input type="text" placeholder=" Search User Account">
-            <button type="filter" style="color:white"> FILTER </button>
-            <button type="sort" style="color:white"> SORT </button>
-          </div> -->
           <?php
-          $users = unserialize($_SESSION["users"]);
+          include_once dirname(__DIR__) . '/../config/db-config.php';
+          include_once dirname(__DIR__) . '/../database/Database.php';
+          include_once dirname(__DIR__) . '/../dao/AccountDAO.php';
+          include_once dirname(__DIR__) . '/../services/AccountServices.php';
+
+          $database = new Database($servername, $database, $username, $password);
+          $dao = new AccountDAO($database);
+          $services = new AccountServices($dao);
+          $users = $services->getUserAccounts();
           if (!empty($users)) {
           ?>
             <table id="customers" class="">

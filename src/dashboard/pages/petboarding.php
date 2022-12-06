@@ -15,6 +15,80 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
   <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+  <style>
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+      background-color: #db6551;
+      border: #db6551;
+      border-radius: 30px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+      color: white !important;
+      background-color: #C0B65A;
+      border: #C0B65A;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+      cursor: default;
+      color: white !important;
+      background-color: #C0B65A;
+      box-shadow: none;
+      margin-left: 10px;
+      margin-right: 10px;
+      border-radius: 30px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
+      cursor: default;
+      color: white !important;
+      border: none;
+      background: #db6551;
+      box-shadow: none;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+      box-sizing: border-box;
+      display: inline-block;
+      min-width: 1.5em;
+      padding: 0.5em 1em;
+      margin-left: 2px;
+      text-align: center;
+      text-decoration: none !important;
+      cursor: pointer;
+      color: white !important;
+      border: 1px solid #db6551;
+      border-radius: 30px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+      background-color: #C0B65A;
+    }
+
+    .paginate_button {
+      background-color: #db6551;
+      border-radius: 30px;
+      margin-top: 20px;
+    }
+
+    .paginate_button:hover {
+      background-color: #C0B65A;
+    }
+
+    #logs_next {
+      background: #C0B65A;
+      border-radius: 30px;
+      margin-top: 20px;
+      border: none;
+    }
+
+    #logs_previous {
+      background: #C0B65A;
+      border-radius: 30px;
+      margin-top: 20px;
+      border: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -40,8 +114,17 @@
                 Add Slot </button></a>
           </div>
           <?php
-          require_once dirname(__DIR__) . '/../models/BoardingSlot.php';
-          $slots = unserialize($_SESSION["slots"]);
+          include_once dirname(__DIR__) . '/../models/BoardingSlot.php';
+          include_once dirname(__DIR__) . '/../config/db-config.php';
+          include_once dirname(__DIR__) . '/../database/Database.php';
+          include_once dirname(__DIR__) . '/../dao/BoardingSlotDAO.php';
+          include_once dirname(__DIR__) . '/../services/BoardingSlotServices.php';
+
+          $database = new Database($servername, $database, $username, $password);
+          $dao = new BoardingSlotDAO($database);
+          $services = new BoardingSlotServices($dao);
+
+          $slots = $services->getAllBoardingSlots();
           if (!empty($slots)) {
           ?>
             <table id="slots" class="posts-table">
@@ -65,52 +148,52 @@
                     <td>
                       <a href="" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $slot->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"></i></button></a>
                       <a href="/dashboard/petboarding/delete/<?php echo $slot->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Slot ID <?php echo $slot->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>
+                      <form method="POST" action="/dashboard/petboarding/update/<?php echo $slot->getId(); ?>" enctype="multipart/form-data">
+                        <div class="modal fade" id="editModalId<?php echo $slot->getId(); ?>" tabindex="-1" aria-labelledby="editslotmodal" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="editingModal">EDIT BOARDING SLOT</h5>
+                                <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                              </div>
+                              <div class="modal-body">
+                                <div class="mb-3">
+                                  <label for="name" class="col-form-label"> SLOT NAME: </label>
+                                  <input type="text" class="form-control" name="name" value="<?php echo $slot->getName(); ?>" required style="background-color:#eed1c2; color:black">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="information" class="col-form-label"> SLOT INFORMATION: </label>
+                                  <input type="text" class="form-control" name="information" value="<?php echo $slot->getInformation(); ?>" required style="background-color:#eed1c2; color:black">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="isAvailable" class="col-form-label"> SLOT AVAILABILITY: </label><br>
+                                  <label for="yes" class="radio-inline"> <input type="radio" id="yes" <?php if ($slot->getIsAvailable() == 1) echo "checked"; ?> name="isAvailable" value="AVAILABLE"> Available </label>
+                                  <label for="no" class="radio-inline"> <input type="radio" id="no" <?php if ($slot->getIsAvailable() == 0) echo "checked"; ?> name="isAvailable" value="UNAVAILABLE"> Unavailable </label>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="petName" class="col-form-label"> PET NAME: </label>
+                                  <input type="hidden" name="petId" value="<?php echo !is_null($slot->getPetId()) ? $slot->getPetId() : null; ?>">
+                                  <input disabled type="text" class="form-control" name="petName" value="<?php echo !is_null($slot->getPetName()) ? $slot->getPetName() : "N/A"; ?>">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="image" class="col-form-label"> SLOT IMAGE: </label>
+                                  <input type="file" class="form-control" name="image">
+                                  <input type="hidden" class="form-control" name="old_image" value="<?php echo base64_encode($slot->getImage()); ?>">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="original" class="col-form-label"> ORIGINAL IMAGE </label>
+                                  <center> <img src="data:image/jpeg;base64,<?php echo base64_encode($slot->getImage()); ?>" id="original" class="mt-3 rounded-3" style="width:200px;height:200px"> </center>
+                                  <p> NOTE: </p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Save Changes </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </form>
                     </td>
                   </tr>
-                  <form method="POST" action="/dashboard/petboarding/update/<?php echo $slot->getId(); ?>" enctype="multipart/form-data">
-                    <div class="modal fade" id="editModalId<?php echo $slot->getId(); ?>" tabindex="-1" aria-labelledby="editslotmodal" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="editingModal">EDIT BOARDING SLOT</h5>
-                            <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
-                          </div>
-                          <div class="modal-body">
-                            <div class="mb-3">
-                              <label for="name" class="col-form-label"> SLOT NAME: </label>
-                              <input type="text" class="form-control" name="name" value="<?php echo $slot->getName(); ?>" required style="background-color:#eed1c2; color:black">
-                            </div>
-                            <div class="mb-3">
-                              <label for="information" class="col-form-label"> SLOT INFORMATION: </label>
-                              <input type="text" class="form-control" name="information" value="<?php echo $slot->getInformation(); ?>" required style="background-color:#eed1c2; color:black">
-                            </div>
-                            <div class="mb-3">
-                              <label for="isAvailable" class="col-form-label"> SLOT AVAILABILITY: </label><br>
-                              <label for="yes" class="radio-inline"> <input type="radio" id="yes" <?php if ($slot->getIsAvailable() == 1) echo "checked"; ?> name="isAvailable" value="AVAILABLE"> Available </label>
-                              <label for="no" class="radio-inline"> <input type="radio" id="no" <?php if ($slot->getIsAvailable() == 0) echo "checked"; ?> name="isAvailable" value="UNAVAILABLE"> Unavailable </label>
-                            </div>
-                            <div class="mb-3">
-                              <label for="petName" class="col-form-label"> PET NAME: </label>
-                              <input type="hidden" name="petId" value="<?php echo !is_null($slot->getPetId()) ? $slot->getPetId() : null; ?>">
-                              <input disabled type="text" class="form-control" name="petName" value="<?php echo !is_null($slot->getPetName()) ? $slot->getPetName() : "N/A"; ?>">
-                            </div>
-                            <div class="mb-3">
-                              <label for="image" class="col-form-label"> SLOT IMAGE: </label>
-                              <input type="file" class="form-control" name="image">
-                              <input type="hidden" class="form-control" name="old_image" value="<?php echo base64_encode($slot->getImage()); ?>">
-                            </div>
-                            <div class="mb-3">
-                              <label for="original" class="col-form-label"> ORIGINAL IMAGE </label>
-                              <center> <img src="data:image/jpeg;base64,<?php echo base64_encode($slot->getImage()); ?>" id="original" class="mt-3 rounded-3" style="width:200px;height:200px"> </center>
-                              <p> NOTE: </p>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Save Changes </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                  </form>
                 <?php
                 }
                 ?>

@@ -19,9 +19,9 @@ class AccountServices
         return $this->dao->searchById($id);
     }
 
-    public function getAllAccounts(): mixed
+    public function getUsersCount(): mixed
     {
-        return $this->dao->getAllAccounts();
+        return $this->dao->getUsersCount();
     }
 
     public function getUserAccounts(): mixed
@@ -29,29 +29,9 @@ class AccountServices
         return $this->dao->getUserAccounts();
     }
 
-    public function getUserAccountsPagination(string $limit, string $offset): mixed
-    {
-        return $this->dao->getUserAccountsPagination($limit, $offset);
-    }
-
-    public function getTotalUserCount(): mixed
-    {
-        return $this->dao->getTotalUserCount();
-    }
-
     public function getStaffAccounts(): mixed
     {
         return $this->dao->getStaffAccounts();
-    }
-
-    public function getStaffAccountsPagination(string $limit, string $offset): mixed
-    {
-        return $this->dao->getStaffAccountsPagination($limit, $offset);
-    }
-
-    public function getTotalStaffCount(): mixed
-    {
-        return $this->dao->getTotalStaffCount();
     }
 
     public function addAccount(array $data): mixed

@@ -126,7 +126,6 @@ class PetProfileController
     {
         switch ($method) {
             case "GET":
-                $_SESSION["c-profiles"] = serialize($this->services->getCustomerPets());
                 header("Location: http://" . DOMAIN_NAME . "/dashboard/stud-profiles");
                 break;
             case "POST":
@@ -221,7 +220,6 @@ class PetProfileController
         if (empty($profile)) {
             header("Location: http://" . DOMAIN_NAME . "/ownedpets");
         }
-        $_SESSION["profile"] = serialize($profile);
         header("Location: http://" . DOMAIN_NAME . "/ownedpets/" . $profile->getName());
     }
 
@@ -282,8 +280,6 @@ class PetProfileController
     {
         switch ($method) {
             case "GET":
-                $account = unserialize($_SESSION['user']);
-                $_SESSION["profiles"] = serialize($this->services->getUserPetProfile(($account->getType() == "USER") ? $account->getId() : "1"));
                 header("Location: http://" . DOMAIN_NAME . "/ownedpets");
                 break;
             case "POST":

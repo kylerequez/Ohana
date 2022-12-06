@@ -54,32 +54,7 @@ class BoardingSlotDAO
         }
     }
 
-    public function getBoardingSlotsPagination(string $limit, string $offset): mixed
-    {
-        try {
-            $sql = "SELECT * FROM ohana_boarding_slot
-                    LIMIT :limit OFFSET :offset;";
-
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
-            $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
-
-            $slots = null;
-            if ($stmt->execute() > 0) {
-                while ($slot = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $existingSlot = new BoardingSlot($slot["slot_image"], $slot["slot_name"], $slot["slot_information"], $slot["is_available"], $slot["pet_id"], $slot["pet_name"]);
-                    $existingSlot->setId($slot["slot_id"]);
-                    $slots[] = $existingSlot;
-                }
-            }
-            return $slots;
-        } catch (Exception $e) {
-            echo $e;
-            return null;
-        }
-    }
-
-    public function getTotalSlots(): mixed
+    public function getBoardingSlotCount(): mixed
     {
         try {
             $sql = "SELECT COUNT(*) FROM ohana_boarding_slot;";

@@ -8,11 +8,6 @@ class PetProfileServices
         $this->dao = $dao;
     }
 
-    public function getAllPetProfiles(): mixed
-    {
-        return $this->dao->getAllPetProfiles();
-    }
-
     public function getRehomingPets(): mixed
     {
         return $this->dao->getRehomingPets();
@@ -51,6 +46,16 @@ class PetProfileServices
     public function getTotalPetProfilesCount(): mixed
     {
         return $this->dao->getTotalPetProfilesCount();
+    }
+
+    public function getOhanaPetsCount(): mixed
+    {
+        return $this->dao->getOhanaPetsCount();
+    }
+
+    public function getCustomerPetsCount(): mixed
+    {
+        return $this->dao->getCustomerPetsCount();
     }
 
     public function getPetProfileById(string $id, string $accountId): mixed

@@ -16,6 +16,80 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
   <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+  <style>
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+      background-color: #db6551;
+      border: #db6551;
+      border-radius: 30px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+      color: white !important;
+      background-color: #C0B65A;
+      border: #C0B65A;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+      cursor: default;
+      color: white !important;
+      background-color: #C0B65A;
+      box-shadow: none;
+      margin-left: 10px;
+      margin-right: 10px;
+      border-radius: 30px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
+      cursor: default;
+      color: white !important;
+      border: none;
+      background: #db6551;
+      box-shadow: none;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+      box-sizing: border-box;
+      display: inline-block;
+      min-width: 1.5em;
+      padding: 0.5em 1em;
+      margin-left: 2px;
+      text-align: center;
+      text-decoration: none !important;
+      cursor: pointer;
+      color: white !important;
+      border: 1px solid #db6551;
+      border-radius: 30px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+      background-color: #C0B65A;
+    }
+
+    .paginate_button {
+      background-color: #db6551;
+      border-radius: 30px;
+      margin-top: 20px;
+    }
+
+    .paginate_button:hover {
+      background-color: #C0B65A;
+    }
+
+    #logs_next {
+      background: #C0B65A;
+      border-radius: 30px;
+      margin-top: 20px;
+      border: none;
+    }
+
+    #logs_previous {
+      background: #C0B65A;
+      border-radius: 30px;
+      margin-top: 20px;
+      border: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -30,8 +104,17 @@
         </div>
         <div class="users-table table-wrapper">
           <?php
+          include_once dirname(__DIR__) . '/../config/db-config.php';
+          include_once dirname(__DIR__) . '/../database/Database.php';
+          include_once dirname(__DIR__) . '/../dao/LogDAO.php';
+          include_once dirname(__DIR__) . '/../services/LogServices.php';
           include_once dirname(__DIR__) . '/../models/Log.php';
-          $logs = unserialize($_SESSION["logs"]);
+
+          $database = new Database($servername, $database, $username, $password);
+          $dao = new LogDAO($database);
+          $services = new LogServices($dao);
+
+          $logs = $services->getAllLogs();
           if (!empty($logs)) {
           ?>
             <table id="logs" class="posts-table">
@@ -81,7 +164,7 @@
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
   <script src="/Ohana/src/dashboard/js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-  
+
 </body>
 
 </html>

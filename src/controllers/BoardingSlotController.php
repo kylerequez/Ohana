@@ -81,7 +81,6 @@ class BoardingSlotController
         switch ($method) {
                 // Boarding Slot Display
             case "GET":
-                $_SESSION["slots"] = serialize($this->services->getAllBoardingSlots());
                 header("Location: http://" . DOMAIN_NAME . "/dashboard/petboarding");
                 break;
                 // Add Boarding Slot

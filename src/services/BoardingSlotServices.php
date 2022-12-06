@@ -18,14 +18,9 @@ class BoardingSlotServices
         return $this->dao->getAvailableSlots();
     }
 
-    public function getBoardingSlotsPagination(string $limit, string $offset): mixed
+    public function getBoardingSlotCount(): mixed
     {
-        return  $this->dao->getBoardingSlotsPagination($limit, $offset);
-    }
-
-    public function getTotalSlots(): mixed
-    {
-        return $this->dao->getTotalSlots();
+        return $this->dao->getBoardingSlotCount();
     }
 
     public function deleteSlot($id): bool

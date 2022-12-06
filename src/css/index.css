@@ -328,23 +328,6 @@ textarea:hover {
       margin-left: auto;
   }
 
-  .btn-Send button {
-      background-color: #db6551;
-      border-radius: 30px;
-      border: 1px solid #ffffff;
-      display: inline-block;
-      cursor: pointer;
-      color: #ffffff;
-      font-family: "Poppins";
-      font-size: 12px;
-      padding: 10px 40px;
-      text-decoration: none;
-      text-shadow: 0px 1px 0px #ffffff;
-      margin-top: 110%;
-      margin-right: 65px;
-      margin-left: auto;
-  }
-
   .intro {
       margin-top: 30px;
   }
@@ -372,7 +355,8 @@ textarea:hover {
   #contactform {
       position: relative !important;
       width: 10px;
-      float: left;
+      margin-right: auto;
+      margin-left: auto;
   }
 
   input {
@@ -413,8 +397,4 @@ textarea:hover {
       min-height: 500px;
   }
 
-  .col {
-      width: 300px;
-      margin-left: auto;
-      margin-right: auto;
-  }
+}

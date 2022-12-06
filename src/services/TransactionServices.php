@@ -10,14 +10,19 @@ class TransactionServices
         $this->order = $order;
     }
 
-    public function getAllTransactionsPagination(string $limit, string $offset): mixed
+    public function getAllTransactions(): mixed
     {
-        $transactions = $this->dao->getAllTransactionsPagination($limit, $offset);
+        $transactions = $this->dao->getAllTransactions();
         foreach ($transactions as $transaction) {
             $orders = $this->order->searchByTransactionId($transaction->getId());
             $transaction->setListOfOrders($orders);
         }
         return $transactions;
+    }
+
+    public function getTransactionsCount(): mixed
+    {
+        return $this->dao->getTransactionsCount();
     }
 
     public function getUserTransactions(string $id): mixed
@@ -28,11 +33,6 @@ class TransactionServices
             $transaction->setListOfOrders($orders);
         }
         return $transactions;
-    }
-
-    public function getTotalTransactionsCount(): mixed
-    {
-        return $this->dao->getTotalTransactionsCount();
     }
 
     public function updateStatus(string $id, array $data): bool

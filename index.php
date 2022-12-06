@@ -22,15 +22,53 @@
 
     <style>
         #toastbody {
-            color:#db6551;
-            width:500px;
+            color: #db6551;
+            width: 500px;
         }
+
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
             #sectionheaders {
                 color: #db6551;
                 font-size: 40px;
                 font-family: 'Acme', sans-serif;
             }
+
+            .col {
+                width: 200px;
+                height: 200px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #review {
+                width: 50px;
+                height: 50px;
+            }
+
+            .card-text {
+                font-size: 12px;
+            }
+
+            .card-title {
+                font-size: 16px;
+            }
+
+            #Send {
+                background-color: #db6551;
+                border-radius: 30px;
+                border: 1px solid #ffffff;
+                cursor: pointer;
+                color: #ffffff;
+                font-family: "Poppins";
+                font-size: 12px;
+                padding: 10px 40px;
+                text-decoration: none;
+                text-shadow: 0px 1px 0px #ffffff;
+                margin-top: 110%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
         }
     </style>
 
@@ -91,7 +129,7 @@
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
                                 <div class="card-body">
-                                    <img src="/Ohana/src/images/icons/quote.png" class="me-3 img-fluid" width="50" height="50"></img>
+                                    <img src="/Ohana/src/images/icons/quote.png" id="review" class="me-3 img-fluid"></img>
                                     <h5 class="card-text text-center mt-2 mb-2"> Maraming Salamat! Alagaan ko to. Ang ganda niya. Thank you ulit! </h5><br>
                                     <h4 class="card-title text-center mt-2"> Edrich Pineda </h4>
                                 </div>
@@ -100,7 +138,7 @@
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
                                 <div class="card-body">
-                                    <img src="/Ohana/src/images/icons/quote.png" class="me-3 img-fluid" width="50" height="50"></img>
+                                    <img src="/Ohana/src/images/icons/quote.png" id="review" class="me-3 img-fluid"></img>
                                     <h5 class="card-text text-center mt-2 mb-2">Thank you so much! So happy with my puppy!</h5><br>
                                     <h4 class="card-title text-center"> Ron Ilao</h4>
                                 </div>
@@ -109,7 +147,7 @@
                         <div class="col">
                             <div class="card h-100" style="background-color:#eed1c2">
                                 <div class="card-body">
-                                    <img src="/Ohana/src/images/icons/quote.png" class="me-3 img-fluid" width="50" height="50"></img>
+                                    <img src="/Ohana/src/images/icons/quote.png" id="review" class="me-3 img-fluid"></img>
                                     <h5 class="card-text text-center mt-2 mb-2">Thank you sir. Quality talaga yung puppy at napaka-cute. Solid!</h5><br>
                                     <h4 class="card-title text-center"> Ralph Hernandez </h4>
                                 </div>
@@ -128,7 +166,7 @@
                         <input id="email" name="email" type="text" placeholder="E-MAIL ADDRESS ">
                         <textarea id="message" name="message" type="text" placeholder="ENTER MESSAGE"></textarea>
                         <div class="btn-Send mt-4 ms-3" name="btn-Send">
-                            <button type="submit"><span> Send Message </span></button>
+                            <button type="submit" id="Send"><span> Send </span></button>
                         </div>
                     </form>
                 </div>

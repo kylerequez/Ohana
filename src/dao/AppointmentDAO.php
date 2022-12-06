@@ -103,6 +103,21 @@ class AppointmentDAO
         }
     }
 
+    public function getAppointmentsCount(): mixed
+    {
+        try {
+            $sql = "SELECT COUNT(*) FROM ohana_appointments;";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchColumn();
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
     public function getAppointmentsByAccountId(int $id): mixed
     {
         try {

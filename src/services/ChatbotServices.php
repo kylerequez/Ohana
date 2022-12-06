@@ -17,16 +17,6 @@ class ChatbotServices
     {
         return $this->dao->getResponse($query);
     }
-    
-    public function getResponsesPagination(string $limit, string $offset): mixed
-    {
-        return $this->dao->getResponsesPagination($limit, $offset);
-    }
-
-    public function getTotalResponses(): mixed
-    {
-        return $this->dao->getTotalResponses();
-    }
 
     public function updateSettings(array $data): bool
     {
