@@ -37,8 +37,6 @@ class TransactionController
     {
         switch ($method) {
             case "GET":
-                $user = unserialize($_SESSION["user"]);
-                $_SESSION["transactions"] = serialize($this->services->getUserTransactions($user->getId()));
                 header("Location: http://" . DOMAIN_NAME . "/transactions");
                 break;
             case "POST":

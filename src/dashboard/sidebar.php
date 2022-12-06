@@ -2,11 +2,14 @@
   <!-- PHP ADMIN/STAFF SESSION -->
   <?php
   include_once dirname(__DIR__) . '/config/app-config.php';
-  if (empty($_SESSION['user'])) {
+  if (!isset($_SESSION['user'])) {
     session_unset();
     session_destroy();
-    header("Location: http://" . DOMAIN_NAME . "/login");
-    exit();
+  ?>
+    <script>
+      window.location = 'http://<?php echo DOMAIN_NAME; ?>/login';
+    </script>
+  <?php
   } else {
     include_once dirname(__DIR__) . '/models/Account.php';
     $user = unserialize($_SESSION['user']);
@@ -14,7 +17,7 @@
   }
   ?>
   <div class="sidebar-start">
-    <a href="/dashboard" class="logo-wrapper" title="Home"> <img src="/Ohana/src/dashboard/img/Ohana Kennel.png" aria-hidden="true"></a>
+    <a href="/dashboard/home" class="logo-wrapper" title="Home"> <img src="/Ohana/src/dashboard/img/Ohana Kennel.png" aria-hidden="true"></a>
     <div class="sidebar-head">
       <span class="sr-only">Home</span>
       <div class="logo-text"></div>

@@ -81,8 +81,6 @@ class AppointmentController
     {
         switch ($method) {
             case "GET":
-                $account = unserialize($_SESSION["user"]);
-                $_SESSION["appointments"] = serialize($this->services->getAppointmentsByAccountId($account->getId()));
                 header("Location: http://" . DOMAIN_NAME . "/appointments");
                 break;
             case "POST":

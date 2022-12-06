@@ -19,9 +19,11 @@
             width: 100%;
             height: 70vh;
         }
+
         .card {
-            border:none;
+            border: none;
         }
+
         #studinfo {
             max-width: 50vw;
             max-height: 80vh;
@@ -43,24 +45,43 @@
 <body style="background-color: #FAF8F0;">
     <?php
     include_once dirname(__DIR__) . '/models/PetProfile.php';
+    include_once dirname(__DIR__) . '/config/db-config.php';
     include_once dirname(__DIR__) . '/config/app-config.php';
-    $profile = isset($_SESSION["stud-profile"]) ? unserialize($_SESSION["stud-profile"]) : null;
-    if (empty($profile)) {
-        unset($_SESSION["stud-profile"]);
+    include_once dirname(__DIR__) . '/database/Database.php';
+    include_once dirname(__DIR__) . '/dao/PetProfileDAO.php';
+    include_once dirname(__DIR__) . '/services/PetProfileServices.php';
+
+    $database = new Database($servername, $database, $username, $password);
+    $dao = new PetProfileDAO($database);
+    $services = new PetProfileServices($dao);
+
+    $profile = $services->getOhanaStudPet($id, $name);
+    if (is_null($profile)) {
     ?>
-        <script type="text/javascript">
-            const url = "http://<?= DOMAIN_NAME ?>/stud";
-            window.location.href = url;
+        <script>
+            window.location = 'http://<?php echo DOMAIN_NAME; ?>/stud';
         </script>
     <?php
-    } else if ($profile->getName() != str_replace("%20", " ", $name)) {
-        unset($_SESSION["stud-profile"]);
+    } else if ($profile->getId() != $id) {
     ?>
-        <script type="text/javascript">
-            const url = "http://<?= DOMAIN_NAME ?>/stud";
-            window.location.href = url;
+        <script>
+            window.location = 'http://<?php echo DOMAIN_NAME; ?>/stud';
         </script>
-    <?php } ?>
+    <?php
+    } else if ($profile->getName() !=  $name) {
+    ?>
+        <script>
+            window.location = 'http://<?php echo DOMAIN_NAME; ?>/stud';
+        </script>
+    <?php
+    } else if ($profile->getStatus() != 'AVAILABLE') {
+    ?>
+        <script>
+            window.location = 'http://<?php echo DOMAIN_NAME; ?>/stud';
+        </script>
+    <?php
+    }
+    ?>
     <main>
         <?php include_once 'Rnavbar.php'; ?>
         <div class="container-fluid">

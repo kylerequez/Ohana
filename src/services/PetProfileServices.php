@@ -18,6 +18,11 @@ class PetProfileServices
         return $this->dao->getStudPets();
     }
 
+    public function getOwnedPet(string $id,  string $name): mixed
+    {
+        return $this->dao->getOwnedPet($id, $name);
+    }
+
     public function getCustomerPets(): mixed
     {
         return $this->dao->getCustomerPets();
@@ -28,9 +33,9 @@ class PetProfileServices
         return $this->dao->getOhanaPets();
     }
 
-    public function getOhanaPet(string $id): mixed
+    public function getOhanaStudPet(string $id,  string $name): mixed
     {
-        return $this->dao->getOhanaPet($id);
+        return $this->dao->getOhanaStudPet($id, $name);
     }
 
     public function getUserPetProfile(string $id): mixed

@@ -34,10 +34,15 @@
   </style>
 </head>
 <?php
-if (!isset($_SESSION["user"])) {
+include_once dirname(__DIR__) . '/config/app-config.php';
+if (!isset($_SESSION['user'])) {
   session_unset();
   session_destroy();
-  header("Location: http://" . DOMAIN_NAME  . "/login");
+?>
+  <script>
+    window.location = 'http://<?php echo DOMAIN_NAME; ?>/login';
+  </script>
+<?php
 } else {
   include_once dirname(__DIR__) . '/models/Account.php';
   $user = unserialize($_SESSION['user']);
@@ -83,10 +88,10 @@ if (!isset($_SESSION["user"])) {
                   <img src="/Ohana/src/images/icons/doggy.png" /><a href="/ownedpets">Pet profile</a>
                 </li>
                 <li>
-                  <img src="/Ohana/src/images/icons/file.png" /><a href="/transactions/get">Transactions</a>
+                  <img src="/Ohana/src/images/icons/file.png" /><a href="/transactions">Transactions</a>
                 </li>
                 <li>
-                  <img src="/Ohana/src/images/icons/calendar.png" /><a href="/appointments/get">Appointment</a>
+                  <img src="/Ohana/src/images/icons/calendar.png" /><a href="/appointments">Appointment</a>
                 </li>
                 <li>
                   <img src="/Ohana/src/images/icons/log-out.png" />

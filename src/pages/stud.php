@@ -29,21 +29,16 @@
                 <section class="services" id="services">
                     <?php
                     include_once dirname(__DIR__) . '/models/PetProfile.php';
-                    if(!isset($_SESSION["profiles"])){
-                        require dirname(__DIR__) . '/config/db-config.php';
-                        require dirname(__DIR__) . '/database/Database.php';
-                        require dirname(__DIR__) . '/dao/PetProfileDAO.php';
-                        require dirname(__DIR__) . '/services/PetProfileServices.php';
-                        
-                        $database = new Database($servername, $database, $username, $password);
-                        $dao = new PetProfileDAO($database);
-                        $services = new PetProfileServices($dao);
-        
-                        $profiles = $services->getStudPets();
-                        $_SESSION["stud"] = $profiles;
-                    } else {
-                        $profiles = unserialize($_SESSION["stud"]);
-                    }
+                    include_once dirname(__DIR__) . '/config/db-config.php';
+                    include_once dirname(__DIR__) . '/database/Database.php';
+                    include_once dirname(__DIR__) . '/dao/PetProfileDAO.php';
+                    include_once dirname(__DIR__) . '/services/PetProfileServices.php';
+
+                    $database = new Database($servername, $database, $username, $password);
+                    $dao = new PetProfileDAO($database);
+                    $services = new PetProfileServices($dao);
+
+                    $profiles = $services->getStudPets();
                     if (empty($profiles)) {
                     ?>
                         <div class="service mb-4">
@@ -63,7 +58,7 @@
                                             <p class="card-text mb-4 text-center"> Stud success rate: </p>
                                             <p class="card-text"> Price: <?php echo $profile->getPrice(); ?> </p>
                                             <div class="btn-Learn mt-3" name="btn-Learn">
-                                                <center><a href="/stud/get/<?php echo $profile->getId(); ?>"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
+                                                <center><a href="/stud/<?php echo $profile->getId(); ?>/<?php echo $profile->getName(); ?>"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
                                             </div>
                                         </div>
                                     </div>

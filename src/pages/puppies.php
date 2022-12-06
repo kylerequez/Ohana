@@ -30,6 +30,7 @@
             border-radius: 30px;
             padding: 7px 40px;
         }
+
         #ohanafooter {
             margin-top: 10%;
         }
@@ -50,22 +51,16 @@
                 <section class="services" id="services">
                     <?php
                     include_once dirname(__DIR__) . '/models/PetProfile.php';
+                    include_once dirname(__DIR__) . '/config/db-config.php';
+                    include_once dirname(__DIR__) . '/database/Database.php';
+                    include_once dirname(__DIR__) . '/dao/PetProfileDAO.php';
+                    include_once dirname(__DIR__) . '/services/PetProfileServices.php';
 
-                    if (!isset($_SESSION["profiles"])) {
-                        require dirname(__DIR__) . '/config/db-config.php';
-                        require dirname(__DIR__) . '/database/Database.php';
-                        require dirname(__DIR__) . '/dao/PetProfileDAO.php';
-                        require dirname(__DIR__) . '/services/PetProfileServices.php';
+                    $database = new Database($servername, $database, $username, $password);
+                    $dao = new PetProfileDAO($database);
+                    $services = new PetProfileServices($dao);
 
-                        $database = new Database($servername, $database, $username, $password);
-                        $dao = new PetProfileDAO($database);
-                        $services = new PetProfileServices($dao);
-
-                        $profiles = $services->getRehomingPets();
-                        $_SESSION["rehoming"] = $profiles;
-                    } else {
-                        $profiles = unserialize($_SESSION["rehoming"]);
-                    }
+                    $profiles = $services->getRehomingPets();
 
                     if (empty($profiles)) {
                     ?>
@@ -85,7 +80,7 @@
                                                     <ul class="dropdown-menu text-center">
                                                         <li><a class="dropdown-item" href="#">Action</a></li>
                                                         <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                       
+
                                                     </ul>
                                                 </div>
                                                 <div class="btn-group mx-2">
@@ -95,7 +90,7 @@
                                                     <ul class="dropdown-menu text-center">
                                                         <li><a class="dropdown-item" href="#">Action</a></li>
                                                         <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                        
+
                                                     </ul>
                                                 </div>
                                                 <div class="btn-group mx-2">
@@ -105,7 +100,7 @@
                                                     <ul class="dropdown-menu text-center">
                                                         <li><a class="dropdown-item" href="#">Action</a></li>
                                                         <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                       
+
                                                     </ul>
                                                 </div>
                                                 <div class="btn-group mx-2">

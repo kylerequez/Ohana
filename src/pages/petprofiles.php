@@ -104,7 +104,7 @@
                         <div class="row justify-content-center">
                             <?php foreach ($profiles as $profile) { ?>
                                 <div class="card m-3 mb-5" style="width: 20rem;">
-                                    <a href="/ownedpets/profile/<?php echo $profile->getId(); ?>" style="text-decoration: none; color:black">
+                                    <a href="/ownedpets/<?php echo $profile->getId(); ?>/<?php echo $profile->getName(); ?>" style="text-decoration: none; color:black">
                                         <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top p-2" alt="<?php echo $profile->getName(); ?> Image" width="200px" height="250px;">
                                         <div class="card-body text-center">
                                             <h5 class="card-title fs-3" style="font-family: 'Acme', sans-serif; color:#db6551"> <?php echo $profile->getName(); ?></h5>
