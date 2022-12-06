@@ -183,7 +183,7 @@
                                 <div class="mb-3">
                                   <label for="original" class="col-form-label"> ORIGINAL IMAGE </label>
                                   <center> <img src="data:image/jpeg;base64,<?php echo base64_encode($slot->getImage()); ?>" id="original" class="mt-3 rounded-3" style="width:200px;height:200px"> </center>
-                                  <p> NOTE: </p>
+                                  <p> NOTE: Current image will retain if there is no new image file chosen. </p>
                                 </div>
                                 <div class="modal-footer">
                                   <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Save Changes </button>
@@ -248,8 +248,8 @@
             </div>
             <input type="hidden" class="form-control" name="isAvailable" value="1">
             <div class="mb-3">
-              <label for="image" class="col-form-label"> SLOT IMAGE </label><br>
-              <input type="file" name="image" style="background-color:transparent;">
+              <label for="image" class="col-form-label"> SLOT IMAGE: </label>
+              <input type="file" class="form-control" name="image"> 
             </div>
           </div>
           <div class="modal-footer">

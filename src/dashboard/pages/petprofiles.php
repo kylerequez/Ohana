@@ -213,7 +213,7 @@
                                 <div class="mb-3">
                                   <label for="original" class="col-form-label"> ORIGINAL IMAGE: </label>
                                   <center> <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="mt-3 rounded-3" style="width:200px;height:200px"> </center>
-                                  <p> NOTE:</p>
+                                  <p> NOTE: Current image will retain if there is no new image file chosen. </p>
                                 </div>
                               </div>
                               <div class="modal-footer">
@@ -311,8 +311,8 @@
             </div>
             <input type="hidden" class="form-control" name="ownerName" value="OHANA KENNEL BUSINESS">
             <div class="mb-3">
-              <label for="image" class="col-form-label"> DOG IMAGE </label><br>
-              <input type="file" name="image" id="image" style="background-color:transparent;">
+              <label for="dogimage" class="col-form-label"> DOG IMAGE: </label>
+              <input type="file" class="form-control" name="image">
             </div>
           </div>
           <div class="modal-footer">

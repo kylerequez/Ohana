@@ -55,7 +55,7 @@
         <div class="container-fluid">
           <div class="container">
             <h2 class="main-title text-center"> Welcome Back, <?php echo $user->getFname(); ?>! </h2>
-            <div class="row stat-cards d-flex justify-content-center mt-5">
+            <div class="row stat-cards d-flex justify-content-center mt-2">
               <div class="col-md-6 col-xl-3">
                 <a href="/dashboard/pet-profiles">
                   <article class="stat-cards-item">
@@ -66,7 +66,7 @@
                       <p class="stat-cards-info__num"> Total: <?php $dao = new PetProfileDAO($database);
                                                               $services = new PetProfileServices($dao);
                                                               echo $services->getOhanaPetsCount(); ?></p>
-                      <p class="stat-cards-info__title"> Ohana Pet Profiles </p>
+                      <p class="stat-cards-info__title" style="color:#db6551"> Ohana Pet Profiles </p>
                     </div>
                   </article>
                 </a>
@@ -80,7 +80,7 @@
                     <div class="stat-cards-info">
                       <p class="stat-cards-info__num"> Total: <?php
                                                               echo $services->getCustomerPetsCount(); ?></p>
-                      <p class="stat-cards-info__title"> Customer Pet Profiles </p>
+                      <p class="stat-cards-info__title" style="color:#db6551"> Customer Pet Profiles </p>
                     </div>
                   </article>
                 </a>
@@ -95,13 +95,13 @@
                       <p class="stat-cards-info__num"> Total: <?php $dao = new BoardingSlotDAO($database);
                                                               $services = new BoardingSlotServices($dao);
                                                               echo $services->getBoardingSlotCount(); ?></p>
-                      <p class="stat-cards-info__title"> Pet Boarding Slots </p>
+                      <p class="stat-cards-info__title"  style="color:#db6551"> Pet Boarding Slots </p>
                     </div>
                   </article>
                 </a>
               </div>
             </div>
-            <div class="row stat-cards d-flex justify-content-center mt-5">
+            <div class="row stat-cards d-flex justify-content-center mt-3">
               <div class="col-md-6 col-xl-3">
                 <a href="/dashboard/customers">
                   <article class="stat-cards-item">
@@ -112,7 +112,7 @@
                       <p class="stat-cards-info__num"> Total: <?php $dao = new AccountDAO($database);
                                                               $services = new AccountServices($dao);
                                                               echo $services->getUsersCount(); ?></p>
-                      <p class="stat-cards-info__title"> Registered Users </p>
+                      <p class="stat-cards-info__title"  style="color:#db6551"> Registered Users </p>
                     </div>
                   </article>
                 </a>
@@ -127,7 +127,7 @@
                       <p class="stat-cards-info__num"> Total: <?php $dao = new AppointmentDAO($database);
                                                               $services = new AppointmentServices($dao);
                                                               echo $services->getAppointmentsCount(); ?></p>
-                      <p class="stat-cards-info__title"> Appointments </p>
+                      <p class="stat-cards-info__title"  style="color:#db6551"> Staff Accounts </p>
                       <p class="stat-cards-info__progress">
                       </p>
                     </div>
@@ -145,7 +145,59 @@
                                                               $order = new OrderDAO($database);
                                                               $services = new TransactionServices($dao, $order);
                                                               echo $services->getTransactionsCount(); ?></p>
-                      <p class="stat-cards-info__title"> Transactions </p>
+                      <p class="stat-cards-info__title"  style="color:#db6551"> Pending Appointments </p>
+                      <p class="stat-cards-info__progress">
+                      </p>
+                    </div>
+                  </article>
+                </a>
+              </div>
+            </div>
+            <div class="row stat-cards d-flex justify-content-center mt-3">
+              <div class="col-md-6 col-xl-3">
+                <a href="/dashboard/customers">
+                  <article class="stat-cards-item">
+                    <div class="stat-cards-icon warning">
+                      <i data-feather="bar-chart-2" aria-hidden="true"></i>
+                    </div>
+                    <div class="stat-cards-info">
+                      <p class="stat-cards-info__num"> Total: <?php $dao = new AccountDAO($database);
+                                                              $services = new AccountServices($dao);
+                                                              echo $services->getUsersCount(); ?></p>
+                      <p class="stat-cards-info__title"  style="color:#db6551"> Completed Appointments</p>
+                    </div>
+                  </article>
+                </a>
+              </div>
+              <div class="col-md-6 col-xl-3">
+                <a href="/dashboard/appointments">
+                  <article class="stat-cards-item">
+                    <div class="stat-cards-icon warning">
+                      <i data-feather="bar-chart" aria-hidden="true"></i>
+                    </div>
+                    <div class="stat-cards-info">
+                      <p class="stat-cards-info__num"> Total: <?php $dao = new AppointmentDAO($database);
+                                                              $services = new AppointmentServices($dao);
+                                                              echo $services->getAppointmentsCount(); ?></p>
+                      <p class="stat-cards-info__title"  style="color:#db6551"> Customer Transactions </p>
+                      <p class="stat-cards-info__progress">
+                      </p>
+                    </div>
+                  </article>
+                </a>
+              </div>
+              <div class="col-md-6 col-xl-3">
+                <a href="/dashboard/transactions">
+                  <article class="stat-cards-item">
+                    <div class="stat-cards-icon warning">
+                      <i data-feather="pie-chart" aria-hidden="true"></i>
+                    </div>
+                    <div class="stat-cards-info">
+                      <p class="stat-cards-info__num"> Total: <?php $dao = new TransactionDAO($database);
+                                                              $order = new OrderDAO($database);
+                                                              $services = new TransactionServices($dao, $order);
+                                                              echo $services->getTransactionsCount(); ?></p>
+                      <p class="stat-cards-info__title"  style="color:#db6551"> Customer Feedbacks </p>
                       <p class="stat-cards-info__progress">
                       </p>
                     </div>

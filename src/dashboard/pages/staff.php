@@ -155,7 +155,7 @@
                     ?>
                       <td>
                         <a href="#" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $staff->getId(); ?>"><button class="edit-btn transparent-btn fs-4" type="edit" style="color:#C0B65A; margin-right: 15px;"> <i class="uil uil-edit"> </i> </button></a>
-                        <a href="/dashboard/staff/delete/<?php echo $staff->getId(); ?>" type="delete" style="color:red;background-color:transparent"><button><i class="uil uil-trash-alt fs-4"></i></button></a>
+                        <a href="/dashboard/staff/delete/<?php echo $staff->getId(); ?>" type="delete"><button style="background:transparent;color:red"><i class="uil uil-trash-alt fs-4"></i></button></a>
                         <form method="POST" action="/dashboard/staff/update/<?php echo $staff->getId(); ?>">
                           <div class="modal fade" id="editModalId<?php echo $staff->getId(); ?>" tabindex="-1" aria-labelledby="editstaffmodal" aria-hidden="true">
                             <div class="modal-dialog modal-lg modal-dialog-centered">
