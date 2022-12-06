@@ -142,33 +142,33 @@
                       <a href="" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $response->getId(); ?>">
                         <button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button></a>
                       <a href="/dashboard/chatbot-responses/delete/<?php echo $response->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Response ID <?php echo $response->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>
-                    </td>
-                    <form method="POST" action="/dashboard/chatbot-responses/update/<?php echo $response->getId(); ?>">
-                      <div class="modal fade" id="editModalId<?php echo $response->getId(); ?>" tabindex="-1" aria-labelledby="addResponseModal" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="addStaffTitle"> EDIT CHATBOT RESPONSE </h5>
-                              <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
-                            </div>
-                            <div class="modal-body">
-                              <input type="hidden" name="timesAsked" value="<?php echo $response->getTimesAsked(); ?>">
-                              <div class="mb-3">
-                                <label for="query" class="col-form-label"> QUERY </label>
-                                <input type="text" class="form-control" name="query" value="<?php echo $response->getQuery(); ?>" required style="background-color:#eed1c2; color:black">
+                      <form method="POST" action="/dashboard/chatbot-responses/update/<?php echo $response->getId(); ?>">
+                        <div class="modal fade" id="editModalId<?php echo $response->getId(); ?>" tabindex="-1" aria-labelledby="addResponseModal" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="addStaffTitle"> EDIT CHATBOT RESPONSE </h5>
+                                <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
                               </div>
-                              <div class="mb-3">
-                                <label for="response" class="col-form-label"> RESPONSE </label>
-                                <input type="text" class="form-control" name="response" value="<?php echo $response->getResponse(); ?>" required style="background-color:#eed1c2; color:black">
+                              <div class="modal-body">
+                                <input type="hidden" name="timesAsked" value="<?php echo $response->getTimesAsked(); ?>">
+                                <div class="mb-3">
+                                  <label for="query" class="col-form-label"> QUERY </label>
+                                  <input type="text" class="form-control" name="query" value="<?php echo $response->getQuery(); ?>" required style="background-color:#eed1c2; color:black">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="response" class="col-form-label"> RESPONSE </label>
+                                  <input type="text" class="form-control" name="response" value="<?php echo $response->getResponse(); ?>" required style="background-color:#eed1c2; color:black">
+                                </div>
                               </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="submit" class="btn text-white" style="background-color:#db6551"> Save Changes </button>
+                              <div class="modal-footer">
+                                <button type="submit" class="btn text-white" style="background-color:#db6551"> Save Changes </button>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </form>
+                      </form>
+                    </td>
                   </tr>
                 <?php
                 }

@@ -33,7 +33,7 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <?php include_once 'Rnavbar.php'; ?>
+        <?php include_once 'rnavbar.php'; ?>
         <div class="container-fluid">
             <section class="abouthead">
                 <h1 id="header" class="text-center mb-5"> Choose dog for Stud Service </h1>

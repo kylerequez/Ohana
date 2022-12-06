@@ -146,17 +146,6 @@
                     <td>
                       <?php echo $user->getStatus(); ?>
                     </td>
-                    <?php
-                    if ($user->getType() == "ADMINISTRATOR") {
-                    ?>
-                      <td>
-                        <button class="edit-btn transparent-btn" type="edit" style="color:aqua; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button>
-                        <button class="delete-btn transparent-btn" type="delete" style="color:red; font-size: 25px;"> <i class="uil uil-trash-alt"> </i>
-                        </button>
-                      </td>
-                    <?php
-                    }
-                    ?>
                   </tr>
                 <?php
                 }

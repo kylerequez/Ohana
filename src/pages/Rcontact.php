@@ -103,7 +103,7 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <?php include_once 'Rnavbar.php'; ?>
+        <?php include_once 'rnavbar.php'; ?>
         <div class="container-fluid">
             <section class="contact-us" id="contact">
                 <div class="container-fluid">

@@ -43,7 +43,7 @@
 
 <body style="background-color: #FAF8F0;">
   <main>
-    <?php include_once 'Rnavbar.php'; ?>
+    <?php include_once 'rnavbar.php'; ?>
     <div class="container-fluid">
       <div class="container h-90" id="create-profile">
         <h1 class="mb-5 text-center" id="header"> Create Pet Profile </h1><br>

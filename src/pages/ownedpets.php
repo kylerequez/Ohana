@@ -80,7 +80,7 @@
   }
   ?>
   <main>
-    <?php include_once 'Rnavbar.php'; ?>
+    <?php include_once 'rnavbar.php'; ?>
     <div class="container-fluid">
       <div class="container h-90">
         <h1 class="text-center mb-5" id="header" style="color:#DB6551; font-family: 'Acme', sans-serif; "> Pet Profile </h1><br>

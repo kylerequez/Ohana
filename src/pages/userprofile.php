@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title> USER PROFILE </title>
     <meta charset="utf-8">
@@ -11,20 +12,25 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
         #ohanafooter {
-            margin-top:10%;
+            margin-top: 10%;
         }
+
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
             #header {
                 font-size: 40px;
                 margin-top: 40%;
             }
+
             #labels {
                 width: 200px;
             }
+
             #name {
                 margin-top: -50px;
             }
+
             #save {
                 max-width: 500px;
                 margin-left: auto;
@@ -32,6 +38,7 @@
                 float: none;
                 margin-top: 40px;
             }
+
             #change {
                 max-width: 500px;
                 margin-left: auto;
@@ -42,9 +49,10 @@
         }
     </style>
 </head>
+
 <body style="background-color: #FAF8F0;">
     <main>
-        <?php include_once 'Rnavbar.php'; ?>
+        <?php include_once 'rnavbar.php'; ?>
         <div class="container-fluid">
             <section class="userprofile">
                 <div class="userheader">
@@ -113,4 +121,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 </body>
+
 </html>

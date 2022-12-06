@@ -83,7 +83,7 @@
     }
     ?>
     <main>
-        <?php include_once 'Rnavbar.php'; ?>
+        <?php include_once 'rnavbar.php'; ?>
         <div class="container-fluid">
             <div class="message">
                 <section class="services" id="services">

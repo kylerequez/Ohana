@@ -36,7 +36,7 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <?php include_once 'Rnavbar.php'; ?>
+        <?php include_once 'rnavbar.php'; ?>
         <section class="abouthead">
             <h1 id="header" class="text-center mb-2"> Your Pets </h1>
             <?php

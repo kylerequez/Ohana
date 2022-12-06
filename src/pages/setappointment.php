@@ -94,7 +94,7 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <?php include_once 'Rnavbar.php'; ?>
+        <?php include_once 'rnavbar.php'; ?>
         <div class="container-fluid">
             <section class="set-appointment" id="customer-book">
                 <div class="container">

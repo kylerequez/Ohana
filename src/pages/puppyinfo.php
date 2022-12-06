@@ -45,7 +45,7 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <?php include_once 'Rnavbar.php'; ?>
+        <?php include_once 'rnavbar.php'; ?>
         <?php
         include_once dirname(__DIR__) . '/models/PetProfile.php';
         include_once dirname(__DIR__) . '/config/app-config.php';
