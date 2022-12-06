@@ -18,13 +18,13 @@ section {
 }
 
 #serviceheader {
-  margin-top: 10%;
+  margin-top: 12%;
   color: #db6551;
   font-size: 100px;
   font-family: "Acme", sans-serif;
   font-weight: 800;
 }
-#paragraph {
+#phrase {
   font-size: 20px;
   margin-left: 100px;
   margin-right: 100px;

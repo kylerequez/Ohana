@@ -25,12 +25,20 @@
         <main class="main users chart-page" id="skip-target">
           <div class="d-flex justify-content-center">
             <?php
-            require_once dirname(__DIR__) . '/../models/ChatbotInformation.php';
-            $information = unserialize($_SESSION["cb_settings"]);
+            include_once dirname(__DIR__) . '/../models/ChatbotInformation.php';
+            include_once dirname(__DIR__) . '/../config/db-config.php';
+            include_once dirname(__DIR__) . '/../database/Database.php';
+            include_once dirname(__DIR__) . '/../dao/ChatbotDAO.php';
+            include_once dirname(__DIR__) . '/../services/ChatbotServices.php';
+
+            $database = new Database($servername, $database, $username, $password);
+            $dao = new ChatbotDAO($database);
+            $services = new ChatbotServices($dao);
+            $information = $services->getAllSettings();
             if (!empty($information)) {
             ?>
               <form method="POST" class="form-inline" action="/dashboard/chatbot-settings/update" enctype="multipart/form-data">
-                <h2 class="main-title text-center mt-5"> CHATBOT SETTINGS </h2>
+                <h2 class="main-title text-center mt-5"> Chatbot Settings </h2>
                 <div id="cb-settings">
                   <div class="row">
                     <div class="col">

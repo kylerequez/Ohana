@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title> USER PROFILE </title>
+    <title> USER TRANSACTIONS </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
@@ -13,23 +14,28 @@
         .userprofile {
             margin-top: 10%;
         }
+
         #header {
             font-family: 'Acme', sans-serif;
         }
+
         #ohanafooter {
             margin-top: 10%;
         }
+
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
             #header {
-            margin-top:50%;
-        }
+                margin-top: 50%;
+            }
         }
     </style>
 </head>
+
 <body style="background-color: #FAF8F0;">
     <main>
-        <?php include_once 'Rnavbar.php'; ?>
+        <?php include_once 'rnavbar.php'; ?>
         <div class="container-fluid">
             <section class="userprofile">
                 <div class="userheader mb-5">
@@ -41,7 +47,18 @@
                     <div class="container">
                         <?php
                         include_once dirname(__DIR__) . '/models/Transaction.php';
-                        $transactions = unserialize($_SESSION["transactions"]);
+                        include_once dirname(__DIR__) . '/config/db-config.php';
+                        include_once dirname(__DIR__) . '/database/Database.php';
+                        include_once dirname(__DIR__) . '/dao/OrderDAO.php';
+                        include_once dirname(__DIR__) . '/dao/TransactionDAO.php';
+                        include_once dirname(__DIR__) . '/services/TransactionServices.php';
+
+                        $database = new Database($servername, $database, $username, $password);
+                        $dao = new TransactionDAO($database);
+                        $orderDAO = new OrderDAO($database);
+                        $services = new TransactionServices($dao, $orderDAO);
+
+                        $transactions = $services->getUserTransactions($user->getId());
                         if (!empty($transactions)) {
                             foreach ($transactions as $transaction) {
                         ?>
@@ -58,12 +75,12 @@
                                                 <p class="lead fw-normal mb-2">Status</p>
                                             </div>
                                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#orderModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:green"><i class="uil uil-eye"></i> </a>
-                                                &nbsp;&nbsp; &nbsp;
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#orderModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#c0b65a"><i class="uil uil-eye fs-3"></i> </a>
+
                                                 <?php
                                                 if ($transaction->getStatus() != "COMPLETED") {
                                                 ?>
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#uploadModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#db6551"><i class="uil uil-upload-alt"></i> </a>
+                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#uploadModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#db6551"><i class="uil uil-upload-alt fs-3"></i> </a>
                                                 <?php
                                                 }
                                                 ?>
@@ -167,10 +184,11 @@
             </center>
         </div>
     </main>
-    <div id="ohanafooter">
+    <div id="ohanafooter" class="fixed-bottom">
         <?php include_once 'footer.php'; ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 </body>
+
 </html>

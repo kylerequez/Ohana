@@ -65,7 +65,7 @@
 </head>
 
 <body style="background-color: #FAF8F0;">
-  <?php include_once 'Rnavbar.php'; ?>
+  <?php include_once 'rnavbar.php'; ?>
   <main class="sign-up">
     <div class="sign-up__container">
       <div class="sign-up__content">

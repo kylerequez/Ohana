@@ -15,7 +15,7 @@
 <body style="background-color: #faf8f0">
     <main>
         <div class="container-fluid">
-            <?php include_once 'Rnavbar.php'; ?>
+            <?php include_once 'rnavbar.php'; ?>
             <div class="message">
                 <h1 class="text-center" id="welcome"> WELCOME TO OHANA!</h1>
             </div>

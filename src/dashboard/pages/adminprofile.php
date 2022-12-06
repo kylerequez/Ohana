@@ -26,11 +26,7 @@
             <main class="main users chart-page" id="skip-target">
                 <div class="main">
                     <div class="container rounded">
-                        <div class="row">
-                            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="/Ohana/src/dashboard/img/avatar/administrator.png">
-                                <span class="text-black-50">Administrator</span>
-                            </div>
-                        </div>
+                    <h2 class="main-title text-center mt-3">Admin Profile</h2>
                         <div class="container-sm">
                             <form action="/accounts/update" method="POST">
                                 <div class="d-flex justify-content-center">

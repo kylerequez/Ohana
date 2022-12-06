@@ -14,10 +14,82 @@
   <link rel="stylesheet" href="/Ohana/src/dashboard/css/adminpages.css">
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
-
   <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-  <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+  <style>
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+      background-color: #db6551;
+      border: #db6551;
+      border-radius: 30px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+      color: white !important;
+      background-color: #C0B65A;
+      border: #C0B65A;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+      cursor: default;
+      color: white !important;
+      background-color: #C0B65A;
+      box-shadow: none;
+      margin-left: 10px;
+      margin-right: 10px;
+      border-radius: 30px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
+      cursor: default;
+      color: white !important;
+      border: none;
+      background: #db6551;
+      box-shadow: none;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+      box-sizing: border-box;
+      display: inline-block;
+      min-width: 1.5em;
+      padding: 0.5em 1em;
+      margin-left: 2px;
+      text-align: center;
+      text-decoration: none !important;
+      cursor: pointer;
+      color: white !important;
+      border: 1px solid #db6551;
+      border-radius: 30px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+      background-color: #C0B65A;
+    }
+
+    .paginate_button {
+      background-color: #db6551;
+      border-radius: 30px;
+      margin-top: 20px;
+    }
+
+    .paginate_button:hover {
+      background-color: #C0B65A;
+    }
+
+    #logs_next {
+      background: #C0B65A;
+      border-radius: 30px;
+      margin-top: 20px;
+      border: none;
+    }
+
+    #logs_previous {
+      background: #C0B65A;
+      border-radius: 30px;
+      margin-top: 20px;
+      border: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -28,15 +100,10 @@
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <h2 class="main-title text-center mt-3"> STAFF ACCOUNTS </h2>
+          <h2 class="main-title text-center mt-3"> Staff Accounts</h2>
         </div>
         <div class="users-table table-wrapper">
-          <div class="search-wrapper">
-            <i data-feather="search" aria-hidden="true"></i>
-            <input type="text" placeholder=" Search User Account">
-            <button type="filter" style="color:white"> FILTER </button>
-            <button type="sort" style="color:white"> SORT </button>
-          </div>
+
           <?php
           if ($user->getType() == "ADMINISTRATOR") {
           ?>
@@ -46,15 +113,16 @@
             </div>
           <?php
           }
-          // if (!isset($_GET['page'])) {
-          //   $current_page = 1;
-          // } else {
-          //   $current_page = $_GET['page'];
-          // }
-          // $results_per_page = _RESOURCE_PER_PAGE_;
-          // $count = $_SESSION["totalStaff"];
-          // $number_of_page = ceil($count / $results_per_page) > 1 ? ceil($count / $results_per_page) : 1;
-          $staffs = unserialize($_SESSION["staff"]);
+
+          include_once dirname(__DIR__) . '/../config/db-config.php';
+          include_once dirname(__DIR__) . '/../database/Database.php';
+          include_once dirname(__DIR__) . '/../dao/AccountDAO.php';
+          include_once dirname(__DIR__) . '/../services/AccountServices.php';
+
+          $database = new Database($servername, $database, $username, $password);
+          $dao = new AccountDAO($database);
+          $services = new AccountServices($dao);
+          $staffs = $services->getStaffAccounts();
           if (!empty($staffs)) {
           ?>
             <table id="staff" class="posts-table">
@@ -86,57 +154,58 @@
                     if ($user->getType() == "ADMINISTRATOR") {
                     ?>
                       <td>
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $staff->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"> </i> </button></a>
-                        <a href="/dashboard/staff/delete/<?php echo $staff->getId(); ?>" type="delete" style="color:red; font-size: 25px;"><button ><i class="uil uil-trash-alt"></i></button></a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $staff->getId(); ?>"><button class="edit-btn transparent-btn fs-4" type="edit" style="color:#C0B65A; margin-right: 15px;"> <i class="uil uil-edit"> </i> </button></a>
+                        <a href="/dashboard/staff/delete/<?php echo $staff->getId(); ?>" type="delete"><button style="background:transparent;color:red"><i class="uil uil-trash-alt fs-4"></i></button></a>
+                        <form method="POST" action="/dashboard/staff/update/<?php echo $staff->getId(); ?>">
+                          <div class="modal fade" id="editModalId<?php echo $staff->getId(); ?>" tabindex="-1" aria-labelledby="editstaffmodal" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="editingModal"> EDIT STAFF ACCOUNT </h5>
+                                  <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                                </div>
+                                <div class="modal-body">
+                                  <input type="hidden" name="type" value="<?php echo $staff->getType(); ?>">
+                                  <div class="row input-group mb-3">
+                                    <label for="fname" class="col-3 col-form-label "> First Name: </label>
+                                    <input type="text" class="col-9 form-control" name="fname" value="<?php echo $staff->getFname(); ?>" required style="background-color:#eed1c2; color:black">
+                                  </div>
+                                  <div class="row input-group mb-3">
+                                    <label for="mname" class="col-3 col-form-label "> Middle Name: </label>
+                                    <input type="text" class="col-9 form-control" name="mname" value="<?php echo $staff->getMname(); ?>" required style="background-color:#eed1c2; color:black">
+                                  </div>
+                                  <div class="row input-group mb-3">
+                                    <label for="lname" class="col-3 col-form-label "> Surname: </label>
+                                    <input type="text" class="col-9 form-control" name="lname" value="<?php echo $staff->getLname(); ?>" required style="background-color:#eed1c2; color:black">
+                                  </div>
+                                  <div class="row input-group mb-3">
+                                    <label for="email" class="col-3 col-form-label "> Email Address: </label>
+                                    <input type="email" class="col-9 form-control" name="email" value="<?php echo $staff->getEmail(); ?>" required style="background-color:#eed1c2; color:black">
+                                  </div>
+                                  <div class="row input-group mb-3">
+                                    <label for="email" class="col-3 col-form-label "> Mobile Number: </label>
+                                    <span class="col-1 input-group-text" id="contact-no">+63</span>
+                                    <input type="text" class="col-8 form-control" name="number" value="<?php echo str_replace("+63", "", $staff->getNumber()); ?>" required style="background-color:#eed1c2; color:black" maxlength="10" ; oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                  </div>
+                                  <div class="row input-group mb-3">
+                                    <label for="status" class="col-3 col-form-label "> Status: </label>
+                                    <select class="form-select" name="status" aria-label="Default select example">
+                                      <option <?php if ($staff->getStatus() === "ACTIVE") echo "selected"; ?> value="ACTIVE">Active</option>
+                                      <option <?php if ($staff->getStatus() === "DISABLED") echo "selected"; ?> value="DISABLED">Disabled</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Save Changes </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
                       </td>
                     <?php
                     }
                     ?>
-                    <form method="POST" action="/dashboard/staff/update/<?php echo $staff->getId(); ?>?>">
-                      <div class="modal fade" id="editModalId<?php echo $staff->getId(); ?>" tabindex="-1" aria-labelledby="editstaffmodal" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="editingModal"> EDIT STAFF ACCOUNT </h5>
-                              <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
-                            </div>
-                            <div class="modal-body">
-                              <input type="hidden" name="type" value="<?php echo $staff->getType(); ?>">
-                              <div class="mb-3">
-                                <label for="fname" class="col-form-label"> First Name: </label>
-                                <input type="text" class="form-control" name="fname" value="<?php echo $staff->getFname(); ?>" required style="background-color:#eed1c2; color:black">
-                              </div>
-                              <div class="mb-3">
-                                <label for="mname" class="col-form-label"> Middle Name: </label>
-                                <input type="text" class="form-control" name="mname" value="<?php echo $staff->getMname(); ?>" required style="background-color:#eed1c2; color:black">
-                              </div>
-                              <div class="mb-3">
-                                <label for="lname" class="col-form-label"> Surname: </label>
-                                <input type="text" class="form-control" name="lname" value="<?php echo $staff->getLname(); ?>" required style="background-color:#eed1c2; color:black">
-                              </div>
-                              <div class="mb-3">
-                                <label for="email" class="col-form-label"> Email Address: </label>
-                                <input type="email" class="form-control" name="email" value="<?php echo $staff->getEmail(); ?>" required style="background-color:#eed1c2; color:black">
-                              </div>
-                              <div class="input-group mb-3">
-                                <span class="input-group-text" id="contact-no">+63</span>
-                                <input type="text" class="form-control" name="number" value="<?php echo str_replace("+63", "", $staff->getNumber()); ?>" required style="background-color:#eed1c2; color:black" maxlength="10" ; oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                              </div>
-                              <div class="mb-3">
-                                <label for="status" class="col-form-label"> Status: </label>
-                                <select class="form-select" name="status" aria-label="Default select example">
-                                  <option <?php if ($staff->getStatus() === "ACTIVE") echo "selected"; ?> value="ACTIVE">Active</option>
-                                  <option <?php if ($staff->getStatus() === "DISABLED") echo "selected"; ?> value="DISABLED">Disabled</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Save Changes </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
                   </tr>
                 <?php
                 }

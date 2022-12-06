@@ -9,38 +9,15 @@ class TransactionDAO
         $this->conn = $database->getConnection();
     }
 
-    public function getAllTransactionsPagination(string $limit, string $offset): mixed
+    public function getTransactionsCount(): mixed
     {
         try {
-            $sql = "SELECT * FROM ohana_transactions a JOIN ohana_account b 
-                    WHERE b.account_id = a.account_id
-                    LIMIT :limit OFFSET :offset;";
+            $sql = "SELECT COUNT(*) FROM ohana_transactions;";
 
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
-            $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
+            $stmt->execute();
 
-            $transactions = null;
-            if ($stmt->execute() > 0) {
-                while ($transaction = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $existingTransaction = new Transaction(
-                        $transaction["account_id"],
-                        $transaction["total_price"],
-                        new DateTime($transaction["transaction_date"]),
-                        $transaction["transaction_status"],
-                        $transaction["payment_confirmation"]
-                    );
-                    $existingTransaction->setId($transaction["transaction_id"]);
-                    $existingTransaction->setFname($transaction["fname"]);
-                    $existingTransaction->setMname($transaction["mname"]);
-                    $existingTransaction->setLname($transaction["lname"]);
-                    $existingTransaction->setNumber($transaction["number"]);
-                    $existingTransaction->setEmail($transaction["email"]);
-
-                    $transactions[] = $existingTransaction;
-                }
-            }
-            return $transactions;
+            return $stmt->fetchColumn();
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -65,7 +42,7 @@ class TransactionDAO
                         $transaction["transaction_status"],
                         $transaction["payment_confirmation"]
                     );
-                    $existingTransaction->setId($transaction["transaction_idid"]);
+                    $existingTransaction->setId($transaction["transaction_id"]);
                     $existingTransaction->setFname($transaction["fname"]);
                     $existingTransaction->setMname($transaction["mname"]);
                     $existingTransaction->setLname($transaction["lname"]);
@@ -76,21 +53,6 @@ class TransactionDAO
                 }
             }
             return $transactions;
-        } catch (Exception $e) {
-            echo $e;
-            return null;
-        }
-    }
-
-    public function getTotalTransactionsCount(): mixed
-    {
-        try {
-            $sql = "SELECT count(*) FROM ohana_transactions;";
-
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute();
-
-            return $stmt->fetchColumn();
         } catch (Exception $e) {
             echo $e;
             return null;

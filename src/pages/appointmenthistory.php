@@ -84,10 +84,8 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <?php include_once 'Rnavbar.php'; ?>
-
+        <?php include_once 'rnavbar.php'; ?>
         <div class="container-fluid">
-
             <section class="userprofile">
                 <div class="userheader mb-5">
                     <h1 id="header" class="text-center"> Appointment History </h1>
@@ -161,7 +159,16 @@
     </script>
     <?php
     include_once dirname(__DIR__) . "/models/Appointment.php";
-    $sched_res = unserialize($_SESSION["appointments"]);
+    include_once dirname(__DIR__) . '/config/db-config.php';
+    include_once dirname(__DIR__) . '/database/Database.php';
+    include_once dirname(__DIR__) . '/dao/AppointmentDAO.php';
+    include_once dirname(__DIR__) . '/services/AppointmentServices.php';
+
+    $database = new Database($servername, $database, $username, $password);
+    $dao = new AppointmentDAO($database);
+    $services = new AppointmentServices($dao);
+
+    $sched_res = $services->getAppointmentsByAccountId($user->getId());
     ?>
     <script>
         var scheds = $.parseJSON(JSON.stringify(<?= json_encode($sched_res) ?>));

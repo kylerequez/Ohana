@@ -66,9 +66,9 @@
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <h2 class="main-title text-center mt-3">APPOINTMENTS</h2>
+          <h2 class="main-title text-center mt-3">Appointments</h2>
         </div>
-        <div class="container py-5" id="page-container" style="margin-top: 0%">
+        <div class="container py-5" id="page-container">
           <div class="row">
             <div class="col-md-9">
               <div id="calendar"></div>
@@ -158,8 +158,7 @@
               </div>
               <div class="modal-footer rounded-0">
                 <div class="text-end">
-                  <button type="button" class="btn btn-sm rounded-0" id="edit" data-id=""  style="background-color:#db6551;" >Edit</button>
-                  <button type="button" class="btn btn-danger btn-sm rounded-0" id="delete" data-id="">Delete</button>
+                  <button type="button" class="btn btn-sm rounded-0 text-light" id="edit" data-id="" style="background-color:#db6551;">Edit</button>
                   <button type="button" class="btn btn-outline-dark btn-sm rounded-0" data-bs-dismiss="modal">Close</button>
                 </div>
               </div>
@@ -192,7 +191,16 @@
   </script>
   <?php
   include_once dirname(__DIR__) . "/../models/Appointment.php";
-  $sched_res = unserialize($_SESSION["appointments"]);
+  include_once dirname(__DIR__) . '/../config/db-config.php';
+  include_once dirname(__DIR__) . '/../database/Database.php';
+  include_once dirname(__DIR__) . '/../dao/AppointmentDAO.php';
+  include_once dirname(__DIR__) . '/../services/AppointmentServices.php';
+
+  $database = new Database($servername, $database, $username, $password);
+  $dao = new AppointmentDAO($database);
+  $services = new AppointmentServices($dao);
+
+  $sched_res = $services->getAllAppointments();
   ?>
   <script>
     var scheds = $.parseJSON(JSON.stringify(<?= json_encode($sched_res) ?>));

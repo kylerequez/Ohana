@@ -53,8 +53,7 @@ class AppointmentController
     {
         switch ($method) {
             case "GET":
-                $_SESSION["appointments"] = serialize($this->services->getAllAppointments());
-                header("Location: http://" . DOMAIN_NAME . "/dashboard/calendar");
+                header("Location: http://" . DOMAIN_NAME . "/dashboard/appointments");
                 break;
         }
     }
@@ -82,8 +81,6 @@ class AppointmentController
     {
         switch ($method) {
             case "GET":
-                $account = unserialize($_SESSION["user"]);
-                $_SESSION["appointments"] = serialize($this->services->getAppointmentsByAccountId($account->getId()));
                 header("Location: http://" . DOMAIN_NAME . "/appointments");
                 break;
             case "POST":

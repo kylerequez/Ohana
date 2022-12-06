@@ -19,4 +19,3 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && !isset($id)) {
 } else if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($id)) {
     $controller->processRehomingRequest($_SERVER["REQUEST_METHOD"], $id);
 }
-

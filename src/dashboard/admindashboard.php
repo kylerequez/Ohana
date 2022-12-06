@@ -29,151 +29,194 @@
 </head>
 
 <body>
-  <?php
-  if (!isset($_SESSION)) session_start();
-  include_once dirname(__DIR__) . '/models/Account.php';
+  <div class="layer"></div>
+  <div class="page-flex">
+    <?php include_once dirname(__DIR__) . '/dashboard/sidebar.php' ?>
+    <div class="main-wrapper">
+      <?php include_once dirname(__DIR__) . "/dashboard/navbar.php" ?>
+      <?php
+      include_once dirname(__DIR__) . '/config/db-config.php';
+      include_once dirname(__DIR__) . '/database/Database.php';
+      include_once dirname(__DIR__) . '/dao/PetProfileDAO.php';
+      include_once dirname(__DIR__) . '/services/PetProfileServices.php';
+      include_once dirname(__DIR__) . '/dao/BoardingSlotDAO.php';
+      include_once dirname(__DIR__) . '/services/BoardingSlotServices.php';
+      include_once dirname(__DIR__) . '/dao/AccountDAO.php';
+      include_once dirname(__DIR__) . '/services/AccountServices.php';
+      include_once dirname(__DIR__) . '/dao/AppointmentDAO.php';
+      include_once dirname(__DIR__) . '/services/AppointmentServices.php';
+      include_once dirname(__DIR__) . '/dao/TransactionDAO.php';
+      include_once dirname(__DIR__) . '/services/TransactionServices.php';
+      include_once dirname(__DIR__) . '/dao/OrderDAO.php';
 
-  if (empty($_SESSION['user'])) {
-    session_unset();
-    session_destroy();
-    header("Location: http://localhost/login");
-    exit();
-  } else {
-    $user = unserialize($_SESSION['user']);
-  ?>
-    <div class="layer"> </div>
-
-    <div class="page-flex">
-
-      <?php include_once dirname(__DIR__) . '/dashboard/sidebar.php' ?>
-      <div class="main-wrapper">
-        <?php include_once dirname(__DIR__) . "/dashboard/navbar.php" ?>
-
-        <main class="main users chart-page" id="skip-target"><br>
-          <div class="container-fluid">
-            <div class="container">
-              <h2 class="main-title text-center"> WELCOME BACK ADMIN!</h2>
-
-              <div class="row stat-cards d-flex justify-content-center mt-5">
-
-                <div class="col-md-6 col-xl-3">
-                  <a href="#">
-                    <article class="stat-cards-item">
-                      <div class="stat-cards-icon warning">
-                        <i data-feather="bar-chart-2" aria-hidden="true"></i>
-                      </div>
-                      <div class="stat-cards-info">
-                        <p class="stat-cards-info__num"> Total: 1</p>
-                        <p class="stat-cards-info__title"> Pet Profiles </p>
-                        <p class="stat-cards-info__progress">
-
-                        </p>
-                      </div>
-                    </article>
-                  </a>
-                </div>
-                <div class="col-md-6 col-xl-3">
-                  <a href="#">
-                    <article class="stat-cards-item">
-                      <div class="stat-cards-icon warning">
-                        <i data-feather="bar-chart" aria-hidden="true"></i>
-                      </div>
-                      <div class="stat-cards-info">
-                        <p class="stat-cards-info__num"> Total: 12</p>
-                        <p class="stat-cards-info__title"> Stud Profiles </p>
-                        <p class="stat-cards-info__progress">
-
-                        </p>
-                      </div>
-                    </article>
-                  </a>
-                </div>
-
-                <div class="col-md-6 col-xl-3">
-                  <a href="#">
-                    <article class="stat-cards-item">
-                      <div class="stat-cards-icon warning">
-                        <i data-feather="pie-chart" aria-hidden="true"></i>
-                      </div>
-                      <div class="stat-cards-info">
-                        <p class="stat-cards-info__num"> Total:1</p>
-                        <p class="stat-cards-info__title"> Pet Boarding Slots </p>
-                        <p class="stat-cards-info__progress">
-
-                        </p>
-                      </div>
-                    </article>
-                  </a>
-                </div>
+      $database = new Database($servername, $database, $username, $password);
+      ?>
+      <main class="main users chart-page" id="skip-target"><br>
+        <div class="container-fluid">
+          <div class="container">
+            <h2 class="main-title text-center"> Welcome Back, <?php echo $user->getFname(); ?>! </h2>
+            <div class="row stat-cards d-flex justify-content-center mt-2">
+              <div class="col-md-6 col-xl-3">
+                <a href="/dashboard/pet-profiles">
+                  <article class="stat-cards-item">
+                    <div class="stat-cards-icon warning">
+                      <i data-feather="bar-chart-2" aria-hidden="true"></i>
+                    </div>
+                    <div class="stat-cards-info">
+                      <p class="stat-cards-info__num"> Total: <?php $dao = new PetProfileDAO($database);
+                                                              $services = new PetProfileServices($dao);
+                                                              echo $services->getOhanaPetsCount(); ?></p>
+                      <p class="stat-cards-info__title" style="color:#db6551"> Ohana Pet Profiles </p>
+                    </div>
+                  </article>
+                </a>
               </div>
-
-              <div class="row stat-cards d-flex justify-content-center mt-5">
-
-                <div class="col-md-6 col-xl-3">
-                  <a href="#">
-                    <article class="stat-cards-item">
-                      <div class="stat-cards-icon warning">
-                        <i data-feather="bar-chart-2" aria-hidden="true"></i>
-                      </div>
-                      <div class="stat-cards-info">
-                        <p class="stat-cards-info__num"> Total:12</p>
-                        <p class="stat-cards-info__title"> Registered Users </p>
-                        <p class="stat-cards-info__progress">
-
-                        </p>
-                      </div>
-                    </article>
-                  </a>
-                </div>
-                <div class="col-md-6 col-xl-3">
-                  <a href="#">
-                    <article class="stat-cards-item">
-                      <div class="stat-cards-icon warning">
-                        <i data-feather="bar-chart" aria-hidden="true"></i>
-                      </div>
-                      <div class="stat-cards-info">
-                        <p class="stat-cards-info__num"> Total:12</p>
-                        <p class="stat-cards-info__title"> Appointments </p>
-                        <p class="stat-cards-info__progress">
-                        </p>
-                      </div>
-                    </article>
-                  </a>
-                </div>
-
-                <div class="col-md-6 col-xl-3">
-                  <a href="#">
-                    <article class="stat-cards-item">
-                      <div class="stat-cards-icon warning">
-                        <i data-feather="pie-chart" aria-hidden="true"></i>
-                      </div>
-                      <div class="stat-cards-info">
-                        <p class="stat-cards-info__num"> Total:12</p>
-                        <p class="stat-cards-info__title"> Transactions </p>
-                        <p class="stat-cards-info__progress">
-
-                        </p>
-                      </div>
-                    </article>
-                  </a>
-                </div>
+              <div class="col-md-6 col-xl-3">
+                <a href="/dashboard/customer-pets">
+                  <article class="stat-cards-item">
+                    <div class="stat-cards-icon warning">
+                      <i data-feather="bar-chart" aria-hidden="true"></i>
+                    </div>
+                    <div class="stat-cards-info">
+                      <p class="stat-cards-info__num"> Total: <?php
+                                                              echo $services->getCustomerPetsCount(); ?></p>
+                      <p class="stat-cards-info__title" style="color:#db6551"> Customer Pet Profiles </p>
+                    </div>
+                  </article>
+                </a>
               </div>
-
-            </div><!-- END OF CONTAINER -->
-          </div><!-- END OF CONTAINER FLUID -->
-        </main>
-        <?php include_once dirname(__DIR__) . '/dashboard/footer.php'; ?>
-      </div>
+              <div class="col-md-6 col-xl-3">
+                <a href="/dashboard/petboarding">
+                  <article class="stat-cards-item">
+                    <div class="stat-cards-icon warning">
+                      <i data-feather="pie-chart" aria-hidden="true"></i>
+                    </div>
+                    <div class="stat-cards-info">
+                      <p class="stat-cards-info__num"> Total: <?php $dao = new BoardingSlotDAO($database);
+                                                              $services = new BoardingSlotServices($dao);
+                                                              echo $services->getBoardingSlotCount(); ?></p>
+                      <p class="stat-cards-info__title"  style="color:#db6551"> Pet Boarding Slots </p>
+                    </div>
+                  </article>
+                </a>
+              </div>
+            </div>
+            <div class="row stat-cards d-flex justify-content-center mt-3">
+              <div class="col-md-6 col-xl-3">
+                <a href="/dashboard/customers">
+                  <article class="stat-cards-item">
+                    <div class="stat-cards-icon warning">
+                      <i data-feather="bar-chart-2" aria-hidden="true"></i>
+                    </div>
+                    <div class="stat-cards-info">
+                      <p class="stat-cards-info__num"> Total: <?php $dao = new AccountDAO($database);
+                                                              $services = new AccountServices($dao);
+                                                              echo $services->getUsersCount(); ?></p>
+                      <p class="stat-cards-info__title"  style="color:#db6551"> Registered Users </p>
+                    </div>
+                  </article>
+                </a>
+              </div>
+              <div class="col-md-6 col-xl-3">
+                <a href="/dashboard/appointments">
+                  <article class="stat-cards-item">
+                    <div class="stat-cards-icon warning">
+                      <i data-feather="bar-chart" aria-hidden="true"></i>
+                    </div>
+                    <div class="stat-cards-info">
+                      <p class="stat-cards-info__num"> Total: <?php $dao = new AppointmentDAO($database);
+                                                              $services = new AppointmentServices($dao);
+                                                              echo $services->getAppointmentsCount(); ?></p>
+                      <p class="stat-cards-info__title"  style="color:#db6551"> Staff Accounts </p>
+                      <p class="stat-cards-info__progress">
+                      </p>
+                    </div>
+                  </article>
+                </a>
+              </div>
+              <div class="col-md-6 col-xl-3">
+                <a href="/dashboard/transactions">
+                  <article class="stat-cards-item">
+                    <div class="stat-cards-icon warning">
+                      <i data-feather="pie-chart" aria-hidden="true"></i>
+                    </div>
+                    <div class="stat-cards-info">
+                      <p class="stat-cards-info__num"> Total: <?php $dao = new TransactionDAO($database);
+                                                              $order = new OrderDAO($database);
+                                                              $services = new TransactionServices($dao, $order);
+                                                              echo $services->getTransactionsCount(); ?></p>
+                      <p class="stat-cards-info__title"  style="color:#db6551"> Pending Appointments </p>
+                      <p class="stat-cards-info__progress">
+                      </p>
+                    </div>
+                  </article>
+                </a>
+              </div>
+            </div>
+            <div class="row stat-cards d-flex justify-content-center mt-3">
+              <div class="col-md-6 col-xl-3">
+                <a href="/dashboard/customers">
+                  <article class="stat-cards-item">
+                    <div class="stat-cards-icon warning">
+                      <i data-feather="bar-chart-2" aria-hidden="true"></i>
+                    </div>
+                    <div class="stat-cards-info">
+                      <p class="stat-cards-info__num"> Total: <?php $dao = new AccountDAO($database);
+                                                              $services = new AccountServices($dao);
+                                                              echo $services->getUsersCount(); ?></p>
+                      <p class="stat-cards-info__title"  style="color:#db6551"> Completed Appointments</p>
+                    </div>
+                  </article>
+                </a>
+              </div>
+              <div class="col-md-6 col-xl-3">
+                <a href="/dashboard/appointments">
+                  <article class="stat-cards-item">
+                    <div class="stat-cards-icon warning">
+                      <i data-feather="bar-chart" aria-hidden="true"></i>
+                    </div>
+                    <div class="stat-cards-info">
+                      <p class="stat-cards-info__num"> Total: <?php $dao = new AppointmentDAO($database);
+                                                              $services = new AppointmentServices($dao);
+                                                              echo $services->getAppointmentsCount(); ?></p>
+                      <p class="stat-cards-info__title"  style="color:#db6551"> Customer Transactions </p>
+                      <p class="stat-cards-info__progress">
+                      </p>
+                    </div>
+                  </article>
+                </a>
+              </div>
+              <div class="col-md-6 col-xl-3">
+                <a href="/dashboard/transactions">
+                  <article class="stat-cards-item">
+                    <div class="stat-cards-icon warning">
+                      <i data-feather="pie-chart" aria-hidden="true"></i>
+                    </div>
+                    <div class="stat-cards-info">
+                      <p class="stat-cards-info__num"> Total: <?php $dao = new TransactionDAO($database);
+                                                              $order = new OrderDAO($database);
+                                                              $services = new TransactionServices($dao, $order);
+                                                              echo $services->getTransactionsCount(); ?></p>
+                      <p class="stat-cards-info__title"  style="color:#db6551"> Customer Feedbacks </p>
+                      <p class="stat-cards-info__progress">
+                      </p>
+                    </div>
+                  </article>
+                </a>
+              </div>
+            </div>
+          </div><!-- END OF CONTAINER -->
+        </div><!-- END OF CONTAINER FLUID -->
+      </main>
+      <?php include_once dirname(__DIR__) . '/dashboard/footer.php'; ?>
     </div>
+  </div>
 
-    <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
-    <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
-    <script src="/Ohana/src/dashboard/js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
-    </script>
-  <?php
-  }
-  ?>
+  <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
+  <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
+  <script src="/Ohana/src/dashboard/js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+  </script>
 </body>
 
 </html>

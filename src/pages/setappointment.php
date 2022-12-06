@@ -32,7 +32,7 @@
         .fc .fc-button-primary {
             background-color: #db6551;
             color: white;
-            border-color: white;
+            border:none;
         }
 
         .fc .fc-button-primary:not(:disabled).fc-button-active,
@@ -83,12 +83,18 @@
         #header {
             margin-top: 10%;
         }
+        @media screen and (min-width: 360px) and (max-width: 929.98px) {
+            #header {
+                font-size: 37px;
+                margin-top: 40%;
+            }
+        }
     </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <?php include_once 'Rnavbar.php'; ?>
+        <?php include_once 'rnavbar.php'; ?>
         <div class="container-fluid">
             <section class="set-appointment" id="customer-book">
                 <div class="container">

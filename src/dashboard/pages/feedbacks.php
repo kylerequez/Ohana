@@ -9,6 +9,75 @@
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <link rel="stylesheet" href="/Ohana/src/dashboard/css/adminpages.css">
+  <style>
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+      background-color: #db6551;
+      border: #db6551;
+      border-radius: 30px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+      color: white !important;
+      background-color: #C0B65A;
+      border: #C0B65A;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+      cursor: default;
+      color: white !important;
+      background-color: #C0B65A;
+      box-shadow: none;
+      margin-left: 10px;
+      margin-right: 10px;
+      border-radius: 30px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
+      cursor: default;
+      color: white !important;
+      border: none;
+      background: #db6551;
+      box-shadow: none;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+      box-sizing: border-box;
+      display: inline-block;
+      min-width: 1.5em;
+      padding: 0.5em 1em;
+      margin-left: 2px;
+      text-align: center;
+      text-decoration: none !important;
+      cursor: pointer;
+      color: white !important;
+      border: 1px solid #db6551;
+      border-radius: 30px;
+    }
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+      background-color: #C0B65A;
+    }
+    .paginate_button {
+      background-color: #db6551;
+      border-radius: 30px;
+      margin-top:20px;
+    }
+    .paginate_button:hover {
+      background-color: #C0B65A;
+    }
+    #logs_next{
+      background: #C0B65A;
+      border-radius: 30px;
+      margin-top:20px;
+      border: none;
+    }
+    #logs_previous{
+      background: #C0B65A;
+      border-radius: 30px;
+      margin-top:20px;
+      border: none;
+    }
+  </style>
 </head>
 <body>
   <div class="layer"> </div>
@@ -18,13 +87,9 @@
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <h2 class="main-title text-center mt-3">USER FEEDBACKS</h2>
+          <h2 class="main-title text-center mt-3">User Feedbacks</h2>
         </div>
         <div class="users-table table-wrapper">
-          <div class="search-wrapper">
-            <i data-feather="search" aria-hidden="true"></i>
-            <input type="text" placeholder=" Search..">
-          </div>
           <table class="posts-table">
             <thead>
               <tr class="users-table-info">
@@ -36,17 +101,13 @@
             </thead>
             <tbody>
               <tr>
+                <td>I.D NUMBER 12345</td>
                 <td>
-                  I.D NUMBER 12345
-                </td>
-                <td>
-                  <div class="pages-table-img">
-                    Jenny Wilson
-                  </div>
+                  <div class="pages-table-img">Jenny Wilson</div>
                 </td>
                 <td>17.04.2021</td>
                 <td>
-                  <button class="view-btn transparent-btn" data-bs-toggle="modal" data-bs-target="#viewModal" type="view" style="color:#7d605c; margin-right: 15px; font-size: 25px;"> <i class="uil uil-eye"></i> </button>
+                  <button class="view-btn transparent-btn fs-4" data-bs-toggle="modal" data-bs-target="#viewModal" type="view" style="color:#7d605c; margin-right: 15px;"> <i class="uil uil-eye"></i> </button>
                 </td>
               </tr>
               <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">

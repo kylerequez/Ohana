@@ -42,7 +42,7 @@ function init() {
 			</div> -->
 
 			<!-- <div class='bot-msg'>
-				<img class='msg-image' src= "https://i.imgur.com/nGF1K8f.jpg" />
+				<img class='msg-image' src="https://i.imgur.com/nGF1K8f.jpg" />
 			</div> -->
 
 			<!-- <div class='user-msg'>
@@ -161,9 +161,7 @@ function scrollToBottomOfResults() {
     chatArea.scrollTop = chatArea.scrollHeight;
 }
 
-/***************************************************************
-Frontend Part Completed
-****************************************************************/
+
 function send(message) {
     chatInput.type = "text";
     passwordInput = false;
@@ -188,7 +186,7 @@ function send(message) {
     chatInput.focus();
 }
 
-//------------------------------------ Set bot response -------------------------------------
+//------------------------------------ Set CHAT bot response -------------------------------------//
 function setBotResponse(val) {
     setTimeout(function() {
         if (val == null) {

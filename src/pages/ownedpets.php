@@ -16,6 +16,19 @@
       font-size: 80px;
     }
 
+    #editcard {
+      max-width: 65 vw;
+      max-height: 80vh;
+      border-style: solid;
+      border-color: #c0b65a;
+      border-width: 5px;
+    }
+
+    #picture {
+      height: 60vh;
+      width: 60vh;
+    }
+
     #ohanafooter {
       margin-top: 10%;
     }
@@ -28,35 +41,53 @@
 
 <body style="background-color: #FAF8F0;">
   <?php
-  include_once dirname(__DIR__) . '/models/Order.php';
   include_once dirname(__DIR__) . '/models/PetProfile.php';
+  include_once dirname(__DIR__) . '/config/db-config.php';
   include_once dirname(__DIR__) . '/config/app-config.php';
-  $profile = isset($_SESSION["profile"]) ? unserialize($_SESSION["profile"]) : null;
-  if (empty($profile)) {
-    unset($_SESSION["profile"]);
+  include_once dirname(__DIR__) . '/database/Database.php';
+  include_once dirname(__DIR__) . '/dao/PetProfileDAO.php';
+  include_once dirname(__DIR__) . '/services/PetProfileServices.php';
+
+  $database = new Database($servername, $database, $username, $password);
+  $dao = new PetProfileDAO($database);
+  $services = new PetProfileServices($dao);
+
+  $profile = $services->getOwnedPet($id, $name);
+  if (is_null($profile)) {
   ?>
-    <script type="text/javascript">
-      const url = "http://<?= DOMAIN_NAME ?>/ownedpets";
-      window.location.href = url;
+    <script>
+      window.location = 'http://<?php echo DOMAIN_NAME; ?>/ownedpets';
     </script>
   <?php
-  } else if ($profile->getName() != str_replace("%20", " ", $name)) {
-    unset($_SESSION["profile"]);
+  } else if ($profile->getId() != $id) {
   ?>
-    <script type="text/javascript">
-      const url = "http://<?= DOMAIN_NAME ?>/ownedpets";
-      window.location.href = url;
+    <script>
+      window.location = 'http://<?php echo DOMAIN_NAME; ?>/ownedpets';
     </script>
-  <?php } ?>
+  <?php
+  } else if ($profile->getName() !=  $name) {
+  ?>
+    <script>
+      window.location = 'http://<?php echo DOMAIN_NAME; ?>/ownedpets';
+    </script>
+  <?php
+  } else if ($profile->getStatus() != 'AVAILABLE') {
+  ?>
+    <script>
+      window.location = 'http://<?php echo DOMAIN_NAME; ?>/ownedpets';
+    </script>
+  <?php
+  }
+  ?>
   <main>
-    <?php include_once 'Rnavbar.php'; ?>
+    <?php include_once 'rnavbar.php'; ?>
     <div class="container-fluid">
       <div class="container h-90">
         <h1 class="text-center mb-5" id="header" style="color:#DB6551; font-family: 'Acme', sans-serif; "> Pet Profile </h1><br>
-        <div class="card mx-auto" style="max-width: 68vw; max-height:80vh; border-style: solid; border-color: #c0b65a; border-width:5px">
+        <div class="card mx-auto" id="editcard">
           <div class="row g-0">
             <div class="col-md-6 d-none d-md-block">
-              <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="img-fluid p-5" style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height: 60vh; " />
+              <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="img-fluid p-5" id="picture" />
             </div>
             <div class="col-md-6">
               <div class="card-body p-md-5 text-black">

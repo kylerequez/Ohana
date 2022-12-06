@@ -19,6 +19,9 @@
         .card {
             width: 20rem;
         }
+        #offer {
+            width: 40rem;
+        }
 
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
             #header {
@@ -30,7 +33,7 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <?php include_once 'Rnavbar.php'; ?>
+        <?php include_once 'rnavbar.php'; ?>
         <div class="container-fluid">
             <section class="abouthead">
                 <h1 id="header" class="text-center mb-5"> Choose dog for Stud Service </h1>
@@ -60,7 +63,7 @@
                                 <?php
                                 foreach ($profiles as $profile) {
                                 ?>
-                                    <div class="card m-3 mb-5">
+                                    <div class="card m-3 mb-5" id="profilecard">
                                         <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image" width="200px" height="250px;">
                                         <div class="card-body text-center">
                                             <h5 class="card-title fs-3" style="font-family: 'Acme', sans-serif; color:#db6551"> <?php echo $profile->getName(); ?></h5>
@@ -72,7 +75,7 @@
                                 ?>
                             </div>
                             <div class="d-flex justify-content-center mb-5">
-                                <div class="card text-center mx-3" style="width: 40rem;">
+                                <div class="card text-center mx-3" id="offer">
                                     <h1 class="mt-4"> We offer pet boarding(optional) after availing our stud service for your dog<br><br>Would you like to avail this service? </h1>
                                     <div class="d-flex">
                                         <div class="card-body">

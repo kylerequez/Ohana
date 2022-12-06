@@ -14,19 +14,12 @@ $services = new BoardingSlotServices($dao);
 $logservices = new LogServices($logdao);
 $controller = new BoardingSlotController($services, $logservices);
 
-if($_SERVER["REQUEST_METHOD"] == "GET" && empty($id)){
-    // get boarding slots
-    echo "GET DISPLAY";
+if ($_SERVER["REQUEST_METHOD"] == "GET" && empty($id)) {
     $controller->processRequest($_SERVER["REQUEST_METHOD"], null);
-} else if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($id)){
-    // add boarding slot
-    echo "POST ADD";
+} else if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($id)) {
     $controller->processRequest($_SERVER["REQUEST_METHOD"], null);
-} else if($_SERVER["REQUEST_METHOD"] == "GET" && !empty($id)) {
-    // delete boarding slot
-    echo "TEST";
+} else if ($_SERVER["REQUEST_METHOD"] == "GET" && !empty($id)) {
     $controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
-} else if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($id)){
-    // update
+} else if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($id)) {
     $controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
 }

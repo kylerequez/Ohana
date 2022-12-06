@@ -18,6 +18,19 @@
             font-weight: 800;
         }
 
+        .btn-outline-warning {
+            color: #db6551;
+            background-color: transparent;
+            background-image: none;
+            border-color: #db6551;
+            font-size: 16px;
+            --bs-btn-hover-border-color: #c0b65a;
+            --bs-btn-hover-bg: #c0b65a;
+            --bs-btn-hover-color: white;
+            border-radius: 30px;
+            padding: 7px 40px;
+        }
+
         #ohanafooter {
             margin-top: 10%;
         }
@@ -32,38 +45,88 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <?php include_once 'Rnavbar.php'; ?>
+        <?php include_once 'rnavbar.php'; ?>
         <div class="container-fluid">
             <div class="message" style="margin-top:10%;">
                 <section class="services" id="services">
                     <?php
                     include_once dirname(__DIR__) . '/models/PetProfile.php';
+                    include_once dirname(__DIR__) . '/config/db-config.php';
+                    include_once dirname(__DIR__) . '/database/Database.php';
+                    include_once dirname(__DIR__) . '/dao/PetProfileDAO.php';
+                    include_once dirname(__DIR__) . '/services/PetProfileServices.php';
 
-                    if(!isset($_SESSION["profiles"])){
-                        require dirname(__DIR__) . '/config/db-config.php';
-                        require dirname(__DIR__) . '/database/Database.php';
-                        require dirname(__DIR__) . '/dao/PetProfileDAO.php';
-                        require dirname(__DIR__) . '/services/PetProfileServices.php';
-                        
-                        $database = new Database($servername, $database, $username, $password);
-                        $dao = new PetProfileDAO($database);
-                        $services = new PetProfileServices($dao);
-        
-                        $profiles = $services->getRehomingPets();
-                        $_SESSION["rehoming"] = $profiles;
-                    } else {
-                        $profiles = unserialize($_SESSION["rehoming"]);
-                    }
+                    $database = new Database($servername, $database, $username, $password);
+                    $dao = new PetProfileDAO($database);
+                    $services = new PetProfileServices($dao);
+
+                    $profiles = $services->getRehomingPets();
 
                     if (empty($profiles)) {
                     ?>
                         <div class="service mb-4">
                             <h1 class="text-center fs-1 mt-5" style="color:#DB6551; font-family: 'Acme', sans-serif; "> There are currently NO AVAILABLE <br><br> french bulldog puppies for rehoming</h1>
                         </div>
+                        <div class="container-md d-flex justify-content-center">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card mb-4">
+                                        <div class="card-body">
+                                            <div class="filtering-inline-spacing">
+                                                <div class="btn-group mx-2">
+                                                    <button type="button" class="btn rounded-pill text-light dropdown-toggle" style="background-color:#DB6551;" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        Type
+                                                    </button>
+                                                    <ul class="dropdown-menu text-center">
+                                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="btn-group mx-2">
+                                                    <button type="button" class="btn rounded-pill text-light  dropdown-toggle" style="background-color:#DB6551;" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        Color
+                                                    </button>
+                                                    <ul class="dropdown-menu text-center">
+                                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="btn-group mx-2">
+                                                    <button type="button" class="btn rounded-pill text-light  dropdown-toggle" style="background-color:#DB6551;" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        Trait
+                                                    </button>
+                                                    <ul class="dropdown-menu text-center">
+                                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="btn-group mx-2">
+                                                    <button type="button" class="btn rounded-pill text-light dropdown-toggle" style="background-color:#DB6551;" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        Gender
+                                                    </button>
+                                                    <ul class="dropdown-menu text-center">
+                                                        <li><a class="dropdown-item" href="#">Male</a></li>
+                                                        <li><a class="dropdown-item" href="#">Female</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="btn-group mx-2">
+                                                    <button type="button" class="btn rounded-pill btn-outline-warning"> Search </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     <?php } else { ?>
                         <div class="service">
                             <h1 class="mb-4 text-center" id="header"> Add to your Ohana now!</h1>
                         </div>
+
                         <div class="container-fluid d-flex justify-content-center">
                             <div class="row  d-flex justify-content-center">
                                 <?php foreach ($profiles as $profile) { ?>

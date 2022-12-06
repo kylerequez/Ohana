@@ -3,23 +3,6 @@
 /* font-family: 'Acme', sans-serif; FOR HEADERS */
 
 /*FONT FACE CSS*/
-@font-face {
-  font-family: "demo";
-  font-display: swap;
-  src: url("../fonts/demo.woff") format("woff"),
-    url("../fonts/demo.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter-Black";
-  font-display: swap;
-  src: url("../fonts/Inter-Black.woff") format("woff"),
-    url("../fonts/Inter-Black.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
 
 @font-face {
   font-family: "Inter-ExtraBold";
@@ -165,21 +148,6 @@ abbr[title] {
   /* 2 */
 }
 
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-
-code,
 kbd,
 samp {
   font-family: monospace, monospace;
@@ -187,16 +155,10 @@ samp {
   font-size: 1em;
   /* 2 */
 }
-/**
- * Add the correct font size in all browsers.
- */
+
 small {
   font-size: 80%;
 }
-/**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
 
 sub,
 sup {
@@ -221,14 +183,6 @@ sup {
 img {
   border-style: none;
 }
-
-/* Forms
-   ========================================================================== */
-
-/**
- * 1. Change the font styles in all browsers.
- * 2. Remove the margin in Firefox and Safari.
- */
 
 button,
 input,
@@ -361,10 +315,6 @@ textarea {
   /* 2 */
 }
 
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
   height: auto;
@@ -372,19 +322,12 @@ textarea {
 
 [type="search"] {
   -webkit-appearance: textfield;
-  /* 1 */
   outline-offset: -2px;
-  /* 2 */
 }
 
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
- */
 
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
@@ -1820,10 +1763,10 @@ button.disabled:focus {
 
 input {
   border-radius: 6px;
-  background-color: #eff0f6;
+  background-color: #db6551;
   border-width: 0;
   min-height: 40px;
-  border: solid transparent 2px !important;
+  border: solid #db6551 2px !important;
 }
 
 input[type="checkbox"],
@@ -1912,13 +1855,17 @@ label {
   padding: 5px 16px;
 }
 
-.users {
-  /* Users Table */
+/** DATA TABLE STYLES*/
+
+b,
+strong {
+  font-weight: bold;
+  font-family: 'Acme', sans-serif;
 }
+
 /* TABLES STYLES */
 .users-table table {
   width: 100%;
-  text-align: center;
   border-collapse: collapse;
   line-height: 1.4;
   letter-spacing: -0.3px;
@@ -2038,10 +1985,6 @@ label {
   color: red;
   display: inline-block;
 }
-
-/* sidebar head */
-/* sidebar body */
-/* sidebar footer */
 
 /*  ########################################################### ADMIN SIDE BAR ORIGINAL MODE ################################################## */
 .sidebar {

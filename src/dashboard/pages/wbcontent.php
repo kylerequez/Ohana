@@ -22,7 +22,7 @@
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <h2 class="main-title text-center mt-3"> MANAGE WEBSITE CONTENT </h2>
+          <h2 class="main-title text-center mt-3"> Manage Website Content </h2>
         </div>
         <div class="users-table table-wrapper">
           <table class="posts-table">
@@ -30,18 +30,19 @@
               <tr class="users-table-info">
                 <th> <b> CONTENT I.D</b> </th>
                 <th> <b> CONTENT DESCRIPTION</b> </th>
-                <th> <b> CONTENT TYPE</b> </th>
-                <th> <b> DATE</b></th>
+                <th> <b> REVIEWEE </b> </th>
+                <th> <b> ACTION</b></th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>I.D NUMBER 12345</td>
-                <td>Content Description </td>
+                <td> customer review </td>
                 <td>
                   <div class="pages-table-img">Jenny Wilson</div>
                 </td>
-                <td>17.04.2021</td>
+                <td> <a href="#" data-bs-toggle="modal" data-bs-target="#editModalId"><button class="edit-btn transparent-btn fs-4" type="edit" style="color:#C0B65A;">
+                 <i class="uil uil-edit"></i></button></a></td>
               </tr>
             </tbody>
           </table>
@@ -66,6 +67,8 @@
   }
   unset($_SESSION["msg"]);
   ?>
+  <!-- INSERT EDIT MODAL HERE-->
+  
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
   <script src="/Ohana/src/dashboard/js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>

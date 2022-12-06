@@ -25,7 +25,7 @@ class CartController
 
     public function processResourceRequest(string $method, int $id): void
     {
-        switch($method) {
+        switch ($method) {
             case "GET":
                 $this->services->addToCart("REHOMING", $id);
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -39,7 +39,7 @@ class CartController
 
     public function processCollectionRequest(string $method): void
     {
-        switch($method) {
+        switch ($method) {
             case "GET":
                 header("Location: http://" . DOMAIN_NAME . "/pawcart");
                 break;

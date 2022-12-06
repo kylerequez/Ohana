@@ -5,23 +5,29 @@
       width: 100%;
       height: 90px;
     }
+
     #customerprofile {
       width: 50px;
       height: 40px;
     }
+
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
       .navbar.navbar-expand-xl {
-        height: 100px;
+        height: 110px;
       }
+
       #navlogo.img-fluid {
         margin-top: -30%;
       }
+
       .navbar-toggler {
         margin-top: -20%;
       }
+
       .nav-item {
-        margin-left: 40%;
+        margin-left: 20%;
       }
+
       #login-btn {
         background-color: #db6551;
         border-radius: 20px;
@@ -37,6 +43,7 @@
     }
   </style>
 </head>
+
 <nav class="navbar navbar-expand-md fixed-top" id="navbar-spy">
   <div class="container-fluid">
     <div class="logo">
@@ -60,7 +67,7 @@
           <a class="nav-link" href="/#contact">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="btnLogin" href="/login" name="btnLogin" id="login-btn"> Login <i class='fa-solid fa-right-to-bracket'> </i></a>
+          <a class="btnLogin" href="/login" name="btnLogin" id="login-btn"> Login </a>
         </li>
       </ul>
     </div>

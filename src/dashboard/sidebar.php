@@ -1,20 +1,23 @@
 <aside class="sidebar">
   <!-- PHP ADMIN/STAFF SESSION -->
   <?php
-  if (empty($_SESSION['user'])) {
+  include_once dirname(__DIR__) . '/config/app-config.php';
+  if (!isset($_SESSION['user'])) {
     session_unset();
     session_destroy();
-    header("Location: http://localhost/login");
-    exit();
+  ?>
+    <script>
+      window.location = 'http://<?php echo DOMAIN_NAME; ?>/login';
+    </script>
+  <?php
   } else {
     include_once dirname(__DIR__) . '/models/Account.php';
-    include_once dirname(__DIR__) . '/config/app-config.php';
     $user = unserialize($_SESSION['user']);
-    $user->getType() == "USER" ? header("Location: http://localhost/home") : null;
+    $user->getType() == "USER" ? header("Location: http://" . DOMAIN_NAME . "/home") : null;
   }
   ?>
   <div class="sidebar-start">
-    <a href="/dashboard" class="logo-wrapper" title="Home"> <img src="/Ohana/src/dashboard/img/Ohana Kennel.png" aria-hidden="true"></a>
+    <a href="/dashboard/home" class="logo-wrapper" title="Home"> <img src="/Ohana/src/dashboard/img/Ohana Kennel.png" aria-hidden="true"></a>
     <div class="sidebar-head">
       <span class="sr-only">Home</span>
       <div class="logo-text"></div>
@@ -26,26 +29,26 @@
     </div>
     <div class="sidebar-body">
       <ul class="sidebar-body-menu">
-        <li><a href="/dashboard"><span class="icon home" aria-hidden="true"></span>Dashboard Home</a></li>
-        <li><a href="/dashboard/pet-profiles/get"><span class="icon document" aria-hidden="true"></span> Ohana Pets </span></a></li>
-        <li><a href="/dashboard/stud-profiles"><span class="icon paper" aria-hidden="true"></span>Customer Pets</span></a></li>
-        <li><a href="/dashboard/petboarding/get"><span class="icon paperplus" aria-hidden="true"></span>Pet Boarding Slots</span></a></li>
-        <li><a href="/dashboard/appointments/get"><span class="icon calendar" aria-hidden="true"></span>Appointments</a></li>
+        <li><a href="/dashboard/home"><span class="icon home" aria-hidden="true"></span>Dashboard Home</a></li>
+        <li><a href="/dashboard/pet-profiles"><img src="/Ohana/src/dashboard/img/main/ohanapets.png" style="display:inline-flex;width:24px;height:24px;">&nbsp;&nbsp;Ohana Pets</span></a></li>
+        <li><a href="/dashboard/customer-pets"><img src="/Ohana/src/dashboard/img/main/customer.png" style="display:inline-flex;width:24px;height:24px;">&nbsp;&nbsp;Customer Pets</span></a></li>
+        <li><a href="/dashboard/petboarding"><img src="/Ohana/src/dashboard/img/main/boarding.png" style="display:inline-flex;width:24px;height:24px;">&nbsp;&nbsp;Pet Boarding Slots</span></a></li>
+        <li><a href="/dashboard/appointments"><span class="icon calendar" aria-hidden="true"></span>Appointments</a></li>
         <li><a href="/dashboard/website-content"><span class="icon image" aria-hidden="true"></span>Manage Content</a></li>
-        <li><a href="/dashboard/customers/get"><span class="icon user-3" aria-hidden="true"></span>Customer Accounts</a></li>
-        <li><a href="/dashboard/staff/get"> <span class="icon user2" aria-hidden="true"></span>Staff Accounts</a></li>
-        <li><a href="/dashboard/transactions/get"><span class="icon chartico" aria-hidden="true"></span>User Transactions</span></a></li>
+        <li><a href="/dashboard/customers"><span class="icon user-3" aria-hidden="true"></span>Customer Accounts</a></li>
+        <li><a href="/dashboard/staff"> <span class="icon user2" aria-hidden="true"></span>Staff Accounts</a></li>
+        <li><a href="/dashboard/transactions"><span class="icon chartico" aria-hidden="true"></span>User Transactions</span></a></li>
         <li><a href="/dashboard/feedbacks"><span class="icon message" aria-hidden="true"></span>User Feedback</a></li>
         <li>
           <a class="show-cat-btn" href="##">
-            <span class="icon category" aria-hidden="true"></span>Chat Bot<span class="sr-only">Open list</span></span>
+           <img src="/Ohana/src/dashboard/img/main/cb.png" style="display:inline-flex;width:24px;height:24px;">&nbsp;&nbsp;Chat Bot<span class="sr-only">Open list</span></span>
           </a>
           <ul class="cat-sub-menu">
-            <li><a href="/dashboard/chatbot-settings/get">Settings </a></li>
-            <li><a href="/dashboard/chatbot-responses/get">Responses</a></li>
+            <li><a href="/dashboard/chatbot-settings">Settings </a></li>
+            <li><a href="/dashboard/chatbot-responses">Responses</a></li>
           </ul>
         </li>
-        <li><a href="/dashboard/logs/get"><span class="icon edit" aria-hidden="true"></span>System Logs</a></li>
+        <li><a href="/dashboard/logs"><span class="icon edit" aria-hidden="true"></span>System Logs</a></li>
       </ul>
     </div>
   </div>
