@@ -26,34 +26,10 @@ class ChatbotController
     {
         switch ($method) {
             case "GET":
-                // $_SESSION["cb_settings"] = serialize($this->services->getAllSettings());
                 header("Location: http://" . DOMAIN_NAME . "/dashboard/chatbot-settings");
                 break;
             case "POST":
-                if (!empty($_FILES["image"]["tmp_name"])) {
-                    $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
-                    $finfo = new finfo(FILEINFO_MIME_TYPE);
-                    if (false === $ext = array_search(
-                        $finfo->file($_FILES['image']['tmp_name']),
-                        array(
-                            'jpg' => 'image/jpeg',
-                            'png' => 'image/png',
-                        ),
-                        true
-                    )) {
-                        $_SESSION["msg"] = "The file type is not accepted. Please upload a file with the following format: JPG and PNG.";
-                        $this->processSettingsCollectionRequest("GET");
-                        break;
-                    }
-                    if ($_FILES['image']['size'] > 1000000) {
-                        $_SESSION["msg"] = "The image size must not be greater than 1 MB.";
-                        $this->processSettingsCollectionRequest("GET");
-                        break;
-                    }
-                } else {
-                    $_POST["image"] = base64_decode($_POST["old_image"]);
-                }
-                if (!$this->services->updateSettings($_POST)) {
+                if (!$this->services->updateSettings($_POST, $_FILES)) {
                     $this->processSettingsCollectionRequest("GET");
                 }
                 $user = unserialize($_SESSION["user"]);

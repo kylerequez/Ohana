@@ -22,6 +22,7 @@ class PetProfileDAO
                 while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $searchedPetProfile = new PetProfile(
                         $petProfile["pet_image"],
+                        $petProfile["pet_reference"],
                         $petProfile["pet_name"],
                         new DateTime($petProfile["pet_birthdate"]),
                         $petProfile["pet_sex"],
@@ -60,6 +61,7 @@ class PetProfileDAO
                 while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $searchedPetProfile = new PetProfile(
                         $petProfile["pet_image"],
+                        $petProfile["pet_reference"],
                         $petProfile["pet_name"],
                         new DateTime($petProfile["pet_birthdate"]),
                         $petProfile["pet_sex"],
@@ -85,18 +87,18 @@ class PetProfileDAO
         }
     }
 
-    public function getOhanaStudPet(string $id,  string  $name): mixed
+    public function getOhanaStudPet(string $reference,  string  $name): mixed
     {
         try {
             $sql = "SELECT * FROM ohana_pet_profiles
                     WHERE account_id = 1
                     AND  pet_type = 'STUD'
                     AND pet_status='AVAILABLE' 
-                    AND pet_id=:id
+                    AND pet_reference=:reference
                     AND pet_name=:name;";
 
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt->bindParam(":reference", $reference, PDO::PARAM_INT);
             $stmt->bindParam(":name", $name, PDO::PARAM_STR);
 
             $searchedPetProfile = null;
@@ -104,6 +106,7 @@ class PetProfileDAO
                 while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $searchedPetProfile = new PetProfile(
                         $petProfile["pet_image"],
+                        $petProfile["pet_reference"],
                         $petProfile["pet_name"],
                         new DateTime($petProfile["pet_birthdate"]),
                         $petProfile["pet_sex"],
@@ -127,22 +130,65 @@ class PetProfileDAO
         }
     }
 
-    public function getOwnedPet(string $id,  string  $name): mixed
+    public function getOhanaRehomingPet(string $reference,  string  $name): mixed
     {
         try {
             $sql = "SELECT * FROM ohana_pet_profiles
-                    WHERE pet_status='AVAILABLE' 
-                    AND pet_id=:id
+                    WHERE account_id = 1
+                    AND  pet_type = 'REHOMING'
+                    AND pet_status='AVAILABLE' 
+                    AND pet_reference=:reference
                     AND pet_name=:name;";
 
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt->bindParam(":reference", $reference, PDO::PARAM_INT);
+            $stmt->bindParam(":name", $name, PDO::PARAM_STR);
+
+            $searchedPetProfile = null;
+            if ($stmt->execute() > 0) {
+                while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $searchedPetProfile = new PetProfile(
+                        $petProfile["pet_image"],
+                        $petProfile["pet_reference"],
+                        $petProfile["pet_name"],
+                        new DateTime($petProfile["pet_birthdate"]),
+                        $petProfile["pet_sex"],
+                        $petProfile["pet_color"],
+                        $petProfile["pet_trait"],
+                        $petProfile["is_vaccinated"],
+                        $petProfile["pcci_status"],
+                        $petProfile["account_id"],
+                        $petProfile["owner_name"],
+                        $petProfile["pet_price"],
+                        $petProfile["pet_status"]
+                    );
+                    $searchedPetProfile->setType($petProfile["pet_type"]);
+                    $searchedPetProfile->setId($petProfile["pet_id"]);
+                }
+            }
+            return $searchedPetProfile;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function getOwnedPet(string $reference,  string  $name): mixed
+    {
+        try {
+            $sql = "SELECT * FROM ohana_pet_profiles
+                    WHERE pet_reference=:reference
+                    AND pet_name=:name;";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":reference", $reference, PDO::PARAM_INT);
             $stmt->bindParam(":name", $name, PDO::PARAM_STR);
             $searchedPetProfile = null;
             if ($stmt->execute() > 0) {
                 while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $searchedPetProfile = new PetProfile(
                         $petProfile["pet_image"],
+                        $petProfile["pet_reference"],
                         $petProfile["pet_name"],
                         new DateTime($petProfile["pet_birthdate"]),
                         $petProfile["pet_sex"],
@@ -179,6 +225,7 @@ class PetProfileDAO
                 while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $existingPetProfile = new PetProfile(
                         $petProfile["pet_image"],
+                        $petProfile["pet_reference"],
                         $petProfile["pet_name"],
                         new DateTime($petProfile["pet_birthdate"]),
                         $petProfile["pet_sex"],
@@ -216,6 +263,7 @@ class PetProfileDAO
                 while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $existingPetProfile = new PetProfile(
                         $petProfile["pet_image"],
+                        $petProfile["pet_reference"],
                         $petProfile["pet_name"],
                         new DateTime($petProfile["pet_birthdate"]),
                         $petProfile["pet_sex"],
@@ -256,6 +304,7 @@ class PetProfileDAO
                 while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $searchedPetProfile = new PetProfile(
                         $petProfile["pet_image"],
+                        $petProfile["pet_reference"],
                         $petProfile["pet_name"],
                         new DateTime($petProfile["pet_birthdate"]),
                         $petProfile["pet_sex"],
@@ -315,10 +364,11 @@ class PetProfileDAO
     {
         try {
             $sql = "INSERT INTO ohana_pet_profiles
-                    (pet_image, pet_name, pet_type, pet_trait, pet_birthdate, pet_sex, pet_color, is_vaccinated, pcci_status, account_id, owner_name, pet_price, pet_status)
-                    VALUES (:pet_image, :pet_name, :pet_type, :pet_trait, :pet_birthdate, :pet_sex, :pet_color, :is_vaccinated, :pcci_status, :account_id, :owner_name, :pet_price, :pet_status);";
+                    (pet_image, pet_reference, pet_name, pet_type, pet_trait, pet_birthdate, pet_sex, pet_color, is_vaccinated, pcci_status, account_id, owner_name, pet_price, pet_status)
+                    VALUES (:pet_image, :pet_reference, :pet_name, :pet_type, :pet_trait, :pet_birthdate, :pet_sex, :pet_color, :is_vaccinated, :pcci_status, :account_id, :owner_name, :pet_price, :pet_status);";
 
             $image = $profile->getImage();
+            $reference = $profile->getReference();
             $name = $profile->getName();
             $type = $profile->getType();
             $trait = $profile->getTrait();
@@ -334,6 +384,7 @@ class PetProfileDAO
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":pet_image", $image, PDO::PARAM_STR);
+            $stmt->bindParam(":pet_reference", $reference, PDO::PARAM_STR);
             $stmt->bindParam(":pet_name", $name, PDO::PARAM_STR);
             $stmt->bindParam(":pet_type", $type, PDO::PARAM_STR);
             $stmt->bindParam(":pet_trait", $trait, PDO::PARAM_STR);
@@ -370,6 +421,7 @@ class PetProfileDAO
                 while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $searchedPetProfile = new PetProfile(
                         $petProfile["pet_image"],
+                        $petProfile["pet_reference"],
                         $petProfile["pet_name"],
                         new DateTime($petProfile["pet_birthdate"]),
                         $petProfile["pet_sex"],
@@ -407,6 +459,7 @@ class PetProfileDAO
                 while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $searchedPetProfile = new PetProfile(
                         $petProfile["pet_image"],
+                        $petProfile["pet_reference"],
                         $petProfile["pet_name"],
                         new DateTime($petProfile["pet_birthdate"]),
                         $petProfile["pet_sex"],
@@ -439,6 +492,7 @@ class PetProfileDAO
                     WHERE pet_id=:id";
 
             $id = $profile->getId();
+            $reference = $profile->getReference();
             $image = $profile->getImage();
             $name = $profile->getName();
             $type = $profile->getType();

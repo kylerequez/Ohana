@@ -2,6 +2,7 @@
 class PetProfile
 {
     private ?int $id = null;
+    private ?string $reference = null;
     private $image = null;
     private ?string $name = null;
     private ?string $type = null;
@@ -16,9 +17,10 @@ class PetProfile
     private ?float $price = null;
     private ?string $status = null;
 
-    public function __construct($image, string $name, DateTime $birthdate, string $sex, string $color, string $trait, bool $isVaccinated, string $pcciStatus, int $accountId, string $ownerName, float $price, string $status)
+    public function __construct($image, string $reference, string $name, DateTime $birthdate, string $sex, string $color, string $trait, bool $isVaccinated, string $pcciStatus, int $accountId, string $ownerName, float $price, string $status)
     {
         $this->image = $image;
+        $this->reference = $reference;
         $this->name = $name;
         $this->birthdate = $birthdate;
         $this->sex = $sex;
@@ -317,6 +319,26 @@ class PetProfile
     public function setType($type)
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of type
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    /**
+     * Set the value of type
+     *
+     * @return  self
+     */
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
 
         return $this;
     }

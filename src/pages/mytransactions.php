@@ -66,17 +66,16 @@
                                     <div class="card-body p-4">
                                         <div class="row d-flex justify-content-between align-items-center">
                                             <div class="col-md-2 col-lg-2 col-xl-2">
-                                                <p class="lead fw-normal mb-2">Date</p>
+                                                <p class="lead fw-normal mb-2"><?php echo $transaction->getDate()->format('M-d-y'); ?></p>
                                             </div>
                                             <div class="col-md-3 col-lg-3 col-xl-3">
-                                                <p class="lead fw-normal mb-2">Reference Number</p>
+                                                <p class="lead fw-normal mb-2"><?php echo $transaction->getId(); ?></p>
                                             </div>
                                             <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                <p class="lead fw-normal mb-2">Status</p>
+                                                <p class="lead fw-normal mb-2"><?php echo $transaction->getStatus(); ?></p>
                                             </div>
                                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#orderModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#c0b65a"><i class="uil uil-eye fs-3"></i> </a>
-
                                                 <?php
                                                 if ($transaction->getStatus() != "COMPLETED") {
                                                 ?>

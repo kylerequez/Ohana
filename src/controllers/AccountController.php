@@ -145,7 +145,6 @@ class AccountController
                 }
                 break;
             case "POST":
-                
                 if (!isset($_SESSION)) session_start();
                 if (!$this->services->loginRequest($_POST)) {
                     header("Location: http://" . DOMAIN_NAME . "/login");

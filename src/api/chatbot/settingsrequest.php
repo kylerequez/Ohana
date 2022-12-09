@@ -10,12 +10,13 @@ $dao = new ChatbotDAO($database);
 $services = new ChatbotServices($dao);
 
 $settings = $services->getAllSettings();
-$logo = $settings->getBlob();
+$avatar = $settings->getAvatar();
 $name = $settings->getName();
 $intro = $settings->getIntroduction();
 $noResponse = $settings->getNoResponse();
 
 echo json_encode([
+    "avatar" => $avatar,
     "name" => $name,
     "intro" => $intro,
     "noResponse" => $noResponse

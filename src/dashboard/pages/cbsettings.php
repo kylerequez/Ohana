@@ -35,11 +35,19 @@
             $dao = new ChatbotDAO($database);
             $services = new ChatbotServices($dao);
             $information = $services->getAllSettings();
+
             if (!empty($information)) {
             ?>
               <form method="POST" class="form-inline" action="/dashboard/chatbot-settings/update" enctype="multipart/form-data">
                 <h2 class="main-title text-center mt-5"> Chatbot Settings </h2>
                 <div id="cb-settings">
+                  <div class="row">
+                    <div class="col">
+                      <img src="<?php echo $information->getAvatar(); ?>">
+                      <input type="file" class="form-control" name="image" height="10px" width="10px">
+                      <input type="hidden" name="old-image" value="<?php echo $information->getAvatar(); ?>">
+                    </div>
+                  </div>
                   <div class="row">
                     <div class="col">
                       <label class="mb-2 mt-4 fs-5" for="name" style="display:block"> <b>CHATBOT NAME:</b> </label>

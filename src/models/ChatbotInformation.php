@@ -2,15 +2,15 @@
 class ChatbotInformation implements JsonSerializable
 {
     private ?int $id = null;
-    private $blob = null;
+    private $avatar = null;
     private ?string $name = null;
     private ?string $introduction = null;
     private ?string $noResponse = null;
 
 
-    public function __construct($blob, string $name, $introduction, $noResponse)
+    public function __construct(string $avatar, string $name, $introduction, $noResponse)
     {
-        $this->blob = $blob;
+        $this->avatar = $avatar;
         $this->name = $name;
         $this->introduction = $introduction;
         $this->noResponse = $noResponse;
@@ -38,26 +38,6 @@ class ChatbotInformation implements JsonSerializable
     public function setId($id)
     {
         $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of blob
-     */
-    public function getBlob()
-    {
-        return $this->blob;
-    }
-
-    /**
-     * Set the value of blob
-     *
-     * @return  self
-     */
-    public function setBlob($blob)
-    {
-        $this->blob = $blob;
 
         return $this;
     }
@@ -118,6 +98,26 @@ class ChatbotInformation implements JsonSerializable
     public function setNoResponse($noResponse)
     {
         $this->noResponse = $noResponse;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of avatar
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * Set the value of avatar
+     *
+     * @return  self
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }

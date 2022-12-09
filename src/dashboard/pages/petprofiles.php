@@ -148,6 +148,7 @@
                       <a href="#" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $profile->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"></i></button></a>
                       <a href="/dashboard/pet-profiles/delete/<?php echo $profile->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Pet Profile ID <?php echo $profile->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>
                       <form method="POST" action="/dashboard/pet-profiles/update/<?php echo $profile->getId(); ?>" enctype="multipart/form-data">
+                        <input type="hidden" name="reference" value="<?php echo $profile->getReference(); ?>">
                         <div class="modal fade" id="editModalId<?php echo $profile->getId(); ?>" tabindex="-1" aria-labelledby="editprofilemodal" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -203,7 +204,10 @@
                                 </div>
                                 <div class="mb-3">
                                   <label for="status" class="col-form-label"> STATUS: </label>
-                                  <input type="text" class="form-control" name="status" value="<?php echo $profile->getStatus(); ?>" required style="background-color:#eed1c2;">
+                                  <select class="form-control" id="status" name="status">
+                                    <option value="AVAILABLE" <?php if ($profile->getStatus() == "AVAILABLE") echo "selected"; ?>>Available</option>
+                                    <option value="UNAVAILABLE" <?php if ($profile->getStatus() == "UNAVAILABLE") echo "selected"; ?>>Unavailable</option>
+                                  </select>
                                 </div>
                                 <div class="mb-3">
                                   <label for="dogimage" class="col-form-label"> DOG IMAGE: </label>

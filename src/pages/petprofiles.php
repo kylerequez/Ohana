@@ -50,7 +50,7 @@
             $dao = new PetProfileDAO($database);
             $services = new PetProfileServices($dao);
 
-            $profiles = $services->getUserPetProfile($user->getId());
+            $profiles = $services->getUserPetProfile(($user->getType() == 'USER') ? $user->getId() : '1');
             if (empty($profiles)) {
             ?>
                 <div class="form__row text-center mb-5">
@@ -75,7 +75,7 @@
                         <div class="row d-flex justify-content-center">
                             <?php foreach ($profiles as $profile) { ?>
                                 <div class="card m-3 mb-5" id="profilecard">
-                                    <a href="/ownedpets/<?php echo $profile->getId(); ?>/<?php echo $profile->getName(); ?>" style="text-decoration: none; color:black">
+                                    <a href="/ownedpets/<?php echo $profile->getReference(); ?>/<?php echo $profile->getName(); ?>" style="text-decoration: none; color:black">
                                         <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image" width="200px" height="250px;">
                                         <div class="card-body text-center">
                                             <h5 class="card-title fs-3" style="font-family: 'Acme', sans-serif; color:#db6551"> <?php echo $profile->getName(); ?></h5>
@@ -91,11 +91,9 @@
                     </div>
                     <?php
                     if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-                        <center>
-                            <div class="alert alert-warning text-center" role="alert" style="width:400px;">
-                                <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; ?>
-                            </div>
-                        </center>
+                        <div class="alert alert-warning text-center" role="alert" style="width:400px;">
+                            <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; ?>
+                        </div>
                     <?php
                         unset($_SESSION["msg"]);
                     }
@@ -104,7 +102,7 @@
                         <div class="row justify-content-center">
                             <?php foreach ($profiles as $profile) { ?>
                                 <div class="card m-3 mb-5" style="width: 20rem;">
-                                    <a href="/ownedpets/<?php echo $profile->getId(); ?>/<?php echo $profile->getName(); ?>" style="text-decoration: none; color:black">
+                                    <a href="/ownedpets/<?php echo $profile->getReference(); ?>/<?php echo $profile->getName(); ?>" style="text-decoration: none; color:black">
                                         <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top p-2" alt="<?php echo $profile->getName(); ?> Image" width="200px" height="250px;">
                                         <div class="card-body text-center">
                                             <h5 class="card-title fs-3" style="font-family: 'Acme', sans-serif; color:#db6551"> <?php echo $profile->getName(); ?></h5>

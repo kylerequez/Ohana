@@ -52,26 +52,20 @@
   $dao = new PetProfileDAO($database);
   $services = new PetProfileServices($dao);
 
-  $profile = $services->getOwnedPet($id, $name);
+  $profile = $services->getOwnedPet($reference, $name);
   if (is_null($profile)) {
   ?>
     <script>
       window.location = 'http://<?php echo DOMAIN_NAME; ?>/ownedpets';
     </script>
   <?php
-  } else if ($profile->getId() != $id) {
+  } else if ($profile->getReference() != $reference) {
   ?>
     <script>
       window.location = 'http://<?php echo DOMAIN_NAME; ?>/ownedpets';
     </script>
   <?php
   } else if ($profile->getName() !=  $name) {
-  ?>
-    <script>
-      window.location = 'http://<?php echo DOMAIN_NAME; ?>/ownedpets';
-    </script>
-  <?php
-  } else if ($profile->getStatus() != 'AVAILABLE') {
   ?>
     <script>
       window.location = 'http://<?php echo DOMAIN_NAME; ?>/ownedpets';
@@ -156,6 +150,7 @@
               </div>
               <form method="POST" action="/ownedpets/update/<?php echo $profile->getId(); ?>" enctype="multipart/form-data">
                 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
+                  <input type="hidden" name="reference" value="<?php echo $profile->getReference(); ?>">
                   <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                       <div class="modal-header">

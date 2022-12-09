@@ -18,16 +18,57 @@ class ChatbotServices
         return $this->dao->getResponse($query);
     }
 
-    public function updateSettings(array $data): bool
+    public function updateSettings(array $data, array $imageData): bool
     {
-        // ADD IMAGE VALIDATION SOON !!! IMPORTANT
-        $blob = $data["image"];
+        if (!file_exists($imageData['image']['tmp_name']) || !is_uploaded_file($imageData['image']['tmp_name'])) {
+            $avatar = trim($data["old-image"]);
+        } else {
+            $file = $imageData['image'];
+            $name = $file['name'];
+            $tempName = $file['tmp_name'];
+            $size = $file['size'];
+            $error = $file['error'];
+            $type = $file['type'];
+            $fileExt = explode('.', $name);
+            $actualExt = strtolower(end($fileExt));
+            $allowed = array('jpg', 'jpeg', 'png');
+            if ($error != 0) {
+                $_SESSION["msg"] = "There was an error in uploading the image.";
+                return false;
+            }
+            if (!in_array($actualExt, $allowed)) {
+                $_SESSION["msg"] = "The uploaded file was does not have the allowed extensions. (.jpeg, .png, .jpg)";
+                return false;
+            }
+            if ($size > 5242880) {
+                $_SESSION["msg"] = "The file size is too big. Please upload an image that is less than 5 MB in size.";
+                return false;
+            }
+            $extAvatar = glob(dirname(__DIR__) . "/images/chatbot/ChatbotAvatar.*");
+            if (!is_null($extAvatar)) {
+                foreach ($extAvatar as $avatar) {
+                    if (!unlink($avatar)) {
+                        $_SESSION["msg"] = "There was an error in uploading the image to the website due to the deletion of the previous image.";
+                        return false;
+                    }
+                }
+            } else {
+                $_SESSION["msg"] = "There was an error in uploading the image to the website due to the deletion of the previous image.";
+                return false;
+            }
+            $new = "ChatbotAvatar.$actualExt";
+            $destination = dirname(__DIR__) . "/images/chatbot/$new";
+            if (!move_uploaded_file($tempName, $destination)) {
+                $_SESSION["msg"] = "There was an error in uploading the image to the website.";
+                return false;
+            }
+            $avatar = "/Ohana/src/images/chatbot/$new";
+        }
+        $name = trim($data["name"]);
+        $introduction = trim($data["introduction"]);
+        $noResponse = trim($data["noResponse"]);
 
-        $name = $data["name"];
-        $introduction = $data["introduction"];
-        $noResponse = $data["noResponse"];
-
-        $information = new ChatbotInformation($blob, $name, $introduction, $noResponse);
+        $information = new ChatbotInformation($avatar, $name, $introduction, $noResponse);
         if (!$this->dao->updateSettings($information)) {
             $_SESSION["msg"] = "There was an error in updating the Chatbot Settings.";
             return false;

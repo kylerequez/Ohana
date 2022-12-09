@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title> HOME </title>
     <meta charset="utf-8">
@@ -12,6 +13,7 @@
     <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
     <?php include_once 'stylesheets.php'; ?>
 </head>
+
 <body style="background-color: #faf8f0">
     <main>
         <div class="container-fluid">
@@ -141,15 +143,16 @@
             }
         }).done(function(data) {
             info = JSON.parse(data);
+            avatar = info.avatar;
             name = info.name;
             intro = info.intro;
             noResponse = info.noResponse;
-            console.log(info)
-            createChatBot(host = '/chatbot/responses/get', botLogo = "/Ohana/src/images/Chatbot/bot-logo.png",
+            createChatBot(host = '/chatbot/responses/get', botLogo = avatar,
                 title = name, welcomeMessage = intro, inactiveMsg = noResponse, theme = "orange")
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 </body>
+
 </html>

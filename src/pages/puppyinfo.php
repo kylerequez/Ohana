@@ -44,28 +44,47 @@
 </head>
 
 <body style="background-color: #FAF8F0;">
+    <?php
+    include_once dirname(__DIR__) . '/models/PetProfile.php';
+    include_once dirname(__DIR__) . '/config/db-config.php';
+    include_once dirname(__DIR__) . '/config/app-config.php';
+    include_once dirname(__DIR__) . '/database/Database.php';
+    include_once dirname(__DIR__) . '/dao/PetProfileDAO.php';
+    include_once dirname(__DIR__) . '/services/PetProfileServices.php';
+
+    $database = new Database($servername, $database, $username, $password);
+    $dao = new PetProfileDAO($database);
+    $services = new PetProfileServices($dao);
+
+    $profile = $services->getOhanaRehomingPet($reference, $name);
+    if (is_null($profile)) {
+    ?>
+        <script>
+            window.location = 'http://<?php echo DOMAIN_NAME; ?>/stud';
+        </script>
+    <?php
+    } else if ($profile->getReference() != $reference) {
+    ?>
+        <script>
+            window.location = 'http://<?php echo DOMAIN_NAME; ?>/stud';
+        </script>
+    <?php
+    } else if ($profile->getName() !=  $name) {
+    ?>
+        <script>
+            window.location = 'http://<?php echo DOMAIN_NAME; ?>/stud';
+        </script>
+    <?php
+    } else if ($profile->getStatus() != 'AVAILABLE') {
+    ?>
+        <script>
+            window.location = 'http://<?php echo DOMAIN_NAME; ?>/stud';
+        </script>
+    <?php
+    }
+    ?>
     <main>
         <?php include_once 'rnavbar.php'; ?>
-        <?php
-        include_once dirname(__DIR__) . '/models/PetProfile.php';
-        include_once dirname(__DIR__) . '/config/app-config.php';
-        $profile = isset($_SESSION["rehoming-profile"]) ? unserialize($_SESSION["rehoming-profile"]) : null;
-        if (empty($profile)) {
-            unset($_SESSION["profile"]);
-        ?>
-            <script type="text/javascript">
-                const url = "http://<?= DOMAIN_NAME ?>/ownedpets";
-                window.location.href = url;
-            </script>
-        <?php
-        } else if ($profile->getName() != str_replace("%20", " ", $name)) {
-            unset($_SESSION["profile"]);
-        ?>
-            <script type="text/javascript">
-                const url = "http://<?= DOMAIN_NAME ?>/ownedpets";
-                window.location.href = url;
-            </script>
-        <?php } ?>
         <div class="container-fluid">
             <div class="message">
                 <section class="services" id="services">
