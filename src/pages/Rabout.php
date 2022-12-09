@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title> OHANA ABOUT </title>
     <meta charset="utf-8">
@@ -18,20 +19,23 @@
                 min-height: 450px;
                 background-position: center;
             }
+
             #values {
                 background-image: url(/Ohana/src/images/Pages/mbvalues.png);
                 min-width: 360px;
                 min-height: 400px;
                 background-position: center;
             }
-            #header{
+
+            #header {
                 font-size: 50px;
                 margin-top: 40%;
-                margin-bottom:30px;
+                margin-bottom: 30px;
             }
         }
     </style>
 </head>
+
 <body style="background-color: #FAF8F0;">
     <main>
         <?php include_once 'rnavbar.php'; ?>
@@ -60,14 +64,16 @@
             }
         }).done(function(data) {
             info = JSON.parse(data);
+            avatar = info.avatar;
             name = info.name;
             intro = info.intro;
             noResponse = info.noResponse;
-            createChatBot(host = '/chatbot/responses/get', botLogo = "/Ohana/src/images/Chatbot/bot-logo.png",
+            createChatBot(host = '/chatbot/responses/get', botLogo = avatar,
                 title = name, welcomeMessage = intro, inactiveMsg = noResponse, theme = "orange")
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 </body>
+
 </html>

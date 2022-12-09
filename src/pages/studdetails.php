@@ -55,14 +55,14 @@
     $dao = new PetProfileDAO($database);
     $services = new PetProfileServices($dao);
 
-    $profile = $services->getOhanaStudPet($id, $name);
+    $profile = $services->getOhanaStudPet($reference, $name);
     if (is_null($profile)) {
     ?>
         <script>
             window.location = 'http://<?php echo DOMAIN_NAME; ?>/stud';
         </script>
     <?php
-    } else if ($profile->getId() != $id) {
+    } else if ($profile->getReference() != $reference) {
     ?>
         <script>
             window.location = 'http://<?php echo DOMAIN_NAME; ?>/stud';

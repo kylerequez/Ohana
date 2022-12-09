@@ -116,10 +116,11 @@
             }
         }).done(function(data) {
             info = JSON.parse(data);
+            avatar = info.avatar;
             name = info.name;
             intro = info.intro;
             noResponse = info.noResponse;
-            createChatBot(host = '/chatbot/responses/get', botLogo = "/Ohana/src/images/Chatbot/bot-logo.png",
+            createChatBot(host = '/chatbot/responses/get', botLogo = avatar,
                 title = name, welcomeMessage = intro, inactiveMsg = noResponse, theme = "orange")
         });
     </script>

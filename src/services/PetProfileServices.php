@@ -18,9 +18,9 @@ class PetProfileServices
         return $this->dao->getStudPets();
     }
 
-    public function getOwnedPet(string $id,  string $name): mixed
+    public function getOwnedPet(string $reference,  string $name): mixed
     {
-        return $this->dao->getOwnedPet($id, $name);
+        return $this->dao->getOwnedPet($reference, $name);
     }
 
     public function getCustomerPets(): mixed
@@ -33,24 +33,19 @@ class PetProfileServices
         return $this->dao->getOhanaPets();
     }
 
-    public function getOhanaStudPet(string $id,  string $name): mixed
+    public function getOhanaStudPet(string $reference,  string $name): mixed
     {
-        return $this->dao->getOhanaStudPet($id, $name);
+        return $this->dao->getOhanaStudPet($reference, $name);
+    }
+
+    public function getOhanaRehomingPet(string $reference,  string $name): mixed
+    {
+        return $this->dao->getOhanaRehomingPet($reference, $name);
     }
 
     public function getUserPetProfile(string $id): mixed
     {
         return $this->dao->searchByAccountId($id);
-    }
-
-    public function getOhanaPetsPagination(string $limit, string $offset): mixed
-    {
-        return $this->dao->getOhanaPetsPagination($limit, $offset);
-    }
-
-    public function getTotalPetProfilesCount(): mixed
-    {
-        return $this->dao->getTotalPetProfilesCount();
     }
 
     public function getOhanaPetsCount(): mixed
@@ -75,9 +70,9 @@ class PetProfileServices
 
     public function addPetProfile(array $data): mixed
     {
-        // ADD IMAGE VALIDATION SOON !!! IMPORTANT
         $image = $data["image"];
 
+        $reference = uniqid();
         $name = strtoupper($data["name"]);
         $type = strtoupper($data["type"]);
         $trait = strtoupper($data["trait"]);
@@ -91,7 +86,7 @@ class PetProfileServices
         $price = (float) $data["price"];
         $status = "AVAILABLE";
 
-        $petProfile = new PetProfile($image, $name, $birthdate, $sex, $color, $trait, $isVaccinated, $pcciStatus, $accountId, $ownerName, $price, $status);
+        $petProfile = new PetProfile($image, $reference, $name, $birthdate, $sex, $color, $trait, $isVaccinated, $pcciStatus, $accountId, $ownerName, $price, $status);
         $petProfile->setType($type);
         if (!$this->dao->addPetProfile($petProfile)) {
             $_SESSION["msg"] = "There was an error in adding the Pet Profile.";
@@ -109,6 +104,7 @@ class PetProfileServices
         }
 
         $image = $data["image"];
+        $reference = $data['reference'];
         $name = strtoupper($data["name"]);
         $type = strtoupper($data["type"]);
         $trait = strtoupper($data["trait"]);
@@ -122,7 +118,7 @@ class PetProfileServices
         $price = (float) $data["price"];
         $status = $data["status"];
 
-        $profile = new PetProfile($image, $name, $birthdate, $sex, $color, $trait, $isVaccinated, $pcciStatus, $accountId, $ownerName, $price, $status);
+        $profile = new PetProfile($image, $reference, $name, $birthdate, $sex, $color, $trait, $isVaccinated, $pcciStatus, $accountId, $ownerName, $price, $status);
         $profile->setType($type);
         $profile->setId($id);
         if (!$this->dao->updatePetProfile($profile)) {

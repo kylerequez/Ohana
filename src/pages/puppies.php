@@ -62,10 +62,14 @@
 
                     $profiles = $services->getRehomingPets();
 
-                    if (empty($profiles)) {
+                    if (is_null($profiles)) {
                     ?>
                         <div class="service mb-4">
                             <h1 class="text-center fs-1 mt-5" style="color:#DB6551; font-family: 'Acme', sans-serif; "> There are currently NO AVAILABLE <br><br> french bulldog puppies for rehoming</h1>
+                        </div>
+                    <?php } else { ?>
+                        <div class="service">
+                            <h1 class="mb-4 text-center" id="header"> Add to your Ohana now!</h1>
                         </div>
                         <div class="container-md d-flex justify-content-center">
                             <div class="row">
@@ -80,7 +84,6 @@
                                                     <ul class="dropdown-menu text-center">
                                                         <li><a class="dropdown-item" href="#">Action</a></li>
                                                         <li><a class="dropdown-item" href="#">Another action</a></li>
-
                                                     </ul>
                                                 </div>
                                                 <div class="btn-group mx-2">
@@ -90,7 +93,6 @@
                                                     <ul class="dropdown-menu text-center">
                                                         <li><a class="dropdown-item" href="#">Action</a></li>
                                                         <li><a class="dropdown-item" href="#">Another action</a></li>
-
                                                     </ul>
                                                 </div>
                                                 <div class="btn-group mx-2">
@@ -100,7 +102,6 @@
                                                     <ul class="dropdown-menu text-center">
                                                         <li><a class="dropdown-item" href="#">Action</a></li>
                                                         <li><a class="dropdown-item" href="#">Another action</a></li>
-
                                                     </ul>
                                                 </div>
                                                 <div class="btn-group mx-2">
@@ -121,12 +122,6 @@
                                 </div>
                             </div>
                         </div>
-
-                    <?php } else { ?>
-                        <div class="service">
-                            <h1 class="mb-4 text-center" id="header"> Add to your Ohana now!</h1>
-                        </div>
-
                         <div class="container-fluid d-flex justify-content-center">
                             <div class="row  d-flex justify-content-center">
                                 <?php foreach ($profiles as $profile) { ?>
@@ -137,7 +132,7 @@
                                             <p class="card-text"> <?php echo $profile->getBirthdate()->format('Y-m-d'); ?> </p>
                                             <p class="card-text"> <?php echo $profile->getPrice(); ?> </p>
                                             <div class="btn-Learn mt-3" name="btn-Learn">
-                                                <center><a href="/rehoming/get/<?php echo $profile->getId(); ?>"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
+                                                <center><a href="/puppy-info/<?php echo $profile->getReference(); ?>/<?php echo $profile->getName(); ?>"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
                                             </div>
                                         </div>
                                     </div>

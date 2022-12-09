@@ -42,7 +42,7 @@ if ($balance > 10) {
                 'apikey' => 'ac52fa794b80cecfc29fe5c3cbcd00cb',
                 'number' => $appointment->getNumber(),
                 'message' => $text,
-                'sendername' => 'SEMAPHORE'
+                'sendername' => 'OhanaKennel'
             );
             curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
             curl_setopt($ch, CURLOPT_POST, 1);
@@ -53,7 +53,7 @@ if ($balance > 10) {
             $output = curl_exec($ch);
             curl_close($ch);
 
-            echo $output . "<br>";
+            // echo $output . "<br>";
         }
     }
 }

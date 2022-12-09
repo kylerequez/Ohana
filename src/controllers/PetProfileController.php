@@ -156,12 +156,8 @@ class PetProfileController
     {
         switch ($method) {
             case "GET":
-                // $_SESSION["rehoming-profile"] = serialize($this->services->getOhanaPet($id));
-                // $profile = unserialize($_SESSION["rehoming-profile"]);
-                // header("Location: http://" . DOMAIN_NAME . "/puppy-info/" . $profile->getName());
                 break;
             case "POST":
-
                 break;
         }
     }
@@ -234,6 +230,7 @@ class PetProfileController
                 if (!$this->services->deletePetProfile($id)) {
                     $this->processCustomerCollectionRequest("GET");
                 }
+                echo $_SESSION['msg'];
                 $this->processCustomerCollectionRequest("GET");
                 break;
             case "POST":

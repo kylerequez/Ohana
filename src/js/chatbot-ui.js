@@ -19,7 +19,6 @@ function init() {
     Ohanabot = `<button class='chat-btn'><img src = "/Ohana/src/images/icons/comment.png" class = "icon" ></button>
 
     <div class='chat-popup'>
-    
 		<div class='chat-header'>
 			<div class='chatbot-img'>
 				<img src='${botLogoPath}' alt='Chat Bot image' class='bot-img'> 
@@ -160,7 +159,6 @@ function setUserResponse() {
 function scrollToBottomOfResults() {
     chatArea.scrollTop = chatArea.scrollHeight;
 }
-
 
 function send(message) {
     chatInput.type = "text";
