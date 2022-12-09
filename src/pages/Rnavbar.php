@@ -82,6 +82,11 @@ if (!isset($_SESSION['user'])) {
               <h3 class="text-center mt-3 font-weight-bold"><?php echo $user->getFullName(); ?></h3>
               <ul>
                 <li>
+                  <img src="/Ohana/src/images/icons/dashboard.png" /><a href="/dashboard/home" target="_blank"><span class="icon home" aria-hidden="true">
+                      Admin Dashboard
+                  </a>
+                </li>
+                <li>
                   <img src="/Ohana/src/images/icons/pencil.png" /><a href="/userprofile">My profile</a>
                 </li>
                 <li>
