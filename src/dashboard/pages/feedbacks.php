@@ -77,6 +77,13 @@
       margin-top:20px;
       border: none;
     }
+
+    .form-control {
+      border-color: #db6551;
+      border-style: solid;
+      border-width: 2px;
+      background-color: white;
+    }
   </style>
 </head>
 <body>
@@ -119,15 +126,16 @@
                     <div class="modal-body">
                       <form>
                         <div class="mb-3">
-                          <p>Date:</p>
+                        <label for="date" class="col-form-label">Date:</label>
+                          <input type="text" class="form-control" id="date" disabled>
                         </div>
                         <div class="mb-3">
                           <label for="recipient-name" class="col-form-label">Customer Name:</label>
-                          <input type="text" class="form-control" id="recipient-name" style="background-color:#eed1c2" disabled>
+                          <input type="text" class="form-control" id="recipient-name" disabled>
                         </div>
                         <div class="mb-3">
                           <label for="message-text" class="col-form-label">Message:</label>
-                          <textarea class="form-control" id="message-text" style="background-color:#eed1c2" disabled></textarea>
+                          <textarea class="form-control" id="message-text" disabled></textarea>
                         </div>
                       </form>
                     </div>

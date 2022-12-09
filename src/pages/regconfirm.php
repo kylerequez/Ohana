@@ -16,8 +16,10 @@
       font-family: 'Acme', sans-serif;
     }
 
-    #confirmtext {
-      font-size: 20px;
+    #header {
+      font-size: 70px;
+      font-family: 'Acme', sans-serif;
+      color:#db6551;
     }
 
     #already {
@@ -29,8 +31,9 @@
         font-size: 38px;
       }
 
-      #confirmtext {
-        margin-top: 10px;
+      #header {
+        margin-top: -10px;
+        font-size: 32px;
       }
 
       #resendotp {
@@ -69,7 +72,7 @@
               unset($_SESSION["msg"]);
             } else {
       ?>
-        <p id="confirmtext"> Complete registration by entering the OTP sent to your email. </p>
+        <p id="header"> Complete registration <br><span class="fs-4" style="color:#c0b65a"> by entering the OTP sent to your email. </span>  </p>
       <?php
             }
             if (empty($_SESSION["email"]) && empty($_SESSION["userOtp"]) && empty($_SESSION["token"])) {

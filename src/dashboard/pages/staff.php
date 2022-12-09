@@ -89,6 +89,13 @@
       margin-top: 20px;
       border: none;
     }
+
+    .form-control {
+      border-color: #db6551;
+      border-style: solid;
+      border-width: 2px;
+      background-color: white;
+    }
   </style>
 </head>
 
@@ -168,28 +175,28 @@
                                   <input type="hidden" name="type" value="<?php echo $staff->getType(); ?>">
                                   <div class="row input-group mb-3">
                                     <label for="fname" class="col-3 col-form-label "> First Name: </label>
-                                    <input type="text" class="col-9 form-control" name="fname" value="<?php echo $staff->getFname(); ?>" required style="background-color:#eed1c2; color:black">
+                                    <input type="text" class="col-9 form-control" name="fname" value="<?php echo $staff->getFname(); ?>" required>
                                   </div>
                                   <div class="row input-group mb-3">
                                     <label for="mname" class="col-3 col-form-label "> Middle Name: </label>
-                                    <input type="text" class="col-9 form-control" name="mname" value="<?php echo $staff->getMname(); ?>" required style="background-color:#eed1c2; color:black">
+                                    <input type="text" class="col-9 form-control" name="mname" value="<?php echo $staff->getMname(); ?>" required>
                                   </div>
                                   <div class="row input-group mb-3">
                                     <label for="lname" class="col-3 col-form-label "> Surname: </label>
-                                    <input type="text" class="col-9 form-control" name="lname" value="<?php echo $staff->getLname(); ?>" required style="background-color:#eed1c2; color:black">
+                                    <input type="text" class="col-9 form-control" name="lname" value="<?php echo $staff->getLname(); ?>" required>
                                   </div>
                                   <div class="row input-group mb-3">
                                     <label for="email" class="col-3 col-form-label "> Email Address: </label>
-                                    <input type="email" class="col-9 form-control" name="email" value="<?php echo $staff->getEmail(); ?>" required style="background-color:#eed1c2; color:black">
+                                    <input type="email" class="col-9 form-control" name="email" value="<?php echo $staff->getEmail(); ?>" required>
                                   </div>
                                   <div class="row input-group mb-3">
-                                    <label for="email" class="col-3 col-form-label "> Mobile Number: </label>
+                                    <label for="number" class="col-3 col-form-label "> Contact Number: </label>
                                     <span class="col-1 input-group-text" id="contact-no">+63</span>
-                                    <input type="text" class="col-8 form-control" name="number" value="<?php echo str_replace("+63", "", $staff->getNumber()); ?>" required style="background-color:#eed1c2; color:black" maxlength="10" ; oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                    <input type="text" class="col-8 form-control" name="number" minlength="9" maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="<?php echo str_replace("+63", "", $staff->getNumber()); ?>"  required>
                                   </div>
                                   <div class="row input-group mb-3">
                                     <label for="status" class="col-3 col-form-label "> Status: </label>
-                                    <select class="form-select" name="status" aria-label="Default select example">
+                                    <select class="form-control" name="status" aria-label="Default select example">
                                       <option <?php if ($staff->getStatus() === "ACTIVE") echo "selected"; ?> value="ACTIVE">Active</option>
                                       <option <?php if ($staff->getStatus() === "DISABLED") echo "selected"; ?> value="DISABLED">Disabled</option>
                                     </select>
@@ -239,27 +246,27 @@
             <input name="status" type="hidden" value="ACTIVE">
             <div class="mb-3">
               <label for="fname" class="col-form-label"> First Name: </label>
-              <input type="text" class="form-control" name="fname" placeholder="Enter First Name" required style="background-color:#eed1c2; color:black">
+              <input type="text" class="form-control" name="fname" placeholder="Enter First Name" required>
             </div>
             <div class="mb-3">
               <label for="mname" class="col-form-label"> Middle Name (optional): </label>
-              <input type="text" class="form-control" name="mname" placeholder="Enter Middle Name" style="background-color:#eed1c2; color:black">
+              <input type="text" class="form-control" name="mname" placeholder="Enter Middle Name">
             </div>
             <div class="mb-3">
               <label for="lname" class="col-form-label"> Surname: </label>
-              <input type="text" class="form-control" name="lname" placeholder="Enter Surname" required style="background-color:#eed1c2; color:black">
+              <input type="text" class="form-control" name="lname" placeholder="Enter Surname" required>
             </div>
             <div class="mb-3">
               <label for="email" class="col-form-label"> Email Address: </label>
-              <input type="email" class="form-control" name="email" placeholder="Enter Email Address" required style="background-color:#eed1c2; color:black">
+              <input type="email" class="form-control" name="email" placeholder="Enter Email Address" required>
             </div>
             <div class="mb-3">
-              <label for="number" class="col-form-label"> Contact Number: </label>
-              <input type="text" class="form-control" name="number" placeholder="Enter Contact Number" required style="background-color:#eed1c2; color:black">
+              <label for="number" class="col-form-label"> Contact Number(+63): </label>
+              <input type="text" class="form-control" name="number" placeholder="Enter Contact Number" minlength="10" maxlength="10" required>
             </div>
             <div class="mb-3">
               <label for="password" class="col-form-label"> Password: </label>
-              <input type="password" class="form-control" name="password" placeholder="Enter Password" required style="background-color:#eed1c2; color:black">
+              <input type="password" class="form-control" name="password" placeholder="Enter Password" minlength="8" maxlength="50" required>
             </div>
           </div>
           <div class="modal-footer">

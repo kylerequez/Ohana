@@ -15,7 +15,9 @@
       font-size: 80px;
       margin-top: 5%;
     }
-
+    #ohanafooter {
+      margin-top:8%;
+    }
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
       .sign-up__title {
         font-size: 37px;

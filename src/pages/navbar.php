@@ -6,28 +6,22 @@
       height: 90px;
     }
 
-    #customerprofile {
-      width: 50px;
-      height: 40px;
-    }
-
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
-      .navbar.navbar-expand-xl {
+      #navbar-spy {
         height: 110px;
       }
 
       #navlogo.img-fluid {
-        margin-top: -30%;
+        margin-top: -60%;
       }
 
-      .navbar-toggler {
-        margin-top: -20%;
+      /* .navbar-toggler {
+        margin-right:5%;
+      } */
+      .navbar-toggler{
+        margin-right:5%;
+        margin-top: -60px;
       }
-
-      .nav-item {
-        margin-left: 20%;
-      }
-
       #login-btn {
         background-color: #db6551;
         border-radius: 20px;

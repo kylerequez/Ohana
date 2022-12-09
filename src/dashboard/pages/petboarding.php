@@ -88,6 +88,13 @@
       margin-top: 20px;
       border: none;
     }
+
+    .form-control {
+      border-color: #db6551;
+      border-style: solid;
+      border-width: 2px;
+      background-color: white;
+    }
   </style>
 </head>
 
@@ -102,12 +109,6 @@
           <h2 class="main-title text-center mt-3"> Pet Boarding Slots </h2>
         </div>
         <div class="users-table table-wrapper">
-          <!-- <div class="search-wrapper">
-            <i data-feather="search" aria-hidden="true"></i>
-            <input type="text" placeholder=" Search">
-            <button type="filter" class="text-white"> FILTER </button>
-            <button type="sort" class="text-white"> SORT </button>
-          </div> -->
           <div class="createstaff-wrapper">
             <a class="create-staff-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create">
                 <i data-feather="plus" aria-hidden="true"></i>
@@ -159,16 +160,20 @@
                               <div class="modal-body">
                                 <div class="mb-3">
                                   <label for="name" class="col-form-label"> SLOT NAME: </label>
-                                  <input type="text" class="form-control" name="name" value="<?php echo $slot->getName(); ?>" required style="background-color:#eed1c2; color:black">
+                                  <input type="text" class="form-control" name="name" value="<?php echo $slot->getName(); ?>" required>
                                 </div>
                                 <div class="mb-3">
                                   <label for="information" class="col-form-label"> SLOT INFORMATION: </label>
-                                  <input type="text" class="form-control" name="information" value="<?php echo $slot->getInformation(); ?>" required style="background-color:#eed1c2; color:black">
+                                  <input type="text" class="form-control" name="information" value="<?php echo $slot->getInformation(); ?>" required>
                                 </div>
                                 <div class="mb-3">
-                                  <label for="isAvailable" class="col-form-label"> SLOT AVAILABILITY: </label><br>
-                                  <label for="yes" class="radio-inline"> <input type="radio" id="yes" <?php if ($slot->getIsAvailable() == 1) echo "checked"; ?> name="isAvailable" value="AVAILABLE"> Available </label>
-                                  <label for="no" class="radio-inline"> <input type="radio" id="no" <?php if ($slot->getIsAvailable() == 0) echo "checked"; ?> name="isAvailable" value="UNAVAILABLE"> Unavailable </label>
+                                  <label for="isAvailable" class="col-form-label"> SLOT AVAILABILITY: </label>
+                                  <select class="form-control" id="type" name="type">
+                                    <option id="yes" name="isAvailable" value="AVAILABLE" <?php if ($slot->getIsAvailable() == 1) echo "selected"; ?>> Available </option>
+                                    <option id="no"  nname="unAvailable" value="UNAVAILABLE" <?php if ($slot->getIsAvailable() == 0) echo "selected"; ?> > Unavailable </option>
+                                  </select>
+                          <!-- <label for="yes" class="radio-inline"> <input type="radio" id="yes" <?php //if ($slot->getIsAvailable() == 1) echo "checked"; ?> name="isAvailable" value="AVAILABLE"> Available </label>
+                          <label for="no" class="radio-inline"> <input type="radio" id="no" <?php //if ($slot->getIsAvailable() == 0) echo "checked"; ?> name="isAvailable" value="UNAVAILABLE"> Unavailable </label> -->
                                 </div>
                                 <div class="mb-3">
                                   <label for="petName" class="col-form-label"> PET NAME: </label>
@@ -240,16 +245,16 @@
           <div class="modal-body">
             <div class="mb-3">
               <label for="name" class="col-form-label"> SLOT NAME </label>
-              <input type="text" class="form-control" name="name" placeholder="Enter Slot Name" required style="background-color:#eed1c2; color:black">
+              <input type="text" class="form-control" name="name" placeholder="Enter Slot Name" required>
             </div>
             <div class="mb-3">
               <label for="information" class="col-form-label"> SLOT INFORMATION </label>
-              <input type="text" class="form-control" name="information" placeholder="Enter Slot Information" required style="background-color:#eed1c2; color:black">
+              <input type="text" class="form-control" name="information" placeholder="Enter Slot Information" required>
             </div>
             <input type="hidden" class="form-control" name="isAvailable" value="1">
             <div class="mb-3">
               <label for="image" class="col-form-label"> SLOT IMAGE: </label>
-              <input type="file" class="form-control" name="image"> 
+              <input type="file" class="form-control" name="image">
             </div>
           </div>
           <div class="modal-footer">

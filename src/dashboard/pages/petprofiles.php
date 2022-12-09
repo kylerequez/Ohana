@@ -88,6 +88,13 @@
       margin-top: 20px;
       border: none;
     }
+
+    .form-control {
+      border-color: #db6551;
+      border-style: solid;
+      border-width: 2px;
+      background-color: white;
+    }
   </style>
 </head>
 
@@ -102,8 +109,6 @@
           <h2 class="main-title text-center mt-3">Ohana Pet Profiles</h2>
         </div>
         <div class="users-table table-wrapper">
-          <!-- <div class="search-wrapper">
-          </div> -->
           <div class="createstaff-wrapper">
             <a class="create-staff-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white">
                 <i data-feather="plus" aria-hidden="true"></i>Add Pet </button></a>
@@ -159,48 +164,62 @@
                               <div class="modal-body">
                                 <div class="mb-3">
                                   <label for="name" class="col-form-label">DOG NAME:</label>
-                                  <input type="text" class="form-control" name="name" value="<?php echo $profile->getName(); ?>" required style="background-color:#eed1c2;">
+                                  <input type="text" class="form-control" name="name" value="<?php echo $profile->getName(); ?>" required>
                                 </div>
                                 <div class="mb-3">
-                                  <label for="type" class="col-form-label"> DOG TYPE </label><br>
-                                  <label for="rehoming" class="radio-inline"> <input type="radio" id="rehoming" <?php if ($profile->getType() == "REHOMING") echo "checked"; ?> name="type" value="REHOMING">Rehoming</label>
-                                  <label for="stud" class="radio-inline"> <input type="radio" id="stud" <?php if ($profile->getType() == "STUD") echo "checked"; ?> name="type" value="STUD">Stud</label>
+                                  <label for="type" class="col-form-label"> DOG TYPE </label>
+                                  <select class="form-control" id="type" name="type">
+                                    <option value="REHOMING" for="rehoming" id="rehoming" <?php if ($profile->getType() == "REHOMING") echo "selected"; ?>>Rehoming</option>
+                                    <option value="STUD" for="stud" id="stud" <?php if ($profile->getType() == "STUD") echo "selected"; ?>>Stud</option>
+                                  </select>
                                 </div>
                                 <div class="mb-3">
                                   <label for="sex" class="col-form-label"> BIRTHDAY: </label>
-                                  <input type="date" class="form-control" name="birthdate" value="<?php echo $profile->getBirthdate()->format('Y-m-d'); ?>" required style="background-color:#eed1c2;">
+                                  <input type="date" class="form-control" name="birthdate" value="<?php echo $profile->getBirthdate()->format('Y-m-d'); ?>" required>
                                 </div>
                                 <div class="mb-3">
-                                  <label> DOG GENDER </label><br>
-                                  <label for="sex1" class="radio-inline"> <input type="radio" id="sex1" <?php if ($profile->getSex() == "MALE") echo "checked"; ?> name="sex" value="Male"> Male </label>
-                                  <label for="sex2" class="radio-inline"> <input type="radio" id="sex2" <?php if ($profile->getSex() == "FEMALE") echo "checked"; ?> name="sex" value="Female"> Female </label>
+                                  <label for="sex" class="col-form-label"> DOG GENDER </label><br>
+                                  <select class="form-control" id="type" name="type">
+                                    <option value="Male" for="rehoming" id="sex1" <?php if ($profile->getSex() == "MALE") echo "selected"; ?>>Male</option>
+                                    <option value="Female" for="stud" id="sex2" <?php if ($profile->getSex() == "FEMALE") echo "selected"; ?>>Female</option>
+                                  </select>
+                                  <!-- <label for="sex1" class="radio-inline"> <input type="radio" id="sex1" <?php if ($profile->getSex() == "MALE") echo "checked"; ?> name="sex" value="Male"> Male </label>
+                                  <label for="sex2" class="radio-inline"> <input type="radio" id="sex2" <?php if ($profile->getSex() == "FEMALE") echo "checked"; ?> name="sex" value="Female"> Female </label> -->
                                 </div>
                                 <div class="mb-3">
                                   <label for="color" class="col-form-label"> COLOR: </label>
-                                  <input type="text" class="form-control" name="color" value="<?php echo $profile->getColor(); ?>" required style="background-color:#eed1c2;">
+                                  <input type="text" class="form-control" name="color" value="<?php echo $profile->getColor(); ?>" required>
                                 </div>
                                 <div class="mb-3">
                                   <label for="trait" class="col-form-label"> TRAIT: </label>
-                                  <input type="text" class="form-control" name="trait" value="<?php echo $profile->getTrait(); ?>" required style="background-color:#eed1c2;">
+                                  <input type="text" class="form-control" name="trait" value="<?php echo $profile->getTrait(); ?>" required>
                                 </div>
                                 <div class="mb-3">
-                                  <label for="isVaccinated" class="col-form-label"> IS VACCINATED </label><br>
-                                  <label for="yes" class="radio-inline"> <input type="radio" id="yes" <?php if ($profile->getIsVaccinated() == 1) echo "checked"; ?> name="isVaccinated" value="Yes">Yes </label>
-                                  <label for="no" class="radio-inline"> <input type="radio" id="no" <?php if ($profile->getIsVaccinated() == 0) echo "checked"; ?> name="isVaccinated" value="No"> No </label>
+                                  <label for="isVaccinated" class="col-form-label"> IS VACCINATED </label>
+                                  <select class="form-control" id="type" name="type">
+                                    <option <?php if ($profile->getIsVaccinated() == 1) echo "selected"; ?> name="isVaccinated" value="Yes">Yes </option>
+                                    <option <?php if ($profile->getIsVaccinated() == 0) echo "selected"; ?> name="isVaccinated" value="No"> No </option>
+                                  </select>
+                                  <!-- <label for="yes" class="radio-inline"> <input type="radio" id="yes" <?php if ($profile->getIsVaccinated() == 1) echo "checked"; ?> name="isVaccinated" value="Yes">Yes </label>
+                                    <label for="no" class="radio-inline"> <input type="radio" id="no" <?php if ($profile->getIsVaccinated() == 0) echo "checked"; ?> name="isVaccinated" value="No"> No </label> -->
                                 </div>
                                 <div class="mb-3">
                                   <label for="pcciStatus" class="col-form-label"> PCCI STATUS </label><br>
-                                  <label for="pcci1" class="radio-inline"> <input type="radio" id="pcci1" <?php if ($profile->getPcciStatus() == "REGISTERED") echo "checked"; ?> name="pcciStatus" value="Registered"> Registered </label>
-                                  <label for="pcci2" class="radio-inline"> <input type="radio" id="pcci2" <?php if ($profile->getPcciStatus() == "PENDING") echo "checked"; ?> name="pcciStatus" value="Pending"> Pending </label>
+                                  <select class="form-control" id="type" name="type">
+                                    <option <?php if ($profile->getPcciStatus() == "REGISTERED") echo "selected"; ?> name="pcciStatus" value="Registered"> Registered </option>
+                                    <option <?php if ($profile->getPcciStatus() == "PENDING") echo "selected"; ?> name="pcciStatus" value="Pending"> Pending </option>
+                                  </select>
+                                  <!-- <label for="pcci1" class="radio-inline"> <input type="radio" id="pcci1" <?php if ($profile->getPcciStatus() == "REGISTERED") echo "checked"; ?> name="pcciStatus" value="Registered"> Registered </label>
+                                  <label for="pcci2" class="radio-inline"> <input type="radio" id="pcci2" <?php if ($profile->getPcciStatus() == "PENDING") echo "checked"; ?> name="pcciStatus" value="Pending"> Pending </label> -->
                                 </div>
                                 <div class="mb-3">
                                   <label for="ownerName" class="col-form-label"> OWNER NAME: </label>
                                   <input type="hidden" name="accountId" value="<?php echo $profile->getAccountId(); ?>">
-                                  <input type="disabled" class="form-control" name="ownerName" value="<?php echo $profile->getOwnerName(); ?>" required style="background-color:#eed1c2;">
+                                  <input type="disabled" class="form-control" name="ownerName" value="<?php echo $profile->getOwnerName(); ?>" disabled>
                                 </div>
                                 <div class="mb-3">
                                   <label for="price" class="col-form-label"> PRICE: </label>
-                                  <input type="text" class="form-control" name="price" value="<?php echo $profile->getPrice(); ?>" required style="background-color:#eed1c2;">
+                                  <input type="text" class="form-control" name="price" value="<?php echo $profile->getPrice(); ?>" required>
                                 </div>
                                 <div class="mb-3">
                                   <label for="status" class="col-form-label"> STATUS: </label>
@@ -275,43 +294,59 @@
           <div class="modal-body">
             <div class="mb-3">
               <label for="name" class="col-form-label"> DOG NAME </label>
-              <input type="text" class="form-control" name="name" placeholder="Enter Dog Name" required style="background-color:#eed1c2; color:black">
+              <input type="text" class="form-control" name="name" placeholder="Enter Dog Name" required>
             </div>
             <div class="mb-3">
-              <label> DOG TYPE </label><br>
-              <label for="rehoming" class="radio-inline"> <input type="radio" id="rehoming" name="type" value="REHOMING"> Rehoming </label>
-              <label for="stud" class="radio-inline"> <input type="radio" id="stud" name="type" value="STUD"> Stud </label>
+              <label> DOG TYPE </label>
+              <select class="form-control" id="type" name="type">
+                <option value="REHOMING" for="rehoming" id="rehoming" name="type">Rehoming</option>
+                <option value="STUD" for="stud" id="stud" name="type">Stud</option>
+              </select>
+              <!-- <label for="rehoming" class="radio-inline"> <input type="radio" id="rehoming" name="type" value="REHOMING"> Rehoming </label>
+              <label for="stud" class="radio-inline"> <input type="radio" id="stud" name="type" value="STUD"> Stud </label> -->
             </div>
             <div class="mb-3">
-              <label> DOG GENDER </label><br>
-              <label for="sex1" class="radio-inline"> <input type="radio" id="sex1" name="sex" value="MALE"> Male </label>
-              <label for="sex2" class="radio-inline"> <input type="radio" id="sex2" name="sex" value="FEMALE"> Female </label>
+              <label> DOG GENDER </label>
+              <select class="form-control" id="type" name="type">
+                <option value="MALE" for="rehoming" id="sex1" name="sex">Male</option>
+                <option value="FEMALE" for="stud" id="sex2" name="sex">Female</option>
+              </select>
+              <!-- <label for="sex1" class="radio-inline"> <input type="radio" id="sex1" name="sex" value="MALE"> Male </label>
+              <label for="sex2" class="radio-inline"> <input type="radio" id="sex2" name="sex" value="FEMALE"> Female </label> -->
             </div>
             <div class="mb-3">
               <label for="birthdate" class="col-form-label"> BIRTHDAY </label>
-              <input type="date" class="form-control" name="birthdate" required style="background-color:#eed1c2; color:black">
+              <input type="date" class="form-control" name="birthdate" required>
             </div>
             <div class="mb-3">
               <label for="color" class="col-form-label"> COLOR </label>
-              <input type="text" class="form-control" name="color" placeholder="Enter Color" required style="background-color:#eed1c2; color:black">
+              <input type="text" class="form-control" name="color" placeholder="Enter Color" required>
             </div>
             <div class="mb-3">
               <label for="trait" class="col-form-label"> TRAIT: </label>
-              <input type="text" class="form-control" name="trait" placeholder="Enter Trait" required style="background-color:#eed1c2;">
+              <input type="text" class="form-control" name="trait" placeholder="Enter Trait" required>
             </div>
             <div class="mb-3">
-              <label for="isVaccinated" class="col-form-label"> IS VACCINATED </label><br>
-              <label for="yes" class="radio-inline"> <input type="radio" id="yes" name="isVaccinated" value="YES">Yes </label>
-              <label for="no" class="radio-inline"> <input type="radio" id="no" name="isVaccinated" value="NO"> No </label>
+              <label for="isVaccinated" class="col-form-label"> IS VACCINATED </label>
+              <select class="form-control" id="type" name="type">
+                <option name="isVaccinated" value="Yes" id="yes">Yes </option>
+                <option name="isVaccinated" value="No" id="no"> No </option>
+              </select>
+              <!-- <label for="yes" class="radio-inline"> <input type="radio" id="yes" name="isVaccinated" value="YES">Yes </label>
+              <label for="no" class="radio-inline"> <input type="radio" id="no" name="isVaccinated" value="NO"> No </label> -->
             </div>
             <div class="mb-3">
-              <label for="pcciStatus" class="col-form-label"> PCCI STATUS </label><br>
-              <label for="pcci1" class="radio-inline"> <input type="radio" id="pcci1" name="pcciStatus" value="REGISTERED"> Registered </label>
-              <label for="pcci2" class="radio-inline"> <input type="radio" id="pcci2" name="pcciStatus" value="PENDING"> Pending </label>
+              <label for="pcciStatus" class="col-form-label"> PCCI STATUS </label>
+              <select class="form-control" id="type" name="type">
+                <option id="pcci1" name="pcciStatus" value="REGISTERED"> Registered </option>
+                <option id="pcci2" name="pcciStatus" value="PENDING"> Pending </option>
+              </select>
+              <!-- <label for="pcci1" class="radio-inline"> <input type="radio" id="pcci1" name="pcciStatus" value="REGISTERED"> Registered </label>
+              <label for="pcci2" class="radio-inline"> <input type="radio" id="pcci2" name="pcciStatus" value="PENDING"> Pending </label> -->
             </div>
             <div class="mb-3">
               <label for="price" class="col-form-label"> PRICE </label>
-              <input type="text" class="form-control" name="price" placeholder="Enter Price" required style="background-color:#eed1c2; color:black">
+              <input type="text" class="form-control" name="price" placeholder="Enter Price" required>
             </div>
             <input type="hidden" class="form-control" name="ownerName" value="OHANA KENNEL BUSINESS">
             <div class="mb-3">

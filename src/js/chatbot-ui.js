@@ -21,7 +21,7 @@ function init() {
     <div class='chat-popup'>
 		<div class='chat-header'>
 			<div class='chatbot-img'>
-				<img src='${botLogoPath}' alt='Chat Bot image' class='bot-img'> 
+				<img src='${botLogoPath}' alt='Chat Bot image' class='bot-img' style="border-radius:50px;"> 
 			</div>
 			<h4 class='bot-title' style="margin-top:10px;"> Lilo from Ohana </h4>
 			<button class = "expand-chat-window" ><img src="/Ohana/src/images/icons/open_fullscreen.png" class="icon" ></button>
@@ -29,7 +29,7 @@ function init() {
 
 		<div class='chat-area'>
             <div class='bot-msg'>
-                <img class='bot-img' src ='${botLogoPath}' />
+                <img class='bot-img' src ='${botLogoPath}' style="border-radius:50px;" />
 				<span class='msg'>Hi, How can i help you?</span>
 			</div>
 
@@ -39,16 +39,7 @@ function init() {
                     <button class='btn-primary' onclick= 'userResponseBtn(this)' value='/sign_in'>sample btn</button>            
                 </div>
 			</div> -->
-
-			<!-- <div class='bot-msg'>
-				<img class='msg-image' src="https://i.imgur.com/nGF1K8f.jpg" />
-			</div> -->
-
-			<!-- <div class='user-msg'>
-				<span class='msg'>Hi, How can i help you?</span>
-			</div> -->
 			
-
 		</div>
 
 		<div class='chat-input-area'>

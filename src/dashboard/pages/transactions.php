@@ -88,6 +88,12 @@
       margin-top: 20px;
       border: none;
     }
+    .form-control {
+      border-color: #db6551;
+      border-style: solid;
+      border-width: 2px;
+      background-color: white;
+    }
   </style>
 </head>
 
@@ -103,8 +109,7 @@
         </div>
         <div class="users-table table-wrapper">
           <div class="createstaff-wrapper">
-            <button type="create"><i data-feather="bar-chart" aria-hidden="true"></i><a class="generate-sales-btn" href="/dashboard/sales"> Generate Sales Report </a></button>
-            <button type="create"><i data-feather="file-text" aria-hidden="true"></i><a class="export-btn" href="##"> Export Report </a></button>
+            <button type="submit"><i data-feather="bar-chart" aria-hidden="true"></i><a class="generate-sales-btn" href="/dashboard/sales"> Generate Sales Report </a></button>
           </div>
           <br>
           <?php
@@ -233,23 +238,23 @@
                               <div class="modal-body">
                                 <div class="mb-3">
                                   <label for="fname" class="col-form-label"> TRANSACTION I.D </label>
-                                  <input type="text" class="form-control text-dark" name="transactionId" value="<?php echo $transaction->getId(); ?>" disabled style="background-color:#eed1c2; ">
+                                  <input type="text" class="form-control text-dark" name="transactionId" value="<?php echo $transaction->getId(); ?>" disabled>
                                 </div>
                                 <div class="mb-3">
                                   <label for="mname" class="col-form-label"> FULL NAME </label>
-                                  <input type="text" class="form-control text-dark" name="accountName" value="<?php echo $transaction->getFname() . " " . $transaction->getMname() . " " . $transaction->getLname(); ?>" disabled style="background-color:#eed1c2; ">
+                                  <input type="text" class="form-control text-dark" name="accountName" value="<?php echo $transaction->getFname() . " " . $transaction->getMname() . " " . $transaction->getLname(); ?>" disabled>
                                 </div>
                                 <div class="mb-3">
                                   <label for="lname" class="col-form-label"> EMAIL ADDRESS </label>
-                                  <input type="text" class="form-control text-dark" name="email" value="<?php echo $transaction->getEmail(); ?>" disabled style="background-color:#eed1c2; ">
+                                  <input type="text" class="form-control text-dark" name="email" value="<?php echo $transaction->getEmail(); ?>" disabled>
                                 </div>
                                 <div class="mb-3">
                                   <label for="email" class="col-form-label"> CONTACT NUMBER </label>
-                                  <input type="email" class="form-control text-dark" name="number" value="<?php echo $transaction->getNumber(); ?>" disabled style="background-color:#eed1c2; ">
+                                  <input type="email" class="form-control text-dark" name="number" value="<?php echo $transaction->getNumber(); ?>" disabled>
                                 </div>
                                 <div class="mb-3">
                                   <label for="status" class="col-form-label"> Status: </label>
-                                  <select class="form-select" name="status" aria-label="Default select example">
+                                  <select class="form-control" name="status" aria-label="Default select example">
                                     <option value="PENDING" <?php if ($transaction->getStatus() == "PENDING") echo "selected"; ?>>PENDING</option>
                                     <option value="COMPLETED" <?php if ($transaction->getStatus() == "COMPLETED") echo "selected"; ?>>COMPLETED</option>
                                   </select>

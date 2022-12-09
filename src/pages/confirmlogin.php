@@ -14,23 +14,25 @@
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
     #cnfrmtitle {
-      font-size: 80px;
+      font-size: 100px;
       color:#db6551;
     }
-
+    #cnfrmcontent {
+        font-size: 20px;
+        color:#c0b65a;
+      }
     #ohanafooter {
       margin-top: 5%;
     }
 
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
       #cnfrmtitle {
-        font-size: 45px;
-        margin-top: 15%;
+        font-size: 50px;
+        margin-top: 5%;
       }
 
       #cnfrmcontent {
-        font-size: 18px;
-        margin-top: 5%;
+        font-size: 12px;
       }
 
       #resend {
@@ -63,7 +65,7 @@
         <div class="sign-up__content">
           <header class="sign-up__header">
             <h1 class="sign-up__title" id="cnfrmtitle"> Welcome Back! </h1>
-            <p class="mt-2 mb-4" id="cnfrmcontent" style="color:c0b65a;"> Please enter the OTP sent to your email to proceed. </p>
+            <p class="mt-2 mb-4" id="cnfrmcontent"> Please enter the OTP sent to your email to proceed. </p>
 
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
               <div class="alert alert-warning mt-3" role="alert">

@@ -147,18 +147,18 @@
                           <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="addStaffTitle"> EDIT CHATBOT RESPONSE </h5>
+                                <h5 class="modal-title" id="addStaffTitle" style="font-family:'Acme', sans-serif;"> EDIT CHATBOT RESPONSE </h5>
                                 <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
                               </div>
                               <div class="modal-body">
                                 <input type="hidden" name="timesAsked" value="<?php echo $response->getTimesAsked(); ?>">
                                 <div class="mb-3">
                                   <label for="query" class="col-form-label"> QUERY </label>
-                                  <input type="text" class="form-control" name="query" value="<?php echo $response->getQuery(); ?>" required style="background-color:#eed1c2; color:black">
+                                  <input type="text" class="form-control" name="query" value="<?php echo $response->getQuery(); ?>" required>
                                 </div>
                                 <div class="mb-3">
                                   <label for="response" class="col-form-label"> RESPONSE </label>
-                                  <input type="text" class="form-control" name="response" value="<?php echo $response->getResponse(); ?>" required style="background-color:#eed1c2; color:black">
+                                  <input type="text" class="form-control" name="response" value="<?php echo $response->getResponse(); ?>" required>
                                 </div>
                               </div>
                               <div class="modal-footer">
@@ -217,11 +217,11 @@
           <div class="modal-body">
             <div class="mb-3">
               <label for="query" class="col-form-label"> QUERY </label>
-              <input type="text" class="form-control" name="query" placeholder="Enter User Query" required style="background-color:#eed1c2; color:black">
+              <input type="text" class="form-control" name="query" placeholder="Enter User Query" required>
             </div>
             <div class="mb-3">
               <label for="response" class="col-form-label"> RESPONSE </label>
-              <input type="text" class="form-control" name="response" placeholder="Enter Dog Name" required style="background-color:#eed1c2; color:black">
+              <input type="text" class="form-control" name="response" placeholder="Enter Dog Name" required>
             </div>
           </div>
           <div class="modal-footer">

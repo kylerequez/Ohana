@@ -51,6 +51,17 @@
     #chartcontainer {
       margin-top: -5%;
     }
+
+    #export .btn-warning {
+      color: white;
+      background-color: #db6551;
+      border-color: #db6551;
+      font-size: 16px;
+      border-radius: 30px;
+      padding: 10px 30px;
+      cursor: pointer;
+    }
+    
   </style>
 </head>
 
@@ -61,8 +72,11 @@
     <div class="main-wrapper">
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
       <main class="main users chart-page" id="skip-target">
-        <div class="container-fluid"> 
+        <div class="container-fluid">
           <h2 class="main-title text-center mt-5"> Business Sales Report </h2>
+          <div class="text-center" id="export">
+            <button type="submit" class="btn btn-warning" target="_blank"> <i data-feather="file-text" aria-hidden="true"></i> Export Report </button>
+          </div>
           <div class="container d-flex justify-content-center" id="chartcontainer">
             <div class="chartCard ">
               <div class="chartBox">

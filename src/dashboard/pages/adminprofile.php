@@ -37,20 +37,20 @@
                                         <div class="row">
                                             <div class="col me-5 ms-5">
                                                 <label class="labels">Name</label>
-                                                <input type="text" class="form-control" name="fname" value="<?php echo $user->getFname(); ?>" style="background-color:#eed1c2;">
+                                                <input type="text" class="form-control" name="fname" value="<?php echo $user->getFname(); ?>" >
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col mt-3 me-5 ms-5">
                                                 <label class="labels">Middle Name</label>
-                                                <input type="text" class="form-control" name="mname" value="<?php echo $user->getMname(); ?>" style="background-color:#eed1c2;">
+                                                <input type="text" class="form-control" name="mname" value="<?php echo $user->getMname(); ?>" >
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="col mt-3 me-5 ms-5">
                                                 <label class="labels">Last Name</label>
-                                                <input type="text" class="form-control" name="lname" value="<?php echo $user->getLname(); ?>" style="background-color:#eed1c2;">
+                                                <input type="text" class="form-control" name="lname" value="<?php echo $user->getLname(); ?>" >
                                             </div>
                                         </div>
 
@@ -59,14 +59,14 @@
                                                 <label class="labels">Mobile Number</label>
                                                 <div class="input-group">
                                                     <span class="input-group-text" id="contact-no">+63</span>
-                                                    <input type="text" class="form-control" name="number" value="<?php echo str_replace("+63", "", $user->getNumber()); ?>" style="background-color:#eed1c2;" maxlength="10" ; oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                    <input type="text" class="form-control" name="number" value="<?php echo str_replace("+63", "", $user->getNumber()); ?>" maxlength="10" ; oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col mt-3 me-5 ms-5">
                                                 <label class="labels">Email</label>
-                                                <input type="text" class="form-control" name="email" value="<?php echo $user->getEmail(); ?>" style="background-color:#eed1c2;">
+                                                <input type="text" class="form-control" name="email" value="<?php echo $user->getEmail(); ?>">
                                             </div>
                                         </div>
                                         <div class="row">

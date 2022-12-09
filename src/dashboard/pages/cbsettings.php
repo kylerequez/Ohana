@@ -43,8 +43,8 @@
                 <div id="cb-settings">
                   <div class="row">
                     <div class="col">
-                      <img src="<?php echo $information->getAvatar(); ?>">
-                      <input type="file" class="form-control" name="image" height="10px" width="10px">
+                      <center> <img src="<?php echo $information->getAvatar(); ?>" class="rounded-circle mb-3" style="height:150px;width:150px;"> </center>
+                      <input type="file" class="form-control" name="image">
                       <input type="hidden" name="old-image" value="<?php echo $information->getAvatar(); ?>">
                     </div>
                   </div>

@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-  <title> OHANA - NAVBAR </title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <?php include_once 'stylesheets.php'; ?>
   <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
   <style>
     #navlogo {
@@ -81,9 +74,6 @@ if (!isset($_SESSION['user'])) {
             <div class="menu">
               <h3 class="text-center mt-3 font-weight-bold"><?php echo $user->getFullName(); ?></h3>
               <ul>
-              <li>
-                  <img src="/Ohana/src/images/icons/pencil.png" /><a href="/dashboard/home">Admin Dashboard</a>
-                </li>
                 <li>
                   <img src="/Ohana/src/images/icons/dashboard.png" /><a href="/dashboard/home" target="_blank"><span class="icon home" aria-hidden="true">
                       Admin Dashboard
@@ -136,6 +126,3 @@ if (!isset($_SESSION['user'])) {
     toggleMenu.classList.toggle("active");
   }
 </script>
-</body>
-
-</html>

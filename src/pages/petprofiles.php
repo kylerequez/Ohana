@@ -60,13 +60,15 @@
                 if ($user->getType() == "USER") {
                     if (count($profiles) < 3) { ?>
                         <div class="form__row text-center mb-5">
-                            <p class="text-center fs-4"><a class="text-decoration-none" name="login" style="color:#db6551" href="/createpetprofile">Add another Pet Profile</a></p>
+                            <p class="text-center fs-4"><a name="login" style="color:#c0b65a" href="/createpetprofile">Add another Pet Profile</a></p>
                         </div>
                         <?php
                         if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-                            <div class="alert alert-warning" role="alert">
-                                <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; ?>
-                            </div>
+                            <center>
+                                <div class="alert alert-warning text-center" role="alert" style="width:400px;">
+                                    <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; ?>
+                                </div>
+                            </center>
                     <?php
                             unset($_SESSION["msg"]);
                         }
@@ -91,9 +93,11 @@
                     </div>
                     <?php
                     if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-                        <div class="alert alert-warning text-center" role="alert" style="width:400px;">
-                            <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; ?>
-                        </div>
+                        <center>
+                            <div class="alert alert-warning text-center" role="alert" style="width:400px;">
+                                <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; ?>
+                            </div>
+                        </center>
                     <?php
                         unset($_SESSION["msg"]);
                     }
