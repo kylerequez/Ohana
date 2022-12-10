@@ -74,34 +74,40 @@
                         <div class="container-md d-flex justify-content-center">
                             <div class="row">
                                 <div class="col-12">
-                                    <div class="card mb-4">
+                                    <div class="card mt-4 mb-4">
                                         <div class="card-body">
                                             <div class="filtering-inline-spacing">
-                                                <div class="btn-group mx-2">
-                                                    <button type="button" class="btn rounded-pill text-light dropdown-toggle" style="background-color:#DB6551;" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        Type
-                                                    </button>
-                                                    <ul class="dropdown-menu text-center">
-                                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="btn-group mx-2">
-                                                    <button type="button" class="btn rounded-pill text-light  dropdown-toggle" style="background-color:#DB6551;" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        Color
-                                                    </button>
-                                                    <ul class="dropdown-menu text-center">
-                                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                    </ul>
-                                                </div>
+                                           
                                                 <div class="btn-group mx-2">
                                                     <button type="button" class="btn rounded-pill text-light  dropdown-toggle" style="background-color:#DB6551;" data-bs-toggle="dropdown" aria-expanded="false">
                                                         Trait
                                                     </button>
                                                     <ul class="dropdown-menu text-center">
-                                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                        <li><label style="color:#DB6551"> Standard </label></li><hr>
+                                                        <li><a class="dropdown-item" href="#">fawn</a></li>
+                                                        <li><a class="dropdown-item" href="#">sable</a></li>
+                                                        <li><a class="dropdown-item" href="#">brindle</a></li>
+                                                        <li><a class="dropdown-item" href="#">pied</a></li>
+                                                        <li><a class="dropdown-item" href="#">black</a></li>
+                                                        <li><a class="dropdown-item" href="#">cream</a></li>
+                                                        <hr><li><label style="color:#DB6551"> Exotic </label></li><hr>
+                                                        <li><a class="dropdown-item" href="#">blue</a></li>
+                                                        <li><a class="dropdown-item" href="#">chocolate</a></li>
+                                                        <li><a class="dropdown-item" href="#">lilac</a></li>
+                                                        <li><a class="dropdown-item" href="#">isabella</a></li>
+                                                        <li><a class="dropdown-item" href="#">newshade isabella</a></li>
+                                                        <li><a class="dropdown-item" href="#">newshade</a></li>
+                                                        <li><a class="dropdown-item" href="#">black tan</a></li>
+                                                        <li><a class="dropdown-item" href="#">blue tan</a></li>
+                                                        <li><a class="dropdown-item" href="#">choco tan</a></li>
+                                                        <li><a class="dropdown-item" href="#">lilac tan</a></li>
+                                                        <li><a class="dropdown-item" href="#">isabella tan</a></li>
+                                                        <li><a class="dropdown-item" href="#">newshade isabella tan</a></li>
+                                                        <hr><li><label style="color:#DB6551"> Platinum </label></li><hr>
+                                                        <li><a class="dropdown-item" href="#">lilac plat</a></li>
+                                                        <li><a class="dropdown-item" href="#">champaigne plat</a></li>
+                                                        <li><a class="dropdown-item" href="#">newshade plat</a></li>
+                                                        <li><a class="dropdown-item" href="#">merle</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="btn-group mx-2">

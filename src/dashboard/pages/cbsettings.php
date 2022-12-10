@@ -51,19 +51,19 @@
                   <div class="row">
                     <div class="col">
                       <label class="mb-2 mt-4 fs-5" for="name" style="display:block"> <b>CHATBOT NAME:</b> </label>
-                      <input class="form-control" type="text" id="name" value="<?php echo $information->getName(); ?>" name="name" style="background:#eed1c2;">
+                      <input class="form-control" type="text" id="name" value="<?php echo $information->getName(); ?>" name="name">
                     </div>
                   </div>
                   <div class="row">
                     <div class="col">
                       <label class="mb-2 mt-4 fs-5" for="introduction" style="display:block"> <b>CHATBOT GREETING:</b> </label>
-                      <input class="form-control" type="text" id="introduction" value="<?php echo $information->getIntroduction(); ?>" name="introduction" style="background:#eed1c2; ">
+                      <input class="form-control" type="text" id="introduction" value="<?php echo $information->getIntroduction(); ?>" name="introduction">
                     </div>
                   </div>
                   <div class="row">
                     <div class="col">
                       <label class="mb-2 mt-4 fs-5" for="noResponse" style="display:block"> <b>CHATBOT NO REPLY:</b> </label>
-                      <input class="form-control" type="text" id="noResponse" value="<?php echo $information->getNoResponse(); ?>" name="noResponse" style="background:#eed1c2;">
+                      <input class="form-control" type="text" id="noResponse" value="<?php echo $information->getNoResponse(); ?>" name="noResponse">
                     </div>
                   </div>
                   <div class="row d-flex justify-content-center">
