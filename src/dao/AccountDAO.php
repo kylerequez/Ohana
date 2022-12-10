@@ -234,8 +234,7 @@ class AccountDAO
         try {
             $sql = "SELECT * FROM ohana_account
                     WHERE number=:number
-                    LIMIT 1;
-                    ";
+                    LIMIT 1;";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":number", $number, PDO::PARAM_STR);

@@ -72,7 +72,7 @@ class BoardingSlotServices
 
         $name = strtoupper($data["name"]);
         $information = strtoupper($data["information"]);
-        $isAvailable = $data["isAvailable"] == "AVAILABLE" ? 1 : 0;
+        $isAvailable = $data["isAvailable"];
         if ($isAvailable == 1) {
             $petId = null;
             $petName = null;

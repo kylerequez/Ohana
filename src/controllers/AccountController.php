@@ -190,13 +190,11 @@ class AccountController
                 }
                 break;
             case "POST":
-                if ($this->services->changePasswordRequest($email)) {
-                    header("Location: http://" . DOMAIN_NAME . "/forgot-password/success");
-                    break;
-                } else {
+                if (!$this->services->changePasswordRequest($email)) {
                     header("Location: http://" . DOMAIN_NAME . "/forgot-password/change/" . $_SESSION["token"]);
                     break;
                 }
+                header("Location: http://" . DOMAIN_NAME . "/forgot-password/success");
                 break;
         }
     }

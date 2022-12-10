@@ -55,6 +55,7 @@
     $dao = new PetProfileDAO($database);
     $services = new PetProfileServices($dao);
 
+    $name = str_replace("%20", " ", $name);
     $profile = $services->getOhanaStudPet($reference, $name);
     if (is_null($profile)) {
     ?>

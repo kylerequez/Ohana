@@ -45,7 +45,7 @@ class AccountServices
         $password = password_hash(trim($data["password"]), PASSWORD_DEFAULT);
         $status = trim($data["status"]);
         $account = new Account($type, $fname, $mname, $lname, $number, $email, $status, $password);
-        if (!is_null($this->dao->searchByEmail($email)) and !is_null($this->dao->searchByNumber($number))) {
+        if (!is_null($this->dao->searchByEmail($email)) || !is_null($this->dao->searchByNumber($number))) {
             $_SESSION["msg"] = "The account already exists in the database.";
             return false;
         }
@@ -317,9 +317,8 @@ class AccountServices
         if (!$this->dao->changePassword($email, $password)) {
             $_SESSION["msg"] = "There was an error in changing the password. The password was not changed.";
             return false;
-        } else {
-            return true;
         }
+        return true;
     }
 
     public function registrationRequest(array $data): mixed

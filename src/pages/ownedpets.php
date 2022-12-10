@@ -52,6 +52,7 @@
   $dao = new PetProfileDAO($database);
   $services = new PetProfileServices($dao);
 
+  $name = str_replace("%20", " ", $name);
   $profile = $services->getOwnedPet($reference, $name);
   if (is_null($profile)) {
   ?>
@@ -188,7 +189,10 @@
                         <div class="mb-3 row ">
                           <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056;font-family: 'Acme', sans-serif;">Gender: </label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="sex" name="sex" value="<?php echo $profile->getSex(); ?>">
+                            <select class="form-control" id="sex" name="sex">
+                              <option value="MALE" <?php if ($profile->getSex() == 'MALE') echo 'selected'; ?>>Male</option>
+                              <option value="FEMALE" <?php if ($profile->getSex() == 'FEMALE') echo 'selected'; ?>>Female</option>
+                            </select>
                           </div>
                         </div>
                         <div class="mb-3 row ">

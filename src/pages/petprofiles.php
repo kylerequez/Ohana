@@ -56,6 +56,17 @@
                 <div class="form__row text-center mb-5">
                     <p class="fs-4">Do not have a pet profile?&nbsp;<a class="link" name="login" style="text-decoration:none; color:#db6551" href="/createpetprofile">Create now!</a></p>
                 </div>
+                <?php
+                if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+                    <center>
+                        <div class="alert alert-warning text-center" role="alert" style="width:400px;">
+                            <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; ?>
+                        </div>
+                    </center>
+                <?php
+                    unset($_SESSION["msg"]);
+                }
+                ?>
                 <?php } else {
                 if ($user->getType() == "USER") {
                     if (count($profiles) < 3) { ?>

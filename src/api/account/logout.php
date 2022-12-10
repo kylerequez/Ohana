@@ -13,7 +13,5 @@ $controller = new AccountController($services, null);
 if (isset($_POST["btnLogout"])) {
     $controller->logoutRequest($_SERVER["REQUEST_METHOD"]);
 } else {
-    if (!isset($_SESSION)) session_start();
-    $_SESSION["msg"] = "Wrong way of accessing";
-    header("Location: www.google.com");
+    header("Location: " . $_SERVER['HTTP_REFERER']);
 }

@@ -34,14 +34,14 @@
         <li><a href="/dashboard/customer-pets"><img src="/Ohana/src/dashboard/img/main/customer.png" style="display:inline-flex;width:24px;height:24px;">&nbsp;&nbsp;Customer Pets</span></a></li>
         <li><a href="/dashboard/petboarding"><img src="/Ohana/src/dashboard/img/main/boarding.png" style="display:inline-flex;width:24px;height:24px;">&nbsp;&nbsp;Pet Boarding Slots</span></a></li>
         <li><a href="/dashboard/appointments"><span class="icon calendar" aria-hidden="true"></span>Appointments</a></li>
-        <li><a href="/dashboard/website-content"><span class="icon image" aria-hidden="true"></span>Manage Content</a></li>
+        <!-- <li><a href="/dashboard/website-content"><span class="icon image" aria-hidden="true"></span>Manage Content</a></li> -->
         <li><a href="/dashboard/customers"><span class="icon user-3" aria-hidden="true"></span>Customer Accounts</a></li>
         <li><a href="/dashboard/staff"> <span class="icon user2" aria-hidden="true"></span>Staff Accounts</a></li>
         <li><a href="/dashboard/transactions"><span class="icon chartico" aria-hidden="true"></span>User Transactions</span></a></li>
         <li><a href="/dashboard/feedbacks"><span class="icon message" aria-hidden="true"></span>User Feedback</a></li>
         <li>
           <a class="show-cat-btn" href="##">
-           <img src="/Ohana/src/dashboard/img/main/cb.png" style="display:inline-flex;width:24px;height:24px;">&nbsp;&nbsp;Chat Bot<span class="sr-only">Open list</span></span>
+            <img src="/Ohana/src/dashboard/img/main/cb.png" style="display:inline-flex;width:24px;height:24px;">&nbsp;&nbsp;Chat Bot<span class="sr-only">Open list</span></span>
           </a>
           <ul class="cat-sub-menu">
             <li><a href="/dashboard/chatbot-settings">Settings </a></li>

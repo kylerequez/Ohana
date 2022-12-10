@@ -168,12 +168,10 @@
                                 </div>
                                 <div class="mb-3">
                                   <label for="isAvailable" class="col-form-label"> SLOT AVAILABILITY: </label>
-                                  <select class="form-control" id="type" name="type">
-                                    <option id="yes" name="isAvailable" value="AVAILABLE" <?php if ($slot->getIsAvailable() == 1) echo "selected"; ?>> Available </option>
-                                    <option id="no"  nname="unAvailable" value="UNAVAILABLE" <?php if ($slot->getIsAvailable() == 0) echo "selected"; ?> > Unavailable </option>
+                                  <select class="form-control" id="type" name="isAvailable">
+                                    <option value="1" <?php if ($slot->getIsAvailable() == 1) echo "selected"; ?>>Available</option>
+                                    <option value="0" <?php if ($slot->getIsAvailable() == 0) echo "selected"; ?>>Unavailable</option>
                                   </select>
-                          <!-- <label for="yes" class="radio-inline"> <input type="radio" id="yes" <?php //if ($slot->getIsAvailable() == 1) echo "checked"; ?> name="isAvailable" value="AVAILABLE"> Available </label>
-                          <label for="no" class="radio-inline"> <input type="radio" id="no" <?php //if ($slot->getIsAvailable() == 0) echo "checked"; ?> name="isAvailable" value="UNAVAILABLE"> Unavailable </label> -->
                                 </div>
                                 <div class="mb-3">
                                   <label for="petName" class="col-form-label"> PET NAME: </label>

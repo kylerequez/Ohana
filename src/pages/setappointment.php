@@ -32,7 +32,7 @@
         .fc .fc-button-primary {
             background-color: #db6551;
             color: white;
-            border:none;
+            border: none;
         }
 
         .fc .fc-button-primary:not(:disabled).fc-button-active,
@@ -83,6 +83,7 @@
         #header {
             margin-top: 10%;
         }
+
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
             #header {
                 font-size: 37px;
@@ -126,7 +127,7 @@
                         </div>
                     </div>
                 </div>
-                <form method="POST" action="/appointment/set/<?php echo empty($_GET["type"]) || ($_GET["type"] != "REHOMING" || $_GET["type"] != "VISIT" || $_GET["type"] != "STUD") ? "VISIT" : $_GET["type"]; ?>">
+                <form method="POST" action="/appointment/set/<?php echo $_GET["type"]; ?>">
                     <div class="modal fade" tabindex="-1" id="day-details-modal">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
@@ -134,13 +135,17 @@
                                     <h5 class="modal-title fs-2" style="font-family: 'Acme', sans-serif;"> Book Appointment </h5>
                                 </div>
                                 <div class="modal-body">
-                                    <input type="hidden" name="type" value="<?php echo empty($_GET["type"]) || ($_GET["type"] != "REHOMING" || $_GET["type"] != "VISIT" || $_GET["type"] != "STUD") ? "VISIT" : $_GET["type"]; ?>">
+                                    <input type="hidden" name="type" value="<?php echo $_GET["type"]; ?>">
                                     <?php
                                     if ($_GET["type"] == "STUD") {
                                     ?>
+                                        <!-- <input type="hidden" name="type" value="">
                                         <input type="hidden" name="type" value="">
-                                        <input type="hidden" name="type" value="">
-                                        <input type="hidden" name="type" value="">
+                                        <input type="hidden" name="type" value=""> -->
+                                    <?php
+                                    } else if ($_GET["type"] == "REHOMING") {
+                                    ?>
+
                                     <?php
                                     }
                                     ?>

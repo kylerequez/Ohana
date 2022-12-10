@@ -79,7 +79,7 @@ class PetProfileServices
         $birthdate = DateTime::createFromFormat("Y-m-d", $data["birthdate"]);
         $sex = strtoupper($data["sex"]);
         $color = strtoupper($data["color"]);
-        $isVaccinated = $data["isVaccinated"] == "Yes" ? 1 : 0;
+        $isVaccinated = $data["isVaccinated"];
         $pcciStatus = strtoupper($data["pcciStatus"]);
         $accountId = $data["accountId"];
         $ownerName = strtoupper($data["ownerName"]);
@@ -111,7 +111,7 @@ class PetProfileServices
         $birthdate = DateTime::createFromFormat("Y-m-d", $data["birthdate"]);
         $sex = strtoupper($data["sex"]);
         $color = strtoupper($data["color"]);
-        $isVaccinated = $data["isVaccinated"] == "Yes" ? 1 : 0;
+        $isVaccinated = $data["isVaccinated"];
         $pcciStatus = strtoupper($data["pcciStatus"]);
         $accountId = $data["accountId"];
         $ownerName = strtoupper($data["ownerName"]);

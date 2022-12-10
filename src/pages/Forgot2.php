@@ -64,20 +64,25 @@
           <?php
           }
           if (empty($_SESSION["email"]) || empty($_SESSION["token"])) {
-            header("Location: http://" . DOMAIN_NAME .  "/forgot-password");
             session_destroy();
+          ?>
+            <script>
+              window.location = 'http://<?php echo DOMAIN_NAME; ?>/forgot-password';
+            </script>
+          <?php
           }
           ?>
         </header>
-        <form id="form" method="POST" action="/forgot3" class="sign-up__form form">
-          <div class="form__row form__row--two">
-            <div class="input form__inline-input">
-              <div class="input__container">
-                <div class="form__row sign-up__sign">
-                  Did not receive an email? &nbsp;<a class="link" href="/forgot-password/resend/<?php echo $_SESSION["token"]; ?>" style="text-decoration: none;"> Resend Email </a><br><br>
-                  Don't have an account? &nbsp;<a class="link" href="/register" style="text-decoration: none;"> Register Now! </a>
-                </div>
-        </form>
+        <div class="form__row form__row--two">
+          <div class="input form__inline-input">
+            <div class="input__container">
+              <div class="form__row sign-up__sign">
+                Did not receive an email? &nbsp;<a class="link" href="/forgot-password/resend/<?php echo $_SESSION["token"]; ?>" style="text-decoration: none;"> Resend Email </a><br><br>
+                Don't have an account? &nbsp;<a class="link" href="/register" style="text-decoration: none;"> Register Now! </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>

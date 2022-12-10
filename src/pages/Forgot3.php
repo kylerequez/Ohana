@@ -15,9 +15,11 @@
       font-size: 80px;
       margin-top: 5%;
     }
+
     #ohanafooter {
-      margin-top:8%;
+      margin-top: 8%;
     }
+
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
       .sign-up__title {
         font-size: 37px;
@@ -70,9 +72,13 @@
           ?>
         </header>
         <?php
-        if ($token != $_SESSION["token"]) {
-          header("Location: http://" . DOMAIN_NAME . "/forgot-password/confirm");
+        if ($token != $_SESSION["token"] || !isset($_SESSION['token'])) {
           session_destroy();
+        ?>
+          <script>
+            window.location = 'http://<?php echo DOMAIN_NAME; ?>/forgot-password';
+          </script>
+        <?php
         }
         ?>
         <form id="form" method="POST" action="/forgotpassword" class="sign-up__form form">

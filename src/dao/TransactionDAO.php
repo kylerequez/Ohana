@@ -9,6 +9,22 @@ class TransactionDAO
         $this->conn = $database->getConnection();
     }
 
+    public function getModeOfPaymentCount(string $mode): mixed
+    {
+        try {
+            $sql = "SELECT COUNT(*) FROM ohana_transactions WHERE payment_mode = :mode;";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":mode", $mode, PDO::PARAM_STR);
+            $stmt->execute();
+
+            return $stmt->fetchColumn();
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
     public function getTransactionsCount(): mixed
     {
         try {

@@ -92,7 +92,6 @@ class AppointmentController
     {
         switch ($method) {
             case "GET":
-
                 break;
             case "POST":
                 if (!$this->services->addAppointment($_POST)) {

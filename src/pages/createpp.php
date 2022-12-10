@@ -95,9 +95,9 @@
                     <div class="mb-3 row">
                       <label for="selectGender" class="col-sm-2 col-form-label" style="color:#7d6056">Gender:</label>
                       <div class="col-sm-10">
-                        <select class="form-control" name="status" aria-label="Default select example">
-                          <option value="MALE" id="maleGender" name="sex">Male</option>
-                          <option value="FEMALE" id="femaleGender" name="sex">Female</option>
+                        <select class="form-control" name="sex" aria-label="Default select example">
+                          <option value="MALE">Male</option>
+                          <option value="FEMALE">Female</option>
                         </select>
                       </div>
                     </div>
@@ -106,9 +106,9 @@
                     <div class="mb-3 row">
                       <label for="selectGender" class="col-sm-2 col-form-label" style="color:#7d6056">PCCI</label>
                       <div class="col-sm-10">
-                        <select class="form-control" name="status" aria-label="Default select example">
-                          <option name="pcciStatus" id="pcciStatus" value="REGISTERED">Registered</option>
-                          <option name="pcciStatus" id="pcciStatus" value="PENDING">Pending</option>
+                        <select class="form-control" name="pcciStatus" aria-label="Default select example">
+                          <option value="REGISTERED">Registered</option>
+                          <option value="PENDING">Pending</option>
                         </select>
                       </div>
                     </div>
@@ -118,9 +118,9 @@
                     <div class="mb-3 row">
                       <label for="selectGender" class="col-sm-2 col-form-label" style="color:#7d6056">Vaccine</label>
                       <div class="col-sm-10">
-                        <select class="form-control" name="status" aria-label="Default select example">
-                          <option name="isVaccinated" id="isVaccinated" value="YES">Vaccinated</option>
-                          <option name="isVaccinated" id="isVaccinated" value="NO">Not Vaccinated</option>
+                        <select class="form-control" name="isVaccinated" aria-label="Default select example">
+                          <option value="YES">Vaccinated</option>
+                          <option value="NO">Not Vaccinated</option>
                         </select>
                       </div>
                     </div>

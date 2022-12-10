@@ -10,6 +10,11 @@ class TransactionServices
         $this->order = $order;
     }
 
+    public function getModeOfPaymentCount(string $mode): mixed
+    {
+        return $this->dao->getModeOfPaymentCount($mode);
+    }
+
     public function getAllTransactions(): mixed
     {
         $transactions = $this->dao->getAllTransactions();
