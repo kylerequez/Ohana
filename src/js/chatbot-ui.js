@@ -34,7 +34,7 @@ function init() {
 			</div>
 
             <!-- <div class='bot-msg'>
-                <img class='bot-img' src ='${botLogoPath}' />
+                <img class='bot-img' src ='${botLogoPath}' style="border-radius:50px;" />
                 <div class='response-btn'>
                     <button class='btn-primary' onclick= 'userResponseBtn(this)' value='/sign_in'>sample btn</button>            
                 </div>
@@ -92,7 +92,6 @@ function init() {
     });
 
     expandWindow.addEventListener("click", (e) => {
-        // console.log(expandWindow.innerHTML)
         if (
             expandWindow.innerHTML ==
             '<img src="/Ohana/src/images/icons/open_fullscreen.png" class="icon">'
@@ -179,12 +178,12 @@ function send(message) {
 function setBotResponse(val) {
     setTimeout(function() {
         if (val == null) {
-            var BotResponse = `<div class='bot-msg'><img class='bot-img' src ='${botLogoPath}' /><span class='msg'> ${inactiveMessage} </span></div>`;
+            var BotResponse = `<div class='bot-msg'><img class='bot-img' src ='${botLogoPath}' style="border-radius:50px;" /><span class='msg'> ${inactiveMessage} </span></div>`;
             $(BotResponse).appendTo(".chat-area").hide().fadeIn(1000);
             scrollToBottomOfResults();
             chatInput.focus();
         } else {
-            var BotResponse = `<div class='bot-msg'><img class='bot-img' src ='${botLogoPath}' /><span class='msg'>${val}</span></div>`;
+            var BotResponse = `<div class='bot-msg'><img class='bot-img' src ='${botLogoPath}' style="border-radius:50px;" /><span class='msg'>${val}</span></div>`;
             $(BotResponse).appendTo(".chat-area").hide().fadeIn(1000);
             scrollToBottomOfResults();
             chatInput.disabled = false;
