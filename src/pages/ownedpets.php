@@ -234,8 +234,6 @@
         </div>
       </div>
     </div>
-    </section>
-    </div>
   </main>
   <div id="ohanafooter">
     <?php include_once 'footer.php'; ?>

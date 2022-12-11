@@ -59,8 +59,8 @@
               <div class="col-md-6 col-xl-3">
                 <a href="/dashboard/pet-profiles">
                   <article class="stat-cards-item">
-                    <div class="stat-cards-icon warning">
-                      <i data-feather="bar-chart-2" aria-hidden="true"></i>
+                    <div class="stat-cards-icon">
+                    <img src="/Ohana/src/dashboard/img/main/1.png">
                     </div>
                     <div class="stat-cards-info">
                       <p class="stat-cards-info__num"> Total: <?php $dao = new PetProfileDAO($database);
@@ -74,8 +74,8 @@
               <div class="col-md-6 col-xl-3">
                 <a href="/dashboard/customer-pets">
                   <article class="stat-cards-item">
-                    <div class="stat-cards-icon warning">
-                      <i data-feather="bar-chart" aria-hidden="true"></i>
+                    <div class="stat-cards-icon">
+                    <img src="/Ohana/src/dashboard/img/main/2.png">
                     </div>
                     <div class="stat-cards-info">
                       <p class="stat-cards-info__num"> Total: <?php
@@ -88,8 +88,8 @@
               <div class="col-md-6 col-xl-3">
                 <a href="/dashboard/petboarding">
                   <article class="stat-cards-item">
-                    <div class="stat-cards-icon warning">
-                      <i data-feather="pie-chart" aria-hidden="true"></i>
+                    <div class="stat-cards-icon">
+                    <img src="/Ohana/src/dashboard/img/main/3.png">
                     </div>
                     <div class="stat-cards-info">
                       <p class="stat-cards-info__num"> Total: <?php $dao = new BoardingSlotDAO($database);
@@ -105,8 +105,8 @@
               <div class="col-md-6 col-xl-3">
                 <a href="/dashboard/customers">
                   <article class="stat-cards-item">
-                    <div class="stat-cards-icon warning">
-                      <i data-feather="bar-chart-2" aria-hidden="true"></i>
+                    <div class="stat-cards-icon">
+                    <img src="/Ohana/src/dashboard/img/main/4.png">
                     </div>
                     <div class="stat-cards-info">
                       <p class="stat-cards-info__num"> Total: <?php $dao = new AccountDAO($database);
@@ -120,8 +120,8 @@
               <div class="col-md-6 col-xl-3">
                 <a href="/dashboard/appointments">
                   <article class="stat-cards-item">
-                    <div class="stat-cards-icon warning">
-                      <i data-feather="bar-chart" aria-hidden="true"></i>
+                    <div class="stat-cards-icon">
+                    <img src="/Ohana/src/dashboard/img/main/5.png">
                     </div>
                     <div class="stat-cards-info">
                       <p class="stat-cards-info__num"> Total: <?php $dao = new AppointmentDAO($database);
@@ -137,8 +137,8 @@
               <div class="col-md-6 col-xl-3">
                 <a href="/dashboard/transactions">
                   <article class="stat-cards-item">
-                    <div class="stat-cards-icon warning">
-                      <i data-feather="pie-chart" aria-hidden="true"></i>
+                    <div class="stat-cards-icon">
+                    <img src="/Ohana/src/dashboard/img/main/6.png">
                     </div>
                     <div class="stat-cards-info">
                       <p class="stat-cards-info__num"> Total: <?php $dao = new TransactionDAO($database);
@@ -157,8 +157,8 @@
               <div class="col-md-6 col-xl-3">
                 <a href="/dashboard/customers">
                   <article class="stat-cards-item">
-                    <div class="stat-cards-icon warning">
-                      <i data-feather="bar-chart-2" aria-hidden="true"></i>
+                    <div class="stat-cards-icon">
+                    <img src="/Ohana/src/dashboard/img/main/7.png">
                     </div>
                     <div class="stat-cards-info">
                       <p class="stat-cards-info__num"> Total: <?php $dao = new AccountDAO($database);
@@ -172,8 +172,8 @@
               <div class="col-md-6 col-xl-3">
                 <a href="/dashboard/appointments">
                   <article class="stat-cards-item">
-                    <div class="stat-cards-icon warning">
-                      <i data-feather="bar-chart" aria-hidden="true"></i>
+                    <div class="stat-cards-icon">
+                    <img src="/Ohana/src/dashboard/img/main/8.png">
                     </div>
                     <div class="stat-cards-info">
                       <p class="stat-cards-info__num"> Total: <?php $dao = new AppointmentDAO($database);
@@ -189,8 +189,8 @@
               <div class="col-md-6 col-xl-3">
                 <a href="/dashboard/transactions">
                   <article class="stat-cards-item">
-                    <div class="stat-cards-icon warning">
-                      <i data-feather="pie-chart" aria-hidden="true"></i>
+                    <div class="stat-cards-icon">
+                    <img src="/Ohana/src/dashboard/img/main/9.png">
                     </div>
                     <div class="stat-cards-info">
                       <p class="stat-cards-info__num"> Total: <?php $dao = new TransactionDAO($database);
