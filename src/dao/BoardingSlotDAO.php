@@ -2,19 +2,35 @@
 require_once dirname(__DIR__) . "/models/BoardingSlot.php";
 class BoardingSlotDAO
 {
-    private PDO $conn;
+    private ?string $host = null;
+    private ?string $name = null;
+    private ?string $user = null;
+    private ?string $password = null;
+    private ?PDO $conn = null;
 
-    public function __construct(Database $database)
+    public function __construct(string $host, string $name, string $user, string $password)
     {
-        $this->conn = $database->getConnection();
+        $this->host = $host;
+        $this->name = $name;
+        $this->user = $user;
+        $this->password = $password;
+    }
+
+    public function openConnection(): void
+    {
+        $this->conn = new PDO("mysql:host={$this->host};dbname={$this->name};charset=utf8", $this->user, $this->password);
+    }
+
+    public function closeConnection(): void
+    {
+        $this->conn = null;
     }
 
     public function getAllBoardingSlots(): mixed
     {
         try {
-            $sql = "
-                SELECT * FROM ohana_boarding_slot;
-            ";
+            $this->openConnection();
+            $sql = "SELECT * FROM ohana_boarding_slot;";
 
             $stmt = $this->conn->query($sql);
             $slots = null;
@@ -25,6 +41,7 @@ class BoardingSlotDAO
                     $slots[] = $existingSlot;
                 }
             }
+            $this->closeConnection();
             return $slots;
         } catch (Exception $e) {
             echo $e;
@@ -35,6 +52,7 @@ class BoardingSlotDAO
     public function getAvailableSlots(): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_boarding_slot
                     WHERE is_available=1;";
 
@@ -47,6 +65,7 @@ class BoardingSlotDAO
                     $slots[] = $existingSlot;
                 }
             }
+            $this->closeConnection();
             return $slots;
         } catch (Exception $e) {
             echo $e;
@@ -57,12 +76,15 @@ class BoardingSlotDAO
     public function getBoardingSlotCount(): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT COUNT(*) FROM ohana_boarding_slot;";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
 
-            return $stmt->fetchColumn();
+            $result = $stmt->fetchColumn();
+            $this->closeConnection();
+            return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -72,6 +94,7 @@ class BoardingSlotDAO
     public function addBoardingSlot(BoardingSlot $slot): bool
     {
         try {
+            $this->openConnection();
             $sql = "
                 INSERT INTO ohana_boarding_slot
                 (slot_image, slot_name, slot_information, is_available, pet_id, pet_name)
@@ -93,7 +116,9 @@ class BoardingSlotDAO
             $stmt->bindParam(":petId", $petId, PDO::PARAM_INT);
             $stmt->bindParam(":petName", $petName, PDO::PARAM_STR);
 
-            return $stmt->execute() > 0;
+            $isAdded = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isAdded;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -103,13 +128,16 @@ class BoardingSlotDAO
     public function deleteById(string $id): bool
     {
         try {
+            $this->openConnection();
             $sql = "DELETE FROM ohana_boarding_slot
                     WHERE slot_id=:id";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
-            return $stmt->execute() > 0;
+            $isDeleted = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isDeleted;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -119,6 +147,7 @@ class BoardingSlotDAO
     public function searchById(string $id): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_boarding_slot
                     WHERE slot_id=:id
                     LIMIT 1;";
@@ -133,6 +162,7 @@ class BoardingSlotDAO
                     $searchedSlot->setId($slot["slot_id"]);
                 }
             }
+            $this->closeConnection();
             return $searchedSlot;
         } catch (Exception $e) {
             echo $e;
@@ -143,6 +173,7 @@ class BoardingSlotDAO
     public function updateBoardingSlot(BoardingSlot $slot): mixed
     {
         try {
+            $this->openConnection();
             $sql = "UPDATE ohana_boarding_slot
                     SET slot_image=:image, slot_name=:name, slot_information=:information, is_available=:isAvailable, pet_id=:petId, pet_name=:petName
                     WHERE slot_id=:id";
@@ -164,7 +195,9 @@ class BoardingSlotDAO
             $stmt->bindParam(":petId", $petId, !is_null($petId) ? PDO::PARAM_INT : PDO::PARAM_BOOL);
             $stmt->bindParam(":petName", $petName, PDO::PARAM_STR);
 
-            return $stmt->execute() > 0;
+            $isUpdated = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isUpdated;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -174,6 +207,7 @@ class BoardingSlotDAO
     public function searchByName(string $name): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_boarding_slot
                     WHERE slot_name=:name
                     LIMIT 1;";
@@ -188,6 +222,7 @@ class BoardingSlotDAO
                     $searchedSlot->setId($slot["slot_id"]);
                 }
             }
+            $this->closeConnection();
             return $searchedSlot;
         } catch (Exception $e) {
             echo $e;

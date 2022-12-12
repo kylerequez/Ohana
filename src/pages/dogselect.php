@@ -19,6 +19,7 @@
         .card {
             width: 20rem;
         }
+
         #offer {
             width: 40rem;
         }
@@ -41,15 +42,13 @@
                     <?php
                     require dirname(__DIR__) . '/models/PetProfile.php';
                     require dirname(__DIR__) . '/config/db-config.php';
-                    require dirname(__DIR__) . '/database/Database.php';
                     require dirname(__DIR__) . '/dao/PetProfileDAO.php';
                     require dirname(__DIR__) . '/dao/LogDAO.php';
                     require dirname(__DIR__) . '/services/PetProfileServices.php';
                     require dirname(__DIR__) . '/services/LogServices.php';
 
-                    $database = new Database($servername, $database, $username, $password);
-                    $dao = new PetProfileDAO($database);
-                    $logdao = new LogDAO($database);
+                    $dao = new PetProfileDAO($servername, $database, $username, $password);
+                    $logdao = new LogDAO($servername, $database, $username, $password);
                     $logservices = new LogServices($logdao);
                     $services = new PetProfileServices($dao);
 
@@ -82,7 +81,7 @@
                                             <input class="form-check-input mt-3" type="radio" name="petBoardingChoice" id="yes" value="YES" />
                                             <label class="form-check-label mt-3 mb-3 ms-5" for="payment-method"> YES </label>
 
-                                            <input class="form-check-input mt-3" type="radio" name="petBoardingChoice" id="no" value="NO" checked="checked"/>
+                                            <input class="form-check-input mt-3" type="radio" name="petBoardingChoice" id="no" value="NO" checked="checked" />
                                             <label class="form-check-label mt-3 mb-3" for="no">NO</label>
                                         </div>
                                     </div>

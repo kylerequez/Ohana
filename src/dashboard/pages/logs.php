@@ -105,13 +105,11 @@
         <div class="users-table table-wrapper">
           <?php
           include_once dirname(__DIR__) . '/../config/db-config.php';
-          include_once dirname(__DIR__) . '/../database/Database.php';
           include_once dirname(__DIR__) . '/../dao/LogDAO.php';
           include_once dirname(__DIR__) . '/../services/LogServices.php';
           include_once dirname(__DIR__) . '/../models/Log.php';
 
-          $database = new Database($servername, $database, $username, $password);
-          $dao = new LogDAO($database);
+          $dao = new LogDAO($servername, $database, $username, $password);
           $services = new LogServices($dao);
 
           $logs = $services->getAllLogs();

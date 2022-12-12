@@ -1,14 +1,12 @@
 <?php
 require dirname(__DIR__) . '/../config/db-config.php';
-require dirname(__DIR__) . '/../database/Database.php';
 require dirname(__DIR__) . '/../dao/OrderDAO.php';
 require dirname(__DIR__) . '/../dao/PetProfileDAO.php';
 require dirname(__DIR__) . '/../services/CartServices.php';
 require dirname(__DIR__) . '/../controllers/CartController.php';
 
-$database = new Database($servername, $database, $username, $password);
-$dao = new PetProfileDAO($database);
-$order = new OrderDAO($database);
+$dao = new PetProfileDAO($servername, $database, $username, $password);
+$order = new OrderDAO($servername, $database, $username, $password);
 $services = new CartServices($dao, $order);
 $controller = new CartController($services, null);
 

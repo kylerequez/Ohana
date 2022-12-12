@@ -2,22 +2,42 @@
 require_once dirname(__DIR__) . "/models/Account.php";
 class AccountDAO
 {
-    private PDO $conn;
+    private ?string $host = null;
+    private ?string $name = null;
+    private ?string $user = null;
+    private ?string $password = null;
+    private ?PDO $conn = null;
 
-    public function __construct(Database $database)
+    public function __construct(string $host, string $name, string $user, string $password)
     {
-        $this->conn = $database->getConnection();
+        $this->host = $host;
+        $this->name = $name;
+        $this->user = $user;
+        $this->password = $password;
+    }
+
+    public function openConnection(): void
+    {
+        $this->conn = new PDO("mysql:host={$this->host};dbname={$this->name};charset=utf8", $this->user, $this->password);
+    }
+
+    public function closeConnection(): void
+    {
+        $this->conn = null;
     }
 
     public function getUsersCount(): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT COUNT(*) FROM ohana_account WHERE account_type = 'USER' and status = 'ACTIVE';";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
+            $result = $stmt->fetchColumn();
 
-            return $stmt->fetchColumn();
+            $this->closeConnection();
+            return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -27,6 +47,7 @@ class AccountDAO
     public function getUserAccounts(): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_account
                     WHERE account_type='USER';";
 
@@ -49,6 +70,7 @@ class AccountDAO
                     $accounts[] = $existingAccount;
                 }
             }
+            $this->closeConnection();
             return $accounts;
         } catch (Exception $e) {
             echo $e;
@@ -59,6 +81,7 @@ class AccountDAO
     public function getStaffAccounts(): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_account
                     WHERE account_type='STAFF';";
 
@@ -81,6 +104,7 @@ class AccountDAO
                     $accounts[] = $existingAccount;
                 }
             }
+            $this->closeConnection();
             return $accounts;
         } catch (Exception $e) {
             echo $e;
@@ -91,6 +115,7 @@ class AccountDAO
     public function searchUserByEmailAndPassword(string $email, string $password): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_account
                     WHERE email=:email AND password=:password
                     LIMIT 1;
@@ -116,7 +141,7 @@ class AccountDAO
                     $searchedAccount->setId($account["account_id"]);
                 }
             }
-
+            $this->closeConnection();
             return $searchedAccount;
         } catch (Exception $e) {
             echo $e;
@@ -127,6 +152,7 @@ class AccountDAO
     public function createAccount(Account $account): bool
     {
         try {
+            $this->openConnection();
             $sql = "INSERT INTO ohana_account
                     (account_type, fname, mname, lname, number, email, status, password)
                     VALUES (:account_type, :fname, :mname, :lname, :number, :email, :status, :password);
@@ -151,7 +177,9 @@ class AccountDAO
             $stmt->bindParam(":status", $status, PDO::PARAM_STR);
             $stmt->bindParam(":password", $password, PDO::PARAM_STR);
 
-            return $stmt->execute() > 0;
+            $isCreated = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isCreated;
         } catch (Exception $e) {
             echo $e;
             return false;
@@ -161,6 +189,7 @@ class AccountDAO
     public function searchById(string $id): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_account
                     WHERE account_id=:id
                     LIMIT 1;
@@ -185,7 +214,7 @@ class AccountDAO
                     $searchedAccount->setId($id);
                 }
             }
-
+            $this->closeConnection();
             return $searchedAccount;
         } catch (Exception $e) {
             echo $e;
@@ -196,6 +225,7 @@ class AccountDAO
     public function searchByEmail(string $email): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_account
                     WHERE email=:email
                     LIMIT 1;
@@ -221,17 +251,18 @@ class AccountDAO
                     $searchedAccount->setId($account["account_id"]);
                 }
             }
-
+            $this->closeConnection();
             return $searchedAccount;
         } catch (Exception $e) {
             echo $e;
-            // return null;
+            return null;
         }
     }
 
     public function searchByNumber(string $number): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_account
                     WHERE number=:number
                     LIMIT 1;";
@@ -255,7 +286,7 @@ class AccountDAO
                     $searchedAccount->setId($account["account_id"]);
                 }
             }
-
+            $this->closeConnection();
             return $searchedAccount;
         } catch (Exception $e) {
             echo $e;
@@ -266,6 +297,7 @@ class AccountDAO
     public function updateAccount(Account $account): bool
     {
         try {
+            $this->openConnection();
             $sql = "UPDATE ohana_account
                     SET fname=:fname, mname=:mname, lname=:lname, number=:number, email=:email, status=:status
                     WHERE account_id=:id";
@@ -290,7 +322,9 @@ class AccountDAO
             $stmt->bindParam(":status", $status, PDO::PARAM_STR);
             // $stmt->bindParam(":password", $password, PDO::PARAM_STR);
 
-            return $stmt->execute() > 0;
+            $isUpdated = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isUpdated;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -300,13 +334,16 @@ class AccountDAO
     public function deleteById(string $id): mixed
     {
         try {
+            $this->openConnection();
             $sql = "DELETE FROM ohana_account
                     WHERE account_id=:id";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
-            return $stmt->execute() > 0;
+            $isDeleted = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isDeleted;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -316,6 +353,7 @@ class AccountDAO
     public function updatePassword(string $id, string $password): mixed
     {
         try {
+            $this->openConnection();
             $sql = "UPDATE ohana_account
                     SET password=:password
                     WHERE account_id=:id";
@@ -324,7 +362,9 @@ class AccountDAO
             $stmt->bindParam(":password", $password, PDO::PARAM_STR);
             $stmt->bindParam(":id", $id, PDO::PARAM_STR);
 
-            return $stmt->execute() > 0;
+            $isUpdated = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isUpdated;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -334,6 +374,7 @@ class AccountDAO
     public function changePassword(string $email, string $password): mixed
     {
         try {
+            $this->openConnection();
             $sql = "UPDATE ohana_account
                     SET password=:password
                     WHERE email=:email";
@@ -342,7 +383,9 @@ class AccountDAO
             $stmt->bindParam(":password", $password, PDO::PARAM_STR);
             $stmt->bindParam(":email", $email, PDO::PARAM_STR);
 
-            return $stmt->execute() > 0;
+            $isUpdated = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isUpdated;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -352,6 +395,7 @@ class AccountDAO
     public function verifyAccount(string $email): mixed
     {
         try {
+            $this->openConnection();
             $sql = "UPDATE ohana_account
                     SET status='ACTIVE'
                     WHERE email=:email";
@@ -359,7 +403,9 @@ class AccountDAO
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":email", $email, PDO::PARAM_STR);
 
-            return $stmt->execute() > 0;
+            $isVerified = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isVerified;
         } catch (Exception $e) {
             echo $e;
             return null;

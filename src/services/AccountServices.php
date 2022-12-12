@@ -309,6 +309,10 @@ class AccountServices
             $_SESSION["msg"] = "There was an error in changing the password. Account not found.";
             return false;
         }
+        if (trim($_POST["password"]) != trim($_POST["confirm-password"])) {
+            $_SESSION["msg"] = "There was an error in changing the password. You must confirm your password.";
+            return false;
+        }
         if (password_verify($_POST["password"], $account->getPassword())) {
             $_SESSION["msg"] = "There was an error in changing the password. New password cannot be same as the old password.";
             return false;
@@ -351,12 +355,11 @@ class AccountServices
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in sending the otp to your mail.";
             return false;
-        } else {
-            $_SESSION["token"] = uniqid();
-            $_SESSION["userOtp"] = $otp;
-            $_SESSION["email"] = $email;
-            return true;
         }
+        $_SESSION["token"] = uniqid();
+        $_SESSION["userOtp"] = $otp;
+        $_SESSION["email"] = $email;
+        return true;
     }
 
     public function verifyRegistration(array $data): mixed

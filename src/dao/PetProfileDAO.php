@@ -2,16 +2,34 @@
 require_once dirname(__DIR__) . "/models/PetProfile.php";
 class PetProfileDAO
 {
-    private PDO $conn;
+    private ?string $host = null;
+    private ?string $name = null;
+    private ?string $user = null;
+    private ?string $password = null;
+    private ?PDO $conn = null;
 
-    public function __construct(Database $database)
+    public function __construct(string $host, string $name, string $user, string $password)
     {
-        $this->conn = $database->getConnection();
+        $this->host = $host;
+        $this->name = $name;
+        $this->user = $user;
+        $this->password = $password;
+    }
+
+    public function openConnection(): void
+    {
+        $this->conn = new PDO("mysql:host={$this->host};dbname={$this->name};charset=utf8", $this->user, $this->password);
+    }
+
+    public function closeConnection(): void
+    {
+        $this->conn = null;
     }
 
     public function getCustomerPets(): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_pet_profiles
                     WHERE account_id != 1;";
 
@@ -41,6 +59,7 @@ class PetProfileDAO
                     $petProfiles[] = $searchedPetProfile;
                 }
             }
+            $this->closeConnection();
             return $petProfiles;
         } catch (Exception $e) {
             echo $e;
@@ -51,6 +70,7 @@ class PetProfileDAO
     public function getOhanaPets(): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_pet_profiles
                     WHERE account_id = 1;";
 
@@ -80,6 +100,7 @@ class PetProfileDAO
                     $petProfiles[] = $searchedPetProfile;
                 }
             }
+            $this->closeConnection();
             return $petProfiles;
         } catch (Exception $e) {
             echo $e;
@@ -90,6 +111,7 @@ class PetProfileDAO
     public function getOhanaStudPet(string $reference,  string  $name): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_pet_profiles
                     WHERE account_id = 1
                     AND  pet_type = 'STUD'
@@ -123,6 +145,7 @@ class PetProfileDAO
                     $searchedPetProfile->setId($petProfile["pet_id"]);
                 }
             }
+            $this->closeConnection();
             return $searchedPetProfile;
         } catch (Exception $e) {
             echo $e;
@@ -133,6 +156,7 @@ class PetProfileDAO
     public function getOhanaRehomingPet(string $reference,  string  $name): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_pet_profiles
                     WHERE account_id = 1
                     AND  pet_type = 'REHOMING'
@@ -166,6 +190,7 @@ class PetProfileDAO
                     $searchedPetProfile->setId($petProfile["pet_id"]);
                 }
             }
+            $this->closeConnection();
             return $searchedPetProfile;
         } catch (Exception $e) {
             echo $e;
@@ -176,6 +201,7 @@ class PetProfileDAO
     public function getOwnedPet(string $reference,  string  $name): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_pet_profiles
                     WHERE pet_reference=:reference
                     AND pet_name=:name;";
@@ -205,6 +231,7 @@ class PetProfileDAO
                     $searchedPetProfile->setId($petProfile["pet_id"]);
                 }
             }
+            $this->closeConnection();
             return $searchedPetProfile;
         } catch (Exception $e) {
             echo $e;
@@ -215,6 +242,7 @@ class PetProfileDAO
     public function getRehomingPets(): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_pet_profiles
                     WHERE account_id = 1 
                     AND pet_type='REHOMING' 
@@ -243,6 +271,7 @@ class PetProfileDAO
                     $petProfiles[] = $existingPetProfile;
                 }
             }
+            $this->closeConnection();
             return $petProfiles;
         } catch (Exception $e) {
             echo $e;
@@ -253,6 +282,7 @@ class PetProfileDAO
     public function getStudPets(): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_pet_profiles
                     WHERE account_id = 1 
                     AND pet_type='STUD' 
@@ -281,6 +311,7 @@ class PetProfileDAO
                     $petProfiles[] = $existingPetProfile;
                 }
             }
+            $this->closeConnection();
             return $petProfiles;
         } catch (Exception $e) {
             echo $e;
@@ -291,6 +322,7 @@ class PetProfileDAO
     public function getPetProfileById(string $id, string $accountId): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_pet_profiles
                     WHERE pet_id=:id AND account_id=:accountId
                     LIMIT 1;";
@@ -321,6 +353,7 @@ class PetProfileDAO
                     $searchedPetProfile->setId($id);
                 }
             }
+            $this->closeConnection();
             return $searchedPetProfile;
         } catch (Exception $e) {
             echo $e;
@@ -331,13 +364,16 @@ class PetProfileDAO
     public function getOhanaPetsCount(): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT count(*) FROM ohana_pet_profiles
                     WHERE account_id = 1;";
 
             $stmt = $this->conn->query($sql);
             $stmt->execute();
 
-            return $stmt->fetchColumn();
+            $result = $stmt->fetchColumn();
+            $this->closeConnection();
+            return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -347,13 +383,16 @@ class PetProfileDAO
     public function getCustomerPetsCount(): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT count(*) FROM ohana_pet_profiles
                     WHERE account_id != 1;";
 
             $stmt = $this->conn->query($sql);
             $stmt->execute();
 
-            return $stmt->fetchColumn();
+            $result = $stmt->fetchColumn();
+            $this->closeConnection();
+            return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -363,6 +402,7 @@ class PetProfileDAO
     public function addPetProfile(PetProfile $profile): mixed
     {
         try {
+            $this->openConnection();
             $sql = "INSERT INTO ohana_pet_profiles
                     (pet_image, pet_reference, pet_name, pet_type, pet_trait, pet_birthdate, pet_sex, pet_color, is_vaccinated, pcci_status, account_id, owner_name, pet_price, pet_status)
                     VALUES (:pet_image, :pet_reference, :pet_name, :pet_type, :pet_trait, :pet_birthdate, :pet_sex, :pet_color, :is_vaccinated, :pcci_status, :account_id, :owner_name, :pet_price, :pet_status);";
@@ -398,7 +438,9 @@ class PetProfileDAO
             $stmt->bindParam(":pet_price", $price, PDO::PARAM_STR);
             $stmt->bindParam(":pet_status", $status, PDO::PARAM_STR);
 
-            return $stmt->execute() > 0;
+            $isAdded = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isAdded;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -408,6 +450,7 @@ class PetProfileDAO
     public function searchById(string $id): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_pet_profiles
                     WHERE pet_id=:id
                     LIMIT 1;
@@ -438,6 +481,7 @@ class PetProfileDAO
                     $searchedPetProfile->setId($id);
                 }
             }
+            $this->closeConnection();
             return $searchedPetProfile;
         } catch (Exception $e) {
             echo $e;
@@ -448,6 +492,7 @@ class PetProfileDAO
     public function searchByAccountId(string $id): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM ohana_pet_profiles
                     WHERE account_id=:id";
 
@@ -477,6 +522,7 @@ class PetProfileDAO
                     $petProfiles[] = $searchedPetProfile;
                 }
             }
+            $this->closeConnection();
             return $petProfiles;
         } catch (Exception $e) {
             echo $e;
@@ -487,6 +533,7 @@ class PetProfileDAO
     public function updatePetProfile(PetProfile $profile): bool
     {
         try {
+            $this->openConnection();
             $sql = "UPDATE ohana_pet_profiles
                     SET pet_image=:image, pet_name=:name, pet_type=:type, pet_trait=:trait, pet_birthdate=:birthdate, pet_sex=:sex, pet_color=:color, is_vaccinated=:isVaccinated, pcci_status=:pcciStatus, account_id=:accountId, owner_name=:ownerName, pet_price=:price, pet_status=:status
                     WHERE pet_id=:id";
@@ -523,7 +570,9 @@ class PetProfileDAO
             $stmt->bindParam(":price", $price, PDO::PARAM_STR);
             $stmt->bindParam(":status", $status, PDO::PARAM_STR);
 
-            return $stmt->execute() > 0;
+            $isUpdated = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isUpdated;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -533,11 +582,15 @@ class PetProfileDAO
     public function deletePetProfile(int $id): bool
     {
         try {
+            $this->openConnection();
             $sql = "DELETE FROM ohana_pet_profiles
                     WHERE pet_id=:id";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-            return $stmt->execute() > 0;
+
+            $isDeleted = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isDeleted;
         } catch (Exception $e) {
             echo $e;
             return null;

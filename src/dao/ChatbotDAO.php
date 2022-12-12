@@ -3,16 +3,34 @@ require_once dirname(__DIR__) . "/models/ChatbotResponse.php";
 require_once dirname(__DIR__) . "/models/ChatbotInformation.php";
 class ChatbotDAO
 {
-    private PDO $conn;
+    private ?string $host = null;
+    private ?string $name = null;
+    private ?string $user = null;
+    private ?string $password = null;
+    private ?PDO $conn = null;
 
-    public function __construct(Database $database)
+    public function __construct(string $host, string $name, string $user, string $password)
     {
-        $this->conn = $database->getConnection();
+        $this->host = $host;
+        $this->name = $name;
+        $this->user = $user;
+        $this->password = $password;
+    }
+
+    public function openConnection(): void
+    {
+        $this->conn = new PDO("mysql:host={$this->host};dbname={$this->name};charset=utf8", $this->user, $this->password);
+    }
+
+    public function closeConnection(): void
+    {
+        $this->conn = null;
     }
 
     public function getAllSettings(): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM chatbot_information LIMIT 1;";
 
             $stmt = $this->conn->query($sql);
@@ -22,6 +40,7 @@ class ChatbotDAO
                     $information = new ChatbotInformation($data["chatbot_avatar"], $data["chatbot_name"], $data["chatbot_introduction"], $data["chatbot_no_response"]);
                 }
             }
+            $this->closeConnection();
             return $information;
         } catch (Exception $e) {
             echo $e;
@@ -32,6 +51,7 @@ class ChatbotDAO
     public function updateSettings(ChatbotInformation $information): mixed
     {
         try {
+            $this->openConnection();
             $sql = "UPDATE chatbot_information
                     SET chatbot_avatar=:chatbot_avatar, chatbot_name=:chatbot_name, chatbot_introduction=:chatbot_introduction, chatbot_no_response=:chatbot_no_response
                     WHERE information_id = 1";
@@ -47,7 +67,9 @@ class ChatbotDAO
             $stmt->bindParam(":chatbot_introduction", $introduction, PDO::PARAM_STR);
             $stmt->bindParam(":chatbot_no_response", $noResponse, PDO::PARAM_STR);
 
-            return $stmt->execute() > 0;
+            $isUpdated = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isUpdated;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -57,6 +79,7 @@ class ChatbotDAO
     public function getAllResponses(): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM chatbot_responses;";
 
             $stmt = $this->conn->query($sql);
@@ -72,6 +95,7 @@ class ChatbotDAO
                     $responses[] = $existingResponse;
                 }
             }
+            $this->closeConnection();
             return $responses;
         } catch (Exception $e) {
             echo $e;
@@ -82,6 +106,7 @@ class ChatbotDAO
     public function getResponse(string $query): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT * FROM chatbot_responses
                     WHERE query LIKE ?
                     LIMIT 1";
@@ -100,6 +125,7 @@ class ChatbotDAO
                     $searchedResponse->setId($response["response_id"]);
                 }
             }
+            $this->closeConnection();
             return $searchedResponse;
         } catch (Exception $e) {
             echo $e;
@@ -110,6 +136,7 @@ class ChatbotDAO
     public function addResponse(ChatbotResponse $response): bool
     {
         try {
+            $this->openConnection();
             $sql = "INSERT INTO chatbot_responses
                     (response, query, times_asked)
                     VALUES (:response, :query, :timesAsked);";
@@ -123,7 +150,9 @@ class ChatbotDAO
             $stmt->bindParam(":query", $query, PDO::PARAM_STR);
             $stmt->bindParam(":timesAsked", $timesAsked, PDO::PARAM_STR);
 
-            return $stmt->execute() > 0;
+            $isAdded = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isAdded;
         } catch (Exception $e) {
             echo $e;
             return false;
@@ -132,30 +161,38 @@ class ChatbotDAO
 
     public function searchById(string $id): mixed
     {
-        $sql = "SELECT * FROM chatbot_responses
-                WHERE response_id=:id
-                LIMIT 1;";
+        try {
+            $this->openConnection();
+            $sql = "SELECT * FROM chatbot_responses
+            WHERE response_id=:id
+            LIMIT 1;";
 
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
-        $searchedResponse = null;
-        if ($stmt->execute() > 0) {
-            while ($response = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $searchedResponse = new ChatbotResponse(
-                    $response["response"],
-                    $response["query"],
-                    $response["times_asked"]
-                );
-                $searchedResponse->setId($id);
+            $searchedResponse = null;
+            if ($stmt->execute() > 0) {
+                while ($response = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $searchedResponse = new ChatbotResponse(
+                        $response["response"],
+                        $response["query"],
+                        $response["times_asked"]
+                    );
+                    $searchedResponse->setId($id);
+                }
             }
+            $this->closeConnection();
+            return $searchedResponse;
+        } catch (Exception $e) {
+            echo $e;
+            return false;
         }
-        return $searchedResponse;
     }
 
     public function updateResponse(ChatbotResponse $response): mixed
     {
         try {
+            $this->openConnection();
             $sql = "UPDATE chatbot_responses
                     SET response=:response, query=:query, times_asked=:timesAsked
                     WHERE response_id=:id;";
@@ -171,7 +208,9 @@ class ChatbotDAO
             $stmt->bindParam(":query", $query, PDO::PARAM_STR);
             $stmt->bindParam(":timesAsked", $timesAsked, PDO::PARAM_INT);
 
-            return $stmt->execute() > 0;
+            $isUpdated = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isUpdated;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -181,13 +220,16 @@ class ChatbotDAO
     public function deleteById(string $id): mixed
     {
         try {
+            $this->openConnection();
             $sql = "DELETE FROM chatbot_responses
                     WHERE response_id=:id";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
-            return $stmt->execute() > 0;
+            $isDeleted = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isDeleted;
         } catch (Exception $e) {
             echo $e;
             return null;

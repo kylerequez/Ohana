@@ -104,12 +104,10 @@
         <div class="users-table table-wrapper">
           <?php
           include_once dirname(__DIR__) . '/../config/db-config.php';
-          include_once dirname(__DIR__) . '/../database/Database.php';
           include_once dirname(__DIR__) . '/../dao/AccountDAO.php';
           include_once dirname(__DIR__) . '/../services/AccountServices.php';
 
-          $database = new Database($servername, $database, $username, $password);
-          $dao = new AccountDAO($database);
+          $dao = new AccountDAO($servername, $database, $username, $password);
           $services = new AccountServices($dao);
           $users = $services->getUserAccounts();
           if (!empty($users)) {

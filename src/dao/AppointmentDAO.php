@@ -2,16 +2,34 @@
 require_once dirname(__DIR__) . "/models/Appointment.php";
 class AppointmentDAO
 {
-    private PDO $conn;
+    private ?string $host = null;
+    private ?string $name = null;
+    private ?string $user = null;
+    private ?string $password = null;
+    private ?PDO $conn = null;
 
-    public function __construct(Database $database)
+    public function __construct(string $host, string $name, string $user, string $password)
     {
-        $this->conn = $database->getConnection();
+        $this->host = $host;
+        $this->name = $name;
+        $this->user = $user;
+        $this->password = $password;
+    }
+
+    public function openConnection(): void
+    {
+        $this->conn = new PDO("mysql:host={$this->host};dbname={$this->name};charset=utf8", $this->user, $this->password);
+    }
+
+    public function closeConnection(): void
+    {
+        $this->conn = null;
     }
 
     public function getScheduledAppointments(string $date): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT 
                         a.appointment_id, 
                         a.appointment_title, 
@@ -52,6 +70,7 @@ class AppointmentDAO
                     $appointments[$appointment["appointment_id"]] = $existingAppointment;
                 }
             }
+            $this->closeConnection();
             return $appointments;
         } catch (Exception $e) {
             echo $e;
@@ -62,6 +81,7 @@ class AppointmentDAO
     public function getAllAppointments(): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT 
                         a.appointment_id, 
                         a.appointment_title, 
@@ -96,6 +116,7 @@ class AppointmentDAO
                     $appointments[$appointment["appointment_id"]] = $existingAppointment;
                 }
             }
+            $this->closeConnection();
             return $appointments;
         } catch (Exception $e) {
             echo $e;
@@ -106,12 +127,15 @@ class AppointmentDAO
     public function getAppointmentsCount(): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT COUNT(*) FROM ohana_appointments;";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
 
-            return $stmt->fetchColumn();
+            $result = $stmt->fetchColumn();
+            $this->closeConnection();
+            return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -121,6 +145,7 @@ class AppointmentDAO
     public function getAppointmentsByAccountId(int $id): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT 
                         a.appointment_id, 
                         a.appointment_title, 
@@ -157,6 +182,7 @@ class AppointmentDAO
                     $appointments[$appointment["appointment_id"]] = $existingAppointment;
                 }
             }
+            $this->closeConnection();
             return $appointments;
         } catch (Exception $e) {
             echo $e;
@@ -167,6 +193,7 @@ class AppointmentDAO
     public function addAppointment(Appointment $appointment): bool
     {
         try {
+            $this->openConnection();
             $sql = "INSERT INTO ohana_appointments
                     (appointment_type, account_id, appointment_title, appointment_description, appointment_start, appointment_end)
                     VALUES (:type, :id, :title, :description, :start, :end);";
@@ -186,7 +213,9 @@ class AppointmentDAO
             $stmt->bindParam(":start", $start, PDO::PARAM_STR);
             $stmt->bindParam(":end", $end, PDO::PARAM_STR);
 
-            return $stmt->execute() > 0;
+            $isAdded = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isAdded;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -196,13 +225,16 @@ class AppointmentDAO
     public function deleteById(string $id): mixed
     {
         try {
+            $this->openConnection();
             $sql = "DELETE FROM ohana_appointments
                     WHERE appointment_id=:id";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
-            return $stmt->execute() > 0;
+            $isDeleted = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isDeleted;
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -212,6 +244,7 @@ class AppointmentDAO
     public function searchById(string $id): mixed
     {
         try {
+            $this->openConnection();
             $sql = "SELECT 
                         a.appointment_id, 
                         a.appointment_title, 
@@ -247,6 +280,7 @@ class AppointmentDAO
                     $searchedAppointment->setId($appointment["appointment_id"]);
                 }
             }
+            $this->closeConnection();
             return $searchedAppointment;
         } catch (Exception $e) {
             echo $e;
@@ -257,6 +291,7 @@ class AppointmentDAO
     public function updateAppointment(Appointment $appointment): bool
     {
         try {
+            $this->openConnection();
             $sql = "UPDATE ohana_appointments
                     SET appointment_title=:title,appointment_description=:description, appointment_start=:startDate, appointment_end=:endDate, appointment_status=:status
                     WHERE appointment_id=:id;";
@@ -276,7 +311,9 @@ class AppointmentDAO
             $stmt->bindParam(":status", $status, PDO::PARAM_STR);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
-            return $stmt->execute() > 0;
+            $isUpdated = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isUpdated;
         } catch (Exception $e) {
             echo $e;
             return null;

@@ -20,16 +20,17 @@
 
         #header {
             font-size: 80px;
-            color:#DB6551; 
+            color: #DB6551;
             font-family: 'Acme', sans-serif;
         }
+
         .card {
-            width:20rem;
+            width: 20rem;
         }
 
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
             .card {
-                width:10rem;
+                width: 10rem;
             }
         }
     </style>
@@ -44,12 +45,10 @@
                     <?php
                     require dirname(__DIR__) . '/models/BoardingSlot.php';
                     require dirname(__DIR__) . '/config/db-config.php';
-                    require dirname(__DIR__) . '/database/Database.php';
                     require dirname(__DIR__) . '/dao/BoardingSlotDAO.php';
                     require dirname(__DIR__) . '/services/BoardingSlotServices.php';
 
-                    $database = new Database($servername, $database, $username, $password);
-                    $dao = new BoardingSlotDAO($database);
+                    $dao = new BoardingSlotDAO($servername, $database, $username, $password);
                     $services = new BoardingSlotServices($dao);
 
                     $slots = $services->getAvailableSlots();
@@ -81,7 +80,8 @@
                     <?php } ?>
                 </section>
                 <center> <a href="/select-stud-dog"><button class="btn btn-outline-dark mt-5 px-4 py-2 ms-3"> Go Back </button> </a>
-               <button type="submit" class="btn mt-5 text-light px-4 py-2" style="background-color:#DB6551"> Proceed </button></center>
+                    <button type="submit" class="btn mt-5 text-light px-4 py-2" style="background-color:#DB6551"> Proceed </button>
+                </center>
             </div>
         </div>
     </main>

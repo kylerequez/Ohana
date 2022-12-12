@@ -27,12 +27,10 @@
             <?php
             include_once dirname(__DIR__) . '/../models/ChatbotInformation.php';
             include_once dirname(__DIR__) . '/../config/db-config.php';
-            include_once dirname(__DIR__) . '/../database/Database.php';
             include_once dirname(__DIR__) . '/../dao/ChatbotDAO.php';
             include_once dirname(__DIR__) . '/../services/ChatbotServices.php';
 
-            $database = new Database($servername, $database, $username, $password);
-            $dao = new ChatbotDAO($database);
+            $dao = new ChatbotDAO($servername, $database, $username, $password);
             $services = new ChatbotServices($dao);
             $information = $services->getAllSettings();
 
@@ -43,7 +41,7 @@
                 <div id="cb-settings">
                   <div class="row">
                     <div class="col">
-                      <center> <img src="<?php echo $information->getAvatar(); ?>" class="rounded-circle mb-3" style="height:150px;width:150px;"> </center>
+                      <center><img src="<?php echo $information->getAvatar(); ?>?id=<?php echo uniqid(); ?>" class="rounded-circle mb-3" style="height:150px;width:150px;"></center>
                       <input type="file" class="form-control" name="image">
                       <input type="hidden" name="old-image" value="<?php echo $information->getAvatar(); ?>">
                     </div>

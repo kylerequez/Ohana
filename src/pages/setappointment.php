@@ -199,11 +199,9 @@
     <?php
     include_once dirname(__DIR__) . "/models/Appointment.php";
     require dirname(__DIR__) . '/config/db-config.php';
-    require dirname(__DIR__) . '/database/Database.php';
     require dirname(__DIR__) . '/dao/AppointmentDAO.php';
     require dirname(__DIR__) . '/services/AppointmentServices.php';
-    $database = new Database($servername, $database, $username, $password);
-    $dao = new AppointmentDAO($database);
+    $dao = new AppointmentDAO($servername, $database, $username, $password);
     $services = new AppointmentServices($dao);
     $allScheds = $services->getAllAppointments();
     $ownSched = $services->getAppointmentsByAccountId($user->getId());

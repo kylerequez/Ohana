@@ -1,13 +1,11 @@
 <?php
 require_once dirname(__DIR__) . '/../config/app-config.php';
 require_once dirname(__DIR__) . '/../config/db-config.php';
-require_once dirname(__DIR__) . '/../database/Database.php';
 require_once dirname(__DIR__) . '/../dao/AppointmentDAO.php';
 require_once dirname(__DIR__) . '/../services/AppointmentServices.php';
 
 date_default_timezone_set('Asia/Manila');
-$database = new Database($servername, $database, $username, $password);
-$dao = new AppointmentDAO($database);
+$dao = new AppointmentDAO($servername, $database, $username, $password);
 $services = new AppointmentServices($dao);
 
 $ch = curl_init();

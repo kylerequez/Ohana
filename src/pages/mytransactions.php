@@ -48,14 +48,12 @@
                         <?php
                         include_once dirname(__DIR__) . '/models/Transaction.php';
                         include_once dirname(__DIR__) . '/config/db-config.php';
-                        include_once dirname(__DIR__) . '/database/Database.php';
                         include_once dirname(__DIR__) . '/dao/OrderDAO.php';
                         include_once dirname(__DIR__) . '/dao/TransactionDAO.php';
                         include_once dirname(__DIR__) . '/services/TransactionServices.php';
 
-                        $database = new Database($servername, $database, $username, $password);
-                        $dao = new TransactionDAO($database);
-                        $orderDAO = new OrderDAO($database);
+                        $dao = new TransactionDAO($servername, $database, $username, $password);
+                        $orderDAO = new OrderDAO($servername, $database, $username, $password);
                         $services = new TransactionServices($dao, $orderDAO);
 
                         $transactions = $services->getUserTransactions($user->getId());

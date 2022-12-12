@@ -117,12 +117,10 @@
           <?php
           include_once dirname(__DIR__) . '/../models/BoardingSlot.php';
           include_once dirname(__DIR__) . '/../config/db-config.php';
-          include_once dirname(__DIR__) . '/../database/Database.php';
           include_once dirname(__DIR__) . '/../dao/BoardingSlotDAO.php';
           include_once dirname(__DIR__) . '/../services/BoardingSlotServices.php';
 
-          $database = new Database($servername, $database, $username, $password);
-          $dao = new BoardingSlotDAO($database);
+          $dao = new BoardingSlotDAO($servername, $database, $username, $password);
           $services = new BoardingSlotServices($dao);
 
           $slots = $services->getAllBoardingSlots();

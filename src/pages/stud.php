@@ -30,12 +30,10 @@
                     <?php
                     include_once dirname(__DIR__) . '/models/PetProfile.php';
                     include_once dirname(__DIR__) . '/config/db-config.php';
-                    include_once dirname(__DIR__) . '/database/Database.php';
                     include_once dirname(__DIR__) . '/dao/PetProfileDAO.php';
                     include_once dirname(__DIR__) . '/services/PetProfileServices.php';
 
-                    $database = new Database($servername, $database, $username, $password);
-                    $dao = new PetProfileDAO($database);
+                    $dao = new PetProfileDAO($servername, $database, $username, $password);
                     $services = new PetProfileServices($dao);
 
                     $profiles = $services->getStudPets();

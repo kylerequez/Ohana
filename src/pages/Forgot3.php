@@ -104,7 +104,7 @@
                 <div class="form__row">
                   <div class="input">
                     <div class="input__container">
-                      <input class="input__field" id="confirm-password" placeholder="Confirm password" required="" type="password" minlength="8" maxlength="49" />
+                      <input class="input__field" id="confirm-password" name="confirm-password" placeholder="Confirm password" required="" type="password" minlength="8" maxlength="49" />
                       <label class="input__label" for="confirm-password">Confirm password</label>
                     </div>
                   </div>

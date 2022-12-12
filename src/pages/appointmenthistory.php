@@ -160,12 +160,10 @@
     <?php
     include_once dirname(__DIR__) . "/models/Appointment.php";
     include_once dirname(__DIR__) . '/config/db-config.php';
-    include_once dirname(__DIR__) . '/database/Database.php';
     include_once dirname(__DIR__) . '/dao/AppointmentDAO.php';
     include_once dirname(__DIR__) . '/services/AppointmentServices.php';
 
-    $database = new Database($servername, $database, $username, $password);
-    $dao = new AppointmentDAO($database);
+    $dao = new AppointmentDAO($servername, $database, $username, $password);
     $services = new AppointmentServices($dao);
 
     $sched_res = $services->getAppointmentsByAccountId($user->getId());
