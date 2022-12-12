@@ -300,7 +300,7 @@ textarea:hover {
   opacity: 0.8;
 }
 
-@media screen and (min-width: 360px) and (max-width: 929.98px) {
+@media screen and (min-width: 360px) and (max-width: 430px) {
   .title {
       font-size: 40px;
       color: #db6551;

@@ -24,15 +24,19 @@
 		h3 {
 			font-weight: bold;
 			margin-top: 10px;
-		}
+		} 
+		#ohanaprivacy {
+            font-family: 'Playfair Display', serif;
+        }
 	</style>
 </head>
 
 <body>
-	<div class="container">
+	<div class="container" id="ohanaprivacy">
 		<h1 class="text-center" style="font-size:40px;">Data Privacy Policy</h1><br>
-		<p>At OhanaKennelPH, one of our main priorities is the privacy of our visitors.
-			This Privacy Policy document contains types of information that is collected and recorded by OhanaKennelPH and how we use it.</p>
+		<p>This Privacy Policy document contains types of information that is collected and recorded by OhanaKennelPH and how we use it.
+		At OhanaKennelPH, one of our main priorities is the privacy of our visitors.
+		</p>
 		<p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p>
 		<p>This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the
 			information that they shared and/or collect in OhanaKennelPH. This policy is not applicable to any information collected

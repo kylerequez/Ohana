@@ -99,7 +99,7 @@
         </div>
         <center><br>
           <div class="form__row">
-            <p id="resendotp" class="fs-4">Did not receive an OTP? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="/register/resend/<?php echo $_SESSION["token"] ?>">Resend OTP</a></p>
+            <p id="resendotp" class="fs-5">Did not receive an OTP? &nbsp;<a class="link mt-2" name="login" style="text-decoration:none;" href="/register/resend/<?php echo $_SESSION["token"] ?>">Resend OTP</a></p>
           </div>
           <div class="form__row">
             <div class="logbtn">

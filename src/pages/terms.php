@@ -3,7 +3,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
         .container {
             text-align: justify;
-            font-family: "DM Sans", sans-serif;
         }
         p {
             font-size: 14px;
@@ -23,12 +22,15 @@
         #conditions {
             font-size: 40px;
         }
+        #ohanaterms {
+            font-family: 'Playfair Display', serif;
+        }
     </style>
 </head>
-<div class="container">
-    <h1 id="conditions" class="text-center mb-1">Terms and Conditions</h1>
-    <p>These terms and conditions outline the rules and regulations for the use of Ohana Kennel PH’s Website, located at ohanakennelph.com.</p>
-    <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use Ohana if you do not agree to take all of the terms and conditions stated on this page.</p>
+<div class="container" id="ohanaterms">
+    <h1 id="conditions" class="text-center mb-3">Terms and Conditions</h1>
+    <p>These terms and conditions outline the rules and regulations for the use of Ohana Kennel PH’s Website</p>
+    <p>By accessing this website we assume you accept these terms and conditions. <br><br>Do not continue to use Ohana if you do not agree to take all of the terms and conditions stated on this page.</p>
     <p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and compliant to the Company’s terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to the same.</p>
     <h3><strong>Cancellation Policy</strong></h3>
     <p> Please note that once you have booked an appointment with us it means that we have reserved time in our schedule exclusively for you. If you cancel your appointment less than [24 hours] before it is scheduled to take place, you will be subject to an account suspension of 3-5 days.

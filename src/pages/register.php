@@ -68,7 +68,7 @@
             <p class="sign-up__descr">Welcome to Ohana!</p>
             <p class="register__desc mt-3"> Fill up the fields below to create an account. </p>
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-              <div class="alert alert-warning" role="alert">
+              <div class="alert alert-warning mt-3" role="alert">
                 <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
                 unset($_SESSION["msg"]); ?>
               </div>

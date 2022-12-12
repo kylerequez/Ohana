@@ -94,12 +94,13 @@
                                             </div>
                                         </div>
                                         <div class="row my-4">
-                                            <p class="lead fw-bold mb-0 text-center"> TOTAL AMOUNT TO PAY: P260,000 </p>
+                                            <p class="lead fw-bold mb-0 text-center"> TOTAL AMOUNT TO PAY: ₱260,000 </p>
                                         </div>
                                         <hr>
                                         <p class="lead fw-bold mb-4 pb-2"> Order Status: PENDING </p>
-                                        <p class="lead fw-bold mb-4 pb-2"> Appointment Date and Time: <br> mm/dd/yyyy - 12:34pm </p>
-                                        <p class="mt-4 pt-2 mb-0"> Don't Forget to Screenshot this page and show it during your scheduled appointment. </a></p>
+                                        <h2 class="mt-4 pt-2 mb-0"> Note: </a></h2>
+                                        <p class="mt-3 pt-2 mb-0"> 1. Don't Forget to Screenshot this page and show it during your visit</a></p>
+                                        <p class="mt-1 pt-2 mb-0"> 2. You can pick up your dog anytime. Do not hesitate to contact us for questions.</a></p>
                                         <div class="btn-Learn mt-3" name="btn-Learn">
                                             <center><a href="/home"> <button type="button" id="btn-home" class="btn btn-outline-info"> Back to Home </button></a></center>
                                         </div>

@@ -16,8 +16,6 @@
         #head {
             margin-top: 10%;
         }
-
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {}
     </style>
 </head>
 
@@ -88,15 +86,49 @@
                     </section>
                 </div>
                 <section class="paymentnote mb-5">
-                    <center>
-                        <div class="card rounded-3 mb-5" style="width:75%;">
-                            <p class="fs-6 mt-5"> Note: TRANSACTIONS WILL BE DONE FACE TO FACE, YOU ONLY NEED TO SELECT A PAYMENT METHOD OF YOUR CHOICE </p>
-                            <p class="fs-6 mt-3 mb-5"> Friendly Reminder: Kindly Read the <b>Terms and Conditions for Cancellation and Payment Policy.</b> </p>
-                        </div>
-                        <a href="/upload-proof"><button type="button" name="btn-Payment" class="btn btn-block btn-lg" style="background-color:#c0b65a; color:white; width:300px;">
-                                Proceed </button></a> <br><br>
-                        <a href="/home"><button type="button" class="btn btn-outline-dark btn-lg" style="width:300px;"> Back to Home</button></a>
-                    </center>
+                    <div class="container"> 
+                        <center>
+                            <div class="card rounded-3 mb-5 " style="width:60%;">
+                                <h1 class="fs-3 mt-3 mb-3 fw-bold" style="color:#db6551"> IMPORTANT NOTE: </h1>
+                                <p class="fs-6 mt-2 me-2 ms-2"> TRANSACTIONS WILL BE DONE FACE TO FACE <br><br> YOU ONLY NEED TO SELECT A PAYMENT METHOD OF YOUR CHOICE </p>
+                                <p class="fs-6 mt-3 me-2 ms-2"> <b style="color:#db6551"> Additional: </b> If you wish to pay right away, please do not hesitate to contact us.</p>
+                                <p class="fs-6 mt-5 mb-5"> Friendly Reminder: Kindly Read the <b>Terms and Conditions for Cancellation and Payment Policy.</b> </p>
+                            </div>
+                            <div class="card rounded-3 mb-5" style="width:60%;">
+                                <h1 class="fs-3 mt-4 mb-3 fw-bold" style="color:#db6551"> Payment Instructions </h1>
+                                <hr>
+                                <p class="fs-6 mt-3"><b class="fw-bold"> Option 1: Gcash (E-Wallet)</b></p> 
+                                <p class="fs-6 mt-3 "> 1. Open GCash mobile app </p>
+                                <p class="fs-6 mt-3 "> 2. Select Send Money and click Express Send</p>
+                                <p class="fs-6 mt-3 "> 3. SCAN QR CODE or enter the recipient’s mobile number </p>
+                                <p class="fs-6 mt-3 "> a. 09190638560 - Giancarlo Calma</p>
+                                <p class="fs-6 mt-3 "> b. Message us on facebook for Payment via QR CODE</p>
+                                <p class="fs-6 mt-4 mx-5" style="color:#db6551"> Note: Kindly take a screenshot of the receipt </p>
+
+                                <hr>
+                                <p class="fs-6 mt-3"> <b class="fw-bold"> Option 2: Online Bank Transfer or Over-the-counter</b> </p>
+                                <p class="fs-6 mt-3 "> 1. Deposit amount to the following BPI bank account: </p>
+                                <p class="fs-6 mt-3 "> Account Name: Giancarlo Calma </p>
+                                <p class="fs-6 mt-3 "> Account Number: 4409218178 </p>
+                                <p class="fs-6 mt-3 "> 2. Message us on facebook for Payment via QR CODE</p>
+                                <p class="fs-6 mt-3 "> 3. Over-the-counter: Write you full name onto the deposit slip.</p>
+                                <p class="fs-6 mt-4 mx-5" style="color:#db6551"> Note: Scan or take a photograph of the deposit slip </p>
+                                <hr>
+                                <p class="fs-6 mt-3"> <b class="fw-bold"> Option 3: Cash Payment on Dog Pickup</b> </p>
+                                <p class="fs-6 mt-3"> 1. Bring the necessary amount in full for cash payment </p>
+                                <p class="fs-6 mt-3"> 2. We do not accept installment.</p>
+                                <hr>
+                                <h1 class="fs-3 mt-4 mb-3 fw-bold" style="color:#db6551"> Additional Instructions </h1>
+                                <p class="fs-6 mt-3 mx-5"> 1. In the upper right, Click the user icon and select transaction tab </p>
+                                <p class="fs-6 mt-3 mx-5"> 2. Click the upload icon to upload an image of your receipt. </p>
+                                <p class="fs-6 mt-3 mb-5"> </p>
+                            </div>
+
+                            <a href="/home"><button type="button" class="btn btn-outline-dark btn-lg mx-2" style="width:200px;"> Go Back </button></a>
+                            <a href="/upload-proof"><button type="button" name="btn-Payment" class="btn btn-block btn-lg text-light mx-2" style="background-color:#c0b65a; width:200px;"> Proceed </button></a>
+
+                        </center>
+                    </div>
                 </section>
             </form>
         </div>

@@ -11,13 +11,16 @@
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
+
+        #pupcontainer {
+            margin-top:10%;
+        }
         #pupcard {
             max-width: 60vw;
             max-height: 60vh;
             border-style: solid;
             border-color: #c0b65a;
             border-width: 5px;
-            margin-top: 15%;
         }
 
         #pupname {
@@ -99,10 +102,10 @@
     ?>
     <main>
         <?php include_once 'rnavbar.php'; ?>
-        <div class="container-fluid">
+        <div class="container-fluid" id="pupcontainer">
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
                 <center>
-                    <div class="alert alert-warning text-center" role="alert" style="width:400px;">
+                    <div class="alert alert-warning text-center" role="alert" style="width:400px;margin-top:5%;">
                         <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
                         unset($_SESSION["msg"]); ?>
                     </div>

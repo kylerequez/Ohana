@@ -62,8 +62,6 @@
                 font-family: "Poppins";
                 font-size: 12px;
                 padding: 10px 40px;
-                text-decoration: none;
-                text-shadow: 0px 1px 0px #ffffff;
                 margin-top: 110%;
                 margin-left: auto;
                 margin-right: auto;

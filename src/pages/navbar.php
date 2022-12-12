@@ -6,21 +6,29 @@
       height: 90px;
     }
 
-    @media screen and (min-width: 360px) and (max-width: 929.98px) {
+    @media screen and (min-width: 430px) and (max-width: 929px){
+      #navbar-spy  {
+        height: 110px;
+      }
+      .navbar-toggler{
+        margin-top: -33%;
+      }
+      #navlogo  {
+        margin-top: -110%;
+      }
+    }
+    @media screen and (min-width: 360px) and (max-width: 420px) {
       #navbar-spy {
         height: 110px;
       }
 
-      #navlogo.img-fluid {
-        margin-top: -60%;
+      #navlogo {
+        height:70px;  
+        margin-top: -40%;
       }
 
-      /* .navbar-toggler {
-        margin-right:5%;
-      } */
       .navbar-toggler{
-        margin-right:5%;
-        margin-top: -60px;
+        margin-top: -20%;
       }
       #login-btn {
         background-color: #db6551;
@@ -38,7 +46,7 @@
   </style>
 </head>
 
-<nav class="navbar navbar-expand-md fixed-top" id="navbar-spy">
+<nav class="navbar navbar-expand-lg fixed-top" id="navbar-spy">
   <div class="container-fluid">
     <div class="logo">
       <a href="/"> <img src="/Ohana/src/images/Landing/navlogo.png" class="img-fluid" id="navlogo"> </a>
