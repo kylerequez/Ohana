@@ -44,7 +44,6 @@ class TransactionController
         }
     }
 
-
     public function processRequest(string $method, ?string $id): void
     {
         if ($id) {
@@ -78,6 +77,15 @@ class TransactionController
                 break;
             case "POST":
                 break;
+        }
+    }
+
+    public function processCheckoutRequest(string $method, ?string $reference): void
+    {
+        if($reference) {
+
+        } else {
+            
         }
     }
 }

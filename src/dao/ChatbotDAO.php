@@ -89,7 +89,6 @@ class ChatbotDAO
                     $existingResponse = new ChatbotResponse(
                         $response["response"],
                         $response["query"],
-                        $response["times_asked"],
                     );
                     $existingResponse->setId($response["response_id"]);
                     $responses[] = $existingResponse;
@@ -120,7 +119,6 @@ class ChatbotDAO
                     $searchedResponse = new ChatbotResponse(
                         $response["response"],
                         $response["query"],
-                        $response["times_asked"],
                     );
                     $searchedResponse->setId($response["response_id"]);
                 }
@@ -138,17 +136,15 @@ class ChatbotDAO
         try {
             $this->openConnection();
             $sql = "INSERT INTO chatbot_responses
-                    (response, query, times_asked)
-                    VALUES (:response, :query, :timesAsked);";
+                    (response, query)
+                    VALUES (:response, :query);";
 
             $res = $response->getResponse();
             $query = $response->getQuery();
-            $timesAsked = $response->getTimesAsked();
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":response", $res, PDO::PARAM_STR);
             $stmt->bindParam(":query", $query, PDO::PARAM_STR);
-            $stmt->bindParam(":timesAsked", $timesAsked, PDO::PARAM_STR);
 
             $isAdded = $stmt->execute() > 0;
             $this->closeConnection();
@@ -176,7 +172,6 @@ class ChatbotDAO
                     $searchedResponse = new ChatbotResponse(
                         $response["response"],
                         $response["query"],
-                        $response["times_asked"]
                     );
                     $searchedResponse->setId($id);
                 }
@@ -194,19 +189,17 @@ class ChatbotDAO
         try {
             $this->openConnection();
             $sql = "UPDATE chatbot_responses
-                    SET response=:response, query=:query, times_asked=:timesAsked
+                    SET response=:response, query=:query
                     WHERE response_id=:id;";
 
             $id = $response->getId();
             $res = $response->getResponse();
             $query = $response->getQuery();
-            $timesAsked = $response->getTimesAsked();
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt->bindParam(":response", $res, PDO::PARAM_STR);
             $stmt->bindParam(":query", $query, PDO::PARAM_STR);
-            $stmt->bindParam(":timesAsked", $timesAsked, PDO::PARAM_INT);
 
             $isUpdated = $stmt->execute() > 0;
             $this->closeConnection();

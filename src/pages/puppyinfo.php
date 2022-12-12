@@ -24,9 +24,11 @@
             font-family: 'Acme', sans-serif;
             color: #db6551;
         }
+
         #buttons {
             margin-top: -20px;
         }
+
         #ohanafooter {
             position: relative;
             margin-top: 7%;
@@ -50,7 +52,7 @@
             #buttons {
                 margin-top: -20px;
                 align-items: center;
-                margin-left:10px;
+                margin-left: 10px;
             }
         }
     </style>
@@ -97,7 +99,6 @@
     ?>
     <main>
         <?php include_once 'rnavbar.php'; ?>
-
         <div class="container-fluid">
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
                 <center>

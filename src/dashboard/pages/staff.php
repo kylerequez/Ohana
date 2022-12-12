@@ -190,7 +190,7 @@
                                   <div class="row input-group mb-3">
                                     <label for="number" class="col-3 col-form-label "> Contact Number: </label>
                                     <span class="col-1 input-group-text" id="contact-no">+63</span>
-                                    <input type="text" class="col-8 form-control" name="number" minlength="9" maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="<?php echo str_replace("+63", "", $staff->getNumber()); ?>"  required>
+                                    <input type="text" class="col-8 form-control" name="number" minlength="9" maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="<?php echo str_replace("+63", "", $staff->getNumber()); ?>" required>
                                   </div>
                                   <div class="row input-group mb-3">
                                     <label for="status" class="col-3 col-form-label "> Status: </label>
@@ -216,6 +216,9 @@
                 }
                 ?>
               </tbody>
+              <tfoot>
+                <tr></tr>
+              </tfoot>
             </table>
           <?php
           } else {
@@ -291,9 +294,55 @@
     ?>
     <script>
       $(document).ready(function() {
-        $('#staff').DataTable({
+        $('#staff thead tr')
+          .clone(true)
+          .addClass('filters')
+          .appendTo('#staff thead');
+
+        var table = $('#staff').DataTable({
           "searching": true,
           "processing": true,
+          initComplete: function() {
+            var api = this.api();
+
+            api
+              .columns()
+              .eq(0)
+              .each(function(colIdx) {
+                var cell = $('.filters th').eq(
+                  $(api.column(colIdx).header()).index()
+                );
+                var title = $(cell).text();
+                $(cell).html('<input type="text" placeholder="' + title + '" />');
+                $(
+                    'input',
+                    $('.filters th').eq($(api.column(colIdx).header()).index())
+                  )
+                  .off('keyup change')
+                  .on('change', function(e) {
+                    $(this).attr('title', $(this).val());
+                    var regexr = '({search})';
+                    var cursorPosition = this.selectionStart;
+                    api
+                      .column(colIdx)
+                      .search(
+                        this.value != '' ?
+                        regexr.replace('{search}', '(((' + this.value + ')))') :
+                        '',
+                        this.value != '',
+                        this.value == ''
+                      )
+                      .draw();
+                  })
+                  .on('keyup', function(e) {
+                    e.stopPropagation();
+                    $(this).trigger('change');
+                    $(this)
+                      .focus()[0]
+                      .setSelectionRange(cursorPosition, cursorPosition);
+                  });
+              });
+          },
         });
       });
     </script>

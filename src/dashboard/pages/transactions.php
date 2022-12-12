@@ -305,6 +305,7 @@
   <script>
     $('#transactions').DataTable({
       "searching": true,
+
     });
   </script>
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>

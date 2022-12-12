@@ -86,9 +86,8 @@ class ChatbotServices
     {
         $res = trim($data["response"]) == '' ? 'N/A' :  trim($data["response"]);
         $query = trim($data["query"]) == '' ? 'N/A' :  trim($data["query"]);
-        $timesAsked = $data["timesAsked"];
 
-        $response = new ChatbotResponse($res, $query, $timesAsked);
+        $response = new ChatbotResponse($res, $query);
         if (!$this->dao->addResponse($response)) {
             $_SESSION["msg"] = "There was an error in adding the Response.";
             return false;
@@ -106,9 +105,8 @@ class ChatbotServices
 
         $res = trim($data["response"]);
         $query = trim($data["query"]) == '' ? "N/A" :  trim($data["query"]);
-        $timesAsked = $data["timesAsked"];
 
-        $response = new ChatbotResponse($res, $query, $timesAsked);
+        $response = new ChatbotResponse($res, $query);
         $response->setId($id);
         if (!$this->dao->updateResponse($response)) {
             $_SESSION["msg"] = "There was an error in updating the response.";
