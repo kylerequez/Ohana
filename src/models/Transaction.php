@@ -2,10 +2,12 @@
 class Transaction
 {
     private ?int $id = null;
+    private ?string $reference = null;
     private ?int $accountId = null;
     private ?float $price = null;
     private ?DateTime $date = null;
     private ?string $status = null;
+    private ?string $mode = null;
     private $paymentConfirmation = null;
     private ?array $listOfOrders = null;
     private ?string $fname = null;
@@ -14,13 +16,15 @@ class Transaction
     private ?string $number = null;
     private ?string $email = null;
 
-    public function __construct(int $accountId, float $price, DateTime $date, string $status, $paymentConfirmation)
+    public function __construct(int $accountId, string $reference, float $price, DateTime $date, string $status, $paymentConfirmation, $mode)
     {
         $this->accountId = $accountId;
+        $this->reference = $reference;
         $this->price = $price;
         $this->date = $date;
         $this->status = $status;
         $this->paymentConfirmation = $paymentConfirmation;
+        $this->mode = $mode;
     }
 
     /**
@@ -259,6 +263,46 @@ class Transaction
     public function setEmail($email)
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of reference
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    /**
+     * Set the value of reference
+     *
+     * @return  self
+     */
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of mode
+     */
+    public function getMode()
+    {
+        return $this->mode;
+    }
+
+    /**
+     * Set the value of mode
+     *
+     * @return  self
+     */
+    public function setMode($mode)
+    {
+        $this->mode = $mode;
 
         return $this;
     }

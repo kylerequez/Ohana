@@ -29,6 +29,10 @@ class CartServices
             $_SESSION["msg"] = "The pet does not exist in the database!";
             return false;
         }
+        if ($profile->getStatus() != 'AVAILABLE') {
+            $_SESSION["msg"] = "The pet is currently not available!";
+            return false;
+        }
         $order = new Order($type, null, $profile->getId(), $profile->getName(), $profile->getImage(), $profile->getPrice());
         if (!$cart->addToCart($order)) {
             $_SESSION["msg"] = "You already have this item inside your cart.";

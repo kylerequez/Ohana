@@ -120,7 +120,7 @@ class PetProfileDAO
                     AND pet_name=:name;";
 
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(":reference", $reference, PDO::PARAM_INT);
+            $stmt->bindParam(":reference", $reference, PDO::PARAM_STR);
             $stmt->bindParam(":name", $name, PDO::PARAM_STR);
 
             $searchedPetProfile = null;
@@ -159,13 +159,13 @@ class PetProfileDAO
             $this->openConnection();
             $sql = "SELECT * FROM ohana_pet_profiles
                     WHERE account_id = 1
-                    AND  pet_type = 'REHOMING'
+                    AND pet_type = 'REHOMING'
                     AND pet_status='AVAILABLE' 
                     AND pet_reference=:reference
                     AND pet_name=:name;";
 
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(":reference", $reference, PDO::PARAM_INT);
+            $stmt->bindParam(":reference", $reference, PDO::PARAM_STR);
             $stmt->bindParam(":name", $name, PDO::PARAM_STR);
 
             $searchedPetProfile = null;
@@ -207,7 +207,7 @@ class PetProfileDAO
                     AND pet_name=:name;";
 
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(":reference", $reference, PDO::PARAM_INT);
+            $stmt->bindParam(":reference", $reference, PDO::PARAM_STR);
             $stmt->bindParam(":name", $name, PDO::PARAM_STR);
             $searchedPetProfile = null;
             if ($stmt->execute() > 0) {
@@ -591,6 +591,26 @@ class PetProfileDAO
             $isDeleted = $stmt->execute() > 0;
             $this->closeConnection();
             return $isDeleted;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function setStatusToSold(string $id): bool
+    {
+        try {
+            $this->openConnection();
+            $sql = "UPDATE ohana_pet_profiles
+                    SET pet_status='SOLD'
+                    WHERE pet_id=:id;";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+
+            $isUpdated = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isUpdated;
         } catch (Exception $e) {
             echo $e;
             return null;

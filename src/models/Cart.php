@@ -37,6 +37,31 @@ class Cart
         return true;
     }
 
+    public function emptyCart(): void
+    {
+        $this->cart = array();
+    }
+
+    public function getTotal(): float
+    {
+        $total = 0.00;
+        foreach ($this->cart as $order) {
+            $total = $total + $order->getPrice();
+        }
+        return $total;
+    }
+
+    public function getListOfOrders(): mixed
+    {
+        $listOfOrders = [];
+        foreach ($this->cart as $order) {
+            $listOfOrders[] = $order;
+        }
+        return $listOfOrders;
+    }
+
+
+
     /**
      * Get the value of id
      */

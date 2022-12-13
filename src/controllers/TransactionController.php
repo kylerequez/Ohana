@@ -22,13 +22,35 @@ class TransactionController
         }
     }
 
-    public function processCustomerResourceRequest(string $method, ?string $id): void
+    public function processCustomerResourceRequest(string $method, string $id): void
     {
         switch ($method) {
             case "GET":
-
                 break;
             case "POST":
+                $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
+                $finfo = new finfo(FILEINFO_MIME_TYPE);
+                if (false === $ext = array_search(
+                    $finfo->file($_FILES['image']['tmp_name']),
+                    array(
+                        'jpg' => 'image/jpeg',
+                        'png' => 'image/png',
+                    ),
+                    true
+                )) {
+                    $_SESSION["msg"] = "The file type is not accepted. Please upload a file with the following format: JPG and PNG.";
+                    $this->processCustomerCollectionRequest("GET");
+                    break;
+                }
+                if ($_FILES['image']['size'] > 1000000) {
+                    $_SESSION["msg"] = "The image size must not be greater than 1 MB.";
+                    $this->processCustomerCollectionRequest("GET");
+                    break;
+                }
+                if (!$this->services->uploadProofOfPayment($id, $_POST)) {
+                    $this->processCustomerCollectionRequest("GET");
+                }
+                $this->processCustomerCollectionRequest("GET");
                 break;
         }
     }
@@ -82,10 +104,13 @@ class TransactionController
 
     public function processCheckoutRequest(string $method, ?string $reference): void
     {
-        if($reference) {
-
+        if ($reference) {
+            switch ($method) {
+                case "GET":
+                    $this->services->proceedToUpload($reference, $_GET);
+                    break;
+            }
         } else {
-            
         }
     }
 }

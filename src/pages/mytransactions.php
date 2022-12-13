@@ -41,6 +41,16 @@
                 <div class="userheader mb-5">
                     <h1 class="text-center" id="header" style="color:#db6551;"> My Transactions </h1>
                 </div>
+                <?php
+                if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+                    <div class="alert alert-warning text-center" role="alert">
+                        <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
+                        unset($_SESSION["msg"]); ?>
+                    </div>
+                <?php
+                    unset($_SESSION["msg"]);
+                }
+                ?>
             </section>
             <center>
                 <section class="orderhistory_section">
@@ -54,7 +64,7 @@
 
                         $dao = new TransactionDAO($servername, $database, $username, $password);
                         $orderDAO = new OrderDAO($servername, $database, $username, $password);
-                        $services = new TransactionServices($dao, $orderDAO);
+                        $services = new TransactionServices($dao, $orderDAO, null);
 
                         $transactions = $services->getUserTransactions($user->getId());
                         if (!empty($transactions)) {
@@ -67,7 +77,7 @@
                                                 <p class="lead fw-normal mb-2"><?php echo $transaction->getDate()->format('M-d-y'); ?></p>
                                             </div>
                                             <div class="col-md-3 col-lg-3 col-xl-3">
-                                                <p class="lead fw-normal mb-2"><?php echo $transaction->getId(); ?></p>
+                                                <p class="lead fw-normal mb-2"><?php echo $transaction->getReference(); ?></p>
                                             </div>
                                             <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                                                 <p class="lead fw-normal mb-2"><?php echo $transaction->getStatus(); ?></p>
@@ -81,7 +91,7 @@
                                                 <?php
                                                 }
                                                 ?>
-                                                <form method="POST" action="/transactions/update/<?php echo $transaction->getId(); ?>">
+                                                <form method="POST" action="/transactions/update/<?php echo $transaction->getId(); ?>" enctype="multipart/form-data">
                                                     <div class="modal fade" id="uploadModalId<?php echo $transaction->getId(); ?>" aria-hidden="true" aria-labelledby="uploadModal" tabindex="-1">
                                                         <div class="modal-dialog modal-dialog-centered">
                                                             <div class="modal-content">
@@ -90,7 +100,7 @@
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <label for="proofOfPayment" class="my-2">Please upload your proof of payment for Transaction #<?php echo $transaction->getId(); ?></label>
-                                                                    <input type="file" class="my-2" name="proofOfPayment" required>
+                                                                    <input type="file" class="my-2" name="image" required>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
@@ -141,9 +151,9 @@
                                                                                     <div class="col">
                                                                                         <p class="lead fw-normal mb-2"><?php echo $order->getType(); ?></p>
                                                                                     </div>
-                                                                                    <div class="col">
-                                                                                        <p class="lead fw-normal mb-2"><?php $order->getPrice(); ?></p>
-                                                                                    </div>
+                                                                                    <!-- <div class="col">
+                                                                                        <p class="lead fw-normal mb-2">₱ <?php number_format($order->getPrice(), 2); ?></p>
+                                                                                    </div> -->
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -159,7 +169,7 @@
                                                                 ?>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                Total: <?php echo $transaction->getPrice(); ?>
+                                                                Total: ₱ <?php echo number_format($transaction->getPrice(), 2); ?>
                                                             </div>
                                                         </div>
                                                     </div>

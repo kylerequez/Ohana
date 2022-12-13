@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
-
         #pupcontainer {
-            margin-top:10%;
+            margin-top: 10%;
         }
+
         #pupcard {
             max-width: 60vw;
             max-height: 60vh;
@@ -77,25 +77,25 @@
     if (is_null($profile)) {
     ?>
         <script>
-            window.location = 'http://<?php echo DOMAIN_NAME; ?>/stud';
+            window.location = 'http://<?php echo DOMAIN_NAME; ?>/puppies';
         </script>
     <?php
     } else if ($profile->getReference() != $reference) {
     ?>
         <script>
-            window.location = 'http://<?php echo DOMAIN_NAME; ?>/stud';
+            window.location = 'http://<?php echo DOMAIN_NAME; ?>/puppies';
         </script>
     <?php
     } else if ($profile->getName() !=  $name) {
     ?>
         <script>
-            window.location = 'http://<?php echo DOMAIN_NAME; ?>/stud';
+            window.location = 'http://<?php echo DOMAIN_NAME; ?>/puppies';
         </script>
     <?php
     } else if ($profile->getStatus() != 'AVAILABLE') {
     ?>
         <script>
-            window.location = 'http://<?php echo DOMAIN_NAME; ?>/stud';
+            window.location = 'http://<?php echo DOMAIN_NAME; ?>/puppies';
         </script>
     <?php
     }

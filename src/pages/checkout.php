@@ -34,7 +34,7 @@
 
         $dao = new TransactionDAO($servername, $database, $username, $password);
         $orderDAO = new OrderDAO($servername, $database, $username, $password);
-        $services = new TransactionServices($dao, $orderDAO);
+        $services = new TransactionServices($dao, $orderDAO, null);
 
         $cart = unserialize($_SESSION["cart"]);
         if (empty($cart->getCart())) {
@@ -54,7 +54,7 @@
                     <img src="/Ohana/src/images/Pages/checkoutheader.png" class="img-fluid" width="100%">
                 </div>
             </section>
-            <form method="POST" action="">
+            <form method="GET" action="/checkout/<?php echo $reference; ?>/get">
                 <div class="container">
                     <section class="paymentsection">
                         <div class="paymentmethod" id="paymentmethod">
@@ -76,7 +76,7 @@
                                         <div class="card-body">
                                             <img src="/Ohana/src/images/payment/pay3.png" width="150px" height="150px">
                                             <p class="card-text"> No. of users who chose this: <?php echo $services->getModeOfPaymentCount("CASH"); ?></p>
-                                            <input class="form-check-input mt-3" type="radio" name="mode" id="cash" value="CASH" />
+                                            <input class="form-check-input mt-3" type="radio" name="mode" id="cash" value="CASH" checked />
                                             <label class="form-check-label mt-3 mb-3" for="payment-method"> CASH </label>
                                         </div>
                                     </div>
@@ -86,7 +86,7 @@
                     </section>
                 </div>
                 <section class="paymentnote mb-5">
-                    <div class="container"> 
+                    <div class="container">
                         <center>
                             <div class="card rounded-3 mb-5 " style="width:60%;">
                                 <h1 class="fs-3 mt-3 mb-3 fw-bold" style="color:#db6551"> IMPORTANT NOTE: </h1>
@@ -97,7 +97,7 @@
                             <div class="card rounded-3 mb-5" style="width:60%;">
                                 <h1 class="fs-3 mt-4 mb-3 fw-bold" style="color:#db6551"> Payment Instructions </h1>
                                 <hr>
-                                <p class="fs-6 mt-3"><b class="fw-bold"> Option 1: Gcash (E-Wallet)</b></p> 
+                                <p class="fs-6 mt-3"><b class="fw-bold"> Option 1: Gcash (E-Wallet)</b></p>
                                 <p class="fs-6 mt-3 "> 1. Open GCash mobile app </p>
                                 <p class="fs-6 mt-3 "> 2. Select Send Money and click Express Send</p>
                                 <p class="fs-6 mt-3 "> 3. SCAN QR CODE or enter the recipient’s mobile number </p>
@@ -123,10 +123,8 @@
                                 <p class="fs-6 mt-3 mx-5"> 2. Click the upload icon to upload an image of your receipt. </p>
                                 <p class="fs-6 mt-3 mb-5"> </p>
                             </div>
-
                             <a href="/home"><button type="button" class="btn btn-outline-dark btn-lg mx-2" style="width:200px;"> Go Back </button></a>
-                            <a href="/upload-proof"><button type="button" name="btn-Payment" class="btn btn-block btn-lg text-light mx-2" style="background-color:#c0b65a; width:200px;"> Proceed </button></a>
-
+                            <button type="submit" class="btn btn-block btn-lg text-light mx-2" style="background-color:#c0b65a; width:200px;"> Proceed </button></a>
                         </center>
                     </div>
                 </section>

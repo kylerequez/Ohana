@@ -99,4 +99,30 @@ class OrderDAO
             return null;
         }
     }
+
+    public function addOrder(Order $order): bool
+    {
+        try {
+            $this->openConnection();
+            $sql = "INSERT INTO ohana_orders
+                    (order_type, transaction_id, pet_id)
+                    VALUES (:type, :transactionId, :petId);";
+
+            $type = $order->getType();
+            $transactionId = $order->getTransactionId();
+            $petId = $order->getPetId();
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":type", $type, PDO::PARAM_STR);
+            $stmt->bindParam(":transactionId", $transactionId, PDO::PARAM_INT);
+            $stmt->bindParam(":petId", $petId, PDO::PARAM_INT);
+
+            $isAdded = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isAdded;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
 }
