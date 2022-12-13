@@ -95,6 +95,22 @@
       border-width: 2px;
       background-color: white;
     }
+
+    input[type="date"]:hover::-webkit-calendar-picker-indicator {
+      color: red;
+    }
+
+    input[type="date"]:hover:after {
+      content: " Date Picker ";
+      color: #555;
+      padding-right: 5px;
+    }
+
+    input[type="date"]::-webkit-inner-spin-button {
+      /* display: none; <- Crashes Chrome on hover */
+      -webkit-appearance: none;
+      margin: 0;
+    }
   </style>
 </head>
 
@@ -110,7 +126,34 @@
         </div>
         <div class="users-table table-wrapper">
           <div class="createstaff-wrapper">
-            <button type="submit"><i data-feather="bar-chart" aria-hidden="true"></i><a class="generate-sales-btn" href="/dashboard/sales"> Generate Sales Report </a></button>
+            <button type="submit" data-bs-toggle="modal" data-bs-target="#modalCenter"><i data-feather="bar-chart" aria-hidden="true"></i> Generate Sales Report </button>
+          </div>
+          <!-- Modal -->
+          <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalCenterTitle">Sales Report: Select Range</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="row g-2">
+                    <div class="col mb-0">
+                      <label for="date" class="form-label">From:</label>
+                      <input class="form-control" type="date" value="2022-12-18" id="date" />
+                      <span><i class="fa fa-calendar"></i></span>
+                    </div>
+                    <div class="col mb-0">
+                      <label for="date" class="form-label">To:</label>
+                      <input class="form-control" type="date" value="2022-12-18" id="date" />
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn" style="background-color:#db6551;color:white;"><a href="/dashboard/sales"> Generate </a></button>
+                </div>
+              </div>
+            </div>
           </div>
           <br>
           <?php
@@ -308,6 +351,7 @@
 
     });
   </script>
+
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
   <script src="/Ohana/src/dashboard/js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>

@@ -13,20 +13,26 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
+        #header {
+            margin-top:-2%;
+        }
         #ohanafooter {
             margin-top: 10%;
         }
 
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {
+        @media screen and (min-width: 360px) and (max-width: 429px) {
+            .container {
+                margin-top:-5%; 
+            }
             #header {
                 font-size: 40px;
-                margin-top: 40%;
+                margin-top: 15%;
             }
 
             #labels {
                 width: 200px;
+                font-size:14px;
             }
-
             #name {
                 margin-top: -50px;
             }
@@ -34,7 +40,7 @@
             #save {
                 max-width: 500px;
                 margin-left: auto;
-                margin-right: auto;
+                margin-right: auto; 
                 float: none;
                 margin-top: 40px;
             }
@@ -56,7 +62,7 @@
         <div class="container-fluid">
             <section class="userprofile">
                 <div class="userheader">
-                    <h1 id="header"> USER PROFILE </h1>
+                    <img src="/Ohana/src/images/Pages/user.png" id="header" class="img-responsive" width="100%">
                     <div class="container-sm">
                         <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
                             <div class="alert alert-warning mt-3" role="alert">
@@ -79,7 +85,7 @@
                                     <input type="hidden" name="status" value="<?php echo $user->getStatus(); ?>">
                                     <input type="hidden" name="type" value="<?php echo $user->getType(); ?>">
                                     <div class="col-md-12">
-                                        <label class="labels mb-3" id="name">Name</label>
+                                        <label class="labels mb-3" id="labels">Name</label>
                                         <input type="text" class="form-control" value="<?php echo $user->getFname(); ?>" id="fname" name="fname">
                                     </div>
                                     <div class="col-md-12" style="margin-top:10px;">

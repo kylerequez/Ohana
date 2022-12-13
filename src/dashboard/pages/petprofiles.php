@@ -207,7 +207,7 @@
                                 <div class="mb-3">
                                   <label for="ownerName" class="col-form-label"> OWNER NAME: </label>
                                   <input type="hidden" name="accountId" value="<?php echo $profile->getAccountId(); ?>">
-                                  <input type="disabled" class="form-control" name="ownerName" value="<?php echo $profile->getOwnerName(); ?>" disabled>
+                                  <input type="text" class="form-control" name="ownerName" value="<?php echo $profile->getOwnerName(); ?>" readonly="readonly">
                                 </div>
                                 <div class="mb-3">
                                   <label for="price" class="col-form-label"> PRICE: </label>
@@ -312,7 +312,29 @@
             </div>
             <div class="mb-3">
               <label for="trait" class="col-form-label"> TRAIT: </label>
-              <input type="text" class="form-control" name="trait" placeholder="Enter Trait" required>
+              <select class="form-control" name="trait">
+                  <option class="text-center" style="color:#DB6551" disabled>Standard</option>
+                  <option value="fawn">fawn</option>
+                  <option value="sable">sable</option>
+                  <option value="brindle">brindle</option>
+                  <option class="text-center" style="color:#DB6551" disabled>Exotic</option>
+                  <option value="blue">blue</option>
+                  <option value="chocolate">chocolate</option>
+                  <option value="lilac">lilac</option>
+                  <option value="isabella">isabella</option>
+                  <option value="newshadeisabella">newshade isabella</option>
+                  <option value="newshade">newshade</option>
+                  <option value="blacktan">black tan</option>
+                  <option value="bluetan">blue tan</option>
+                  <option value="chocotan">choco tan</option>
+                  <option value="isabellatan">isabella tan</option>
+                  <option value="newshadetan">newshade isabella tan</option>
+                  <option class="text-center" style="color:#DB6551" disabled>Platinum</option>
+                  <option value="lilacplat">lilac plat</option>
+                  <option value="champaigneplat">champaigne plat</option>
+                  <option value="newshadeplat">newshade plat</option>
+                  <option value="merle">merle</option>
+              </select>
             </div>
             <div class="mb-3">
               <label for="isVaccinated" class="col-form-label"> IS VACCINATED </label>

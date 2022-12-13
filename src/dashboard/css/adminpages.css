@@ -427,8 +427,8 @@ html {
 *,
 *::before,
 *::after {
-  -webkit-box-sizing: inherit;
-  box-sizing: inherit;
+  /* -webkit-box-sizing: inherit;
+  box-sizing: inherit; */
 }
 
 .container {
@@ -1483,34 +1483,6 @@ button.disabled:focus {
   border-width: 0;
 }
 
-.ligt-circle-btn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border-width: 0;
-  background-color: #f5efff;
-}
-
-.lang-switcher {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
 .nav-user-btn {
   background-color: transparent;
 }
@@ -1654,13 +1626,13 @@ button.disabled:focus {
 /* Links */
 
 .link-info {
-  color: #5887ff;
+  color: #db6551;
   border-bottom: dashed 1px transparent;
 }
 
 .link-info:hover {
-  color: #5887ff;
-  border-bottom-color: #5887ff;
+  color: #db6551;
+  border-bottom-color: #db6551;
 }
 
 /* START OF DROPDOWN STYLES */
@@ -1763,7 +1735,7 @@ button.disabled:focus {
 
 input {
   border-radius: 6px;
-  background-color: #db6551;
+  color:#7d605c;
   border-width: 0;
   min-height: 40px;
   border: solid #db6551 2px !important;
@@ -1823,13 +1795,9 @@ input::placeholder {
 
 input:focus {
   outline: none;
-  border: rgba(134, 182, 254, 0.5) solid !important;
-  -webkit-box-shadow: 0 0 0 2px rgba(134, 182, 254, 0.5);
-  box-shadow: 0 0 0 2px rgba(134, 182, 254, 0.5);
-}
-
-input:enabled:read-write:-webkit-any(:focus, :hover)::-webkit-calendar-picker-indicator {
-  display: none !important;
+  border: #c0b65a solid !important;
+  -webkit-box-shadow: #c0b65a;
+  box-shadow: #c0b65a;
 }
 
 .check {

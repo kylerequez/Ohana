@@ -13,11 +13,7 @@
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
 
     <?php include_once 'stylesheets.php'; ?>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {}
-    </style>
+   
     <!-- CALENDAR BS-->
     <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
 
@@ -77,7 +73,7 @@
         }
 
         #header {
-            margin-top: 10%;
+            margin-top: -2%;
         }
     </style>
 </head>
@@ -88,7 +84,7 @@
         <div class="container-fluid">
             <section class="userprofile">
                 <div class="userheader mb-5">
-                    <h1 id="header" class="text-center"> Appointment History </h1>
+                <img src="/Ohana/src/images/Pages/appoint.png" id="header" class="img-responsive" width="100%">
                 </div>
                 <div class="container">
                     <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
