@@ -11,13 +11,27 @@
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
-        .card {
-            width: 20rem;
-        }
 
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+        #studcard {
+            width: 20rem;
+        }
+        .btn-warning {
+            color: white;
+            background-color: #DB6551;
+            background-image: none;
+            border-color: #db6551;
+            font-size: 16px;
+            --bs-btn-hover-border-color: #c0b65a;
+            --bs-btn-hover-bg: #c0b65a;
+            --bs-btn-hover-color: white;
+            border-radius: 30px;
+            padding: 7px 40px;
+        }
 
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {}
+        @media screen and (min-width: 360px) and (max-width: 429px) {
+
+        }
     </style>
 </head>
 
@@ -43,17 +57,17 @@
                     if (empty($profiles)) {
                     ?>
                         <div class="service mb-4">
-                            <h1 class="text-center fs-1 mt-5" style="color:#DB6551; font-family: 'Acme', sans-serif; "> There are currently NO AVAILABLE <br><br> french bulldog puppies for stud service</h1>
+                            <h1 class="text-center fs-2 mt-5" style="color:#DB6551; font-family: 'Acme', sans-serif; "> There are currently NO AVAILABLE <br><br> french bulldog puppies for stud service</h1>
                         </div>
                         <form method="GET" action="/stud">
                             <div class="container-md d-flex justify-content-center">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="card mt-4 mb-4">
-                                            <div class="card-body">
+                                            <div class="card-body" id="btngroup">
                                                 <div class="filtering-inline-spacing">
                                                     <div class="btn-group mx-2">
-                                                        <select class="btn rounded-pill text-light dropdown-toggle" style="background-color:#DB6551;" name="trait" required>
+                                                        <select class="btn rounded-pill text-dark dropdown-toggle" style="border-color:#DB6551;" name="trait" required>
                                                             <option value="All" <?php if ($_GET['trait'] == 'All') echo 'selected'; ?>>All</option>
                                                             <option class="text-center" style="color:#DB6551" disabled>Standard</option>
                                                             <option value="Fawn" <?php if ($_GET['trait'] == 'Fawn') echo 'selected'; ?>>Fawn</option>
@@ -79,14 +93,14 @@
                                                         </select>
                                                     </div>
                                                     <div class="btn-group mx-2">
-                                                        <select class="btn rounded-pill text-light dropdown-toggle" style="background-color:#DB6551;" name="sex" required>
+                                                        <select class="btn rounded-pill text-dark dropdown-toggle" style="border-color:#DB6551;" name="sex" required>
                                                             <option value="All" <?php if ($_GET['sex'] == 'All') echo 'selected'; ?>>All</option>
                                                             <option value="MALE" <?php if ($_GET['sex'] == 'MALE') echo 'selected'; ?>>Male</option>
                                                             <option value="FEMALE" <?php if ($_GET['sex'] == 'FEMALE') echo 'selected'; ?>>Female</option>
                                                         </select>
                                                     </div>
                                                     <div class="btn-group mx-2">
-                                                        <button type="submit" class="btn rounded-pill btn-outline-warning"> Search </button>
+                                                        <button type="submit" class="btn rounded-pill btn-warning"> Search </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -103,7 +117,7 @@
                             <div class="container-md d-flex justify-content-center">
                                 <div class="row">
                                     <div class="col-12">
-                                        <div class="card mt-4 mb-4">
+                                        <div class="card mt-4 mb-4" id="studcard">
                                             <div class="card-body">
                                                 <div class="filtering-inline-spacing">
                                                     <div class="btn-group mx-2">
@@ -168,9 +182,6 @@
                             </div>
                         </div>
                     <?php } ?>
-
-
-
                 </section>
             </div>
     </main>

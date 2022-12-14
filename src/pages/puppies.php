@@ -18,9 +18,9 @@
             font-weight: 800;
         }
 
-        .btn-outline-warning {
-            color: #db6551;
-            background-color: transparent;
+        .btn-warning {
+            color: white;
+            background-color: #DB6551;
             background-image: none;
             border-color: #db6551;
             font-size: 16px;
@@ -58,63 +58,62 @@
                     $dao = new PetProfileDAO($servername, $database, $username, $password);
                     $services = new PetProfileServices($dao);
 
-                    if(!isset($_GET['trait'])) $_GET['trait'] = 'All';
-                    if(!isset($_GET['sex'])) $_GET['sex'] = 'All';
+                    if (!isset($_GET['trait'])) $_GET['trait'] = 'All';
+                    if (!isset($_GET['sex'])) $_GET['sex'] = 'All';
 
                     $profiles = $services->filterRehomingPets($_GET['trait'], $_GET['sex']);
 
                     if (is_null($profiles)) {
                     ?>
                         <div class="service mb-4">
-                            <h1 class="text-center fs-1 mt-5" style="color:#DB6551; font-family: 'Acme', sans-serif; "> There are currently NO AVAILABLE <br><br> french bulldog puppies for rehoming</h1>
+                            <h1 class="text-center fs-2 mt-5" style="color:#DB6551; font-family: 'Acme', sans-serif;"> There are currently NO AVAILABLE <br><br> french bulldog puppies for rehoming</h1>
                         </div>
                         <form method="GET" action="/puppies">
                             <div class="container-md d-flex justify-content-center">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="card mt-4 mb-4">
-                                            <div class="card-body">
-                                                <div class="filtering-inline-spacing">
-                                                    <div class="btn-group mx-2">
-                                                        <select class="btn rounded-pill text-light dropdown-toggle" style="background-color:#DB6551;" name="trait" required>
-                                                            <option value="All" <?php if ($_GET['trait'] == 'All') echo 'selected'; ?>>All</option>
-                                                            <option class="text-center" style="color:#DB6551" disabled>Standard</option>
-                                                            <option value="Fawn" <?php if ($_GET['trait'] == 'Fawn') echo 'selected'; ?>>Fawn</option>
-                                                            <option value="Sable" <?php if ($_GET['trait'] == 'Sable') echo 'selected'; ?>>Sable</option>
-                                                            <option value="Brindle" <?php if ($_GET['trait'] == 'Brindle') echo 'selected'; ?>>Brindle</option>
-                                                            <option class="text-center" style="color:#DB6551" disabled>Exotic</option>
-                                                            <option value="Blue" <?php if ($_GET['trait'] == 'Blue') echo 'selected'; ?>>Blue</option>
-                                                            <option value="Chocolate" <?php if ($_GET['trait'] == 'Chocolate') echo 'selected'; ?>>Chocolate</option>
-                                                            <option value="Lilac" <?php if ($_GET['trait'] == 'Lilac') echo 'selected'; ?>>Lilac</option>
-                                                            <option value="Isabella" <?php if ($_GET['trait'] == 'Isabella') echo 'selected'; ?>>Isabella</option>
-                                                            <option value="Newshade Isabella" <?php if ($_GET['trait'] == 'Newshade Isabella') echo 'selected'; ?>>Newshade Isabella</option>
-                                                            <option value="Newshade" <?php if ($_GET['trait'] == 'Newshade') echo 'selected'; ?>>Newshade</option>
-                                                            <option value="Black Tan" <?php if ($_GET['trait'] == 'Black Tan') echo 'selected'; ?>>Black Tan</option>
-                                                            <option value="Blue Tan" <?php if ($_GET['trait'] == 'Blue Tan') echo 'selected'; ?>>Blue Tan</option>
-                                                            <option value="Choco Tan" <?php if ($_GET['trait'] == 'Choco Tan') echo 'selected'; ?>>Choco Tan</option>
-                                                            <option value="Isabella Tan" <?php if ($_GET['trait'] == 'Isabella Tan') echo 'selected'; ?>>Isabella Tan</option>
-                                                            <option value="Newshade Isabella Tan" <?php if ($_GET['trait'] == 'Newshade Isabella Tan') echo 'selected'; ?>>Newshade Isabella Tan</option>
-                                                            <option class="text-center" style="color:#DB6551" disabled>Platinum</option>
-                                                            <option value="Lilac Plat" <?php if ($_GET['trait'] == 'Lilac Plat') echo 'selected'; ?>>Lilac Plat</option>
-                                                            <option value="Champaigne Plat" <?php if ($_GET['trait'] == 'Champaigne Plat') echo 'selected'; ?>>Champaigne Plat</option>
-                                                            <option value="Newshade Plat" <?php if ($_GET['trait'] == 'Newshade Plat') echo 'selected'; ?>>Newshade Plat</option>
-                                                            <option value="Merle" <?php if ($_GET['trait'] == 'Merle') echo 'selected'; ?>>Merle</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="btn-group mx-2">
-                                                        <select class="btn rounded-pill text-light dropdown-toggle" style="background-color:#DB6551;" name="sex" required>
-                                                            <option value="All" <?php if ($_GET['sex'] == 'All') echo 'selected'; ?>>All</option>
-                                                            <option value="MALE" <?php if ($_GET['sex'] == 'MALE') echo 'selected'; ?>>Male</option>
-                                                            <option value="FEMALE" <?php if ($_GET['sex'] == 'FEMALE') echo 'selected'; ?>>Female</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="btn-group mx-2">
-                                                        <button type="submit" class="btn rounded-pill btn-outline-warning"> Search </button>
-                                                    </div>
+                                <div class="row d-flex justify-content-center">
+                                    <div class="card mt-4 mb-4">
+                                        <div class="card-body" >
+                                            <div class="filtering-inline-spacing">
+                                                <div class="btn-group mx-2">
+                                                    <select class="btn rounded-pill text-dark dropdown-toggle" style="border-color:#DB6551;" name="trait" required>
+                                                        <option value="All" <?php if ($_GET['trait'] == 'All') echo 'selected'; ?>>All</option>
+                                                        <option class="text-center" style="color:#DB6551" disabled>Standard</option>
+                                                        <option value="Fawn" <?php if ($_GET['trait'] == 'Fawn') echo 'selected'; ?>>Fawn</option>
+                                                        <option value="Sable" <?php if ($_GET['trait'] == 'Sable') echo 'selected'; ?>>Sable</option>
+                                                        <option value="Brindle" <?php if ($_GET['trait'] == 'Brindle') echo 'selected'; ?>>Brindle</option>
+                                                        <option class="text-center" style="color:#DB6551" disabled>Exotic</option>
+                                                        <option value="Blue" <?php if ($_GET['trait'] == 'Blue') echo 'selected'; ?>>Blue</option>
+                                                        <option value="Chocolate" <?php if ($_GET['trait'] == 'Chocolate') echo 'selected'; ?>>Chocolate</option>
+                                                        <option value="Lilac" <?php if ($_GET['trait'] == 'Lilac') echo 'selected'; ?>>Lilac</option>
+                                                        <option value="Isabella" <?php if ($_GET['trait'] == 'Isabella') echo 'selected'; ?>>Isabella</option>
+                                                        <option value="Newshade Isabella" <?php if ($_GET['trait'] == 'Newshade Isabella') echo 'selected'; ?>>Newshade Isabella</option>
+                                                        <option value="Newshade" <?php if ($_GET['trait'] == 'Newshade') echo 'selected'; ?>>Newshade</option>
+                                                        <option value="Black Tan" <?php if ($_GET['trait'] == 'Black Tan') echo 'selected'; ?>>Black Tan</option>
+                                                        <option value="Blue Tan" <?php if ($_GET['trait'] == 'Blue Tan') echo 'selected'; ?>>Blue Tan</option>
+                                                        <option value="Choco Tan" <?php if ($_GET['trait'] == 'Choco Tan') echo 'selected'; ?>>Choco Tan</option>
+                                                        <option value="Isabella Tan" <?php if ($_GET['trait'] == 'Isabella Tan') echo 'selected'; ?>>Isabella Tan</option>
+                                                        <option value="Newshade Isabella Tan" <?php if ($_GET['trait'] == 'Newshade Isabella Tan') echo 'selected'; ?>>Newshade Isabella Tan</option>
+                                                        <option class="text-center" style="color:#DB6551" disabled>Platinum</option>
+                                                        <option value="Lilac Plat" <?php if ($_GET['trait'] == 'Lilac Plat') echo 'selected'; ?>>Lilac Plat</option>
+                                                        <option value="Champaigne Plat" <?php if ($_GET['trait'] == 'Champaigne Plat') echo 'selected'; ?>>Champaigne Plat</option>
+                                                        <option value="Newshade Plat" <?php if ($_GET['trait'] == 'Newshade Plat') echo 'selected'; ?>>Newshade Plat</option>
+                                                        <option value="Merle" <?php if ($_GET['trait'] == 'Merle') echo 'selected'; ?>>Merle</option>
+                                                    </select>
+                                                </div>
+                                                <div class="btn-group mx-2">
+                                                    <select class="btn rounded-pill text-dark dropdown-toggle" style="border-color:#DB6551;" name="sex" required>
+                                                        <option value="All" <?php if ($_GET['sex'] == 'All') echo 'selected'; ?>>All</option>
+                                                        <option value="MALE" <?php if ($_GET['sex'] == 'MALE') echo 'selected'; ?>>Male</option>
+                                                        <option value="FEMALE" <?php if ($_GET['sex'] == 'FEMALE') echo 'selected'; ?>>Female</option>
+                                                    </select>
+                                                </div>
+                                                <div class="btn-group mx-2">
+                                                    <button type="submit" class="btn rounded-pill btn-warning"> Search </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </form>
