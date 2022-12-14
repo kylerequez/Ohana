@@ -87,7 +87,9 @@
                     <div class="mb-3 row">
                       <label for="inputTrait" class="col-sm-2 col-form-label" style="color:#7d6056">Trait:</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="trait" name="trait">
+                        <select class="form-control" id="trait" name="trait" required>
+                          <option class="text-center" style="color:#DB6551" disabled>Standard</option>
+                        </select>
                       </div>
                     </div>
                   </div>

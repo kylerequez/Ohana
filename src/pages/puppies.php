@@ -18,6 +18,13 @@
             font-weight: 800;
         }
 
+        #puppycard {
+            width: 20rem;
+            border-style: solid;
+            border-color: #eed1c2;
+            border-width: 2px;
+        }
+
         .btn-warning {
             color: white;
             background-color: #DB6551;
@@ -174,7 +181,7 @@
                         <div class="container-fluid d-flex justify-content-center">
                             <div class="row  d-flex justify-content-center">
                                 <?php foreach ($profiles as $profile) { ?>
-                                    <div class="card m-3 text-center" style="width: 20rem;">
+                                    <div class="card m-3 text-center" id="puppycard">
                                         <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image" width="250px" height="250px;" style="margin-top:10px;">
                                         <div class="card-body">
                                             <h5 class="card-title fs-2 fw-bold" style="font-family: 'Acme', sans-serif;"> <?php echo $profile->getName(); ?></h5>

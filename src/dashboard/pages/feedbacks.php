@@ -101,6 +101,7 @@
             <thead>
               <tr class="users-table-info">
                 <th>FEEDBACK I.D </th>
+                <th>RATING</th>
                 <th>NAME OF USER</th>
                 <th>DATE</th>
                 <th>ACTION</th>
@@ -109,9 +110,8 @@
             <tbody>
               <tr>
                 <td>I.D NUMBER 12345</td>
-                <td>
-                  <div class="pages-table-img">Jenny Wilson</div>
-                </td>
+                <td>SATISFACTORY</td>
+                <td>EDWIN DE GUZMAN</td>
                 <td>17.04.2021</td>
                 <td>
                   <button class="view-btn transparent-btn fs-4" data-bs-toggle="modal" data-bs-target="#viewModal" type="view" style="color:#7d605c; margin-right: 15px;"> <i class="uil uil-eye"></i> </button>
@@ -128,6 +128,10 @@
                         <div class="mb-3">
                         <label for="date" class="col-form-label">Date:</label>
                           <input type="text" class="form-control" id="date" disabled>
+                        </div>
+                        <div class="mb-3">
+                          <label for="rating" class="col-form-label">Rating:</label>
+                          <input type="text" class="form-control" id="rating" disabled>
                         </div>
                         <div class="mb-3">
                           <label for="recipient-name" class="col-form-label">Customer Name:</label>

@@ -16,10 +16,10 @@
         }
 
         #pupcard {
-            max-width: 60vw;
-            max-height: 60vh;
+            max-width: 55vw;
+            max-height: 50vh;
             border-style: solid;
-            border-color: #c0b65a;
+            border-color: #eed1c2;
             border-width: 5px;
         }
 
@@ -44,6 +44,11 @@
         .img-fluid {
             height: 500px;
             width: 100%;
+        }
+
+        b {
+            font-family: 'Acme', sans-serif;
+            color: #7d6056;
         }
 
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
@@ -124,13 +129,13 @@
                             <div class="card-body p-md-5 text-black">
                                 <p class="text-center fs-1" id="pupname"><b> <?php echo $profile->getName(); ?> </b></p>
                                 <div class="card-body">
-                                    <p class="card-text"> <b>BIRTHDAY:</b> <?php echo $profile->getBirthdate()->format('M-d-Y'); ?> </p>
-                                    <p class="card-text"> <b>COLOR:</b> <?php echo $profile->getColor(); ?> </p>
-                                    <p class="card-text"> <b>GENDER:</b> <?php echo $profile->getSex(); ?> </p>
-                                    <p class="card-text"> <b>GENES:</b> <?php echo $profile->getTrait(); ?> </p>
-                                    <p class="card-text"> <b>PCCI PAPERS:</b> <?php echo ($profile->getPcciStatus() == 'REGISTERED') ? 'Registered' : 'Pending'; ?></p>
-                                    <p class="card-text"> <b>VACCINE:</b> <?php echo ($profile->getIsVaccinated() == '1') ? 'Vaccinated' : 'Not Vaccinated'; ?></p>
-                                    <p class="card-text"> <b>PRICE:</b> ₱ <?php echo number_format($profile->getPrice(), 2); ?></p>
+                                    <p class="card-text"> <b class="ms-2">BIRTHDAY:</b> <?php echo $profile->getBirthdate()->format('M-d-Y'); ?> </p>
+                                    <p class="card-text"> <b class="ms-2">COLOR:</b> <?php echo $profile->getColor(); ?> </p>
+                                    <p class="card-text"> <b class="ms-2">GENDER:</b> <?php echo $profile->getSex(); ?> </p>
+                                    <p class="card-text"> <b class="ms-2">GENES:</b> <?php echo $profile->getTrait(); ?> </p>
+                                    <p class="card-text"> <b class="ms-2">PCCI PAPERS:</b> <?php echo ($profile->getPcciStatus() == 'REGISTERED') ? 'Registered' : 'Pending'; ?></p>
+                                    <p class="card-text"> <b class="ms-2">VACCINE:</b> <?php echo ($profile->getIsVaccinated() == '1') ? 'Vaccinated' : 'Not Vaccinated'; ?></p>
+                                    <p class="card-text"> <b class="ms-2">PRICE:</b> ₱ <?php echo number_format($profile->getPrice(), 2); ?></p>
                                     <p class="card-text fw-bold mt-3"> - All french bulldog puppies are fully vaccinated before release.</p>
                                     <p class="card-text fw-bold"> Note: Message us on social media for more pictures. </p>
                                 </div>

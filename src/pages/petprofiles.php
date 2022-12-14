@@ -22,7 +22,7 @@
         }
 
         #ohanafooter {
-            margin-top: 10%;
+            margin-top: 8%;
         }
 
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
@@ -136,7 +136,7 @@
         </section>
         </div>
     </main>
-    <div id="ohanafooter" class="fixed-bottom">
+    <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">

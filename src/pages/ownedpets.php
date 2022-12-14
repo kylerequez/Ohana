@@ -20,8 +20,8 @@
       max-width: 65 vw;
       max-height: 80vh;
       border-style: solid;
-      border-color: #c0b65a;
-      border-width: 5px;
+      border-color: #eed1c2;
+      border-width: 4px;
     }
 
     #picture {
@@ -179,7 +179,7 @@
                           </div>
                         </div>
                         <div class="mb-3 row">
-                          <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056;font-family: 'Acme', sans-serif;">Trait:</label>
+                          <label for="inputTrait" class="col-sm-2 col-form-label" style="color:#7d6056;font-family: 'Acme', sans-serif;">Trait:</label>
                           <div class="col-sm-10">
                             <select class="form-control" name="trait" required>
                               <option class="text-center" style="color:#DB6551" disabled>Standard</option>

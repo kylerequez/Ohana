@@ -156,53 +156,11 @@
                 </section>
             </div>
         </div>
-        <!-- <form action="ty.html">
-            <div class="popup">
-                <h2 id="tell">Tell us about your experience!</h2>
-                <p>Your Rating</p>
-                <div id="full-stars-example-two">
-                    <div class="rating-group">
-                        <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio" />
-                        <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                        <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio" />
-                        <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                        <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio" />
-                        <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                        <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio" />
-                        <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                        <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio" />
-                        <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                        <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio" />
-                    </div>
-                </div>
-                <h2 id="comment">Comments and suggestion</h2>
-                <textarea id="feedback" name="" rows="4" cols="50"></textarea>
-                <div class="d-grid gap-2 d-flex justify-content-end">
-                    <button class="btn" style="background-color: #c0b65a; color: #ffffff" type="button">
-                        Cancel
-                    </button>
-                    <button class="btn" style="background-color: #c0b65a; color: #ffffff" type="submit">
-                        Submit
-                    </button>
-                </div>
-            </div>
-        </form> -->
     </main>
     <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-    <!-- <script type="text/javascript">
-        window.addEventListener("load", function() {
-            setTimeout(function open(event) {
-                document.querySelector(".popup").style.display = "block";   
-            }, 2000);
-        });
-        document
-            .querySelector("#close")
-            .addEventListener("click", function() {
-                document.querySelector(".popup").style.display = "none";
-            });
-    </script> -->
+   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 </body>

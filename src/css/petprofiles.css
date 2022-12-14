@@ -25,7 +25,7 @@ section {
   font-weight: 800;
 }
 #profilecard {
-  --c: #8A9B0F; /* the border color */
+  --c: #db6551; /* the border color */
   --b: 10px;    /* the border thickness*/
   --g: 5px;     /* the gap on hover */
   

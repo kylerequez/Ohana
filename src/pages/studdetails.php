@@ -11,9 +11,20 @@
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
         .card-img-overlay {
             width: 100%;
             height: 70vh;
+        }
+
+        #pupcard {
+            max-width: 55vw;
+            max-height: 50vh;
+            border-style: solid;
+            border-color: #eed1c2;
+            border-width: 5px;
+            margin-top: 15%;
         }
 
         #editcard {
@@ -26,9 +37,16 @@
             border-width: 5px;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+        b {
+            font-family: 'Acme', sans-serif;
+            color: #7d6056;
+        }
 
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {
+        #ohanafooter {
+            margin-top: 7%;
+        }
+
+        @media screen and (min-width: 360px) and (max-width: 429px) {
             .card-img-overlay {
                 width: 100%;
                 height: 30vh;
@@ -80,69 +98,29 @@
         <?php include_once 'rnavbar.php'; ?>
         <div class="container-fluid">
             <div class="container h-90">
-                <div class="card mx-auto" id="editcard">
+                <div class="card mx-auto" id="pupcard">
                     <div class="row g-0">
                         <div class="col-md-6 d-none d-md-block">
                             <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="img-fluid p-5" id="picture" />
                         </div>
                         <div class="col-md-6">
                             <div class="card-body p-md-5 text-black">
-                                <p class="text-center fs-2 fw-bold mb-3" id="paragraph"><b><?php echo $profile->getName(); ?></b></p>
-
-                                <div class="row">
-                                    <div class="mb-3 row ">
-                                        <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056;font-family: 'Acme', sans-serif;">Birthday: </label>
-                                        <div class="col-sm-10">
-                                            <p class="card-text"> <?php echo $profile->getBirthdate()->format('M-d-Y'); ?></p>
-                                        </div>
-                                    </div>
+                                <p class="text-center fs-1"><b> <?php echo $profile->getName(); ?> </b></p>
+                                <div class="card-body">
+                                    <p class="card-text"> <b class="ms-2">BIRTHDAY:</b> <?php echo $profile->getBirthdate()->format('M-d-Y'); ?> </p>
+                                    <p class="card-text"> <b class="ms-2">COLOR:</b> <?php echo $profile->getColor(); ?> </p>
+                                    <p class="card-text"> <b class="ms-2">GENDER:</b> <?php echo $profile->getSex(); ?> </p>
+                                    <p class="card-text"> <b class="ms-2">GENES:</b> <?php echo $profile->getTrait(); ?> </p>
+                                    <p class="card-text"> <b class="ms-2">PCCI PAPERS:</b> <?php echo ($profile->getPcciStatus() == 'REGISTERED') ? 'Registered' : 'Pending'; ?></p>
+                                    <p class="card-text"> <b class="ms-2">SUCCESS RATE:</b> <?php //echo $profile->getSuccessRate(); 
+                                                                                            ?></p>
+                                    <p class="card-text fw-bold mt-3"> Our Adult Frenchies are fully vaccinated.</p>
+                                    <p class="card-text fw-bold"> Note: Message us on social media for more pictures. </p>
                                 </div>
-                                <div class="row">
-                                    <div class="mb-3 row">
-                                        <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056;font-family: 'Acme', sans-serif;">Color:</label>
-                                        <div class="col-sm-10">
-                                            <p><?php echo $profile->getColor(); ?></p>
-                                        </div>
-                                    </div>
+                                <div class="buttons mt-5">
+                                    <a href="/stud"><button class="btn btn-outline-dark" style="margin-left:5%"> Go Back</button></a>
+                                    <a href="/select-stud-dog?id=<?php echo $profile->getId(); ?>"><button type="button" class="btn text-white" style="margin-left:5%; background-color:#c0b65a; ">Book as Stud</button></a>
                                 </div>
-                                <div class="row">
-                                    <div class="mb-3 row">
-                                        <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056;font-family: 'Acme', sans-serif;">Trait:</label>
-                                        <div class="col-sm-10">
-                                            <p> <?php echo $profile->getTrait(); ?> </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="mb-3 row ">
-                                        <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056;font-family: 'Acme', sans-serif;">Sex: </label>
-                                        <div class="col-sm-10">
-                                            <p><?php echo $profile->getSex(); ?> </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="mb-3 row ">
-                                        <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056;font-family: 'Acme', sans-serif;">PCCI: </label>
-                                        <div class="col-sm-10">
-                                            <p><?php echo ($profile->getPcciStatus() == "REGISTERED") ? "Registered" : "Pending"; ?> </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="mb-3 row ">
-                                        <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056;font-family: 'Acme', sans-serif;">Success Rate: </label>
-                                        <div class="col-sm-10">
-                                            <?php //echo $profile->getSuccessRate(); 
-                                            ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="card-text fw-bold mt-3"> <b>NOTE: Our Adult Frenchies are fully vaccinated. </b></p>
-                            </div>
-                            <div class="buttons mb-5">
-                                <a href="/stud"><button class="btn btn-outline-dark" style="margin-left:5%"> Go Back</button></a>
-                                <a href="/select-stud-dog?id=<?php echo $profile->getId(); ?>"><button type="button" class="btn text-white" style="margin-left:5%; background-color:#c0b65a; ">Book as Stud</button></a>
                             </div>
                         </div>
                     </div>

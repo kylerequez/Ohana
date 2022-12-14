@@ -15,6 +15,9 @@
 
         #studcard {
             width: 20rem;
+            border-style: solid;
+            border-color: #eed1c2;
+            border-width: 2px;
         }
 
         .btn-warning {
@@ -150,7 +153,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="btn-group mx-2">
-                                                        <select class="btn rounded-pill text-light dropdown-toggle" style="background-color:#DB6551;" name="sex" required>
+                                                        <select class="btn rounded-pill text-dark dropdown-toggle" style="border-color:#DB6551;" name="sex" required>
                                                             <option value="All" <?php if ($_GET['sex'] == 'All') echo 'selected'; ?>>All</option>
                                                             <option value="MALE" <?php if ($_GET['sex'] == 'MALE') echo 'selected'; ?>>Male</option>
                                                             <option value="FEMALE" <?php if ($_GET['sex'] == 'FEMALE') echo 'selected'; ?>>Female</option>

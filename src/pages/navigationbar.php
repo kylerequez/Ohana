@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html>
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Navigation Bar</title>
-    <link rel="stylesheet" type="text/css" href="css/navigationbar.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+
     <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
         * {
             padding: 0;
             margin: 0;
@@ -27,6 +18,20 @@
             --main-color: #db6551;
         }
 
+        /* custom scroll bar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #db6551;
+        }
+
+        /* END OF CUSTOM SCROLLBAR */
         header {
             position: fixed;
             width: 100%;
@@ -36,9 +41,19 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: transparent;
-            padding: 28px 12%;
+            padding: 20px 12%;
             transition: all .50s ease;
+            border-bottom: 2px solid #db6551;
+            background-color:floralwhite;
+        }
+
+        #user-name {
+            font-family: "DM Sans", sans-serif;
+            font-weight: bold;
+            margin-top: -1px;
+            margin-left: -25px;
+            font-size: 18px;
+            color: #2f1f18;
         }
 
         .logo {
@@ -74,6 +89,8 @@
             padding: 5px 0;
             margin: 0px 30px;
             transition: all .50s ease;
+            font-family: "DM Sans", sans-serif;
+            font-weight: bold;
         }
 
         .navbar a:hover {
@@ -139,6 +156,100 @@
             cursor: pointer;
         }
 
+        /* ######################## USER DROPDOWN IMPROVISE = RESIZE BOX AND FONTS #########################*/
+        .action {
+            position: relative;
+        }
+
+        .action .profile {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .action .profile img {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .action .menu {
+            position: absolute;
+            top: 120px;
+            padding: 10px 20px;
+            background: white;
+            width: 320px;
+            box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            transition: 0.2s;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .action .menu.active {
+            top: 80px;
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .action .menu::before {
+            content: "";
+            position: relative;
+            top: -5px;
+            right: 28px;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            transform: rotate(45deg);
+        }
+
+        .action .menu h3 {
+            width: 100%;
+            font-size: 20px;
+            padding: 20px 0;
+            font-weight: 500;
+            color: black;
+            line-height: 1.5em;
+            text-align: center;
+        }
+
+        .action .menu ul li {
+            list-style: none;
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .action .menu ul li img {
+            max-width: 20px;
+            margin-left: 20px !important;
+            opacity: 0.5;
+            transition: 0.5s;
+        }
+
+        .action .menu ul li:hover img {
+            opacity: 1;
+        }
+
+        .action .menu ul li a {
+            display: inline-block;
+            text-decoration: none;
+            color: #000000;
+            font-size: 16px;
+            transition: 0.5s;
+        }
+
+        .action .menu ul li:hover a {
+            color: #db6551;
+        }
+
+
         @media (max-width: 1280px) {
             header {
                 padding: 14px 2%;
@@ -149,6 +260,11 @@
                 padding: 5px 0;
                 margin: 0px 20px;
             }
+
+            .action .menu {
+                right: -5px;
+            }
+
         }
 
         @media (max-width: 1090px) {
@@ -161,8 +277,8 @@
                 top: 100%;
                 right: -100%;
                 width: 270px;
-                height: 40vh;
-                background: var(--main-color);
+                height: 30vh;
+                background: #faf8f0;
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
@@ -193,105 +309,117 @@
         }
     </style>
 </head>
+<?php
+include_once dirname(__DIR__) . '/config/app-config.php';
+if (!isset($_SESSION['user'])) {
+    session_unset();
+    session_destroy();
+?>
+    <script>
+        window.location = 'http://<?php echo DOMAIN_NAME; ?>/login';
+    </script>
+<?php
+} else {
+    include_once dirname(__DIR__) . '/models/Account.php';
+    $user = unserialize($_SESSION['user']);
+}
+?>
+<header>
+    <a href="/home" class="logo">
+        <img src="/Ohana/src/images/Landing/navlogo.png" class="img-fluid" id="navlogo">
+    </a>
+    <ul class="navbar">
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/home">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/services">Services</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/pawcart"> Paw Cart <i class="uil uil-shopping-bag"></i></a>
+        </li>
+        <li class="nav-item">
 
-<body>
-    <header>
-
-        <a href="/" class="logo">
-            <img src="../images/Landing/navlogo.png" class="img-fluid" id="navlogo">
-        </a>
-        <ul class="navbar">
-            <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/home">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/services">Services</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/contact">Contact</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/pawcart"> Paw Cart <i class="uil uil-shopping-bag"></i></a>
-            </li>
-            <li class="nav-item">
-                <div class="action" style="margin-right:25px;">
-                    <div class="profile" onclick="menuToggle();">
-                        <img src="/Ohana/src/images/icons/customer.png" id="customerprofile">
-                    </div>
-                    <div class="menu">
-                        <h3 class="text-center mt-3 font-weight-bold"><?php echo $user->getFullName(); ?></h3>
-                        <ul>
-                            <?php
-                            if ($user->getType() != 'USER') {
-                            ?>
-                                <li>
-                                    <img src="/Ohana/src/images/icons/dashboard.png" /><a href="/dashboard/home" target="_blank"><span class="icon home" aria-hidden="true">
-                                            Admin Dashboard
-                                    </a>
-                                </li>
-                            <?php } ?>
-                            <li>
-                                <img src="/Ohana/src/images/icons/pencil.png" /><a href="/userprofile">My profile</a>
-                            </li>
-                            <li>
-                                <img src="/Ohana/src/images/icons/doggy.png" /><a href="/ownedpets">Pet profile</a>
-                            </li>
-                            <li>
-                                <img src="/Ohana/src/images/icons/file.png" /><a href="/transactions">Transactions</a>
-                            </li>
-                            <li>
-                                <img src="/Ohana/src/images/icons/calendar.png" /><a href="/appointments">Appointment</a>
-                            </li>
-                            <li>
-                                <img src="/Ohana/src/images/icons/log-out.png" />
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
-                            </li>
-                        </ul>
-                    </div>
-            </li>
-        </ul>
-        <div class="main">
-            <a class="btnLogin" href="/login" name="btnLogin" id="login-btn"> Login </a>
-            <div class="bx bx-menu" id="menu-icon"></div>
+        </li>
+    </ul>
+    <div class="main">
+        <div class="action" style="margin-right:25px;">
+            <div class="profile" onclick="menuToggle();">
+                <img src="/Ohana/src/images/icons/customer.png" id="customerprofile">
+            </div>
+            <div class="menu">
+                <h3 class="text-center mt-3 font-weight-bold"><?php echo $user->getFullName(); ?></h3>
+                <ul>
+                    <?php
+                    if ($user->getType() != 'USER') {
+                    ?>
+                        <li>
+                            <img src="/Ohana/src/images/icons/dashboard.png" /><a href="/dashboard/home" target="_blank"><span class="icon home" aria-hidden="true">
+                                    Admin Dashboard
+                            </a>
+                        </li>
+                    <?php } ?>
+                    <li>
+                        <img src="/Ohana/src/images/icons/pencil.png" /><a href="/userprofile">My profile</a>
+                    </li>
+                    <li>
+                        <img src="/Ohana/src/images/icons/doggy.png" /><a href="/ownedpets">Pet profile</a>
+                    </li>
+                    <li>
+                        <img src="/Ohana/src/images/icons/file.png" /><a href="/transactions">Transactions</a>
+                    </li>
+                    <li>
+                        <img src="/Ohana/src/images/icons/calendar.png" /><a href="/appointments">Appointment</a>
+                    </li>
+                    <li>
+                        <img src="/Ohana/src/images/icons/log-out.png" />
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </header>
-    <form method="POST" action="/accounts/logout">
-        <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModal" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="logoutTitle"> Do you want to logout? </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-left: 55%;"></button>
-                    </div>
-                    <div class="modal-body">
-                        All the unsaved changes will be lost. Are you sure you would like to log-out?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" name="btnLogout" class="btn btn-danger"> Logout </button>
-                    </div>
+        <p id="user-name"> Hi! <?php echo $user->getFName(); ?> </p>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </div>
+</header>
+<form method="POST" action="/accounts/logout">
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutTitle"> Do you want to logout? </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-left: 55%;"></button>
+                </div>
+                <div class="modal-body">
+                    All the unsaved changes will be lost. Are you sure you would like to log-out?
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" name="btnLogout" class="btn btn-danger"> Logout </button>
                 </div>
             </div>
         </div>
-    </form>
-    <script>
-        let menu = document.querySelector('#menu-icon');
-        let navbar = document.querySelector('.navbar');
+    </div>
+</form>
 
-        menu.onclick = () => {
-            menu.classList.toggle('bx-x');
-            navbar.classList.toggle('open');
-        }
-    </script>
+<script>
+    let menu = document.querySelector('#menu-icon');
+    let navbar = document.querySelector('.navbar');
 
-    <script>
-        function menuToggle() {
-            const toggleMenu = document.querySelector(".menu");
-            toggleMenu.classList.toggle("active");
-        }
-    </script>
-</body>
+    menu.onclick = () => {
+        menu.classList.toggle('bx-x');
+        navbar.classList.toggle('open');
+    }
+</script>
 
-</html>
+<script>
+    function menuToggle() {
+        const toggleMenu = document.querySelector(".menu");
+        toggleMenu.classList.toggle("active");
+    }
+</script>

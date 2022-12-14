@@ -9,15 +9,23 @@
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
     <link rel="stylesheet" href="/Ohana/src/css/home.css">
-    <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
+    <!-- <link rel="stylesheet" href="/Ohana/src/css/navbar.css"> -->
     <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
     <?php include_once 'stylesheets.php'; ?>
+
+    <style>
+        #pupcard {
+            width: 15rem;
+            background-color: #c0b65a;
+            opacity: 90%;
+        }
+    </style>
 </head>
 
 <body style="background-color: #faf8f0">
     <main>
         <div class="container-fluid">
-            <?php include_once 'rnavbar.php'; ?>
+            <?php include_once 'navigationbar.php'; ?>
             <div class="message">
                 <h1 class="text-center" id="welcome"> WELCOME TO OHANA!</h1>
             </div>
@@ -126,10 +134,10 @@
                             <?php foreach ($profiles as $profile) { ?>
                                 <div class="col m-3">
                                     <a href="/puppies" style="text-decoration: none;">
-                                        <div class="card rounded" style="width: 15rem;background-color:#c0b65a" id="pupcard">
-                                            <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName() . " Image"; ?>">
+                                        <div class="card rounded" id="pupcard">
+                                            <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top p-2" width="250px" height="250px;" alt="<?php echo $profile->getName() . " Image"; ?>">
                                             <div class="card-body">
-                                                <h5 class="card-title mb-3 text-center" style="color:white"> <?php echo $profile->getName(); ?> </h5>
+                                                <h5 class="card-title mb-3 text-center fs-4" style="color:white;font-family: 'Acme', sans-serif;"> <?php echo $profile->getName(); ?> </h5>
                                                 <div class="btn-Learn" name="btn-Learn">
                                                     <center><a href="/puppies"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
                                                 </div>
