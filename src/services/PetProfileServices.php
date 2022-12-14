@@ -73,9 +73,9 @@ class PetProfileServices
         $image = $data["image"];
 
         $reference = uniqid();
-        $name = strtoupper($data["name"]);
+        $name = trim($data["name"]);
         $type = strtoupper($data["type"]);
-        $trait = strtoupper($data["trait"]);
+        $trait = trim($data["trait"]);
         $birthdate = DateTime::createFromFormat("Y-m-d", $data["birthdate"]);
         $sex = strtoupper($data["sex"]);
         $color = strtoupper($data["color"]);
@@ -105,9 +105,9 @@ class PetProfileServices
 
         $image = $data["image"];
         $reference = $data['reference'];
-        $name = strtoupper($data["name"]);
+        $name = trim($data["name"]);
         $type = strtoupper($data["type"]);
-        $trait = strtoupper($data["trait"]);
+        $trait = trim($data["trait"]);
         $birthdate = DateTime::createFromFormat("Y-m-d", $data["birthdate"]);
         $sex = strtoupper($data["sex"]);
         $color = strtoupper($data["color"]);

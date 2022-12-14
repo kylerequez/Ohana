@@ -207,7 +207,7 @@
                                 <div class="mb-3">
                                   <label for="ownerName" class="col-form-label"> OWNER NAME: </label>
                                   <input type="hidden" name="accountId" value="<?php echo $profile->getAccountId(); ?>">
-                                  <input type="disabled" class="form-control" name="ownerName" value="<?php echo $profile->getOwnerName(); ?>" disabled>
+                                  <input type="text" class="form-control" name="ownerName" value="<?php echo $profile->getOwnerName(); ?>" readonly="readonly">
                                 </div>
                                 <div class="mb-3">
                                   <label for="price" class="col-form-label"> PRICE: </label>
