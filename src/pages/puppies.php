@@ -72,7 +72,7 @@
                             <div class="container-md d-flex justify-content-center">
                                 <div class="row d-flex justify-content-center">
                                     <div class="card mt-4 mb-4">
-                                        <div class="card-body" >
+                                        <div class="card-body">
                                             <div class="filtering-inline-spacing">
                                                 <div class="btn-group mx-2">
                                                     <select class="btn rounded-pill text-dark dropdown-toggle" style="border-color:#DB6551;" name="trait" required>
