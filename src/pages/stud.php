@@ -11,11 +11,12 @@
     <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
-
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
         #studcard {
             width: 20rem;
         }
+
         .btn-warning {
             color: white;
             background-color: #DB6551;
@@ -29,9 +30,11 @@
             padding: 7px 40px;
         }
 
-        @media screen and (min-width: 360px) and (max-width: 429px) {
-
+        #ohanafooter {
+            margin-top: 10%;
         }
+
+        @media screen and (min-width: 360px) and (max-width: 429px) {}
     </style>
 </head>
 
@@ -117,11 +120,11 @@
                             <div class="container-md d-flex justify-content-center">
                                 <div class="row">
                                     <div class="col-12">
-                                        <div class="card mt-4 mb-4" id="studcard">
+                                        <div class="card mt-4 mb-4">
                                             <div class="card-body">
                                                 <div class="filtering-inline-spacing">
                                                     <div class="btn-group mx-2">
-                                                        <select class="btn rounded-pill text-light dropdown-toggle" style="background-color:#DB6551;" name="trait" required>
+                                                        <select class="btn rounded-pill text-dark dropdown-toggle" style="border-color:#DB6551;" name="trait" required>
                                                             <option value="All" <?php if ($_GET['trait'] == 'All') echo 'selected'; ?>>All</option>
                                                             <option class="text-center" style="color:#DB6551" disabled>Standard</option>
                                                             <option value="Fawn" <?php if ($_GET['trait'] == 'Fawn') echo 'selected'; ?>>Fawn</option>
@@ -154,7 +157,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="btn-group mx-2">
-                                                        <button type="submit" class="btn rounded-pill btn-outline-warning"> Search </button>
+                                                        <button type="submit" class="btn rounded-pill btn-warning"> Search </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -166,7 +169,7 @@
                         <div class="container-fluid d-flex justify-content-center">
                             <div class="row  d-flex justify-content-center">
                                 <?php foreach ($profiles as $profile) { ?>
-                                    <div class="card m-3 text-center" style="width: 20rem;">
+                                    <div class="card m-3 text-center" id="studcard">
                                         <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image" width="250px" height="250px;" style="margin-top:10px;">
                                         <div class="card-body">
                                             <h5 class="card-title fs-2 fw-bold" style="font-family: 'Acme', sans-serif;"> <?php echo $profile->getName(); ?></h5>
@@ -185,7 +188,7 @@
                 </section>
             </div>
     </main>
-    <div id="ohanafooter">
+    <div id="ohanafooter" class="fixed-bottom">
         <?php include_once 'footer.php'; ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
