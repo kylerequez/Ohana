@@ -14,22 +14,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <link rel="stylesheet" href="/Ohana/src/dashboard/css/adminpages.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-    }
-
-    .chartMenu {
-      height: 40px;
-      color: rgba(255, 26, 104, 1);
-    }
-
-    .chartMenu p {
-      padding: 10px;
-      font-size: 20px;
-    }
-
     .chartCard {
       height: calc(60vh - 40px);
       display: flex;
@@ -61,8 +45,66 @@
       padding: 10px 30px;
       cursor: pointer;
     }
-    
   </style>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {
+      'packages': ['corechart']
+    });
+
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Gender', 'Number'],
+        <?php
+        foreach ($result as $row) {
+          echo "['" . $row["gender"] . "', " . $row["number"] . "],";
+        }
+        ?>
+      ]);
+
+      var options = {
+        title: 'Monthly Transactions of Ohana',
+        pieHole: 0.4,
+        chartArea: {
+          left: 100,
+          top: 70,
+          width: '100%',
+          height: '80%'
+        }
+      };
+      var chart_area = document.getElementById('piechart');
+      var chart = new google.visualization.PieChart(chart_area);
+
+      google.visualization.events.addListener(chart, 'ready', function() {
+        chart_area.innerHTML = '<img src="' + chart.getImageURI() + '" class="img-responsive">';
+      });
+      chart.draw(data, options);
+
+      var options = {
+        title: 'Monthly Sales',
+        pieHole: 0.4,
+        chartArea: {
+          left: 100,
+          top: 70,
+          width: '100%',
+          height: '80%'
+        }
+      };
+      var chart_area = document.getElementById('barchart');
+      var chart = new google.visualization.BarChart(chart_area);
+
+      google.visualization.events.addListener(chart, 'ready', function() {
+        chart_area.innerHTML = '<img src="' + chart.getImageURI() + '" class="img-responsive">';
+      });
+      chart.draw(data, options);
+
+    }
+  </script>
 </head>
 
 <body>
@@ -79,144 +121,16 @@
           </div>
           <div class="container d-flex justify-content-center" id="chartcontainer">
             <div class="chartCard ">
-              <div class="chartBox">
-                <canvas id="myChart"></canvas>
-              </div>
-              <div class="chartBox mx-3">
-                <canvas id="myChartLine"></canvas>
-              </div>
-              <div class="chartBox">
-                <canvas id="myChartDoughnut"></canvas>
-              </div>
+              <div id="piechart" style="max-width:200px; height: 200px; "></div>
+              <div id="barchart" style="max-width:200px; height: 200px; "></div>
             </div>
           </div>
-          <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-          <script>
-            // BAR CHART
-            const data = {
-              labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-              datasets: [{
-                label: 'Monthly Sales',
-                data: [18, 12, 6, 9, 12, 3, 9],
-                backgroundColor: [
-                  'rgba(255, 26, 104, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)',
-                  'rgba(0, 0, 0, 0.2)'
-                ],
-                borderColor: [
-                  'rgba(255, 26, 104, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)',
-                  'rgba(0, 0, 0, 1)'
-                ],
-                borderWidth: 1
-              }]
-            };
-            // config 
-            const config = {
-              type: 'bar',
-              data,
-              options: {
-                aspectRatio: 1, //changes aspect ratio of chart
-                scales: {
-                  y: {
-                    beginAtZero: true
-                  }
-                }
-              }
-            };
-            // render init block
-            const myChart = new Chart(
-              document.getElementById('myChart'),
-              config
-            );
-            // -------------------------- LINE CHART ------------------- //
-            // setup 
-            const dataLine = {
-              labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-              datasets: [{
-                label: 'Monthly Transactions',
-                data: [18, 12, 6, 9, 12, 3, 9],
-                backgroundColor: [
-                  'rgba(0, 0, 0, 0.2)'
-                ],
-                borderColor: [
-                  'rgba(0, 0, 0, 1)'
-                ],
-                borderWidth: 1
-              }]
-            };
-            // configuration of the graph  
-            const configLine = {
-              type: 'line', //CHANGE TYPE OF GRAPH 
-              data: dataLine, //always refer to constant data line
-              options: {
-                aspectRatio: 1, //changes aspect ratio of chart
-                scales: {
-                  y: {
-                    beginAtZero: true
-                  }
-                }
-              }
-            };
-            // render init block
-            const myChartLine = new Chart(
-              document.getElementById('myChartLine'),
-              configLine //shorthand refer to constant config line line 174
-            );
-            //DOUGNUT CHART
-            // setup 
-            const dataDoughnut = {
-              labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-              datasets: [{
-                label: 'Dougnut',
-                data: [18, 12, 6, 9, 12, 3, 9],
-                backgroundColor: [
-                  'rgba(255, 26, 104, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)',
-                  'rgba(0, 0, 0, 0.2)'
-                ],
-                borderColor: [
-                  'rgba(255, 26, 104, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)',
-                  'rgba(0, 0, 0, 1)'
-                ],
-                borderWidth: 1
-              }]
-            };
-            // config 
-            const configDoughnut = {
-              type: 'doughnut', //type of chart
-              data: dataDoughnut, //there are no scales in a doughnut chart
-              options: {}
-            };
-            // render init block
-            const myChartDoughnut = new Chart(
-              document.getElementById('myChartDoughnut'),
-              configDoughnut
-            );
-          </script>
         </div>
       </main>
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
     </div>
   </div>
-  <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
+  
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
   <script src="/Ohana/src/dashboard/js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">

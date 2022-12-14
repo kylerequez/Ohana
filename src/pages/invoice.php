@@ -23,6 +23,12 @@
             border-radius: 30px;
             padding: 10px 40px;
         }
+        #cartheader {
+            margin-top: 0%;
+        }
+        #tq {
+            margin-top: -2%;
+        }
 
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
             #thank-you {
@@ -30,7 +36,7 @@
             }
 
             #tq {
-                margin-top: 45%;
+                margin-top: 5%;
             }
 
             .row p {
@@ -74,20 +80,18 @@
             </script>
         <?php } ?>
         <div class="container-fluid">
+            <img src="/Ohana/src/images/Pages/invoice.png" id="cartheader" class="img-responsive" width="100%">
             <div class="container">
                 <section class="h-6 h-custom" id="tq">
-                    <div class="service">
-                        <h1 class="text-center" id="thank-you"> THANK YOU FOR TRUSTING OHANA </h1>
-                    </div>
                     <div class="container py-5 h-100">
                         <div class="row d-flex justify-content-center align-items-center h-100">
                             <div class="col-lg-8 col-xl-6">
                                 <div class="card border-top border-bottom border-3" style="border-color: #db6551 !important;">
                                     <div class="card-body p-5">
-                                        <p class="lead fw-bold mb-5 text-center" id="order"> ORDER SUMMARY </p>
+                                        <p class="lead fw-bold mb-5 text-center" id="order"> TRANSACTION SUMMARY </p>
                                         <div class="row">
                                             <div class="col mb-3">
-                                                <p class="small text-muted mb-1">Date of Order:</p>
+                                                <p class="small text-muted mb-1">Date of Transaction:</p>
                                                 <p><?php echo $transaction->getDate()->format('M-d-Y h:i:s A'); ?></p>
                                             </div>
                                             <div class="col mb-3">
@@ -105,16 +109,25 @@
                                                 <p> <?php echo $transaction->getMode(); ?> </p>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col mb-3">
+                                                <p class="small text-muted mb-1"> Transaction Status:</p>
+                                                <p> <?php echo $transaction->getStatus(); ?> </p>
+                                            </div>
+                                            <div class="col mb-3">
+
+                                            </div>
+                                        </div>
                                         <div class="mx-n5 px-5 py-4" style="background-color: #eed1c2;">
                                             <p class="lead fw-bold mb-3 fs-5" style="color: #db6551;"> DETAILS </p>
                                             <?php
                                             foreach ($transaction->getListOfOrders() as $order) {
                                             ?>
                                                 <div class="row">
-                                                    <div class="col-md-8 col-lg-9">
+                                                    <div class="col-md-8 ">
                                                         <p><?php echo $order->getPetName(); ?></p>
                                                     </div>
-                                                    <div class="col-md-4 col-lg-3">
+                                                    <div class="col-md-4 ">
                                                         <p>₱ <?php echo number_format($order->getPrice(), 2); ?></p>
                                                     </div>
                                                 </div>
@@ -123,15 +136,15 @@
                                             ?>
                                         </div>
                                         <div class="row my-4">
-                                            <p class="lead fw-bold mb-0 text-center"> TOTAL AMOUNT TO PAY: ₱ <?php echo number_format($transaction->getPrice(), 2); ?> </p>
+                                            <p class="lead fw-bold mb-0"> TOTAL ₱ <?php echo number_format($transaction->getPrice(), 2); ?> </p>
                                         </div>
                                         <hr>
-                                        <p class="lead fw-bold mb-4 pb-2"> Order Status: <?php echo $transaction->getStatus(); ?></p>
+
                                         <h2 class="mt-4 pt-2 mb-0"> Note: </a></h2>
                                         <p class="mt-3 pt-2 mb-0"> 1. Don't Forget to Screenshot this page and show it during your visit</a></p>
-                                        <p class="mt-1 pt-2 mb-0"> 2. You can pick up your dog anytime. Do not hesitate to contact us for questions.</a></p>
+                                        <p class="mt-1 pt-2 mb-0"> 2. Book an appointment for dog pick-up. Must be 3 days from now.</a></p>
                                         <div class="btn-Learn mt-3" name="btn-Learn">
-                                            <center><a href="/home"> <button type="button" id="btn-home" class="btn btn-outline-info"> Back to Home </button></a></center>
+                                            <center><a href="/set-appointment"> <button type="button" id="btn-home" class="btn btn-outline-info"> Book Appointment </button></a></center>
                                         </div>
                                     </div>
                                 </div>
@@ -141,11 +154,53 @@
                 </section>
             </div>
         </div>
-        </section>
+        <!-- <form action="ty.html">
+            <div class="popup">
+                <h2 id="tell">Tell us about your experience!</h2>
+                <p>Your Rating</p>
+                <div id="full-stars-example-two">
+                    <div class="rating-group">
+                        <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio" />
+                        <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                        <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio" />
+                        <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                        <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio" />
+                        <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                        <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio" />
+                        <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                        <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio" />
+                        <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                        <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio" />
+                    </div>
+                </div>
+                <h2 id="comment">Comments and suggestion</h2>
+                <textarea id="feedback" name="" rows="4" cols="50"></textarea>
+                <div class="d-grid gap-2 d-flex justify-content-end">
+                    <button class="btn" style="background-color: #c0b65a; color: #ffffff" type="button">
+                        Cancel
+                    </button>
+                    <button class="btn" style="background-color: #c0b65a; color: #ffffff" type="submit">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form> -->
     </main>
     <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
+    <!-- <script type="text/javascript">
+        window.addEventListener("load", function() {
+            setTimeout(function open(event) {
+                document.querySelector(".popup").style.display = "block";   
+            }, 2000);
+        });
+        document
+            .querySelector("#close")
+            .addEventListener("click", function() {
+                document.querySelector(".popup").style.display = "none";
+            });
+    </script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 </body>

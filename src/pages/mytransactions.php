@@ -16,7 +16,7 @@
         }
 
         #header {
-            font-family: 'Acme', sans-serif;
+            margin-top:-2%
         }
 
         #ohanafooter {
@@ -39,7 +39,7 @@
         <div class="container-fluid">
             <section class="userprofile">
                 <div class="userheader mb-5">
-                    <h1 class="text-center" id="header" style="color:#db6551;"> My Transactions </h1>
+                <img src="/Ohana/src/images/Pages/transac.png" id="header" class="img-responsive" width="100%">
                 </div>
                 <?php
                 if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
@@ -83,6 +83,7 @@
                                                 <p class="lead fw-normal mb-2"><?php echo $transaction->getStatus(); ?></p>
                                             </div>
                                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#proofModalId" style="text-decoration:none; color:#db6551"><i class="uil uil-paperclip fs-3"></i> </a>
                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#orderModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#c0b65a"><i class="uil uil-eye fs-3"></i> </a>
                                                 <?php
                                                 if ($transaction->getStatus() != "COMPLETED") {

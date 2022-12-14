@@ -13,6 +13,10 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
+        #header {
+            margin-top:-3%
+        }
+
         #profilecard {
             width: 20rem;
         }
@@ -38,7 +42,7 @@
     <main>
         <?php include_once 'rnavbar.php'; ?>
         <section class="abouthead">
-            <h1 id="header" class="text-center mb-2"> Your Pets </h1>
+        <img src="/Ohana/src/images/Pages/pet.png" id="header" class="img-responsive" width="100%">
             <?php
             include_once dirname(__DIR__) . '/models/PetProfile.php';
             include_once dirname(__DIR__) . '/config/db-config.php';
