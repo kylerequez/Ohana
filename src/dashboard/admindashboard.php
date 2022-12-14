@@ -123,7 +123,7 @@
                     </div>
                     <div class="stat-cards-info">
                       <p class="stat-cards-info__num"> Total: <?php $dao = new AppointmentDAO($servername, $database, $username, $password);
-                                                              $services = new AppointmentServices($dao);
+                                                              $services = new AppointmentServices($dao, null);
                                                               echo $services->getAppointmentsCount(); ?></p>
                       <p class="stat-cards-info__title" style="color:#db6551"> Staff Accounts </p>
                       <p class="stat-cards-info__progress">
@@ -175,7 +175,7 @@
                     </div>
                     <div class="stat-cards-info">
                       <p class="stat-cards-info__num"> Total: <?php $dao = new AppointmentDAO($servername, $database, $username, $password);
-                                                              $services = new AppointmentServices($dao);
+                                                              $services = new AppointmentServices($dao, null);
                                                               echo $services->getAppointmentsCount(); ?></p>
                       <p class="stat-cards-info__title" style="color:#db6551"> Customer Transactions </p>
                       <p class="stat-cards-info__progress">

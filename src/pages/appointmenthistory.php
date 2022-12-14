@@ -160,7 +160,7 @@
     include_once dirname(__DIR__) . '/services/AppointmentServices.php';
 
     $dao = new AppointmentDAO($servername, $database, $username, $password);
-    $services = new AppointmentServices($dao);
+    $services = new AppointmentServices($dao, null);
 
     $sched_res = $services->getAppointmentsByAccountId($user->getId());
     ?>

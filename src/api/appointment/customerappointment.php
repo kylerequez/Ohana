@@ -8,7 +8,7 @@ require dirname(__DIR__) . '/../controllers/AppointmentController.php';
 
 $dao = new AppointmentDAO($servername, $database, $username, $password);
 $logdao = new LogDAO($servername, $database, $username, $password);
-$services = new AppointmentServices($dao);
+$services = new AppointmentServices($dao, null);
 $logservices = new LogServices($logdao);
 $controller = new AppointmentController($services, $logservices);
 

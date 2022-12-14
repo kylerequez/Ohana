@@ -110,7 +110,7 @@ class PetProfileServices
         $trait = trim($data["trait"]);
         $birthdate = DateTime::createFromFormat("Y-m-d", $data["birthdate"]);
         $sex = strtoupper($data["sex"]);
-        $color = strtoupper($data["color"]);
+        $color = trim($data["color"]);
         $isVaccinated = $data["isVaccinated"];
         $pcciStatus = strtoupper($data["pcciStatus"]);
         $accountId = $data["accountId"];
@@ -141,5 +141,23 @@ class PetProfileServices
         }
         $_SESSION["msg"] = "You have successfully deleted Pet Profile ID $id!";
         return true;
+    }
+
+    public function getThreeRehomingPets(): mixed
+    {
+        return $this->dao->getThreeRehomingPets();
+    }
+
+    public function filterRehomingPets(string $trait, string $sex): mixed
+    {
+        if ($trait == 'All' && $sex == 'All') {
+            return $this->dao->getRehomingPets();
+        } else if ($trait != 'All' && $sex == 'All') {
+            return $this->dao->filterPetsByTrait("REHOMING", $trait);
+        } else if ($trait == 'All' && $sex != 'All') {
+            return $this->dao->filterPetsBySex("REHOMING", $sex);
+        } else {
+            return $this->dao->filterPetsByTraitAndSex("REHOMING", $trait, $sex);
+        }
     }
 }

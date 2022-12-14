@@ -16,7 +16,7 @@
         }
 
         #header {
-            margin-top:-2%
+            margin-top: -2%
         }
 
         #ohanafooter {
@@ -39,7 +39,7 @@
         <div class="container-fluid">
             <section class="userprofile">
                 <div class="userheader mb-5">
-                <img src="/Ohana/src/images/Pages/transac.png" id="header" class="img-responsive" width="100%">
+                    <img src="/Ohana/src/images/Pages/transac.png" id="header" class="img-responsive" width="100%">
                 </div>
                 <?php
                 if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
@@ -83,56 +83,13 @@
                                                 <p class="lead fw-normal mb-2"><?php echo $transaction->getStatus(); ?></p>
                                             </div>
                                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#proofModalId" style="text-decoration:none; color:#db6551"><i class="uil uil-paperclip fs-3"></i> </a>
                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#orderModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#c0b65a"><i class="uil uil-eye fs-3"></i> </a>
-                                                <?php
-                                                if ($transaction->getStatus() != "COMPLETED") {
-                                                ?>
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#uploadModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#db6551"><i class="uil uil-upload-alt fs-3"></i> </a>
-                                                <?php
-                                                }
-                                                ?>
-                                                <form method="POST" action="/transactions/update/<?php echo $transaction->getId(); ?>" enctype="multipart/form-data">
-                                                    <div class="modal fade" id="uploadModalId<?php echo $transaction->getId(); ?>" aria-hidden="true" aria-labelledby="uploadModal" tabindex="-1">
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h1 class="modal-title fs-5" id="ModalToggleLabel" style="font-family: 'Acme', sans-serif; "> Upload Proof of Payment </h1>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <label for="proofOfPayment" class="my-2">Please upload your proof of payment for Transaction #<?php echo $transaction->getId(); ?></label>
-                                                                    <input type="file" class="my-2" name="image" required>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn" data-bs-target="#ModalToggle<?php echo $transaction->getId(); ?>" data-bs-toggle="modal" style="background-color:#db6551;color:white;"> Confirm </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal fade" id="ModalToggle<?php echo $transaction->getId(); ?>" aria-hidden="true" aria-labelledby="ModalToggleLabel2" tabindex="-1">
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h1 class="modal-title text-danger fs-5" id="ModalToggleLabel2"> Warning! </h1>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    Make sure that the image file contains the necessary information for the payment verification.
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button class="btn btn-outline-dark" data-bs-target="#uploadModalId<?php echo $transaction->getId(); ?>" data-bs-toggle="modal">Go Back </button>
-                                                                    <button type="submit" class="btn" style="background-color:#db6551;color:white;">Upload</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
                                                 <!-- VIEW MODAL -->
                                                 <div class="modal modal-xl fade" id="orderModalId<?php echo $transaction->getId(); ?>" tabindex="-1" aria-labelledby="orderModal" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="transactionModalLabel" style="font-family: 'Acme', sans-serif;">Transaction #<?php echo $transaction->getId(); ?></h1>
+                                                                <h1 class="modal-title fs-5" id="transactionModalLabel" style="font-family: 'Acme', sans-serif;">Transaction <?php echo $transaction->getReference(); ?></h1>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <?php
@@ -175,6 +132,69 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php
+                                                if ($transaction->getStatus() != "COMPLETED") {
+                                                ?>
+                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#uploadModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#db6551"><i class="uil uil-upload-alt fs-3"></i> </a>
+                                                    <form method="POST" action="/transactions/update/<?php echo $transaction->getId(); ?>" enctype="multipart/form-data">
+                                                        <div class="modal fade" id="uploadModalId<?php echo $transaction->getId(); ?>" aria-hidden="true" aria-labelledby="uploadModal" tabindex="-1">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h1 class="modal-title fs-5" id="ModalToggleLabel" style="font-family: 'Acme', sans-serif; "> Upload Proof of Payment </h1>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <label for="proofOfPayment" class="my-2">Please upload your proof of payment for Transaction <?php echo $transaction->getReference(); ?></label>
+                                                                        <input type="file" class="my-2" name="image" required>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                                                                        <button type="button" class="btn" data-bs-target="#ModalToggle<?php echo $transaction->getId(); ?>" data-bs-toggle="modal" style="background-color:#db6551;color:white;"> Confirm </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal fade" id="ModalToggle<?php echo $transaction->getId(); ?>" aria-hidden="true" aria-labelledby="ModalToggleLabel2" tabindex="-1">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h1 class="modal-title text-danger fs-5" id="ModalToggleLabel2"> Warning! </h1>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Make sure that the image file contains the necessary information for the payment verification.
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button class="btn btn-outline-dark" data-bs-target="#uploadModalId<?php echo $transaction->getId(); ?>" data-bs-toggle="modal">Go Back </button>
+                                                                        <button type="submit" class="btn" style="background-color:#db6551;color:white;">Upload</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#proofModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#db6551"><i class="uil uil-paperclip fs-3"></i> </a>
+                                                    <!-- VIEW PROOF MODAL -->
+                                                    <div class="modal modal-xl fade" id="proofModalId<?php echo $transaction->getId(); ?>" tabindex="-1" aria-labelledby="proofModal" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="transactionModalLabel" style="font-family: 'Acme', sans-serif;">Proof of Payment for Transaction <?php echo $transaction->getReference(); ?></h1>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="mb-3">
+                                                                        <img class="h-100 w-100 rounded-4 img-responsive" id="paymentConfirmation" name="paymentConfirmation" src="data:image/jpeg;base64,<?php echo base64_encode($transaction->getPaymentConfirmation()); ?>">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php } ?>
+
                                             </div>
                                         </div>
                                     </div>

@@ -6,7 +6,7 @@ require_once dirname(__DIR__) . '/../services/AppointmentServices.php';
 
 date_default_timezone_set('Asia/Manila');
 $dao = new AppointmentDAO($servername, $database, $username, $password);
-$services = new AppointmentServices($dao);
+$services = new AppointmentServices($dao, null);
 
 $ch = curl_init();
 $parameters = array(

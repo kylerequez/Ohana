@@ -128,9 +128,9 @@
                                     <p class="card-text"> <b>COLOR:</b> <?php echo $profile->getColor(); ?> </p>
                                     <p class="card-text"> <b>GENDER:</b> <?php echo $profile->getSex(); ?> </p>
                                     <p class="card-text"> <b>GENES:</b> <?php echo $profile->getTrait(); ?> </p>
-                                    <p class="card-text"> <b>PCCI PAPERS:</b> <?php echo $profile->getPcciStatus(); ?></p>
-                                    <p class="card-text"> <b>VACCINE:</b></p>
-                                    <p class="card-text"> <b>PRICE:</b></p>
+                                    <p class="card-text"> <b>PCCI PAPERS:</b> <?php echo ($profile->getPcciStatus() == 'REGISTERED') ? 'Registered' : 'Pending'; ?></p>
+                                    <p class="card-text"> <b>VACCINE:</b> <?php echo ($profile->getIsVaccinated() == '1') ? 'Vaccinated' : 'Not Vaccinated'; ?></p>
+                                    <p class="card-text"> <b>PRICE:</b> ₱ <?php echo number_format($profile->getPrice(), 2); ?></p>
                                     <p class="card-text fw-bold mt-3"> - All french bulldog puppies are fully vaccinated before release.</p>
                                     <p class="card-text fw-bold"> Note: Message us on social media for more pictures. </p>
                                 </div>
@@ -139,7 +139,7 @@
                                 <a id="links" href="/puppies">
                                     <button type="button" class="btn-outline-dark btn mt-3 me-3 ms-2"> Go Back </button>
                                 </a>
-                                <a id="links" href="/set-appointment?type=VISIT">
+                                <a id="links" href="/set-appointment?type=VISIT&reference=<?php echo $profile->getReference(); ?>">
                                     <button type="button" class="btn mt-3 ms-2" style="background-color:#db6551;color:white;"> Book Kennel Visit </button>
                                 </a>
                                 <a id="links" href="/add-to-cart/<?php echo $profile->getId(); ?>">

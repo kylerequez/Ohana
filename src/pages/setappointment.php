@@ -136,19 +136,13 @@
                                 </div>
                                 <div class="modal-body">
                                     <input type="hidden" name="type" value="<?php echo $_GET["type"]; ?>">
-                                    <?php
-                                    if ($_GET["type"] == "STUD") {
-                                    ?>
-                                        <!-- <input type="hidden" name="type" value="">
-                                        <input type="hidden" name="type" value="">
-                                        <input type="hidden" name="type" value=""> -->
-                                    <?php
-                                    } else if ($_GET["type"] == "REHOMING") {
-                                    ?>
+                                    <?php if ($_GET["type"] == "STUD") { ?>
 
-                                    <?php
-                                    }
-                                    ?>
+                                    <?php } else if ($_GET["type"] == "REHOMING") { ?>
+
+                                    <?php } else { ?>
+                                        <input type="hidden" name="reference" value="<?php echo $_GET["reference"]; ?>">
+                                    <?php } ?>
                                     <div class="form-group mb-2">
                                         <label for="appointmentTime" class="control-label mt-2 mb-2">Appointment Date</label>
                                         <input class="form-control form-control-sm rounded-0" type="date" id="date" name="date" value="" readonly="readonly">
@@ -202,7 +196,7 @@
     require dirname(__DIR__) . '/dao/AppointmentDAO.php';
     require dirname(__DIR__) . '/services/AppointmentServices.php';
     $dao = new AppointmentDAO($servername, $database, $username, $password);
-    $services = new AppointmentServices($dao);
+    $services = new AppointmentServices($dao, null);
     $allScheds = $services->getAllAppointments();
     $ownSched = $services->getAppointmentsByAccountId($user->getId());
     ?>

@@ -26,6 +26,235 @@ class PetProfileDAO
         $this->conn = null;
     }
 
+    public function getPetByReference(string $reference): mixed
+    {
+        try {
+            $this->openConnection();
+            $sql = "SELECT * FROM ohana_pet_profiles
+                WHERE pet_status = 'AVAILABLE'
+                AND pet_reference = :reference
+                AND account_id = 1
+                LIMIT 1;";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":reference", $reference, PDO::PARAM_STR);
+
+            $profile = null;
+            if ($stmt->execute() > 0) {
+                while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $searchedPetProfile = new PetProfile(
+                        $petProfile["pet_image"],
+                        $petProfile["pet_reference"],
+                        $petProfile["pet_name"],
+                        new DateTime($petProfile["pet_birthdate"]),
+                        $petProfile["pet_sex"],
+                        $petProfile["pet_color"],
+                        $petProfile["pet_trait"],
+                        $petProfile["is_vaccinated"],
+                        $petProfile["pcci_status"],
+                        $petProfile["account_id"],
+                        $petProfile["owner_name"],
+                        $petProfile["pet_price"],
+                        $petProfile["pet_status"]
+                    );
+                    $searchedPetProfile->setType($petProfile["pet_type"]);
+                    $searchedPetProfile->setId($petProfile["pet_id"]);
+
+                    $profile = $searchedPetProfile;
+                }
+            }
+            $this->closeConnection();
+            return $profile;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function filterPetsByTrait(string $type, string $trait): mixed
+    {
+        try {
+            $this->openConnection();
+            $sql = "SELECT * FROM ohana_pet_profiles
+                    WHERE pet_status = 'AVAILABLE'
+                    AND pet_type = :type
+                    AND pet_trait = :trait
+                    AND account_id = 1;";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":type", $type, PDO::PARAM_STR);
+            $stmt->bindParam(":trait", $trait, PDO::PARAM_STR);
+
+            $petProfiles = null;
+            if ($stmt->execute() > 0) {
+                while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $searchedPetProfile = new PetProfile(
+                        $petProfile["pet_image"],
+                        $petProfile["pet_reference"],
+                        $petProfile["pet_name"],
+                        new DateTime($petProfile["pet_birthdate"]),
+                        $petProfile["pet_sex"],
+                        $petProfile["pet_color"],
+                        $petProfile["pet_trait"],
+                        $petProfile["is_vaccinated"],
+                        $petProfile["pcci_status"],
+                        $petProfile["account_id"],
+                        $petProfile["owner_name"],
+                        $petProfile["pet_price"],
+                        $petProfile["pet_status"]
+                    );
+                    $searchedPetProfile->setType($petProfile["pet_type"]);
+                    $searchedPetProfile->setId($petProfile["pet_id"]);
+
+                    $petProfiles[] = $searchedPetProfile;
+                }
+            }
+            $this->closeConnection();
+            return $petProfiles;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function filterPetsBySex(string $type, string $sex): mixed
+    {
+        try {
+            $this->openConnection();
+            $sql = "SELECT * FROM ohana_pet_profiles
+                    WHERE pet_status = 'AVAILABLE'
+                    AND pet_type = :type
+                    AND pet_sex = :sex
+                    AND account_id = 1;";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":type", $type, PDO::PARAM_STR);
+            $stmt->bindParam(":sex", $sex, PDO::PARAM_STR);
+
+            $petProfiles = null;
+            if ($stmt->execute() > 0) {
+                while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $searchedPetProfile = new PetProfile(
+                        $petProfile["pet_image"],
+                        $petProfile["pet_reference"],
+                        $petProfile["pet_name"],
+                        new DateTime($petProfile["pet_birthdate"]),
+                        $petProfile["pet_sex"],
+                        $petProfile["pet_color"],
+                        $petProfile["pet_trait"],
+                        $petProfile["is_vaccinated"],
+                        $petProfile["pcci_status"],
+                        $petProfile["account_id"],
+                        $petProfile["owner_name"],
+                        $petProfile["pet_price"],
+                        $petProfile["pet_status"]
+                    );
+                    $searchedPetProfile->setType($petProfile["pet_type"]);
+                    $searchedPetProfile->setId($petProfile["pet_id"]);
+
+                    $petProfiles[] = $searchedPetProfile;
+                }
+            }
+            $this->closeConnection();
+            return $petProfiles;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function filterPetsByTraitAndSex(string $type, string $trait, string $sex): mixed
+    {
+        try {
+            $this->openConnection();
+            $sql = "SELECT * FROM ohana_pet_profiles
+                    WHERE pet_status = 'AVAILABLE'
+                    AND pet_type = :type
+                    AND pet_trait = :trait
+                    AND pet_sex = :sex
+                    AND account_id = 1;";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":type", $type, PDO::PARAM_STR);
+            $stmt->bindParam(":trait", $sex, PDO::PARAM_STR);
+            $stmt->bindParam(":sex", $sex, PDO::PARAM_STR);
+
+            $petProfiles = null;
+            if ($stmt->execute() > 0) {
+                while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $searchedPetProfile = new PetProfile(
+                        $petProfile["pet_image"],
+                        $petProfile["pet_reference"],
+                        $petProfile["pet_name"],
+                        new DateTime($petProfile["pet_birthdate"]),
+                        $petProfile["pet_sex"],
+                        $petProfile["pet_color"],
+                        $petProfile["pet_trait"],
+                        $petProfile["is_vaccinated"],
+                        $petProfile["pcci_status"],
+                        $petProfile["account_id"],
+                        $petProfile["owner_name"],
+                        $petProfile["pet_price"],
+                        $petProfile["pet_status"]
+                    );
+                    $searchedPetProfile->setType($petProfile["pet_type"]);
+                    $searchedPetProfile->setId($petProfile["pet_id"]);
+
+                    $petProfiles[] = $searchedPetProfile;
+                }
+            }
+            $this->closeConnection();
+            return $petProfiles;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function getThreeRehomingPets(): mixed
+    {
+        try {
+            $this->openConnection();
+            $sql = "SELECT * FROM ohana_pet_profiles
+                    WHERE pet_status = 'AVAILABLE'
+                    AND pet_type = 'REHOMING'
+                    AND account_id = 1
+                    LIMIT 3;";
+
+            $stmt = $this->conn->query($sql);
+
+            $petProfiles = null;
+            if ($stmt->execute() > 0) {
+                while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $searchedPetProfile = new PetProfile(
+                        $petProfile["pet_image"],
+                        $petProfile["pet_reference"],
+                        $petProfile["pet_name"],
+                        new DateTime($petProfile["pet_birthdate"]),
+                        $petProfile["pet_sex"],
+                        $petProfile["pet_color"],
+                        $petProfile["pet_trait"],
+                        $petProfile["is_vaccinated"],
+                        $petProfile["pcci_status"],
+                        $petProfile["account_id"],
+                        $petProfile["owner_name"],
+                        $petProfile["pet_price"],
+                        $petProfile["pet_status"]
+                    );
+                    $searchedPetProfile->setType($petProfile["pet_type"]);
+                    $searchedPetProfile->setId($petProfile["pet_id"]);
+
+                    $petProfiles[] = $searchedPetProfile;
+                }
+            }
+            $this->closeConnection();
+            return $petProfiles;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
     public function getCustomerPets(): mixed
     {
         try {

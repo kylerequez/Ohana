@@ -105,27 +105,43 @@
                     </div>
                 </div>
             </section>
-            <section class="mb-5">
-                <h1 class="text-center mt-5" id="kauhale"> I need a <strong style="color:#db6551"> KAUHALE </strong> </h1>
-                <div class="container d-flex justify-content-center mt-5">
-                    <div class="row">
-                        <div class="col m-3">
-                            <a href="/puppies" style="text-decoration: none;">
-                                <div class="card rounded" style="width: 15rem;background-color:#c0b65a" id="pupcard">
-                                    <img src="/Ohana/src/images/Ohanapups/trans2.png" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title mb-3 text-center" style="color:white"> FRENCH PUPPY 1 </h5>
-                                        <div class="btn-Learn" name="btn-Learn">
-                                            <center><a href="/puppies"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
 
+            <?php
+            include_once dirname(__DIR__) . '/models/PetProfile.php';
+            include_once dirname(__DIR__) . '/config/db-config.php';
+            include_once dirname(__DIR__) . '/dao/PetProfileDAO.php';
+            include_once dirname(__DIR__) . '/services/PetProfileServices.php';
+
+            $dao = new PetProfileDAO($servername, $database, $username, $password);
+            $services = new PetProfileServices($dao);
+
+            $profiles = $services->getThreeRehomingPets();
+            // print_r($profiles);
+            if (!is_null($profiles)) {
+            ?>
+                <section class="mb-5">
+                    <h1 class="text-center mt-5" id="kauhale"> I need a <strong style="color:#db6551"> KAUHALE </strong> </h1>
+                    <div class="container d-flex justify-content-center mt-5">
+                        <div class="row">
+                            <?php foreach ($profiles as $profile) { ?>
+                                <div class="col m-3">
+                                    <a href="/puppies" style="text-decoration: none;">
+                                        <div class="card rounded" style="width: 15rem;background-color:#c0b65a" id="pupcard">
+                                            <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName() . " Image"; ?>">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-3 text-center" style="color:white"> <?php echo $profile->getName(); ?> </h5>
+                                                <div class="btn-Learn" name="btn-Learn">
+                                                    <center><a href="/puppies"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php } ?>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            <?php } ?>
             <div id="chat-container"> </div>
         </div>
     </main>

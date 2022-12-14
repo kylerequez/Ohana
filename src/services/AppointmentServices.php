@@ -2,10 +2,12 @@
 class AppointmentServices
 {
     private ?AppointmentDAO $dao = null;
+    private ?PetProfileDAO $petProfile = null;
 
-    public function __construct(AppointmentDAO $dao)
+    public function __construct(AppointmentDAO $dao, ?PetProfileDAO $petProfile)
     {
         $this->dao = $dao;
+        $this->petProfile = $petProfile;
     }
 
     public function getAllAppointments(): mixed
@@ -60,11 +62,15 @@ class AppointmentServices
 
         $description = "";
         if ($type == "REHOMING") {
-            $description = "$customerName will be bringing a new dog in their ohana.";
+            $profile = $this->petProfile->getPetByReference($data['reference']);
+            $name = $profile->getName();
+            $description = "$customerName will be bringing $name to their ohana.";
         } else if ($type == "STUD") {
-            $description = "$customerName will be availailing for a stud service to make their ohana larger.";
+            $description = "$customerName will be availailing for a stud service.";
         } else {
-            $description = "$customerName will be visiting one of our dogs. Who will it be?";
+            $profile = $this->petProfile->getPetByReference($data['reference']);
+            $name = $profile->getName();
+            $description = "$customerName will be visiting $name.";
         }
 
         $appointment = new Appointment($title, $type, $accountId, $customerName, $description, $start, $end);

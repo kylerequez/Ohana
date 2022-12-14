@@ -181,7 +181,29 @@
                         <div class="mb-3 row">
                           <label for="inputColor" class="col-sm-2 col-form-label" style="color:#7d6056;font-family: 'Acme', sans-serif;">Trait:</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="trait" name="trait" value="<?php echo $profile->getTrait(); ?>">
+                            <select class="form-control" name="trait" required>
+                              <option class="text-center" style="color:#DB6551" disabled>Standard</option>
+                              <option value="Fawn" <?php if ($profile->getTrait() == 'Fawn') echo 'selected'; ?>>Fawn</option>
+                              <option value="Sable" <?php if ($profile->getTrait() == 'Sable') echo 'selected'; ?>>Sable</option>
+                              <option value="Brindle" <?php if ($profile->getTrait() == 'Brindle') echo 'selected'; ?>>Brindle</option>
+                              <option class="text-center" style="color:#DB6551" disabled>Exotic</option>
+                              <option value="Blue" <?php if ($profile->getTrait() == 'Blue') echo 'selected'; ?>>Blue</option>
+                              <option value="Chocolate" <?php if ($profile->getTrait() == 'Chocolate') echo 'selected'; ?>>Chocolate</option>
+                              <option value="Lilac" <?php if ($profile->getTrait() == 'Lilac') echo 'selected'; ?>>Lilac</option>
+                              <option value="Isabella" <?php if ($profile->getTrait() == 'Isabella') echo 'selected'; ?>>Isabella</option>
+                              <option value="Newshade Isabella" <?php if ($profile->getTrait() == 'Newshade Isabella') echo 'selected'; ?>>Newshade Isabella</option>
+                              <option value="Newshade" <?php if ($profile->getTrait() == 'Newshade') echo 'selected'; ?>>Newshade</option>
+                              <option value="Black Tan" <?php if ($profile->getTrait() == 'Black Tan') echo 'selected'; ?>>Black Tan</option>
+                              <option value="Blue Tan" <?php if ($profile->getTrait() == 'Blue Tan') echo 'selected'; ?>>Blue Tan</option>
+                              <option value="Choco Tan" <?php if ($profile->getTrait() == 'Choco Tan') echo 'selected'; ?>>Choco Tan</option>
+                              <option value="Isabella Tan" <?php if ($profile->getTrait() == 'Isabella Tan') echo 'selected'; ?>>Isabella Tan</option>
+                              <option value="Newshade Isabella Tan" <?php if ($profile->getTrait() == 'Newshade Isabella Tan') echo 'Newshade Isabella Tan'; ?>>Newshade Isabella Tan</option>
+                              <option class="text-center" style="color:#DB6551" disabled>Platinum</option>
+                              <option value="Lilac Plat" <?php if ($profile->getTrait() == 'Lilac Plat') echo 'selected'; ?>>Lilac Plat</option>
+                              <option value="Champaigne Plat" <?php if ($profile->getTrait() == 'Champaigne Plat') echo 'selected'; ?>>Champaigne Plat</option>
+                              <option value="Newshade Plat" <?php if ($profile->getTrait() == 'Newshade Plat') echo 'selected'; ?>>Newshade Plat</option>
+                              <option value="Merle" <?php if ($profile->getTrait() == 'Merle') echo 'selected'; ?>>Merle</option>
+                            </select>
                           </div>
                         </div>
                         <div class="mb-3 row ">
