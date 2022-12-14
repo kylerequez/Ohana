@@ -35,7 +35,7 @@
             margin-top: 10%;
         }
 
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {
+        @media screen and (min-width: 360px) and (max-width: 429px) {
             #header {
                 font-size: 40px;
             }
@@ -129,7 +129,7 @@
                                             <div class="card-body">
                                                 <div class="filtering-inline-spacing">
                                                     <div class="btn-group mx-2">
-                                                        <select class="btn rounded-pill text-light dropdown-toggle" style="background-color:#DB6551;" name="trait" required>
+                                                        <select class="btn rounded-pill text-dark dropdown-toggle" style="border-color:#DB6551;" name="trait" required>
                                                             <option value="All" <?php if ($_GET['trait'] == 'All') echo 'selected'; ?>>All</option>
                                                             <option class="text-center" style="color:#DB6551" disabled>Standard</option>
                                                             <option value="Fawn" <?php if ($_GET['trait'] == 'Fawn') echo 'selected'; ?>>Fawn</option>
@@ -155,14 +155,14 @@
                                                         </select>
                                                     </div>
                                                     <div class="btn-group mx-2">
-                                                        <select class="btn rounded-pill text-light dropdown-toggle" style="background-color:#DB6551;" name="sex" required>
+                                                        <select class="btn rounded-pill text-dark dropdown-toggle" style="border-color:#DB6551;"  name="sex" required>
                                                             <option value="All">All</option>
                                                             <option value="MALE">Male</option>
                                                             <option value="FEMALE">Female</option>
                                                         </select>
                                                     </div>
                                                     <div class="btn-group mx-2">
-                                                        <button type="submit" class="btn rounded-pill btn-outline-warning"> Search </button>
+                                                        <button type="submit" class="btn rounded-pill btn-warning"> Search </button>
                                                     </div>
                                                 </div>
                                             </div>
