@@ -155,10 +155,10 @@
                                                         </select>
                                                     </div>
                                                     <div class="btn-group mx-2">
-                                                        <select class="btn rounded-pill text-dark dropdown-toggle" style="border-color:#DB6551;"  name="sex" required>
-                                                            <option value="All">All</option>
-                                                            <option value="MALE">Male</option>
-                                                            <option value="FEMALE">Female</option>
+                                                        <select class="btn rounded-pill text-dark dropdown-toggle" style="border-color:#DB6551;" name="sex" required>
+                                                            <option value="All" <?php if ($_GET['sex'] == 'All') echo 'selected'; ?>>All</option>
+                                                            <option value="MALE" <?php if ($_GET['sex'] == 'MALE') echo 'selected'; ?>>Male</option>
+                                                            <option value="FEMALE" <?php if ($_GET['sex'] == 'FEMALE') echo 'selected'; ?>>Female</option>
                                                         </select>
                                                     </div>
                                                     <div class="btn-group mx-2">

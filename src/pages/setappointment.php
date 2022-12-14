@@ -94,6 +94,9 @@
 </head>
 
 <body style="background-color: #FAF8F0;">
+    <?php if (!isset($_GET['type']) || !isset($_GET['reference'])) { ?>
+
+    <?php } ?>
     <main>
         <?php include_once 'rnavbar.php'; ?>
         <div class="container-fluid">
@@ -136,11 +139,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <input type="hidden" name="type" value="<?php echo $_GET["type"]; ?>">
-                                    <?php if ($_GET["type"] == "STUD") { ?>
-
-                                    <?php } else if ($_GET["type"] == "REHOMING") { ?>
-
-                                    <?php } else { ?>
+                                    <?php if ($_GET["type"] == "VISIT") { ?>
                                         <input type="hidden" name="reference" value="<?php echo $_GET["reference"]; ?>">
                                     <?php } ?>
                                     <div class="form-group mb-2">

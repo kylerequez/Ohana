@@ -95,10 +95,25 @@ class AppointmentController
                 break;
             case "POST":
                 if (!$this->services->addAppointment($_POST)) {
-                    header("Location: http://" . DOMAIN_NAME . "/set-appointment?type=VISIT");
+                    header("Location: " . $_SERVER['HTTP_REFERER']);
                     break;
                 }
                 header("Location: http://" . DOMAIN_NAME . "/appointments/get");
+                break;
+        }
+    }
+
+    public function processRehomingRequest(string $method): void
+    {
+        switch ($method) {
+            case "GET":
+                break;
+            case "POST":
+                if (!$this->services->addAppointment($_POST)) {
+                    header("Location: http://" . DOMAIN_NAME . "/set-appointment?type=REHOMING");
+                    break;
+                }
+                header("Location: http://" . DOMAIN_NAME . "/feedback");
                 break;
         }
     }

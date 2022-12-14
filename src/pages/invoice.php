@@ -121,6 +121,7 @@
                                         <div class="mx-n5 px-5 py-4" style="background-color: #eed1c2;">
                                             <p class="lead fw-bold mb-3 fs-5" style="color: #db6551;"> DETAILS </p>
                                             <?php
+                                            $type = null;
                                             foreach ($transaction->getListOfOrders() as $order) {
                                             ?>
                                                 <div class="row">
@@ -132,6 +133,7 @@
                                                     </div>
                                                 </div>
                                             <?php
+                                            $type = $order->getType();
                                             }
                                             ?>
                                         </div>
@@ -144,7 +146,7 @@
                                         <p class="mt-3 pt-2 mb-0"> 1. Don't Forget to Screenshot this page and show it during your visit</a></p>
                                         <p class="mt-1 pt-2 mb-0"> 2. Book an appointment for dog pick-up. Must be 3 days from now.</a></p>
                                         <div class="btn-Learn mt-3" name="btn-Learn">
-                                            <center><a href="/set-appointment"> <button type="button" id="btn-home" class="btn btn-outline-info"> Book Appointment </button></a></center>
+                                            <center><a href="/set-appointment?type=<?php echo $type; ?>"> <button type="button" id="btn-home" class="btn btn-outline-info"> Book Appointment </button></a></center>
                                         </div>
                                     </div>
                                 </div>

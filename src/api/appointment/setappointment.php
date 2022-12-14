@@ -19,5 +19,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $type == "VISIT") {
 } else if ($_SERVER["REQUEST_METHOD"] == "POST" && $type == "STUD") {
     // $controller->processStudRequest($_SERVER["REQUEST_METHOD"]);
 } else if ($_SERVER["REQUEST_METHOD"] == "POST" && $type == "REHOMING") {
-    // $controller->processStudRequest($_SERVER["REQUEST_METHOD"]);
+    $controller->processRehomingRequest($_SERVER["REQUEST_METHOD"]);
 }

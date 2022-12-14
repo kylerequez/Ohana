@@ -160,4 +160,17 @@ class PetProfileServices
             return $this->dao->filterPetsByTraitAndSex("REHOMING", $trait, $sex);
         }
     }
+
+    public function filterStudPets(string $trait, string $sex): mixed
+    {
+        if ($trait == 'All' && $sex == 'All') {
+            return $this->dao->getStudPets();
+        } else if ($trait != 'All' && $sex == 'All') {
+            return $this->dao->filterPetsByTrait("STUD", $trait);
+        } else if ($trait == 'All' && $sex != 'All') {
+            return $this->dao->filterPetsBySex("STUD", $sex);
+        } else {
+            return $this->dao->filterPetsByTraitAndSex("STUD", $trait, $sex);
+        }
+    }
 }

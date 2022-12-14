@@ -56,7 +56,7 @@
                     if (!isset($_GET['trait'])) $_GET['trait'] = 'All';
                     if (!isset($_GET['sex'])) $_GET['sex'] = 'All';
 
-                    $profiles = $services->getStudPets();
+                    $profiles = $services->filterStudPets($_GET['trait'], $_GET['sex']);
                     if (empty($profiles)) {
                     ?>
                         <div class="service mb-4">
@@ -187,8 +187,9 @@
                     <?php } ?>
                 </section>
             </div>
+        </div>
     </main>
-    <div id="ohanafooter" class="fixed-bottom">
+    <div id="ohanafooter" class="">
         <?php include_once 'footer.php'; ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">

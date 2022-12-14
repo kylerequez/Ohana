@@ -62,9 +62,7 @@ class AppointmentServices
 
         $description = "";
         if ($type == "REHOMING") {
-            $profile = $this->petProfile->getPetByReference($data['reference']);
-            $name = $profile->getName();
-            $description = "$customerName will be bringing $name to their ohana.";
+            $description = "$customerName will be bringing bring new dog/s to their ohana.";
         } else if ($type == "STUD") {
             $description = "$customerName will be availailing for a stud service.";
         } else {
