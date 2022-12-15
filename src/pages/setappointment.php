@@ -8,7 +8,6 @@
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
     <link rel="stylesheet" href="/Ohana/src/css/userprofile.css">
-    <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <link rel="stylesheet" href="/Ohana/src/dashboard/js/fullcalendar/lib/main.min.css">
     <script src="/Ohana/src/dashboard/js/jquery-3.6.0.min.js"></script>
     <script src="/Ohana/src/dashboard/js/fullcalendar/lib/main.min.js"></script>
@@ -98,7 +97,7 @@
 
     <?php } ?>
     <main>
-        <?php include_once 'rnavbar.php'; ?>
+    <?php include_once 'navigationbar.php'; ?>
         <div class="container-fluid">
             <section class="set-appointment" id="customer-book">
                 <div class="container">

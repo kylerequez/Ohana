@@ -44,7 +44,7 @@
             padding: 20px 12%;
             transition: all .50s ease;
             border-bottom: 2px solid #db6551;
-            background-color:floralwhite;
+            background-color: floralwhite;
         }
 
         #user-name {
@@ -344,9 +344,6 @@ if (!isset($_SESSION['user'])) {
         <li class="nav-item">
             <a class="nav-link" href="/pawcart"> Paw Cart <i class="uil uil-shopping-bag"></i></a>
         </li>
-        <li class="nav-item">
-
-        </li>
     </ul>
     <div class="main">
         <div class="action" style="margin-right:25px;">
@@ -384,7 +381,7 @@ if (!isset($_SESSION['user'])) {
                 </ul>
             </div>
         </div>
-        <p id="user-name"> Hi! <?php echo $user->getFName(); ?> </p>
+        <p id="user-name"> <?php echo $user->getFName(); ?> </p>
         <div class="bx bx-menu" id="menu-icon"></div>
     </div>
 </header>

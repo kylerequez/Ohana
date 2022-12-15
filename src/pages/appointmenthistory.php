@@ -8,10 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
-
     <link rel="stylesheet" href="/Ohana/src/css/userprofile.css">
-    <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
-
     <?php include_once 'stylesheets.php'; ?>
    
     <!-- CALENDAR BS-->
@@ -80,7 +77,7 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <?php include_once 'rnavbar.php'; ?>
+    <?php include_once 'navigationbar.php'; ?>
         <div class="container-fluid">
             <section class="userprofile">
                 <div class="userheader mb-5">

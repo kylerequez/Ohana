@@ -153,9 +153,55 @@
   </div>
   <script>
     $(document).ready(function() {
+      $('#logs thead tr')
+        .clone(true)
+        .addClass('filters')
+        .appendTo('#logs thead');
+
       $('#logs').DataTable({
-        "searching": true,
-        "processing": true,
+        orderCellsTop: true,
+        fixedHeader: true,
+        searching: true,
+        initComplete: function() {
+          var api = this.api();
+          api
+            .columns()
+            .eq(0)
+            .each(function(colIdx) {
+              var cell = $('.filters th').eq(
+                $(api.column(colIdx).header()).index()
+              );
+              var title = $(cell).text();
+              $(cell).html('<input type="text" placeholder="' + title + '" />');
+              $(
+                  'input',
+                  $('.filters th').eq($(api.column(colIdx).header()).index())
+                )
+                .off('keyup change')
+                .on('change', function(e) {
+                  $(this).attr('title', $(this).val());
+                  var regexr = '({search})';
+                  var cursorPosition = this.selectionStart;
+                  api
+                    .column(colIdx)
+                    .search(
+                      this.value != '' ?
+                      regexr.replace('{search}', '(((' + this.value + ')))') :
+                      '',
+                      this.value != '',
+                      this.value == ''
+                    )
+                    .draw();
+                })
+                .on('keyup', function(e) {
+                  e.stopPropagation();
+                  $(this).trigger('change');
+                  $(this)
+                    .focus()[0]
+                    .setSelectionRange(cursorPosition, cursorPosition);
+                });
+            });
+        },
       });
     });
   </script>

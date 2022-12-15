@@ -8,7 +8,6 @@
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
     <link rel="stylesheet" href="/Ohana/src/css/petprofiles.css">
-    <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
@@ -40,7 +39,7 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <?php include_once 'rnavbar.php'; ?>
+    <?php include_once 'navigationbar.php'; ?>
         <section class="abouthead">
         <img src="/Ohana/src/images/Pages/pet.png" id="header" class="img-responsive" width="100%">
             <?php

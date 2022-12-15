@@ -8,7 +8,7 @@
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
     <link rel="stylesheet" href="/Ohana/src/css/pawcart.css">
-    <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
+    <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
         .img-fluid {
@@ -32,7 +32,7 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <?php include_once 'rnavbar.php'; ?>
+        <?php include_once 'navigationbar.php'; ?>
         <div class="container-fluid">
             <img src="/Ohana/src/images/Pages/cartheader.png" id="cartheader" class="img-responsive" width="100%">
             <section class="h-100">
@@ -90,7 +90,7 @@
                                                         <?php echo $order->getPetColor() ?></p>
                                                 </div>
                                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                    <h5 class="mb-0 fw-bold"> Price: ₱<?php echo $order->getPrice() ?></h5>
+                                                    <h5 class="mb-0 fw-bold"> Price: ₱ <?php echo number_format($order->getPrice(), 2); ?></h5>
                                                 </div>
                                                 <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                                     <form method="POST" action="/delete-item/<?php echo $order->getPetId(); ?>">
@@ -110,14 +110,35 @@
                             }
                             ?>
                         </div>
+
                     </div>
                 </div>
             </section>
+            <div id="chat-container"> </div>
         </div>
     </main>
     <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
+    <script src="/Ohana/src/js/chatbot-ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $.ajax({
+            url: '/chatbot/settings/get',
+            type: "GET",
+            error: function(error) {
+                console.log("Error in retrieving the Chatbot Information.");
+            }
+        }).done(function(data) {
+            info = JSON.parse(data);
+            avatar = info.avatar;
+            name = info.name;
+            intro = info.intro;
+            noResponse = info.noResponse;
+            createChatBot(host = '/chatbot/responses/get', botLogo = avatar,
+                title = name, welcomeMessage = intro, inactiveMsg = noResponse, theme = "orange")
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 </body>

@@ -176,7 +176,7 @@ class PetProfileDAO
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":type", $type, PDO::PARAM_STR);
-            $stmt->bindParam(":trait", $sex, PDO::PARAM_STR);
+            $stmt->bindParam(":trait", $trait, PDO::PARAM_STR);
             $stmt->bindParam(":sex", $sex, PDO::PARAM_STR);
 
             $petProfiles = null;

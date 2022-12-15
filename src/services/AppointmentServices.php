@@ -42,12 +42,12 @@ class AppointmentServices
         $end = new DateTime($_POST["date"] . " " . $time[1]);
 
         if ($start < $now) {
-            $_SESSION["msg"] = "Invalid date. You must select a day that is 4 days from now.";
+            $_SESSION["msg"] = "Invalid date. You must select a date that is 3 days from now or greater.";
             return false;
         }
 
-        if (date_diff($now, $start)->format('%a') < 4) {
-            $_SESSION["msg"] = "Invalid date. You must select a day that is 4 days from now.";
+        if (date_diff($now, $start)->format('%a') < 2) {
+            $_SESSION["msg"] = "Invalid date. You must select a date that is 3 days from now or greater.";
             return false;
         }
 

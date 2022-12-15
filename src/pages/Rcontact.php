@@ -9,8 +9,8 @@
     <meta name="keywords" content="Kennel Business, French Bulldogs">
 
     <link rel="stylesheet" href="/Ohana/src/css/Ucontact.css">
-    <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
+    
     <?php include_once 'stylesheets.php'; ?>
     <style>
         #address {
@@ -103,7 +103,7 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <?php include_once 'rnavbar.php'; ?>
+    <?php include_once 'navigationbar.php'; ?>
         <div class="container-fluid">
             <section class="contact-us" id="contact">
                 <div class="container-fluid">

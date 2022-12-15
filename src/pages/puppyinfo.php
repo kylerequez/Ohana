@@ -8,7 +8,6 @@
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
     <link rel="stylesheet" href="/Ohana/src/css/puppies.css">
-    <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
         #pupcontainer {
@@ -17,7 +16,7 @@
 
         #pupcard {
             max-width: 55vw;
-            max-height: 50vh;
+            max-height: 55vh;
             border-style: solid;
             border-color: #eed1c2;
             border-width: 5px;
@@ -51,9 +50,9 @@
             color: #7d6056;
         }
 
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {
+        @media screen and (min-width: 360px) and (max-width: 420px) {
             #pupcard {
-                max-height: 60vh;
+                max-height: 30vh;
                 margin-top: 35%;
             }
 
@@ -106,7 +105,7 @@
     }
     ?>
     <main>
-        <?php include_once 'rnavbar.php'; ?>
+        <?php include_once 'navigationbar.php'; ?>
         <div class="container-fluid" id="pupcontainer">
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
                 <center>
@@ -140,7 +139,7 @@
                                     <p class="card-text fw-bold"> Note: Message us on social media for more pictures. </p>
                                 </div>
                             </div>
-                            <div class="me-5 mb-5" id="buttons">
+                            <div class="me-5" id="buttons">
                                 <a id="links" href="/puppies">
                                     <button type="button" class="btn-outline-dark btn mt-3 me-3 ms-2"> Go Back </button>
                                 </a>
@@ -153,7 +152,6 @@
                             </div>
                         </div>
                     </div>
-                    </form>
                 </div>
             </div>
         </div>

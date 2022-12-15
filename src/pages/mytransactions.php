@@ -8,7 +8,6 @@
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
     <link rel="stylesheet" href="/Ohana/src/css/userprofile.css">
-    <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
         .userprofile {
@@ -35,7 +34,7 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <?php include_once 'rnavbar.php'; ?>
+        <?php include_once 'navigationbar.php'; ?>
         <div class="container-fluid">
             <section class="userprofile">
                 <div class="userheader mb-5">
@@ -135,7 +134,7 @@
                                                 <?php
                                                 if ($transaction->getStatus() != "COMPLETED") {
                                                 ?>
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#uploadModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#db6551"><i class="uil uil-upload-alt fs-3"></i> </a>
+                                                    <a href="" data-bs-toggle="modal" data-bs-target="#uploadModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#db6551"><i class="uil uil-upload-alt fs-3"></i> </a>
                                                     <form method="POST" action="/transactions/update/<?php echo $transaction->getId(); ?>" enctype="multipart/form-data">
                                                         <div class="modal fade" id="uploadModalId<?php echo $transaction->getId(); ?>" aria-hidden="true" aria-labelledby="uploadModal" tabindex="-1">
                                                             <div class="modal-dialog modal-dialog-centered">
@@ -174,8 +173,7 @@
                                                 <?php
                                                 } else {
                                                 ?>
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#proofModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#db6551"><i class="uil uil-paperclip fs-3"></i> </a>
-                                                    <!-- VIEW PROOF MODAL -->
+                                                    <a href="" data-bs-toggle="modal" data-bs-target="#proofModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#db6551"><i class="uil uil-paperclip fs-3"></i> </a>
                                                     <div class="modal modal-xl fade" id="proofModalId<?php echo $transaction->getId(); ?>" tabindex="-1" aria-labelledby="proofModal" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
@@ -194,7 +192,6 @@
                                                         </div>
                                                     </div>
                                                 <?php } ?>
-
                                             </div>
                                         </div>
                                     </div>
@@ -203,7 +200,9 @@
                             }
                         } else {
                             ?>
-                            There are currently no Transactions.
+                            <div class="service mb-4">
+                                <h1 class="text-center fs-2 mt-5" style="color:#DB6551; font-family: 'Acme', sans-serif; ">There are currently no Transactions.</h1>
+                            </div>
                         <?php
                         }
                         ?>

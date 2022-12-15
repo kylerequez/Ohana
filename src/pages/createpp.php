@@ -8,7 +8,6 @@
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
   <meta name="keywords" content="Kennel Business, French Bulldogs">
   <link rel="stylesheet" href="/Ohana/src/css/puppies.css">
-  <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
   <?php include_once 'stylesheets.php'; ?>
   <style>
     #header {
@@ -44,7 +43,7 @@
 
 <body style="background-color: #FAF8F0;">
   <main>
-    <?php include_once 'rnavbar.php'; ?>
+  <?php include_once 'navigationbar.php'; ?>
     <div class="container-fluid">
       <div class="container h-90" id="create-profile">
         <h1 class="mb-5 text-center" id="header"> Create Pet Profile </h1><br>
@@ -87,8 +86,28 @@
                     <div class="mb-3 row">
                       <label for="inputTrait" class="col-sm-2 col-form-label" style="color:#7d6056">Trait:</label>
                       <div class="col-sm-10">
-                        <select class="form-control" id="trait" name="trait" required>
+                        <select class="form-control" name="trait" required>
                           <option class="text-center" style="color:#DB6551" disabled>Standard</option>
+                          <option value="Fawn">Fawn</option>
+                          <option value="Sable">Sable</option>
+                          <option value="Brindle">Brindle</option>
+                          <option class="text-center" style="color:#DB6551" disabled>Exotic</option>
+                          <option value="Blue">Blue</option>
+                          <option value="Chocolate">Chocolate</option>
+                          <option value="Lilac">Lilac</option>
+                          <option value="Isabella">Isabella</option>
+                          <option value="Newshade Isabella">Newshade Isabella</option>
+                          <option value="Newshade">Newshade</option>
+                          <option value="Black Tan">Black Tan</option>
+                          <option value="Blue Tan">Blue Tan</option>
+                          <option value="Choco Tan">Choco Tan</option>
+                          <option value="Isabella Tan">Isabella Tan</option>
+                          <option value="Newshade Isabella Tan">Newshade Isabella Tan</option>
+                          <option class="text-center" style="color:#DB6551" disabled>Platinum</option>
+                          <option value="Lilac Plat">Lilac Plat</option>
+                          <option value="Champaigne Plat">Champaigne Plat</option>
+                          <option value="Newshade Plat">Newshade Plat</option>
+                          <option value="Merle">Merle</option>
                         </select>
                       </div>
                     </div>

@@ -12,7 +12,6 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
     <link rel="stylesheet" href="/Ohana/src/css/index.css">
-    <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -74,7 +73,6 @@
 
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-smooth-scroll="true" style="background-color: #FAF8F0;">
     <main>
-
         <?php include_once dirname(__DIR__) . '/Ohana/src/pages/navbar.php'; ?>
         <div class="container-fluid">
             <section class="introduction" id="home">
@@ -173,7 +171,6 @@
         <div id="chat-container"> </div>
     </main>
     <div class="mt-5"> <?php include_once dirname(__DIR__) . '/Ohana/src/pages/footer.php'; ?> </div>
-
     <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
         <div class="toast-container top-0 start-0 ms-2" style="margin-top:8%;">
             <div id="liveToast" class="toast show d-flex" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="4000">

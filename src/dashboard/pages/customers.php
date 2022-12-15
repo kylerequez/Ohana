@@ -112,7 +112,7 @@
           $users = $services->getUserAccounts();
           if (!empty($users)) {
           ?>
-            <table id="customers" class="">
+            <table id="customers">
               <thead>
                 <tr class="users-table-info">
                   <th><b>USER I.D </b></th>

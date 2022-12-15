@@ -8,19 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
   <meta name="keywords" content="Kennel Business, French Bulldogs">
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
-  <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
   <?php include_once 'stylesheets.php'; ?>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
     #cnfrmtitle {
       font-size: 100px;
-      color:#db6551;
+      color: #db6551;
     }
+
     #cnfrmcontent {
-        font-size: 20px;
-        color:#c0b65a;
-      }
+      font-size: 20px;
+      color: #c0b65a;
+    }
+
     #ohanafooter {
       margin-top: 5%;
     }

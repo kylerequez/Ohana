@@ -8,7 +8,6 @@
   <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
   <meta name="keywords" content="Kennel Business, French Bulldogs">
   <link rel="stylesheet" href="/Ohana/src/css/puppies.css">
-  <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
   <?php include_once 'stylesheets.php'; ?>
   <style>
     #header {
@@ -35,7 +34,7 @@
 
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
-    @media screen and (min-width: 360px) and (max-width: 929.98px) {}
+    @media screen and (min-width: 360px) and (max-width: 420px) {}
   </style>
 </head>
 
@@ -73,7 +72,7 @@
   }
   ?>
   <main>
-    <?php include_once 'rnavbar.php'; ?>
+    <?php include_once 'navigationbar.php'; ?>
     <div class="container-fluid">
       <div class="container h-90">
         <h1 class="text-center mb-5" id="header" style="color:#DB6551; font-family: 'Acme', sans-serif; "> Pet Profile </h1><br>

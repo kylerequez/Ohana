@@ -8,7 +8,6 @@
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
     <link rel="stylesheet" href="/Ohana/src/css/pawcart.css">
-    <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
         #btn-home {
@@ -58,7 +57,7 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <!-- <?php include_once 'rnavbar.php'; ?> -->
+      
         <?php
         require dirname(__DIR__) . '/config/db-config.php';
         require dirname(__DIR__) . '/dao/OrderDAO.php';

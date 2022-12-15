@@ -9,7 +9,6 @@
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
     <link rel="stylesheet" href="/Ohana/src/css/home.css">
-    <!-- <link rel="stylesheet" href="/Ohana/src/css/navbar.css"> -->
     <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
     <?php include_once 'stylesheets.php'; ?>
 

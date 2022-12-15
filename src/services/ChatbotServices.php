@@ -28,7 +28,7 @@ class ChatbotServices
             $tempName = $file['tmp_name'];
             $size = $file['size'];
             $error = $file['error'];
-            $type = $file['type'];
+            // $type = $file['type'];
             $fileExt = explode('.', $name);
             $actualExt = strtolower(end($fileExt));
             $allowed = array('jpg', 'jpeg', 'png');

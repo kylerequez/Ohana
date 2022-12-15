@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="sign-up_form">
+
 <head>
   <title> OHANA REGISTER </title>
   <meta charset="utf-8">
@@ -8,48 +9,58 @@
   <meta name="keywords" content="Kennel Business, French Bulldogs">
 
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
-  <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
 
   <?php include_once 'stylesheets.php'; ?>
   <style>
     #already {
       font-size: 20px;
     }
+
     #passwordreq {
       font-size: 18px;
     }
+
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
       .sign-up__title {
         font-size: 40px;
       }
+
       .sign-up__descr {
         font-size: 40px;
       }
+
       .register__desc {
         font-size: 20px;
       }
+
       .input__label {
         font-size: 15px;
       }
+
       .input-checkbox__label {
         font-size: 15px;
       }
+
       #passwordreq {
         font-size: 16px;
       }
+
       #message p {
         margin-top: 5px;
         font-size: 13px;
       }
+
       #letter {
         font-size: 20px;
       }
+
       .logbtn button {
         display: block;
         padding: 10px 60px;
         font-size: 15px;
         font-weight: 700;
       }
+
       #already {
         font-size: 15px;
       }
@@ -73,9 +84,8 @@
                 unset($_SESSION["msg"]); ?>
               </div>
             <?php
+              session_destroy();
             }
-            unset($_SESSION["msg"]);
-            session_destroy();
             ?>
           </header>
           <form class="sign-up__form form" action="/accounts/register" method="POST">

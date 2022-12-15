@@ -67,6 +67,9 @@ class TransactionServices
     public function getAllTransactions(): mixed
     {
         $transactions = $this->dao->getAllTransactions();
+        if (is_null($transactions)) {
+            return $transactions;
+        }
         foreach ($transactions as $transaction) {
             $orders = $this->order->searchByTransactionId($transaction->getId());
             $transaction->setListOfOrders($orders);
@@ -77,6 +80,9 @@ class TransactionServices
     public function searchByReference(string $reference): mixed
     {
         $transaction = $this->dao->searchByReference($reference);
+        if (is_null($transaction)) {
+            return $transaction;
+        }
         $orders = $this->order->searchByTransactionId($transaction->getId());
         $transaction->setListOfOrders($orders);
         return $transaction;
@@ -90,6 +96,9 @@ class TransactionServices
     public function getUserTransactions(string $id): mixed
     {
         $transactions = $this->dao->searchByAccountId($id);
+        if (is_null($transactions)) {
+            return $transactions;
+        }
         foreach ($transactions as $transaction) {
             $orders = $this->order->searchByTransactionId($transaction->getId());
             $transaction->setListOfOrders($orders);

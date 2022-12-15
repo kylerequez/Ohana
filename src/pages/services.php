@@ -8,7 +8,6 @@
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
     <link rel="stylesheet" href="/Ohana/src/css/service.css">
-    <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
@@ -63,7 +62,7 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <?php include_once 'rnavbar.php'; ?>
+    <?php include_once 'navigationbar.php'; ?>
         <div class="container-fluid">
             <div class="message">
                 <section class="services" id="services">

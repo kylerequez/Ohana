@@ -113,7 +113,7 @@ class AppointmentController
                     header("Location: http://" . DOMAIN_NAME . "/set-appointment?type=REHOMING");
                     break;
                 }
-                header("Location: http://" . DOMAIN_NAME . "/feedback");
+                header("Location: http://" . DOMAIN_NAME . "/user-feedback");
                 break;
         }
     }

@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="keywords" content="Kennel Business, French Bulldogs">
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
-  <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
   <?php include_once 'stylesheets.php'; ?>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');

@@ -10,7 +10,6 @@
     <meta name="keywords" content="Kennel Business, French Bulldogs">
 
     <link rel="stylesheet" href="/Ohana/src/css/puppies.css">
-    <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
 
     <?php include_once 'stylesheets.php'; ?>
     <style>

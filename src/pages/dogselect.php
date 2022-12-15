@@ -8,7 +8,6 @@
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
     <link rel="stylesheet" href="/Ohana/src/css/petprofiles.css">
-    <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
         #selector {
@@ -34,7 +33,7 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-        <?php include_once 'rnavbar.php'; ?>
+        <?php include_once 'navigationbar.php'; ?>
         <div class="container-fluid">
             <section class="abouthead">
                 <h1 id="header" class="text-center mb-5"> Choose dog for Stud Service </h1>
@@ -56,8 +55,8 @@
                     $_SESSION["profile"] = serialize($profiles);
                     if (!empty($profiles)) {
                     ?>
-                        <form method="POST" action="/set-appointment?type=STUD">
-                            <input type="hidden" name="studId" value="<?php echo $_GET["id"]; ?>">
+                        <form id="studForm" method="POST" action="/stud/book">
+                            <input type="hidden" name="studReference" value="<?php echo $_GET["reference"]; ?>">
                             <div class="d-flex justify-content-center">
                                 <?php
                                 foreach ($profiles as $profile) {
@@ -66,7 +65,7 @@
                                         <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image" width="200px" height="250px;">
                                         <div class="card-body text-center">
                                             <h5 class="card-title fs-3" style="font-family: 'Acme', sans-serif; color:#db6551"> <?php echo $profile->getName(); ?></h5>
-                                            <center><input class="form-check-input mt-3" type="radio" name="partnerId" id="<?php echo $profile->getId(); ?>" value="<?php echo $profile->getId(); ?>" required /></center>
+                                            <center><input class="form-check-input mt-3" type="radio" name="partnerReference" id="<?php echo $profile->getReference(); ?>" value="<?php echo $profile->getId(); ?>" required /></center>
                                         </div>
                                     </div>
                                 <?php
@@ -80,13 +79,14 @@
                                         <div class="card-body">
                                             <input class="form-check-input mt-3" type="radio" name="petBoardingChoice" id="yes" value="YES" />
                                             <label class="form-check-label mt-3 mb-3 ms-5" for="payment-method"> YES </label>
-
-                                            <input class="form-check-input mt-3" type="radio" name="petBoardingChoice" id="no" value="NO" checked="checked" />
+                                            <input class="form-check-input mt-3" type="radio" name="petBoardingChoice" id="no" value="NO" checked />
                                             <label class="form-check-label mt-3 mb-3" for="no">NO</label>
+                                            <div id="slots"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                             <center> <button type="submit" class="btn text-white p-3 mb-5" style="background-color:#db6551;width:40rem;">Proceed</button></center>
                         </form>
                     <?php
@@ -106,6 +106,55 @@
         <?php include_once 'footer.php'; ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $('#studForm').find("input[name='petBoardingChoice']").click(function(e) {
+                let buttonVal = $("input[type='radio'][name='petBoardingChoice']:checked").val();
+
+                if (buttonVal == 'YES') {
+                    $('#slots').empty();
+                    $('#slots').append(`
+                    <hr>
+<?php
+include_once dirname(__DIR__) . '/config/db-config.php';
+include_once dirname(__DIR__) . '/dao/BoardingSlotDAO.php';
+include_once dirname(__DIR__) . '/services/BoardingSlotServices.php';
+
+$dao = new BoardingSlotDAO($servername, $database, $username, $password);
+$services = new BoardingSlotServices($dao);
+
+$slots = $services->getAvailableSlots();
+
+if (is_null($slots)) {
+?>
+Sorry! We do not have an available pet boarding slot at the moment. Please try again later.
+<?php } else { ?>
+<center>
+
+  <div class="row g-0">
+    <div class="col-md-4">
+        <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="img-fluid rounded-start p-2" alt="<?php echo $profile->getName(); ?> Image">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"> SLOT NAME</h5>
+        <input class="form-check-input mt-1" type="radio" name="slotReference" id="no" value="NO" />
+        <label class="form-check-label mt-2" for="no">NO</label>
+      </div>
+    </div>
+  </div>
+
+</center>
+
+    <?php } ?> 
+                    `);
+                } else {
+                    $('#slots').empty();
+                }
+            });
+        });
     </script>
 </body>
 

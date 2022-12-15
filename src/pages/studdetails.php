@@ -8,7 +8,6 @@
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
     <link rel="stylesheet" href="/Ohana/src/css/puppies.css">
-    <link rel="stylesheet" href="/Ohana/src/css/navbar.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
@@ -95,7 +94,7 @@
     }
     ?>
     <main>
-        <?php include_once 'rnavbar.php'; ?>
+    <?php include_once 'navigationbar.php'; ?>
         <div class="container-fluid">
             <div class="container h-90">
                 <div class="card mx-auto" id="pupcard">
@@ -119,7 +118,7 @@
                                 </div>
                                 <div class="buttons mt-5">
                                     <a href="/stud"><button class="btn btn-outline-dark" style="margin-left:5%"> Go Back</button></a>
-                                    <a href="/select-stud-dog?id=<?php echo $profile->getId(); ?>"><button type="button" class="btn text-white" style="margin-left:5%; background-color:#c0b65a; ">Book as Stud</button></a>
+                                    <a href="/select-stud-dog?reference=<?php echo $profile->getReference(); ?>"><button type="button" class="btn text-white" style="margin-left:5%; background-color:#c0b65a; ">Book as Stud</button></a>
                                 </div>
                             </div>
                         </div>
