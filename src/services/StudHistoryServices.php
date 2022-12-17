@@ -24,9 +24,25 @@ class StudHistoryServices
         return true;
     }
 
+    public function updateRecord(string $id, array $data): bool
+    {
+        $maleId = $data['maleId'];
+        $femaleId = $data['femaleId'];
+        $date = $data['date'];
+        $status = $data['status'];
+
+        $history = new StudHistory($maleId, $femaleId, new DateTime($date), $status);
+        if (!$this->dao->updateRecord($id, $history)) {
+            $_SESSION['msg'] = "There was an error in updating the record. SQL Error.";
+            return false;
+        }
+        $_SESSION['msg'] = "You have successfully updated a record in the stud history.";
+        return true;
+    }
+
     public function deleteRecord(string $id): bool
     {
-        if(!$this->dao->deleteRecord($id)){
+        if (!$this->dao->deleteRecord($id)) {
             $_SESSION['msg'] = "There was an error in deleting the record. SQL Error.";
             return false;
         }

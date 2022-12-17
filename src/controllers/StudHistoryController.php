@@ -25,7 +25,7 @@ class StudHistoryControler
     {
         switch ($method) {
             case "GET":
-                if(!$this->services->deleteRecord($id)){
+                if (!$this->services->deleteRecord($id)) {
                     $this->processCollectionRequest("GET");
                 }
                 $account = unserialize($_SESSION["user"]);
@@ -36,6 +36,15 @@ class StudHistoryControler
                 $this->processCollectionRequest("GET");
                 break;
             case "POST":
+                if (!$this->services->updateRecord($id, $_POST)) {
+                    $this->processCollectionRequest("GET");
+                }
+                $account = unserialize($_SESSION["user"]);
+                $log = $account->getFullName() . " has updated Stud History $id";
+                if (!$this->logservices->addLog($log)) {
+                    $_SESSION["msg"] = "There was an error in the logging of the action.";
+                }
+                $this->processCollectionRequest("GET");
                 break;
         }
     }
@@ -44,7 +53,7 @@ class StudHistoryControler
     {
         switch ($method) {
             case "GET":
-                header("Location: https://" .  DOMAIN_NAME . "/dashboard/pet-profiles");
+                header("Location: " . $_SERVER['HTTP_REFERER']);
                 break;
             case "POST":
                 if (!$this->services->addRecord($_POST)) {

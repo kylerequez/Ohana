@@ -72,6 +72,33 @@ class StudHistoryDAO
         }
     }
 
+    public function updateRecord(string $id, StudHistory $history): bool
+    {
+        try {
+            $this->openConnection();
+            $sql = "UPDATE ohana_stud_history
+                    SET female_id = :femaleId, stud_date = :date, stud_status = :status
+                    WHERE stud_id=:id";
+
+            $femaleId = $history->getFemaleId();
+            $date = $history->getDate()->format('Y-m-d H:i:s');
+            $status = $history->getStatus();
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":femaleId", $femaleId, PDO::PARAM_INT);
+            $stmt->bindParam(":date", $date, PDO::PARAM_STR);
+            $stmt->bindParam(":status", $status, PDO::PARAM_STR);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+
+            $isDeleted = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isDeleted;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
     public function getAllStudHistory(): mixed
     {
         try {

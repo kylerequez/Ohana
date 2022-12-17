@@ -47,7 +47,8 @@ class PetProfileServices
     public function getOhanaStudPet(string $reference, string $name): mixed
     {
         $profile = $this->dao->getOhanaStudPet($reference, $name);
-        $profile->setStudRate($this->history->getTotalSuccessCount($profile->getId()) / $this->history->getTotalHistoryCount($profile->getId()));
+        $profile->setStudHistory($this->history->getAllStudHistoryByMaleId($profile->getId()));
+        $profile->setStudRate(($this->history->getTotalHistoryCount($profile->getId()) == 0) ? 0 : $this->history->getTotalSuccessCount($profile->getId()) / $this->history->getTotalHistoryCount($profile->getId()));
         return $profile;
     }
 
