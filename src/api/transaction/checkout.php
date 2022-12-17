@@ -16,6 +16,14 @@ $services = new TransactionServices($dao, $orderDAO, $petProfile);
 $logservices = new LogServices($logDAO);
 $controller = new TransactionController($services, $logservices);
 
-if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($reference)) {
-    $controller->processCheckoutRequest($_SERVER["REQUEST_METHOD"], $reference);
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($reference) && isset($type)) {
+    echo '1';
+    if ($type == 'rehoming') {
+        $controller->processCheckoutRequest($_SERVER["REQUEST_METHOD"], $reference);
+    } else if ($type == 'stud') {
+        echo 'here';
+        $controller->processStudCheckoutRequest($_SERVER["REQUEST_METHOD"], $reference);
+    }
+} else if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $controller->processCheckoutRequest($_SERVER["REQUEST_METHOD"], trim($_POST['reference']));
 }

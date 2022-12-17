@@ -74,7 +74,7 @@
             $_SESSION['msg'] = "There was an error in accessing the transaction. Please try again.";
         ?>
             <script type="text/javascript">
-                const url = "http://<?= DOMAIN_NAME ?>/pawcart";
+                const url = "https://<?= DOMAIN_NAME ?>/pawcart";
                 window.location.href = url;
             </script>
         <?php } ?>

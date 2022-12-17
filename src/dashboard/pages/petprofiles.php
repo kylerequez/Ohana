@@ -95,6 +95,11 @@
       border-width: 2px;
       background-color: white;
     }
+
+    #recordbtn {
+      width: 150px;
+      height: 50px;
+    }
   </style>
 </head>
 
@@ -110,7 +115,7 @@
         </div>
         <div class="users-table table-wrapper">
           <div class="createstaff-wrapper">
-            <a class="create-staff-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white">
+            <a class="create-staff-btn" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white">
                 <i data-feather="plus" aria-hidden="true"></i>Add Pet </button></a>
           </div>
           <br>
@@ -118,10 +123,12 @@
           include_once dirname(__DIR__) . '/../models/PetProfile.php';
           include_once dirname(__DIR__) . '/../config/db-config.php';
           include_once dirname(__DIR__) . '/../dao/PetProfileDAO.php';
+          include_once dirname(__DIR__) . '/../dao/StudHistoryDAO.php';
           include_once dirname(__DIR__) . '/../services/PetProfileServices.php';
 
           $dao = new PetProfileDAO($servername, $database, $username, $password);
-          $services = new PetProfileServices($dao);
+          $history = new StudHistoryDAO($servername, $database, $username, $password);
+          $services = new PetProfileServices($dao, $history);
 
           $profiles = $services->getOhanaPets();
           if (!empty($profiles)) {
@@ -129,12 +136,53 @@
             <table id="profiles" class="posts-table">
               <thead>
                 <tr class="users-table-info">
-                  <th><b>DOG I.D </b></th>
                   <th><b>DOG TYPE </b></th>
+                  <th><b>DOG TRAIT </b></th>
                   <th><b>DOG PICTURE </b></th>
                   <th><b>DOG NAME </b></th>
-                  <th><b>OWNER </b></th>
                   <th><b>ACTION </b></th>
+                </tr>
+                <tr>
+                  <th>
+                    <select data-column="0" class="form-control filter-select">
+                      <option value="">Select a Pet Type...</option>
+                      <option value="REHOMING">Rehoming</option>
+                      <option value="STUD">Stud</option>
+                    </select>
+                  </th>
+                  <th>
+                    <select data-column="1" class="form-control filter-select">
+                      <option value="">Select a Pet Trait...</option>
+                      <option class="text-center" style="color:#DB6551" disabled>Standard</option>
+                      <option value="Fawn">Fawn</option>
+                      <option value="Sable">Sable</option>
+                      <option value="Brindle">Brindle</option>
+                      <option class="text-center" style="color:#DB6551" disabled>Exotic</option>
+                      <option value="Blue">Blue</option>
+                      <option value="Chocolate">Chocolate</option>
+                      <option value="Lilac">Lilac</option>
+                      <option value="Isabella">Isabella</option>
+                      <option value="Newshade Isabella">Newshade Isabella</option>
+                      <option value="Newshade">Newshade</option>
+                      <option value="Black Tan">Black Tan</option>
+                      <option value="Blue Tan">Blue Tan</option>
+                      <option value="Choco Tan">Choco Tan</option>
+                      <option value="Isabella Tan">Isabella Tan</option>
+                      <option value="Newshade Isabella Tan">Newshade Isabella Tan</option>
+                      <option class="text-center" style="color:#DB6551" disabled>Platinum</option>
+                      <option value="Lilac Plat">Lilac Plat</option>
+                      <option value="Champaigne Plat">Champaigne Plat</option>
+                      <option value="Newshade Plat">Newshade Plat</option>
+                      <option value="Merle">Merle</option>
+                    </select>
+                  </th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Pet Name..." data-column="2">
+                  </th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Owner Name..." data-column="3">
+                  </th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -142,13 +190,102 @@
                 foreach ($profiles as $profile) {
                 ?>
                   <tr>
-                    <td><?php echo $profile->getId(); ?></td>
                     <td><?php echo $profile->getType(); ?></td>
+                    <td><?php echo $profile->getTrait(); ?></td>
                     <td><img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="rounded-3" style="width: 100px; height: 100px;"></td>
                     <td><?php echo $profile->getName(); ?></td>
-                    <td><?php echo $profile->getOwnerName(); ?></td>
                     <td>
-                      <a href="#" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $profile->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"></i></button></a>
+                      <?php if ($profile->getType() == 'STUD') { ?>
+                        <a data-bs-toggle="modal" data-bs-target="#viewModalId<?php echo $profile->getId(); ?>"><button class="view-btn transparent-btn" type="view" style="color:brown; margin-right: 15px; font-size: 25px;"> <i class="uil uil-file-info-alt"></i></button></a>
+                        <div class="modal fade" id="viewModalId<?php echo $profile->getId(); ?>" tabindex="-1" aria-labelledby="viewhistorymodal" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="viewModalId" style="font-family:'Acme', sans-serif;"> Stud History for <?php echo $profile->getName(); ?></h5>
+                                <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                              </div>
+                              <div class="modal-body p-2">
+                                <form method="POST" action="/dashboard/stud-history/add">
+                                  <div class="container">
+                                    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 ms-3 mt-1">
+                                      <div class="col">
+                                        <input type="hidden" value="<?php echo $profile->getId(); ?>" name="maleId" required>
+                                        <select class="form-control mx-2" name="femaleId">
+                                          <option value="" selected>Select a dam...</option>
+                                          <?php
+                                          $dams = $services->getAllDams();
+                                          foreach ($dams as $dam) {
+                                          ?>
+                                            <option value="<?php echo $dam->getId(); ?>"><?php echo $dam->getName() . " (" . $dam->getTrait() . "/" . $dam->getColor() . ")" ?></option>
+                                          <?php } ?>
+                                        </select>
+                                      </div>
+                                      <div class="col">
+                                        <input type="datetime-local" class="mx-2" name="date" required>
+                                      </div>
+                                      <div class="col">
+                                        <select class="form-control" name="status" required>
+                                          <option value="" selected>Select a status...</option>
+                                          <option value="SUCCESS">Success</option>
+                                          <option value="SCHEDULED">Scheduled</option>
+                                          <option value="FAILED">Failed</option>
+                                        </select>
+                                      </div>
+                                      <div class="col">
+                                        <button type="submit" class="btFn text-light mx-2" id="recordbtn" style="background-color:#db6551;border-radius:30px;"><i data-feather="plus" aria-hidden="true"></i> Add Record</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </form>
+                                <hr>
+                                <?php if (is_null($profile->getStudHistory())) { ?>
+                                  <div class="alert text-light text-center ms-5 me-5" role="alert" style="background-color:#db6551">
+                                    There are currently no existing Stud Records for this pet.
+                                  </div>
+                                <?php } else { ?>
+                                  <div class="container-sm" id="recordtable">
+                                    <table class="table">
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">Date</th>
+                                          <th scope="col">Dam</th>
+                                          <th scope="col">Trait</th>
+                                          <th scope="col">Status</th>
+                                          <th scope="col">Action</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <?php foreach ($profile->getStudHistory() as $record) { ?>
+                                          <tr>
+                                            <td><?php echo $record->getDate()->format('M-d-Y h:i:s A'); ?></td>
+                                            <td><?php echo $record->getFemale()->getName(); ?></td>
+                                            <td><?php echo $record->getFemale()->getTrait(); ?></td>
+                                            <td><?php echo $record->getStatus(); ?></td>
+                                            <td>
+                                              <a href="#editStatus<?php echo $record->getId(); ?>" data-bs-toggle="modal"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"><i class="uil uil-edit"></i></button></a>
+                                              <form method="POST" action="">
+                                                <div class="modal fade" id="editStatus<?php echo $record->getId(); ?>" tabindex="-1" aria-labelledby="editprofilemodal" aria-hidden="true">
+                                                  <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                      TEST
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </form>
+                                              <a href="/dashboard/stud-history/delete/<?php echo $record->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Stud History ID <?php echo $profile->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>
+                                            </td>
+                                          </tr>
+                                        <?php } ?>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                <?php } ?>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      <?php } ?>
+                      <a data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $profile->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"></i></button></a>
                       <a href="/dashboard/pet-profiles/delete/<?php echo $profile->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Pet Profile ID <?php echo $profile->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>
                       <form method="POST" action="/dashboard/pet-profiles/update/<?php echo $profile->getId(); ?>" enctype="multipart/form-data">
                         <input type="hidden" name="reference" value="<?php echo $profile->getReference(); ?>">
@@ -390,8 +527,63 @@
     </div>
   </form>
   <script>
-    $('#profiles').DataTable({
-      "searching": true,
+    var table = $('#profiles').DataTable({
+      orderCellsTop: true,
+      fixedHeader: true,
+      searching: true,
+      responsive: true,
+      initComplete: function() {
+        var api = this.api();
+        api
+          .columns()
+          .eq(0)
+          .each(function(colIdx) {
+            var cell = $('.filters th').eq(
+              $(api.column(colIdx).header()).index()
+            );
+            var title = $(cell).text();
+            $(cell).html('<input type="text" placeholder="' + title + '" />');
+            $(
+                'input',
+                $('.filters th').eq($(api.column(colIdx).header()).index())
+              )
+              .off('keyup change')
+              .on('change', function(e) {
+                $(this).attr('title', $(this).val());
+                var regexr = '({search})';
+                var cursorPosition = this.selectionStart;
+                api
+                  .column(colIdx)
+                  .search(
+                    this.value != '' ?
+                    regexr.replace('{search}', '(((' + this.value + ')))') :
+                    '',
+                    this.value != '',
+                    this.value == ''
+                  )
+                  .draw();
+              })
+              .on('keyup', function(e) {
+                e.stopPropagation();
+                $(this).trigger('change');
+                $(this)
+                  .focus()[0]
+                  .setSelectionRange(cursorPosition, cursorPosition);
+              });
+          });
+      },
+    });
+
+    $('.filter-input').keyup(function() {
+      table.column($(this).data('column'))
+        .search($(this).val())
+        .draw();
+    });
+
+    $('.filter-select').change(function() {
+      table.column($(this).data('column'))
+        .search($(this).val())
+        .draw();
     });
   </script>
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>

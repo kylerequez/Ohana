@@ -26,7 +26,7 @@ class LogController
     {
         switch ($method) {
             case "GET":
-                header("Location: http://" . DOMAIN_NAME . "/dashboard/logs");
+                header("Location: https://" . DOMAIN_NAME . "/dashboard/logs");
                 break;
         }
     }

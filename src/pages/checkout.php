@@ -20,7 +20,7 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-    <?php include_once 'navigationbar.php'; ?>
+        <?php include_once 'navigationbar.php'; ?>
         <?php
         include_once dirname(__DIR__) . '/models/Order.php';
         include_once dirname(__DIR__) . '/models/PetProfile.php';
@@ -36,15 +36,22 @@
         $services = new TransactionServices($dao, $orderDAO, null);
 
         $cart = unserialize($_SESSION["cart"]);
-        if (empty($cart->getCart())) {
+
+        if (empty($cart->getCart()) && !isset($_GET['from'])) {
             include_once dirname(__DIR__) . '/config/app-config.php';
             $_SESSION["msg"] = "You do not have any orders to proceed to the checkout page."
         ?>
             <script type="text/javascript">
-                const url = "http://<?= DOMAIN_NAME ?>/pawcart";
+                const url = "https://<?= DOMAIN_NAME ?>/pawcart";
                 window.location.href = url;
             </script>
         <?php
+        }
+
+        if (!isset($_GET['from'])) {
+            $action = "/checkout/$reference/rehoming";
+        } else {
+            $action = "/checkout/$reference/stud";
         }
         ?>
         <div class="container-fluid">
@@ -53,7 +60,7 @@
                     <img src="/Ohana/src/images/Pages/checkoutheader.png" class="img-fluid" width="100%">
                 </div>
             </section>
-            <form id="paymentForm" method="GET" action="/checkout/<?php echo $reference; ?>/get">
+            <form id="paymentForm" method="GET" action="<?php echo $action; ?>">
                 <div class="container">
                     <section class="paymentsection">
                         <div class="paymentmethod" id="paymentmethod">
@@ -94,7 +101,7 @@
                                 <p class="fs-6 mt-5 mb-5"> Friendly Reminder: Kindly Read the <b>Terms and Conditions for Cancellation and Payment Policy.</b> </p>
                             </div>
                             <div class="card rounded-3 mb-5" style="width:60%;" id="paymentInstruction"></div>
-                            <a href="/home"><button type="button" class="btn btn-outline-dark btn-lg mx-2" style="width:200px;"> Go Back </button></a>
+                            <a href="javascript:history.go(-1)" class="text-light"><button type="button" class="btn btn-outline-dark btn-lg mx-2" style="width:200px;"> Go Back </button></a>
                             <button type="submit" class="btn btn-block btn-lg text-light mx-2" style="background-color:#c0b65a; width:200px;"> Proceed </button></a>
                         </center>
                     </div>

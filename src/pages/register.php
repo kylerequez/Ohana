@@ -157,7 +157,7 @@
                 <div class="input-checkbox__container">
                   <input type="checkbox" class="input-checkbox__field" id="agree" required /> <span class="input-checkbox__square"></span>
                   <label class="input-checkbox__label" for="agree"> I agree with the
-                    <a href="#" style="text-decoration: none; color:#ff5757" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a> </label>
+                    <a style="text-decoration: none; color:#ff5757" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a> </label>
                 </div>
               </div>
             </div>

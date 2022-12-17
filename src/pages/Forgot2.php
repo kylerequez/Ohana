@@ -66,7 +66,7 @@
             session_destroy();
           ?>
             <script>
-              window.location = 'http://<?php echo DOMAIN_NAME; ?>/forgot-password';
+              window.location = 'https://<?php echo DOMAIN_NAME; ?>/forgot-password';
             </script>
           <?php
           }

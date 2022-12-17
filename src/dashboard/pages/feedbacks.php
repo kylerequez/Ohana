@@ -120,17 +120,32 @@
             <table id="feedbacks">
               <thead>
                 <tr class="users-table-info">
-                  <th>FEEDBACK I.D </th>
                   <th>RATING</th>
                   <th>NAME OF USER</th>
                   <th>DATE</th>
                   <th>ACTION</th>
                 </tr>
+                <tr>
+                  <th>
+                    <select data-column="0" class="form-control filter-select">
+                      <option value="">Select a rating...</option>
+                      <option value="Very Satisfactory">Very Satisfactory</option>
+                      <option value="Satisfactory">Satisfactory</option>
+                      <option value="Neutral">Neutral</option>
+                      <option value="Dissatisfied">Dissatisfied</option>
+                      <option value="Very Dissastified">Very Dissastified</option>
+                    </select>
+                  </th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Full Name..." data-column="1">
+                  </th>
+                  <th></th>
+                  <th></th>
+                </tr>
               </thead>
               <tbody>
                 <?php foreach ($feedbacks as $feedback) { ?>
                   <tr>
-                    <td><?php echo $feedback->getId(); ?></td>
                     <td><?php echo $feedback->formatRating(); ?></td>
                     <td><?php echo $feedback->getAccount()->getFullName(); ?></td>
                     <td><?php echo $feedback->getDate()->format('M-d-Y h:i:s A'); ?></td>
@@ -183,12 +198,11 @@
   </div>
   <script>
     $(document).ready(function() {
-
-
-      $('#feedbacks').DataTable({
+      var table = $('#feedbacks').DataTable({
         orderCellsTop: true,
         fixedHeader: true,
         searching: true,
+        responsive: true,
         initComplete: function() {
           var api = this.api();
           api
@@ -229,6 +243,18 @@
                 });
             });
         },
+      });
+
+      $('.filter-input').keyup(function() {
+        table.column($(this).data('column'))
+          .search($(this).val())
+          .draw();
+      });
+
+      $('.filter-select').change(function() {
+        table.column($(this).data('column'))
+          .search($(this).val())
+          .draw();
       });
     });
   </script>

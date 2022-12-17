@@ -47,26 +47,26 @@
   include_once dirname(__DIR__) . '/services/PetProfileServices.php';
 
   $dao = new PetProfileDAO($servername, $database, $username, $password);
-  $services = new PetProfileServices($dao);
+  $services = new PetProfileServices($dao, null);
 
   $name = str_replace("%20", " ", $name);
   $profile = $services->getOwnedPet($reference, $name);
   if (is_null($profile)) {
   ?>
     <script>
-      window.location = 'http://<?php echo DOMAIN_NAME; ?>/ownedpets';
+      window.location = 'https://<?php echo DOMAIN_NAME; ?>/ownedpets';
     </script>
   <?php
   } else if ($profile->getReference() != $reference) {
   ?>
     <script>
-      window.location = 'http://<?php echo DOMAIN_NAME; ?>/ownedpets';
+      window.location = 'https://<?php echo DOMAIN_NAME; ?>/ownedpets';
     </script>
   <?php
   } else if ($profile->getName() !=  $name) {
   ?>
     <script>
-      window.location = 'http://<?php echo DOMAIN_NAME; ?>/ownedpets';
+      window.location = 'https://<?php echo DOMAIN_NAME; ?>/ownedpets';
     </script>
   <?php
   }

@@ -62,7 +62,7 @@
                     include_once dirname(__DIR__) . '/services/PetProfileServices.php';
 
                     $dao = new PetProfileDAO($servername, $database, $username, $password);
-                    $services = new PetProfileServices($dao);
+                    $services = new PetProfileServices($dao, null);
 
                     if (!isset($_GET['trait'])) $_GET['trait'] = 'All';
                     if (!isset($_GET['sex'])) $_GET['sex'] = 'All';

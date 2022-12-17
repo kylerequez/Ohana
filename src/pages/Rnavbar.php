@@ -33,7 +33,7 @@ if (!isset($_SESSION['user'])) {
   session_destroy();
 ?>
   <script>
-    window.location = 'http://<?php echo DOMAIN_NAME; ?>/login';
+    window.location = 'https://<?php echo DOMAIN_NAME; ?>/login';
   </script>
 <?php
 } else {
@@ -97,7 +97,7 @@ if (!isset($_SESSION['user'])) {
                 </li>
                 <li>
                   <img src="/Ohana/src/images/icons/log-out.png" />
-                  <a href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
+                  <a data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
                 </li>
               </ul>
             </div>

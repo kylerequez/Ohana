@@ -81,7 +81,7 @@ class BoardingSlotController
         switch ($method) {
                 // Boarding Slot Display
             case "GET":
-                header("Location: http://" . DOMAIN_NAME . "/dashboard/petboarding");
+                header("Location: https://" . DOMAIN_NAME . "/dashboard/petboarding");
                 break;
                 // Add Boarding Slot
             case "POST":

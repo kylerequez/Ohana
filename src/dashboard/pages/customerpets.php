@@ -109,7 +109,7 @@
           include_once dirname(__DIR__) . '/../services/PetProfileServices.php';
 
           $dao = new PetProfileDAO($servername, $database, $username, $password);
-          $services = new PetProfileServices($dao);
+          $services = new PetProfileServices($dao, null);
 
           $profiles = $services->getCustomerPets();
           if (!empty($profiles)) {

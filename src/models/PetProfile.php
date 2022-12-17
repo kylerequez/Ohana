@@ -16,6 +16,8 @@ class PetProfile
     private ?string $ownerName = null;
     private ?float $price = null;
     private ?string $status = null;
+    private ?string $studRate = null;
+    private ?array $studHistory = null;
 
     public function __construct($image, string $reference, string $name, DateTime $birthdate, string $sex, string $color, string $trait, bool $isVaccinated, string $pcciStatus, int $accountId, string $ownerName, float $price, string $status)
     {
@@ -339,6 +341,46 @@ class PetProfile
     public function setReference($reference)
     {
         $this->reference = $reference;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of studRate
+     */
+    public function getStudRate()
+    {
+        return $this->studRate;
+    }
+
+    /**
+     * Set the value of studRate
+     *
+     * @return  self
+     */
+    public function setStudRate($studRate)
+    {
+        $this->studRate = $studRate;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of studHistory
+     */
+    public function getStudHistory()
+    {
+        return $this->studHistory;
+    }
+
+    /**
+     * Set the value of studHistory
+     *
+     * @return  self
+     */
+    public function setStudHistory($studHistory)
+    {
+        $this->studHistory = $studHistory;
 
         return $this;
     }

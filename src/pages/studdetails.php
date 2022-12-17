@@ -60,41 +60,43 @@
     include_once dirname(__DIR__) . '/config/db-config.php';
     include_once dirname(__DIR__) . '/config/app-config.php';
     include_once dirname(__DIR__) . '/dao/PetProfileDAO.php';
+    include_once dirname(__DIR__) . '/dao/StudHistoryDAO.php';
     include_once dirname(__DIR__) . '/services/PetProfileServices.php';
 
     $dao = new PetProfileDAO($servername, $database, $username, $password);
-    $services = new PetProfileServices($dao);
+    $history = new StudHistoryDAO($servername, $database, $username, $password);
+    $services = new PetProfileServices($dao, $history);
 
     $name = str_replace("%20", " ", $name);
     $profile = $services->getOhanaStudPet($reference, $name);
     if (is_null($profile)) {
     ?>
         <script>
-            window.location = 'http://<?php echo DOMAIN_NAME; ?>/stud';
+            window.location = 'https://<?php echo DOMAIN_NAME; ?>/stud';
         </script>
     <?php
     } else if ($profile->getReference() != $reference) {
     ?>
         <script>
-            window.location = 'http://<?php echo DOMAIN_NAME; ?>/stud';
+            window.location = 'https://<?php echo DOMAIN_NAME; ?>/stud';
         </script>
     <?php
     } else if ($profile->getName() !=  $name) {
     ?>
         <script>
-            window.location = 'http://<?php echo DOMAIN_NAME; ?>/stud';
+            window.location = 'https://<?php echo DOMAIN_NAME; ?>/stud';
         </script>
     <?php
     } else if ($profile->getStatus() != 'AVAILABLE') {
     ?>
         <script>
-            window.location = 'http://<?php echo DOMAIN_NAME; ?>/stud';
+            window.location = 'https://<?php echo DOMAIN_NAME; ?>/stud';
         </script>
     <?php
     }
     ?>
     <main>
-    <?php include_once 'navigationbar.php'; ?>
+        <?php include_once 'navigationbar.php'; ?>
         <div class="container-fluid">
             <div class="container h-90">
                 <div class="card mx-auto" id="pupcard">
@@ -111,8 +113,7 @@
                                     <p class="card-text"> <b class="ms-2">GENDER:</b> <?php echo $profile->getSex(); ?> </p>
                                     <p class="card-text"> <b class="ms-2">GENES:</b> <?php echo $profile->getTrait(); ?> </p>
                                     <p class="card-text"> <b class="ms-2">PCCI PAPERS:</b> <?php echo ($profile->getPcciStatus() == 'REGISTERED') ? 'Registered' : 'Pending'; ?></p>
-                                    <p class="card-text"> <b class="ms-2">SUCCESS RATE:</b> <?php //echo $profile->getSuccessRate(); 
-                                                                                            ?></p>
+                                    <p class="card-text"> <b class="ms-2">SUCCESS RATE:</b> <?php echo round($profile->getStudRate() * 100), '%'; ?></p>
                                     <p class="card-text fw-bold mt-3"> Our Adult Frenchies are fully vaccinated.</p>
                                     <p class="card-text fw-bold"> Note: Message us on social media for more pictures. </p>
                                 </div>

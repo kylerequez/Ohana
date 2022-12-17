@@ -11,6 +11,7 @@
     <?php include_once 'stylesheets.php'; ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
         .card {
             border-style: solid;
             border-color: #db6551;
@@ -18,17 +19,17 @@
             width: 420px;
             display: flex;
             align-items: center;
-            padding:30px;
+            padding: 30px;
             margin-left: auto;
             margin-right: auto;
         }
 
         #welcome {
-            margin-top:10%;
-            color:#db6551;
+            margin-top: 10%;
+            color: #db6551;
             font-family: 'Acme', sans-serif;
             font-weight: 800;
-            font-size:80px;
+            font-size: 80px;
         }
 
         #tell {
@@ -49,8 +50,9 @@
         }
 
         #ohanafooter {
-            margin-top:10%;
+            margin-top: 10%;
         }
+
         #full-stars-example {
             /* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
             /* make hover effect work properly in IE */
@@ -246,18 +248,20 @@
 
         @media (max-width: 1280px) {
             #welcome {
-                margin-top:20%;
+                margin-top: 20%;
             }
         }
+
         @media (max-width: 1090px) {
             #welcome {
-                margin-top:25%;
+                margin-top: 25%;
             }
         }
+
         @media (max-width: 1090px) {
             #welcome {
-                margin-top:35%;
-                font-size:40px;
+                margin-top: 35%;
+                font-size: 40px;
             }
         }
     </style>
@@ -268,32 +272,31 @@
     <main>
         <div class="container-fluid">
             <center>
-            <h1 class="text-center" id="welcome"> Tell us your experience! </h1>
-                <form class="mt-5" id="feedbackform">
+                <h1 class="text-center" id="welcome"> Tell us your experience! </h1>
+                <form class="mt-5" id="feedbackform" method="POST" action="/feedback/add">
+                    <input type="hidden" name="id" value="<?php echo $user->getId(); ?>">
                     <div class="card text-center">
                         <p class="fs-4">Rating</p>
-                        <div id="full-stars-example-two">   
+                        <div id="full-stars-example-two">
                             <div class="rating-group my-2">
-                                <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio" />
-                                <label aria-label="1 star" class="rating__label" for="rating3-1"> <i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio" />
-                                <label aria-label="2 stars" class="rating__label" for="rating3-2"> <i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio" />
-                                <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio" />
-                                <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio" />
-                                <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio" />
+                                <input disabled checked class="rating__input rating__input--none" name="rating" id="rating-none" value="0" type="radio" />
+                                <label aria-label="1 star" class="rating__label" for="rating-1"> <i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                <input class="rating__input" name="rating" id="rating-1" value="1" type="radio" />
+                                <label aria-label="2 stars" class="rating__label" for="rating-2"> <i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                <input class="rating__input" name="rating" id="rating-2" value="2" type="radio" />
+                                <label aria-label="3 stars" class="rating__label" for="rating-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                <input class="rating__input" name="rating" id="rating-3" value="3" type="radio" />
+                                <label aria-label="4 stars" class="rating__label" for="rating-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                <input class="rating__input" name="rating" id="rating-4" value="4" type="radio" />
+                                <label aria-label="5 stars" class="rating__label" for="rating-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                <input class="rating__input" name="rating" id="rating-5" value="5" type="radio" />
                             </div>
                         </div>
                         <h2 class="my-3" id="comment">Comments and suggestion</h2>
-                        <textarea id="feedback" name="" rows="4" cols="50"></textarea>
+                        <textarea id="feedback" name="message" rows="4" cols="50"></textarea>
                         <div class="d-flex justify-content-end">
-                            <a href="/transactions"> <button class="btn btn-outline-dark mx-2" type="button"> Skip </button> </a>
-                            <button class="btn mx-2" style="background-color: #c0b65a; color: #ffffff" type="submit">
-                                Submit
-                            </button>
+                            <a href="/transactions"><button class="btn btn-outline-dark mx-2" type="button">Skip</button></a>
+                            <button class="btn mx-2" style="background-color: #c0b65a; color: #ffffff" type="submit">Submit</button>
                         </div>
                     </div>
                 </form>

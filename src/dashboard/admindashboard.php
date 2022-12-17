@@ -62,7 +62,7 @@
                     </div>
                     <div class="stat-cards-info">
                       <p class="stat-cards-info__num"> Total: <?php $dao = new PetProfileDAO($servername, $database, $username, $password);
-                                                              $services = new PetProfileServices($dao);
+                                                              $services = new PetProfileServices($dao, null);
                                                               echo $services->getOhanaPetsCount(); ?></p>
                       <p class="stat-cards-info__title" style="color:#db6551"> Ohana Pet Profiles </p>
                     </div>

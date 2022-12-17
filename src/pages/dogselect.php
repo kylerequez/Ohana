@@ -49,7 +49,7 @@
                     $dao = new PetProfileDAO($servername, $database, $username, $password);
                     $logdao = new LogDAO($servername, $database, $username, $password);
                     $logservices = new LogServices($logdao);
-                    $services = new PetProfileServices($dao);
+                    $services = new PetProfileServices($dao, null);
 
                     $profiles = $services->getUserPetProfile($user->getId());
                     $_SESSION["profile"] = serialize($profiles);
@@ -86,7 +86,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <center> <button type="submit" class="btn text-white p-3 mb-5" style="background-color:#db6551;width:40rem;">Proceed</button></center>
                         </form>
                     <?php
@@ -130,25 +129,24 @@ $slots = $services->getAvailableSlots();
 if (is_null($slots)) {
 ?>
 Sorry! We do not have an available pet boarding slot at the moment. Please try again later.
-<?php } else { ?>
-<center>
+<?php
+} else {
+    foreach ($slots as $slot) { ?>
 
   <div class="row g-0">
     <div class="col-md-4">
-        <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="img-fluid rounded-start p-2" alt="<?php echo $profile->getName(); ?> Image">
+        <img src="data:image/jpeg;base64,<?php echo base64_encode($slot->getImage()); ?>" class="img-fluid rounded-start p-2" alt="<?php echo $slot->getName(); ?> Image">
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title"> SLOT NAME</h5>
-        <input class="form-check-input mt-1" type="radio" name="slotReference" id="no" value="NO" />
-        <label class="form-check-label mt-2" for="no">NO</label>
+        <h5 class="card-title"><?php echo $slot->getName(); ?></h5>
+        <input class="form-check-input mt-1" type="radio" name="slotId" value="<?php echo $slot->getId(); ?>" />
       </div>
     </div>
   </div>
 
-</center>
-
-    <?php } ?> 
+    <?php }
+} ?> 
                     `);
                 } else {
                     $('#slots').empty();

@@ -26,6 +26,48 @@ class PetProfileDAO
         $this->conn = null;
     }
 
+    public function getAllDams(): mixed
+    {
+        try {
+            $this->openConnection();
+            $sql = "SELECT * FROM ohana_pet_profiles
+                    WHERE account_id != 1
+                    AND pet_sex = 'FEMALE';";
+
+            $stmt = $this->conn->query($sql);
+
+            $petProfiles = null;
+            if ($stmt->execute() > 0) {
+                while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $searchedPetProfile = new PetProfile(
+                        $petProfile["pet_image"],
+                        $petProfile["pet_reference"],
+                        $petProfile["pet_name"],
+                        new DateTime($petProfile["pet_birthdate"]),
+                        $petProfile["pet_sex"],
+                        $petProfile["pet_color"],
+                        $petProfile["pet_trait"],
+                        $petProfile["is_vaccinated"],
+                        $petProfile["pcci_status"],
+                        $petProfile["account_id"],
+                        $petProfile["owner_name"],
+                        $petProfile["pet_price"],
+                        $petProfile["pet_status"]
+                    );
+                    $searchedPetProfile->setType($petProfile["pet_type"]);
+                    $searchedPetProfile->setId($petProfile["pet_id"]);
+
+                    $petProfiles[] = $searchedPetProfile;
+                }
+            }
+            $this->closeConnection();
+            return $petProfiles;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
     public function getPetByReference(string $reference): mixed
     {
         try {
@@ -337,7 +379,7 @@ class PetProfileDAO
         }
     }
 
-    public function getOhanaStudPet(string $reference,  string  $name): mixed
+    public function getOhanaStudPet(string $reference, string $name): mixed
     {
         try {
             $this->openConnection();

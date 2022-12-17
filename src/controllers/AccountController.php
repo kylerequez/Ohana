@@ -30,7 +30,7 @@ class AccountController
     {
         switch ($method) {
             case "GET":
-                header("Location: http://" . DOMAIN_NAME . "/dashboard/customers");
+                header("Location: https://" . DOMAIN_NAME . "/dashboard/customers");
                 break;
         }
     }
@@ -102,7 +102,7 @@ class AccountController
         switch ($method) {
 
             case "GET":
-                header("Location: http://" . DOMAIN_NAME . "/dashboard/staff");
+                header("Location: https://" . DOMAIN_NAME . "/dashboard/staff");
                 break;
                 // Add Staff
             case "POST":
@@ -133,24 +133,24 @@ class AccountController
                         unset($_SESSION["email"]);
                         unset($_SESSION["token"]);
                         $_SESSION["cart"] = serialize(new Cart());
-                        header("Location: http://" . DOMAIN_NAME . "/home");
+                        header("Location: https://" . DOMAIN_NAME . "/home");
                         break;
                     } else {
-                        header("Location: http://" . DOMAIN_NAME . "/dashboard/home");
+                        header("Location: https://" . DOMAIN_NAME . "/dashboard/home");
                         break;
                     }
                 } else {
-                    header("Location: http://" . DOMAIN_NAME . "/verifylogin");
+                    header("Location: https://" . DOMAIN_NAME . "/verifylogin");
                     break;
                 }
                 break;
             case "POST":
                 if (!isset($_SESSION)) session_start();
                 if (!$this->services->loginRequest($_POST)) {
-                    header("Location: http://" . DOMAIN_NAME . "/login");
+                    header("Location: https://" . DOMAIN_NAME . "/login");
                     break;
                 }
-                header("Location: http://" . DOMAIN_NAME . "/verifylogin");
+                header("Location: https://" . DOMAIN_NAME . "/verifylogin");
                 break;
         }
     }
@@ -160,10 +160,10 @@ class AccountController
         switch ($method) {
             case "GET":
                 if (!$this->services->resendLoginRequest($email, $token)) {
-                    header("Location: http://" . DOMAIN_NAME . "/verifylogin");
+                    header("Location: https://" . DOMAIN_NAME . "/verifylogin");
                     break;
                 }
-                header("Location: http://" . DOMAIN_NAME . "/verifylogin");
+                header("Location: https://" . DOMAIN_NAME . "/verifylogin");
                 break;
         }
     }
@@ -171,7 +171,7 @@ class AccountController
     public function logoutRequest(): void
     {
         if ($this->services->logoutAccount()) {
-            header("Location: http://" . DOMAIN_NAME . "/login");
+            header("Location: https://" . DOMAIN_NAME . "/login");
         } else {
             $_SESSION["msg"] = "There was an error on log out. Please try again.";
         }
@@ -182,19 +182,19 @@ class AccountController
         switch ($method) {
             case "GET":
                 if ($this->services->forgotPasswordRequest($email)) {
-                    header("Location: http://" . DOMAIN_NAME . "/forgot-password/confirm");
+                    header("Location: https://" . DOMAIN_NAME . "/forgot-password/confirm");
                     break;
                 } else {
-                    header("Location: http://" . DOMAIN_NAME . "/forgot-password");
+                    header("Location: https://" . DOMAIN_NAME . "/forgot-password");
                     break;
                 }
                 break;
             case "POST":
                 if (!$this->services->changePasswordRequest($email)) {
-                    header("Location: http://" . DOMAIN_NAME . "/forgot-password/change/" . $_SESSION["token"]);
+                    header("Location: https://" . DOMAIN_NAME . "/forgot-password/change/" . $_SESSION["token"]);
                     break;
                 }
-                header("Location: http://" . DOMAIN_NAME . "/forgot-password/success");
+                header("Location: https://" . DOMAIN_NAME . "/forgot-password/success");
                 break;
         }
     }
@@ -204,7 +204,7 @@ class AccountController
         switch ($method) {
             case "GET":
                 $this->services->resendForgotPasswordRequest($email, $token);
-                header("Location: http://" . DOMAIN_NAME . "/forgot-password/confirm");
+                header("Location: https://" . DOMAIN_NAME . "/forgot-password/confirm");
                 break;
         }
     }
@@ -214,10 +214,10 @@ class AccountController
         switch ($method) {
             case "GET":
                 if ($this->services->verifyRegistration($_GET)) {
-                    header("Location: http://" . DOMAIN_NAME . "/register/success");
+                    header("Location: https://" . DOMAIN_NAME . "/register/success");
                     break;
                 } else {
-                    header("Location: http://" . DOMAIN_NAME . "/register/confirm");
+                    header("Location: https://" . DOMAIN_NAME . "/register/confirm");
                     break;
                 }
                 break;
@@ -226,14 +226,14 @@ class AccountController
                 if ($this->services->addAccount($_POST)) {
                     if ($this->services->registrationRequest($_POST)) {
                         unset($_SESSION["msg"]);
-                        header("Location: http://" . DOMAIN_NAME . "/register/confirm");
+                        header("Location: https://" . DOMAIN_NAME . "/register/confirm");
                         break;
                     } else {
-                        header("Location: http://" . DOMAIN_NAME . "/register");
+                        header("Location: https://" . DOMAIN_NAME . "/register");
                         break;
                     }
                 } else {
-                    header("Location: http://" . DOMAIN_NAME . "/register");
+                    header("Location: https://" . DOMAIN_NAME . "/register");
                     break;
                 }
                 break;
@@ -245,7 +245,7 @@ class AccountController
         switch ($method) {
             case "GET":
                 $this->services->resendRegistrationRequest($email, $token);
-                header("Location: http://" . DOMAIN_NAME . "/register/confirm");
+                header("Location: https://" . DOMAIN_NAME . "/register/confirm");
                 break;
         }
     }

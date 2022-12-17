@@ -2,10 +2,17 @@
 class PetProfileServices
 {
     private ?PetProfileDAO $dao = null;
+    private ?StudHistoryDAO $history = null;
 
-    public function __construct(PetProfileDAO $dao)
+    public function __construct(PetProfileDAO $dao, ?StudHistoryDAO $history)
     {
         $this->dao = $dao;
+        $this->history = $history;
+    }
+
+    public function getAllDams(): mixed
+    {
+        return $this->dao->getAllDams();
     }
 
     public function getRehomingPets(): mixed
@@ -30,12 +37,18 @@ class PetProfileServices
 
     public function getOhanaPets(): mixed
     {
-        return $this->dao->getOhanaPets();
+        $profiles = $this->dao->getOhanaPets();
+        foreach ($profiles as  $profile) {
+            $profile->setStudHistory($this->history->getAllStudHistoryByMaleId($profile->getId()));
+        }
+        return $profiles;
     }
 
-    public function getOhanaStudPet(string $reference,  string $name): mixed
+    public function getOhanaStudPet(string $reference, string $name): mixed
     {
-        return $this->dao->getOhanaStudPet($reference, $name);
+        $profile = $this->dao->getOhanaStudPet($reference, $name);
+        $profile->setStudRate($this->history->getTotalSuccessCount($profile->getId()) / $this->history->getTotalHistoryCount($profile->getId()));
+        return $profile;
     }
 
     public function getOhanaRehomingPet(string $reference,  string $name): mixed
@@ -164,13 +177,19 @@ class PetProfileServices
     public function filterStudPets(string $trait, string $sex): mixed
     {
         if ($trait == 'All' && $sex == 'All') {
-            return $this->dao->getStudPets();
+            $profiles = $this->dao->getStudPets();
         } else if ($trait != 'All' && $sex == 'All') {
-            return $this->dao->filterPetsByTrait("STUD", $trait);
+            $profiles = $this->dao->filterPetsByTrait("STUD", $trait);
         } else if ($trait == 'All' && $sex != 'All') {
-            return $this->dao->filterPetsBySex("STUD", $sex);
+            $profiles = $this->dao->filterPetsBySex("STUD", $sex);
         } else {
-            return $this->dao->filterPetsByTraitAndSex("STUD", $trait, $sex);
+            $profiles = $this->dao->filterPetsByTraitAndSex("STUD", $trait, $sex);
         }
+        if (!is_null($profiles)) {
+            foreach ($profiles as $profile) {
+                $profile->setStudRate($this->history->getTotalSuccessCount($profile->getId()) / $this->history->getTotalHistoryCount($profile->getId()));
+            }
+        }
+        return $profiles;
     }
 }

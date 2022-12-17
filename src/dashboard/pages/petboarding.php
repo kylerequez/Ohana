@@ -110,7 +110,7 @@
         </div>
         <div class="users-table table-wrapper">
           <div class="createstaff-wrapper">
-            <a class="create-staff-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create">
+            <a class="create-staff-btn" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create">
                 <i data-feather="plus" aria-hidden="true"></i>
                 Add Slot </button></a>
           </div>
@@ -129,20 +129,33 @@
             <table id="slots" class="posts-table">
               <thead>
                 <tr class="users-table-info">
-                  <th><b>SLOT I.D</b></th>
-                  <th><b>SLOT IMAGE</b></th>
                   <th><b>SLOT NAME</b></th>
+                  <th><b>SLOT IMAGE</b></th>
                   <th><b>STATUS</b></th>
                   <th><b>ACTION</b></th>
+                </tr>
+                <tr>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Slot Name..." data-column="1">
+                  </th>
+                  <th></th>
+                  <th>
+                    <select data-column="2" class="form-control filter-select">
+                      <option value="">Select a status...</option>
+                      <option value="AVAILABLE">Available</option>
+                      <option value="UNAVAILABLE">Unavailable</option>
+                    </select>
+                  </th>
+                  <th></th>
+                </tr>
               </thead>
               <tbody>
                 <?php
                 foreach ($slots as $slot) {
                 ?>
                   <tr>
-                    <td><?php echo $slot->getId(); ?></td>
-                    <td><img src="data:image/jpeg;base64,<?php echo base64_encode($slot->getImage()); ?>" class="rounded-3" style="width: 100px; height: 100px;"></td>
                     <td><?php echo $slot->getName(); ?></td>
+                    <td><img src="data:image/jpeg;base64,<?php echo base64_encode($slot->getImage()); ?>" class="rounded-3" style="width: 100px; height: 100px;"></td>
                     <td><?php echo $slot->getIsAvailable() == 1 ? "AVAILABLE" : "UNAVAILABLE"; ?></td>
                     <td>
                       <a href="" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $slot->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"></i></button></a>
@@ -262,9 +275,63 @@
   </form>
   <script>
     $(document).ready(function() {
-      $('#slots').DataTable({
-        "searching": true,
-        "processing": true,
+      var table = $('#slots').DataTable({
+        orderCellsTop: true,
+        fixedHeader: true,
+        searching: true,
+        responsive: true,
+        initComplete: function() {
+          var api = this.api();
+          api
+            .columns()
+            .eq(0)
+            .each(function(colIdx) {
+              var cell = $('.filters th').eq(
+                $(api.column(colIdx).header()).index()
+              );
+              var title = $(cell).text();
+              $(cell).html('<input type="text" placeholder="' + title + '" />');
+              $(
+                  'input',
+                  $('.filters th').eq($(api.column(colIdx).header()).index())
+                )
+                .off('keyup change')
+                .on('change', function(e) {
+                  $(this).attr('title', $(this).val());
+                  var regexr = '({search})';
+                  var cursorPosition = this.selectionStart;
+                  api
+                    .column(colIdx)
+                    .search(
+                      this.value != '' ?
+                      regexr.replace('{search}', '(((' + this.value + ')))') :
+                      '',
+                      this.value != '',
+                      this.value == ''
+                    )
+                    .draw();
+                })
+                .on('keyup', function(e) {
+                  e.stopPropagation();
+                  $(this).trigger('change');
+                  $(this)
+                    .focus()[0]
+                    .setSelectionRange(cursorPosition, cursorPosition);
+                });
+            });
+        },
+      });
+
+      $('.filter-input').keyup(function() {
+        table.column($(this).data('column'))
+          .search($(this).val())
+          .draw();
+      });
+
+      $('.filter-select').change(function() {
+        table.column($(this).data('column'))
+          .search($(this).val())
+          .draw();
       });
     });
   </script>

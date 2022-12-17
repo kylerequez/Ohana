@@ -26,7 +26,7 @@ class ChatbotController
     {
         switch ($method) {
             case "GET":
-                header("Location: http://" . DOMAIN_NAME . "/dashboard/chatbot-settings");
+                header("Location: https://" . DOMAIN_NAME . "/dashboard/chatbot-settings");
                 break;
             case "POST":
                 if (!$this->services->updateSettings($_POST, $_FILES)) {
@@ -83,7 +83,7 @@ class ChatbotController
     {
         switch ($method) {
             case "GET":
-                header("Location: http://" . DOMAIN_NAME . "/dashboard/chatbot-responses");
+                header("Location: https://" . DOMAIN_NAME . "/dashboard/chatbot-responses");
                 break;
             case "POST":
                 if (!$this->services->addResponse($_POST)) {

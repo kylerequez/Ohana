@@ -77,7 +77,7 @@ class PetProfileController
         switch ($method) {
             case "GET":
                 $_SESSION["profiles"] = serialize($this->services->getOhanaPets());
-                header("Location: http://" . DOMAIN_NAME . "/dashboard/pet-profiles");
+                header("Location: https://" . DOMAIN_NAME . "/dashboard/pet-profiles");
                 break;
             case "POST":
                 $finfo = new finfo(FILEINFO_MIME_TYPE);
@@ -126,7 +126,7 @@ class PetProfileController
     {
         switch ($method) {
             case "GET":
-                header("Location: http://" . DOMAIN_NAME . "/dashboard/stud-profiles");
+                header("Location: https://" . DOMAIN_NAME . "/dashboard/stud-profiles");
                 break;
             case "POST":
                 break;
@@ -166,7 +166,7 @@ class PetProfileController
     {
         switch ($method) {
             case "GET":
-                header("Location: http://" . DOMAIN_NAME . "/puppies");
+                header("Location: https://" . DOMAIN_NAME . "/puppies");
                 break;
             case "POST":
 
@@ -197,7 +197,7 @@ class PetProfileController
     {
         switch ($method) {
             case "GET":
-                header("Location: http://" . DOMAIN_NAME . "/stud");
+                header("Location: https://" . DOMAIN_NAME . "/stud");
                 break;
             case "POST":
                 break;
@@ -209,9 +209,9 @@ class PetProfileController
         $user = unserialize($_SESSION["user"]);
         $profile = $this->services->getPetProfileById($id, $user->getId());
         if (empty($profile)) {
-            header("Location: http://" . DOMAIN_NAME . "/ownedpets");
+            header("Location: https://" . DOMAIN_NAME . "/ownedpets");
         }
-        header("Location: http://" . DOMAIN_NAME . "/ownedpets/" . $profile->getName());
+        header("Location: https://" . DOMAIN_NAME . "/ownedpets/" . $profile->getName());
     }
 
     public function processCustomerRequest(string $method, ?string $id): void
@@ -272,7 +272,7 @@ class PetProfileController
     {
         switch ($method) {
             case "GET":
-                header("Location: http://" . DOMAIN_NAME . "/ownedpets");
+                header("Location: https://" . DOMAIN_NAME . "/ownedpets");
                 break;
             case "POST":
                 $finfo = new finfo(FILEINFO_MIME_TYPE);

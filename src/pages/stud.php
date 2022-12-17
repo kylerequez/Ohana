@@ -42,7 +42,7 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-    <?php include_once 'navigationbar.php'; ?>
+        <?php include_once 'navigationbar.php'; ?>
         <div class="container-fluid">
             <div class="message">
                 <section class="services" id="services">
@@ -50,10 +50,12 @@
                     include_once dirname(__DIR__) . '/models/PetProfile.php';
                     include_once dirname(__DIR__) . '/config/db-config.php';
                     include_once dirname(__DIR__) . '/dao/PetProfileDAO.php';
+                    include_once dirname(__DIR__) . '/dao/StudHistoryDAO.php';
                     include_once dirname(__DIR__) . '/services/PetProfileServices.php';
 
                     $dao = new PetProfileDAO($servername, $database, $username, $password);
-                    $services = new PetProfileServices($dao);
+                    $history = new StudHistoryDAO($servername, $database, $username, $password);
+                    $services = new PetProfileServices($dao, $history);
 
                     if (!isset($_GET['trait'])) $_GET['trait'] = 'All';
                     if (!isset($_GET['sex'])) $_GET['sex'] = 'All';
@@ -118,7 +120,7 @@
                         <div class="service">
                             <h1 class="mt-4 mb-5 text-center" id="studtitle"> Choose a perfect pair </h1>
                         </div>
-                        <form method="GET" action="/puppies">
+                        <form method="GET" action="/stud">
                             <div class="container-md d-flex justify-content-center">
                                 <div class="row">
                                     <div class="col-12">
@@ -176,7 +178,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title fs-2 fw-bold" style="font-family: 'Acme', sans-serif;"> <?php echo $profile->getName(); ?></h5>
                                             <p class="card-text"> <?php echo $profile->getTrait() . ' - ' . $profile->getSex(); ?> </p>
-                                            <p class="card-text"> Success Rate: </p>
+                                            <p class="card-text"> Success Rate: <?php echo round($profile->getStudRate() * 100), '%'; ?></p>
                                             <p class="card-text"> ₱ <?php echo number_format($profile->getPrice(), 2); ?> </p>
                                             <div class="btn-Learn mt-3" name="btn-Learn">
                                                 <center><a href="/stud/<?php echo $profile->getReference(); ?>/<?php echo $profile->getName(); ?>"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>

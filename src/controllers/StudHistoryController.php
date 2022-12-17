@@ -1,0 +1,63 @@
+<?php
+require_once dirname(__DIR__) . "/models/Account.php";
+require_once dirname(__DIR__) . '/config/app-config.php';
+class StudHistoryControler
+{
+    private ?StudHistoryServices $services = null;
+    private ?LogServices $logservices = null;
+
+    public function __construct(StudHistoryServices $services, ?LogServices $logservices)
+    {
+        $this->services = $services;
+        $this->logservices = $logservices;
+    }
+
+    public function processRequest(string $method, ?string $id): void
+    {
+        if ($id) {
+            $this->processResourceRequest($method, $id);
+        } else {
+            $this->processCollectionRequest($method);
+        }
+    }
+
+    public function processResourceRequest(string $method, string $id): void
+    {
+        switch ($method) {
+            case "GET":
+                if(!$this->services->deleteRecord($id)){
+                    $this->processCollectionRequest("GET");
+                }
+                $account = unserialize($_SESSION["user"]);
+                $log = $account->getFullName() . " has deleted Stud History $id";
+                if (!$this->logservices->addLog($log)) {
+                    $_SESSION["msg"] = "There was an error in the logging of the action.";
+                }
+                $this->processCollectionRequest("GET");
+                break;
+            case "POST":
+                break;
+        }
+    }
+
+    public function processCollectionRequest(string $method): void
+    {
+        switch ($method) {
+            case "GET":
+                header("Location: https://" .  DOMAIN_NAME . "/dashboard/pet-profiles");
+                break;
+            case "POST":
+                if (!$this->services->addRecord($_POST)) {
+                    header("Location: " . $_SERVER['HTTP_REFERER']);
+                }
+                $account = unserialize($_SESSION["user"]);
+                $log = $account->getFullName() . " has added a new stud record.";
+                if (!$this->logservices->addLog($log)) {
+                    $_SESSION["msg"] = "There was an error in the logging of the action.";
+                    $this->processCollectionRequest("GET");
+                }
+                $this->processCollectionRequest("GET");
+                break;
+        }
+    }
+}

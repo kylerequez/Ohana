@@ -51,9 +51,10 @@
             font-family: "DM Sans", sans-serif;
             font-weight: bold;
             margin-top: -1px;
-            margin-left: -25px;
+            margin-left: 5px;
             font-size: 18px;
-            color: #2f1f18;
+            color: black;
+            margin-top: 10px;
         }
 
         .logo {
@@ -156,6 +157,20 @@
             cursor: pointer;
         }
 
+        #userdropdown {
+            background-color: #db6551;
+            border-radius: 30px;
+            border: 1px solid #ffffff;
+            cursor: pointer;
+            color: #ffffff;
+            padding: 6px 18px;
+            text-decoration: none;
+        }
+
+        #userdropdown:hover {
+            background-color: #c0b65a;
+        }
+
         /* ######################## USER DROPDOWN IMPROVISE = RESIZE BOX AND FONTS #########################*/
         .action {
             position: relative;
@@ -250,6 +265,7 @@
         }
 
 
+
         @media (max-width: 1280px) {
             header {
                 padding: 14px 2%;
@@ -316,7 +332,7 @@ if (!isset($_SESSION['user'])) {
     session_destroy();
 ?>
     <script>
-        window.location = 'http://<?php echo DOMAIN_NAME; ?>/login';
+        window.location = 'https://<?php echo DOMAIN_NAME; ?>/login';
     </script>
 <?php
 } else {
@@ -346,42 +362,47 @@ if (!isset($_SESSION['user'])) {
         </li>
     </ul>
     <div class="main">
-        <div class="action" style="margin-right:25px;">
-            <div class="profile" onclick="menuToggle();">
-                <img src="/Ohana/src/images/icons/customer.png" id="customerprofile">
-            </div>
-            <div class="menu">
-                <h3 class="text-center mt-3 font-weight-bold"><?php echo $user->getFullName(); ?></h3>
-                <ul>
-                    <?php
-                    if ($user->getType() != 'USER') {
-                    ?>
+        <div id="userdropdown" class="d-flex" onclick="menuToggle();">
+            <div class="action">
+                <div class="profile">
+                    <img src="/Ohana/src/images/icons/usernav.png" id="customerprofile">
+                </div>
+                <div class="menu">
+                    <h3 class="text-center mt-3 font-weight-bold"><?php echo $user->getFullName(); ?></h3>
+                    <ul>
+                        <?php
+                        if ($user->getType() != 'USER') {
+                        ?>
+                            <li>
+                                <img src="/Ohana/src/images/icons/dashboard.png" /><a href="/dashboard/home" target="_blank"><span class="icon home" aria-hidden="true">
+                                        Admin Dashboard
+                                </a>
+                            </li>
+                        <?php } ?>
                         <li>
-                            <img src="/Ohana/src/images/icons/dashboard.png" /><a href="/dashboard/home" target="_blank"><span class="icon home" aria-hidden="true">
-                                    Admin Dashboard
-                            </a>
+                            <img src="/Ohana/src/images/icons/pencil.png" /><a href="/userprofile">My profile</a>
                         </li>
-                    <?php } ?>
-                    <li>
-                        <img src="/Ohana/src/images/icons/pencil.png" /><a href="/userprofile">My profile</a>
-                    </li>
-                    <li>
-                        <img src="/Ohana/src/images/icons/doggy.png" /><a href="/ownedpets">Pet profile</a>
-                    </li>
-                    <li>
-                        <img src="/Ohana/src/images/icons/file.png" /><a href="/transactions">Transactions</a>
-                    </li>
-                    <li>
-                        <img src="/Ohana/src/images/icons/calendar.png" /><a href="/appointments">Appointment</a>
-                    </li>
-                    <li>
-                        <img src="/Ohana/src/images/icons/log-out.png" />
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
-                    </li>
-                </ul>
+                        <li>
+                            <img src="/Ohana/src/images/icons/doggy.png" /><a href="/ownedpets">Pet profile</a>
+                        </li>
+                        <li>
+                            <img src="/Ohana/src/images/icons/file.png" /><a href="/transactions">Transactions</a>
+                        </li>
+                        <li>
+                            <img src="/Ohana/src/images/icons/calendar.png" /><a href="/appointments">Appointment</a>
+                        </li>
+                        <li>
+                            <img src="/Ohana/src/images/icons/feedback.png" /><a href="/user-feedback">Send Feedback</a>
+                        </li>
+                        <li>
+                            <img src="/Ohana/src/images/icons/log-out.png" />
+                            <a  data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
+            <p id="user-name" class="text-light"> <?php echo $user->getFName(); ?> </p>
         </div>
-        <p id="user-name"> <?php echo $user->getFName(); ?> </p>
         <div class="bx bx-menu" id="menu-icon"></div>
     </div>
 </header>

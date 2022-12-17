@@ -59,7 +59,7 @@ class TransactionController
     {
         switch ($method) {
             case "GET":
-                header("Location: http://" . DOMAIN_NAME . "/transactions");
+                header("Location: https://" . DOMAIN_NAME . "/transactions");
                 break;
             case "POST":
                 break;
@@ -95,7 +95,7 @@ class TransactionController
     {
         switch ($method) {
             case "GET":
-                header("Location: http://" . DOMAIN_NAME . "/dashboard/transactions");
+                header("Location: https://" . DOMAIN_NAME . "/dashboard/transactions");
                 break;
             case "POST":
                 break;
@@ -109,8 +109,37 @@ class TransactionController
                 case "GET":
                     $this->services->proceedToUpload($reference, $_GET);
                     break;
+                case "POST":
+                    $this->services->completeTransaction($reference, $_POST);
+                    break;
             }
-        } else {
+        }
+    }
+
+    public function processStudCheckoutRequest(string $method, ?string $reference): void
+    {
+        if ($reference) {
+            switch ($method) {
+                case "GET":
+                    echo 'here';
+                    $this->services->proceedToUploadStud($reference, $_GET);
+                    break;
+                case "POST":
+                    // $this->services->completeTransactionStud($reference, $_POST);
+                    break;
+            }
+        }
+    }
+
+    public function processStudBooking(string $method): void
+    {
+        switch ($method) {
+            case "POST":
+                if (!$this->services->proceedToCheckout($_POST)) {
+                    header('Location: ' . $_SERVER['HTTP_REFERER']);
+                }
+                header("Location: https://" . DOMAIN_NAME . "/checkout/" . uniqid('OKPH-') . "?from=STUD");
+                break;
         }
     }
 }

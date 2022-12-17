@@ -115,11 +115,28 @@
             <table id="customers">
               <thead>
                 <tr class="users-table-info">
-                  <th><b>USER I.D </b></th>
                   <th><b>NAME OF USER</b></th>
                   <th><b>EMAIL ADDRESS</b></th>
                   <th><b>CONTACT NUMBER</b></th>
                   <th><b>STATUS</b></th>
+                </tr>
+                <tr>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Full Name..." data-column="0">
+                  </th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Email Address..." data-column="1">
+                  </th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Email Address..." data-column="2">
+                  </th>
+                  <th>
+                    <select data-column="3" class="form-control filter-select">
+                      <option value="">Select a status...</option>
+                      <option value="ACTIVE">Active</option>
+                      <option value="DISABLED">Disabled</option>
+                    </select>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -127,9 +144,6 @@
                 foreach ($users as $user) {
                 ?>
                   <tr>
-                    <td>
-                      <?php echo $user->getId(); ?>
-                    </td>
                     <td>
                       <?php echo $user->getFullName(); ?>
                     </td>
@@ -182,15 +196,11 @@
   ?>
   <script>
     $(document).ready(function() {
-      $('#customers thead tr')
-        .clone(true)
-        .addClass('filters')
-        .appendTo('#customers thead');
-
-      $('#customers').DataTable({
+      var table = $('#customers').DataTable({
         orderCellsTop: true,
         fixedHeader: true,
         searching: true,
+        responsive: true,
         initComplete: function() {
           var api = this.api();
           api
@@ -231,6 +241,18 @@
                 });
             });
         },
+      });
+
+      $('.filter-input').keyup(function() {
+        table.column($(this).data('column'))
+          .search($(this).val())
+          .draw();
+      });
+
+      $('.filter-select').change(function() {
+        table.column($(this).data('column'))
+          .search($(this).val())
+          .draw();
       });
     });
   </script>

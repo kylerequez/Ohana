@@ -115,7 +115,7 @@
           if ($user->getType() == "ADMINISTRATOR") {
           ?>
             <div class="createstaff-wrapper">
-              <a class="create-staff-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white"><i data-feather="plus" aria-hidden="true"></i>
+              <a class="create-staff-btn" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white"><i data-feather="plus" aria-hidden="true"></i>
                   Add Staff </button></a>
             </div>
           <?php
@@ -133,7 +133,6 @@
             <table id="staff" class="posts-table">
               <thead>
                 <tr class="users-table-info">
-                  <th><b>STAFF I.D</b> </th>
                   <th><b>FULL NAME </b></th>
                   <th><b>EMAIL ADDRESS</b></th>
                   <th><b>STATUS</b></th>
@@ -145,13 +144,34 @@
                   }
                   ?>
                 </tr>
+                <tr>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Full Name..." data-column="0">
+                  </th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Email Address..." data-column="1">
+                  </th>
+                  <th>
+                    <select data-column="2" class="form-control filter-select">
+                      <option value="">Select a status...</option>
+                      <option value="ACTIVE">Active</option>
+                      <option value="DISABLED">Disabled</option>
+                    </select>
+                  </th>
+                  <?php
+                  if ($user->getType() == "ADMINISTRATOR") {
+                  ?>
+                    <th></th>
+                  <?php
+                  }
+                  ?>
+                </tr>
               </thead>
               <tbody>
                 <?php
                 foreach ($staffs as $staff) {
                 ?>
                   <tr>
-                    <td><?php echo $staff->getId(); ?></td>
                     <td><?php echo $staff->getFullName(); ?></td>
                     <td><?php echo $staff->getEmail(); ?></td>
                     <td><?php echo $staff->getStatus(); ?></td>
@@ -159,7 +179,7 @@
                     if ($user->getType() == "ADMINISTRATOR") {
                     ?>
                       <td>
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $staff->getId(); ?>"><button class="edit-btn transparent-btn fs-4" type="edit" style="color:#C0B65A; margin-right: 15px;"> <i class="uil uil-edit"> </i> </button></a>
+                        <a data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $staff->getId(); ?>"><button class="edit-btn transparent-btn fs-4" type="edit" style="color:#C0B65A; margin-right: 15px;"> <i class="uil uil-edit"> </i> </button></a>
                         <a href="/dashboard/staff/delete/<?php echo $staff->getId(); ?>" type="delete"><button onclick="return confirm('Are you sure you want to delete Account ID <?php echo $staff->getId(); ?>?');" style="background:transparent;color:red"><i class="uil uil-trash-alt fs-4"></i></button></a>
                         <form method="POST" action="/dashboard/staff/update/<?php echo $staff->getId(); ?>">
                           <div class="modal fade" id="editModalId<?php echo $staff->getId(); ?>" tabindex="-1" aria-labelledby="editstaffmodal" aria-hidden="true">
@@ -216,9 +236,6 @@
                 }
                 ?>
               </tbody>
-              <tfoot>
-                <tr></tr>
-              </tfoot>
             </table>
           <?php
           } else {
@@ -294,17 +311,13 @@
     ?>
     <script>
       $(document).ready(function() {
-        $('#staff thead tr')
-          .clone(true)
-          .addClass('filters')
-          .appendTo('#staff thead');
-
         var table = $('#staff').DataTable({
-          "searching": true,
-          "processing": true,
+          orderCellsTop: true,
+          fixedHeader: true,
+          searching: true,
+          responsive: true,
           initComplete: function() {
             var api = this.api();
-
             api
               .columns()
               .eq(0)
@@ -344,13 +357,25 @@
               });
           },
         });
+
+        $('.filter-input').keyup(function() {
+          alert('test');
+          table.column($(this).data('column'))
+            .search($(this).val())
+            .draw();
+        });
+
+        $('.filter-select').change(function() {
+          table.column($(this).data('column'))
+            .search($(this).val())
+            .draw();
+        });
       });
     </script>
     <script src="/Ohana/src/dashboard/plugins/chart.min.js"></script>
     <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
     <script src="/Ohana/src/dashboard/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
 </body>
 
 </html>

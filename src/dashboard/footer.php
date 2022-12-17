@@ -3,9 +3,9 @@
   <div class="container-fluid">
     <div class="footer-start">
       <p> Ohana Kennel PH &copy; Copyright 2022. |
-        <a href="#" rel="noopener noreferrer" data-bs-toggle="modal" data-bs-target="#termsModal"> Terms and
-          Conditions </a> <a href="#" rel="noopener noreferrer" data-bs-toggle="modal" data-bs-target="#privacyModal"> | Data Privacy </a>
-        <a href="#" rel="noopener noreferrer" data-bs-toggle="modal" data-bs-target="#"> | User Manual |</a>
+        <a rel="noopener noreferrer" data-bs-toggle="modal" data-bs-target="#termsModal"> Terms and
+          Conditions </a> <a rel="noopener noreferrer" data-bs-toggle="modal" data-bs-target="#privacyModal"> | Data Privacy </a>
+        <a rel="noopener noreferrer" data-bs-toggle="modal" data-bs-target="#"> | User Manual |</a>
       </p>
     </div>
   </div>
@@ -15,7 +15,7 @@
   <div class="modal-dialog modal-xl modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-      
+
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -29,7 +29,7 @@
   <div class="modal-dialog modal-xl modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-       
+
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

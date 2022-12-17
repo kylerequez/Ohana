@@ -101,7 +101,7 @@
         </div>
         <div class="users-table table-wrapper">
           <div class="createstaff-wrapper">
-            <a class="create-response-btn" href="#" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white">
+            <a class="create-response-btn" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white">
                 <i data-feather="plus" aria-hidden="true"></i>
                 Add Response </button></a>
           </div>

@@ -60,7 +60,7 @@
     session_destroy();
   ?>
     <script>
-      window.location = 'http://<?php echo DOMAIN_NAME; ?>/register';
+      window.location = 'https://<?php echo DOMAIN_NAME; ?>/register';
     </script>
   <?php
   }

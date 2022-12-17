@@ -175,12 +175,33 @@
             <table id="transactions" class="posts-table">
               <thead>
                 <tr class="users-table-info">
-                  <th><b>TRANSACTION I.D </b></th>
+                  <th><b>TRANSACTION REFERENCE </b></th>
                   <th><b>EMAIL ADDRESS</b></th>
                   <th><b>NAME OF USER</b></th>
                   <th><b>DATE</b></th>
                   <th><b>STATUS</b></th>
                   <th><b>ACTION</b></th>
+                </tr>
+                <tr>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Transaction Reference..." data-column="0">
+                  </th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Email Address..." data-column="1">
+                  </th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Full Name..." data-column="2">
+                  </th>
+                  <th></th>
+                  <th>
+                    <select data-column="4" class="form-control filter-select">
+                      <option value="">Select a status...</option>
+                      <option value="COMPLETED">Completed</option>
+                      <option value="PENDING">Pending</option>
+                      <option value="CANCELLED">Cancelled</option>
+                    </select>
+                  </th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -188,7 +209,7 @@
                 foreach ($transactions as $transaction) {
                 ?>
                   <tr>
-                    <td><?php echo $transaction->getId(); ?></td>
+                    <td><?php echo $transaction->getReference(); ?></td>
                     <td><?php echo $transaction->getEmail(); ?></td>
                     <td><?php echo $transaction->getFname() . " " . $transaction->getMname() . " " . $transaction->getLname(); ?></td>
                     <td><?php echo $transaction->getDate()->format('M-d-Y H:i:s'); ?></td>
@@ -346,9 +367,65 @@
   }
   ?>
   <script>
-    $('#transactions').DataTable({
-      "searching": true,
+    $(document).ready(function() {
+      var table = $('#transactions').DataTable({
+        orderCellsTop: true,
+        fixedHeader: true,
+        searching: true,
+        responsive: true,
+        initComplete: function() {
+          var api = this.api();
+          api
+            .columns()
+            .eq(0)
+            .each(function(colIdx) {
+              var cell = $('.filters th').eq(
+                $(api.column(colIdx).header()).index()
+              );
+              var title = $(cell).text();
+              $(cell).html('<input type="text" placeholder="' + title + '" />');
+              $(
+                  'input',
+                  $('.filters th').eq($(api.column(colIdx).header()).index())
+                )
+                .off('keyup change')
+                .on('change', function(e) {
+                  $(this).attr('title', $(this).val());
+                  var regexr = '({search})';
+                  var cursorPosition = this.selectionStart;
+                  api
+                    .column(colIdx)
+                    .search(
+                      this.value != '' ?
+                      regexr.replace('{search}', '(((' + this.value + ')))') :
+                      '',
+                      this.value != '',
+                      this.value == ''
+                    )
+                    .draw();
+                })
+                .on('keyup', function(e) {
+                  e.stopPropagation();
+                  $(this).trigger('change');
+                  $(this)
+                    .focus()[0]
+                    .setSelectionRange(cursorPosition, cursorPosition);
+                });
+            });
+        },
+      });
 
+      $('.filter-input').keyup(function() {
+        table.column($(this).data('column'))
+          .search($(this).val())
+          .draw();
+      });
+
+      $('.filter-select').change(function() {
+        table.column($(this).data('column'))
+          .search($(this).val())
+          .draw();
+      });
     });
   </script>
 

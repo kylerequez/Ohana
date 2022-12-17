@@ -41,7 +41,7 @@ class CartController
     {
         switch ($method) {
             case "GET":
-                header("Location: http://" . DOMAIN_NAME . "/pawcart");
+                header("Location: https://" . DOMAIN_NAME . "/pawcart");
                 break;
             case "POST":
                 break;

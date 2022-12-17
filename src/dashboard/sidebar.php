@@ -7,13 +7,13 @@
     session_destroy();
   ?>
     <script>
-      window.location = 'http://<?php echo DOMAIN_NAME; ?>/login';
+      window.location = 'https://<?php echo DOMAIN_NAME; ?>/login';
     </script>
   <?php
   } else {
     include_once dirname(__DIR__) . '/models/Account.php';
     $user = unserialize($_SESSION['user']);
-    $user->getType() == "USER" ? header("Location: http://" . DOMAIN_NAME . "/home") : null;
+    $user->getType() == "USER" ? header("Location: https://" . DOMAIN_NAME . "/home") : null;
   }
   ?>
   <div class="sidebar-start">

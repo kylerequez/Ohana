@@ -10,7 +10,7 @@ require dirname(__DIR__) . '/../controllers/PetProfileController.php';
 $dao = new PetProfileDAO($servername, $database, $username, $password);
 $logdao = new LogDAO($servername, $database, $username, $password);
 $logservices = new LogServices($logdao);
-$services = new PetProfileServices($dao);
+$services = new PetProfileServices($dao, null);
 $controller = new PetProfileController($services, $logservices);
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && !isset($id)) {

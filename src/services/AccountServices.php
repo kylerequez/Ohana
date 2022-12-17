@@ -146,12 +146,12 @@ class AccountServices
     {
         if (is_null($_SESSION["userOtp"])) {
             $_SESSION["msg"] = "There was no OTP issued in your account. Please try again.";
-            header("Location: http://" . DOMAIN_NAME . "/login");
+            header("Location: https://" . DOMAIN_NAME . "/login");
             return false;
         }
         if ($token != $_SESSION["token"]) {
             $_SESSION["msg"] = "The login request does not exist. Please try again.";
-            header("Location: http://" . DOMAIN_NAME . "/login");
+            header("Location: https://" . DOMAIN_NAME . "/login");
             return false;
         }
         if (is_null($this->dao->searchByEmail($email))) {
@@ -248,7 +248,7 @@ class AccountServices
     {
         if ($token != $_SESSION["token"]) {
             $_SESSION["msg"] = "The password reset request does not exist. Please try again.";
-            header("Location: http://" . DOMAIN_NAME . "/forgot-password");
+            header("Location: https://" . DOMAIN_NAME . "/forgot-password");
             return false;
         }
         if (is_null($this->dao->searchByEmail($email))) {
@@ -386,7 +386,7 @@ class AccountServices
         if ($token != $_SESSION["token"]) {
             session_destroy();
             $_SESSION["msg"] = "The account registration request does not exist. Please try again.";
-            header("Location: http://" . DOMAIN_NAME . "/register");
+            header("Location: https://" . DOMAIN_NAME . "/register");
             return false;
         }
         $account = $this->dao->searchByEmail($email);

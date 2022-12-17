@@ -53,7 +53,7 @@ class AppointmentController
     {
         switch ($method) {
             case "GET":
-                header("Location: http://" . DOMAIN_NAME . "/dashboard/appointments");
+                header("Location: https://" . DOMAIN_NAME . "/dashboard/appointments");
                 break;
         }
     }
@@ -81,7 +81,7 @@ class AppointmentController
     {
         switch ($method) {
             case "GET":
-                header("Location: http://" . DOMAIN_NAME . "/appointments");
+                header("Location: https://" . DOMAIN_NAME . "/appointments");
                 break;
             case "POST":
                 break;
@@ -98,7 +98,7 @@ class AppointmentController
                     header("Location: " . $_SERVER['HTTP_REFERER']);
                     break;
                 }
-                header("Location: http://" . DOMAIN_NAME . "/appointments/get");
+                header("Location: https://" . DOMAIN_NAME . "/appointments/get");
                 break;
         }
     }
@@ -110,10 +110,25 @@ class AppointmentController
                 break;
             case "POST":
                 if (!$this->services->addAppointment($_POST)) {
-                    header("Location: http://" . DOMAIN_NAME . "/set-appointment?type=REHOMING");
+                    header("Location: " . $_SERVER['HTTP_REFERER']);
                     break;
                 }
-                header("Location: http://" . DOMAIN_NAME . "/user-feedback");
+                header("Location: https://" . DOMAIN_NAME . "/user-feedback");
+                break;
+        }
+    }
+
+    public function processStudRequest(string $method): void
+    {
+        switch ($method) {
+            case "GET":
+                break;
+            case "POST":
+                if (!$this->services->addAppointment($_POST)) {
+                    header("Location: " . $_SERVER['HTTP_REFERER']);
+                    break;
+                }
+                header("Location: https://" . DOMAIN_NAME . "/user-feedback");
                 break;
         }
     }
