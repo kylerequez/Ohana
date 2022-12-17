@@ -262,9 +262,9 @@
                                             <td><?php echo $record->getFemale()->getTrait(); ?></td>
                                             <td><?php echo $record->getStatus(); ?></td>
                                             <td>
-                                              <a href="#editStatus<?php echo $record->getId(); ?>" data-bs-toggle="modal"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"><i class="uil uil-edit"></i></button></a>
+                                              <button class="edit-btn transparent-btn" data-bs-target="editStatus<?php echo $record->getId(); ?>" data-bs-toggle="modal" data-bs-dismiss="modal" type="edit" style="color:#C0B65A;"><i class="uil uil-edit"></i></button>
                                               <form method="POST" action="">
-                                                <div class="modal fade" id="editStatus<?php echo $record->getId(); ?>" tabindex="-1" aria-labelledby="editprofilemodal" aria-hidden="true">
+                                                <div class="modal" id="editStatus<?php echo $record->getId(); ?>" tabindex="-1" aria-labelledby="editStatus" aria-hidden="true" data-bs-backdrop="static" style="overflow:auto" >
                                                   <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                       TEST
@@ -272,7 +272,7 @@
                                                   </div>
                                                 </div>
                                               </form>
-                                              <a href="/dashboard/stud-history/delete/<?php echo $record->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Stud History ID <?php echo $profile->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>
+                                              <a href="/dashboard/stud-history/delete/<?php echo $record->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Stud History ID <?php echo $profile->getId(); ?>?');" type="delete" style="color:red;"><i class="uil uil-trash-alt"></i></button></a>
                                             </td>
                                           </tr>
                                         <?php } ?>

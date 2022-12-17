@@ -88,6 +88,7 @@
       font-weight: 500;
       padding: 5px 0;
       margin: 0px 30px;
+      margin-top:10px;
       transition: all .50s ease;
       font-family: "DM Sans", sans-serif;
       font-weight: bold;
@@ -140,13 +141,13 @@
 
     #login-btn {
       background-color: #db6551;
-      border-radius: 20px;
+      border-radius: 30px;
       border: 1px solid #ffffff;
       cursor: pointer;
       color: #ffffff;
       font-family: "Poppins";
-      font-size: 14px;
-      padding: 10px 20px;
+      font-size: 18px;
+      padding: 10px 30px;
       text-decoration: none;
       text-shadow: 0px 1px 0px #ffffff;
     }
