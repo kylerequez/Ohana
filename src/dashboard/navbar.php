@@ -13,7 +13,7 @@
                     <span class="sr-only">My profile</span>
                     <span class="nav-user-img">
                         <picture>
-                            <img src="/Ohana/src/dashboard/img/avatar/administrator.png" alt="User name">
+                            <img src="/Ohana/src/dashboard/img/avatar/administrator.png" alt="Admin Profie">
                         </picture>
                     </span>
                 </button>
