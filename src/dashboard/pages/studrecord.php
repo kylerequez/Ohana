@@ -139,9 +139,9 @@
             <div class="card-body">
               <div class="d-flex align-items-start align-items-sm-center gap-4">
                 <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" alt="dog-image" class="d-block rounded" height="150px" width="150px" id="dogimage" />
-                <div class="container-sm" style="font-family: 'Acme', sans-serif;color:#DB6551">
-                  <span class="d-none d-sm-block fs-1"> <?php echo $profile->getName(); ?> </span>
-                  <span class="d-none d-sm-block fs-5"> Stud Rate: <?php echo round($profile->getStudRate() * 100), '%'; ?> </span>
+                <div class="container-sm" style="font-family: 'Acme', sans-serif;">
+                  <span class="d-none d-sm-block fs-1" style="color:#DB6551"> <?php echo $profile->getName(); ?> </span>
+                  <span class="d-none d-sm-block fs-5" style="color:#7d605c"> Stud Rate: <?php echo round($profile->getStudRate() * 100), '%'; ?> </span>
                 </div>
                 <div class="createstaff-wrapper" id="recordbutton">
                   <a class="create-staff-btn ms-5" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white">
@@ -222,11 +222,14 @@
                             <div class="modal-dialog modal-dialog-centered">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="editingModal" style="font-family:'Acme', sans-serif;">EDIT PET PROFILE</h5>
+                                  <h5 class="modal-title" id="editingModal" style="font-family:'Acme', sans-serif;">EDIT STUD RECORD</h5>
                                   <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
                                 </div>
                                 <div class="modal-body">
-                                  <input type="hidden" name="maleId" value="<?php echo $profile->getId() ?>">
+                                  <div class="mb-1">
+                                    <label for="name" class="col-form-label">DAM:</label>
+                                    <input type="hidden" name="maleId" value="<?php echo $profile->getId() ?>">
+                                  </div>
                                   <?php
                                   $dams = $services->getAllDams();
                                   if (!is_null($dams)) {
@@ -237,12 +240,18 @@
                                       <?php } ?>
                                     </select>
                                   <?php } ?>
-                                  <input type="datetime-local" name="date" value="<?php echo $record->getDate()->format('Y-m-d\TH:i:s'); ?>" required>
-                                  <select class="form-control" name="status" required>
-                                    <option value="SUCCESS" <?php if ($record->getStatus() == "SUCCESS") echo 'selected'; ?>>Success</option>
-                                    <option value="FAILED" <?php if ($record->getStatus() == "FAILED") echo 'selected'; ?>>Failed</option>
-                                    <option value="SCHEDULED" <?php if ($record->getStatus() == "SCHEDULED") echo 'selected'; ?>>Scheduled</option>
-                                  </select>
+                                  <div class="mb-1">
+                                    <label for="name" class="col-form-label">DATE:</label>
+                                    <input type="datetime-local" class="form-control" name="date" value="<?php echo $record->getDate()->format('Y-m-d\TH:i:s'); ?>" required>
+                                  </div>
+                                  <div class="mb-1">
+                                    <label for="name" class="col-form-label">STATUS:</label>
+                                    <select class="form-control" name="status" required>
+                                      <option value="SUCCESS" <?php if ($record->getStatus() == "SUCCESS") echo 'selected'; ?>>Success</option>
+                                      <option value="FAILED" <?php if ($record->getStatus() == "FAILED") echo 'selected'; ?>>Failed</option>
+                                      <option value="SCHEDULED" <?php if ($record->getStatus() == "SCHEDULED") echo 'selected'; ?>>Scheduled</option>
+                                    </select>
+                                  </div>
                                 </div>
                                 <div class="modal-footer">
                                   <button type="submit" class="btn text-light" style="background-color:#db6551"> Save Changes </button>
@@ -288,29 +297,38 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="addRecordTitle"> ADD RECORD </h5>
+            <h5 class="modal-title" id="addRecordTitle" style="font-family:'Acme', sans-serif;"> ADD RECORD </h5>
             <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
           </div>
           <div class="modal-body">
-            <input type="hidden" name="maleId" value="<?php echo $profile->getId() ?>">
-            <?php
-            $dams = $services->getAllDams();
-            if (!is_null($dams)) {
-            ?>
-              <select class="form-control" name="femaleId" required>
-                <option value="" selected>Select a dam...</option>
-                <?php foreach ($dams as $dam) { ?>
-                  <option value="<?php echo $dam->getId(); ?>"><?php echo $dam->getName() . " (" . $dam->getColor() . "/" . $dam->getTrait() . ")"; ?></option>
-                <?php } ?>
+            <div class="mb-1">
+              <label for="name" class="col-form-label">DAM:</label>
+              <input type="hidden" name="maleId" value="<?php echo $profile->getId() ?>">
+              <?php
+              $dams = $services->getAllDams();
+              if (!is_null($dams)) {
+              ?>
+                <select class="form-control" name="femaleId" required>
+                  <option value="" selected>Select a dam...</option>
+                  <?php foreach ($dams as $dam) { ?>
+                    <option value="<?php echo $dam->getId(); ?>"><?php echo $dam->getName() . " (" . $dam->getColor() . "/" . $dam->getTrait() . ")"; ?></option>
+                  <?php } ?>
+                </select>
+              <?php } ?>
+            </div>
+            <div class="mb-1">
+              <label for="name" class="col-form-label">DATE:</label>
+              <input type="datetime-local" class="form-control" name="date" required>
+            </div>
+            <div class="mb-1">
+              <label for="name" class="col-form-label">STATUS:</label>
+              <select class="form-control" name="status" required>
+                <option value="" selected>Select a status...</option>
+                <option value="SUCCESS">Success</option>
+                <option value="FAILED">Failed</option>
+                <option value="SCHEDULED">Scheduled</option>
               </select>
-            <?php } ?>
-            <input type="datetime-local" name="date" required>
-            <select class="form-control" name="status" required>
-              <option value="" selected>Select a status...</option>
-              <option value="SUCCESS">Success</option>
-              <option value="FAILED">Failed</option>
-              <option value="SCHEDULED">Scheduled</option>
-            </select>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn" id="ToastBtn" style="background-color:#db6551;color:white"> Add Pet </button>

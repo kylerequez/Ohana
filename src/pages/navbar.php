@@ -139,7 +139,7 @@
       display: none;
     }
 
-    #login-btn {
+    #signin-btn {
       background-color: #db6551;
       border-radius: 30px;
       border: 1px solid #ffffff;
@@ -152,7 +152,7 @@
       text-shadow: 0px 1px 0px #ffffff;
     }
 
-    #login-btn:hover {
+    #signin-btn:hover {
       background-color: #c0b65a;
       cursor: pointer;
     }
@@ -329,7 +329,7 @@
     </li>
   </ul>
   <div class="main">
-    <a class="btnLogin" href="/login" name="btnLogin" id="login-btn"> Login </a>
+    <a href="/login" name="btnSignin" id="signin-btn"> Login </a>
     <div class="bx bx-menu" id="menu-icon"></div>
   </div>
 </header>

@@ -24,8 +24,8 @@
             color: #db6551;
             width: 500px;
         }
-
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {
+    
+        @media screen and (min-width: 360px) and (max-width: 430px) {
             #sectionheaders {
                 color: #db6551;
                 font-size: 40px;
@@ -65,7 +65,6 @@
                 margin-left: auto;
                 margin-right: auto;
             }
-
         }
     </style>
 
