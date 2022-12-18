@@ -121,11 +121,10 @@ class TransactionController
         if ($reference) {
             switch ($method) {
                 case "GET":
-                    echo 'here';
                     $this->services->proceedToUploadStud($reference, $_GET);
                     break;
                 case "POST":
-                    // $this->services->completeTransactionStud($reference, $_POST);
+                    $this->services->completeTransactionStud($reference, $_POST);
                     break;
             }
         }

@@ -17,7 +17,7 @@ $controller = new AppointmentController($services, $logservices);
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $type == "VISIT") {
     $controller->processVisitRequest($_SERVER["REQUEST_METHOD"]);
 } else if ($_SERVER["REQUEST_METHOD"] == "POST" && $type == "STUD") {
-    // $controller->processStudRequest($_SERVER["REQUEST_METHOD"]);
+    $controller->processStudRequest($_SERVER["REQUEST_METHOD"]);
 } else if ($_SERVER["REQUEST_METHOD"] == "POST" && $type == "REHOMING") {
     $controller->processRehomingRequest($_SERVER["REQUEST_METHOD"]);
 }

@@ -72,15 +72,23 @@
 </head>
 
 <body style="background-color: #FAF8F0;">
-    <?php if (!isset($_GET['reference']) && !isset($_GET['mode'])) {
+    <?php
+    if (!isset($_GET['reference']) && !isset($_GET['mode'])) {
         include_once dirname(__DIR__) . '/config/app-config.php';
-        // $_SESSION["msg"] = "You do not have any orders to proceed to the checkout page.";
     ?>
         <script type="text/javascript">
             const url = "<?php echo $_SERVER['HTTP_REFERER']; ?>";
             window.location.href = url;
         </script>
-    <?php } ?>
+    <?php
+    }
+
+    if (isset($_GET["from"])) {
+        $type = "stud";
+    } else {
+        $type = "rehoming";
+    }
+    ?>
     <main>
         <?php include_once 'navigationbar.php'; ?>
         <div class="container-fluid">
@@ -92,7 +100,7 @@
             <div class="container">
                 <section class="paymentnote mb-5">
                     <center>
-                        <form method="POST" action="/transaction/complete" enctype="multipart/form-data">
+                        <form method="POST" action="/transaction/complete/<?php echo $type; ?>" enctype="multipart/form-data">
                             <div class="card rounded-3 mb-4 p-4" id="proof" style="width:75%;">
                                 <h1 class="mt-2 mb-3 fs-3"> Upload Proof of Payment </h1>
                                 <div class="col">

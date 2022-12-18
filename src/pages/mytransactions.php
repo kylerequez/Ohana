@@ -65,7 +65,7 @@
 
                         $dao = new TransactionDAO($servername, $database, $username, $password);
                         $orderDAO = new OrderDAO($servername, $database, $username, $password);
-                        $services = new TransactionServices($dao, $orderDAO, null);
+                        $services = new TransactionServices($dao, $orderDAO, null, null, null);
 
                         $transactions = $services->getUserTransactions($user->getId());
                         if (!empty($transactions)) {
@@ -76,6 +76,13 @@
                                         <div class="row d-flex justify-content-between align-items-center">
                                             <div class="col-md-2 col-lg-2 col-xl-2">
                                                 <p class="lead fw-normal mb-2"><?php echo $transaction->getDate()->format('M-d-y'); ?></p>
+                                            </div>
+                                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                                <p class="lead fw-normal mb-2"><?php 
+                                                $orders = $transaction->getListOfOrders(); 
+                                                foreach ($orders as $order) { $type = $order->getType(); } 
+                                                echo $type;
+                                                ?></p>
                                             </div>
                                             <div class="col-md-3 col-lg-3 col-xl-3">
                                                 <p class="lead fw-normal mb-2"><?php echo $transaction->getReference(); ?></p>

@@ -188,7 +188,7 @@ class PetProfileServices
         }
         if (!is_null($profiles)) {
             foreach ($profiles as $profile) {
-                $profile->setStudRate($this->history->getTotalSuccessCount($profile->getId()) / $this->history->getTotalHistoryCount($profile->getId()));
+                $profile->setStudRate(($this->history->getTotalHistoryCount($profile->getId()) == 0) ? 0 : $this->history->getTotalSuccessCount($profile->getId()) / $this->history->getTotalHistoryCount($profile->getId()));
             }
         }
         return $profiles;

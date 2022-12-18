@@ -141,7 +141,7 @@
                     <div class="stat-cards-info">
                       <p class="stat-cards-info__num"> Total: <?php $dao = new TransactionDAO($servername, $database, $username, $password);
                                                               $order = new OrderDAO($servername, $database, $username, $password);
-                                                              $services = new TransactionServices($dao, $order, null);
+                                                              $services = new TransactionServices($dao, $order, null, null, null);
                                                               echo $services->getTransactionsCount(); ?></p>
                       <p class="stat-cards-info__title" style="color:#db6551"> Pending Appointments </p>
                       <p class="stat-cards-info__progress">
@@ -193,7 +193,7 @@
                     <div class="stat-cards-info">
                       <p class="stat-cards-info__num"> Total: <?php $dao = new TransactionDAO($servername, $database, $username, $password);
                                                               $order = new OrderDAO($servername, $database, $username, $password);
-                                                              $services = new TransactionServices($dao, $order, null);
+                                                              $services = new TransactionServices($dao, $order, null, null, null);
                                                               echo $services->getTransactionsCount(); ?></p>
                       <p class="stat-cards-info__title" style="color:#db6551"> Customer Feedbacks </p>
                       <p class="stat-cards-info__progress">

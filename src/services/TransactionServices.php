@@ -6,12 +6,16 @@ class TransactionServices
     private ?TransactionDAO $dao = null;
     private ?OrderDAO $order = null;
     private ?PetProfileDAO $petProfile = null;
+    private ?StudHistoryDAO $studHistory = null;
+    private ?BoardingSlotDAO $slot = null;
 
-    public function __construct(TransactionDAO $dao, OrderDAO $order, ?PetProfileDAO $petProfile)
+    public function __construct(TransactionDAO $dao, OrderDAO $order, ?PetProfileDAO $petProfile, ?StudHistoryDAO $studHistory, ?BoardingSlotDAO $slot)
     {
         $this->dao = $dao;
         $this->order = $order;
         $this->petProfile = $petProfile;
+        $this->studHistory = $studHistory;
+        $this->slot = $slot;
     }
 
     public function uploadProofOfPayment(string $id, array $data): bool
@@ -22,20 +26,6 @@ class TransactionServices
             return false;
         }
         $_SESSION['msg'] = "You have successfully uploaded the proof of payment for the transaction.";
-        return true;
-    }
-
-    public function proceedToCheckout(array $data): bool
-    {
-        $stud = $data['studReference'];
-        $partner = $data['partnerReference'];
-        $choice = $data['petBoardingChoice'];
-        $id = isset($data['slotId']) ? $data['slotId'] : null;
-
-        $_SESSION['studReference'] = $stud;
-        $_SESSION['partnerReference'] = $partner;
-        $_SESSION['petBoardingChoice'] = $choice;
-        $_SESSION['id'] = $id;
         return true;
     }
 
@@ -82,12 +72,26 @@ class TransactionServices
         header("Location: https://" . DOMAIN_NAME . "/invoice/$reference");
     }
 
+    public function proceedToCheckout(array $data): bool
+    {
+        $stud = $data['studReference'];
+        $partner = $data['partnerReference'];
+        $choice = $data['petBoardingChoice'];
+        $id = isset($data['slotId']) ? $data['slotId'] : null;
+
+        $_SESSION['studReference'] = $stud;
+        $_SESSION['partnerReference'] = $partner;
+        $_SESSION['petBoardingChoice'] = $choice;
+        $_SESSION['id'] = $id;
+        return true;
+    }
+
     public function proceedToUploadStud(string $reference, array $data): void
     {
         if ($data['mode'] == 'CASH') {
             $this->completeTransactionStud($reference, $data);
         } else if ($data['mode'] == 'BANK TRANSFER' || $data['mode'] == 'GCASH') {
-            header("Location:  https://" . DOMAIN_NAME . "/upload-proof?reference=$reference&mode=" . trim($data['mode']));
+            header("Location:  https://" . DOMAIN_NAME . "/upload-proof?reference=$reference&mode=" . trim($data['mode']) . "&from=STUD");
         } else {
             $_SESSION['msg'] = "There was an error in selecting the mode of payment.";
             header("Location: " . $_SERVER['HTTP_REFERER']);
@@ -97,7 +101,45 @@ class TransactionServices
     public function completeTransactionStud(string $reference, array $data): void
     {
         date_default_timezone_set('Asia/Manila');
-        print_r($data);
+
+        $user = unserialize($_SESSION['user']);
+        $maleId = $_SESSION['studReference'];
+        $femaleId = $_SESSION['partnerReference'];
+        $choice = $_SESSION['petBoardingChoice'];
+        $id = $_SESSION['id'];
+
+        $profile = $this->petProfile->getPetByReference($maleId);
+        $image = $profile->getImage();
+        $price = $profile->getPrice();
+
+        $transaction = new Transaction($user->getId(), $reference, $price, new DateTime("now"), "PENDING", $image, trim($data['mode']));
+        if (!$this->dao->addTransaction($transaction)) {
+            $_SESSION['msg'] = "There was an error in adding the transaction in the database. SQL Error.";
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+        $order = new Order("STUD", $this->dao->searchTransactionIdByReference($reference), $profile->getId(), $profile->getName(), $image, $profile->getPrice());
+        if (!$this->order->addOrder($order)) {
+            $_SESSION['msg'] = "There was an error in adding the order in the database. SQL Error.";
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+        $record = new StudHistory((int)$maleId, (int)$femaleId, null, "SCHEDULED");
+        if (!$this->studHistory->addRecord($record)) {
+            $_SESSION['msg'] = "There was an error in adding the record in the database. SQL Error.";
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        };
+        if ($choice == 'NO') {
+            header("Location: https://" . DOMAIN_NAME . "/invoice/$reference");
+        }
+        $profile = $this->petProfile->searchById($femaleId);
+        $slot = $this->slot->searchById($id);
+        $slot->setIsAvailable(false);
+        $slot->setPetId($profile->getId());
+        $slot->setPetName($profile->getName());
+        if (!$this->slot->updateBoardingSlot($slot)) {
+            $_SESSION['msg'] = "There was an error in updating the boarding slot in the database. SQL Error.";
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+        header("Location: https://" . DOMAIN_NAME . "/invoice/$reference");
     }
 
     public function getModeOfPaymentCount(string $mode): mixed

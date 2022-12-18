@@ -9,7 +9,7 @@ class StudHistory
     private ?DateTime $date = null;
     private ?string $status = null;
 
-    public function __construct(int $maleId, int $femaleId, DateTime $date, string $status)
+    public function __construct(int $maleId, int $femaleId, ?DateTime $date, string $status)
     {
         $this->maleId = $maleId;
         $this->femaleId = $femaleId;

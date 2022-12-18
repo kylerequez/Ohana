@@ -113,6 +113,51 @@ class PetProfileDAO
         }
     }
 
+    public function getOwnedPetByReference(string $reference): mixed
+    {
+        try {
+            $this->openConnection();
+            $sql = "SELECT * FROM ohana_pet_profiles
+                WHERE pet_status = 'AVAILABLE'
+                AND pet_reference = :reference
+                AND account_id != 1
+                LIMIT 1;";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":reference", $reference, PDO::PARAM_STR);
+
+            $profile = null;
+            if ($stmt->execute() > 0) {
+                while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $searchedPetProfile = new PetProfile(
+                        $petProfile["pet_image"],
+                        $petProfile["pet_reference"],
+                        $petProfile["pet_name"],
+                        new DateTime($petProfile["pet_birthdate"]),
+                        $petProfile["pet_sex"],
+                        $petProfile["pet_color"],
+                        $petProfile["pet_trait"],
+                        $petProfile["is_vaccinated"],
+                        $petProfile["pcci_status"],
+                        $petProfile["account_id"],
+                        $petProfile["owner_name"],
+                        $petProfile["pet_price"],
+                        $petProfile["pet_status"]
+                    );
+                    $searchedPetProfile->setType($petProfile["pet_type"]);
+                    $searchedPetProfile->setId($petProfile["pet_id"]);
+
+                    $profile = $searchedPetProfile;
+                }
+            }
+            $this->closeConnection();
+            return $profile;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
     public function filterPetsByTrait(string $type, string $trait): mixed
     {
         try {
@@ -469,7 +514,7 @@ class PetProfileDAO
         }
     }
 
-    public function getOwnedPet(string $reference,  string  $name): mixed
+    public function getOwnedPet(string $reference,  string $name): mixed
     {
         try {
             $this->openConnection();

@@ -36,7 +36,7 @@ class StudHistoryDAO
 
             $maleId = $history->getMaleId();
             $femaleId = $history->getFemaleId();
-            $date = $history->getDate()->format('Y-m-d H:i:s');
+            $date = !is_null($history->getDate()) ? $history->getDate()->format('Y-m-d H:i:s') : null;
             $status = $history->getStatus();
 
             $stmt = $this->conn->prepare($sql);

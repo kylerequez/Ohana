@@ -167,7 +167,7 @@
 
           $dao = new TransactionDAO($servername, $database, $username, $password);
           $orderDAO = new OrderDAO($servername, $database, $username, $password);
-          $services = new TransactionServices($dao, $orderDAO, null);
+          $services = new TransactionServices($dao, $orderDAO, null, null, null);
 
           $transactions = $services->getAllTransactions();
           if (!empty($transactions)) {
