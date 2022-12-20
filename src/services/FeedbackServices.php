@@ -8,6 +8,11 @@ class FeedbackServices
         $this->dao = $dao;
     }
 
+    public function getTotalFeedback(): mixed
+    {
+        return $this->dao->getTotalFeedback();
+    }
+
     public function getAllFeedbacks(): mixed
     {
         return $this->dao->getAllFeedbacks();

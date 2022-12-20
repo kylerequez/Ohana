@@ -118,7 +118,7 @@
                                 <div class="card-body">
                                     <img src="/Ohana/src/images/icons/quote.png" id="review" class="me-3 img-fluid"></img>
                                     <h5 class="card-text text-center mt-2 mb-2"> Maraming Salamat! Alagaan ko to. Ang ganda niya. Thank you ulit! </h5><br>
-                                    <h4 class="card-title text-center mt-2"> Edrich Pineda </h4>
+                                    <h4 class="card-title text-center mt-2 fw-bold fs-4"> - Edrich Pineda </h4>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +127,7 @@
                                 <div class="card-body">
                                     <img src="/Ohana/src/images/icons/quote.png" id="review" class="me-3 img-fluid"></img>
                                     <h5 class="card-text text-center mt-2 mb-2">Thank you so much! So happy with my puppy!</h5><br>
-                                    <h4 class="card-title text-center"> Ron Ilao</h4>
+                                    <h4 class="card-title text-center fw-bold fs-4"> - Ron Ilao</h4>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +136,7 @@
                                 <div class="card-body">
                                     <img src="/Ohana/src/images/icons/quote.png" id="review" class="me-3 img-fluid"></img>
                                     <h5 class="card-text text-center mt-2 mb-2">Thank you sir. Quality talaga yung puppy at napaka-cute. Solid!</h5><br>
-                                    <h4 class="card-title text-center"> Ralph Hernandez </h4>
+                                    <h4 class="card-title text-center fw-bold fs-4"> - Ralph Hernandez </h4>
                                 </div>
                             </div>
                         </div>

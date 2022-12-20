@@ -24,6 +24,11 @@ class AccountServices
         return $this->dao->getUsersCount();
     }
 
+    public function getStaffCount(): mixed
+    {
+        return $this->dao->getStaffCount();
+    }
+
     public function getUserAccounts(): mixed
     {
         return $this->dao->getUserAccounts();
@@ -45,12 +50,24 @@ class AccountServices
         $password = password_hash(trim($data["password"]), PASSWORD_DEFAULT);
         $status = trim($data["status"]);
         $account = new Account($type, $fname, $mname, $lname, $number, $email, $status, $password);
-        if (!is_null($this->dao->searchByEmail($email)) || !is_null($this->dao->searchByNumber($number))) {
-            $_SESSION["msg"] = "The account already exists in the database.";
+        if (!is_null($this->dao->searchByEmail($email))) {
+            $_SESSION["msg"] = "The email address has already been used. Please enter a new email address.";
+            return false;
+        }
+        if (strlen($data['number']) != 10) {
+            $_SESSION["msg"] = "The contact number must be 10 digits. Please enter a new contact number.";
+            return false;
+        }
+        if (!is_null($this->dao->searchByNumber($number))) {
+            $_SESSION["msg"] = "The contact number has already been used. Please enter a new contact number.";
+            return false;
+        }
+        if (isset($data['confirm']) && $data['password'] != $data['confirm']) {
+            $_SESSION["msg"] = "Both passwords must match. Please try again.";
             return false;
         }
         if (!$this->dao->createAccount($account)) {
-            $_SESSION["msg"] = "There was an error in adding the account in the database.";
+            $_SESSION["msg"] = "There was an error in adding the account in the database. SQL Error.";
             return false;
         }
         $_SESSION["msg"] = "You have successfully added a new " . strtolower($type) . " account.";
@@ -73,7 +90,7 @@ class AccountServices
         $account = new Account($type, $fname, $mname, $lname, $number, $email, $status, null);
         $account->setId($id);
         if (!$this->dao->updateAccount($account)) {
-            $_SESSION["msg"] = "There was an error in updating the account.";
+            $_SESSION["msg"] = "There was an error in updating the account. SQL Error.";
             return false;
         }
         $_SESSION["msg"] = "You have successfully updated Account $id!";

@@ -322,8 +322,10 @@
     <?php
           } else {
     ?>
-      <div class="alert text-light text-center ms-5 me-5" role="alert" style="margin-top:10%;background-color:#db6551">
-        No existing customer Pet Profiles
+      <div class="container-fluid">
+        <div class="alert text-light text-center ms-5 me-5" role="alert" style="margin-top:10%;background-color:#db6551">
+          No existing customer Pet Profiles
+        </div>
       </div>
     <?php
           }

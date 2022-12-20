@@ -106,10 +106,12 @@
           include_once dirname(__DIR__) . '/../models/PetProfile.php';
           include_once dirname(__DIR__) . '/../config/db-config.php';
           include_once dirname(__DIR__) . '/../dao/PetProfileDAO.php';
+          include_once dirname(__DIR__) . '/../dao/StudHistoryDAO.php';
           include_once dirname(__DIR__) . '/../services/PetProfileServices.php';
 
           $dao = new PetProfileDAO($servername, $database, $username, $password);
-          $services = new PetProfileServices($dao, null);
+          $history = new StudHistoryDAO($servername, $database, $username, $password);
+          $services = new PetProfileServices($dao, $history);
 
           $profiles = $services->getCustomerPets();
           if (!empty($profiles)) {

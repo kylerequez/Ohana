@@ -56,10 +56,14 @@ class LogDAO
             $this->openConnection();
             $sql = "INSERT INTO ohana_logs
                     (log, date)
-                    VALUES (:log, NOW());";
+                    VALUES (:log, :date);";
+
+            date_default_timezone_set('Asia/Manila');
+            $now = new DateTime('now');
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":log", $log, PDO::PARAM_STR);
+            $stmt->bindParam(":date", $now->format('Y-m-d H:i:s'), PDO::PARAM_STR);
 
             $isAdded = $stmt->execute() > 0;
             $this->closeConnection();

@@ -76,6 +76,7 @@
         <div class="sign-up__content">
           <header class="sign-up__header">
             <h1 class="sign-up__title mt-5">Create An Account</h1>
+            <?php print_r($_SESSION); ?>
             <p class="sign-up__descr">Welcome to Ohana!</p>
             <p class="register__desc mt-3"> Fill up the fields below to create an account. </p>
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
@@ -84,7 +85,7 @@
                 unset($_SESSION["msg"]); ?>
               </div>
             <?php
-              session_destroy();
+              // session_destroy();
             }
             ?>
           </header>
@@ -115,7 +116,7 @@
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
-                  <input class="input__field" id="contact-no" name="number" placeholder="Contact Number" type="text" maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /><label class="input__label" for="contact-no" required>Contact Number (+63)</label>
+                  <input class="input__field" id="contact-no" name="number" placeholder="Contact Number" type="text" minlength="10" maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /><label class="input__label" for="contact-no" required>Contact Number (+63)</label>
                 </div>
               </div>
             </div>
@@ -147,7 +148,7 @@
             <div class="form__row">
               <div class="input">
                 <div class="input__container">
-                  <input class="input__field" id="confirm-password" placeholder="Confirm password" required type="password" minlength="8" maxlength="49" />
+                  <input class="input__field" id="confirm-password" placeholder="Confirm password" name="confirm" required type="password" minlength="8" maxlength="49" />
                   <label class="input__label" for="confirm-password">Confirm password</label>
                 </div>
               </div>

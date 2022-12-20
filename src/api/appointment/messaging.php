@@ -22,37 +22,34 @@ $balance = $output['credit_balance'];
 if ($balance > 10) {
     $now = new DateTime();
     $appointments = $services->getScheduledAppointments($now->format('Y-m-d H-i-s'));
-    print_r($appointments);
     if (!empty($appointments) && !is_null($appointments)) {
         foreach ($appointments as $appointment) {
-            // $type = strtolower($appointment->getType());
-            // $text =
-            //     ($appointment->getType() == "REHOMING") ?
-            //     "Aloha, {$appointment->getCustomerName()}!
+            $type = strtolower($appointment->getType());
+            $text =
+                ($appointment->getType() == "REHOMING") ?
+                "Aloha, {$appointment->getCustomerName()}!
 
-            //     Please be advised that you have a scheduled {$type} at {$appointment->getStartDate()->format('M-d-Y h:i A')} to {$appointment->getEndDate()->format('h:i A')}"
-            //     :
-            //     "Aloha, {$appointment->getCustomerName()}!
+                Please be advised that you have a scheduled {$type} at {$appointment->getStartDate()->format('M-d-Y h:i A')} to {$appointment->getEndDate()->format('h:i A')}"
+                :
+                "Aloha, {$appointment->getCustomerName()}!
 
-            //     Please be advised that you have a scheduled {$type} at {$appointment->getStartDate()->format('M-d-Y h:i A')} to {$appointment->getEndDate()->format('h:i A')}";
+                Please be advised that you have a scheduled {$type} at {$appointment->getStartDate()->format('M-d-Y h:i A')} to {$appointment->getEndDate()->format('h:i A')}";
 
-            // $ch = curl_init();
-            // $parameters = array(
-            //     'apikey' => 'ac52fa794b80cecfc29fe5c3cbcd00cb',
-            //     'number' => $appointment->getNumber(),
-            //     'message' => $text,
-            //     'sendername' => 'OhanaKennel'
-            // );
-            // curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
-            // curl_setopt($ch, CURLOPT_POST, 1);
+            $ch = curl_init();
+            $parameters = array(
+                'apikey' => 'ac52fa794b80cecfc29fe5c3cbcd00cb',
+                'number' => $appointment->getNumber(),
+                'message' => $text,
+                'sendername' => 'OhanaKennel'
+            );
+            curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
+            curl_setopt($ch, CURLOPT_POST, 1);
 
-            // curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($parameters));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($parameters));
 
-            // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            // $output = curl_exec($ch);
-            // curl_close($ch);
-
-            // echo $output . "<br>";
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $output = curl_exec($ch);
+            curl_close($ch);
         }
     }
 }

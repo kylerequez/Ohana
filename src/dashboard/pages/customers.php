@@ -135,6 +135,7 @@
                       <option value="">Select a status...</option>
                       <option value="ACTIVE">Active</option>
                       <option value="DISABLED">Disabled</option>
+                      <option value="UNREGISTERED">Unregistered</option>
                     </select>
                   </th>
                 </tr>

@@ -1,5 +1,4 @@
 <?php
-
 require dirname(__DIR__) . '/../config/db-config.php';
 require dirname(__DIR__) . '/../dao/PetProfileDAO.php';
 require dirname(__DIR__) . '/../dao/LogDAO.php';
@@ -14,6 +13,7 @@ $history = new StudHistoryDAO($servername, $database, $username, $password);
 $logservices = new LogServices($logdao);
 $services = new PetProfileServices($dao, $history);
 $controller = new PetProfileController($services, $logservices);
+
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && !isset($id)) {
     $controller->processCustomerRequest($_SERVER["REQUEST_METHOD"], null);

@@ -56,6 +56,18 @@
 <body style="background-color: #FAF8F0;">
   <?php
   include_once dirname(__DIR__) . '/config/app-config.php';
+
+  if (true) {
+    $_SESSION['msg'] = "You have exceeded the time period to enter the OTP. Please register again.";
+    unset($_SESSION["email"]);
+    unset($_SESSION["userOtp"]);
+    unset($_SESSION["token"]);
+  ?>
+    <script>
+      window.location = 'https://<?php echo DOMAIN_NAME; ?>/register';
+    </script>
+  <?php
+  }
   if (empty($_SESSION["email"]) && empty($_SESSION["userOtp"]) && empty($_SESSION["token"])) {
     session_destroy();
   ?>
@@ -75,12 +87,14 @@
             <p class="fs-5" style="color:#c0b65a"> by entering the OTP sent to your email. </p>
             <!-- ALERT -->
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-              <div class=" alert alert-warning" role="alert">
-              <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
-              unset($_SESSION["msg"]);
+              <div class="alert alert-warning mt-5" role="alert">
+                <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
+                unset($_SESSION["msg"]); ?>
+              </div>
+            <?php
             } else { ?>
-                <!-- <p id="header"> <br><span class="fs-4" style="color:#c0b65a">  </span> </p> -->
-              <?php } ?>
+              <!-- <p id="header"> <br><span class="fs-4" style="color:#c0b65a">  </span> </p> -->
+            <?php } ?>
           </header>
           <form class="sign-up__form form" method="GET" action="/accounts/register">
             <div class="form__row">
@@ -122,7 +136,6 @@
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-</body>
 </body>
 
 </html>

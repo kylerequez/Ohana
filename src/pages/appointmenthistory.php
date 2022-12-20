@@ -10,7 +10,7 @@
     <meta name="keywords" content="Kennel Business, French Bulldogs">
     <link rel="stylesheet" href="/Ohana/src/css/userprofile.css">
     <?php include_once 'stylesheets.php'; ?>
-   
+
     <!-- CALENDAR BS-->
     <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
 
@@ -77,11 +77,11 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-    <?php include_once 'navigationbar.php'; ?>
-        <div class="container-fluid">
+        <?php include_once 'navigationbar.php'; ?>
+        <div class="container">
             <section class="userprofile">
                 <div class="userheader mb-5">
-                <img src="/Ohana/src/images/Pages/appoint.png" id="header" class="img-responsive" width="100%">
+                    <img src="/Ohana/src/images/Pages/appoint.png" id="header" class="img-responsive" width="100%">
                 </div>
                 <div class="container">
                     <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
@@ -97,7 +97,7 @@
                     ?>
                 </div>
             </section>
-            <div class="container py-5 mb-5" id="page-container">
+            <div class="py-5 mb-5" id="page-container">
                 <div class="row">
                     <div class="col-md-9">
                         <div id="calendar"></div>

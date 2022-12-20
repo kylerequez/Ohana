@@ -47,6 +47,9 @@
       include_once dirname(__DIR__) . '/dao/TransactionDAO.php';
       include_once dirname(__DIR__) . '/services/TransactionServices.php';
       include_once dirname(__DIR__) . '/dao/OrderDAO.php';
+      include_once dirname(__DIR__) . '/dao/StudHistoryDAO.php';
+      include_once dirname(__DIR__) . '/dao/FeedbackDAO.php';
+      include_once dirname(__DIR__) . '/services/FeedbackServices.php';
 
       ?>
       <main class="main users chart-page" id="skip-target"><br>
@@ -116,15 +119,13 @@
                 </a>
               </div>
               <div class="col-md-6 col-xl-3">
-                <a href="/dashboard/appointments">
+                <a href="/dashboard/staff">
                   <article class="stat-cards-item">
                     <div class="stat-cards-icon">
                       <img src="/Ohana/src/dashboard/img/main/5.png">
                     </div>
                     <div class="stat-cards-info">
-                      <p class="stat-cards-info__num"> Total: <?php $dao = new AppointmentDAO($servername, $database, $username, $password);
-                                                              $services = new AppointmentServices($dao, null);
-                                                              echo $services->getAppointmentsCount(); ?></p>
+                      <p class="stat-cards-info__num"> Total: <?php echo $services->getStaffCount(); ?></p>
                       <p class="stat-cards-info__title" style="color:#db6551"> Staff Accounts </p>
                       <p class="stat-cards-info__progress">
                       </p>
@@ -136,14 +137,17 @@
                 <a href="/dashboard/transactions">
                   <article class="stat-cards-item">
                     <div class="stat-cards-icon">
-                      <img src="/Ohana/src/dashboard/img/main/6.png">
+                      <img src="/Ohana/src/dashboard/img/main/8.png">
                     </div>
                     <div class="stat-cards-info">
                       <p class="stat-cards-info__num"> Total: <?php $dao = new TransactionDAO($servername, $database, $username, $password);
                                                               $order = new OrderDAO($servername, $database, $username, $password);
-                                                              $services = new TransactionServices($dao, $order, null, null, null);
+                                                              $petprofile = new PetProfileDAO($servername, $database, $username, $password);
+                                                              $history = new StudHistoryDAO($servername, $database, $username, $password);
+                                                              $slot = new BoardingSlotDAO($servername, $database, $username, $password);
+                                                              $services = new TransactionServices($dao, $order, $petprofile, $history, $slot);
                                                               echo $services->getTransactionsCount(); ?></p>
-                      <p class="stat-cards-info__title" style="color:#db6551"> Pending Appointments </p>
+                      <p class="stat-cards-info__title" style="color:#db6551"> Customer Transactions </p>
                       <p class="stat-cards-info__progress">
                       </p>
                     </div>
@@ -153,15 +157,15 @@
             </div>
             <div class="row stat-cards d-flex justify-content-center mt-3">
               <div class="col-md-6 col-xl-3">
-                <a href="/dashboard/customers">
+                <a href="/dashboard/appointments">
                   <article class="stat-cards-item">
                     <div class="stat-cards-icon">
                       <img src="/Ohana/src/dashboard/img/main/7.png">
                     </div>
                     <div class="stat-cards-info">
-                      <p class="stat-cards-info__num"> Total: <?php $dao = new AccountDAO($servername, $database, $username, $password);
-                                                              $services = new AccountServices($dao);
-                                                              echo $services->getUsersCount(); ?></p>
+                      <p class="stat-cards-info__num"> Total: <?php $dao = new AppointmentDAO($servername, $database, $username, $password);
+                                                              $services = new AppointmentServices($dao, null);
+                                                              echo $services->getCompletedAppointmentsCount(); ?></p>
                       <p class="stat-cards-info__title" style="color:#db6551"> Completed Appointments</p>
                     </div>
                   </article>
@@ -171,40 +175,33 @@
                 <a href="/dashboard/appointments">
                   <article class="stat-cards-item">
                     <div class="stat-cards-icon">
-                      <img src="/Ohana/src/dashboard/img/main/8.png">
+                      <img src="/Ohana/src/dashboard/img/main/6.png">
                     </div>
                     <div class="stat-cards-info">
-                      <p class="stat-cards-info__num"> Total: <?php $dao = new AppointmentDAO($servername, $database, $username, $password);
-                                                              $services = new AppointmentServices($dao, null);
-                                                              echo $services->getAppointmentsCount(); ?></p>
-                      <p class="stat-cards-info__title" style="color:#db6551"> Customer Transactions </p>
-                      <p class="stat-cards-info__progress">
-                      </p>
+                      <p class="stat-cards-info__num"> Total: <?php echo $services->getCompletedAppointmentsCount(); ?></p>
+                      <p class="stat-cards-info__title" style="color:#db6551"> Pending Appointments </p>
                     </div>
                   </article>
                 </a>
               </div>
               <div class="col-md-6 col-xl-3">
-                <a href="/dashboard/transactions">
+                <a href="/dashboard/feedbacks">
                   <article class="stat-cards-item">
                     <div class="stat-cards-icon">
                       <img src="/Ohana/src/dashboard/img/main/9.png">
                     </div>
                     <div class="stat-cards-info">
-                      <p class="stat-cards-info__num"> Total: <?php $dao = new TransactionDAO($servername, $database, $username, $password);
-                                                              $order = new OrderDAO($servername, $database, $username, $password);
-                                                              $services = new TransactionServices($dao, $order, null, null, null);
-                                                              echo $services->getTransactionsCount(); ?></p>
+                      <p class="stat-cards-info__num"> Total: <?php $dao = new FeedbackDAO($servername, $database, $username, $password);
+                                                              $services = new FeedbackServices($dao, null);
+                                                              echo $services->getTotalFeedback(); ?></p>
                       <p class="stat-cards-info__title" style="color:#db6551"> Customer Feedbacks </p>
-                      <p class="stat-cards-info__progress">
-                      </p>
                     </div>
                   </article>
                 </a>
               </div>
             </div>
-          </div><!-- END OF CONTAINER -->
-        </div><!-- END OF CONTAINER FLUID -->
+          </div>
+        </div>
       </main>
       <?php include_once dirname(__DIR__) . '/dashboard/footer.php'; ?>
     </div>

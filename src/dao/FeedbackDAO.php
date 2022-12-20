@@ -26,6 +26,24 @@ class FeedbackDAO
         $this->conn = null;
     }
 
+    public function getTotalFeedback(): mixed
+    {
+        try {
+            $this->openConnection();
+            $sql = "SELECT COUNT(*) FROM ohana_feedbacks;";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+
+            $result = $stmt->fetchColumn();
+            $this->closeConnection();
+            return $result;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
     public function getAllFeedbacks(): mixed
     {
         try {

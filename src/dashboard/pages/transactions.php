@@ -125,37 +125,6 @@
           <h2 class="main-title text-center mt-3"> Customer Transactions</h2>
         </div>
         <div class="users-table table-wrapper">
-          <div class="createstaff-wrapper">
-            <button type="submit" data-bs-toggle="modal" data-bs-target="#modalCenter"><i data-feather="bar-chart" aria-hidden="true"></i> Generate Sales Report </button>
-          </div>
-          <!-- Modal -->
-          <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="modalCenterTitle">Sales Report: Select Range</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <div class="row g-2">
-                    <div class="col mb-0">
-                      <label for="date" class="form-label">From:</label>
-                      <input class="form-control" type="date" value="2022-12-18" id="date" />
-                      <span><i class="fa fa-calendar"></i></span>
-                    </div>
-                    <div class="col mb-0">
-                      <label for="date" class="form-label">To:</label>
-                      <input class="form-control" type="date" value="2022-12-18" id="date" />
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn" style="background-color:#db6551;color:white;"><a href="/dashboard/sales"> Generate </a></button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <br>
           <?php
           include_once dirname(__DIR__) . '/../models/Transaction.php';
           include_once dirname(__DIR__) . '/../models/Order.php';
@@ -172,6 +141,36 @@
           $transactions = $services->getAllTransactions();
           if (!empty($transactions)) {
           ?>
+            <div class="createstaff-wrapper">
+              <button type="submit" data-bs-toggle="modal" data-bs-target="#modalCenter"><i data-feather="bar-chart" aria-hidden="true"></i> Generate Sales Report </button>
+            </div>
+            <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalCenterTitle">Sales Report: Select Range</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row g-2">
+                      <div class="col mb-0">
+                        <label for="date" class="form-label">From:</label>
+                        <input class="form-control" type="date" value="2022-12-18" id="date" />
+                        <span><i class="fa fa-calendar"></i></span>
+                      </div>
+                      <div class="col mb-0">
+                        <label for="date" class="form-label">To:</label>
+                        <input class="form-control" type="date" value="2022-12-18" id="date" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn" style="background-color:#db6551;color:white;"><a href="/dashboard/sales"> Generate </a></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
             <table id="transactions" class="posts-table">
               <thead>
                 <tr class="users-table-info">

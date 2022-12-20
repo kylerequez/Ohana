@@ -38,9 +38,12 @@ class PetProfileServices
     public function getOhanaPets(): mixed
     {
         $profiles = $this->dao->getOhanaPets();
-        foreach ($profiles as  $profile) {
-            $profile->setStudHistory($this->history->getAllStudHistoryByMaleId($profile->getId()));
+        if (!is_null($profiles)) {
+            foreach ($profiles as  $profile) {
+                $profile->setStudHistory($this->history->getAllStudHistoryByMaleId($profile->getId()));
+            }
         }
+
         return $profiles;
     }
 

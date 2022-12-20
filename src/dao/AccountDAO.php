@@ -44,6 +44,24 @@ class AccountDAO
         }
     }
 
+    public function getStaffCount(): mixed
+    {
+        try {
+            $this->openConnection();
+            $sql = "SELECT COUNT(*) FROM ohana_account WHERE account_type = 'STAFF' and status = 'ACTIVE';";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchColumn();
+
+            $this->closeConnection();
+            return $result;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
     public function getUserAccounts(): mixed
     {
         try {

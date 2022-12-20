@@ -10,6 +10,16 @@ class AppointmentServices
         $this->petProfile = $petProfile;
     }
 
+    public function getCompletedAppointmentsCount(): mixed
+    {
+        return $this->dao->getCompletedAppointmentsCount();
+    }
+
+    public function getPendingAppointmentsCount(): mixed
+    {
+        return $this->dao->getPendingAppointmentsCount();
+    }
+
     public function getAllAppointments(): mixed
     {
         return $this->dao->getAllAppointments();
@@ -37,7 +47,6 @@ class AppointmentServices
         $customerName = $user->getFname() . " " . $user->getLname();
 
         $time = explode(" - ", $_POST["appointmentTime"]);
-        print_r($time);
         $start = new DateTime($_POST["date"] . " " . $time[0]);
         $end = new DateTime($_POST["date"] . " " . $time[1]);
 

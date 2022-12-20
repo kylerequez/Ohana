@@ -26,6 +26,42 @@ class AppointmentDAO
         $this->conn = null;
     }
 
+    public function getCompletedAppointmentsCount(): mixed
+    {
+        try {
+            $this->openConnection();
+            $sql = "SELECT COUNT(*) FROM ohana_appointments WHERE appointment_status != 'PENDING';";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+
+            $result = $stmt->fetchColumn();
+            $this->closeConnection();
+            return $result;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
+    public function getPendingAppointmentsCount(): mixed
+    {
+        try {
+            $this->openConnection();
+            $sql = "SELECT COUNT(*) FROM ohana_appointments WHERE appointment_status = 'PENDING';";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+
+            $result = $stmt->fetchColumn();
+            $this->closeConnection();
+            return $result;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
     public function getScheduledAppointments(string $date): mixed
     {
         try {
