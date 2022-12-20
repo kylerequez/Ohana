@@ -2459,8 +2459,9 @@ label {
   opacity: 1;
 }
 
-.sidebar-body-menu a.active {
+.sidebar-body-menu a.active { /* CHANGE COLOR SA SIDEBAR*/
   opacity: 1;
+  color: #C0B65A;
 }
 
 .sidebar-body-menu a.active::after {

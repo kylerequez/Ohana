@@ -71,16 +71,16 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <h1 id="header" class="sign-up__title">Welcome to Ohana!</h1>
+            <h1 id="header" class="sign-up__title">Complete registration </h1>
+            <p class="fs-5" style="color:#c0b65a"> by entering the OTP sent to your email. </p>
             <!-- ALERT -->
-        </div>
-        <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-          <div class=" alert alert-warning" role="alert">
-          <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
-          unset($_SESSION["msg"]);
-        } else { ?>
-            <p id="header"> Complete registration <br><span class="fs-4" style="color:#c0b65a"> by entering the OTP sent to your email. </span> </p>
-          <?php } ?>
+            <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+              <div class=" alert alert-warning" role="alert">
+              <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
+              unset($_SESSION["msg"]);
+            } else { ?>
+                <!-- <p id="header"> <br><span class="fs-4" style="color:#c0b65a">  </span> </p> -->
+              <?php } ?>
           </header>
           <form class="sign-up__form form" method="GET" action="/accounts/register">
             <div class="form__row">
@@ -98,7 +98,7 @@
                 </div>
               </div>
             </div>
-            <center><br>
+            <center>
               <div class="form__row">
                 <p id="resendotp" class="fs-5">Did not receive an OTP? &nbsp;<a class="link mt-2" name="login" style="text-decoration:none;" href="/register/resend/<?php echo $_SESSION["token"] ?>">Resend OTP</a></p>
               </div>
@@ -113,15 +113,15 @@
               <p class="text-center" id="already">Already have an account? &nbsp;<a class="link" name="login" style="text-decoration:none;" href="/login">Login</a></p>
             </div>
           </form>
-          </div>
+        </div>
       </div>
-      <div id="ohanafooter">
-        <?php include_once 'footer.php'; ?>
-      </div>
-    </main>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  </div>
+  <div id="ohanafooter">
+    <?php include_once 'footer.php'; ?>
+  </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </body>
 
