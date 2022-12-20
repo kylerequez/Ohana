@@ -17,8 +17,6 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $output = curl_exec($ch);
 curl_close($ch);
 
-echo 'test';
-
 $output = json_decode($output, true);
 $balance = $output['credit_balance'];
 if ($balance > 10) {
