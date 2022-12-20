@@ -5,6 +5,6 @@ $username = "root";
 $password = "";
 
 // $servername = "localhost";
-// $database = "id19881316_ohanadb";
-// $username = "id19881316_root";
+// $database = "id20012234_ohana_db";
+// $username = "id20012234_ohanakennnelph";
 // $password = "Ohanakennelph@2022";

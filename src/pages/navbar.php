@@ -271,6 +271,8 @@
     @media (max-width: 1090px) {
       #menu-icon {
         display: block;
+        width:35px;
+        height:35px;
       }
 
       .navbar {
