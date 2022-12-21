@@ -95,6 +95,7 @@ class BoardingSlotDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "
                 INSERT INTO ohana_boarding_slot
                 (slot_image, slot_name, slot_information, is_available, pet_id, pet_name)
@@ -117,9 +118,11 @@ class BoardingSlotDAO
             $stmt->bindParam(":petName", $petName, PDO::PARAM_STR);
 
             $isAdded = $stmt->execute() > 0;
+            $this->conn->commit();
             $this->closeConnection();
             return $isAdded;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
         }
@@ -129,6 +132,7 @@ class BoardingSlotDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "DELETE FROM ohana_boarding_slot
                     WHERE slot_id=:id";
 
@@ -136,9 +140,11 @@ class BoardingSlotDAO
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
             $isDeleted = $stmt->execute() > 0;
+            $this->conn->commit();
             $this->closeConnection();
             return $isDeleted;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
         }
@@ -174,6 +180,7 @@ class BoardingSlotDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "UPDATE ohana_boarding_slot
                     SET slot_image=:image, slot_name=:name, slot_information=:information, is_available=:isAvailable, pet_id=:petId, pet_name=:petName
                     WHERE slot_id=:id";
@@ -196,9 +203,11 @@ class BoardingSlotDAO
             $stmt->bindParam(":petName", $petName, PDO::PARAM_STR);
 
             $isUpdated = $stmt->execute() > 0;
+            $this->conn->commit();
             $this->closeConnection();
             return $isUpdated;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
         }

@@ -68,6 +68,7 @@ class TransactionDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "UPDATE ohana_transactions
                     SET payment_confirmation=:confirmation
                     WHERE transaction_id=:id;";
@@ -77,9 +78,11 @@ class TransactionDAO
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
             $isUploaded = $stmt->execute() > 0;
+            $this->conn->commit();
             $this->closeConnection();
             return $isUploaded;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
         }
@@ -269,6 +272,7 @@ class TransactionDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "UPDATE ohana_transactions
                     SET transaction_status=:status
                     WHERE transaction_id=:id;";
@@ -278,9 +282,11 @@ class TransactionDAO
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
             $isUpdated = $stmt->execute() > 0;
+            $this->conn->commit();
             $this->closeConnection();
             return $isUpdated;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
         }
@@ -290,6 +296,7 @@ class TransactionDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "INSERT INTO ohana_transactions
                     (transaction_reference, account_id, total_price, transaction_date, transaction_status, payment_confirmation, payment_mode)
                     VALUES (:reference, :id, :price, :date, :status, :confirmation, :mode);";
@@ -312,9 +319,11 @@ class TransactionDAO
             $stmt->bindParam(":mode", $mode, PDO::PARAM_STR);
 
             $isAdded = $stmt->execute() > 0;
+            $this->conn->commit();
             $this->closeConnection();
             return $isAdded;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
         }

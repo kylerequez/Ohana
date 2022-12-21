@@ -719,6 +719,7 @@ class PetProfileDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "INSERT INTO ohana_pet_profiles
                     (pet_image, pet_reference, pet_name, pet_type, pet_trait, pet_birthdate, pet_sex, pet_color, is_vaccinated, pcci_status, account_id, owner_name, pet_price, pet_status)
                     VALUES (:pet_image, :pet_reference, :pet_name, :pet_type, :pet_trait, :pet_birthdate, :pet_sex, :pet_color, :is_vaccinated, :pcci_status, :account_id, :owner_name, :pet_price, :pet_status);";
@@ -755,9 +756,11 @@ class PetProfileDAO
             $stmt->bindParam(":pet_status", $status, PDO::PARAM_STR);
 
             $isAdded = $stmt->execute() > 0;
+            $this->conn->commit();
             $this->closeConnection();
             return $isAdded;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
         }
@@ -850,12 +853,12 @@ class PetProfileDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "UPDATE ohana_pet_profiles
                     SET pet_image=:image, pet_name=:name, pet_type=:type, pet_trait=:trait, pet_birthdate=:birthdate, pet_sex=:sex, pet_color=:color, is_vaccinated=:isVaccinated, pcci_status=:pcciStatus, account_id=:accountId, owner_name=:ownerName, pet_price=:price, pet_status=:status
                     WHERE pet_id=:id";
 
             $id = $profile->getId();
-            $reference = $profile->getReference();
             $image = $profile->getImage();
             $name = $profile->getName();
             $type = $profile->getType();
@@ -887,9 +890,11 @@ class PetProfileDAO
             $stmt->bindParam(":status", $status, PDO::PARAM_STR);
 
             $isUpdated = $stmt->execute() > 0;
+            $this->conn->commit();
             $this->closeConnection();
             return $isUpdated;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
         }
@@ -899,15 +904,18 @@ class PetProfileDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "DELETE FROM ohana_pet_profiles
                     WHERE pet_id=:id";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
             $isDeleted = $stmt->execute() > 0;
+            $this->conn->commit();
             $this->closeConnection();
             return $isDeleted;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
         }
@@ -917,6 +925,7 @@ class PetProfileDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "UPDATE ohana_pet_profiles
                     SET pet_status='SOLD'
                     WHERE pet_id=:id;";
@@ -925,9 +934,11 @@ class PetProfileDAO
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
             $isUpdated = $stmt->execute() > 0;
+            $this->conn->commit();
             $this->closeConnection();
             return $isUpdated;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
         }

@@ -30,6 +30,7 @@ class StudHistoryDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "INSERT INTO ohana_stud_history
                     (male_id, female_id, stud_date, stud_status)
                     VALUES (:maleId, :femaleId, :date, :status);";
@@ -46,9 +47,11 @@ class StudHistoryDAO
             $stmt->bindParam(":status", $status, PDO::PARAM_STR);
 
             $isAdded = $stmt->execute() > 0;
+            $this->conn->commit();
             $this->closeConnection();
             return $isAdded;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
         }
@@ -58,15 +61,18 @@ class StudHistoryDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "DELETE FROM ohana_stud_history
                     WHERE stud_id=:id";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
             $isDeleted = $stmt->execute() > 0;
+            $this->conn->commit();
             $this->closeConnection();
             return $isDeleted;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
         }
@@ -76,6 +82,7 @@ class StudHistoryDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "UPDATE ohana_stud_history
                     SET female_id = :femaleId, stud_date = :date, stud_status = :status
                     WHERE stud_id=:id";
@@ -91,9 +98,11 @@ class StudHistoryDAO
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
             $isDeleted = $stmt->execute() > 0;
+            $this->conn->commit();
             $this->closeConnection();
             return $isDeleted;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
         }

@@ -230,6 +230,7 @@ class AppointmentDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "INSERT INTO ohana_appointments
                     (appointment_type, account_id, appointment_title, appointment_description, appointment_start, appointment_end)
                     VALUES (:type, :id, :title, :description, :start, :end);";
@@ -250,9 +251,11 @@ class AppointmentDAO
             $stmt->bindParam(":end", $end, PDO::PARAM_STR);
 
             $isAdded = $stmt->execute() > 0;
+            $this->conn->commit();
             $this->closeConnection();
             return $isAdded;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
         }
@@ -262,6 +265,7 @@ class AppointmentDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "DELETE FROM ohana_appointments
                     WHERE appointment_id=:id";
 
@@ -269,9 +273,11 @@ class AppointmentDAO
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
             $isDeleted = $stmt->execute() > 0;
+            $this->conn->commit();
             $this->closeConnection();
             return $isDeleted;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
         }
@@ -328,6 +334,7 @@ class AppointmentDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "UPDATE ohana_appointments
                     SET appointment_title=:title,appointment_description=:description, appointment_start=:startDate, appointment_end=:endDate, appointment_status=:status
                     WHERE appointment_id=:id;";
@@ -348,9 +355,11 @@ class AppointmentDAO
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
             $isUpdated = $stmt->execute() > 0;
+            $this->conn->commit();
             $this->closeConnection();
             return $isUpdated;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
         }
