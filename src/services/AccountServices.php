@@ -104,7 +104,21 @@ class AccountServices
             return false;
         }
         if (!$this->dao->deleteById($id)) {
-            $_SESSION["msg"] = "There was an error in deleting the account.";
+            $_SESSION["msg"] = "There was an error in deleting the account. SQL Error.";
+            return false;
+        }
+        $_SESSION["msg"] = "You have successfully deleted Account $id!";
+        return true;
+    }
+
+    public function deleteAccountByEmail(string $email): bool
+    {
+        if (is_null($this->dao->searchByEmail($email))) {
+            $_SESSION["msg"] = "Account not deleted! The user does not exists";
+            return false;
+        }
+        if (!$this->dao->deleteByEmail($email)) {
+            $_SESSION["msg"] = "There was an error in deleting the account. SQL Error.";
             return false;
         }
         $_SESSION["msg"] = "You have successfully deleted Account $id!";

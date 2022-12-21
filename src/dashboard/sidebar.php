@@ -10,6 +10,7 @@
       window.location = 'https://<?php echo DOMAIN_NAME; ?>/login';
     </script>
     <?php
+    exit();
   } else {
     include_once dirname(__DIR__) . '/models/Account.php';
     $user = unserialize($_SESSION['user']);
@@ -19,6 +20,7 @@
         window.location = 'https://<?php echo DOMAIN_NAME; ?>/home';
       </script>
   <?php
+      exit();
     }
   }
   ?>
@@ -35,15 +37,15 @@
     </div>
     <div class="sidebar-body">
       <ul class="sidebar-body-menu">
-        <li><a href="/dashboard/home" class="<?php if($_SERVER['REQUEST_URI'] == '/dashboard/home') echo 'active'; ?>"><span class="icon home" aria-hidden="true"></span>Dashboard Home</a></li>
-        <li><a href="/dashboard/pet-profiles" class="<?php if($_SERVER['REQUEST_URI'] == '/dashboard/pet-profiles') echo 'active'; ?>"><img src="/Ohana/src/dashboard/img/main/ohanapets.png" style="display:inline-flex;width:24px;height:24px;">&nbsp;&nbsp;Ohana Pets</span></a></li>
-        <li><a href="/dashboard/customer-pets" class="<?php if($_SERVER['REQUEST_URI'] == '/dashboard/customer-pets') echo 'active'; ?>"><img src="/Ohana/src/dashboard/img/main/customer.png" style="display:inline-flex;width:24px;height:24px;">&nbsp;&nbsp;Customer Pets</span></a></li>
-        <li><a href="/dashboard/petboarding" class="<?php if($_SERVER['REQUEST_URI'] == '/dashboard/petboarding') echo 'active'; ?>"><img src="/Ohana/src/dashboard/img/main/boarding.png" style="display:inline-flex;width:24px;height:24px;">&nbsp;&nbsp;Pet Boarding Slots</span></a></li>
-        <li><a href="/dashboard/appointments" class="<?php if($_SERVER['REQUEST_URI'] == '/dashboard/appointments') echo 'active'; ?>"><span class="icon calendar" aria-hidden="true"></span>Appointments</a></li>
-        <li><a href="/dashboard/customers" class="<?php if($_SERVER['REQUEST_URI'] == '/dashboard/customers') echo 'active'; ?>"><span class="icon user-3" aria-hidden="true"></span>Customer Accounts</a></li>
-        <li><a href="/dashboard/staff" class="<?php if($_SERVER['REQUEST_URI'] == '/dashboard/staff') echo 'active'; ?>"> <span class="icon user2" aria-hidden="true"></span>Staff Accounts</a></li>
-        <li><a href="/dashboard/transactions" class="<?php if($_SERVER['REQUEST_URI'] == '/dashboard/transactions') echo 'active'; ?>"><span class="icon chartico" aria-hidden="true"></span>User Transactions</span></a></li>
-        <li><a href="/dashboard/feedbacks" class="<?php if($_SERVER['REQUEST_URI'] == '/dashboard/feedbacks') echo 'active'; ?>"><span class="icon message" aria-hidden="true"></span>User Feedback</a></li>
+        <li><a href="/dashboard/home" class="<?php if ($_SERVER['REQUEST_URI'] == '/dashboard/home') echo 'active'; ?>"><span class="icon home" aria-hidden="true"></span>Dashboard Home</a></li>
+        <li><a href="/dashboard/pet-profiles" class="<?php if ($_SERVER['REQUEST_URI'] == '/dashboard/pet-profiles') echo 'active'; ?>"><img src="/Ohana/src/dashboard/img/main/ohanapets.png" style="display:inline-flex;width:24px;height:24px;">&nbsp;&nbsp;Ohana Pets</span></a></li>
+        <li><a href="/dashboard/customer-pets" class="<?php if ($_SERVER['REQUEST_URI'] == '/dashboard/customer-pets') echo 'active'; ?>"><img src="/Ohana/src/dashboard/img/main/customer.png" style="display:inline-flex;width:24px;height:24px;">&nbsp;&nbsp;Customer Pets</span></a></li>
+        <li><a href="/dashboard/petboarding" class="<?php if ($_SERVER['REQUEST_URI'] == '/dashboard/petboarding') echo 'active'; ?>"><img src="/Ohana/src/dashboard/img/main/boarding.png" style="display:inline-flex;width:24px;height:24px;">&nbsp;&nbsp;Pet Boarding Slots</span></a></li>
+        <li><a href="/dashboard/appointments" class="<?php if ($_SERVER['REQUEST_URI'] == '/dashboard/appointments') echo 'active'; ?>"><span class="icon calendar" aria-hidden="true"></span>Appointments</a></li>
+        <li><a href="/dashboard/customers" class="<?php if ($_SERVER['REQUEST_URI'] == '/dashboard/customers') echo 'active'; ?>"><span class="icon user-3" aria-hidden="true"></span>Customer Accounts</a></li>
+        <li><a href="/dashboard/staff" class="<?php if ($_SERVER['REQUEST_URI'] == '/dashboard/staff') echo 'active'; ?>"> <span class="icon user2" aria-hidden="true"></span>Staff Accounts</a></li>
+        <li><a href="/dashboard/transactions" class="<?php if ($_SERVER['REQUEST_URI'] == '/dashboard/transactions') echo 'active'; ?>"><span class="icon chartico" aria-hidden="true"></span>User Transactions</span></a></li>
+        <li><a href="/dashboard/feedbacks" class="<?php if ($_SERVER['REQUEST_URI'] == '/dashboard/feedbacks') echo 'active'; ?>"><span class="icon message" aria-hidden="true"></span>User Feedback</a></li>
         <li>
           <a class="show-cat-btn" href="##">
             <img src="/Ohana/src/dashboard/img/main/cb.png" style="display:inline-flex;width:24px;height:24px;">&nbsp;&nbsp;Chat Bot<span class="sr-only">Open list</span></span>

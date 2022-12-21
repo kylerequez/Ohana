@@ -9,9 +9,15 @@ $services = new AccountServices($dao);
 $controller = new AccountController($services, null);
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_SESSION)) {
+    if (!isset($_SESSION['time']) || $_SESSION['time'] + (5 * 60) < time()) {
+        $_SESSION['msg'] = "You have exceeded the maximum time period (5 minutes) to enter the OTP. Please login again.";
+        unset($_SESSION["email"]);
+        unset($_SESSION["userOtp"]);
+        unset($_SESSION["token"]);
+        header("Location: https://" . DOMAIN_NAME . "/login");
+        exit();
+    }
     $controller->loginRequest($_SERVER["REQUEST_METHOD"]);
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $controller->loginRequest($_SERVER["REQUEST_METHOD"]);
-} else {
-    $_SESSION["msg"] = "Wrong way of accessing";
 }

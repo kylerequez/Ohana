@@ -124,15 +124,15 @@ class AccountController
     public function loginRequest(string $method): void
     {
         switch ($method) {
-                // OTP Login 
             case "GET":
                 if ($this->services->verifyLogin($_GET)) {
                     $account = unserialize($_SESSION["user"]);
+                    unset($_SESSION["userOtp"]);
+                    unset($_SESSION["email"]);
+                    unset($_SESSION["token"]);
+                    unset($_SESSION['time']);
+                    $_SESSION["cart"] = serialize(new Cart());
                     if ($account->getType() == "USER") {
-                        unset($_SESSION["userOtp"]);
-                        unset($_SESSION["email"]);
-                        unset($_SESSION["token"]);
-                        $_SESSION["cart"] = serialize(new Cart());
                         header("Location: https://" . DOMAIN_NAME . "/home");
                         break;
                     } else {
@@ -150,6 +150,9 @@ class AccountController
                     header("Location: https://" . DOMAIN_NAME . "/login");
                     break;
                 }
+                date_default_timezone_set('Asia/Manila');
+                $_SESSION['time'] = time();
+                unset($_SESSION["msg"]);
                 header("Location: https://" . DOMAIN_NAME . "/verifylogin");
                 break;
         }
@@ -173,7 +176,8 @@ class AccountController
         if ($this->services->logoutAccount()) {
             header("Location: https://" . DOMAIN_NAME . "/login");
         } else {
-            $_SESSION["msg"] = "There was an error on log out. Please try again.";
+            $_SESSION["msg"] = "There was an error on account log out. Please try again.";
+            header("Location: " . $_SERVER['HTTP_REFERER']);
         }
     }
 
@@ -181,7 +185,11 @@ class AccountController
     {
         switch ($method) {
             case "GET":
+                if (!isset($_SESSION)) session_start();
                 if ($this->services->forgotPasswordRequest($email)) {
+                    date_default_timezone_set('Asia/Manila');
+                    $_SESSION['time'] = time();
+                    unset($_SESSION["msg"]);
                     header("Location: https://" . DOMAIN_NAME . "/forgot-password/confirm");
                     break;
                 } else {
@@ -225,6 +233,7 @@ class AccountController
                 if (!isset($_SESSION)) session_start();
                 if ($this->services->addAccount($_POST)) {
                     if ($this->services->registrationRequest($_POST)) {
+                        date_default_timezone_set('Asia/Manila');
                         $_SESSION['time'] = time();
                         unset($_SESSION["msg"]);
                         header("Location: https://" . DOMAIN_NAME . "/register/confirm");

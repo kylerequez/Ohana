@@ -22,9 +22,11 @@
             border-radius: 30px;
             padding: 10px 40px;
         }
+
         #cartheader {
             margin-top: 0%;
         }
+
         #tq {
             margin-top: -2%;
         }
@@ -57,7 +59,7 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-      
+
         <?php
         require dirname(__DIR__) . '/config/db-config.php';
         require dirname(__DIR__) . '/dao/OrderDAO.php';
@@ -77,7 +79,10 @@
                 const url = "https://<?= DOMAIN_NAME ?>/pawcart";
                 window.location.href = url;
             </script>
-        <?php } ?>
+        <?php
+            exit();
+        }
+        ?>
         <div class="container-fluid">
             <img src="/Ohana/src/images/Pages/invoice.png" id="cartheader" class="img-responsive" width="100%">
             <div class="container">
@@ -132,7 +137,7 @@
                                                     </div>
                                                 </div>
                                             <?php
-                                            $type = $order->getType();
+                                                $type = $order->getType();
                                             }
                                             ?>
                                         </div>
@@ -159,7 +164,7 @@
     <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-   
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 </body>

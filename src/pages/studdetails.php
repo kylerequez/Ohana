@@ -75,24 +75,28 @@
             window.location = 'https://<?php echo DOMAIN_NAME; ?>/stud';
         </script>
     <?php
+        exit();
     } else if ($profile->getReference() != $reference) {
     ?>
         <script>
             window.location = 'https://<?php echo DOMAIN_NAME; ?>/stud';
         </script>
     <?php
+        exit();
     } else if ($profile->getName() !=  $name) {
     ?>
         <script>
             window.location = 'https://<?php echo DOMAIN_NAME; ?>/stud';
         </script>
     <?php
+        exit();
     } else if ($profile->getStatus() != 'AVAILABLE') {
     ?>
         <script>
             window.location = 'https://<?php echo DOMAIN_NAME; ?>/stud';
         </script>
     <?php
+        exit();
     }
     ?>
     <main>

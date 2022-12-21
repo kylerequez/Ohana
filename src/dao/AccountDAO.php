@@ -368,6 +368,25 @@ class AccountDAO
         }
     }
 
+    public function deleteByEmail(string $email): mixed
+    {
+        try {
+            $this->openConnection();
+            $sql = "DELETE FROM ohana_account
+                    WHERE email=:email";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+
+            $isDeleted = $stmt->execute() > 0;
+            $this->closeConnection();
+            return $isDeleted;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        }
+    }
+
     public function updatePassword(string $id, string $password): mixed
     {
         try {

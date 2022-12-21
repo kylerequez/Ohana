@@ -76,16 +76,14 @@
         <div class="sign-up__content">
           <header class="sign-up__header">
             <h1 class="sign-up__title mt-5">Create An Account</h1>
-            <?php print_r($_SESSION); ?>
             <p class="sign-up__descr">Welcome to Ohana!</p>
             <p class="register__desc mt-3"> Fill up the fields below to create an account. </p>
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
               <div class="alert alert-warning mt-3" role="alert">
-                <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
-                unset($_SESSION["msg"]); ?>
+                <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; unset($_SESSION["msg"]); ?>
               </div>
             <?php
-              // session_destroy();
+              session_destroy();
             }
             ?>
           </header>

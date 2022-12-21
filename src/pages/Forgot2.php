@@ -39,8 +39,33 @@
 
 <body style="background-color: #FAF8F0;">
   <?php
-  include_once 'navbar.php';
   include_once dirname(__DIR__) . '/config/app-config.php';
+
+  date_default_timezone_set('Asia/Manila');
+  if (!isset($_SESSION['time']) || $_SESSION['time'] + (5 * 60) < time()) {
+    $_SESSION['msg'] = "You have exceeded the maximum time period (5 minutes) to click the link. Please send another change password request again.";
+    unset($_SESSION["email"]);
+    unset($_SESSION["userOtp"]);
+    unset($_SESSION["token"]);
+  ?>
+    <script>
+      window.location = 'https://<?php echo DOMAIN_NAME; ?>/forgot-password';
+    </script>
+  <?php
+    exit();
+  }
+  if (empty($_SESSION["email"]) && empty($_SESSION["userOtp"]) && empty($_SESSION["token"])) {
+    session_destroy();
+  ?>
+    <script>
+      window.location = 'https://<?php echo DOMAIN_NAME; ?>/forgot-password';
+    </script>
+  <?php
+    exit();
+  }
+  ?>
+  <?php
+  include_once 'navbar.php';
   ?>
   <main class="sign-up">
     <div class="sign-up__container">
@@ -69,6 +94,7 @@
               window.location = 'https://<?php echo DOMAIN_NAME; ?>/forgot-password';
             </script>
           <?php
+            exit();
           }
           ?>
         </header>

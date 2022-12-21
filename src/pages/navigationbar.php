@@ -335,6 +335,7 @@ if (!isset($_SESSION['user'])) {
         window.location = 'https://<?php echo DOMAIN_NAME; ?>/login';
     </script>
 <?php
+    exit();
 } else {
     include_once dirname(__DIR__) . '/models/Account.php';
     $user = unserialize($_SESSION['user']);
@@ -396,7 +397,7 @@ if (!isset($_SESSION['user'])) {
                         </li>
                         <li>
                             <img src="/Ohana/src/images/icons/log-out.png" />
-                            <a  data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
+                            <a data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
                         </li>
                     </ul>
                 </div>

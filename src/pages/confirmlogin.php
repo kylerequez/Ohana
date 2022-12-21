@@ -59,6 +59,32 @@
 </head>
 
 <body style="background-color: #FAF8F0;">
+  <?php
+  include_once dirname(__DIR__) . '/config/app-config.php';
+
+  date_default_timezone_set('Asia/Manila');
+  if (!isset($_SESSION['time']) || $_SESSION['time'] + (5 * 60) < time()) {
+    $_SESSION['msg'] = "You have exceeded the maximum time period (5 minutes) to enter the OTP. Please login again.";
+    unset($_SESSION["email"]);
+    unset($_SESSION["userOtp"]);
+    unset($_SESSION["token"]);
+  ?>
+    <script>
+      window.location = 'https://<?php echo DOMAIN_NAME; ?>/login';
+    </script>
+  <?php
+    exit();
+  }
+  if (empty($_SESSION["email"]) && empty($_SESSION["userOtp"]) && empty($_SESSION["token"])) {
+    session_destroy();
+  ?>
+    <script>
+      window.location = 'https://<?php echo DOMAIN_NAME; ?>/login';
+    </script>
+  <?php
+    exit();
+  }
+  ?>
   <?php include_once 'navbar.php'; ?>
   <div class="container-fluid">
     <main class="sign-up">

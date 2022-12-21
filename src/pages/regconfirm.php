@@ -57,8 +57,18 @@
   <?php
   include_once dirname(__DIR__) . '/config/app-config.php';
 
-  if (true) {
-    $_SESSION['msg'] = "You have exceeded the time period to enter the OTP. Please register again.";
+  date_default_timezone_set('Asia/Manila');
+  if (!isset($_SESSION['time']) || $_SESSION['time'] + (5 * 60) < time()) {
+    include_once dirname(__DIR__) . '/config/db-config.php';
+    include_once dirname(__DIR__) . '/dao/AccountDAO.php';
+    include_once dirname(__DIR__) . '/services/AccountServices.php';
+
+    $dao = new AccountDAO($servername, $database, $username, $password);
+    $services = new AccountServices($dao);
+
+    $services->deleteAccountByEmail($_SESSION['email']);
+
+    $_SESSION['msg'] = "You have exceeded the maximum time period (5 minutes) to enter the OTP. Please register again.";
     unset($_SESSION["email"]);
     unset($_SESSION["userOtp"]);
     unset($_SESSION["token"]);
@@ -67,6 +77,7 @@
       window.location = 'https://<?php echo DOMAIN_NAME; ?>/register';
     </script>
   <?php
+    exit();
   }
   if (empty($_SESSION["email"]) && empty($_SESSION["userOtp"]) && empty($_SESSION["token"])) {
     session_destroy();
@@ -75,6 +86,7 @@
       window.location = 'https://<?php echo DOMAIN_NAME; ?>/register';
     </script>
   <?php
+    exit();
   }
   ?>
   <?php include_once 'navbar.php'; ?>
@@ -85,15 +97,11 @@
           <header class="sign-up__header">
             <h1 id="header" class="sign-up__title">Complete registration </h1>
             <p class="fs-5" style="color:#c0b65a"> by entering the OTP sent to your email. </p>
-            <!-- ALERT -->
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
               <div class="alert alert-warning mt-5" role="alert">
                 <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
-                unset($_SESSION["msg"]); ?>
+                unset($_SESSION['msg']); ?>
               </div>
-            <?php
-            } else { ?>
-              <!-- <p id="header"> <br><span class="fs-4" style="color:#c0b65a">  </span> </p> -->
             <?php } ?>
           </header>
           <form class="sign-up__form form" method="GET" action="/accounts/register">

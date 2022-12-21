@@ -126,6 +126,7 @@
       window.location = 'https://<?php echo DOMAIN_NAME; ?>/dashboard/pet-profiles';
     </script>
   <?php
+    exit();
   }
   ?>
   <div class="layer"></div>

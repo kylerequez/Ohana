@@ -81,6 +81,7 @@
             window.location.href = url;
         </script>
     <?php
+        exit();
     }
 
     if (isset($_GET["from"])) {
