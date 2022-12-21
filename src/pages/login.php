@@ -10,17 +10,19 @@
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <?php include_once 'stylesheets.php'; ?>
   <style>
-    body {
-      font-family: "DM Sans", sans-serif;
-    }
-
     #ohanafooter {
-      margin-top: 10%;
+      margin-top: 12%;
     }
 
-    @media screen and (min-width: 360px) and (max-width: 430px) {
+    @media screen and (min-width: 360px) and (max-width: 520px) {
+
+      .container-fluid {
+        margin-top: -5%;
+      }
+
       .sign-up__title {
         font-size: 33px;
+        margin-top: 5%;
       }
 
       #signup_title {
@@ -37,6 +39,11 @@
 
       .input__label {
         font-size: 15px;
+      }
+      @media screen and (min-width: 521px) and (max-width: 1090px) {
+        #ohanafooter {
+          margin-top:15%;
+        }
       }
     }
   </style>
@@ -92,10 +99,10 @@
                     </div>
                   </div>
                   <hr style="width:100%"><br>
-                  <div class="form__row sign-up__sign">
+                  <div class="form__row sign-up__sign mb-5">
                     Dont have an account? &nbsp;<a class="link" href="/register" style="text-decoration: none;"> Register Now! </a>
                     <div class="form__row">
-                      <br><a class="link" href="/forgot-password" style="text-decoration: none;">Forgot your password?</a>
+                      <a class="link mt-3 mb-5" href="/forgot-password" style="text-decoration: none;">Forgot your password?</a>
                     </div>
                   </div>
                 </div>

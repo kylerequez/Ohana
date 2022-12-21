@@ -25,6 +25,15 @@
       font-size: 80px;
       font-family: 'Acme', sans-serif;
     }
+    @media (max-width: 766px) {
+      .main-title {
+        font-size: 55px;
+      }
+    @media (max-width: 480.98px) {
+      .main-title {
+        font-size: 32px;
+      }
+    }
   </style>
 </head>
 
@@ -55,7 +64,7 @@
       <main class="main users chart-page" id="skip-target"><br>
         <div class="container-fluid">
           <div class="container">
-            <h2 class="main-title text-center"> Welcome Back, <?php echo $user->getFname(); ?>! </h2>
+            <h2 class="main-title text-center mb-5"> Welcome Back, <?php echo $user->getFname(); ?>! </h2>
             <div class="row stat-cards d-flex justify-content-center mt-2">
               <div class="col-md-6 col-xl-3">
                 <a href="/dashboard/pet-profiles">

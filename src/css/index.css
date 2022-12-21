@@ -323,55 +323,13 @@ textarea:hover {
       text-decoration: none;
       text-shadow: 0px 1px 0px #ffffff;
       text-align: center;
-      margin-top: 65%;
+      margin-top: 60%;
       margin-right: auto;
       margin-left: auto;
   }
 
   .intro {
       margin-top: 30px;
-  }
-
-  .cr {
-      color: #db6551;
-      font-size: 35px;
-  }
-
-  .contact {
-      color: #db6551;
-      font-size: 35px;
-  }
-
-  .contact-us {
-      background-color: #faf8f0;
-      min-height: 500px;
-  }
-
-  #intro {
-      margin-top: 15%;
-      width:auto;
-  }
-
-  #contactform {
-      position: relative !important;
-      width: 10px;
-      margin-right: auto;
-      margin-left: auto;
-  }
-
-  input {
-      font-family: "Lato", sans-serif;
-      font-size: 15px;
-      width: 340px;
-      height: 60px;
-      padding: 0px 10px 0px 10px;
-  }
-
-  textarea {
-      width: 340px;
-      max-width: 900px;
-      max-height: 200px;
-      padding: 10px;
   }
 
   .p-4 {
@@ -381,20 +339,6 @@ textarea:hover {
 
   .p-2 {
       font-size: 20px;
-  }
-
-  .about-us {
-      background-image: url(/Ohana/src/images/Landing/mbaboutus.jpg);
-      min-width: 350px;
-      min-height: 500px;
-      margin-left: auto;
-      margin-right: auto;
-      background-position: center;
-  }
-
-  .reasons {
-      background-image: url(/Ohana/src/images/Landing/mbreasons.png);
-      min-height: 500px;
   }
 
 }

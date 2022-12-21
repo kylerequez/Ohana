@@ -95,7 +95,7 @@
     }
 
     .navbar a:hover {
-      color: var(--main-color);
+      color: #c0b65a;
     }
 
     .navbar a.active {
@@ -318,7 +318,7 @@
   </a>
   <ul class="navbar">
     <li class="nav-item">
-      <a class="nav-link" aria-current="page" href="/#home">Home</a>
+      <a class="nav-link active" aria-current="page" href="/#home">Home</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/#about">About</a>

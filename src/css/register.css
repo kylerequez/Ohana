@@ -3,9 +3,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
-
-/* FOR PARAGRAPHS font-family: 'DM Sans', sans-serif; */
-
 @import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
 
 /* font-family: 'Acme', sans-serif; FOR HEADERS */
@@ -24,9 +21,6 @@ button {
     appearance: none;
     outline: none;
 }
-
-
-/*INPUT WEBKITS*/
 
 input::-webkit-input-placeholder {
     color: transparent;
@@ -52,9 +46,6 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 100px #fff inset;
     -webkit-text-fill-color: inherit;
 }
-
-
-/*END OF WEBKITS*/
 
 
 /* Forgot Success */
@@ -444,14 +435,6 @@ button span {
     font-size: 20px;
 }
 
-
-/*FOOTER*/
-
-.footer {
-    bottom: 0;
-    position: relative;
-}
-
 .termlink {
     text-decoration: none;
     color: #ff5757;
@@ -474,4 +457,13 @@ button span {
 
 #cnfrmcontent {
     font-size: 20px;
+}
+
+.form__row .sign-up__sign {
+    margin-bottom: 10%;
+}
+@media screen and (min-width: 521px) {
+    #ohanafooter {
+      margin-top:15%;
+    }
 }

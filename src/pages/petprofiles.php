@@ -9,39 +9,13 @@
     <meta name="keywords" content="Kennel Business, French Bulldogs">
     <link rel="stylesheet" href="/Ohana/src/css/petprofiles.css">
     <?php include_once 'stylesheets.php'; ?>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-
-        #header {
-            margin-top:-3%
-        }
-
-        #profilecard {
-            width: 20rem;
-        }
-
-        #ohanafooter {
-            margin-top: 8%;
-        }
-
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {
-            #header {
-                font-size: 40px;
-                margin-top: 30%;
-            }
-
-            .card {
-                margin-top: -20px;
-            }
-        }
-    </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
     <main>
-    <?php include_once 'navigationbar.php'; ?>
+        <?php include_once 'navigationbar.php'; ?>
         <section class="abouthead">
-        <img src="/Ohana/src/images/Pages/pet.png" id="header" class="img-responsive" width="100%">
+            <img src="/Ohana/src/images/Pages/pet.png" id="header" class="img-responsive" width="100%">
             <?php
             include_once dirname(__DIR__) . '/models/PetProfile.php';
             include_once dirname(__DIR__) . '/config/db-config.php';
@@ -72,7 +46,7 @@
                 if ($user->getType() == "USER") {
                     if (count($profiles) < 3) { ?>
                         <div class="form__row text-center mb-5">
-                            <p class="text-center fs-4"><a name="login" style="color:#c0b65a" href="/createpetprofile">Add another Pet Profile</a></p>
+                            <p class="text-center"><a name="login" style="color:#c0b65a" href="/createpetprofile" id="addprofile">Add another Pet Profile</a></p>
                         </div>
                         <?php
                         if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
@@ -89,7 +63,7 @@
                         <div class="row d-flex justify-content-center">
                             <?php foreach ($profiles as $profile) { ?>
                                 <div class="card m-3 mb-5" id="profilecard">
-                                    <a href="/ownedpets/<?php echo $profile->getReference(); ?>/<?php echo $profile->getName(); ?>" style="text-decoration: none; color:black">
+                                    <a href="/ownedpets/<?php echo $profile->getReference(); ?>/<?php echo $profile->getName(); ?>" id="petowned" style="text-decoration: none; color:black">
                                         <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="card-img-top" alt="<?php echo $profile->getName(); ?> Image" width="200px" height="250px;">
                                         <div class="card-body text-center">
                                             <h5 class="card-title fs-3" style="font-family: 'Acme', sans-serif; color:#db6551"> <?php echo $profile->getName(); ?></h5>

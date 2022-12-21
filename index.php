@@ -8,17 +8,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
-    
+
     <link rel="stylesheet" href="/Ohana/src/css/index.css">
     <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
     <link rel="shortcut icon" href="/Ohana/src/images/Landing/ohana.png" type="image/x-icon">
     <?php include_once dirname(__DIR__) . '/Ohana/src/pages/stylesheets.php'; ?>
     <style>
+        #home {
+            margin-top: 2%;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+
         #toastbody {
-            color: #db6551;
+            color: black;
             width: 500px;
-        } 
+        }
+
+        @media screen and (max-width: 1366px) {
+            #home {
+                margin-top: 6%;
+            }
+        }
+
+        @media screen and (min-width: 500px) and (max-width: 1350px) {
+            #home {
+                margin-top: 10%;
+            }
+        }
+
         @media screen and (min-width: 360px) and (max-width: 430px) {
+            #home {
+                margin-top: 25%;
+            }
+
             #sectionheaders {
                 color: #db6551;
                 font-size: 40px;
@@ -55,8 +79,60 @@
                 font-size: 12px;
                 padding: 10px 40px;
                 margin-top: 110%;
-                margin-left: auto;
-                margin-right: auto;
+                margin-left: 120px;
+            }
+
+            .cr {
+                color: #db6551;
+                font-size: 35px;
+            }
+
+            .contact {
+                color: #db6551;
+                font-size: 35px;
+            }
+
+            .contact-us {
+                background-color: #faf8f0;
+                min-height: 500px;
+            }
+
+
+            #contactform {
+                position: relative !important;
+                margin-left: -5px;
+            }
+
+            input {
+                font-family: 'Poppins', sans-serif;
+                font-size: 15px;
+                width: 360px;
+                height: 60px;
+                padding: 0px 10px 0px 10px;
+            }
+
+            textarea {
+                width: 360px;
+                max-width: 900px;
+                max-height: 200px;
+                padding: 10px;
+            }
+
+            .about-us {
+                background-image: url(/Ohana/src/images/Landing/mbaboutus.jpg);
+                min-width: 360px;
+                min-height: 500px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            .reasons {
+                background-image: url(/Ohana/src/images/Landing/mbreasons.png);
+                min-height: 500px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
             }
         }
     </style>
@@ -67,7 +143,7 @@
         <?php include_once dirname(__DIR__) . '/Ohana/src/pages/navbar.php'; ?>
         <div class="container-fluid">
             <section class="introduction" id="home">
-                <div class="intro">
+                <div class="intro text-center">
                     <img src="/Ohana/src/images/Landing/introduction.png" class="img-fluid" id="intro">
                 </div>
             </section>
@@ -118,7 +194,7 @@
                                 <div class="card-body">
                                     <img src="/Ohana/src/images/icons/quote.png" id="review" class="me-3 img-fluid"></img>
                                     <h5 class="card-text text-center mt-2 mb-2"> Maraming Salamat! Alagaan ko to. Ang ganda niya. Thank you ulit! </h5><br>
-                                    <h4 class="card-title text-center mt-2 fw-bold fs-4"> - Edrich Pineda </h4>
+                                    <h4 class="card-title text-center mt-2 mb-2 fw-bold fs-4"> - Edrich Pineda </h4>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +203,7 @@
                                 <div class="card-body">
                                     <img src="/Ohana/src/images/icons/quote.png" id="review" class="me-3 img-fluid"></img>
                                     <h5 class="card-text text-center mt-2 mb-2">Thank you so much! So happy with my puppy!</h5><br>
-                                    <h4 class="card-title text-center fw-bold fs-4"> - Ron Ilao</h4>
+                                    <h4 class="card-title text-center mb-2 fw-bold fs-4"> - Ron Ilao</h4>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +212,7 @@
                                 <div class="card-body">
                                     <img src="/Ohana/src/images/icons/quote.png" id="review" class="me-3 img-fluid"></img>
                                     <h5 class="card-text text-center mt-2 mb-2">Thank you sir. Quality talaga yung puppy at napaka-cute. Solid!</h5><br>
-                                    <h4 class="card-title text-center fw-bold fs-4"> - Ralph Hernandez </h4>
+                                    <h4 class="card-title text-center mb-2 fw-bold fs-4"> - Ralph Hernandez </h4>
                                 </div>
                             </div>
                         </div>

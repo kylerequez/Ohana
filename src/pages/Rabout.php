@@ -7,22 +7,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
-    <link rel="stylesheet" href="/Ohana/src/css/Uabout.css">
+    <link rel="stylesheet" href="/Ohana/src/css/aboutus.css">
     <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {
+        @media screen and (max-width: 1366px) {
+            #header {
+                margin-top:20%;
+                font-size: 60px;
+            }
+        }
+        @media screen and (min-width: 360px) and (max-width: 500px) {
+            #header {
+                margin-top:12%;
+            }
             #mainabout {
                 background-image: url(/Ohana/src/images/Pages/mbaboutmain.png);
                 min-width: 360px;
-                min-height: 450px;
+                max-width: 500px;
+                min-height: 500px;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
                 background-position: center;
             }
 
             #values {
                 background-image: url(/Ohana/src/images/Pages/mbvalues.png);
                 min-width: 360px;
-                min-height: 400px;
+                min-height: 500px;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
                 background-position: center;
             }
 

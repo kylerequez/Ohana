@@ -3778,10 +3778,19 @@ strong {
         left: 0;
     }
     .main-nav {
-        -webkit-box-orient: horizontal;
+        /* -webkit-box-orient: horizontal;
         -webkit-box-direction: reverse;
         -ms-flex-direction: row-reverse;
-        flex-direction: row-reverse;
+        flex-direction: row-reverse; */
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     }
     .sort-bar {
         padding: 20px;

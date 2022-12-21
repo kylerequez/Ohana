@@ -95,7 +95,7 @@
         }
 
         .navbar a:hover {
-            color: var(--main-color);
+            color: #c0b65a;
         }
 
         .navbar a.active {
@@ -163,8 +163,9 @@
             border: 1px solid #ffffff;
             cursor: pointer;
             color: #ffffff;
-            padding: 6px 18px;
+            padding: 4px 16px;
             text-decoration: none;
+            font-family: "Poppins";
         }
 
         #userdropdown:hover {
@@ -261,7 +262,7 @@
         }
 
         .action .menu ul li:hover a {
-            color: #db6551;
+            color: #c0b65a;
         }
 
 
@@ -310,7 +311,7 @@
             }
 
             .navbar a:hover {
-                color: var(--text-color);
+                color: #c0b65a;
                 transform: translateY(5px);
             }
 
@@ -347,7 +348,7 @@ if (!isset($_SESSION['user'])) {
     </a>
     <ul class="navbar">
         <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/home">Home</a>
+            <a class="nav-link active" aria-current="page" href="/home">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/about">About</a>

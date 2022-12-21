@@ -1,9 +1,5 @@
 <style>
-  .container-fluid {
-    font-family: "DM Sans", sans-serif;
-  }
-
-  @media screen and (min-width: 360px) and (max-width: 929.98px) {
+  @media screen and (min-width: 360px) and (max-width: 550px) {
     #paragraph {
       font-size: 12px;
     }
@@ -13,12 +9,22 @@
     }
 
     .container-fluid {
-      margin-top: 20%
+      margin-top: -10%
+    }
+
+    #ohanafooter {
+      margin-top: 15%;
+    }
+
+    @media screen and (min-width: 551px) and (max-width: 1090px) {
+      #footercontainer {
+        margin-top: 15%;
+      }
     }
   }
 </style>
-<div class="container-fluid" style="width:75%; color:#db6551">
-  <footer id="webfooter" class="py-3 my-4 border-top border-warning bottom-0">
+<div class="container-fluid" id="footercontainer" style="width:75%; color:#db6551">
+  <footer id="ohanafooter" class="py-3 my-4 border-top border-warning bottom-0">
     <p id="paragraph" class="text-center mt-4"> &copy; 2022 Ohana Kennel PH. All Rights Reserved</p>
     <ul class="nav justify-content-center pb-3 mb-3 mt-3">
       <a id="terms" style="text-decoration:none; color:#c0b65a;" data-bs-toggle="modal" data-bs-target="#termsModal"> TERMS AND CONDITIONS </a>

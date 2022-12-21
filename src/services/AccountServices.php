@@ -160,7 +160,13 @@ class AccountServices
         $mail->Subject = 'Ohana Account Login OTP';
         $otp = rand(100000, 999999);
         $token = uniqid();
-        $mail->Body = "Your Ohana Account Login OTP is: $otp";
+        $mail->Body = "Your Ohana Account Login OTP is: <b>$otp</b>
+                    <br><br> Ohana Kennel PH will NOT initiate emails or sms that will ask your bank account details. 
+                    <br> - Do not give your email address,password and OTP to other people. 
+                    <br> - Do not click on suspicious links.
+                    <br><br> Note: For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
+                    <br><br>
+                    <center> <img src=\"https://drive.google.com/file/d/140oM9hpdcANV-DT7MYO7j1cxB2Kwi64a/view?usp=sharing\"> </center>";
         $mail->AltBody = 'Ohana Account Login OTP';
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in sending the otp to your mail.";
@@ -203,7 +209,13 @@ class AccountServices
         $mail->Subject = 'Ohana Account Login OTP';
         $otp = $_SESSION["userOtp"];
         $token = $_SESSION["token"];
-        $mail->Body = "Your Ohana Account Login OTP is: $otp";
+        $mail->Body = "Your Ohana Account Login OTP is: <b>$otp</b>
+                    <br><br> Ohana Kennel PH will NOT initiate emails or sms that will ask your bank account details. 
+                    <br> - Do not give your email address,password and OTP to other people. 
+                    <br> - Do not click on suspicious links.
+                    <br><br> Note: For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
+                    <br><br>
+                    <center> <img src=\"https://drive.google.com/file/d/140oM9hpdcANV-DT7MYO7j1cxB2Kwi64a/view?usp=sharing\"> </center>";
         $mail->AltBody = 'Ohana Account Login OTP';
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in sending the otp to your mail.";
@@ -263,7 +275,13 @@ class AccountServices
         $mail->addAddress($email);
         $mail->Subject = 'Ohana Account Password Reset';
         $token = uniqid();
-        $mail->Body = 'Your Ohana Account password reset link: <a href="' . DOMAIN_NAME . '/forgot-password/change/' . $token . '">Click Here</a>';
+        $mail->Body = 'Your Ohana Account password reset link: <a href="' . DOMAIN_NAME . '/forgot-password/change/' . $token . '">Click Here</a>
+        <br><br> Ohana Kennel PH will NOT initiate emails or sms that will ask your bank account details. 
+        <br> - Do not give your email address,password and OTP to other people. 
+        <br> - Do not click on suspicious links.
+        <br><br> Note: For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
+        <br><br>
+        <center> <img src=\"https://drive.google.com/file/d/140oM9hpdcANV-DT7MYO7j1cxB2Kwi64a/view?usp=sharing\"> </center>';
         $mail->AltBody = 'Reset Password Link for Ohana Account';
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in sending the reset link to your mail.";
@@ -299,7 +317,13 @@ class AccountServices
         $mail->addAddress($email);
         $mail->Subject = 'Ohana Account Password Reset';
         $token = $_SESSION["token"];
-        $mail->Body = 'Your Ohana Account password reset link: <a href="' . DOMAIN_NAME . '/forgot-password/change/' . $token . '">Click Here</a>';
+        $mail->Body = 'Your Ohana Account password reset link: <a href="' . DOMAIN_NAME . '/forgot-password/change/' . $token . '">Click Here</a>
+        <br><br> Ohana Kennel PH will NOT initiate emails or sms that will ask your bank account details. 
+        <br> - Do not give your email address,password and OTP to other people. 
+        <br> - Do not click on suspicious links.
+        <br><br> Note: For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
+        <br><br>
+        <center> <img src=\"https://drive.google.com/file/d/140oM9hpdcANV-DT7MYO7j1cxB2Kwi64a/view?usp=sharing\"> </center>';
         $mail->AltBody = 'Reset Password Link for Ohana Account';
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in resending the reset link to your mail.";
@@ -381,7 +405,13 @@ class AccountServices
         $mail->addAddress($email);
         $mail->Subject = 'Ohana Account Verification OTP';
         $otp = rand(100000, 999999);
-        $mail->Body = "Your Ohana Account OTP is: $otp";
+        $mail->Body = "Your Ohana Account OTP is: $otp
+        <br><br> Ohana Kennel PH will NOT initiate emails or sms that will ask your bank account details. 
+        <br> - Do not give your email address,password and OTP to other people. 
+        <br> - Do not click on suspicious links.
+        <br><br> Note: For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
+        <br><br>
+        <center> <img src=\"https://drive.google.com/file/d/140oM9hpdcANV-DT7MYO7j1cxB2Kwi64a/view?usp=sharing\"> </center>";
         $mail->AltBody = 'Ohana Registration OTP';
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in sending the otp to your mail.";
@@ -442,7 +472,13 @@ class AccountServices
         $mail->addAddress($email);
         $mail->Subject = 'Ohana Account Verification OTP';
         $otp = $_SESSION["userOtp"];
-        $mail->Body = "Your Ohana Account OTP is: $otp";
+        $mail->Body = "Your Ohana Account OTP is: $otp
+        <br><br> Ohana Kennel PH will NOT initiate emails or sms that will ask your bank account details. 
+        <br> - Do not give your email address,password and OTP to other people. 
+        <br> - Do not click on suspicious links.
+        <br><br> Note: For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
+        <br><br>
+        <center> <img src=\"https://drive.google.com/file/d/140oM9hpdcANV-DT7MYO7j1cxB2Kwi64a/view?usp=sharing\"> </center>";
         $mail->AltBody = 'Ohana Registration OTP';
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in sending the otp to your mail.";

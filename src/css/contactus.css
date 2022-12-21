@@ -20,12 +20,6 @@ body {
   color: #db6551;
 }
 
-#header {
-  font-size: 100px;
-  font-family: "Acme", sans-serif;
-  font-weight: 800;
-  color: #db6551;
-}
 section {
   display: block;
   margin-top: 5%;
