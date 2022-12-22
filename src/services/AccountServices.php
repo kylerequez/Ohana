@@ -160,13 +160,14 @@ class AccountServices
         $mail->Subject = 'Ohana Account Login OTP';
         $otp = rand(100000, 999999);
         $token = uniqid();
-        $mail->Body = "Your Ohana Account Login OTP is: <b>$otp</b>
+        $mail->Body = "Your Ohana Account Login OTP is: <br>
+                    <b>$otp</b>
                     <br><br> Ohana Kennel PH will NOT initiate emails or sms that will ask your bank account details. 
                     <br> - Do not give your email address,password and OTP to other people. 
                     <br> - Do not click on suspicious links.
                     <br><br> Note: For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
                     <br><br>
-                    <center> <img src=\"https://drive.google.com/file/d/140oM9hpdcANV-DT7MYO7j1cxB2Kwi64a/view?usp=sharing\"> </center>";
+                    <center> <img src=\"https://lh3.googleusercontent.com/Bgt7glsz4TKk1bom8LB9I3tpIYqnQ2ZQ3qwQcp0xhUavCEantbg2g_dOA0i_8NuhjA8=w2400\"> </center>";
         $mail->AltBody = 'Ohana Account Login OTP';
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in sending the otp to your mail.";
@@ -215,7 +216,7 @@ class AccountServices
                     <br> - Do not click on suspicious links.
                     <br><br> Note: For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
                     <br><br>
-                    <center> <img src=\"https://drive.google.com/file/d/140oM9hpdcANV-DT7MYO7j1cxB2Kwi64a/view?usp=sharing\"> </center>";
+                    <center> <img src=\"https://lh3.googleusercontent.com/Bgt7glsz4TKk1bom8LB9I3tpIYqnQ2ZQ3qwQcp0xhUavCEantbg2g_dOA0i_8NuhjA8=w2400\"> </center>";
         $mail->AltBody = 'Ohana Account Login OTP';
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in sending the otp to your mail.";
@@ -281,7 +282,7 @@ class AccountServices
         <br> - Do not click on suspicious links.
         <br><br> Note: For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
         <br><br>
-        <center> <img src=\"https://drive.google.com/file/d/140oM9hpdcANV-DT7MYO7j1cxB2Kwi64a/view?usp=sharing\"> </center>';
+        <center> <img src=\"https://lh3.googleusercontent.com/Bgt7glsz4TKk1bom8LB9I3tpIYqnQ2ZQ3qwQcp0xhUavCEantbg2g_dOA0i_8NuhjA8=w2400\"> </center>';
         $mail->AltBody = 'Reset Password Link for Ohana Account';
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in sending the reset link to your mail.";
@@ -323,7 +324,7 @@ class AccountServices
         <br> - Do not click on suspicious links.
         <br><br> Note: For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
         <br><br>
-        <center> <img src=\"https://drive.google.com/file/d/140oM9hpdcANV-DT7MYO7j1cxB2Kwi64a/view?usp=sharing\"> </center>';
+        <center> <img src=\"https://lh3.googleusercontent.com/Bgt7glsz4TKk1bom8LB9I3tpIYqnQ2ZQ3qwQcp0xhUavCEantbg2g_dOA0i_8NuhjA8=w2400\"> </center>';
         $mail->AltBody = 'Reset Password Link for Ohana Account';
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in resending the reset link to your mail.";
@@ -411,7 +412,7 @@ class AccountServices
         <br> - Do not click on suspicious links.
         <br><br> Note: For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
         <br><br>
-        <center> <img src=\"https://drive.google.com/file/d/140oM9hpdcANV-DT7MYO7j1cxB2Kwi64a/view?usp=sharing\"> </center>";
+        <center> <img src=\"https://lh3.googleusercontent.com/Bgt7glsz4TKk1bom8LB9I3tpIYqnQ2ZQ3qwQcp0xhUavCEantbg2g_dOA0i_8NuhjA8=w2400\"> </center>";
         $mail->AltBody = 'Ohana Registration OTP';
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in sending the otp to your mail.";
@@ -478,7 +479,7 @@ class AccountServices
         <br> - Do not click on suspicious links.
         <br><br> Note: For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
         <br><br>
-        <center> <img src=\"https://drive.google.com/file/d/140oM9hpdcANV-DT7MYO7j1cxB2Kwi64a/view?usp=sharing\"> </center>";
+        <center> <img src=\"https://lh3.googleusercontent.com/Bgt7glsz4TKk1bom8LB9I3tpIYqnQ2ZQ3qwQcp0xhUavCEantbg2g_dOA0i_8NuhjA8=w2400\"> </center>";
         $mail->AltBody = 'Ohana Registration OTP';
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in sending the otp to your mail.";

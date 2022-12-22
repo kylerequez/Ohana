@@ -40,7 +40,7 @@
 
         @media screen and (min-width: 360px) and (max-width: 430px) {
             #home {
-                margin-top: 25%;
+                margin-top: 40%;
             }
 
             #sectionheaders {
@@ -78,8 +78,8 @@
                 font-family: "Poppins";
                 font-size: 12px;
                 padding: 10px 40px;
-                margin-top: 110%;
-                margin-left: 120px;
+                margin-top: 5%;
+                margin-left: 50px;
             }
 
             .cr {
@@ -92,15 +92,15 @@
                 font-size: 35px;
             }
 
-            .contact-us {
-                background-color: #faf8f0;
-                min-height: 500px;
+            #contact {
+                margin-top: 5%;
             }
-
 
             #contactform {
                 position: relative !important;
-                margin-left: -5px;
+                margin-left: -30px;
+                float: left;
+                margin-top: 380px;
             }
 
             input {
@@ -133,6 +133,23 @@
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center;
+            }
+
+            .contact-us {
+                background-image: url(/Ohana/src/images/mobile/contact.png);
+                min-height: 700px;
+                max-height: 700px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            #contact-container {
+                max-height: 500px;
+            }
+
+            #ohanafooter {
+                margin-top: 100px;
             }
         }
     </style>
@@ -219,8 +236,8 @@
                     </div>
                 </div>
             </section>
-            <section class="contact-us" id="contact">
-                <div class="container-fluid">
+            <div class="container-fluid" id="contact-container">
+                <section class="contact-us" id="contact">
                     <div class="message text-center">
                         <h1 class="contact mt-5" id="sectionheaders"> Contact Us! </h1>
                     </div>
@@ -229,11 +246,11 @@
                         <input id="email" name="email" type="text" placeholder="E-MAIL ADDRESS ">
                         <textarea id="message" name="message" type="text" placeholder="ENTER MESSAGE"></textarea>
                         <div class="btn-Send mt-4 ms-3" name="btn-Send">
-                            <button type="submit" id="Send"><span> Send </span></button>
+                            <button type="submit" id="Send"> Send </button>
                         </div>
                     </form>
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
         <div id="chat-container"> </div>
     </main>
@@ -248,8 +265,9 @@
             </div>
         </div>
     <?php
+        unset($_SESSION["msg"]);
+        session_destroy();
     }
-    unset($_SESSION["msg"]);
     ?>
 
     <script src="/Ohana/src/js/chatbot-ui.js"></script>

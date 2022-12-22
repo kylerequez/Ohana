@@ -122,6 +122,17 @@
                   <th><b>DESCRIPTION</b></th>
                   <th><b>DATE</b></th>
                 </tr>
+                <tr>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Log ID..." data-column="0">
+                  </th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Description..." data-column="1">
+                  </th>
+                  <th>
+                    <input type="datetime-local" class="form-control filter-select" data-column="2">
+                  </th>
+                </tr>
               </thead>
               <tbody>
                 <?php
@@ -130,7 +141,7 @@
                   <tr>
                     <td><?php echo $log->getId(); ?></td>
                     <td><?php echo $log->getLog(); ?></td>
-                    <td><?php echo $log->getDate()->format('M-d-Y H:i:s'); ?></td>
+                    <td><?php echo $log->getDate()->format('d-M-Y h:i:s A'); ?></td>
                   </tr>
                 <?php
                 }
@@ -153,15 +164,11 @@
   </div>
   <script>
     $(document).ready(function() {
-      $('#logs thead tr')
-        .clone(true)
-        .addClass('filters')
-        .appendTo('#logs thead');
-
-      $('#logs').DataTable({
+      var table = $('#logs').DataTable({
         orderCellsTop: true,
         fixedHeader: true,
         searching: true,
+        responsive: true,
         initComplete: function() {
           var api = this.api();
           api
@@ -202,6 +209,18 @@
                 });
             });
         },
+      });
+
+      $('.filter-input').keyup(function() {
+        table.column($(this).data('column'))
+          .search($(this).val())
+          .draw();
+      });
+
+      $('.filter-select').change(function() {
+        table.column($(this).data('column'))
+          .search($(this).val())
+          .draw();
       });
     });
   </script>
