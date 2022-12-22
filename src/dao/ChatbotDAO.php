@@ -40,11 +40,12 @@ class ChatbotDAO
                     $information = new ChatbotInformation($data["chatbot_avatar"], $data["chatbot_name"], $data["chatbot_introduction"], $data["chatbot_no_response"]);
                 }
             }
-            $this->closeConnection();
             return $information;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -70,12 +71,13 @@ class ChatbotDAO
 
             $isUpdated = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isUpdated;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -97,11 +99,12 @@ class ChatbotDAO
                     $responses[] = $existingResponse;
                 }
             }
-            $this->closeConnection();
             return $responses;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -126,11 +129,12 @@ class ChatbotDAO
                     $searchedResponse->setId($response["response_id"]);
                 }
             }
-            $this->closeConnection();
             return $searchedResponse;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -152,12 +156,13 @@ class ChatbotDAO
 
             $isAdded = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isAdded;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return false;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -182,11 +187,12 @@ class ChatbotDAO
                     $searchedResponse->setId($id);
                 }
             }
-            $this->closeConnection();
             return $searchedResponse;
         } catch (Exception $e) {
             echo $e;
             return false;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -210,12 +216,13 @@ class ChatbotDAO
 
             $isUpdated = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isUpdated;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -232,12 +239,13 @@ class ChatbotDAO
 
             $isDeleted = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isDeleted;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 }

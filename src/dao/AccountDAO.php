@@ -36,11 +36,12 @@ class AccountDAO
             $stmt->execute();
             $result = $stmt->fetchColumn();
 
-            $this->closeConnection();
             return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -54,11 +55,12 @@ class AccountDAO
             $stmt->execute();
             $result = $stmt->fetchColumn();
 
-            $this->closeConnection();
             return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -88,11 +90,12 @@ class AccountDAO
                     $accounts[] = $existingAccount;
                 }
             }
-            $this->closeConnection();
             return $accounts;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -122,11 +125,12 @@ class AccountDAO
                     $accounts[] = $existingAccount;
                 }
             }
-            $this->closeConnection();
             return $accounts;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -159,11 +163,12 @@ class AccountDAO
                     $searchedAccount->setId($account["account_id"]);
                 }
             }
-            $this->closeConnection();
             return $searchedAccount;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -198,12 +203,13 @@ class AccountDAO
 
             $isCreated = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isCreated;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return false;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -235,11 +241,12 @@ class AccountDAO
                     $searchedAccount->setId($id);
                 }
             }
-            $this->closeConnection();
             return $searchedAccount;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -272,11 +279,12 @@ class AccountDAO
                     $searchedAccount->setId($account["account_id"]);
                 }
             }
-            $this->closeConnection();
             return $searchedAccount;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -307,11 +315,12 @@ class AccountDAO
                     $searchedAccount->setId($account["account_id"]);
                 }
             }
-            $this->closeConnection();
             return $searchedAccount;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -343,12 +352,13 @@ class AccountDAO
 
             $isUpdated = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isUpdated;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -365,12 +375,13 @@ class AccountDAO
 
             $isDeleted = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isDeleted;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -387,12 +398,13 @@ class AccountDAO
 
             $isDeleted = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isDeleted;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -411,12 +423,13 @@ class AccountDAO
 
             $isUpdated = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isUpdated;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -435,12 +448,13 @@ class AccountDAO
 
             $isUpdated = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isUpdated;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -458,12 +472,13 @@ class AccountDAO
 
             $isVerified = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isVerified;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 }

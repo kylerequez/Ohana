@@ -37,11 +37,12 @@ class TransactionDAO
             $stmt->execute();
 
             $result = $stmt->fetchColumn();
-            $this->closeConnection();
             return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -55,11 +56,12 @@ class TransactionDAO
             $stmt->execute();
 
             $result = $stmt->fetchColumn();
-            $this->closeConnection();
             return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -79,12 +81,13 @@ class TransactionDAO
 
             $isUploaded = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isUploaded;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -119,11 +122,12 @@ class TransactionDAO
                     $transactions[] = $existingTransaction;
                 }
             }
-            $this->closeConnection();
             return $transactions;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -159,11 +163,12 @@ class TransactionDAO
                     $existingTransactions[] = $existingTransaction;
                 }
             }
-            $this->closeConnection();
             return $existingTransactions;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -184,11 +189,12 @@ class TransactionDAO
                     $searchedId = $transaction['transaction_id'];
                 }
             }
-            $this->closeConnection();
             return $searchedId;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -222,11 +228,12 @@ class TransactionDAO
                     $existingTransaction->setEmail($transaction["email"]);
                 }
             }
-            $this->closeConnection();
             return $existingTransaction;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -260,11 +267,12 @@ class TransactionDAO
                     $existingTransaction->setEmail($transaction["email"]);
                 }
             }
-            $this->closeConnection();
             return $existingTransaction;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -283,12 +291,13 @@ class TransactionDAO
 
             $isUpdated = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isUpdated;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -320,12 +329,13 @@ class TransactionDAO
 
             $isAdded = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isAdded;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 }

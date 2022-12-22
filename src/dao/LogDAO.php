@@ -42,11 +42,12 @@ class LogDAO
                     $logs[] = $existingLog;
                 }
             }
-            $this->closeConnection();
             return $logs;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -68,12 +69,13 @@ class LogDAO
 
             $isAdded = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isAdded;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return false;
+        } finally {
+            $this->closeConnection();
         }
     }
 }

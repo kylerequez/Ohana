@@ -60,11 +60,12 @@ class PetProfileDAO
                     $petProfiles[] = $searchedPetProfile;
                 }
             }
-            $this->closeConnection();
             return $petProfiles;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -105,11 +106,12 @@ class PetProfileDAO
                     $profile = $searchedPetProfile;
                 }
             }
-            $this->closeConnection();
             return $profile;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -150,11 +152,12 @@ class PetProfileDAO
                     $profile = $searchedPetProfile;
                 }
             }
-            $this->closeConnection();
             return $profile;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -196,11 +199,12 @@ class PetProfileDAO
                     $petProfiles[] = $searchedPetProfile;
                 }
             }
-            $this->closeConnection();
             return $petProfiles;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -242,11 +246,12 @@ class PetProfileDAO
                     $petProfiles[] = $searchedPetProfile;
                 }
             }
-            $this->closeConnection();
             return $petProfiles;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -290,11 +295,12 @@ class PetProfileDAO
                     $petProfiles[] = $searchedPetProfile;
                 }
             }
-            $this->closeConnection();
             return $petProfiles;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -334,11 +340,12 @@ class PetProfileDAO
                     $petProfiles[] = $searchedPetProfile;
                 }
             }
-            $this->closeConnection();
             return $petProfiles;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -375,11 +382,12 @@ class PetProfileDAO
                     $petProfiles[] = $searchedPetProfile;
                 }
             }
-            $this->closeConnection();
             return $petProfiles;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -416,11 +424,12 @@ class PetProfileDAO
                     $petProfiles[] = $searchedPetProfile;
                 }
             }
-            $this->closeConnection();
             return $petProfiles;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -461,11 +470,12 @@ class PetProfileDAO
                     $searchedPetProfile->setId($petProfile["pet_id"]);
                 }
             }
-            $this->closeConnection();
             return $searchedPetProfile;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -506,11 +516,12 @@ class PetProfileDAO
                     $searchedPetProfile->setId($petProfile["pet_id"]);
                 }
             }
-            $this->closeConnection();
             return $searchedPetProfile;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -547,11 +558,12 @@ class PetProfileDAO
                     $searchedPetProfile->setId($petProfile["pet_id"]);
                 }
             }
-            $this->closeConnection();
             return $searchedPetProfile;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -587,11 +599,12 @@ class PetProfileDAO
                     $petProfiles[] = $existingPetProfile;
                 }
             }
-            $this->closeConnection();
             return $petProfiles;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -627,11 +640,12 @@ class PetProfileDAO
                     $petProfiles[] = $existingPetProfile;
                 }
             }
-            $this->closeConnection();
             return $petProfiles;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -669,11 +683,12 @@ class PetProfileDAO
                     $searchedPetProfile->setId($id);
                 }
             }
-            $this->closeConnection();
             return $searchedPetProfile;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -688,11 +703,12 @@ class PetProfileDAO
             $stmt->execute();
 
             $result = $stmt->fetchColumn();
-            $this->closeConnection();
             return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -707,11 +723,12 @@ class PetProfileDAO
             $stmt->execute();
 
             $result = $stmt->fetchColumn();
-            $this->closeConnection();
             return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -757,12 +774,13 @@ class PetProfileDAO
 
             $isAdded = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isAdded;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -800,11 +818,12 @@ class PetProfileDAO
                     $searchedPetProfile->setId($id);
                 }
             }
-            $this->closeConnection();
             return $searchedPetProfile;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -841,11 +860,12 @@ class PetProfileDAO
                     $petProfiles[] = $searchedPetProfile;
                 }
             }
-            $this->closeConnection();
             return $petProfiles;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -891,12 +911,13 @@ class PetProfileDAO
 
             $isUpdated = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isUpdated;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -912,12 +933,13 @@ class PetProfileDAO
 
             $isDeleted = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isDeleted;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -935,12 +957,13 @@ class PetProfileDAO
 
             $isUpdated = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isUpdated;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 }

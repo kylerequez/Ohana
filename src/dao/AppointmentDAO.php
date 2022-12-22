@@ -36,11 +36,12 @@ class AppointmentDAO
             $stmt->execute();
 
             $result = $stmt->fetchColumn();
-            $this->closeConnection();
             return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -54,11 +55,12 @@ class AppointmentDAO
             $stmt->execute();
 
             $result = $stmt->fetchColumn();
-            $this->closeConnection();
             return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -106,11 +108,12 @@ class AppointmentDAO
                     $appointments[$appointment["appointment_id"]] = $existingAppointment;
                 }
             }
-            $this->closeConnection();
             return $appointments;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -152,11 +155,12 @@ class AppointmentDAO
                     $appointments[$appointment["appointment_id"]] = $existingAppointment;
                 }
             }
-            $this->closeConnection();
             return $appointments;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -170,11 +174,12 @@ class AppointmentDAO
             $stmt->execute();
 
             $result = $stmt->fetchColumn();
-            $this->closeConnection();
             return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -218,11 +223,12 @@ class AppointmentDAO
                     $appointments[$appointment["appointment_id"]] = $existingAppointment;
                 }
             }
-            $this->closeConnection();
             return $appointments;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -252,12 +258,13 @@ class AppointmentDAO
 
             $isAdded = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isAdded;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -274,12 +281,13 @@ class AppointmentDAO
 
             $isDeleted = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isDeleted;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -322,11 +330,12 @@ class AppointmentDAO
                     $searchedAppointment->setId($appointment["appointment_id"]);
                 }
             }
-            $this->closeConnection();
             return $searchedAppointment;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -356,12 +365,13 @@ class AppointmentDAO
 
             $isUpdated = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isUpdated;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 }

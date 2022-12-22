@@ -48,12 +48,13 @@ class StudHistoryDAO
 
             $isAdded = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isAdded;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -69,12 +70,13 @@ class StudHistoryDAO
 
             $isDeleted = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isDeleted;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -99,12 +101,13 @@ class StudHistoryDAO
 
             $isDeleted = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isDeleted;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -125,11 +128,12 @@ class StudHistoryDAO
                 }
             }
 
-            $this->closeConnection();
             return $history;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -155,11 +159,12 @@ class StudHistoryDAO
                 }
             }
 
-            $this->closeConnection();
             return $history;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -175,11 +180,12 @@ class StudHistoryDAO
             $stmt->execute();
 
             $result = $stmt->fetchColumn();
-            $this->closeConnection();
             return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -195,11 +201,12 @@ class StudHistoryDAO
             $stmt->execute();
 
             $result = $stmt->fetchColumn();
-            $this->closeConnection();
             return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 }

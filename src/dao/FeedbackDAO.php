@@ -36,11 +36,12 @@ class FeedbackDAO
             $stmt->execute();
 
             $result = $stmt->fetchColumn();
-            $this->closeConnection();
             return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -62,11 +63,12 @@ class FeedbackDAO
                     $feedbacks[] = $searchedFeedback;
                 }
             }
-            $this->closeConnection();
             return $feedbacks;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -90,12 +92,13 @@ class FeedbackDAO
 
             $isAdded = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isAdded;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 }

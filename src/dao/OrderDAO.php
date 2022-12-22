@@ -55,11 +55,12 @@ class OrderDAO
                     $existingOrders[] = $existingOrder;
                 }
             }
-            $this->closeConnection();
             return $existingOrders;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -91,11 +92,12 @@ class OrderDAO
                     $existingOrder->setPetTrait($order["pet_trait"]);
                 }
             }
-            $this->closeConnection();
             return $existingOrder;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -119,12 +121,13 @@ class OrderDAO
 
             $isAdded = $stmt->execute() > 0;
             $this->conn->commit();
-            $this->closeConnection();
             return $isAdded;
         } catch (Exception $e) {
             $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 }
