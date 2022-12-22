@@ -295,7 +295,9 @@
                         <h2 class="my-3" id="comment">Comments and suggestion</h2>
                         <textarea id="feedback" name="message" rows="4" cols="50"></textarea>
                         <div class="d-flex justify-content-end">
-                            <a href="/transactions"><button class="btn btn-outline-dark mx-2" type="button">Skip</button></a>
+                            <?php if (str_contains($_SERVER['HTTP_REFERER'], 'set-appointment')) { ?>
+                                <a href="/transactions"><button class="btn btn-outline-dark mx-2" type="button">Skip</button></a>
+                            <?php } ?>
                             <button class="btn mx-2" style="background-color: #c0b65a; color: #ffffff" type="submit">Submit</button>
                         </div>
                     </div>
@@ -309,18 +311,6 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
-    <!-- <script type="text/javascript">
-        window.addEventListener("load", function() {
-            setTimeout(function open(event) {
-                document.querySelector(".popup").style.display = "block";
-            }, 2000);
-        });
-        document
-            .querySelector("#close")
-            .addEventListener("click", function() {
-                document.querySelector(".popup").style.display = "none";
-            });
-    </script> -->
 </body>
 
 </html>

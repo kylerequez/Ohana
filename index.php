@@ -164,7 +164,7 @@
                     <img src="/Ohana/src/images/Landing/introduction.png" class="img-fluid" id="intro">
                 </div>
             </section>
-            <section class="about-us" id="about">
+            <section class="about-us" id="about"></section>
             </section>
             <section class="services" id="services">
                 <div class="service text-center">

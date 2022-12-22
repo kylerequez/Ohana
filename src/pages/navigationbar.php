@@ -348,19 +348,19 @@ if (!isset($_SESSION['user'])) {
     </a>
     <ul class="navbar">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/home">Home</a>
+            <a class="nav-link <?php if($_SERVER['REQUEST_URI'] == '/home') echo 'active'; ?>" aria-current="page" href="/home">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/about">About</a>
+            <a class="nav-link <?php if($_SERVER['REQUEST_URI'] == '/about') echo 'active'; ?>" href="/about">About</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/services">Services</a>
+            <a class="nav-link <?php if($_SERVER['REQUEST_URI'] == '/services') echo 'active'; ?>" href="/services">Services</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/contact">Contact</a>
+            <a class="nav-link <?php if($_SERVER['REQUEST_URI'] == '/contact') echo 'active'; ?>" href="/contact">Contact</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/pawcart"> Paw Cart <i class="uil uil-shopping-bag"></i></a>
+            <a class="nav-link <?php if($_SERVER['REQUEST_URI'] == '/pawcart') echo 'active'; ?>" href="/pawcart"> Paw Cart <i class="uil uil-shopping-bag"></i></a>
         </li>
     </ul>
     <div class="main">

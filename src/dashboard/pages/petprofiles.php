@@ -354,7 +354,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="addStaffTitle"> ADD PET PROFILE </h5>
+            <h5 class="modal-title" id="addStaffTitle" style="font-family:'Acme', sans-serif;"> ADD PET PROFILE </h5>
             <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
           </div>
           <div class="modal-body">

@@ -284,7 +284,7 @@
             </div>
             <div class="mb-3">
               <label for="password" class="col-form-label"> Password: </label>
-              <input type="password" class="form-control" name="password" placeholder="Enter Password" minlength="8" maxlength="50" required>
+              <input type="password" class="form-control" name="password" placeholder="Enter Password that contains 8-20 characters" minlength="8" maxlength="20" required>
             </div>
           </div>
           <div class="modal-footer">
