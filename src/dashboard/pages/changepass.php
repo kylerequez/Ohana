@@ -95,19 +95,22 @@
                         <div class="row">
                             <div class="col">
                                 <label class="mb-2" for="name" style="display:block"> <b>Current Password:</b> </label>
-                                <input type="password" value="" name="old-password" id="password" class="password" for="password" required style="background-color:white;width:100%" minlength="8"></p>
+                                <input type="password" value="" name="old-password" id="password" class="password" for="password" 
+                                required placeholder="Enter Current Password" style="background-color:white;width:100%" minlength="8"></p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label class="mb-2 mt-4" for="name" style="display:block"> <b>New Password:</b> </label>
-                                <input type="password" value="" name="password" id="new-password" class="password" for="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" style="background-color:white;width:100%" minlength="8" maxlength="49">
+                                <input type="password" value="" name="password" id="new-password" class="password" for="password" placeholder="Enter New Password that contains 8-20 characters"
+                                required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" style="background-color:white;width:100%" minlength="8" maxlength="20">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label class="mb-2 mt-4" for="name" style="display:block"> <b>Confirm Password:</b> </label>
-                                <input type="password" value="" name="confirm-password" id="confirm-password" class="password" for="confirm-password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" style="background-color:white;width:100%" minlength="8" maxlength="49">
+                                <input type="password" value="" name="confirm-password" id="confirm-password" class="password" for="confirm-password" placeholder="Confirm Password"
+                                required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" style="background-color:white;width:100%" minlength="8" maxlength="20">
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mt-5">

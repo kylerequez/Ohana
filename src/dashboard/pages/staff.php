@@ -186,7 +186,7 @@
                             <div class="modal-dialog modal-lg modal-dialog-centered">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="editingModal"> EDIT STAFF ACCOUNT </h5>
+                                  <h5 class="modal-title" id="editingModal" style="font-family:'Acme', sans-serif;"> EDIT STAFF ACCOUNT </h5>
                                   <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
                                 </div>
                                 <div class="modal-body">
@@ -284,7 +284,7 @@
             </div>
             <div class="mb-3">
               <label for="password" class="col-form-label"> Password: </label>
-              <input type="password" class="form-control" name="password" placeholder="Enter Password" minlength="8" maxlength="50" required>
+              <input type="password" class="form-control" name="password" placeholder="Enter Password that contains 8-20 characters" minlength="8" maxlength="20" required>
             </div>
           </div>
           <div class="modal-footer">

@@ -30,7 +30,6 @@ class OrderDAO
     {
         try {
             $this->openConnection();
-            $this->openConnection();
             $sql = "SELECT * FROM ohana_orders a JOIN ohana_pet_profiles b
                     WHERE b.pet_id = a.pet_id AND a.transaction_id=:id;";
 
@@ -56,11 +55,12 @@ class OrderDAO
                     $existingOrders[] = $existingOrder;
                 }
             }
-            $this->closeConnection();
             return $existingOrders;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -92,11 +92,12 @@ class OrderDAO
                     $existingOrder->setPetTrait($order["pet_trait"]);
                 }
             }
-            $this->closeConnection();
             return $existingOrder;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -104,6 +105,7 @@ class OrderDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "INSERT INTO ohana_orders
                     (order_type, transaction_id, pet_id)
                     VALUES (:type, :transactionId, :petId);";
@@ -118,11 +120,14 @@ class OrderDAO
             $stmt->bindParam(":petId", $petId, PDO::PARAM_INT);
 
             $isAdded = $stmt->execute() > 0;
-            $this->closeConnection();
+            $this->conn->commit();
             return $isAdded;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 }

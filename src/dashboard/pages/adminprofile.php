@@ -15,6 +15,14 @@
         .labels {
             font-size: 20px;
         }
+
+        #adminp {
+            width:380px;
+        }
+
+        #mob {
+            width:328px;
+        }
     </style>
 </head>
 <body>
@@ -31,51 +39,53 @@
                         <div class="container-sm">
                             <form action="/accounts/update" method="POST">
                                 <div class="d-flex justify-content-center">
+                                    <center>
                                     <div class="container">
                                         <input type="hidden" name="status" value="<?php echo $user->getStatus(); ?>">
                                         <input type="hidden" name="type" value="<?php echo $user->getType(); ?>">
                                         <div class="row">
                                             <div class="col me-5 ms-5">
-                                                <label class="labels">Name</label>
-                                                <input type="text" class="form-control" name="fname" value="<?php echo $user->getFname(); ?>" >
+                                                <label class="labels">Name</label><br>
+                                                <input type="text" id="adminp" name="fname" value="<?php echo $user->getFname(); ?>" >
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col mt-3 me-5 ms-5">
-                                                <label class="labels">Middle Name</label>
-                                                <input type="text" class="form-control" name="mname" value="<?php echo $user->getMname(); ?>" >
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col mt-3 me-5 ms-5">
-                                                <label class="labels">Last Name</label>
-                                                <input type="text" class="form-control" name="lname" value="<?php echo $user->getLname(); ?>" >
+                                                <label class="labels">Middle Name</label><br>
+                                                <input type="text" id="adminp" name="mname" value="<?php echo $user->getMname(); ?>" >
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="col mt-3 me-5 ms-5">
-                                                <label class="labels">Mobile Number</label>
+                                                <label class="labels">Last Name</label><br>
+                                                <input type="text" id="adminp" name="lname" value="<?php echo $user->getLname(); ?>" >
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col mt-3 me-5 ms-5">
+                                                <label class="labels">Mobile Number</label><br>
                                                 <div class="input-group">
                                                     <span class="input-group-text" id="contact-no">+63</span>
-                                                    <input type="text" class="form-control" name="number" value="<?php echo str_replace("+63", "", $user->getNumber()); ?>" maxlength="10" ; oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                    <input type="text" id="mob" name="number" value="<?php echo str_replace("+63", "", $user->getNumber()); ?>" maxlength="10" ; oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col mt-3 me-5 ms-5">
-                                                <label class="labels">Email</label>
-                                                <input type="text" class="form-control" name="email" value="<?php echo $user->getEmail(); ?>">
+                                                <label class="labels">Email</label><br>
+                                                <input type="text" id="adminp" name="email" value="<?php echo $user->getEmail(); ?>">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="text-center ms-5">
                                                 <a href="/dashboard/adminpass"><button class="btn btn-outline-dark mt-4" type="button" style="float:left;">Change Password</button></a>
-                                                <button class="btn profile-button mt-4" type="submit" style="background-color:#db6551; color:white; float:right; margin-right:8%;">Save Profile</button>
+                                                <button class="btn profile-button mt-4 ms-3" type="submit" style="background-color:#db6551; color:white;">Save Profile</button>
                                             </div>
                                         </div>
                                     </div>
+                                    </center>
                                 </div>
                             </form>
                         </div>

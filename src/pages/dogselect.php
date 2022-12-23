@@ -19,13 +19,35 @@
             width: 20rem;
         }
 
+        #header {
+            font-family: 'Acme', sans-serif;
+            font-size: 60px;
+            color: #db6551;
+            margin-top: 5%;
+        }
+
         #offer {
             width: 40rem;
         }
 
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {
+        #proc {
+            width: 40rem;
+        }
+
+        @media screen and (min-width: 500px) and (max-width: 1350px) {
+            #header {
+                margin-top: 15%;
+            }
+        }
+
+        @media screen and (min-width: 360px) and (max-width: 430px) {
             #header {
                 font-size: 37px;
+                margin-top: 25%;
+            }
+
+            #proc {
+                width: 20rem;
             }
         }
     </style>
@@ -86,7 +108,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <center> <button type="submit" class="btn text-white p-3 mb-5" style="background-color:#db6551;width:40rem;">Proceed</button></center>
+                            <center> <button type="submit" class="btn text-white p-3 mb-5" id="proc" style="background-color:#db6551;">Proceed</button></center>
                         </form>
                     <?php
                     } else if (empty($profiles)) {

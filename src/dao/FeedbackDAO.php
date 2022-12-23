@@ -36,11 +36,12 @@ class FeedbackDAO
             $stmt->execute();
 
             $result = $stmt->fetchColumn();
-            $this->closeConnection();
             return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -62,11 +63,12 @@ class FeedbackDAO
                     $feedbacks[] = $searchedFeedback;
                 }
             }
-            $this->closeConnection();
             return $feedbacks;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -74,6 +76,7 @@ class FeedbackDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "INSERT INTO ohana_feedbacks
                     (feedback_rating, feedback_message, account_id)
                     VALUES (:rating, :message, :accountId)";
@@ -88,11 +91,14 @@ class FeedbackDAO
             $stmt->bindParam(":accountId", $accountId, PDO::PARAM_INT);
 
             $isAdded = $stmt->execute() > 0;
-            $this->closeConnection();
+            $this->conn->commit();
             return $isAdded;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 }

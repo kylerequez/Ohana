@@ -36,11 +36,12 @@ class AccountDAO
             $stmt->execute();
             $result = $stmt->fetchColumn();
 
-            $this->closeConnection();
             return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -54,11 +55,12 @@ class AccountDAO
             $stmt->execute();
             $result = $stmt->fetchColumn();
 
-            $this->closeConnection();
             return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -88,11 +90,12 @@ class AccountDAO
                     $accounts[] = $existingAccount;
                 }
             }
-            $this->closeConnection();
             return $accounts;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -122,11 +125,12 @@ class AccountDAO
                     $accounts[] = $existingAccount;
                 }
             }
-            $this->closeConnection();
             return $accounts;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -159,11 +163,12 @@ class AccountDAO
                     $searchedAccount->setId($account["account_id"]);
                 }
             }
-            $this->closeConnection();
             return $searchedAccount;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -171,6 +176,7 @@ class AccountDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "INSERT INTO ohana_account
                     (account_type, fname, mname, lname, number, email, status, password)
                     VALUES (:account_type, :fname, :mname, :lname, :number, :email, :status, :password);
@@ -196,11 +202,14 @@ class AccountDAO
             $stmt->bindParam(":password", $password, PDO::PARAM_STR);
 
             $isCreated = $stmt->execute() > 0;
-            $this->closeConnection();
+            $this->conn->commit();
             return $isCreated;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return false;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -232,11 +241,12 @@ class AccountDAO
                     $searchedAccount->setId($id);
                 }
             }
-            $this->closeConnection();
             return $searchedAccount;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -269,11 +279,12 @@ class AccountDAO
                     $searchedAccount->setId($account["account_id"]);
                 }
             }
-            $this->closeConnection();
             return $searchedAccount;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -304,11 +315,12 @@ class AccountDAO
                     $searchedAccount->setId($account["account_id"]);
                 }
             }
-            $this->closeConnection();
             return $searchedAccount;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -316,6 +328,7 @@ class AccountDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "UPDATE ohana_account
                     SET fname=:fname, mname=:mname, lname=:lname, number=:number, email=:email, status=:status
                     WHERE account_id=:id";
@@ -326,8 +339,6 @@ class AccountDAO
             $lname = $account->getLname();
             $email = $account->getEmail();
             $number = $account->getNumber();
-            // $type = $account->getType();
-            // $password = $account->getPassword();
             $status = $account->getStatus();
 
             $stmt = $this->conn->prepare($sql);
@@ -338,14 +349,16 @@ class AccountDAO
             $stmt->bindParam(":number", $number, PDO::PARAM_STR);
             $stmt->bindParam(":email", $email, PDO::PARAM_STR);
             $stmt->bindParam(":status", $status, PDO::PARAM_STR);
-            // $stmt->bindParam(":password", $password, PDO::PARAM_STR);
 
             $isUpdated = $stmt->execute() > 0;
-            $this->closeConnection();
+            $this->conn->commit();
             return $isUpdated;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -353,6 +366,7 @@ class AccountDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "DELETE FROM ohana_account
                     WHERE account_id=:id";
 
@@ -360,11 +374,14 @@ class AccountDAO
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
             $isDeleted = $stmt->execute() > 0;
-            $this->closeConnection();
+            $this->conn->commit();
             return $isDeleted;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -372,6 +389,7 @@ class AccountDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "DELETE FROM ohana_account
                     WHERE email=:email";
 
@@ -379,11 +397,14 @@ class AccountDAO
             $stmt->bindParam(":email", $email, PDO::PARAM_STR);
 
             $isDeleted = $stmt->execute() > 0;
-            $this->closeConnection();
+            $this->conn->commit();
             return $isDeleted;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -391,6 +412,7 @@ class AccountDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "UPDATE ohana_account
                     SET password=:password
                     WHERE account_id=:id";
@@ -400,11 +422,14 @@ class AccountDAO
             $stmt->bindParam(":id", $id, PDO::PARAM_STR);
 
             $isUpdated = $stmt->execute() > 0;
-            $this->closeConnection();
+            $this->conn->commit();
             return $isUpdated;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -412,6 +437,7 @@ class AccountDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "UPDATE ohana_account
                     SET password=:password
                     WHERE email=:email";
@@ -421,11 +447,14 @@ class AccountDAO
             $stmt->bindParam(":email", $email, PDO::PARAM_STR);
 
             $isUpdated = $stmt->execute() > 0;
-            $this->closeConnection();
+            $this->conn->commit();
             return $isUpdated;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -433,6 +462,7 @@ class AccountDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "UPDATE ohana_account
                     SET status='ACTIVE'
                     WHERE email=:email";
@@ -441,11 +471,14 @@ class AccountDAO
             $stmt->bindParam(":email", $email, PDO::PARAM_STR);
 
             $isVerified = $stmt->execute() > 0;
-            $this->closeConnection();
+            $this->conn->commit();
             return $isVerified;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 }

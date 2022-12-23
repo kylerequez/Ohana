@@ -24,11 +24,15 @@ Email: " . trim($_POST["email"]) . "<br>
 <br>
 Message: " . trim($_POST["message"]);
 $mail->AltBody = 'Inquiry from ' . trim($_POST["name"]);
-session_start();
+if (!isset($_SESSION)) session_start();
 if (!$mail->send()) {
-    
     $_SESSION["msg"] = "There was an error in sending your message. Please try again.";
 } else {
     $_SESSION["msg"] = "You have successfully sent an email to Ohana Kennel PH. Thank you for your message.";
 }
-header('Location: ' . $_SERVER["HTTP_REFERER"]);
+if(str_contains($_SERVER['HTTP_REFERER'], '/contact')) {
+    header('Location: ' . $_SERVER["HTTP_REFERER"]);
+} else {
+    header('Location: ' . $_SERVER["HTTP_REFERER"] . '#contact');
+}
+

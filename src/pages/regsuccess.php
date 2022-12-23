@@ -62,7 +62,7 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <img src="/Ohana/src/images/pages/check.png" id="check">
+            <img src="/Ohana/src/images/Pages/check.png" id="check">
             <h1 class="sign-up__title mt-3" style="font-family: 'Acme', sans-serif;">Account Created!</h1>
             <p id="accdesc"> Your Ohana account has been Successfully Created. </p>
           </header>

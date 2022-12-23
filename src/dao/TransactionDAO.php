@@ -37,11 +37,12 @@ class TransactionDAO
             $stmt->execute();
 
             $result = $stmt->fetchColumn();
-            $this->closeConnection();
             return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -55,11 +56,12 @@ class TransactionDAO
             $stmt->execute();
 
             $result = $stmt->fetchColumn();
-            $this->closeConnection();
             return $result;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -68,6 +70,7 @@ class TransactionDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "UPDATE ohana_transactions
                     SET payment_confirmation=:confirmation
                     WHERE transaction_id=:id;";
@@ -77,11 +80,14 @@ class TransactionDAO
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
             $isUploaded = $stmt->execute() > 0;
-            $this->closeConnection();
+            $this->conn->commit();
             return $isUploaded;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -116,11 +122,12 @@ class TransactionDAO
                     $transactions[] = $existingTransaction;
                 }
             }
-            $this->closeConnection();
             return $transactions;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -156,11 +163,12 @@ class TransactionDAO
                     $existingTransactions[] = $existingTransaction;
                 }
             }
-            $this->closeConnection();
             return $existingTransactions;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -181,11 +189,12 @@ class TransactionDAO
                     $searchedId = $transaction['transaction_id'];
                 }
             }
-            $this->closeConnection();
             return $searchedId;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -219,11 +228,12 @@ class TransactionDAO
                     $existingTransaction->setEmail($transaction["email"]);
                 }
             }
-            $this->closeConnection();
             return $existingTransaction;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -257,11 +267,12 @@ class TransactionDAO
                     $existingTransaction->setEmail($transaction["email"]);
                 }
             }
-            $this->closeConnection();
             return $existingTransaction;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -269,6 +280,7 @@ class TransactionDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "UPDATE ohana_transactions
                     SET transaction_status=:status
                     WHERE transaction_id=:id;";
@@ -278,11 +290,14 @@ class TransactionDAO
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
             $isUpdated = $stmt->execute() > 0;
-            $this->closeConnection();
+            $this->conn->commit();
             return $isUpdated;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -290,6 +305,7 @@ class TransactionDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "INSERT INTO ohana_transactions
                     (transaction_reference, account_id, total_price, transaction_date, transaction_status, payment_confirmation, payment_mode)
                     VALUES (:reference, :id, :price, :date, :status, :confirmation, :mode);";
@@ -312,11 +328,14 @@ class TransactionDAO
             $stmt->bindParam(":mode", $mode, PDO::PARAM_STR);
 
             $isAdded = $stmt->execute() > 0;
-            $this->closeConnection();
+            $this->conn->commit();
             return $isAdded;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 }

@@ -30,6 +30,7 @@
             width: 750px;
             height: 750px;
         }
+
         @media screen and (max-width: 1366px) {
             #home {
                 margin-top: 6%;
@@ -44,7 +45,12 @@
 
         @media screen and (min-width: 360px) and (max-width: 430px) {
             #home {
-                margin-top: 25%;
+                margin-top: 40%;
+            }
+
+            #address {
+                width: 300px;
+                height: 300px;
             }
 
             #sectionheaders {
@@ -82,8 +88,8 @@
                 font-family: "Poppins";
                 font-size: 12px;
                 padding: 10px 40px;
-                margin-top: 110%;
-                margin-left: 120px;
+                margin-top: 5%;
+                margin-left: 50px;
             }
 
             .cr {
@@ -96,15 +102,15 @@
                 font-size: 35px;
             }
 
-            .contact-us {
-                background-color: #faf8f0;
-                min-height: 500px;
+            #contact {
+                margin-top: 5%;
             }
-
 
             #contactform {
                 position: relative !important;
-                margin-left: -5px;
+                margin-left: -70px;
+                float: left;
+                margin-top: 380px;
             }
 
             input {
@@ -138,6 +144,23 @@
                 background-repeat: no-repeat;
                 background-position: center;
             }
+
+            .contact-us {
+                background-image: url(/Ohana/src/images/mobile/contact.png);
+                min-height: 700px;
+                max-height: 700px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            #contact-container {
+                max-height: 500px;
+            }
+
+            #ohanafooter {
+                margin-top: 120px;
+            }
         }
     </style>
 </head>
@@ -146,12 +169,13 @@
     <main>
         <?php include_once dirname(__DIR__) . '/Ohana/src/pages/navbar.php'; ?>
         <div class="container-fluid">
+
             <section class="introduction" id="home">
                 <div class="intro text-center">
                     <img src="/Ohana/src/images/Landing/introduction.png" class="img-fluid" id="intro">
                 </div>
             </section>
-            <section class="about-us" id="about">
+            <section class="about-us" id="about"></section>
             </section>
             <section class="services" id="services">
                 <div class="service text-center">
@@ -223,48 +247,46 @@
                     </div>
                 </div>
             </section>
-            <section class="contact-us" id="contact">
-                <div class="container-fluid">
+            <div class="container-fluid" id="contact-container">
+                <section class="contact-us" id="contact">
                     <div class="message text-center">
                         <h1 class="contact mt-5" id="sectionheaders"> Contact Us! </h1>
+                        <?php
+                        if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+                            <center>
+                                <div class="alert alert-warning text-center mt-5" role="alert" style="width:500px;">
+                                    <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; ?>
+                                </div>
+                            </center>
+                        <?php
+                            unset($_SESSION["msg"]);
+                            session_destroy();
+                        }
+                        ?>
                     </div>
                     <form id="contactform" class="topBefore" method="POST" action="/contact-us/send">
                         <input id="name" name="name" type="text" placeholder="FULL NAME">
                         <input id="email" name="email" type="text" placeholder="E-MAIL ADDRESS ">
                         <textarea id="message" name="message" type="text" placeholder="ENTER MESSAGE"></textarea>
                         <div class="btn-Send mt-4 ms-3" name="btn-Send">
-                            <button type="submit" id="Send"><span> Send </span></button>
+                            <button type="submit" id="Send"> Send </button>
                         </div>
                     </form>
-                </div>
+            </div>
             </section>
             <section class="maps mb-5">
-            <div class="message" id="find">
-                <h1 id="sectionheaders" class="mb-5 text-center"> You can find us here </h1>
-            </div>
-            <center>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1623.2871555101196!2d121.00392295489537!3d14.607660960531538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b61dfbade45d%3A0x87e58f7a0f4c89c3!2s1026%20Mindoro%2C%20Sampaloc%2C%20Maynila%2C%201008%20Kalakhang%20Maynila!5e0!3m2!1sen!2sph!4v1665068149424!5m2!1sen!2sph" 
-                    style="border:0;" id="address" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </center>
-        </section>
+                <div class="message" id="find">
+                    <h1 id="sectionheaders" class="mb-5 text-center"> You can find us here </h1>
+                </div>
+                <center>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1623.2871555101196!2d121.00392295489537!3d14.607660960531538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b61dfbade45d%3A0x87e58f7a0f4c89c3!2s1026%20Mindoro%2C%20Sampaloc%2C%20Maynila%2C%201008%20Kalakhang%20Maynila!5e0!3m2!1sen!2sph!4v1665068149424!5m2!1sen!2sph" style="border:0;" id="address" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </center>
+            </section>
         </div>
         <div id="chat-container"> </div>
     </main>
     <div class="mt-5"> <?php include_once dirname(__DIR__) . '/Ohana/src/pages/footer.php'; ?> </div>
-    <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-        <div class="toast-container top-0 start-0 ms-2" style="margin-top:8%;">
-            <div id="liveToast" class="toast show d-flex" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="4000">
-                <div class="toast-body fs-6" id="toastbody">
-                    <?php echo $_SESSION["msg"] ?>
-                </div>
-                <button type="button" class="btn-close m-2" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-        </div>
-    <?php
-    }
-    unset($_SESSION["msg"]);
-    ?>
 
     <script src="/Ohana/src/js/chatbot-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

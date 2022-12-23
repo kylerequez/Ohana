@@ -4,7 +4,7 @@
 <head>
     <title> OHANA CONTACT </title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
     <link rel="stylesheet" href="/Ohana/src/css/contactus.css">
@@ -15,6 +15,7 @@
         #contact-page {
             font-family: "Poppins";
         }
+
         #sectionheaders {
             margin-top: 20%;
             font-size: 80px;
@@ -31,9 +32,11 @@
         #contact {
             margin-top: -10%;
         }
+
         #contactform {
             margin-top: -5%;
         }
+
         #find {
             margin-top: 5%;
             text-align: center;
@@ -44,7 +47,7 @@
         }
 
         @media screen and (min-width: 360px) and (max-width: 500px) {
-            #sectionheaders{
+            #sectionheaders {
                 font-size: 45px;
                 margin-top: 50%;
             }
@@ -101,7 +104,7 @@
                 text-decoration: none;
                 text-shadow: 0px 1px 0px #ffffff;
                 margin-top: 90%;
-                margin-left:120px;
+                margin-left: 120px;
             }
 
             #address {
@@ -111,7 +114,7 @@
 
             #find {
                 font-size: 30px;
-                margin-top:30%;
+                margin-top: 30%;
                 text-align: center;
             }
         }
@@ -126,6 +129,17 @@
                 <div class="container-fluid">
                     <div class="message text-center">
                         <h1 class="contact" id="sectionheaders"> Contact Us! </h1>
+                        <?php
+                        if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+                            <center>
+                                <div class="alert alert-warning text-center mt-5" role="alert" style="width:500px;">
+                                    <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; ?>
+                                </div>
+                            </center>
+                        <?php
+                            unset($_SESSION["msg"]);
+                        }
+                        ?>
                     </div>
                     <form id="contactform" class="topBefore" method="POST" action="/contact-us/send">
                         <input id="name" name="name" type="text" placeholder="FULL NAME">
@@ -153,19 +167,6 @@
     <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-    <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-        <div class="toast-container top-0 start-0 ms-2" style="margin-top:8%;">
-            <div id="liveToast" class="toast show d-flex" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="4000">
-                <div class="toast-body fs-6" id="toastbody" style="color:#db6551">
-                    <p class="fs-5"> <?php echo $_SESSION["msg"] ?> </p>
-                </div>
-                <button type="button" class="btn-close m-2" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-        </div>
-    <?php
-    }
-    unset($_SESSION["msg"]);
-    ?>
 
     <script src="/Ohana/src/js/chatbot-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -186,7 +187,8 @@
                 title = name, welcomeMessage = intro, inactiveMsg = noResponse, theme = "orange")
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" 
+    crossorigin="anonymous">
     </script>
 </body>
 

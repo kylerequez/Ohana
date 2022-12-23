@@ -86,6 +86,11 @@
       margin-top: 20px;
       border: none;
     }
+
+    #response {
+      border: 2px solid #db6551;
+      border-radius: 10px;
+    }
   </style>
 </head>
 
@@ -125,6 +130,18 @@
                   <th> <b>QUERY</b> </th>
                   <th> <b>ACTION</b> </th>
                 </tr>
+                <tr>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Response ID..." data-column="0">
+                  </th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Response..." data-column="1">
+                  </th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Query..." data-column="2">
+                  </th>
+                  <th></th>
+                </tr>
               </thead>
               <tbody>
                 <?php
@@ -153,7 +170,7 @@
                                 </div>
                                 <div class="mb-3">
                                   <label for="response" class="col-form-label"> RESPONSE </label>
-                                  <input type="text" class="form-control" name="response" value="<?php echo $response->getResponse(); ?>" required>
+                                  <textarea rows="4" class="form-control" cols="50" id="response" name="response" placeholder="Enter Response for Query" required><?php echo $response->getResponse(); ?></textarea>
                                 </div>
                               </div>
                               <div class="modal-footer">
@@ -215,7 +232,7 @@
             </div>
             <div class="mb-3">
               <label for="response" class="col-form-label"> RESPONSE </label>
-              <input type="text" class="form-control" name="response" placeholder="Enter Response for Query" required>
+              <textarea rows="4" class="form-control" cols="50" id="response" name="response" placeholder="Enter Response for Query" required></textarea>
             </div>
           </div>
           <div class="modal-footer">
@@ -227,9 +244,63 @@
   </form>
   <script>
     $(document).ready(function() {
-      $('#responses').DataTable({
-        "searching": true,
-        "processing": true,
+      var table = $('#responses').DataTable({
+        orderCellsTop: true,
+        fixedHeader: true,
+        searching: true,
+        responsive: true,
+        initComplete: function() {
+          var api = this.api();
+          api
+            .columns()
+            .eq(0)
+            .each(function(colIdx) {
+              var cell = $('.filters th').eq(
+                $(api.column(colIdx).header()).index()
+              );
+              var title = $(cell).text();
+              $(cell).html('<input type="text" placeholder="' + title + '" />');
+              $(
+                  'input',
+                  $('.filters th').eq($(api.column(colIdx).header()).index())
+                )
+                .off('keyup change')
+                .on('change', function(e) {
+                  $(this).attr('title', $(this).val());
+                  var regexr = '({search})';
+                  var cursorPosition = this.selectionStart;
+                  api
+                    .column(colIdx)
+                    .search(
+                      this.value != '' ?
+                      regexr.replace('{search}', '(((' + this.value + ')))') :
+                      '',
+                      this.value != '',
+                      this.value == ''
+                    )
+                    .draw();
+                })
+                .on('keyup', function(e) {
+                  e.stopPropagation();
+                  $(this).trigger('change');
+                  $(this)
+                    .focus()[0]
+                    .setSelectionRange(cursorPosition, cursorPosition);
+                });
+            });
+        },
+      });
+
+      $('.filter-input').keyup(function() {
+        table.column($(this).data('column'))
+          .search($(this).val())
+          .draw();
+      });
+
+      $('.filter-select').change(function() {
+        table.column($(this).data('column'))
+          .search($(this).val())
+          .draw();
       });
     });
   </script>

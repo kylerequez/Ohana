@@ -80,7 +80,11 @@
                                             <div class="col-md-2 col-lg-2 col-xl-2">
                                                 <p class="lead fw-normal mb-2"><?php 
                                                 $orders = $transaction->getListOfOrders(); 
-                                                foreach ($orders as $order) { $type = $order->getType(); } 
+                                                if(!is_null($orders)){
+                                                    foreach ($orders as $order) { $type = $order->getType(); } 
+                                                } else {
+                                                    $type = 'NO ORDERS';
+                                                }
                                                 echo $type;
                                                 ?></p>
                                             </div>

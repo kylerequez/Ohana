@@ -55,7 +55,7 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <img src="/Ohana/src/images/pages/check.png" id="check" style="margin-top: 5%;">
+            <img src="/Ohana/src/images/Pages/check.png" id="check" style="margin-top: 5%;">
             <h1 class="sign-up__title"> PASSWORD UPDATED! </h1>
             <p class="fs-5 text-center"> Your Ohana account password has been Successfully Updated. </p>
           </header>

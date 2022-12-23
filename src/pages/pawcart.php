@@ -103,7 +103,6 @@
                                 <?php
                                 }
                                 ?>
-                                <a href="/home"><button type="button" class="btn btn-outline-dark btn-lg me-2"> Back to Home</button></a>
                                 <a href="/checkout/<?php echo uniqid('OKPH-'); ?>"><button type="button" name="btn-Payment" class="btn btn-block btn-lg" style="float:right; background-color:#c0b65a; color:white;">
                                         Proceed to Select Payment Method </button></a>
                             <?php

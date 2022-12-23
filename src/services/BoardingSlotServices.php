@@ -39,11 +39,10 @@ class BoardingSlotServices
 
     public function addBoardingSlot(array $data): mixed
     {
-        // ADD IMAGE VALIDATION !!! IMPORTANT
         $image = $data["image"];
 
-        $name = strtoupper($data["name"]);
-        $information = strtoupper($data["information"]);
+        $name = trim($data["name"]);
+        $information = trim($data["information"]);
         $isAvailable = $data["isAvailable"];
 
         if (!is_null($this->dao->searchByName($name))) {
@@ -67,11 +66,10 @@ class BoardingSlotServices
             return false;
         }
 
-        // ADD IMAGE VALIDATION !!! IMPORTANT
         $image = $data["image"];
 
-        $name = strtoupper($data["name"]);
-        $information = strtoupper($data["information"]);
+        $name = trim($data["name"]);
+        $information = trim($data["information"]);
         $isAvailable = $data["isAvailable"];
         if ($isAvailable == 1) {
             $petId = null;

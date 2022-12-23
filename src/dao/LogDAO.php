@@ -42,11 +42,12 @@ class LogDAO
                     $logs[] = $existingLog;
                 }
             }
-            $this->closeConnection();
             return $logs;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -54,6 +55,7 @@ class LogDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "INSERT INTO ohana_logs
                     (log, date)
                     VALUES (:log, :date);";
@@ -66,11 +68,14 @@ class LogDAO
             $stmt->bindParam(":date", $now->format('Y-m-d H:i:s'), PDO::PARAM_STR);
 
             $isAdded = $stmt->execute() > 0;
-            $this->closeConnection();
+            $this->conn->commit();
             return $isAdded;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return false;
+        } finally {
+            $this->closeConnection();
         }
     }
 }

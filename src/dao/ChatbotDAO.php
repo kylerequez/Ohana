@@ -40,11 +40,12 @@ class ChatbotDAO
                     $information = new ChatbotInformation($data["chatbot_avatar"], $data["chatbot_name"], $data["chatbot_introduction"], $data["chatbot_no_response"]);
                 }
             }
-            $this->closeConnection();
             return $information;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -52,6 +53,7 @@ class ChatbotDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "UPDATE chatbot_information
                     SET chatbot_avatar=:chatbot_avatar, chatbot_name=:chatbot_name, chatbot_introduction=:chatbot_introduction, chatbot_no_response=:chatbot_no_response
                     WHERE information_id = 1";
@@ -68,11 +70,14 @@ class ChatbotDAO
             $stmt->bindParam(":chatbot_no_response", $noResponse, PDO::PARAM_STR);
 
             $isUpdated = $stmt->execute() > 0;
-            $this->closeConnection();
+            $this->conn->commit();
             return $isUpdated;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -94,11 +99,12 @@ class ChatbotDAO
                     $responses[] = $existingResponse;
                 }
             }
-            $this->closeConnection();
             return $responses;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -123,11 +129,12 @@ class ChatbotDAO
                     $searchedResponse->setId($response["response_id"]);
                 }
             }
-            $this->closeConnection();
             return $searchedResponse;
         } catch (Exception $e) {
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -135,6 +142,7 @@ class ChatbotDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "INSERT INTO chatbot_responses
                     (response, query)
                     VALUES (:response, :query);";
@@ -147,11 +155,14 @@ class ChatbotDAO
             $stmt->bindParam(":query", $query, PDO::PARAM_STR);
 
             $isAdded = $stmt->execute() > 0;
-            $this->closeConnection();
+            $this->conn->commit();
             return $isAdded;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return false;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -176,11 +187,12 @@ class ChatbotDAO
                     $searchedResponse->setId($id);
                 }
             }
-            $this->closeConnection();
             return $searchedResponse;
         } catch (Exception $e) {
             echo $e;
             return false;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -188,6 +200,7 @@ class ChatbotDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "UPDATE chatbot_responses
                     SET response=:response, query=:query
                     WHERE response_id=:id;";
@@ -202,11 +215,14 @@ class ChatbotDAO
             $stmt->bindParam(":query", $query, PDO::PARAM_STR);
 
             $isUpdated = $stmt->execute() > 0;
-            $this->closeConnection();
+            $this->conn->commit();
             return $isUpdated;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 
@@ -214,6 +230,7 @@ class ChatbotDAO
     {
         try {
             $this->openConnection();
+            $this->conn->beginTransaction();
             $sql = "DELETE FROM chatbot_responses
                     WHERE response_id=:id";
 
@@ -221,11 +238,14 @@ class ChatbotDAO
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
             $isDeleted = $stmt->execute() > 0;
-            $this->closeConnection();
+            $this->conn->commit();
             return $isDeleted;
         } catch (Exception $e) {
+            $this->conn->rollBack();
             echo $e;
             return null;
+        } finally {
+            $this->closeConnection();
         }
     }
 }

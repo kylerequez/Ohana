@@ -13,6 +13,16 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <link rel="stylesheet" href="/Ohana/src/dashboard/css/adminpages.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" charset="UTF-8"> </script>
+  <style>
+    #introduction {
+      border: 2px solid #db6551;
+      border-radius: 10px;
+    }
+    #noResponse {
+      border: 2px solid #db6551;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 
 <body>
@@ -55,17 +65,17 @@
                   <div class="row">
                     <div class="col">
                       <label class="mb-2 mt-4 fs-5" for="introduction" style="display:block"> <b>CHATBOT GREETING:</b> </label>
-                      <input class="form-control" type="text" id="introduction" value="<?php echo $information->getIntroduction(); ?>" name="introduction">
+                      <textarea rows="4" cols="50" id="introduction" value="<?php echo $information->getIntroduction(); ?>" name="introduction"><?php echo $information->getIntroduction(); ?></textarea>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col">
                       <label class="mb-2 mt-4 fs-5" for="noResponse" style="display:block"> <b>CHATBOT NO REPLY:</b> </label>
-                      <input class="form-control" type="text" id="noResponse" value="<?php echo $information->getNoResponse(); ?>" name="noResponse">
+                      <textarea rows="4" cols="50" id="noResponse" name="noResponse"><?php echo $information->getNoResponse(); ?></textarea>
                     </div>
                   </div>
                   <div class="row d-flex justify-content-center">
-                    <input class="btn mt-5" type="submit" value="Save Changes" id="btn-Submit" style="background-color:#db6551; width:250px; color:white; font-size:16px;">
+                    <input class="btn mt-3 mb-5" type="submit" value="Save Changes" id="btn-Submit" style="background-color:#db6551; width:250px; color:white; font-size:16px;">
                   </div>
                 </div>
               </form>

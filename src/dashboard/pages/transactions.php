@@ -211,7 +211,7 @@
                     <td><?php echo $transaction->getReference(); ?></td>
                     <td><?php echo $transaction->getEmail(); ?></td>
                     <td><?php echo $transaction->getFname() . " " . $transaction->getMname() . " " . $transaction->getLname(); ?></td>
-                    <td><?php echo $transaction->getDate()->format('M-d-Y H:i:s'); ?></td>
+                    <td><?php echo $transaction->getDate()->format('M-d-Y h:i:s A'); ?></td>
                     <td><?php echo $transaction->getStatus(); ?></td>
                     <td>
                       <button class="view-btn transparent-btn fs-4" type="view" style="color:#7d605c; margin-right: 15px;" data-bs-toggle="modal" data-bs-target="#viewModalId<?php echo $transaction->getId(); ?>"><i class="uil uil-eye"></i></button>
