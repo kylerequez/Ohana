@@ -283,7 +283,7 @@ class AccountServices
                         <br> - Do not click on suspicious links.
                         <br><br> Note: For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
                         <br><br>
-                        <img src=\"https://lh3.googleusercontent.com/Bgt7glsz4TKk1bom8LB9I3tpIYqnQ2ZQ3qwQcp0xhUavCEantbg2g_dOA0i_8NuhjA8=w2400\"> </center>';
+                        <img src="https://lh3.googleusercontent.com/Bgt7glsz4TKk1bom8LB9I3tpIYqnQ2ZQ3qwQcp0xhUavCEantbg2g_dOA0i_8NuhjA8=w2400"> </center>';
         $mail->AltBody = 'Reset Password Link for Ohana Account';
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in sending the reset link to your mail.";
@@ -325,7 +325,7 @@ class AccountServices
                         <br> - Do not click on suspicious links.
                         <br><br> Note: For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
                         <br><br>
-                        <img src=\"https://lh3.googleusercontent.com/Bgt7glsz4TKk1bom8LB9I3tpIYqnQ2ZQ3qwQcp0xhUavCEantbg2g_dOA0i_8NuhjA8=w2400\"> </center>';
+                        <img src="https://lh3.googleusercontent.com/Bgt7glsz4TKk1bom8LB9I3tpIYqnQ2ZQ3qwQcp0xhUavCEantbg2g_dOA0i_8NuhjA8=w2400"> </center>';
         $mail->AltBody = 'Reset Password Link for Ohana Account';
         if (!$mail->send()) {
             $_SESSION["msg"] = "There was an error in resending the reset link to your mail.";
