@@ -26,6 +26,10 @@
             width: 500px;
         }
 
+        #address {
+            width: 750px;
+            height: 750px;
+        }
         @media screen and (max-width: 1366px) {
             #home {
                 margin-top: 6%;
@@ -234,6 +238,16 @@
                     </form>
                 </div>
             </section>
+            <section class="maps mb-5">
+            <div class="message" id="find">
+                <h1 id="sectionheaders" class="mb-5 text-center"> You can find us here </h1>
+            </div>
+            <center>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1623.2871555101196!2d121.00392295489537!3d14.607660960531538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b61dfbade45d%3A0x87e58f7a0f4c89c3!2s1026%20Mindoro%2C%20Sampaloc%2C%20Maynila%2C%201008%20Kalakhang%20Maynila!5e0!3m2!1sen!2sph!4v1665068149424!5m2!1sen!2sph" 
+                    style="border:0;" id="address" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </center>
+        </section>
         </div>
         <div id="chat-container"> </div>
     </main>
