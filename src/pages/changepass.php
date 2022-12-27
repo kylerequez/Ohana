@@ -13,7 +13,11 @@
   <?php include_once 'stylesheets.php'; ?>
   <style>
     .sign-up__title {
+<<<<<<< HEAD
       margin-top:25px;
+=======
+      margin-top: 25px;
+>>>>>>> e7290efdde7dd90e833a7082fbf6f31451b4eb58
       font-size: 70px;
     }
     .sign-up__descr {
@@ -23,9 +27,17 @@
     h3 {
       font-size: 20px;
     }
+<<<<<<< HEAD
     #ohanafooter {
       margin-top: 5%;
     }
+=======
+
+    #ohanafooter {
+      margin-top: 5%;
+    }
+
+>>>>>>> e7290efdde7dd90e833a7082fbf6f31451b4eb58
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
       #changeheader {
         margin-top: 20%;
@@ -136,7 +148,6 @@
     </main>
   </div>
 
-
   <div id="ohanafooter">
     <?php include_once 'footer.php'; ?>
   </div>
@@ -146,7 +157,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   <script>
-
     const currentpassword = $("#password"),
       passwordInput = $("#new-password"),
       letter = $("#letter"),

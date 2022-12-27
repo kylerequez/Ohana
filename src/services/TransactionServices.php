@@ -160,6 +160,19 @@ class TransactionServices
         return $transactions;
     }
 
+    public function getTransactionsFromStartToEnd(DateTime $start, DateTime $end): mixed
+    {
+        $transactions = $this->dao->getTransactionsFromStartToEnd($start, $end);
+        if (is_null($transactions)) {
+            return $transactions;
+        }
+        foreach ($transactions as $transaction) {
+            $orders = $this->order->searchByTransactionId($transaction->getId());
+            $transaction->setListOfOrders($orders);
+        }
+        return $transactions;
+    }
+
     public function searchByReference(string $reference): mixed
     {
         $transaction = $this->dao->searchByReference($reference);
@@ -196,10 +209,20 @@ class TransactionServices
             return false;
         }
         if (!$this->dao->updateStatus($id, $data["status"])) {
-            $_SESSION["msg"] = "There was an error in updating the transaction status.";
+            $_SESSION["msg"] = "There was an error in updating the transaction status. SQL Error.";
             return false;
         }
         $_SESSION["msg"] = "You have successfully updated Transaction ID $id.";
         return true;
+    }
+
+    public function exportSalesReport(array $data): void
+    {
+        $transactions = $this->getTransactionsFromStartToEnd(new DateTime($data["start"]), new DateTime($data["end"]));
+
+        foreach ($transactions as $transaction) {
+            print_r($transaction);
+            print_r($transaction->getListOfOrders());
+        }
     }
 }

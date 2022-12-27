@@ -111,7 +111,7 @@
                   <div class="input">
                     <div class="input__container">
                       <input class="input__field" id="password" name="password" placeholder="Password" required="" type="password" minlength="8" maxlength="49" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
-                      <label class="input__label" for="password">Password</label>
+                      <label class="input__label" for="password">New Password</label>
                     </div>
                   </div>
                 </div>

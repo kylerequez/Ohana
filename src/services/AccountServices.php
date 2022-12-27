@@ -139,7 +139,7 @@ class AccountServices
             return false;
         }
         if ($account->getStatus() == "UNREGISTERED") {
-            $_SESSION["msg"] = "The account you have entered has yet to be verified. Please verify your account or contact an administrator for more details.";
+            $_SESSION["msg"] = "Unfortunately, your account has yet to be verified. Please register your account again tomorrow or email us at ohana.kennel.business@gmail.com.";
             return false;
         }
         if (!password_verify($password, $account->getPassword())) {
@@ -490,5 +490,10 @@ class AccountServices
         }
         $_SESSION["msg"] = "The OTP was successfully resent to your email. Please check your inbox.";
         return true;
+    }
+
+    public function deleteUnregisteredAccounts(): bool
+    {
+        return $this->dao->deleteUnregisteredAccounts();
     }
 }

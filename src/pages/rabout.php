@@ -75,7 +75,6 @@
             url: '/chatbot/settings/get',
             type: "GET",
             error: function(error) {
-                console.log("Error in retrieving the Chatbot Information.");
             }
         }).done(function(data) {
             info = JSON.parse(data);

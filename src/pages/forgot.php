@@ -125,7 +125,6 @@
         let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
         if (input.value === "") {
-          return console.log("input is empty")
         }
         if (input.value.match(pattern)) {
           emailIcon.classList.replace("uil-envelope", "uil-check-circle");
