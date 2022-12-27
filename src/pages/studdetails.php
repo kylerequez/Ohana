@@ -117,6 +117,7 @@
                                     <p class="card-text"> <b class="ms-2">GENDER:</b> <?php echo $profile->getSex(); ?> </p>
                                     <p class="card-text"> <b class="ms-2">GENES:</b> <?php echo $profile->getTrait(); ?> </p>
                                     <p class="card-text"> <b class="ms-2">PCCI PAPERS:</b> <?php echo ($profile->getPcciStatus() == 'REGISTERED') ? 'Registered' : 'Pending'; ?></p>
+                                    <p class="card-text"> <b class="ms-2">PRICE PER SESSION</b> ₱ <?php echo number_format($profile->getPrice(), 2); ?></p>
                                     <p class="card-text"> <b class="ms-2">SUCCESS RATE:</b> <?php echo round($profile->getStudRate() * 100), '%'; ?></p>
                                     <p class="card-text fw-bold mt-3"> Our Adult Frenchies are fully vaccinated.</p>
                                     <p class="card-text fw-bold"> Note: Message us on social media for more pictures. </p>

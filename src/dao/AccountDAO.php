@@ -26,6 +26,26 @@ class AccountDAO
         $this->conn = null;
     }
 
+    public function deleteUnregisteredAccounts(): bool
+    {
+        try {
+            $this->openConnection();
+            $this->conn->beginTransaction();
+            $sql = "DELETE FROM ohana_account WHERE status = 'UNREGISTERED';";
+
+            $stmt = $this->conn->query($sql);
+            $isDeleted = $stmt->execute() > 0;
+            $this->conn->commit();
+            return $isDeleted;
+        } catch (Exception $e) {
+            $this->conn->rollBack();
+            echo $e;
+            return null;
+        } finally {
+            $this->closeConnection();
+        }
+    }
+
     public function getUsersCount(): mixed
     {
         try {

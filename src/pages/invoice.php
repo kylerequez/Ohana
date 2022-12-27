@@ -71,7 +71,6 @@
         $services = new TransactionServices($dao, $orderDAO, null, null, null);
 
         $transaction = $services->searchByReference($reference);
-
         if (is_null($transaction)) {
             $_SESSION['msg'] = "There was an error in accessing the transaction. Please try again.";
         ?>

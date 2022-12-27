@@ -115,14 +115,40 @@
 </head>
 
 <body>
-  <div class="layer"> </div>
+  <?php
+  include_once dirname(__DIR__) . '/../config/app-config.php';
+  try {
+    $start = new DateTime($_GET['start']);
+    $end = new DateTime($_GET['end']);
+  } catch (Exception $e) {
+    $_SESSION['msg'] = "You have entered a wrong time range. Please try again.";
+    $start = null;
+    $end = null;
+  ?>
+    <script>
+      window.location = 'https://<?php echo DOMAIN_NAME; ?>/dashboard/transactions';
+    </script>
+  <?php
+    exit();
+  }
+  if ($start > $end || (!isset($_GET['start']) || !isset($_GET['end']))) {
+    $_SESSION['msg'] = "You have entered a wrong time range. Please try again.";
+  ?>
+    <script>
+      window.location = 'https://<?php echo DOMAIN_NAME; ?>/dashboard/transactions';
+    </script>
+  <?php
+    exit();
+  }
+  ?>
+  <div class="layer"></div>
   <div class="page-flex">
     <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
     <div class="main-wrapper">
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
       <main class="main users chart-page" id="skip-target">
         <div class="container">
-          <h2 class="main-title text-center mt-3"> Customer Transactions </h2>
+          <h2 class="main-title text-center mt-3"> Transactions from <?php echo $start->format('M. d, Y') . ' to ' . $end->format('M. d, Y'); ?></h2>
         </div>
         <div class="users-table table-wrapper">
           <?php
@@ -133,53 +159,21 @@
           require dirname(__DIR__) . '/../dao/OrderDAO.php';
           require dirname(__DIR__) . '/../dao/TransactionDAO.php';
           require dirname(__DIR__) . '/../services/TransactionServices.php';
-          date_default_timezone_set('Asia/Manila');
 
           $dao = new TransactionDAO($servername, $database, $username, $password);
           $orderDAO = new OrderDAO($servername, $database, $username, $password);
           $services = new TransactionServices($dao, $orderDAO, null, null, null);
 
-          $transactions = $services->getAllTransactions();
+          $transactions = $services->getTransactionsFromStartToEnd($start, $end);
           if (!empty($transactions)) {
           ?>
             <div class="createstaff-wrapper">
-              <button type="submit" data-bs-toggle="modal" data-bs-target="#modalCenter"><i data-feather="bar-chart" aria-hidden="true"></i> Generate Sales Report </button>
+              <form method="POST" action="/dashboard/transactions/salesreport">
+                <input type="hidden" name="start" value="<?php echo $_GET['start']; ?>">
+                <input type="hidden" name="end" value="<?php echo $_GET['end']; ?>">
+                <button type="submit"><i data-feather="bar-chart" aria-hidden="true"></i> Export To PDF </button>
+              </form>
             </div>
-            <form method="GET" action="/dashboard/transactions/salesreport">
-              <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="modalCenterTitle">Sales Report: </h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="row">
-                        <div class="mb-0 fw-bold fs-5">
-                          Select Date Range
-                        </div>
-                      </div>
-                      <div class="row g-2">
-                        <div class="col mb-0">
-                          <label for="start" class="form-label">From:</label>
-                          <input class="form-control" type="date" name="start" value="<?php $start = new DateTime('now');
-                                                                                      echo $start->format('Y-m-d'); ?>" id="start" />
-                          <span><i class="fa fa-calendar"></i></span>
-                        </div>
-                        <div class="col mb-0">
-                          <label for="end" class="form-label">To:</label>
-                          <input class="form-control" type="date" name="end" value="<?php $end = new DateTime('tomorrow');
-                                                                                    echo $end->format('Y-m-d'); ?>" id="end" />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="submit" class="btn" style="background-color:#db6551;color:white;">Generate</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </form>
             <br>
             <table id="transactions" class="posts-table">
               <thead>
@@ -350,7 +344,7 @@
           } else {
           ?>
             <div class="alert text-light text-center ms-5 me-5" role="alert" style="margin-top:10%;background-color:#db6551">
-              No existing transactions.
+              No existing transactions from <?php echo $start->format('M. d, Y') . ' to ' . $end->format('M. d, Y'); ?>
             </div>
           <?php
           }

@@ -179,7 +179,7 @@
                                             <h5 class="card-title fs-2 fw-bold" style="font-family: 'Acme', sans-serif;"> <?php echo $profile->getName(); ?></h5>
                                             <p class="card-text"> <?php echo $profile->getTrait() . ' - ' . $profile->getSex(); ?> </p>
                                             <p class="card-text"> Success Rate: <?php echo round($profile->getStudRate() * 100), '%'; ?></p>
-                                            <p class="card-text"> ₱ <?php echo number_format($profile->getPrice(), 2); ?> </p>
+                                            <p class="card-text"> Price per session: ₱ <?php echo number_format($profile->getPrice(), 2); ?> </p>
                                             <div class="btn-Learn mt-3" name="btn-Learn">
                                                 <center><a href="/stud/<?php echo $profile->getReference(); ?>/<?php echo $profile->getName(); ?>"><button id="btnLearn" name="btnLearn"><span> More Info! </span></button></a></center>
                                             </div>

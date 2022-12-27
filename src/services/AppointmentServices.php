@@ -60,6 +60,11 @@ class AppointmentServices
             return false;
         }
 
+        if ($start->format("l") == 'Sunday') {
+            $_SESSION["msg"] = "Invalid day. There are no appointments to be held during Sundays.";
+            return false;
+        }
+
         $title = "";
         if ($type == "REHOMING") {
             $title = "$customerName's Rehoming Appointment";

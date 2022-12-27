@@ -131,6 +131,53 @@ class TransactionDAO
         }
     }
 
+    public function getTransactionsFromStartToEnd(DateTime $start, DateTime $end): mixed
+    {
+        try {
+            $this->openConnection();
+            $sql = "SELECT * FROM ohana_transactions a JOIN ohana_account b 
+                    WHERE b.account_id = a.account_id
+                    AND a.transaction_status = 'COMPLETED'
+                    AND a.transaction_date BETWEEN :start AND :end;";
+
+            $startDate = $start->format('Y-m-d 00:00:00');
+            $endDate = $end->format('Y-m-d 23:59:59');
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':start', $startDate, PDO::PARAM_STR);
+            $stmt->bindParam(':end', $endDate, PDO::PARAM_STR);
+
+            $transactions = null;
+            if ($stmt->execute() > 0) {
+                while ($transaction = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $existingTransaction = new Transaction(
+                        $transaction["account_id"],
+                        $transaction['transaction_reference'],
+                        $transaction["total_price"],
+                        new DateTime($transaction["transaction_date"]),
+                        $transaction["transaction_status"],
+                        $transaction["payment_confirmation"],
+                        $transaction["payment_mode"]
+                    );
+                    $existingTransaction->setId($transaction["transaction_id"]);
+                    $existingTransaction->setFname($transaction["fname"]);
+                    $existingTransaction->setMname($transaction["mname"]);
+                    $existingTransaction->setLname($transaction["lname"]);
+                    $existingTransaction->setNumber($transaction["number"]);
+                    $existingTransaction->setEmail($transaction["email"]);
+
+                    $transactions[] = $existingTransaction;
+                }
+            }
+            return $transactions;
+        } catch (Exception $e) {
+            echo $e;
+            return null;
+        } finally {
+            $this->closeConnection();
+        }
+    }
+
     public function searchByAccountId($id): mixed
     {
         try {
