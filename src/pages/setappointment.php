@@ -97,7 +97,7 @@
 
     <?php } ?>
     <main>
-    <?php include_once 'navigationbar.php'; ?>
+        <?php include_once 'navigationbar.php'; ?>
         <div class="container-fluid">
             <section class="set-appointment" id="customer-book">
                 <div class="container">
@@ -112,7 +112,7 @@
             </section>
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
                 <center>
-                    <div class="alert alert-warning text-center" role="alert" style="width:400px;">
+                    <div class="alert alert-warning text-center" role="alert" style="width:500px;">
                         <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
                         unset($_SESSION["msg"]); ?>
                     </div>
@@ -157,10 +157,11 @@
                                             <option id="f" value="16:30 - 17:30">4:30 PM - 5:30 PM</option>
                                         </select>
                                     </div>
+                                    <div id="note" class="form-group mb-2"></div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#appointmentConfirmation" class="btn text-light" style="background-color:#db6551">Book Appointment</button>
+                                    <button id="bookButton" type="button" data-bs-toggle="modal" data-bs-target="#appointmentConfirmation" class="btn text-light" style="background-color:#db6551">Book Appointment</button>
                                 </div>
                             </div>
                         </div>

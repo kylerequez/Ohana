@@ -174,9 +174,7 @@
         $.ajax({
             url: '/chatbot/settings/get',
             type: "GET",
-            error: function(error) {
-                console.log("Error in retrieving the Chatbot Information.");
-            }
+            error: function(error) {}
         }).done(function(data) {
             info = JSON.parse(data);
             avatar = info.avatar;
@@ -187,8 +185,7 @@
                 title = name, welcomeMessage = intro, inactiveMsg = noResponse, theme = "orange")
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" 
-    crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 </body>
 
