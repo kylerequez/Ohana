@@ -130,7 +130,7 @@
                     <input type="text" class="form-control filter-input" placeholder="Enter Description..." data-column="1">
                   </th>
                   <th>
-                    <input type="datetime-local" class="form-control filter-select" data-column="2">
+                    <input type="text" class="form-control filter-input" placeholder="Enter Date (ex. Jan. 3, 2022)..." data-column="2">
                   </th>
                 </tr>
               </thead>
@@ -141,7 +141,7 @@
                   <tr>
                     <td><?php echo $log->getId(); ?></td>
                     <td><?php echo $log->getLog(); ?></td>
-                    <td><?php echo $log->getDate()->format('d-M-Y h:i:s A'); ?></td>
+                    <td><?php echo $log->getDate()->format('M. d, Y h:i:s A'); ?></td>
                   </tr>
                 <?php
                 }

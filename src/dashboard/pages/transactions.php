@@ -201,7 +201,9 @@
                   <th>
                     <input type="text" class="form-control filter-input" placeholder="Enter Full Name..." data-column="2">
                   </th>
-                  <th></th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Date (ex. Jan. 3, 2022)..." data-column="3">
+                  </th>
                   <th>
                     <select data-column="4" class="form-control filter-select">
                       <option value="">Select a status...</option>
@@ -221,7 +223,7 @@
                     <td><?php echo $transaction->getReference(); ?></td>
                     <td><?php echo $transaction->getEmail(); ?></td>
                     <td><?php echo $transaction->getFname() . " " . $transaction->getMname() . " " . $transaction->getLname(); ?></td>
-                    <td><?php echo $transaction->getDate()->format('M-d-Y h:i:s A'); ?></td>
+                    <td><?php echo $transaction->getDate()->format('M. d, Y h:i:s A'); ?></td>
                     <td><?php echo $transaction->getStatus(); ?></td>
                     <td>
                       <button class="view-btn transparent-btn fs-4" type="view" style="color:#7d605c; margin-right: 15px;" data-bs-toggle="modal" data-bs-target="#viewModalId<?php echo $transaction->getId(); ?>"><i class="uil uil-eye"></i></button>

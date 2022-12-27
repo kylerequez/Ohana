@@ -139,7 +139,9 @@
                   <th>
                     <input type="text" class="form-control filter-input" placeholder="Enter Full Name..." data-column="1">
                   </th>
-                  <th></th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Date (ex. Jan. 3, 2022)..." data-column="2">
+                  </th>
                   <th></th>
                 </tr>
               </thead>
@@ -148,7 +150,7 @@
                   <tr>
                     <td><?php echo $feedback->formatRating(); ?></td>
                     <td><?php echo $feedback->getAccount()->getFullName(); ?></td>
-                    <td><?php echo $feedback->getDate()->format('M-d-Y h:i:s A'); ?></td>
+                    <td><?php echo $feedback->getDate()->format('M. d, Y h:i:s A'); ?></td>
                     <td>
                       <button class="view-btn transparent-btn fs-4" data-bs-toggle="modal" data-bs-target="#viewModal<?php echo $feedback->getId(); ?>" type="view" style="color:#7d605c; margin-right: 15px;"> <i class="uil uil-eye"></i> </button>
                       <div class="modal fade" id="viewModal<?php echo $feedback->getId(); ?>" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
@@ -172,7 +174,7 @@
                               </div>
                               <div class="mb-3">
                                 <label for="message-text" class="col-form-label">Message:</label>
-                                <textarea class="form-control" id="message-text" disabled><?php echo $feedback->getMessage(); ?></textarea>
+                                <textarea class="form-control" id="message-text" disabled><?php echo empty($feedback->getMessage()) ? "No message..." : $feedback->getMessage(); ?></textarea>
                               </div>
                             </div>
                             <div class="modal-footer">
