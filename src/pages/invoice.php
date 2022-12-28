@@ -58,30 +58,29 @@
 </head>
 
 <body style="background-color: #FAF8F0;">
+    <?php
+    require dirname(__DIR__) . '/config/db-config.php';
+    require dirname(__DIR__) . '/dao/OrderDAO.php';
+    require dirname(__DIR__) . '/dao/TransactionDAO.php';
+    require dirname(__DIR__) . '/services/TransactionServices.php';
+
+    $dao = new TransactionDAO($servername, $database, $username, $password);
+    $orderDAO = new OrderDAO($servername, $database, $username, $password);
+    $services = new TransactionServices($dao, $orderDAO, null, null, null);
+
+    $transaction = $services->searchByReference($reference);
+    if (is_null($transaction)) {
+        $_SESSION['msg'] = "There was an error in accessing the transaction. Please try again.";
+    ?>
+        <script type="text/javascript">
+            const url = "https://<?= DOMAIN_NAME ?>/pawcart";
+            window.location.href = url;
+        </script>
+    <?php
+        exit();
+    }
+    ?>
     <main>
-
-        <?php
-        require dirname(__DIR__) . '/config/db-config.php';
-        require dirname(__DIR__) . '/dao/OrderDAO.php';
-        require dirname(__DIR__) . '/dao/TransactionDAO.php';
-        require dirname(__DIR__) . '/services/TransactionServices.php';
-
-        $dao = new TransactionDAO($servername, $database, $username, $password);
-        $orderDAO = new OrderDAO($servername, $database, $username, $password);
-        $services = new TransactionServices($dao, $orderDAO, null, null, null);
-
-        $transaction = $services->searchByReference($reference);
-        if (is_null($transaction)) {
-            $_SESSION['msg'] = "There was an error in accessing the transaction. Please try again.";
-        ?>
-            <script type="text/javascript">
-                const url = "https://<?= DOMAIN_NAME ?>/pawcart";
-                window.location.href = url;
-            </script>
-        <?php
-            exit();
-        }
-        ?>
         <div class="container-fluid">
             <img src="/Ohana/src/images/Pages/invoice.png" id="cartheader" class="img-responsive" width="100%">
             <div class="container">

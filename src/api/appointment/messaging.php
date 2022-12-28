@@ -3,6 +3,7 @@ require_once dirname(__DIR__) . '/../config/app-config.php';
 require_once dirname(__DIR__) . '/../config/db-config.php';
 require_once dirname(__DIR__) . '/../dao/AppointmentDAO.php';
 require_once dirname(__DIR__) . '/../services/AppointmentServices.php';
+require_once dirname(__DIR__) . '/../config/app-config.php';
 
 date_default_timezone_set('Asia/Manila');
 $dao = new AppointmentDAO($servername, $database, $username, $password);
@@ -10,7 +11,7 @@ $services = new AppointmentServices($dao, null);
 
 $ch = curl_init();
 $parameters = array(
-    'apikey' => 'ac52fa794b80cecfc29fe5c3cbcd00cb',
+    'apikey' => SEMAPHORE_API_KEY,
 );
 curl_setopt($ch, CURLOPT_URL, 'https://api.semaphore.co/api/v4/account' . '?' . http_build_query($parameters));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -49,7 +50,7 @@ foreach ($appointments as $appointment) {
 
     $ch = curl_init();
     $parameters = array(
-        'apikey' => 'ac52fa794b80cecfc29fe5c3cbcd00cb',
+        'apikey' => SEMAPHORE_API_KEY,
         'number' => $appointment->getNumber(),
         'message' => $text,
         'sendername' => 'OhanaKennel'

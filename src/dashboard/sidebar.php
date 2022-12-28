@@ -14,7 +14,7 @@
   } else {
     include_once dirname(__DIR__) . '/models/Account.php';
     $user = unserialize($_SESSION['user']);
-    if (!$user->getType() == 'USER') {
+    if ($user->getType() == 'USER') {
     ?>
       <script>
         window.location = 'https://<?php echo DOMAIN_NAME; ?>/home';
