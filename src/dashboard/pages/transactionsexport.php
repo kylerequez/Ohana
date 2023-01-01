@@ -117,6 +117,7 @@
 <body>
   <?php
   include_once dirname(__DIR__) . '/../config/app-config.php';
+  date_default_timezone_set('Asia/Manila');
   try {
     $start = new DateTime($_GET['start']);
     $end = new DateTime($_GET['end']);
@@ -195,7 +196,9 @@
                   <th>
                     <input type="text" class="form-control filter-input" placeholder="Enter Full Name..." data-column="2">
                   </th>
-                  <th></th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Date (ex. Jan. 3, 2022)..." data-column="3">
+                  </th>
                   <th>
                     <select data-column="4" class="form-control filter-select">
                       <option value="">Select a status...</option>

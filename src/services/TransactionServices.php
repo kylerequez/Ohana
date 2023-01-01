@@ -234,7 +234,7 @@ class TransactionServices
         }
 
         // create new PDF document
-        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        $pdf = new PDF("L", PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
         // set document information
         $pdf->SetCreator(PDF_CREATOR);
@@ -286,34 +286,39 @@ class TransactionServices
 
 
         // Set some content to print
-        $html = <<<EOD
-        <h1>Student  list</h1>
-        <table cellspacing="0" cellpadding="1" border="1" style="border-color:gray;">
-            <tr style="background-color:green;color:white;">
-                <td>SL no</td>
-                <td>Name</td>
-                <td>Roll No</td>
-                <td>City</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Divyasundar</td>
-                <td>001</td>
-                <td>Pune</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Milan</td>
-                <td>002</td>
-                <td>Pune</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Hritika</td>
-                <td>003</td>
-                <td>Pune</td>
-            </tr>
-        </table>
+        $html = "
+        <div>
+            <h1>Ohana Sales Report for {$start->format("M. d, Y")} to {$end->format("M. d, Y")}</h1>
+        </div>
+        <div>
+            <table cellspacing=\"0\" cellpadding=\"1\" border=\"1\" style=\"border-color:gray;\">
+                <thead>
+                    <tr style=\"background-color:green;color:white;\">
+                        <th>Reference ID:</th>
+                        <th>Type</th>
+                        <th>Customer</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+           ";
+
+        foreach ($transactions as $transaction) {
+            foreach ($transaction->getListOfOrders() as $order) {
+                $html .= "
+                    <tr>
+                        <td>{$transaction->getReference()}</td>
+                        <td>{$order->getType()}</td>
+                        <td>{$transaction->getFname()} {$transaction->getLname()}</td>
+                        <td>₱" . number_format($order->getPrice(), 2) . "</td>
+                    </tr>
+                ";
+            }
+        }
+        $html .= <<<EOD
+                </tbody>
+            </table>
+        </div>
         EOD;
 
         // Print text using writeHTMLCell()
@@ -322,6 +327,5 @@ class TransactionServices
         $pdf->Output('Sales Report for ' . $start->format('M. d, Y') . ' to ' . $end->format('M. d, Y') . '.pdf', 'I');
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);
-        exit();
     }
 }
