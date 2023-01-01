@@ -24,9 +24,9 @@ class FeedbackController
     {
         switch ($method) {
             case "GET":
-                break;
+                exit();
             case "POST":
-                break;
+                exit();
         }
     }
 
@@ -34,13 +34,13 @@ class FeedbackController
     {
         switch ($method) {
             case "GET":
-                break;
+                exit();
             case "POST":
                 if (!$this->services->addFeedback($_POST)) {
                     header("Location: " . $_SERVER["HTTP_REFERER"]);
                 }
                 header("Location: https://" . DOMAIN_NAME . "/transactions");
-                break;
+                exit();
         }
     }
 }

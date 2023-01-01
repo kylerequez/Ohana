@@ -13,14 +13,16 @@
     <style>
         @media screen and (max-width: 1366px) {
             #header {
-                margin-top:20%;
+                margin-top: 20%;
                 font-size: 60px;
             }
         }
+
         @media screen and (min-width: 360px) and (max-width: 500px) {
             #header {
-                margin-top:12%;
+                margin-top: 12%;
             }
+
             #mainabout {
                 background-image: url(/Ohana/src/images/Pages/mbaboutmain.png);
                 min-width: 360px;
@@ -68,26 +70,10 @@
     <div id="ohanafooter">
         <?php include_once 'footer.php'; ?>
     </div>
-    <script src="/Ohana/src/js/chatbot-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        $.ajax({
-            url: '/chatbot/settings/get',
-            type: "GET",
-            error: function(error) {
-            }
-        }).done(function(data) {
-            info = JSON.parse(data);
-            avatar = info.avatar;
-            name = info.name;
-            intro = info.intro;
-            noResponse = info.noResponse;
-            createChatBot(host = '/chatbot/responses/get', botLogo = avatar,
-                title = name, welcomeMessage = intro, inactiveMsg = noResponse, theme = "orange")
-        });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
-    </script>
+    <script src="/Ohana/src/js/chatbot-ui.js"></script>
+    <script src="/Ohana/src/js/chatbot-init.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 
 </html>

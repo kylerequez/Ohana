@@ -37,7 +37,7 @@ class BoardingSlotController
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest("GET");
-                break;
+                exit();
                 // Boarding Slot Update
             case "POST":
                 if (!empty($_FILES["image"]["tmp_name"])) {
@@ -53,12 +53,12 @@ class BoardingSlotController
                     )) {
                         $_SESSION["msg"] = "The file type is not accepted. Please upload a file with the following format: JPG and PNG.";
                         $this->processCollectionRequest("GET");
-                        break;
+                        exit();
                     }
                     if ($_FILES['image']['size'] > 1000000) {
                         $_SESSION["msg"] = "The image size must not be greater than 1 MB.";
                         $this->processCollectionRequest("GET");
-                        break;
+                        exit();
                     }
                 } else {
                     $_POST["image"] = base64_decode($_POST["old_image"]);
@@ -72,7 +72,7 @@ class BoardingSlotController
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest("GET");
-                break;
+                exit();
         }
     }
 
@@ -82,7 +82,7 @@ class BoardingSlotController
                 // Boarding Slot Display
             case "GET":
                 header("Location: https://" . DOMAIN_NAME . "/dashboard/petboarding");
-                break;
+                exit();
                 // Add Boarding Slot
             case "POST":
                 $finfo = new finfo(FILEINFO_MIME_TYPE);
@@ -96,12 +96,12 @@ class BoardingSlotController
                 )) {
                     $_SESSION["msg"] = "The file type is not accepted. Please upload a file with the following format: JPG and PNG.";
                     $this->processCollectionRequest("GET");
-                    break;
+                    exit();
                 }
                 if ($_FILES['image']['size'] > 1000000) {
                     $_SESSION["msg"] = "The image size must not be greater than 1 MB.";
                     $this->processCollectionRequest("GET");
-                    break;
+                    exit();
                 }
                 $user = unserialize($_SESSION["user"]);
                 $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
@@ -114,7 +114,7 @@ class BoardingSlotController
                     $_SESSION["msg"] = "There was an error in adding the log.";
                 }
                 $this->processCollectionRequest("GET");
-                break;
+                exit();
         }
     }
 }

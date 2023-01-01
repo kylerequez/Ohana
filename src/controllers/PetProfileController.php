@@ -34,7 +34,7 @@ class PetProfileController
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest("GET");
-                break;
+                exit();
             case "POST":
                 if (!empty($_FILES["image"]["tmp_name"])) {
                     $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
@@ -49,12 +49,12 @@ class PetProfileController
                     )) {
                         $_SESSION["msg"] = "The file type is not accepted. Please upload a file with the following format: JPG and PNG.";
                         $this->processCollectionRequest("GET");
-                        break;
+                        exit();
                     }
                     if ($_FILES['image']['size'] > 1000000) {
                         $_SESSION["msg"] = "The image size must not be greater than 1 MB.";
                         $this->processCollectionRequest("GET");
-                        break;
+                        exit();
                     }
                 } else {
                     $_POST["image"] = base64_decode($_POST["old_image"]);
@@ -68,7 +68,7 @@ class PetProfileController
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest("GET");
-                break;
+                exit();
         }
     }
 
@@ -78,7 +78,7 @@ class PetProfileController
             case "GET":
                 $_SESSION["profiles"] = serialize($this->services->getOhanaPets());
                 header("Location: https://" . DOMAIN_NAME . "/dashboard/pet-profiles");
-                break;
+                exit();
             case "POST":
                 $finfo = new finfo(FILEINFO_MIME_TYPE);
                 if (false === $ext = array_search(
@@ -91,12 +91,12 @@ class PetProfileController
                 )) {
                     $_SESSION["msg"] = "The file type is not accepted. Please upload a file with the following format: JPG and PNG.";
                     $this->processCollectionRequest("GET");
-                    break;
+                    exit();
                 }
                 if ($_FILES['image']['size'] > 1000000) {
                     $_SESSION["msg"] = "The image size must not be greater than 1 MB.";
                     $this->processCollectionRequest("GET");
-                    break;
+                    exit();
                 }
                 $account = unserialize($_SESSION["user"]);
                 $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
@@ -109,7 +109,7 @@ class PetProfileController
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest("GET");
-                break;
+                exit();
         }
     }
 
@@ -127,9 +127,9 @@ class PetProfileController
         switch ($method) {
             case "GET":
                 header("Location: https://" . DOMAIN_NAME . "/dashboard/stud-profiles");
-                break;
+                exit();
             case "POST":
-                break;
+                exit();
         }
     }
 
@@ -137,9 +137,9 @@ class PetProfileController
     {
         switch ($method) {
             case "GET":
-                break;
+                exit();
             case "POST":
-                break;
+                exit();
         }
     }
 
@@ -156,9 +156,9 @@ class PetProfileController
     {
         switch ($method) {
             case "GET":
-                break;
+                exit();
             case "POST":
-                break;
+                exit();
         }
     }
 
@@ -167,10 +167,10 @@ class PetProfileController
         switch ($method) {
             case "GET":
                 header("Location: https://" . DOMAIN_NAME . "/puppies");
-                break;
+                exit();
             case "POST":
 
-                break;
+                exit();
         }
     }
 
@@ -187,9 +187,9 @@ class PetProfileController
     {
         switch ($method) {
             case "GET":
-                break;
+                exit();
             case "POST":
-                break;
+                exit();
         }
     }
 
@@ -198,9 +198,9 @@ class PetProfileController
         switch ($method) {
             case "GET":
                 header("Location: https://" . DOMAIN_NAME . "/stud");
-                break;
+                exit();
             case "POST":
-                break;
+                exit();
         }
     }
 
@@ -232,7 +232,7 @@ class PetProfileController
                 }
                 echo $_SESSION['msg'];
                 $this->processCustomerCollectionRequest("GET");
-                break;
+                exit();
             case "POST":
                 $account = unserialize($_SESSION["user"]);
                 $_POST["accountId"] = $account->getType() != "USER" ? 1 : $account->getId();
@@ -250,12 +250,12 @@ class PetProfileController
                     )) {
                         $_SESSION["msg"] = "The file type is not accepted. Please upload a file with the following format: JPG and PNG.";
                         $this->processCustomerCollectionRequest("GET");
-                        break;
+                        exit();
                     }
                     if ($_FILES['image']['size'] > 1000000) {
                         $_SESSION["msg"] = "The image size must not be greater than 1 MB.";
                         $this->processCustomerCollectionRequest("GET");
-                        break;
+                        exit();
                     }
                 } else {
                     $_POST["image"] = base64_decode($_POST["old_image"]);
@@ -264,7 +264,7 @@ class PetProfileController
                     $this->processCustomerCollectionRequest("GET");
                 }
                 $this->processCustomerCollectionRequest("GET");
-                break;
+                exit();
         }
     }
 
@@ -273,7 +273,7 @@ class PetProfileController
         switch ($method) {
             case "GET":
                 header("Location: https://" . DOMAIN_NAME . "/ownedpets");
-                break;
+                exit();
             case "POST":
                 $finfo = new finfo(FILEINFO_MIME_TYPE);
                 if (false === $ext = array_search(
@@ -286,12 +286,12 @@ class PetProfileController
                 )) {
                     $_SESSION["msg"] = "The file type is not accepted. Please upload a file with the following format: JPG and PNG.";
                     $this->processCustomerCollectionRequest("GET");
-                    break;
+                    exit();
                 }
                 if ($_FILES['image']['size'] > 1000000) {
                     $_SESSION["msg"] = "The image size must not be greater than 1 MB.";
                     $this->processCustomerCollectionRequest("GET");
-                    break;
+                    exit();
                 }
                 $account = unserialize($_SESSION["user"]);
                 $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
@@ -301,7 +301,7 @@ class PetProfileController
                 if (!$this->services->addPetProfile($_POST)) {
                 }
                 $this->processCustomerCollectionRequest("GET");
-                break;
+                exit();
         }
     }
 }

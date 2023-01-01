@@ -34,7 +34,7 @@ class AppointmentController
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest($method);
-                break;
+                exit();
             case "POST":
                 if (!$this->services->updateAppointment($id, $_POST)) {
                     $this->processCollectionRequest("GET");
@@ -45,7 +45,7 @@ class AppointmentController
                     $_SESSION["msg"] .= "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest("GET");
-                break;
+                exit();
         }
     }
 
@@ -54,7 +54,7 @@ class AppointmentController
         switch ($method) {
             case "GET":
                 header("Location: https://" . DOMAIN_NAME . "/dashboard/appointments");
-                break;
+                exit();
         }
     }
 
@@ -71,9 +71,9 @@ class AppointmentController
     {
         switch ($method) {
             case "GET":
-                break;
+                exit();
             case "POST":
-                break;
+                exit();
         }
     }
 
@@ -82,9 +82,9 @@ class AppointmentController
         switch ($method) {
             case "GET":
                 header("Location: https://" . DOMAIN_NAME . "/appointments");
-                break;
+                exit();
             case "POST":
-                break;
+                exit();
         }
     }
 
@@ -92,14 +92,14 @@ class AppointmentController
     {
         switch ($method) {
             case "GET":
-                break;
+                exit();
             case "POST":
                 if (!$this->services->addAppointment($_POST)) {
                     header("Location: " . $_SERVER['HTTP_REFERER']);
-                    break;
+                    exit();
                 }
                 header("Location: https://" . DOMAIN_NAME . "/appointments/get");
-                break;
+                exit();
         }
     }
 
@@ -107,14 +107,14 @@ class AppointmentController
     {
         switch ($method) {
             case "GET":
-                break;
+                exit();
             case "POST":
                 if (!$this->services->addAppointment($_POST)) {
                     header("Location: " . $_SERVER['HTTP_REFERER']);
-                    break;
+                    exit();
                 }
                 header("Location: https://" . DOMAIN_NAME . "/user-feedback");
-                break;
+                exit();
         }
     }
 
@@ -122,14 +122,14 @@ class AppointmentController
     {
         switch ($method) {
             case "GET":
-                break;
+                exit();
             case "POST":
                 if (!$this->services->addAppointment($_POST)) {
                     header("Location: " . $_SERVER['HTTP_REFERER']);
-                    break;
+                    exit();
                 }
                 header("Location: https://" . DOMAIN_NAME . "/user-feedback");
-                break;
+                exit();
         }
     }
 }

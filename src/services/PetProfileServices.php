@@ -95,7 +95,7 @@ class PetProfileServices
         $trait = trim($data["trait"]);
         $birthdate = DateTime::createFromFormat("Y-m-d", $data["birthdate"]);
         $sex = strtoupper($data["sex"]);
-        $color = strtoupper($data["color"]);
+        $color = trim($data["color"]);
         $isVaccinated = $data["isVaccinated"];
         $pcciStatus = strtoupper($data["pcciStatus"]);
         $accountId = $data["accountId"];

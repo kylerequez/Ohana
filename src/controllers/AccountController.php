@@ -31,7 +31,7 @@ class AccountController
         switch ($method) {
             case "GET":
                 header("Location: https://" . DOMAIN_NAME . "/dashboard/customers");
-                break;
+                exit();
         }
     }
 
@@ -42,21 +42,21 @@ class AccountController
                 $user = unserialize($_SESSION["user"]);
                 if (!$this->services->updatePassword($_GET)) {
                     header('Location: ' . $_SERVER['HTTP_REFERER']);
-                    break;
+                    exit();
                 }
                 $_SESSION["user"] = serialize($this->services->searchById($user->getId()));
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
-                break;
+                exit();
             case "POST":
                 $user = unserialize($_SESSION["user"]);
                 if (!$this->services->updateAccount($user->getId(), $_POST)) {
                     header('Location: ' . $_SERVER['HTTP_REFERER']);
-                    break;
+                    exit();
                 }
                 $_SESSION["msg"] = "You have successfully updated your account!";
                 $_SESSION["user"] = serialize($this->services->searchById($user->getId()));
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
-                break;
+                exit();
         }
     }
 
@@ -82,7 +82,7 @@ class AccountController
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processStaffCollectionRequest($method);
-                break;
+                exit();
             case "POST":
                 if (!$this->services->updateAccount($id, $_POST)) {
                     $this->processStaffCollectionRequest("GET");
@@ -93,7 +93,7 @@ class AccountController
                     $_SESSION["msg"] .= "There was an error in the logging of the action.";
                 }
                 $this->processStaffCollectionRequest("GET");
-                break;
+                exit();
         }
     }
 
@@ -103,12 +103,12 @@ class AccountController
 
             case "GET":
                 header("Location: https://" . DOMAIN_NAME . "/dashboard/staff");
-                break;
+                exit();
                 // Add Staff
             case "POST":
                 if (!$this->services->addAccount($_POST)) {
                     $this->processStaffCollectionRequest("GET");
-                    break;
+                    exit();
                 }
                 $user = unserialize($_SESSION["user"]);
                 $log = $user->getFullName() . " has added a staff account";
@@ -116,7 +116,7 @@ class AccountController
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processStaffCollectionRequest("GET");
-                break;
+                exit();
         }
     }
 
@@ -134,27 +134,27 @@ class AccountController
                     $_SESSION["cart"] = serialize(new Cart());
                     if ($account->getType() == "USER") {
                         header("Location: https://" . DOMAIN_NAME . "/home");
-                        break;
+                        exit();
                     } else {
                         header("Location: https://" . DOMAIN_NAME . "/dashboard/home");
-                        break;
+                        exit();
                     }
                 } else {
                     header("Location: https://" . DOMAIN_NAME . "/verifylogin");
-                    break;
+                    exit();
                 }
-                break;
+                exit();
             case "POST":
                 if (!isset($_SESSION)) session_start();
                 if (!$this->services->loginRequest($_POST)) {
                     header("Location: https://" . DOMAIN_NAME . "/login");
-                    break;
+                    exit();
                 }
                 date_default_timezone_set('Asia/Manila');
                 $_SESSION['time'] = time();
                 unset($_SESSION["msg"]);
                 header("Location: https://" . DOMAIN_NAME . "/verifylogin");
-                break;
+                exit();
         }
     }
 
@@ -164,10 +164,10 @@ class AccountController
             case "GET":
                 if (!$this->services->resendLoginRequest($email, $token)) {
                     header("Location: https://" . DOMAIN_NAME . "/verifylogin");
-                    break;
+                    exit();
                 }
                 header("Location: https://" . DOMAIN_NAME . "/verifylogin");
-                break;
+                exit();
         }
     }
 
@@ -191,19 +191,19 @@ class AccountController
                     $_SESSION['time'] = time();
                     unset($_SESSION["msg"]);
                     header("Location: https://" . DOMAIN_NAME . "/forgot-password/confirm");
-                    break;
+                    exit();
                 } else {
                     header("Location: https://" . DOMAIN_NAME . "/forgot-password");
-                    break;
+                    exit();
                 }
-                break;
+                exit();
             case "POST":
                 if (!$this->services->changePasswordRequest($email)) {
                     header("Location: https://" . DOMAIN_NAME . "/forgot-password/change/" . $_SESSION["token"]);
-                    break;
+                    exit();
                 }
                 header("Location: https://" . DOMAIN_NAME . "/forgot-password/success");
-                break;
+                exit();
         }
     }
 
@@ -213,7 +213,7 @@ class AccountController
             case "GET":
                 $this->services->resendForgotPasswordRequest($email, $token);
                 header("Location: https://" . DOMAIN_NAME . "/forgot-password/confirm");
-                break;
+                exit();
         }
     }
 
@@ -223,12 +223,12 @@ class AccountController
             case "GET":
                 if ($this->services->verifyRegistration($_GET)) {
                     header("Location: https://" . DOMAIN_NAME . "/register/success");
-                    break;
+                    exit();
                 } else {
                     header("Location: https://" . DOMAIN_NAME . "/register/confirm");
-                    break;
+                    exit();
                 }
-                break;
+                exit();
             case "POST":
                 if (!isset($_SESSION)) session_start();
                 if ($this->services->addAccount($_POST)) {
@@ -237,16 +237,16 @@ class AccountController
                         $_SESSION['time'] = time();
                         unset($_SESSION["msg"]);
                         header("Location: https://" . DOMAIN_NAME . "/register/confirm");
-                        break;
+                        exit();
                     } else {
                         header("Location: https://" . DOMAIN_NAME . "/register");
-                        break;
+                        exit();
                     }
                 } else {
                     header("Location: https://" . DOMAIN_NAME . "/register");
-                    break;
+                    exit();
                 }
-                break;
+                exit();
         }
     }
 
@@ -256,7 +256,7 @@ class AccountController
             case "GET":
                 $this->services->resendRegistrationRequest($email, $token);
                 header("Location: https://" . DOMAIN_NAME . "/register/confirm");
-                break;
+                exit();
         }
     }
 }

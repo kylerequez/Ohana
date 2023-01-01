@@ -26,7 +26,7 @@ class TransactionController
     {
         switch ($method) {
             case "GET":
-                break;
+                exit();
             case "POST":
                 $_POST["image"] = file_get_contents($_FILES["image"]["tmp_name"]);
                 $finfo = new finfo(FILEINFO_MIME_TYPE);
@@ -40,18 +40,18 @@ class TransactionController
                 )) {
                     $_SESSION["msg"] = "The file type is not accepted. Please upload a file with the following format: JPG and PNG.";
                     $this->processCustomerCollectionRequest("GET");
-                    break;
+                    exit();
                 }
                 if ($_FILES['image']['size'] > 1000000) {
                     $_SESSION["msg"] = "The image size must not be greater than 1 MB.";
                     $this->processCustomerCollectionRequest("GET");
-                    break;
+                    exit();
                 }
                 if (!$this->services->uploadProofOfPayment($id, $_POST)) {
                     $this->processCustomerCollectionRequest("GET");
                 }
                 $this->processCustomerCollectionRequest("GET");
-                break;
+                exit();
         }
     }
 
@@ -60,9 +60,9 @@ class TransactionController
         switch ($method) {
             case "GET":
                 header("Location: https://" . DOMAIN_NAME . "/transactions");
-                break;
+                exit();
             case "POST":
-                break;
+                exit();
         }
     }
 
@@ -80,14 +80,14 @@ class TransactionController
         switch ($method) {
             case "GET":
 
-                break;
+                exit();
             case "POST":
                 if (!$this->services->updateStatus($id, $_POST)) {
                     $this->processCollectionRequest("GET");
-                    break;
+                    exit();
                 }
                 $this->processCollectionRequest("GET");
-                break;
+                exit();
         }
     }
 
@@ -96,9 +96,9 @@ class TransactionController
         switch ($method) {
             case "GET":
                 header("Location: https://" . DOMAIN_NAME . "/dashboard/transactions");
-                break;
+                exit();
             case "POST":
-                break;
+                exit();
         }
     }
 
@@ -108,10 +108,10 @@ class TransactionController
             switch ($method) {
                 case "GET":
                     $this->services->proceedToUpload($reference, $_GET);
-                    break;
+                    exit();
                 case "POST":
                     $this->services->completeTransaction($reference, $_POST);
-                    break;
+                    exit();
             }
         }
     }
@@ -122,10 +122,10 @@ class TransactionController
             switch ($method) {
                 case "GET":
                     $this->services->proceedToUploadStud($reference, $_GET);
-                    break;
+                    exit();
                 case "POST":
                     $this->services->completeTransactionStud($reference, $_POST);
-                    break;
+                    exit();
             }
         }
     }
@@ -138,7 +138,7 @@ class TransactionController
                     header('Location: ' . $_SERVER['HTTP_REFERER']);
                 }
                 header("Location: https://" . DOMAIN_NAME . "/checkout/" . uniqid('OKPH-') . "?from=STUD");
-                break;
+                exit();
         }
     }
 }

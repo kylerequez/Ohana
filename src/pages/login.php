@@ -40,9 +40,10 @@
       .input__label {
         font-size: 15px;
       }
+
       @media screen and (min-width: 521px) and (max-width: 1090px) {
         #ohanafooter {
-          margin-top:15%;
+          margin-top: 15%;
         }
       }
     }
@@ -76,7 +77,7 @@
                   <div class="form__row">
                     <div class="input">
                       <div class="input__container">
-                        <input type="email" class="input__field" id="email" name="email" placeholder="Email" required="" />
+                        <input type="email" class="input__field" id="email" autocomplete="email" name="email" placeholder="Email" required="" />
                         <label class="input__label" for="email">Email
                           <i class="uil uil-envelope email-icon"></i>
                         </label>
@@ -86,7 +87,7 @@
                   <div class="form__row">
                     <div class="input">
                       <div class="input__container">
-                        <input class="input__field" id="password" name="password" placeholder="Password" minlength="8" maxlength="49" required="" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
+                        <input class="input__field" id="password" name="password" placeholder="Password" autocomplete="current-password" minlength="8" maxlength="49" required="" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
                         <label class="input__label" for="password">Password</label>
                       </div>
                     </div>

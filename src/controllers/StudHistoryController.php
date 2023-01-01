@@ -34,7 +34,7 @@ class StudHistoryControler
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest("GET");
-                break;
+                exit();
             case "POST":
                 if (!$this->services->updateRecord($id, $_POST)) {
                     $this->processCollectionRequest("GET");
@@ -45,7 +45,7 @@ class StudHistoryControler
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest("GET");
-                break;
+                exit();
         }
     }
 
@@ -54,7 +54,7 @@ class StudHistoryControler
         switch ($method) {
             case "GET":
                 header("Location: " . $_SERVER['HTTP_REFERER']);
-                break;
+                exit();
             case "POST":
                 if (!$this->services->addRecord($_POST)) {
                     header("Location: " . $_SERVER['HTTP_REFERER']);
@@ -66,7 +66,7 @@ class StudHistoryControler
                     $this->processCollectionRequest("GET");
                 }
                 $this->processCollectionRequest("GET");
-                break;
+                exit();
         }
     }
 }

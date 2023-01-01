@@ -32,7 +32,9 @@ if (!$mail->send()) {
 }
 if(str_contains($_SERVER['HTTP_REFERER'], '/contact')) {
     header('Location: ' . $_SERVER["HTTP_REFERER"]);
+    exit();
 } else {
     header('Location: ' . $_SERVER["HTTP_REFERER"] . '#contact');
+    exit();
 }
 

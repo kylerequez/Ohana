@@ -10,6 +10,4 @@ $controller = new AccountController($services, null);
 
 if (isset($_POST["btnLogout"])) {
     $controller->logoutRequest($_SERVER["REQUEST_METHOD"]);
-} else {
-    header("Location: " . $_SERVER['HTTP_REFERER']);
 }

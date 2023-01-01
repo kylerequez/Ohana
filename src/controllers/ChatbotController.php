@@ -27,7 +27,7 @@ class ChatbotController
         switch ($method) {
             case "GET":
                 header("Location: https://" . DOMAIN_NAME . "/dashboard/chatbot-settings");
-                break;
+                exit();
             case "POST":
                 if (!$this->services->updateSettings($_POST, $_FILES)) {
                     $this->processSettingsCollectionRequest("GET");
@@ -38,7 +38,7 @@ class ChatbotController
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processSettingsCollectionRequest("GET");
-                break;
+                exit();
         }
     }
 
@@ -64,7 +64,7 @@ class ChatbotController
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processResponsesCollectionRequest($method);
-                break;
+                exit();
             case "POST":
                 if (!$this->services->updateResponse($id, $_POST)) {
                     $this->processResponsesCollectionRequest("GET");
@@ -75,7 +75,7 @@ class ChatbotController
                     $_SESSION["msg"] .= "There was an error in the logging of the action.";
                 }
                 $this->processResponsesCollectionRequest("GET");
-                break;
+                exit();
         }
     }
 
@@ -84,11 +84,11 @@ class ChatbotController
         switch ($method) {
             case "GET":
                 header("Location: https://" . DOMAIN_NAME . "/dashboard/chatbot-responses");
-                break;
+                exit();
             case "POST":
                 if (!$this->services->addResponse($_POST)) {
                     $this->processResponsesCollectionRequest("GET");
-                    break;
+                    exit();
                 }
                 $user = unserialize($_SESSION["user"]);
                 $log = $user->getFullName() . " has added a response";
@@ -96,7 +96,7 @@ class ChatbotController
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processResponsesCollectionRequest("GET");
-                break;
+                exit();
         }
     }
 }

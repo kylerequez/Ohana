@@ -29,11 +29,11 @@ class CartController
             case "GET":
                 $this->services->addToCart("REHOMING", $id);
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
-                break;
+                exit();
             case "POST":
                 $this->services->deleteOrder($id);
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
-                break;
+                exit();
         }
     }
 
@@ -42,9 +42,9 @@ class CartController
         switch ($method) {
             case "GET":
                 header("Location: https://" . DOMAIN_NAME . "/pawcart");
-                break;
+                exit();
             case "POST":
-                break;
+                exit();
         }
     }
 }

@@ -290,6 +290,7 @@
                                   <select class="form-control" id="status" name="status">
                                     <option value="AVAILABLE" <?php if ($profile->getStatus() == "AVAILABLE") echo "selected"; ?>>Available</option>
                                     <option value="UNAVAILABLE" <?php if ($profile->getStatus() == "UNAVAILABLE") echo "selected"; ?>>Unavailable</option>
+                                    <option value="SOLD" <?php if ($profile->getStatus() == "SOLD") echo "selected"; ?>>Sold</option>
                                   </select>
                                 </div>
                                 <div class="mb-3">
