@@ -315,11 +315,16 @@ class TransactionServices
                 ";
             }
         }
-        $html .= <<<EOD
+        $html .= "
                 </tbody>
+                <tfoot>
+                    <tr>
+                    
+                    </tr>
+                </tfoot>
             </table>
         </div>
-        EOD;
+        ";
 
         // Print text using writeHTMLCell()
         $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
