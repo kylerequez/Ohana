@@ -310,7 +310,10 @@
         background-color: #faf8f0;
       }
     }
-  </style>
+  @media screen and (min-width: 1100px) and (max-width: 1366px) {
+        
+      }
+</style>
 </head>
 <header id="navigation-bar">
   <a href="/" class="logo">

@@ -22,6 +22,9 @@
       }
     }
   }
+@media screen and (min-width: 1100px) and (max-width: 1366px) {
+        
+      }
 </style>
 <div class="container-fluid" id="footercontainer" style="width:75%; color:#db6551">
   <footer id="ohanafooter" class="py-3 my-4 border-top border-warning bottom-0">

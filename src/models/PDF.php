@@ -5,9 +5,9 @@ class PDF extends TCPDF
     public function Header()
     {
         $logo = dirname(__DIR__) . '/images/pdf/logo.png';
-        $this->Image($logo, 40, 0, 80, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        $this->Image($logo, 95, 10, 20, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
         
-        $this->Ln(5);
+        $this->Ln(0);
         $this->setFont('helvetica', 'B', 12);
         $this->Cell(0, 5, 'OHANA KENNEL PH', 0, 1, 'C');
         $this->setFont('helvetica', 'B', 8);

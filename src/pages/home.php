@@ -18,7 +18,10 @@
             background-color: #c0b65a;
             opacity: 90%;
         }
-    </style>
+    @media screen and (min-width: 1100px) and (max-width: 1366px) {
+        
+      }
+</style>
 </head>
 
 <body style="background-color: #faf8f0">

@@ -233,6 +233,7 @@ class TransactionServices
             // print_r($transaction->getListOfOrders());
         }
 
+        ob_start();
         // create new PDF document
         $pdf = new PDF("L", PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
@@ -285,41 +286,62 @@ class TransactionServices
         $pdf->AddPage();
 
 
+        $rehoming = 0;
+        $stud = 0;
+        foreach ($transactions as $transaction) {
+            foreach ($transaction->getListOfOrders() as $order) {
+                if ($order->getType() == "REHOMING") {
+                    $rehoming++;
+                } else {
+                    $stud++;
+                }
+            }
+        }
         // Set some content to print
         $html = "
-        <div>
-            <h1>Ohana Sales Report for {$start->format("M. d, Y")} to {$end->format("M. d, Y")}</h1>
-        </div>
-        <div>
-            <table cellspacing=\"0\" cellpadding=\"1\" border=\"1\" style=\"border-color:gray;\">
+        <div style=\"\">
+            <h1 style=\"text-align:center; \">Sales Report for {$start->format("M. d, Y")} to {$end->format("M. d, Y")}</h1>
+        
+            <table cellspacing=\"0\" cellpadding=\"6\" border=\"1\" style=\"border-color:black; \">
                 <thead>
-                    <tr style=\"background-color:green;color:white;\">
-                        <th>Reference ID:</th>
-                        <th>Type</th>
-                        <th>Customer</th>
-                        <th>Price</th>
+                    <tr style=\"background-color:#db6551;color:white;\">
+                        <th style=\"font-weight:bold;\">Reference ID</th>
+                        <th style=\"font-weight:bold;\">Type</th>
+                        <th style=\"font-weight:bold;\">Customer</th>
+                        <th style=\"font-weight:bold;\">Price</th>
                     </tr>
                 </thead>
                 <tbody>
            ";
 
+        $total = 0.00;
         foreach ($transactions as $transaction) {
             foreach ($transaction->getListOfOrders() as $order) {
                 $html .= "
                     <tr>
                         <td>{$transaction->getReference()}</td>
-                        <td>{$order->getType()}</td>
+                        <td>" . ucfirst(strtolower($order->getType())) . "</td>
                         <td>{$transaction->getFname()} {$transaction->getLname()}</td>
-                        <td>₱" . number_format($order->getPrice(), 2) . "</td>
+                        <td>₱ " . number_format($order->getPrice(), 2) . "</td>
                     </tr>
                 ";
+                $total += $order->getPrice();
             }
         }
         $html .= "
                 </tbody>
                 <tfoot>
                     <tr>
-                    
+                        <td colspan=\"3\" style=\"text-align:right; font-weight:bold; \">Total Revenue:</td>
+                        <td>₱ " . number_format($total, 2) . "</td>
+                    </tr>
+                    <tr>
+                        <td colspan=\"3\" style=\"text-align:right; font-weight:bold; \">Total Stud Transactions:</td>
+                        <td>{$stud}</td>
+                    </tr>
+                    <tr>
+                        <td colspan=\"3\" style=\"text-align:right; font-weight:bold; \">Total Puppies Sold:</td>
+                        <td>{$rehoming}</td>
                     </tr>
                 </tfoot>
             </table>
@@ -328,8 +350,8 @@ class TransactionServices
 
         // Print text using writeHTMLCell()
         $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
-
-        $pdf->Output('Sales Report for ' . $start->format('M. d, Y') . ' to ' . $end->format('M. d, Y') . '.pdf', 'I');
+        ob_end_clean();
+        $pdf->Output('Sales Report for ' . $start->format('M. d, Y') . ' to ' . $end->format('M. d, Y') . '.pdf', 'D');
 
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
