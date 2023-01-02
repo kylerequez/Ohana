@@ -230,7 +230,7 @@ class PetProfileController
                 if (!$this->services->deletePetProfile($id)) {
                     $this->processCustomerCollectionRequest("GET");
                 }
-                echo $_SESSION['msg'];
+                $_SESSION['msg'] = "You have successfully deleted a Pet Profile.";
                 $this->processCustomerCollectionRequest("GET");
                 exit();
             case "POST":
@@ -263,6 +263,7 @@ class PetProfileController
                 if (!$this->services->updatePetProfile($id, $_POST)) {
                     $this->processCustomerCollectionRequest("GET");
                 }
+                $_SESSION['msg'] = "You have successfully updated a Pet Profile.";
                 $this->processCustomerCollectionRequest("GET");
                 exit();
         }
