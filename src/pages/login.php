@@ -46,6 +46,12 @@
           margin-top: 15%;
         }
       }
+
+      @media screen and (min-width: 1100px) and (max-width: 1366px) {
+        #signup_title {
+          font-size:60px;
+        }
+      }
     }
   </style>
 </head>

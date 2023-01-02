@@ -75,8 +75,8 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <h1 class="sign-up__title mt-5">Create An Account</h1>
-            <p class="sign-up__descr">Welcome to Ohana!</p>
+            <h1 class="sign-up__title mt-5">Welcome to Ohana!</h1>
+            <p class="sign-up__descr">Create An Account</p>
             <p class="register__desc mt-3"> Fill up the fields below to create an account. </p>
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
               <div class="alert alert-warning mt-3" role="alert">

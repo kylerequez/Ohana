@@ -51,6 +51,9 @@
                 float: none;
                 margin-top: -50px;
             }
+            @media screen and (min-width: 1100px) and (max-width: 1366px) { /* for small laptops*/
+
+            }
         }
     </style>
 </head>
@@ -65,7 +68,7 @@
                     <div class="container-sm">
                         <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
                             <div class="alert alert-warning mt-3" role="alert">
-                                <p class="text-center fs-4"><?php echo $_SESSION["msg"] ?>
+                                <p class="text-center"><?php echo $_SESSION["msg"] ?>
                             </div>
                         <?php
                         }

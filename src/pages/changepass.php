@@ -27,17 +27,11 @@
     h3 {
       font-size: 20px;
     }
-<<<<<<< HEAD
-    #ohanafooter {
-      margin-top: 5%;
-    }
-=======
 
     #ohanafooter {
       margin-top: 5%;
     }
 
->>>>>>> e7290efdde7dd90e833a7082fbf6f31451b4eb58
     @media screen and (min-width: 360px) and (max-width: 929.98px) {
       #changeheader {
         margin-top: 20%;
@@ -70,6 +64,9 @@
       #message p {
         font-size: 15px;
       }
+      @media screen and (min-width: 1100px) and (max-width: 1366px) {
+        
+      }
     }
   </style>
 </head>
@@ -83,7 +80,7 @@
             <h1 class="sign-up__title">CHANGE PASSWORD</h1>
             <p class="sign-up__descr mb-5">Input a new password for your account.</p>
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-              <div class="alert alert-warning mt-5" role="alert">
+              <div class="alert alert-warning mb-3" role="alert">
                 <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
                 unset($_SESSION["msg"]); ?>
               </div>
