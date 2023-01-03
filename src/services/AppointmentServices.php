@@ -76,7 +76,7 @@ class AppointmentServices
 
         $description = "";
         if ($type == "REHOMING") {
-            $description = "$customerName will be bringing bring new dog/s to their ohana.";
+            $description = "$customerName will be bringing new dog/s to their ohana.";
         } else if ($type == "STUD") {
             $description = "$customerName will be availailing for a stud service.";
         } else {

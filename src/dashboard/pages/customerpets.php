@@ -125,6 +125,44 @@
                   <th><b>DOG TRAIT </b></th>
                   <th><b>OWNER </b></th>
                 </tr>
+                <tr>
+                  <th></th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Pet Name..." data-column="1">
+                  </th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Pet Color..." data-column="2">
+                  </th>
+                  <th>
+                    <select data-column="3" class="form-control filter-select">
+                      <option value="">Select a Pet Trait...</option>
+                      <option class="text-center" style="color:#DB6551" disabled>Standard</option>
+                      <option value="Fawn">Fawn</option>
+                      <option value="Sable">Sable</option>
+                      <option value="Brindle">Brindle</option>
+                      <option class="text-center" style="color:#DB6551" disabled>Exotic</option>
+                      <option value="Blue">Blue</option>
+                      <option value="Chocolate">Chocolate</option>
+                      <option value="Lilac">Lilac</option>
+                      <option value="Isabella">Isabella</option>
+                      <option value="Newshade Isabella">Newshade Isabella</option>
+                      <option value="Newshade">Newshade</option>
+                      <option value="Black Tan">Black Tan</option>
+                      <option value="Blue Tan">Blue Tan</option>
+                      <option value="Choco Tan">Choco Tan</option>
+                      <option value="Isabella Tan">Isabella Tan</option>
+                      <option value="Newshade Isabella Tan">Newshade Isabella Tan</option>
+                      <option class="text-center" style="color:#DB6551" disabled>Platinum</option>
+                      <option value="Lilac Plat">Lilac Plat</option>
+                      <option value="Champaigne Plat">Champaigne Plat</option>
+                      <option value="Newshade Plat">Newshade Plat</option>
+                      <option value="Merle">Merle</option>
+                    </select>
+                  </th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Owner Name..." data-column="4">
+                  </th>
+                </tr>
               </thead>
               <tbody>
                 <?php
@@ -133,7 +171,7 @@
                   <tr>
                     <td><img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="rounded-3" style="width: 100px; height: 100px;"></td>
                     <td><?php echo $profile->getName(); ?></td>
-                    <td><?php echo $profile->getColor(); ?></td>
+                    <td><?php echo ucfirst(strtolower($profile->getColor())); ?></td>
                     <td><?php echo $profile->getTrait(); ?></td>
                     <td><?php echo $profile->getOwnerName(); ?></td>
                   </tr>
@@ -236,9 +274,63 @@
   </form>
   <script>
     $(document).ready(function() {
-      $('#profiles').DataTable({
-        "searching": true,
-        "processing": true,
+      var table = $('#profiles').DataTable({
+        orderCellsTop: true,
+        fixedHeader: true,
+        searching: true,
+        responsive: true,
+        initComplete: function() {
+          var api = this.api();
+          api
+            .columns()
+            .eq(0)
+            .each(function(colIdx) {
+              var cell = $('.filters th').eq(
+                $(api.column(colIdx).header()).index()
+              );
+              var title = $(cell).text();
+              $(cell).html('<input type="text" placeholder="' + title + '" />');
+              $(
+                  'input',
+                  $('.filters th').eq($(api.column(colIdx).header()).index())
+                )
+                .off('keyup change')
+                .on('change', function(e) {
+                  $(this).attr('title', $(this).val());
+                  var regexr = '({search})';
+                  var cursorPosition = this.selectionStart;
+                  api
+                    .column(colIdx)
+                    .search(
+                      this.value != '' ?
+                      regexr.replace('{search}', '(((' + this.value + ')))') :
+                      '',
+                      this.value != '',
+                      this.value == ''
+                    )
+                    .draw();
+                })
+                .on('keyup', function(e) {
+                  e.stopPropagation();
+                  $(this).trigger('change');
+                  $(this)
+                    .focus()[0]
+                    .setSelectionRange(cursorPosition, cursorPosition);
+                });
+            });
+        },
+      });
+
+      $('.filter-input').keyup(function() {
+        table.column($(this).data('column'))
+          .search($(this).val())
+          .draw();
+      });
+
+      $('.filter-select').change(function() {
+        table.column($(this).data('column'))
+          .search($(this).val())
+          .draw();
       });
     });
   </script>

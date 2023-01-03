@@ -136,22 +136,23 @@
             <table id="profiles" class="posts-table">
               <thead>
                 <tr class="users-table-info">
-                  <th><b>DOG TYPE </b></th>
-                  <th><b>DOG TRAIT </b></th>
                   <th><b>DOG PICTURE </b></th>
                   <th><b>DOG NAME </b></th>
+                  <th><b>DOG COLOR </b></th>
+                  <th><b>DOG TRAIT </b></th>
+                  <th><b>DOG TYPE </b></th>
                   <th><b>ACTION </b></th>
                 </tr>
                 <tr>
+                  <th></th>
                   <th>
-                    <select data-column="0" class="form-control filter-select">
-                      <option value="">Select a Pet Type...</option>
-                      <option value="REHOMING">Rehoming</option>
-                      <option value="STUD">Stud</option>
-                    </select>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Pet Name..." data-column="1">
                   </th>
                   <th>
-                    <select data-column="1" class="form-control filter-select">
+                    <input type="text" class="form-control filter-input" placeholder="Enter Pet Color..." data-column="2">
+                  </th>
+                  <th>
+                    <select data-column="3" class="form-control filter-select">
                       <option value="">Select a Pet Trait...</option>
                       <option class="text-center" style="color:#DB6551" disabled>Standard</option>
                       <option value="Fawn">Fawn</option>
@@ -177,10 +178,11 @@
                     </select>
                   </th>
                   <th>
-                    <input type="text" class="form-control filter-input" placeholder="Enter Pet Name..." data-column="2">
-                  </th>
-                  <th>
-                    <input type="text" class="form-control filter-input" placeholder="Enter Owner Name..." data-column="3">
+                    <select data-column="4" class="form-control filter-select">
+                      <option value="">Select a Pet Type...</option>
+                      <option value="REHOMING">Rehoming</option>
+                      <option value="STUD">Stud</option>
+                    </select>
                   </th>
                   <th></th>
                 </tr>
@@ -190,10 +192,13 @@
                 foreach ($profiles as $profile) {
                 ?>
                   <tr>
-                    <td><?php echo $profile->getType(); ?></td>
-                    <td><?php echo $profile->getTrait(); ?></td>
                     <td><img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="rounded-3" style="width: 100px; height: 100px;"></td>
                     <td><?php echo $profile->getName(); ?></td>
+                    <td><?php echo ucfirst(strtolower($profile->getColor())); ?></td>
+                    <td><?php echo $profile->getTrait(); ?></td>
+                    <td><?php echo ucfirst(strtolower($profile->getType())); ?></td>
+
+
                     <td>
                       <?php if ($profile->getType() == 'STUD') { ?>
                         <a href="/dashboard/stud-history/<?php echo $profile->getReference(); ?>/<?php echo $profile->getName(); ?>" style="color:#7d605c; margin-right: 15px;  font-size: 25px;"><i class="uil uil-eye"></i></a>
