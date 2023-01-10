@@ -12,7 +12,7 @@
       <p id="adminfooter"> Ohana Kennel PH &copy; Copyright 2022. |
         <a rel="noopener noreferrer" data-bs-toggle="modal" data-bs-target="#termsModal"> Terms and
           Conditions </a> <a rel="noopener noreferrer" data-bs-toggle="modal" data-bs-target="#privacyModal"> | Data Privacy </a>
-        <a rel="noopener noreferrer" href="google.com" target="_blank"> | User Manual |</a>
+        <a rel="noopener noreferrer" href="https://drive.google.com/file/d/1oo0rNRlPcLvEDKpSWWbTu9tS5V5WevjE/view?usp=sharing" target="_blank"> | User Manual |</a>
       </p>
       <!-- TERMS Modal -->
       <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsandconditions" aria-hidden="true">
