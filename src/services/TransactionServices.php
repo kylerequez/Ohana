@@ -10,7 +10,6 @@ class TransactionServices
     private ?PetProfileDAO $petProfile = null;
     private ?StudHistoryDAO $studHistory = null;
     private ?BoardingSlotDAO $slot = null;
-
     public function __construct(TransactionDAO $dao, OrderDAO $order, ?PetProfileDAO $petProfile, ?StudHistoryDAO $studHistory, ?BoardingSlotDAO $slot)
     {
         $this->dao = $dao;
@@ -19,7 +18,6 @@ class TransactionServices
         $this->studHistory = $studHistory;
         $this->slot = $slot;
     }
-
     public function uploadProofOfPayment(string $id, array $data): bool
     {
         $image = $data['image'];
@@ -30,7 +28,6 @@ class TransactionServices
         $_SESSION['msg'] = "You have successfully uploaded the proof of payment for the transaction.";
         return true;
     }
-
     public function proceedToUpload(string $reference, array $data): void
     {
         if ($data['mode'] == 'CASH') {
@@ -42,7 +39,6 @@ class TransactionServices
             header("Location: " . $_SERVER['HTTP_REFERER']);
         }
     }
-
     public function completeTransaction(string $reference, array $data): void
     {
         date_default_timezone_set('Asia/Manila');
@@ -73,21 +69,18 @@ class TransactionServices
         $_SESSION['cart'] = serialize($cart);
         header("Location: https://" . DOMAIN_NAME . "/invoice/$reference");
     }
-
     public function proceedToCheckout(array $data): bool
     {
         $stud = $data['studReference'];
         $partner = $data['partnerReference'];
         $choice = $data['petBoardingChoice'];
         $id = isset($data['slotId']) ? $data['slotId'] : null;
-
         $_SESSION['studReference'] = $stud;
         $_SESSION['partnerReference'] = $partner;
         $_SESSION['petBoardingChoice'] = $choice;
         $_SESSION['id'] = $id;
         return true;
     }
-
     public function proceedToUploadStud(string $reference, array $data): void
     {
         if ($data['mode'] == 'CASH') {
@@ -99,21 +92,17 @@ class TransactionServices
             header("Location: " . $_SERVER['HTTP_REFERER']);
         }
     }
-
     public function completeTransactionStud(string $reference, array $data): void
     {
         date_default_timezone_set('Asia/Manila');
-
         $user = unserialize($_SESSION['user']);
         $maleId = $_SESSION['studReference'];
         $femaleId = $_SESSION['partnerReference'];
         $choice = $_SESSION['petBoardingChoice'];
         $id = $_SESSION['id'];
-
         $profile = $this->petProfile->getPetByReference($maleId);
         $image = $profile->getImage();
         $price = $profile->getPrice();
-
         $transaction = new Transaction($user->getId(), $reference, $price, new DateTime("now"), "PENDING", $image, trim($data['mode']));
         if (!$this->dao->addTransaction($transaction)) {
             $_SESSION['msg'] = "There was an error in adding the transaction in the database. SQL Error.";
@@ -143,12 +132,10 @@ class TransactionServices
         }
         header("Location: https://" . DOMAIN_NAME . "/invoice/$reference");
     }
-
     public function getModeOfPaymentCount(string $mode): mixed
     {
         return $this->dao->getModeOfPaymentCount($mode);
     }
-
     public function getAllTransactions(): mixed
     {
         $transactions = $this->dao->getAllTransactions();
@@ -161,7 +148,6 @@ class TransactionServices
         }
         return $transactions;
     }
-
     public function getTransactionsFromStartToEnd(DateTime $start, DateTime $end): mixed
     {
         $transactions = $this->dao->getTransactionsFromStartToEnd($start, $end);
@@ -174,7 +160,6 @@ class TransactionServices
         }
         return $transactions;
     }
-
     public function searchByReference(string $reference): mixed
     {
         $transaction = $this->dao->searchByReference($reference);
@@ -185,12 +170,10 @@ class TransactionServices
         $transaction->setListOfOrders($orders);
         return $transaction;
     }
-
     public function getTransactionsCount(): mixed
     {
         return $this->dao->getTransactionsCount();
     }
-
     public function getUserTransactions(string $id): mixed
     {
         $transactions = $this->dao->searchByAccountId($id);
@@ -203,7 +186,6 @@ class TransactionServices
         }
         return $transactions;
     }
-
     public function updateStatus(string $id, array $data): bool
     {
         if (empty($this->dao->searchByTransactionId($id))) {
@@ -217,14 +199,11 @@ class TransactionServices
         $_SESSION["msg"] = "You have successfully updated Transaction ID $id.";
         return true;
     }
-
     public function exportSalesReport(array $data): void
     {
-
         ini_set('display_errors', 1);
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
-
         $start = new DateTime($data["start"]);
         $end = new DateTime($data["end"]);
         $transactions = $this->getTransactionsFromStartToEnd($start, $end);
@@ -232,60 +211,43 @@ class TransactionServices
             // print_r($transaction);
             // print_r($transaction->getListOfOrders());
         }
-
         ob_start();
         // create new PDF document
         $pdf = new PDF("L", PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-
         // set document information
         $pdf->SetCreator(PDF_CREATOR);
-
-
-
         // set default header data
         $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH);
         $pdf->setFooterData(array(0, 64, 0), array(0, 64, 128));
-
         // set header and footer fonts
         $pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
         $pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
-
         // set default monospaced font
         $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-
         // set margins
         $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
         $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
         $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-
         // set auto page breaks
         $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-
         // set image scale factor
         $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
         // set some language-dependent strings (optional)
         if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
             require_once(dirname(__FILE__) . '/lang/eng.php');
             $pdf->setLanguageArray($l);
         }
-
         // ---------------------------------------------------------
-
         // set default font subsetting mode
         $pdf->setFontSubsetting(true);
-
         // Set font
         // dejavusans is a UTF-8 Unicode font, if you only need to
         // print standard ASCII chars, you can use core fonts like
         // helvetica or times to reduce file size.
         $pdf->SetFont('dejavusans', '', 14, '', true);
-
         // Add a page
         // This method has several options, check the source code documentation for more information.
         $pdf->AddPage();
-
-
         $rehoming = 0;
         $stud = 0;
         foreach ($transactions as $transaction) {
@@ -301,7 +263,6 @@ class TransactionServices
         $html = "
         <div style=\"\">
             <h1 style=\"text-align:center; \">Sales Report for {$start->format("M. d, Y")} to {$end->format("M. d, Y")}</h1>
-        
             <table cellspacing=\"0\" cellpadding=\"6\" border=\"1\" style=\"border-color:black; \">
                 <thead>
                     <tr style=\"background-color:#db6551;color:white;\">
@@ -313,7 +274,6 @@ class TransactionServices
                 </thead>
                 <tbody>
            ";
-
         $total = 0.00;
         foreach ($transactions as $transaction) {
             foreach ($transaction->getListOfOrders() as $order) {
@@ -347,12 +307,10 @@ class TransactionServices
             </table>
         </div>
         ";
-
         // Print text using writeHTMLCell()
         $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
         ob_end_clean();
         $pdf->Output('Sales Report for ' . $start->format('M. d, Y') . ' to ' . $end->format('M. d, Y') . '.pdf', 'D');
-
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 }

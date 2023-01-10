@@ -18,6 +18,7 @@
       border: 2px solid #db6551;
       border-radius: 10px;
     }
+
     #noResponse {
       border: 2px solid #db6551;
       border-radius: 10px;
@@ -31,6 +32,22 @@
     <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
     <div class="main-wrapper">
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
+      <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+        <div class="toast-container top-0 end-0 p-3">
+          <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+            <div class="toast-header">
+              <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+              <strong class="me-auto fs-4"> &nbsp; Notification </strong>
+              <small> JUST NOW </small>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
+          </div>
+        </div>
+      <?php
+      }
+      unset($_SESSION["msg"]);
+      ?>
       <div class="container-fluid">
         <main class="main users chart-page" id="skip-target">
           <div class="d-flex justify-content-center">
@@ -87,22 +104,6 @@
         <?php include_once dirname(__DIR__) . '/footer.php'; ?>
       </div>
     </div>
-    <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-      <div class="toast-container top-0 end-0 p-3">
-        <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
-          <div class="toast-header">
-            <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
-            <strong class="me-auto fs-4"> &nbsp; Notification </strong>
-            <small> JUST NOW </small>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-          </div>
-          <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
-        </div>
-      </div>
-    <?php
-    }
-    unset($_SESSION["msg"]);
-    ?>
   </div>
   <script src="/Ohana/src/dashboard/plugins/feather.min.js"></script>
   <script src="/Ohana/src/dashboard/js/script.js"></script>

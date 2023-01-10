@@ -104,6 +104,22 @@
     <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
     <div class="main-wrapper">
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
+      <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+        <div class="toast-container top-0 end-0 p-3">
+          <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+            <div class="toast-header">
+              <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+              <strong class="me-auto fs-4"> &nbsp; Notification </strong>
+              <small> JUST NOW </small>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
+          </div>
+        </div>
+      <?php
+      }
+      unset($_SESSION["msg"]);
+      ?>
       <main class="main users chart-page" id="skip-target">
         <div class="container">
           <h2 class="main-title text-center mt-3"> Pet Boarding Slots </h2>
@@ -129,16 +145,16 @@
             <table id="slots" class="posts-table">
               <thead>
                 <tr class="users-table-info">
-                  <th><b>SLOT NAME</b></th>
                   <th><b>SLOT IMAGE</b></th>
+                  <th><b>SLOT NAME</b></th>
                   <th><b>STATUS</b></th>
                   <th><b>ACTION</b></th>
                 </tr>
                 <tr>
+                  <th></th>
                   <th>
                     <input type="text" class="form-control filter-input" placeholder="Enter Slot Name..." data-column="1">
                   </th>
-                  <th></th>
                   <th>
                     <select data-column="2" class="form-control filter-select">
                       <option value="">Select a status...</option>
@@ -154,8 +170,8 @@
                 foreach ($slots as $slot) {
                 ?>
                   <tr>
-                    <td><?php echo $slot->getName(); ?></td>
                     <td><img src="data:image/jpeg;base64,<?php echo base64_encode($slot->getImage()); ?>" class="rounded-3" style="width: 100px; height: 100px;"></td>
+                    <td><?php echo $slot->getName(); ?></td>
                     <td><?php echo $slot->getIsAvailable() == 1 ? "AVAILABLE" : "UNAVAILABLE"; ?></td>
                     <td>
                       <a href="" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $slot->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"></i></button></a>
@@ -227,22 +243,6 @@
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
     </div>
   </div>
-  <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-    <div class="toast-container top-0 end-0 p-3">
-      <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
-        <div class="toast-header">
-          <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
-          <strong class="me-auto fs-4"> &nbsp; Notification </strong>
-          <small> JUST NOW </small>
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
-      </div>
-    </div>
-  <?php
-  }
-  unset($_SESSION["msg"]);
-  ?>
   <form method="POST" action="/dashboard/petboarding/add" enctype="multipart/form-data">
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
@@ -263,7 +263,7 @@
             <input type="hidden" class="form-control" name="isAvailable" value="1">
             <div class="mb-3">
               <label for="image" class="col-form-label"> SLOT IMAGE: </label>
-              <input type="file" class="form-control" name="image">
+              <input type="file" class="form-control" name="image" required>
             </div>
           </div>
           <div class="modal-footer">

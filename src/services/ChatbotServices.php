@@ -2,22 +2,18 @@
 class ChatbotServices
 {
     private ?ChatbotDAO $dao = null;
-
     public function __construct(ChatbotDAO $dao)
     {
         $this->dao = $dao;
     }
-
     public function getAllSettings(): mixed
     {
         return $this->dao->getAllSettings();
     }
-
     public function getResponse(string $query): mixed
     {
         return $this->dao->getResponse($query);
     }
-
     public function updateSettings(array $data, array $imageData): bool
     {
         if (!file_exists($imageData['image']['tmp_name']) || !is_uploaded_file($imageData['image']['tmp_name'])) {
@@ -67,7 +63,6 @@ class ChatbotServices
         $name = trim($data["name"]);
         $introduction = trim($data["introduction"]);
         $noResponse = trim($data["noResponse"]);
-
         $information = new ChatbotInformation($avatar, $name, $introduction, $noResponse);
         if (!$this->dao->updateSettings($information)) {
             $_SESSION["msg"] = "There was an error in updating the Chatbot Settings.";
@@ -76,17 +71,14 @@ class ChatbotServices
         $_SESSION["msg"] = "You have successfully updated the Chatbot Settings!";
         return true;
     }
-
     public function getAllResponses(): mixed
     {
         return $this->dao->getAllResponses();
     }
-
     public function addResponse(array $data): mixed
     {
         $res = trim($data["response"]) == '' ? 'N/A' :  trim($data["response"]);
         $query = trim($data["query"]) == '' ? 'N/A' :  trim($data["query"]);
-
         $response = new ChatbotResponse($res, $query);
         if (!$this->dao->addResponse($response)) {
             $_SESSION["msg"] = "There was an error in adding the Response.";
@@ -95,17 +87,14 @@ class ChatbotServices
         $_SESSION["msg"] = "You have successfully added a Response";
         return true;
     }
-
     public function updateResponse(string $id, array $data): bool
     {
         if (is_null($this->dao->searchById($id))) {
             $_SESSION["msg"] = "There was an error in updating the response. The response does not exist in the database.";
             return false;
         }
-
         $res = trim($data["response"]);
         $query = trim($data["query"]) == '' ? "N/A" :  trim($data["query"]);
-
         $response = new ChatbotResponse($res, $query);
         $response->setId($id);
         if (!$this->dao->updateResponse($response)) {
@@ -115,7 +104,6 @@ class ChatbotServices
         $_SESSION["msg"] = "You have successfully updated Response $id!";
         return true;
     }
-
     public function deleteResponse(string $id): bool
     {
         if (is_null($this->dao->searchById($id))) {

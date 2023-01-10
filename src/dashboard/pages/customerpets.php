@@ -97,6 +97,22 @@
     <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
     <div class="main-wrapper">
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
+      <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+        <div class="toast-container top-0 end-0 p-3">
+          <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+            <div class="toast-header">
+              <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+              <strong class="me-auto fs-4"> &nbsp; Notification </strong>
+              <small> JUST NOW </small>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
+          </div>
+        </div>
+      <?php
+      }
+      unset($_SESSION["msg"]);
+      ?>
       <main class="main users chart-page" id="skip-target">
         <div class="container">
           <h2 class="main-title text-center mt-3">Customer Pet Profiles</h2>
@@ -194,84 +210,6 @@
     <?php include_once dirname(__DIR__) . '/footer.php'; ?>
     </div>
   </div>
-  <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-    <div class="toast-container top-0 end-0 p-3">
-      <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
-        <div class="toast-header">
-          <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
-          <strong class="me-auto fs-4"> &nbsp; Notification </strong>
-          <small> JUST NOW </small>
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
-      </div>
-    </div>
-  <?php
-  }
-  unset($_SESSION["msg"]);
-  ?>
-  <form method="POST" action="/dashboard/petprofiles/add" enctype="multipart/form-data">
-    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addProfileModal" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="addStaffTitle"> ADD STUD PROFILE </h5>
-            <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">
-              <label for="name" class="col-form-label"> DOG NAME </label>
-              <input type="text" class="form-control" name="name" placeholder="Enter Dog Name" required style="background-color:#eed1c2; color:black">
-            </div>
-            <div class="mb-3">
-              <label> DOG TYPE </label><br>
-              <label for="rehoming" class="radio-inline"> <input type="radio" id="rehoming" name="type" value="REHOMING"> Rehoming </label>
-              <label for="stud" class="radio-inline"> <input type="radio" id="stud" name="type" value="STUD"> Stud </label>
-            </div>
-            <div class="mb-3">
-              <label> DOG GENDER </label><br>
-              <label for="sex1" class="radio-inline"> <input type="radio" id="sex1" name="sex" value="MALE"> Male </label>
-              <label for="sex2" class="radio-inline"> <input type="radio" id="sex2" name="sex" value="FEMALE"> Female </label>
-            </div>
-            <div class="mb-3">
-              <label for="birthdate" class="col-form-label"> BIRTHDAY </label>
-              <input type="date" class="form-control" name="birthdate" required style="background-color:#eed1c2; color:black">
-            </div>
-            <div class="mb-3">
-              <label for="color" class="col-form-label"> COLOR </label>
-              <input type="text" class="form-control" name="color" placeholder="Enter Color" required style="background-color:#eed1c2; color:black">
-            </div>
-            <div class="mb-3">
-              <label for="trait" class="col-form-label"> TRAIT: </label>
-              <input type="text" class="form-control" name="trait" placeholder="Enter Trait" required style="background-color:#eed1c2;">
-            </div>
-            <div class="mb-3">
-              <label for="isVaccinated" class="col-form-label"> IS VACCINATED </label><br>
-              <label for="yes" class="radio-inline"> <input type="radio" id="yes" name="isVaccinated" value="YES">Yes </label>
-              <label for="no" class="radio-inline"> <input type="radio" id="no" name="isVaccinated" value="NO"> No </label>
-            </div>
-            <div class="mb-3">
-              <label for="pcciStatus" class="col-form-label"> PCCI STATUS </label><br>
-              <label for="pcci1" class="radio-inline"> <input type="radio" id="pcci1" name="pcciStatus" value="REGISTERED"> Registered </label>
-              <label for="pcci2" class="radio-inline"> <input type="radio" id="pcci2" name="pcciStatus" value="PENDING"> Pending </label>
-            </div>
-            <div class="mb-3">
-              <label for="price" class="col-form-label"> PRICE </label>
-              <input type="text" class="form-control" name="price" placeholder="Enter Price" required style="background-color:#eed1c2; color:black">
-            </div>
-            <input type="hidden" class="form-control" name="ownerName" value="OHANA KENNEL BUSINESS">
-            <div class="mb-3">
-              <label for="image" class="col-form-label"> DOG IMAGE </label><br>
-              <input type="file" name="image" id="image" style="background-color:transparent;">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn" id="ToastBtn" style="background-color:#db6551;color:white"> Add Pet </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
   <script>
     $(document).ready(function() {
       var table = $('#profiles').DataTable({

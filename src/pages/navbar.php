@@ -1,5 +1,25 @@
-<head>
+<?php
+include_once dirname(__DIR__) . '/config/app-config.php';
+if (isset($_SESSION['user'])) {
+  include_once dirname(__DIR__) . '/models/Account.php';
+  $user = unserialize($_SESSION['user']);
+  if ($user->getType() == "USER") {
+?>
+    <script>
+      window.location = 'https://<?php echo DOMAIN_NAME; ?>/home';
+    </script>
+  <?php
+  } else {
+  ?>
+    <script>
+      window.location = 'https://<?php echo DOMAIN_NAME; ?>/dashboard/home';
+    </script>
+<?php
+  }
+}
+?>
 
+<head>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
@@ -88,7 +108,7 @@
       font-weight: 500;
       padding: 5px 0;
       margin: 0px 30px;
-      margin-top:10px;
+      margin-top: 10px;
       transition: all .50s ease;
       font-family: "DM Sans", sans-serif;
       font-weight: bold;
@@ -271,8 +291,8 @@
     @media (max-width: 1090px) {
       #menu-icon {
         display: block;
-        width:35px;
-        height:35px;
+        width: 35px;
+        height: 35px;
       }
 
       .navbar {
@@ -310,10 +330,9 @@
         background-color: #faf8f0;
       }
     }
-  @media screen and (min-width: 1100px) and (max-width: 1366px) {
-        
-      }
-</style>
+
+    @media screen and (min-width: 1100px) and (max-width: 1366px) {}
+  </style>
 </head>
 <header id="navigation-bar">
   <a href="/" class="logo">
@@ -321,16 +340,16 @@
   </a>
   <ul class="navbar">
     <li class="nav-item">
-      <a class="nav-link <?php if($_SERVER['REQUEST_URI'] == '/#home') echo 'active'; ?>" aria-current="page" href="/#home">Home</a>
+      <a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/#home') echo 'active'; ?>" aria-current="page" href="/#home">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link <?php if($_SERVER['REQUEST_URI'] == '/#about') echo 'active'; ?>" href="/#about">About</a>
+      <a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/#about') echo 'active'; ?>" href="/#about">About</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link <?php if($_SERVER['REQUEST_URI'] == '/#services') echo 'active'; ?>" href="/#services">Services</a>
+      <a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/#services') echo 'active'; ?>" href="/#services">Services</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link <?php if($_SERVER['REQUEST_URI'] == '/#contact') echo 'active'; ?>" href="/#contact">Contact</a>
+      <a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/#contact') echo 'active'; ?>" href="/#contact">Contact</a>
     </li>
   </ul>
   <div class="main">

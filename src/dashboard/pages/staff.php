@@ -105,12 +105,27 @@
     <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
     <div class="main-wrapper">
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
+      <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+        <div class="toast-container top-0 end-0 p-3">
+          <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+            <div class="toast-header">
+              <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+              <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
+              <small> JUST NOW </small>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
+          </div>
+        </div>
+      <?php
+      }
+      unset($_SESSION["msg"]);
+      ?>
       <main class="main users chart-page" id="skip-target">
         <div class="container">
           <h2 class="main-title text-center mt-3"> Staff Accounts</h2>
         </div>
         <div class="users-table table-wrapper">
-
           <?php
           if ($user->getType() == "ADMINISTRATOR") {
           ?>
@@ -120,7 +135,6 @@
             </div>
           <?php
           }
-
           include_once dirname(__DIR__) . '/../config/db-config.php';
           include_once dirname(__DIR__) . '/../dao/AccountDAO.php';
           include_once dirname(__DIR__) . '/../services/AccountServices.php';
@@ -293,22 +307,6 @@
         </div>
       </div>
     </div>
-    <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-      <div class="toast-container top-0 end-0 p-3">
-        <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
-          <div class="toast-header">
-            <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
-            <strong class="me-auto" style="font-size:20px;"> &nbsp; Notification </strong>
-            <small> JUST NOW </small>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-          </div>
-          <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
-        </div>
-      </div>
-    <?php
-    }
-    unset($_SESSION["msg"]);
-    ?>
     <script>
       $(document).ready(function() {
         var table = $('#staff').DataTable({

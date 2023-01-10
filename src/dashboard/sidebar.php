@@ -47,15 +47,15 @@
         <li><a href="/dashboard/transactions" class="<?php if ($_SERVER['REQUEST_URI'] == '/dashboard/transactions') echo 'active'; ?>"><span class="icon chartico" aria-hidden="true"></span>User Transactions</span></a></li>
         <li><a href="/dashboard/feedbacks" class="<?php if ($_SERVER['REQUEST_URI'] == '/dashboard/feedbacks') echo 'active'; ?>"><span class="icon message" aria-hidden="true"></span>User Feedback</a></li>
         <li>
-          <a class="show-cat-btn" href="##">
+          <a class="show-cat-btn" href="##" class="<?php if ($_SERVER['REQUEST_URI'] == '/dashboard/chatbot-settings' || $_SERVER['REQUEST_URI'] == '/dashboard/chatbot-responses') echo 'active'; ?>">
             <img src="/Ohana/src/dashboard/img/main/cb.png" style="display:inline-flex;width:24px;height:24px;">&nbsp;&nbsp;Chat Bot<span class="sr-only">Open list</span></span>
           </a>
           <ul class="cat-sub-menu">
-            <li><a href="/dashboard/chatbot-settings">Settings </a></li>
-            <li><a href="/dashboard/chatbot-responses">Responses</a></li>
+            <li><a href="/dashboard/chatbot-settings" class="<?php if ($_SERVER['REQUEST_URI'] == '/dashboard/chatbot-settings') echo 'active'; ?>">Settings</a></li>
+            <li><a href="/dashboard/chatbot-responses" class="<?php if ($_SERVER['REQUEST_URI'] == '/dashboard/chatbot-responses') echo 'active'; ?>">Responses</a></li>
           </ul>
         </li>
-        <li><a href="/dashboard/logs"><span class="icon edit" aria-hidden="true"></span>System Logs</a></li>
+        <li><a href="/dashboard/logs" class="<?php if ($_SERVER['REQUEST_URI'] == '/dashboard/logs') echo 'active'; ?>"><span class="icon edit" aria-hidden="true"></span>System Logs</a></li>
       </ul>
     </div>
   </div>

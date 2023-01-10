@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/Ohana/src/dashboard/css/adminpages.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
         h1 {
             margin-bottom: .75em;
             font-size: 50px;
@@ -87,6 +88,22 @@
         <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
         <div class="main-wrapper">
             <?php include_once dirname(__DIR__) . "/navbar.php" ?>
+            <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+                <div class="toast-container top-0 end-0 p-3">
+                    <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+                        <div class="toast-header">
+                            <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+                            <strong class="me-auto fs-4"> &nbsp; Notification </strong>
+                            <small> JUST NOW </small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
+                    </div>
+                </div>
+            <?php
+            }
+            unset($_SESSION["msg"]);
+            ?>
             <main class="main users chart-page" id="skip-target">
                 <div class="container d-flex justify-content-center">
                     <form id="myform-search" method="GET" action="/accounts/update" autocomplete="off">
@@ -95,22 +112,19 @@
                         <div class="row">
                             <div class="col">
                                 <label class="mb-2" for="name" style="display:block"> <b>Current Password:</b> </label>
-                                <input type="password" value="" name="old-password" id="password" class="password" for="password" 
-                                required placeholder="Enter Current Password" style="background-color:white;width:100%" minlength="8"></p>
+                                <input type="password" value="" name="old-password" id="password" class="password" for="password" required placeholder="Enter Current Password" style="background-color:white;width:100%" minlength="8"></p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label class="mb-2 mt-4" for="name" style="display:block"> <b>New Password:</b> </label>
-                                <input type="password" value="" name="password" id="new-password" class="password" for="password" placeholder="Enter New Password that contains 8-20 characters"
-                                required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" style="background-color:white;width:100%" minlength="8" maxlength="20">
+                                <input type="password" value="" name="password" id="new-password" class="password" for="password" placeholder="Enter New Password that contains 8-20 characters" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" style="background-color:white;width:100%" minlength="8" maxlength="20">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label class="mb-2 mt-4" for="name" style="display:block"> <b>Confirm Password:</b> </label>
-                                <input type="password" value="" name="confirm-password" id="confirm-password" class="password" for="confirm-password" placeholder="Confirm Password"
-                                required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" style="background-color:white;width:100%" minlength="8" maxlength="20">
+                                <input type="password" value="" name="confirm-password" id="confirm-password" class="password" for="confirm-password" placeholder="Confirm Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" style="background-color:white;width:100%" minlength="8" maxlength="20">
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mt-5">
@@ -124,22 +138,6 @@
             <?php include_once dirname(__DIR__) . '/footer.php'; ?>
         </div>
     </div>
-    <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-        <div class="toast-container top-0 end-0 p-3">
-            <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
-                <div class="toast-header">
-                    <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
-                    <strong class="me-auto fs-4"> &nbsp; Notification </strong>
-                    <small> JUST NOW </small>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
-            </div>
-        </div>
-    <?php
-    }
-    unset($_SESSION["msg"]);
-    ?>
     <script>
         var myInput = document.getElementById("new-password"),
             letter = document.getElementById("letter"),
