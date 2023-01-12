@@ -1,44 +1,35 @@
 <?php
 require_once dirname(__DIR__) . '/config/app-config.php';
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
-
 include_once dirname(__DIR__) . '/vendor/autoload.php';
 class AccountServices
 {
     private ?AccountDAO $dao = null;
-
     public function __construct(AccountDAO $dao)
     {
         $this->dao = $dao;
     }
-
     public function searchById(string $id): mixed
     {
         return $this->dao->searchById($id);
     }
-
     public function getUsersCount(): mixed
     {
         return $this->dao->getUsersCount();
     }
-
     public function getStaffCount(): mixed
     {
         return $this->dao->getStaffCount();
     }
-
     public function getUserAccounts(): mixed
     {
         return $this->dao->getUserAccounts();
     }
-
     public function getStaffAccounts(): mixed
     {
         return $this->dao->getStaffAccounts();
     }
-
     public function addAccount(array $data): mixed
     {
         $type = trim($data["type"]);
@@ -73,7 +64,6 @@ class AccountServices
         $_SESSION["msg"] = "You have successfully added a new " . strtolower($type) . " account.";
         return true;
     }
-
     public function updateAccount(string $id, array $data): bool
     {
         if (is_null($this->dao->searchById($id))) {
@@ -96,7 +86,6 @@ class AccountServices
         $_SESSION["msg"] = "You have successfully updated Account $id!";
         return true;
     }
-
     public function deleteAccount(string $id): bool
     {
         if (is_null($this->dao->searchById($id))) {
@@ -110,7 +99,6 @@ class AccountServices
         $_SESSION["msg"] = "You have successfully deleted Account $id!";
         return true;
     }
-
     public function deleteAccountByEmail(string $email): bool
     {
         if (is_null($this->dao->searchByEmail($email))) {
@@ -124,7 +112,6 @@ class AccountServices
         $_SESSION["msg"] = "You have successfully deleted Account $id!";
         return true;
     }
-
     public function loginRequest(array $data): bool
     {
         $email = trim($data["email"]);
@@ -139,7 +126,7 @@ class AccountServices
             return false;
         }
         if ($account->getStatus() == "UNREGISTERED") {
-            $_SESSION["msg"] = "Unfortunately, your account has yet to be verified. Please register your account again tomorrow or email us at ohana.kennel.business@gmail.com.";
+            $_SESSION["msg"] = "Unfortunately, your account has yet to be verified. Please register your account again tomorrow or email us at ohanakennelph.business@gmail.com.";
             return false;
         }
         if (!password_verify($password, $account->getPassword())) {
@@ -165,7 +152,7 @@ class AccountServices
                     <br><br> Ohana Kennel PH will NOT initiate emails or sms that will ask your bank account details. 
                     <br> - Do not give your email address,password and OTP to other people. 
                     <br> - Do not click on suspicious links.
-                    <br><br> <b>Note:</b> For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
+                    <br><br> <b>Note:</b> For inquiries and questions, do not hesitate to email us at ohanakennelph.business@gmail.com
                     <br><br>
                     <img src=\"https://lh3.googleusercontent.com/Bgt7glsz4TKk1bom8LB9I3tpIYqnQ2ZQ3qwQcp0xhUavCEantbg2g_dOA0i_8NuhjA8=w2400\"> </center>";
         $mail->AltBody = 'Ohana Account Login OTP';
@@ -179,7 +166,6 @@ class AccountServices
             return true;
         }
     }
-
     public function resendLoginRequest(string $email, string $token): bool
     {
         if (is_null($_SESSION["userOtp"])) {
@@ -215,7 +201,7 @@ class AccountServices
                     <br><br> Ohana Kennel PH will NOT initiate emails or sms that will ask your bank account details. 
                     <br> - Do not give your email address,password and OTP to other people. 
                     <br> - Do not click on suspicious links.
-                    <br><br> <b>Note:</b>For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
+                    <br><br> <b>Note:</b>For inquiries and questions, do not hesitate to email us at ohanakennelph.business@gmail.com
                     <br><br>
                     <img src=\"https://lh3.googleusercontent.com/Bgt7glsz4TKk1bom8LB9I3tpIYqnQ2ZQ3qwQcp0xhUavCEantbg2g_dOA0i_8NuhjA8=w2400\"></center>";
         $mail->AltBody = 'Ohana Account Login OTP';
@@ -226,7 +212,6 @@ class AccountServices
         $_SESSION["msg"] = "The OTP was successfully resent to your email. Please check your inbox.";
         return true;
     }
-
     public function verifyLogin(array $data): bool
     {
         if (is_null($_SESSION["userOtp"])) {
@@ -247,7 +232,6 @@ class AccountServices
         $_SESSION["user"] = serialize($account);
         return true;
     }
-
     public function logoutAccount(): bool
     {
         if (!isset($_SESSION["user"])) {
@@ -256,7 +240,6 @@ class AccountServices
         session_destroy();
         return true;
     }
-
     public function forgotPasswordRequest(string $email): bool
     {
         if (is_null($this->dao->searchByEmail($email))) {
@@ -281,7 +264,7 @@ class AccountServices
                         <br><br> Ohana Kennel PH will NOT initiate emails or sms that will ask your bank account details. 
                         <br> - Do not give your email address,password and OTP to other people. 
                         <br> - Do not click on suspicious links.
-                        <br><br> Note: For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
+                        <br><br> Note: For inquiries and questions, do not hesitate to email us at ohanakennelph.business@gmail.com
                         <br><br>
                         <img src="https://lh3.googleusercontent.com/Bgt7glsz4TKk1bom8LB9I3tpIYqnQ2ZQ3qwQcp0xhUavCEantbg2g_dOA0i_8NuhjA8=w2400"> </center>';
         $mail->AltBody = 'Reset Password Link for Ohana Account';
@@ -294,7 +277,6 @@ class AccountServices
             return true;
         }
     }
-
     public function resendForgotPasswordRequest(string $email, string $token): bool
     {
         if ($token != $_SESSION["token"]) {
@@ -323,7 +305,7 @@ class AccountServices
                         <br><br> Ohana Kennel PH will NOT initiate emails or sms that will ask your bank account details. 
                         <br> - Do not give your email address,password and OTP to other people. 
                         <br> - Do not click on suspicious links.
-                        <br><br> Note: For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
+                        <br><br> Note: For inquiries and questions, do not hesitate to email us at ohanakennelph.business@gmail.com
                         <br><br>
                         <img src="https://lh3.googleusercontent.com/Bgt7glsz4TKk1bom8LB9I3tpIYqnQ2ZQ3qwQcp0xhUavCEantbg2g_dOA0i_8NuhjA8=w2400"> </center>';
         $mail->AltBody = 'Reset Password Link for Ohana Account';
@@ -334,7 +316,6 @@ class AccountServices
         $_SESSION["msg"] = "The reset link was successfully resent to your email. Please check your inbox.";
         return true;
     }
-
     public function updatePassword(array $data): bool
     {
         $user = unserialize($_SESSION["user"]);
@@ -358,7 +339,6 @@ class AccountServices
         $_SESSION["msg"] = "Your password was successfully changed!";
         return true;
     }
-
     public function changePasswordRequest(string $email): bool
     {
         $account = $this->dao->searchByEmail(trim($email));
@@ -381,7 +361,6 @@ class AccountServices
         }
         return true;
     }
-
     public function registrationRequest(array $data): mixed
     {
         $email = trim($data["email"]);
@@ -412,7 +391,7 @@ class AccountServices
                     <br><br> Ohana Kennel PH will NOT initiate emails or sms that will ask your bank account details. 
                     <br> - Do not give your email address,password and OTP to other people. 
                     <br> - Do not click on suspicious links.
-                    <br><br> Note: For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
+                    <br><br> Note: For inquiries and questions, do not hesitate to email us at ohanakennelph.business@gmail.com
                     <br><br>
                     <img src=\"https://lh3.googleusercontent.com/Bgt7glsz4TKk1bom8LB9I3tpIYqnQ2ZQ3qwQcp0xhUavCEantbg2g_dOA0i_8NuhjA8=w2400\"> </center>";
         $mail->AltBody = 'Ohana Registration OTP';
@@ -425,7 +404,6 @@ class AccountServices
         $_SESSION["email"] = $email;
         return true;
     }
-
     public function verifyRegistration(array $data): mixed
     {
         if (is_null($_SESSION["userOtp"])) {
@@ -444,7 +422,6 @@ class AccountServices
         }
         return true;
     }
-
     public function resendRegistrationRequest(string $email, string $token): bool
     {
         if ($token != $_SESSION["token"]) {
@@ -480,7 +457,7 @@ class AccountServices
                         <br><br> Ohana Kennel PH will NOT initiate emails or sms that will ask your bank account details. 
                         <br> - Do not give your email address,password and OTP to other people. 
                         <br> - Do not click on suspicious links.
-                        <br><br> Note: For inquiries and questions, do not hesitate to email us at ohana.kennel.business@gmail.com
+                        <br><br> Note: For inquiries and questions, do not hesitate to email us at ohanakennelph.business@gmail.com
                         <br><br>
                         <img src=\"https://lh3.googleusercontent.com/Bgt7glsz4TKk1bom8LB9I3tpIYqnQ2ZQ3qwQcp0xhUavCEantbg2g_dOA0i_8NuhjA8=w2400\"> </center>";
         $mail->AltBody = 'Ohana Registration OTP';
@@ -491,7 +468,6 @@ class AccountServices
         $_SESSION["msg"] = "The OTP was successfully resent to your email. Please check your inbox.";
         return true;
     }
-
     public function deleteUnregisteredAccounts(): bool
     {
         return $this->dao->deleteUnregisteredAccounts();

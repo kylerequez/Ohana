@@ -13,13 +13,10 @@
   <?php include_once 'stylesheets.php'; ?>
   <style>
     .sign-up__title {
-<<<<<<< HEAD
-      margin-top:25px;
-=======
       margin-top: 25px;
->>>>>>> e7290efdde7dd90e833a7082fbf6f31451b4eb58
       font-size: 70px;
     }
+
     .sign-up__descr {
       font-size: 25px;
     }
@@ -64,30 +61,29 @@
       #message p {
         font-size: 15px;
       }
-      @media screen and (min-width: 1100px) and (max-width: 1366px) {
-        
-      }
+
+      @media screen and (min-width: 1100px) and (max-width: 1366px) {}
     }
   </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
-<?php include_once 'navigationbar.php'; ?>
+  <?php include_once 'navigationbar.php'; ?>
   <div class="container-fluid">
     <main class="sign-up">
       <div class="sign-up__container">
         <div class="sign-up__content">
-            <h1 class="sign-up__title">CHANGE PASSWORD</h1>
-            <p class="sign-up__descr mb-5">Input a new password for your account.</p>
-            <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-              <div class="alert alert-warning mb-3" role="alert">
-                <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
-                unset($_SESSION["msg"]); ?>
-              </div>
-            <?php
-            }
-            unset($_SESSION["msg"]);
-            ?>
+          <h1 class="sign-up__title">CHANGE PASSWORD</h1>
+          <p class="sign-up__descr mb-5">Input a new password for your account.</p>
+          <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+            <div class="alert alert-warning mb-3" role="alert">
+              <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
+              unset($_SESSION["msg"]); ?>
+            </div>
+          <?php
+          }
+          unset($_SESSION["msg"]);
+          ?>
           <form id="form" method="GET" action="/accounts/update" class="sign-up__form form">
             <div class="form__row form__row--two">
               <div class="input form__inline-input">

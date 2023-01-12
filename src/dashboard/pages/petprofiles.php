@@ -109,6 +109,22 @@
     <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
     <div class="main-wrapper">
       <?php include_once dirname(__DIR__) . "/navbar.php" ?>
+      <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
+        <div class="toast-container top-0 end-0 p-3">
+          <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+            <div class="toast-header">
+              <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
+              <strong class="me-auto fs-4"> &nbsp; Notification </strong>
+              <small> JUST NOW </small>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
+          </div>
+        </div>
+      <?php
+      }
+      unset($_SESSION["msg"]);
+      ?>
       <main class="main users chart-page" id="skip-target">
         <div class="container">
           <h2 class="main-title text-center mt-3">Ohana Pet Profiles</h2>
@@ -136,22 +152,24 @@
             <table id="profiles" class="posts-table">
               <thead>
                 <tr class="users-table-info">
-                  <th><b>DOG TYPE </b></th>
-                  <th><b>DOG TRAIT </b></th>
                   <th><b>DOG PICTURE </b></th>
                   <th><b>DOG NAME </b></th>
+                  <th><b>DOG COLOR </b></th>
+                  <th><b>DOG TRAIT </b></th>
+                  <th><b>DOG TYPE </b></th>
+                  <th><b>STATUS</b></th>
                   <th><b>ACTION </b></th>
                 </tr>
                 <tr>
+                  <th></th>
                   <th>
-                    <select data-column="0" class="form-control filter-select">
-                      <option value="">Select a Pet Type...</option>
-                      <option value="REHOMING">Rehoming</option>
-                      <option value="STUD">Stud</option>
-                    </select>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Pet Name..." data-column="1">
                   </th>
                   <th>
-                    <select data-column="1" class="form-control filter-select">
+                    <input type="text" class="form-control filter-input" placeholder="Enter Pet Color..." data-column="2">
+                  </th>
+                  <th>
+                    <select data-column="3" class="form-control filter-select">
                       <option value="">Select a Pet Trait...</option>
                       <option class="text-center" style="color:#DB6551" disabled>Standard</option>
                       <option value="Fawn">Fawn</option>
@@ -177,10 +195,19 @@
                     </select>
                   </th>
                   <th>
-                    <input type="text" class="form-control filter-input" placeholder="Enter Pet Name..." data-column="2">
+                    <select data-column="4" class="form-control filter-select">
+                      <option value="">Select a Pet Type...</option>
+                      <option value="REHOMING">Rehoming</option>
+                      <option value="STUD">Stud</option>
+                    </select>
                   </th>
                   <th>
-                    <input type="text" class="form-control filter-input" placeholder="Enter Owner Name..." data-column="3">
+                    <select data-column="5" class="form-control filter-select">
+                      <option value="">Select a Status...</option>
+                      <option value="AVAILABLE">Available</option>
+                      <option value="UNAVAILABLE">Unavailable</option>
+                      <option value="SOLD">Sold</option>
+                    </select>
                   </th>
                   <th></th>
                 </tr>
@@ -190,10 +217,12 @@
                 foreach ($profiles as $profile) {
                 ?>
                   <tr>
-                    <td><?php echo $profile->getType(); ?></td>
-                    <td><?php echo $profile->getTrait(); ?></td>
                     <td><img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="rounded-3" style="width: 100px; height: 100px;"></td>
                     <td><?php echo $profile->getName(); ?></td>
+                    <td><?php echo ucfirst(strtolower($profile->getColor())); ?></td>
+                    <td><?php echo $profile->getTrait(); ?></td>
+                    <td><?php echo ucfirst(strtolower($profile->getType())); ?></td>
+                    <td><?php echo ucfirst(strtolower($profile->getStatus())); ?></td>
                     <td>
                       <?php if ($profile->getType() == 'STUD') { ?>
                         <a href="/dashboard/stud-history/<?php echo $profile->getReference(); ?>/<?php echo $profile->getName(); ?>" style="color:#7d605c; margin-right: 15px;  font-size: 25px;"><i class="uil uil-eye"></i></a>
@@ -334,22 +363,6 @@
     <?php include_once dirname(__DIR__) . '/footer.php'; ?>
     </div>
   </div>
-  <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
-    <div class="toast-container top-0 end-0 p-3">
-      <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
-        <div class="toast-header">
-          <img src="/Ohana/src/dashboard/img/main/notification.png" width="25px" height="25px" alt="">
-          <strong class="me-auto fs-4"> &nbsp; Notification </strong>
-          <small> JUST NOW </small>
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body" style="color:#db6551; font-size:15px;"><?php echo $_SESSION["msg"] ?></div>
-      </div>
-    </div>
-  <?php
-  }
-  unset($_SESSION["msg"]);
-  ?>
   <form method="POST" action="/dashboard/pet-profiles/add" enctype="multipart/form-data">
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addProfileModal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">

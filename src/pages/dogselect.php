@@ -50,6 +50,8 @@
                 width: 20rem;
             }
         }
+
+        @media screen and (min-width: 1100px) and (max-width: 1366px) {}
     </style>
 </head>
 

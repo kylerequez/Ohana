@@ -37,13 +37,15 @@
 
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
-    @media screen and (min-width: 360px) and (max-width: 929.98px) {}
+    @media screen and (min-width: 360px) {}
+
+    @media screen and (min-width: 1100px) and (max-width: 1366px) {}
   </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
   <main>
-  <?php include_once 'navigationbar.php'; ?>
+    <?php include_once 'navigationbar.php'; ?>
     <div class="container-fluid">
       <div class="container h-90" id="create-profile">
         <h1 class="mb-5 text-center" id="header"> Create Pet Profile </h1><br>

@@ -7,7 +7,6 @@ class FeedbackDAO
     private ?string $user = null;
     private ?string $password = null;
     private ?PDO $conn = null;
-
     public function __construct(string $host, string $name, string $user, string $password)
     {
         $this->host = $host;
@@ -15,36 +14,29 @@ class FeedbackDAO
         $this->user = $user;
         $this->password = $password;
     }
-
     public function openConnection(): void
     {
         $this->conn = new PDO("mysql:host={$this->host};dbname={$this->name};charset=utf8", $this->user, $this->password);
     }
-
     public function closeConnection(): void
     {
         $this->conn = null;
     }
-
     public function getTotalFeedback(): mixed
     {
         try {
             $this->openConnection();
             $sql = "SELECT COUNT(*) FROM ohana_feedbacks;";
-
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
-
             $result = $stmt->fetchColumn();
             return $result;
         } catch (Exception $e) {
-            echo $e;
             return null;
         } finally {
             $this->closeConnection();
         }
     }
-
     public function getAllFeedbacks(): mixed
     {
         try {
@@ -59,19 +51,16 @@ class FeedbackDAO
                     $searchedFeedback->setAccount(new Account($feedback['account_type'], $feedback['fname'], $feedback['mname'], $feedback['lname'], $feedback['number'], $feedback['email'], $feedback['status'], $feedback['password']));
                     $searchedFeedback->setDate(new DateTime($feedback['feedback_date']));
                     $searchedFeedback->setId($feedback['feedback_id']);
-
                     $feedbacks[] = $searchedFeedback;
                 }
             }
             return $feedbacks;
         } catch (Exception $e) {
-            echo $e;
             return null;
         } finally {
             $this->closeConnection();
         }
     }
-
     public function addFeedback(Feedback $feedback): bool
     {
         try {
@@ -80,22 +69,18 @@ class FeedbackDAO
             $sql = "INSERT INTO ohana_feedbacks
                     (feedback_rating, feedback_message, account_id)
                     VALUES (:rating, :message, :accountId)";
-
             $rating = $feedback->getRating();
             $message = $feedback->getMessage();
             $accountId = $feedback->getAccountId();
-
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":rating", $rating, PDO::PARAM_INT);
             $stmt->bindParam(":message", $message, PDO::PARAM_STR);
             $stmt->bindParam(":accountId", $accountId, PDO::PARAM_INT);
-
             $isAdded = $stmt->execute() > 0;
             $this->conn->commit();
             return $isAdded;
         } catch (Exception $e) {
             $this->conn->rollBack();
-            echo $e;
             return null;
         } finally {
             $this->closeConnection();

@@ -51,7 +51,10 @@
                 height: 30vh;
             }
         }
-    </style>
+    @media screen and (min-width: 1100px) and (max-width: 1366px) {
+        
+      }
+</style>
 </head>
 
 <body style="background-color: #FAF8F0;">

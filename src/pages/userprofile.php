@@ -13,16 +13,18 @@
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
         #header {
-            margin-top:-2%;
+            margin-top: -2%;
         }
+
         #ohanafooter {
             margin-top: 10%;
         }
 
         @media screen and (min-width: 360px) and (max-width: 429px) {
             .container {
-                margin-top:-5%; 
+                margin-top: -5%;
             }
+
             #header {
                 font-size: 40px;
                 margin-top: 15%;
@@ -30,8 +32,9 @@
 
             #labels {
                 width: 200px;
-                font-size:14px;
+                font-size: 14px;
             }
+
             #name {
                 margin-top: -50px;
             }
@@ -39,7 +42,7 @@
             #save {
                 max-width: 500px;
                 margin-left: auto;
-                margin-right: auto; 
+                margin-right: auto;
                 float: none;
                 margin-top: 40px;
             }
@@ -51,7 +54,9 @@
                 float: none;
                 margin-top: -50px;
             }
-            @media screen and (min-width: 1100px) and (max-width: 1366px) { /* for small laptops*/
+
+            @media screen and (min-width: 1100px) and (max-width: 1366px) {
+                /* for small laptops*/
 
             }
         }
@@ -60,7 +65,7 @@
 
 <body style="background-color: #FAF8F0;">
     <main>
-    <?php include_once 'navigationbar.php'; ?>
+        <?php include_once 'navigationbar.php'; ?>
         <div class="container-fluid">
             <section class="userprofile">
                 <div class="userheader">

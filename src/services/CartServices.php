@@ -5,18 +5,15 @@ class CartServices
 {
     private ?PetProfileDAO $dao = null;
     private ?OrderDAO $order = null;
-
     public function __construct(PetProfileDAO $dao, OrderDAO $order)
     {
         $this->dao = $dao;
         $this->order = $order;
     }
-
     public function searchOrderByPetId(string $id): mixed
     {
         return $this->order->searchByPetId($id);
     }
-
     public function addToCart(string $type, string $id): bool
     {
         $cart = unserialize($_SESSION["cart"]);
@@ -42,7 +39,6 @@ class CartServices
         $_SESSION["cart"] = serialize($cart);
         return true;
     }
-
     public function deleteOrder(string $id): bool
     {
         $cart = unserialize($_SESSION["cart"]);
