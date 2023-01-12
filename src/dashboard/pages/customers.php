@@ -144,7 +144,7 @@
                     <input type="text" class="form-control filter-input" placeholder="Enter Email Address..." data-column="1">
                   </th>
                   <th>
-                    <input type="text" class="form-control filter-input" placeholder="Enter Email Address..." data-column="2">
+                    <input type="text" class="form-control filter-input" placeholder="Enter Contact Number..." data-column="2">
                   </th>
                   <th>
                     <select data-column="3" class="form-control filter-select">

@@ -104,19 +104,9 @@ class AppointmentDAO
     {
         try {
             $this->openConnection();
-            $sql = "SELECT 
-                        a.appointment_id, 
-                        a.appointment_title, 
-                        a.appointment_type, 
-                        a.appointment_description, 
-                        b.account_id, 
-                        b.fname, 
-                        b.lname,
-                        b.number,
-                        a.appointment_start, 
-                        a.appointment_end,
-                        a.appointment_status
-                    FROM ohana_appointments a, ohana_account b;";
+            $sql = "SELECT * 
+                    FROM ohana_appointments a JOIN ohana_account b 
+                    WHERE a.account_id = b.account_id;";
             $stmt = $this->conn->query($sql);
             $appointments = null;
             if ($stmt->execute() > 0) {
