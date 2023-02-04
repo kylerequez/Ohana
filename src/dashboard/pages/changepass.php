@@ -112,7 +112,7 @@
                         <div class="row">
                             <div class="col">
                                 <label class="mb-2" for="name" style="display:block"> <b>Current Password:</b> </label>
-                                <input type="password" value="" name="old-password" id="password" class="password" for="password" required placeholder="Enter Current Password" style="background-color:white;width:100%" minlength="8"></p>
+                                <input type="password" value="" name="old-password" id="password" class="password" for="password" required placeholder="Enter Current Password" style="background-color:white;width:100%" minlength="8" maxlength="20"></p>
                             </div>
                         </div>
                         <div class="row">

@@ -18,11 +18,14 @@
     #forgotdesc {
       font-size: 20px;
     }
+    #ohanafooter {
+      margin-top:-1%;
+    }
 
-    @media screen and (min-width: 360px) and (max-width: 929.98px) {
+    @media screen and (min-width: 360px) and (max-width: 549px) {
       #forgottitle {
         font-size: 35px;
-        margin-top: 0%;
+        margin-top: 20%;
       }
 
       #forgotdesc {
@@ -57,9 +60,12 @@
         font-weight: 700;
       }
     }
-  @media screen and (min-width: 1100px) and (max-width: 1366px) {
-        
+    @media screen and (min-width: 550px) and (max-width: 1090px) { 
+      #forgottitle {
+        font-size: 60px;
+        margin-top: 5%;
       }
+    }
 </style>
 </head>
 
@@ -105,7 +111,7 @@
                     </div>
                   </center>
                   <hr style="width:100%"><br>
-                  <div class="form__row sign-up__sign"> Dont have an account? &nbsp;<a class="link" href="/register" style="text-decoration: none;"> Register Now! </a></div>
+                  <div class="form__row sign-up__sign"> Don't have an account? &nbsp;<a class="link" href="/register" style="text-decoration: none;"> Register Now! </a></div>
                 </div>
               </div>
             </div>

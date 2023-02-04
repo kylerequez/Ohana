@@ -300,12 +300,13 @@ if (isset($_SESSION['user'])) {
         top: 100%;
         right: -100%;
         width: 270px;
-        height: 30vh;
+        height: 22vh;
         background: #faf8f0;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         border-radius: 10px;
+        border: 1px solid #db6551 ;
         transition: all .50s ease;
       }
 

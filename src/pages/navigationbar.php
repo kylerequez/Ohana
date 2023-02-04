@@ -90,8 +90,8 @@
             padding: 5px 0;
             margin: 0px 30px;
             transition: all .50s ease;
-            font-family: "DM Sans", sans-serif;
-            font-weight: bold;
+            /* font-family: "DM Sans", sans-serif; */
+            /* font-weight: bold; */
         }
 
         .navbar a:hover {
@@ -300,6 +300,7 @@
                 flex-direction: column;
                 justify-content: flex-start;
                 border-radius: 10px;
+                border: 1px solid #db6551;
                 transition: all .50s ease;
             }
 
@@ -322,12 +323,30 @@
             .navbar.open {
                 right: 2%;
                 background-color: #faf8f0;
+                height:250px;
+            }
+            .action .menu {
+                height:430px;
+                right: -70px;
             }
         }
-    @media screen and (min-width: 1100px) and (max-width: 1366px) {
-        
-      }
-</style>
+
+        @media screen and (min-width: 360px) and (max-width: 430px) {
+            .action .menu {
+                height:430px;
+                right: -90px;
+            }
+            .navbar.open {
+                height:250px;
+            }
+        }
+
+        @media screen and (min-width: 1100px) and (max-width: 1368px) {
+            li.nav-item {
+                margin-left:-15px;
+            }
+        }
+    </style>
 </head>
 <?php
 include_once dirname(__DIR__) . '/config/app-config.php';
@@ -351,19 +370,19 @@ if (!isset($_SESSION['user'])) {
     </a>
     <ul class="navbar">
         <li class="nav-item">
-            <a class="nav-link <?php if($_SERVER['REQUEST_URI'] == '/home') echo 'active'; ?>" aria-current="page" href="/home">Home</a>
+            <a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/home') echo 'active'; ?>" aria-current="page" href="/home">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?php if($_SERVER['REQUEST_URI'] == '/about') echo 'active'; ?>" href="/about">About</a>
+            <a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/about') echo 'active'; ?>" href="/about">About</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?php if($_SERVER['REQUEST_URI'] == '/services') echo 'active'; ?>" href="/services">Services</a>
+            <a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/services') echo 'active'; ?>" href="/services">Services</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?php if($_SERVER['REQUEST_URI'] == '/contact') echo 'active'; ?>" href="/contact">Contact</a>
+            <a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/contact') echo 'active'; ?>" href="/contact">Contact</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?php if($_SERVER['REQUEST_URI'] == '/pawcart') echo 'active'; ?>" href="/pawcart"> Paw Cart <i class="uil uil-shopping-bag"></i></a>
+            <a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/pawcart') echo 'active'; ?>" href="/pawcart"> Paw Cart <i class="uil uil-shopping-bag"></i></a>
         </li>
     </ul>
     <div class="main">
@@ -417,12 +436,12 @@ if (!isset($_SESSION['user'])) {
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="logoutTitle"> Do you want to logout? </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-left: 55%;"></button>
                 </div>
                 <div class="modal-body">
                     All the unsaved changes will be lost. Are you sure you would like to log-out?
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal" aria-label="Close"> Cancel </button>
                     <button type="submit" name="btnLogout" class="btn btn-danger"> Logout </button>
                 </div>
             </div>

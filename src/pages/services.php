@@ -32,7 +32,6 @@
             margin-top: 47%;
             align-items: center;
         }
-
         @media screen and (min-width: 360px) and (max-width: 500px) {
             #serviceheader {
                 font-size: 50px;
@@ -67,10 +66,32 @@
                 font-size: 15px;
             }
         }
-    @media screen and (min-width: 1100px) and (max-width: 1366px) {
-        
-      }
-</style>
+
+        @media screen and (min-width: 1100px) and (max-width: 1600px) {
+            .reasons {
+                background-image: url(/Ohana/src/images/laptops/info.png);
+                width:100%;
+                min-height: 766px;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            .pair-section {
+                background-image: url(/Ohana/src/images/laptops/services1.png);
+                width:100%;
+                min-height: 766px;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+            #perfectpair.btn-outline-warning {
+                margin-top: 45%;
+            }
+        }
+    </style>
 </head>
 
 <body style="background-color: #FAF8F0;">

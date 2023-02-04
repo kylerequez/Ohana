@@ -11,13 +11,6 @@
     <link rel="stylesheet" href="/Ohana/src/css/chatbot-ui.css">
     <?php include_once 'stylesheets.php'; ?>
     <style>
-        @media screen and (max-width: 1366px) {
-            #header {
-                margin-top: 20%;
-                font-size: 60px;
-            }
-        }
-
         @media screen and (min-width: 360px) and (max-width: 500px) {
             #header {
                 margin-top: 12%;
@@ -50,10 +43,34 @@
                 margin-bottom: 30px;
             }
         }
-    @media screen and (min-width: 1100px) and (max-width: 1366px) {
-        
-      }
-</style>
+
+        @media screen and (max-width: 1500px) {
+            #header {
+                margin-top: 15%;
+                font-size: 60px;
+            }
+
+            #mainabout {
+                background-image: url(/Ohana/src/images/laptops/rabout.png);
+                width: 100%;
+                min-height: 766px;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            #values {
+                background-image: url(/Ohana/src/images/laptops/val.png);
+                width: 100%;
+                min-height: 766px;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        }
+    </style>
 </head>
 
 <body style="background-color: #FAF8F0;">

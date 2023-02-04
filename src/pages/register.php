@@ -65,10 +65,9 @@
         font-size: 15px;
       }
     }
-  @media screen and (min-width: 1100px) and (max-width: 1366px) {
-        
-      }
-</style>
+
+    @media screen and (min-width: 1100px) and (max-width: 1366px) {}
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -78,12 +77,13 @@
       <div class="sign-up__container">
         <div class="sign-up__content">
           <header class="sign-up__header">
-            <h1 class="sign-up__title mt-5">Welcome to Ohana!</h1>
+            <h1 class="sign-up__title mt-5" id="welcome">Welcome to Ohana!</h1>
             <p class="sign-up__descr">Create An Account</p>
             <p class="register__desc mt-3"> Fill up the fields below to create an account. </p>
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
               <div class="alert alert-warning mt-3" role="alert">
-                <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null; unset($_SESSION["msg"]); ?>
+                <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
+                unset($_SESSION["msg"]); ?>
               </div>
             <?php
               session_destroy();
@@ -268,6 +268,20 @@
           confirmpass.setCustomValidity("Password does not match");
         } else {
           confirmpass.setCustomValidity("");
+        }
+      });
+    </script>
+    <script>
+      var target = document.getElementById("welcome");
+
+      var text = "Welcome to Ohana!"; 
+      var result = "";
+      window.addEventListener("load", (event) => {
+        for (let i = 0; i < text.length; i++) {
+          setTimeout(function() {
+            result += text[i];
+            target.innerHTML = result;
+          }, 60 * i);
         }
       });
     </script>

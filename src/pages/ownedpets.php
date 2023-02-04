@@ -16,8 +16,8 @@
     }
 
     #editcard {
-      max-width: 65 vw;
-      max-height: 80vh;
+      max-width: 65vw;
+      max-height: 100vh;
       border-style: solid;
       border-color: #eed1c2;
       border-width: 4px;
@@ -34,11 +34,26 @@
 
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
-    @media screen and (min-width: 360px) and (max-width: 420px) {}
-  @media screen and (min-width: 1100px) and (max-width: 1366px) {
-        
+    @media screen and (max-width: 550px) {
+      #header {
+        margin-top: 15%;
       }
-</style>
+
+      #button-group {
+        margin-top: -10%;
+      }
+
+      #profilecontainer {
+        height: 90vh;
+      }
+    }
+
+    @media screen and (min-width: 1000px) and (max-width: 1600px) {
+      #button-group {
+        margin-top: -10%;
+      }
+    }
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -80,7 +95,7 @@
   <main>
     <?php include_once 'navigationbar.php'; ?>
     <div class="container-fluid">
-      <div class="container h-90">
+      <div class="container" id="profilecontainer">
         <h1 class="text-center mb-5" id="header" style="color:#DB6551; font-family: 'Acme', sans-serif; "> Pet Profile </h1><br>
         <div class="card mx-auto" id="editcard">
           <div class="row g-0">
@@ -146,12 +161,22 @@
                     </div>
                   </div>
                 </div>
+                <div class="row p-4 me-5" id="button-group">
+                <div class="col-4 float-end">
+                    <a href="/ownedpets" type="reset" class="btn btn-outline-dark mt-3">Go Back</a>
+                  </div>
+                  <div class="col-2">
+
+                  </div>
+                  <div class="col-2 float-end pe-5">
+                    <button type="submit" id="submitbtn" class="btn ms-2 mt-3" data-bs-toggle="modal" data-bs-target="#editModal" style="background-color: #c0b65a; color:white;">Edit</button>
+                  </div>
+                  <div class="col-2 float-end me-2">
+                    <a href="/ownedpets/delete/<?php echo $profile->getId(); ?>" onclick="return confirm('Are you sure you want to delete this pet profile?');"><button id="deletebtn" class="btn btn-danger me-4 mt-3">Delete</button></a>
+                  </div>
+                </div>
               </div>
-              <div class="d-flex justify-content-end pt-2" id="button-group" style="margin-right:10%">
-                <a href="/ownedpets" type="reset" class="btn btn-outline-dark mt-3">Go Back</a>
-                <a href="/ownedpets/delete/<?php echo $profile->getId(); ?>" onclick="return confirm('Are you sure you want to delete this pet profile?');"><button id="deletebtn" class="btn btn-danger me-4 mt-3">Delete</button></a>
-                <button type="submit" id="submitbtn" class="btn ms-2 mt-3" data-bs-toggle="modal" data-bs-target="#editModal" style="background-color: #c0b65a; color:white; margin-left:20px;">Edit</button>
-              </div>
+
               <form method="POST" action="/ownedpets/update/<?php echo $profile->getId(); ?>" enctype="multipart/form-data">
                 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
                   <input type="hidden" name="reference" value="<?php echo $profile->getReference(); ?>">

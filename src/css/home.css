@@ -118,7 +118,7 @@ form {
   margin-left: 5%;
   margin-right: 5%;
 }
-@media screen and (min-width: 360px) and (max-width: 929.98px) {
+@media screen and (min-width: 360px) and (max-width: 430px) {
   #h1 {
       font-size: 30px;
       color: #7d605c;
@@ -126,7 +126,7 @@ form {
   }
   #welcome {
       font-size: 35px;
-      Margin-top: 40%;
+      Margin-top: 50%;
       color: #db6551;
       font-family: 'Acme', sans-serif;
   }

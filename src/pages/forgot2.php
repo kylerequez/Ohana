@@ -34,9 +34,12 @@
         margin-top: 10%;
       }
     }
-  @media screen and (min-width: 1100px) and (max-width: 1366px) {
-        
+  @media screen and (min-width: 550px) and (max-width: 1090px) { 
+      #forgottitle2 {
+        font-size: 60px;
+        margin-top: 5%;
       }
+    }
 </style>
 </head>
 

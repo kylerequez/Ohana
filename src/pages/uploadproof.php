@@ -16,8 +16,8 @@
             color: #db6551;
         }
 
-        #chead {
-            margin-top: 5%;
+        #cartheader {
+            margin-top: 9%;
         }
 
         #note {
@@ -35,7 +35,7 @@
         }
 
         #ohanafooter {
-            margin-top: 10%;
+            margin-top: 5%;
         }
 
         @media screen and (min-width: 360px) and (max-width: 929.98px) {
@@ -98,7 +98,7 @@
         <div class="container-fluid">
             <section class="carthead" id="chead">
                 <div class="cartheader mb-4">
-                    <img src="/Ohana/src/images/Pages/checkoutheader.png" class="img-fluid" id="#cartheader">
+                    <img src="/Ohana/src/images/Pages/checkoutheader.png" class="img-fluid" id="cartheader">
                 </div>
             </section>
             <div class="container">
@@ -106,22 +106,23 @@
                     <center>
                         <form method="POST" action="/transaction/complete/<?php echo $type; ?>" enctype="multipart/form-data">
                             <div class="card rounded-3 mb-4 p-4" id="proof" style="width:75%;">
-                                <h1 class="mt-2 mb-3 fs-3"> Upload Proof of Payment </h1>
+                                <h1 class="mt-2 mb-5 fs-3" style="font-family: 'Acme', sans-serif;color:#db6551"> - Upload Proof of Payment - </h1>
                                 <div class="col">
                                     <input type="hidden" name="reference" value="<?php echo $_GET['reference']; ?>">
                                     <input type="hidden" name="mode" value="<?php echo $_GET['mode']; ?>">
                                     <input type="file" id="image" name="image">
                                 </div>
+                                <p class="mt-4"> <span class="fw-bold" style="color:#db6551"> Important: </span> Kindly upload the correct receipt (Screenshot) </p>
+                                <p class="mt-4"> <span class="fw-bold" style="color:#db6551"> Note: </span> For this option, If you do not want to make the payment yet, skip this step. </p>
                                 <div class="col mt-5">
-                                    <button type="submit">-Skip this step-</button>
+                                    <button type="submit" class="btn btn-outline-danger">Skip this step</button>
                                 </div>
+                                <p class="mt-5 fw-bold"> Some reminders to take note:</p>
+                                <p class="mt-4"> 1. For those who will skip: Kindly upload your proof of payment in the transactions page</p>
+                                <p class="mt-3 mb-3"> 2.Kindly Read the Terms and Conditions for Cancellation and Payment Policy. </p>
                             </div>
-                            <div class="card rounded-3 mb-4 p-4" id="note" style="width:75%;">
-                                <p class="mt-4"> Note: TRANSACTIONS WILL BE DONE FACE TO FACE, YOU ONLY NEED TO SELECT A PAYMENT METHOD OF YOUR CHOICE </p>
-                                <p class="mt-2 mb-3"> Friendly Reminder: Kindly Read the <b>Terms and Conditions for Cancellation and Payment Policy.</b> </p>
-                            </div>
-                            <a href="javascript:history.go(-1)" class="text-light"><button type="button" id="back" class="btn btn-outline-dark btn-lg mt-2 mx-3">Go Back</button></a>
-                            <button type="submit" id="pay" class="btn btn-block btn-lg mt-2 mx-3">
+                            <a href="javascript:history.go(-1)" class="text-light"><button type="button" id="back" class="btn btn-outline-dark btn-lg mt-5 mx-3" style="width:200px;">Go Back</button></a>
+                            <button type="submit" id="pay" class="btn btn-block btn-lg mt-5 mx-3" style="width:200px;">
                                 Proceed </button>
                         </form>
                     </center>

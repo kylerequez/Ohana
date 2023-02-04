@@ -100,6 +100,10 @@
       width: 150px;
       height: 50px;
     }
+    select.form-control:active {
+      border-color: #C0B65A;
+      border-width:2px;
+    }
   </style>
 </head>
 

@@ -16,21 +16,36 @@
             height: 100px;
         }
 
+        #cartheader {
+            margin-top: 9%;
+        }
+
         #ohanafooter {
             margin-top: 5%;
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
-        @media screen and (min-width: 360px) and (max-width: 929.98px) {
+        @media screen and (min-width: 360px) and (max-width: 430px) {
             #cartheader {
-                margin-top: 20%;
+                margin-top: 45%;
+            }
+
+            .img {
+                margin-left: 50%;
+            }
+
+            .btn {
+                font-size: 15px;
+            }
+
+            #delbtn {
+                margin-top: 10%;
             }
         }
-    @media screen and (min-width: 1100px) and (max-width: 1366px) {
-        
-      }
-</style>
+
+        @media screen and (min-width: 1100px) and (max-width: 1366px) {}
+    </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -68,7 +83,7 @@
                             } else {
                                 ?>
                                 <div class="d-flex justify-content-between align-items-center mb-4">
-                                    <h3 class="fw-bold mb-0 text-black fs-3"> Order Description </h3>
+                                    <h3 class="fw-bold mb-0 text-black fs-3" style="font-family: 'Acme', sans-serif;"> Order Description </h3>
                                 </div>
                                 <?php
                                 if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
@@ -85,7 +100,7 @@
                                         <div class="card-body p-4">
                                             <div class="row d-flex justify-content-between align-items-center">
                                                 <div class="col-md-2 col-lg-2 col-xl-2">
-                                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($order->getImage()); ?>" class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($order->getImage()); ?>" class="img-fluid">
                                                 </div>
                                                 <div class="col-md-3 col-lg-3 col-xl-3">
                                                     <p class="lead fw-normal mb-2"><?php echo $order->getPetName() ?></p>
@@ -97,7 +112,7 @@
                                                 </div>
                                                 <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                                     <form method="POST" action="/delete-item/<?php echo $order->getPetId(); ?>">
-                                                        <button type="submit" class="text-danger" style="border:none;background-color:transparent"><i class="fas fa-trash fa-lg " onclick="return confirm('Are you sure you want to remove this item from your cart?');"></i></button>
+                                                        <button type="submit" id="delbtn" class="text-danger" style="border:none;background-color:transparent"><i class="fas fa-trash fa-lg" onclick="return confirm('Are you sure you want to remove this item from your cart?');"></i></button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -106,7 +121,7 @@
                                 <?php
                                 }
                                 ?>
-                                <a href="/checkout/<?php echo uniqid('OKPH-'); ?>"><button type="button" name="btn-Payment" class="btn btn-block btn-lg" style="float:right; background-color:#c0b65a; color:white;">
+                                <a href="/checkout/<?php echo uniqid('OKPH-'); ?>"><button type="button" name="btn-Payment" id="proceedbtn" class="btn btn-block btn-lg" style="float:right; background-color:#c0b65a; color:white;">
                                         Proceed to Select Payment Method </button></a>
                             <?php
                             }

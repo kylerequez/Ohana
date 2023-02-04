@@ -24,7 +24,7 @@
                     <li><a href="/home" target="_blank"><i data-feather="home" aria-hidden="true"></i><span>Ohana Website</span></a></li>
                     <li><a class="danger" data-bs-toggle="modal" data-bs-target="#logoutModal">
                             <i data-feather="log-out" aria-hidden="true"></i>
-                            <span>Log out</span>
+                            <span style="cursor:pointer;">Log out</span>
                         </a></li>
                 </ul>
             </div>

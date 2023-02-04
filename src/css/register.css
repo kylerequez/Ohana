@@ -462,7 +462,7 @@ button span {
 .form__row .sign-up__sign {
     margin-bottom: 10%;
 }
-@media screen and (min-width: 521px) {
+@media screen and (min-width: 550px) {
     #ohanafooter {
       margin-top:15%;
     }

@@ -98,8 +98,9 @@
                     <div class="container">
                         <center>
                             <div class="card rounded-3 mb-5 " style="width:60%;">
-                                <h1 class="fs-3 mt-3 mb-3 fw-bold" style="color:#db6551"> IMPORTANT NOTE: </h1>
-                                <p class="fs-6 mt-2 me-2 ms-2"> TRANSACTIONS WILL BE DONE FACE TO FACE <br><br> YOU ONLY NEED TO SELECT A PAYMENT METHOD OF YOUR CHOICE </p>
+                                <h1 class="fs-3 mt-4 mb-3 fw-bold" style="color:#db6551;font-family: 'Acme', sans-serif;"> IMPORTANT NOTE: </h1>
+                                <p class="fs-6 mt-2 me-2 ms-2"> YOU ONLY NEED TO SELECT A PAYMENT METHOD OF YOUR CHOICE </p>
+                                <p class="fs-6 mt-3 me-2 ms-2"> <b style="color:#db6551"> Recommended: </b> Do the payment during your visit. </p>
                                 <p class="fs-6 mt-3 me-2 ms-2"> <b style="color:#db6551"> Additional: </b> If you wish to pay right away, please do not hesitate to contact us.</p>
                                 <p class="fs-6 mt-5 mb-5"> Friendly Reminder: Kindly Read the <b>Terms and Conditions for Cancellation and Payment Policy.</b> </p>
                             </div>
@@ -122,7 +123,7 @@
     <script>
         $(document).ready(function() {
             $("#paymentInstruction").append(`
-                <h1 class="fs-3 mt-4 mb-3 fw-bold" style="color:#db6551"> Payment Instructions </h1>
+                <h1 class="fs-3 mt-4 mb-3 fw-bold" style="color:#db6551;font-family: 'Acme', sans-serif;"> Payment Instructions </h1>
                 <hr>
                 <p class="fs-6 mt-3"> <b class="fw-bold">Cash Payment on Dog Pickup</b> </p>
                 <p class="fs-6 mt-3"> 1. Bring the necessary amount in full for cash payment </p>
@@ -134,7 +135,7 @@
                 if (buttonVal === "GCASH") {
                     $("#paymentInstruction").empty();
                     $("#paymentInstruction").append(`
-                        <h1 class="fs-3 mt-4 mb-3 fw-bold" style="color:#db6551"> Payment Instructions </h1>
+                        <h1 class="fs-3 mt-4 mb-3 fw-bold" style="color:#db6551;font-family: 'Acme', sans-serif;"> Payment Instructions </h1>
                         <hr>
                         <p class="fs-6 mt-3"><b class="fw-bold">Gcash (E-Wallet)</b></p>
                         <p class="fs-6 mt-3 "> 1. Open GCash mobile app </p>
@@ -147,7 +148,7 @@
                 } else if (buttonVal === "BANK TRANSFER") {
                     $("#paymentInstruction").empty();
                     $("#paymentInstruction").append(`
-                        <h1 class="fs-3 mt-4 mb-3 fw-bold" style="color:#db6551"> Payment Instructions </h1>
+                        <h1 class="fs-3 mt-4 mb-3 fw-bold" style="color:#db6551;font-family: 'Acme', sans-serif;"> Payment Instructions </h1>
                         <hr>
                         <p class="fs-6 mt-3"> <b class="fw-bold">Online Bank Transfer or Over-the-counter</b> </p>
                         <p class="fs-6 mt-3 "> 1. Deposit amount to the following BPI bank account: </p>

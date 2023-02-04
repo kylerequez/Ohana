@@ -127,9 +127,8 @@
                         <button type="submit" style="border-radius:30px;"> <span> Change Password </span></button>
                       </div>
                     </div>
-                    <hr>
                     <div class="form__row mt-4">
-                      <a href="/userprofile" class="fs-4" style="text-decoration:none;color:#db6551"> Go Back </a>
+                      <a href="/userprofile" class="fs-5" style="text-decoration:none;color:#db6551"> Go Back </a>
                     </div>
                   </center>
                 </div>

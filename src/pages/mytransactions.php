@@ -26,13 +26,21 @@
 
         @media screen and (min-width: 360px) and (max-width: 429px) {
             #header {
-                margin-top: 50%;
+                margin-top: 40%;
+            }
+
+            .card {
+                width: 300px;
+                margin-left: -75px;
+            }
+
+            #mytext {
+                font-size: 15px;
             }
         }
-    @media screen and (min-width: 1100px) and (max-width: 1366px) {
-        
-      }
-</style>
+
+        @media screen and (min-width: 1100px) and (max-width: 1366px) {}
+    </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -78,24 +86,26 @@
                                     <div class="card-body p-4">
                                         <div class="row d-flex justify-content-between align-items-center">
                                             <div class="col-md-2 col-lg-2 col-xl-2">
-                                                <p class="lead fw-normal mb-2"><?php echo $transaction->getDate()->format('M-d-y'); ?></p>
+                                                <p class="lead fw-normal mb-2" id="mytext"><?php echo $transaction->getDate()->format('M-d-y'); ?></p>
                                             </div>
                                             <div class="col-md-2 col-lg-2 col-xl-2">
-                                                <p class="lead fw-normal mb-2"><?php 
-                                                $orders = $transaction->getListOfOrders(); 
-                                                if(!is_null($orders)){
-                                                    foreach ($orders as $order) { $type = $order->getType(); } 
-                                                } else {
-                                                    $type = 'NO ORDERS';
-                                                }
-                                                echo $type;
-                                                ?></p>
+                                                <p class="lead fw-normal mb-2" id="mytext"><?php
+                                                                                            $orders = $transaction->getListOfOrders();
+                                                                                            if (!is_null($orders)) {
+                                                                                                foreach ($orders as $order) {
+                                                                                                    $type = $order->getType();
+                                                                                                }
+                                                                                            } else {
+                                                                                                $type = 'NO ORDERS';
+                                                                                            }
+                                                                                            echo $type;
+                                                                                            ?></p>
                                             </div>
                                             <div class="col-md-3 col-lg-3 col-xl-3">
-                                                <p class="lead fw-normal mb-2"><?php echo $transaction->getReference(); ?></p>
+                                                <p class="lead fw-normal mb-2" id="mytext"><?php echo $transaction->getReference(); ?></p>
                                             </div>
                                             <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                <p class="lead fw-normal mb-2"><?php echo $transaction->getStatus(); ?></p>
+                                                <p class="lead fw-normal mb-2" id="mytext"><?php echo $transaction->getStatus(); ?></p>
                                             </div>
                                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                                 <a data-bs-toggle="modal" data-bs-target="#orderModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#c0b65a"><i class="uil uil-eye fs-3"></i> </a>
@@ -119,7 +129,7 @@
                                                                                         <img src="data:image/jpeg;base64,<?php echo base64_encode($order->getImage()); ?>" style="width:200px;height:200px;" class="rounded-3" alt="Cotton T-shirt">
                                                                                     </div>
                                                                                     <div class="col">
-                                                                                        <p class="lead fw-normal mb-2"><?php echo $order->getPetName(); ?></p>
+                                                                                        <p class="lead fw-normal mb-2 fs-2" style="font-family: 'Acme', sans-serif;"><?php echo $order->getPetName(); ?></p>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -145,7 +155,7 @@
                                                 if ($transaction->getStatus() != "COMPLETED") {
                                                     if (!is_null($transaction->getPaymentConfirmation())) {
                                                 ?>
-                                                        <a href="" data-bs-toggle="modal" data-bs-target="#proofModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#db6551"><i class="uil uil-paperclip fs-3"></i> </a>
+                                                        <a href="" data-bs-toggle="modal" data-bs-target="#proofModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#db6551"><i class="uil uil-file-graph fs-3"></i> </a>
                                                         <div class="modal modal-xl fade" id="proofModalId<?php echo $transaction->getId(); ?>" tabindex="-1" aria-labelledby="proofModal" aria-hidden="true">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
@@ -207,7 +217,7 @@
                                                 <?php
                                                 } else {
                                                 ?>
-                                                    <a href="" data-bs-toggle="modal" data-bs-target="#proofModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#db6551"><i class="uil uil-paperclip fs-3"></i> </a>
+                                                    <a href="" data-bs-toggle="modal" data-bs-target="#proofModalId<?php echo $transaction->getId(); ?>" style="text-decoration:none; color:#db6551"><i class="uil uil-file-graph fs-3"></i> </a>
                                                     <div class="modal modal-xl fade" id="proofModalId<?php echo $transaction->getId(); ?>" tabindex="-1" aria-labelledby="proofModal" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
@@ -237,6 +247,16 @@
                         <?php
                         }
                         ?>
+                    </div>
+                    <div class="card rounded-3 mb-4" style="width:69%">
+                        <div class="card-body p-4">
+                            <p class="mt-3 fw-bold">  For those who did not upload a receipt: </p>
+                            <p class="mt-4"> 1. Click on the upload icon beside the eye icon. </p>
+                            <p class="mt-3 mb-3"> 2. Click choose and select the photo of your receipt. </p>
+                            <p class="mt-3 mb-3"> 3. Click confirm to upload your selected file. </p>
+                            <p class="mt-3 mb-3"> 4. Click the paper icon to check if your receipt is uploaded. </p>
+                            <p class="mt-5 mb-3"> Note: If you have a concern regarding this, go to the contact page and kindly send us a message. </p>
+                        </div>
                     </div>
                 </section>
             </center>

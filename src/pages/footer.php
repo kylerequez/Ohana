@@ -1,4 +1,5 @@
 <style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
   @media screen and (min-width: 360px) and (max-width: 550px) {
     #paragraph {
       font-size: 12px;
@@ -22,16 +23,13 @@
       }
     }
   }
-@media screen and (min-width: 1100px) and (max-width: 1366px) {
-        
-      }
 </style>
 <div class="container-fluid" id="footercontainer" style="width:75%; color:#db6551">
   <footer id="ohanafooter" class="py-3 my-4 border-top border-warning bottom-0">
-    <p id="paragraph" class="text-center mt-4"> &copy; 2022 Ohana Kennel PH. All Rights Reserved</p>
+    <p id="paragraph" class="text-center mt-4" style="font-family: 'Poppins', sans-serif;cursor: pointer;"> &copy; 2022 Ohana Kennel PH. All Rights Reserved</p>
     <ul class="nav justify-content-center pb-3 mb-3 mt-3">
-      <a id="terms" style="text-decoration:none; color:#c0b65a;" data-bs-toggle="modal" data-bs-target="#termsModal"> TERMS AND CONDITIONS </a>
-      <a id="terms" style="text-decoration:none; color:#c0b65a;" data-bs-toggle="modal" data-bs-target="#privacyModal">&nbsp; DATA PRIVACY </a>
+      <a id="terms" style="text-decoration:none; color:#c0b65a;font-family: 'Poppins', sans-serif;cursor: pointer;" data-bs-toggle="modal" data-bs-target="#termsModal"> TERMS AND CONDITIONS </a>
+      <a id="terms" style="text-decoration:none; color:#c0b65a;font-family: 'Poppins', sans-serif;cursor: pointer;" data-bs-toggle="modal" data-bs-target="#privacyModal">&nbsp; DATA PRIVACY </a>
     </ul>
   </footer>
 </div>

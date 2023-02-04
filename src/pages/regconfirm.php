@@ -50,10 +50,9 @@
         font-size: 18px;
       }
     }
-  @media screen and (min-width: 1100px) and (max-width: 1366px) {
-        
-      }
-</style>
+
+    @media screen and (min-width: 1100px) and (max-width: 1366px) {}
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -145,7 +144,35 @@
     <?php include_once 'footer.php'; ?>
   </div>
   </main>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
 
+      function OTPInput() {
+        const inputs = document.querySelectorAll('#otp > *[id]');
+        for (let i = 0; i < inputs.length; i++) {
+          inputs[i].addEventListener('keydown', function(event) {
+            if (event.key === "Backspace") {
+              inputs[i].value = '';
+              if (i !== 0) inputs[i - 1].focus();
+            } else {
+              if (i === inputs.length - 1 && inputs[i].value !== '') {
+                return true;
+              } else if (event.keyCode > 47 && event.keyCode < 58) {
+                inputs[i].value = event.key;
+                if (i !== inputs.length - 1) inputs[i + 1].focus();
+                event.preventDefault();
+              } else if (event.keyCode > 64 && event.keyCode < 91) {
+                inputs[i].value = String.fromCharCode(event.keyCode);
+                if (i !== inputs.length - 1) inputs[i + 1].focus();
+                event.preventDefault();
+              }
+            }
+          });
+        }
+      }
+      OTPInput();
+    });
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 

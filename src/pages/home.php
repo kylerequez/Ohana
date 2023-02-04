@@ -18,10 +18,17 @@
             background-color: #c0b65a;
             opacity: 90%;
         }
-    @media screen and (min-width: 1100px) and (max-width: 1366px) {
-        
-      }
-</style>
+
+        @media screen and (min-width: 500px) and (max-width: 1090px) {
+            #welcome {
+                font-size:50px;
+                margin-top:150px;
+            }
+            #h1 {
+                font-size:50px;
+            }
+        }
+    </style>
 </head>
 
 <body style="background-color: #faf8f0">
@@ -29,7 +36,7 @@
         <div class="container-fluid">
             <?php include_once 'navigationbar.php'; ?>
             <div class="message">
-                <h1 class="text-center" id="welcome"> WELCOME TO OHANA!</h1>
+                <h1 class="text-center" id="welcome"></h1>
             </div>
             <section id="carousels">
                 <div id="carouselCaptions" class="carousel slide mt-5" data-bs-ride="false">
@@ -160,6 +167,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/Ohana/src/js/chatbot-ui.js"></script>
     <script src="/Ohana/src/js/chatbot-init.js"></script>
+    <script>
+      var id = document.getElementById("welcome");
+      var text = "WELCOME TO OHANA!"; 
+      var result = "";
+      window.addEventListener("load", (event) => {
+        for (let i = 0; i < text.length; i++) {
+          setTimeout(function() {
+            result += text[i];
+            id.innerHTML = result;
+          }, 60 * i);
+        }
+      });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 

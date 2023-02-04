@@ -21,20 +21,9 @@
 
         }
 
-        #toastbody {
-            color: black;
-            width: 500px;
-        }
-
         #address {
             width: 750px;
             height: 750px;
-        }
-
-        @media screen and (max-width: 1366px) {
-            #home {
-                margin-top: 6%;
-            }
         }
 
         @media screen and (min-width: 500px) and (max-width: 1350px) {
@@ -43,7 +32,7 @@
             }
         }
 
-        @media screen and (min-width: 360px) and (max-width: 430px) {
+        @media screen and (min-width: 360px) and (max-width: 599px) {
             #home {
                 margin-top: 40%;
             }
@@ -56,7 +45,6 @@
             #sectionheaders {
                 color: #db6551;
                 font-size: 40px;
-                font-family: 'Acme', sans-serif;
             }
 
             .col {
@@ -162,6 +150,85 @@
                 margin-top: 120px;
             }
         }
+
+        @media screen and (min-width: 1100px) and (max-width: 1600px) {
+            #home {
+                margin-top: 6%;
+            }
+
+            .about-us {
+                background-image: url(/Ohana/src/images/laptops/about.png);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                width: 100%;
+                height: 100%;
+                min-height: 766px;
+            }
+
+            .reasons {
+                background-image: url(/Ohana/src/images/laptops/info.png);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                width: 100%;
+                height: 100%;
+                min-height: 766px;
+            }
+
+            .contact-us {
+                background-image: url(/Ohana/src/images/laptops/contact.png);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                width: 100%;
+                height: 100%;
+                min-height: 766px;
+            }
+
+            .p-4 {
+                font-size: 50px;
+            }
+
+            .p-2 {
+                font-size: 20px;
+            }
+
+            #contactform {
+                margin-right: 200px;
+                margin-top: 120px;
+            }
+
+            input {
+                font-family: 'Poppins', sans-serif;
+                font-size: 15px;
+                width: 560px;
+                height: 60px;
+                padding: 0px 10px 0px 10px;
+            }
+
+            textarea {
+                width: 560px;
+                max-width: 900px;
+                max-height: 200px;
+                padding: 10px;
+            }
+
+            #Send {
+                margin-right: 80px;
+            }
+        }
+        @media screen and (min-width: 600px) and (max-width: 1099px) { 
+            .about-us {
+                background-image: url(/Ohana/src/images/laptops/aboutipad.png);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                width: 100%;
+                height: 100%;
+                min-height: 766px;
+            }
+        }
     </style>
 </head>
 
@@ -196,7 +263,7 @@
                     </div>
                     <div class="col-lg-4">
                         <img src="/Ohana/src/images/services/3.png" class="img-fluid" role="img" focusable="false"></img>
-                        <h2 class="p-4" style="color:#7d605c;font-family: 'Acme', sans-serif;   "> Pet Boarding </h2>
+                        <h2 class="p-4" style="color:#7d605c;font-family: 'Acme', sans-serif;"> Pet Boarding </h2>
                         <p class="p-2" style="color:#7d605c;"> Want to increase chances of your pet fertility after stud? We offer pet boarding to prevent your pet from getting stressed. </p>
                     </div>
                 </div>

@@ -29,6 +29,7 @@
       .main-title {
         font-size: 55px;
       }
+    }
     @media (max-width: 480.98px) {
       .main-title {
         font-size: 32px;

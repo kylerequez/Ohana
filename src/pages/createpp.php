@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/Ohana/src/css/puppies.css">
   <?php include_once 'stylesheets.php'; ?>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
     #header {
       color: #DB6551;
       font-size: 80px;
@@ -18,7 +19,7 @@
     }
 
     .card {
-      max-width: 68vw;
+      max-width: 80vw;
       max-height: 80vh;
       border-style: solid;
       border-color: #c0b65a;
@@ -31,15 +32,53 @@
       height: 60vh;
     }
 
+    #ppbody {
+      padding: 30px;
+      margin-top: 40px;
+    }
+
+    #formFile.form-control {
+      width: 535px;
+    }
+
     #ohanafooter {
       margin-top: 5%;
     }
 
-    @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+    @media screen and (min-width: 360px) and (max-width: 430px) {
+      #header {
+        font-size: 40px;
+        margin-top: 53%;
+      }
+      .card {
+        max-height: 200vh;
+      }
+      .col-md-6{
+        width:100%;
+      }
+      #ppbody {
+        margin-top:20px;
+      }
+      #ohanafooter {
+        margin-top: 55%;
+      }
+    }
 
-    @media screen and (min-width: 360px) {}
+    @media screen and (min-width: 1100px) and (max-width: 1366px) {
+      .card {
+        max-height: 60vh;
+      }
 
-    @media screen and (min-width: 1100px) and (max-width: 1366px) {}
+      .img-fluid {
+        margin-top: 10%;
+      }
+      .col-md-6{
+        width:100%;
+      }
+      #ppbody {
+        padding: 1px;
+      }
+    }
   </style>
 </head>
 
@@ -52,10 +91,10 @@
         <div class="card mx-auto">
           <div class="row g-0">
             <div class="col-md-6 d-none d-md-block">
-              <img src="/Ohana/src/images/sideimg.png" alt="Side photo" class="img-fluid p-5" id="pet-image" />
+              <img src="/Ohana/src/images/laptops/stockdog.png" alt="Side-photo" class="img-fluid p-5" id="pet-image" />
             </div>
             <div class="col-md-6">
-              <div class="card-body p-md-5 text-black">
+              <div class="card-body text-black" id="ppbody">
                 <h3 class="mb-3 text-uppercase">
                 </h3>
                 <form action="/ownedpets/new" method="POST" enctype="multipart/form-data">

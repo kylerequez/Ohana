@@ -65,12 +65,11 @@
                 position: relative !important;
                 width: 10px;
                 float: left;
-                margin-left: 10px;
                 margin-top: 380px;
             }
 
             textarea {
-                width: 350px;
+                width: 340px;
                 max-width: 900px;
                 max-height: 150px;
                 padding: 10px;
@@ -78,14 +77,14 @@
 
             #name {
                 margin-top: -50px;
-                width: 350px;
+                width: 340px;
                 max-width: 900px;
                 max-height: 200px;
                 padding: 10px;
             }
 
             #email {
-                width: 350px;
+                width: 340px;
                 max-width: 900px;
                 max-height: 200px;
                 padding: 10px;
@@ -113,13 +112,20 @@
             }
 
             #find {
-                font-size: 30px;
-                margin-top: 30%;
-                text-align: center;
+                font-size: 40px;
+                margin-top: -20px;
+                float: left;
+                margin-left:25px;
             }
         }
-    @media screen and (min-width: 1100px) and (max-width: 1366px) {
-        
+    @media screen and (min-width: 1100px) and (max-width: 1600px) {
+        .contact-us {
+                background-image: url(/Ohana/src/images/laptops/contact.png);
+                max-height: 766px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
       }
 </style>
 </head>

@@ -50,9 +50,14 @@
             color: #7d6056;
         }
 
-        @media screen and (min-width: 360px) and (max-width: 420px) {
+        #pagealert {
+            width: 500px;
+            margin-top: 5%;
+        }
+
+        @media screen and (min-width: 360px) and (max-width: 500px) {
             #pupcard {
-                max-height: 30vh;
+                max-height: 120vh;
                 margin-top: 35%;
             }
 
@@ -61,11 +66,33 @@
                 align-items: center;
                 margin-left: 10px;
             }
+
+            #pagealert {
+                width: 250px;
+                margin-top: 5%;
+            }
+            #buttons {
+                margin-bottom: 15%;
+            }
         }
-    @media screen and (min-width: 1100px) and (max-width: 1366px) {
-        
-      }
-</style>
+
+        @media screen and (min-width: 501px) and (max-width: 1099px) {
+            #pupcard {
+                margin-top: 35%;
+                max-height: 130vh;
+                max-width: 100vh;
+            }
+            #buttons {
+                margin-bottom: 10%;
+            }
+        }
+
+        @media screen and (min-width: 1100px) and (max-width: 1600px) {
+            #puppycontainer {
+                height: auto;
+            }
+        }
+    </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -116,7 +143,7 @@
         <div class="container-fluid" id="pupcontainer">
             <?php if (isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) { ?>
                 <center>
-                    <div class="alert alert-warning text-center" role="alert" style="width:400px;margin-top:5%;">
+                    <div class="alert alert-warning text-center" role="alert" id="pagealert">
                         <?php echo isset($_SESSION["msg"]) ? $_SESSION["msg"] : null;
                         unset($_SESSION["msg"]); ?>
                     </div>
@@ -125,7 +152,7 @@
                 unset($_SESSION["msg"]);
             }
             ?>
-            <div class="container h-90">
+            <div class="container" id="puppycontainer">
                 <div class="card mx-auto" id="pupcard">
                     <div class="row g-0">
                         <div class="col-md-6 d-none d-md-block">
@@ -147,13 +174,13 @@
                                 </div>
                             </div>
                             <div class="me-5" id="buttons">
-                                <a id="links" href="/puppies">
+                                <a id="links" href="/puppies" class="col-4">
                                     <button type="button" class="btn-outline-dark btn mt-3 me-3 ms-2"> Go Back </button>
                                 </a>
-                                <a id="links" href="/set-appointment?type=VISIT&reference=<?php echo $profile->getReference(); ?>">
+                                <a id="links" href="/set-appointment?type=VISIT&reference=<?php echo $profile->getReference(); ?> " class="col-4">
                                     <button type="button" class="btn mt-3 ms-2" style="background-color:#db6551;color:white;"> Book Kennel Visit </button>
                                 </a>
-                                <a id="links" href="/add-to-cart/<?php echo $profile->getId(); ?>">
+                                <a id="links" href="/add-to-cart/<?php echo $profile->getId(); ?>" class="col-4">
                                     <button type="button" class="btn mt-3" style="background-color:#c0b65a; color:white;"> Add to Paw Cart </button>
                                 </a>
                             </div>

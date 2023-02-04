@@ -10,6 +10,22 @@
   <link rel="stylesheet" href="/Ohana/src/css/register.css">
   <?php include_once 'stylesheets.php'; ?>
   <style>
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    #signup_title {
+      animation: fadeIn 3s;
+    }
+    #ohanatitle {
+      animation: fadeIn 3s;
+    }
     #ohanafooter {
       margin-top: 12%;
     }
@@ -18,11 +34,6 @@
 
       .container-fluid {
         margin-top: -5%;
-      }
-
-      .sign-up__title {
-        font-size: 33px;
-        margin-top: 5%;
       }
 
       #signup_title {
@@ -49,14 +60,11 @@
 
       @media screen and (min-width: 1100px) and (max-width: 1366px) {
         #signup_title {
-          font-size:60px;
+          font-size: 60px;
         }
       }
     }
-  @media screen and (min-width: 1100px) and (max-width: 1366px) {
-        
-      }
-</style>
+  </style>
 </head>
 
 <body style="background-color: #FAF8F0;">

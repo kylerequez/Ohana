@@ -88,6 +88,14 @@
       margin-top: 20px;
       border: none;
     }
+    select.form-control.filter-select {
+      border-color: #db6551;
+      border-width:2px;
+    }
+    select.form-control.filter-select:active {
+      border-color: #C0B65A;
+      border-width:2px;
+    }
   </style>
 </head>
 
