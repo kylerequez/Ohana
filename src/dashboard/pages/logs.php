@@ -119,6 +119,7 @@
               <thead>
                 <tr class="users-table-info">
                   <th><b>LOG I.D </b></th>
+                  <th><b>ACCOUNT TYPE</b></th>
                   <th><b>DESCRIPTION</b></th>
                   <th><b>DATE</b></th>
                 </tr>
@@ -127,10 +128,17 @@
                     <input type="text" class="form-control filter-input" placeholder="Enter Log ID..." data-column="0">
                   </th>
                   <th>
-                    <input type="text" class="form-control filter-input" placeholder="Enter Description..." data-column="1">
+                    <select class="form-control filter-select" data-column="1">
+                      <option value="">-- Select an account type --</option>
+                      <option value="STAFF">Staff</option>
+                      <option value="ADMINISTRATOR">Administrator</option>
+                    </select>
                   </th>
                   <th>
-                    <input type="text" class="form-control filter-input" placeholder="Enter Date (ex. Jan. 3, 2022)..." data-column="2">
+                    <input type="text" class="form-control filter-input" placeholder="Enter Description..." data-column="2">
+                  </th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Date (ex. Jan. 3, 2022)..." data-column="3">
                   </th>
                 </tr>
               </thead>
@@ -140,6 +148,7 @@
                 ?>
                   <tr>
                     <td><?php echo $log->getId(); ?></td>
+                    <td><?php echo $log->getAccountType(); ?></td>
                     <td><?php echo $log->getLog(); ?></td>
                     <td><?php echo $log->getDate()->format('M. d, Y h:i:s A'); ?></td>
                   </tr>

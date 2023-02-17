@@ -30,7 +30,7 @@ class PetProfileController
                 }
                 $account = unserialize($_SESSION["user"]);
                 $log = $account->getFullName() . " has deleted Pet Profile ID $id";
-                if (!$this->logservices->addLog($log)) {
+                if (!$this->logservices->addLog($account->getId(), $account->getType(), $log)) {
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest("GET");
@@ -64,7 +64,7 @@ class PetProfileController
                 }
                 $account = unserialize($_SESSION["user"]);
                 $log = $account->getFullName() . " has updated Pet Profile ID $id";
-                if (!$this->logservices->addLog($log)) {
+                if (!$this->logservices->addLog($account->getId(), $account->getType(), $log)) {
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest("GET");
@@ -105,7 +105,7 @@ class PetProfileController
                     $this->processCollectionRequest("GET");
                 }
                 $log = $account->getFullName() . " has added a Pet Profile.";
-                if (!$this->logservices->addLog($log)) {
+                if (!$this->logservices->addLog($account->getId(), $account->getType(), $log)) {
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest("GET");

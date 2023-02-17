@@ -18,6 +18,7 @@ class PetProfile
     private ?string $status = null;
     private ?string $studRate = null;
     private ?array $studHistory = null;
+    private ?array $vaccineRecords = null;
 
     public function __construct($image, string $reference, string $name, DateTime $birthdate, string $sex, string $color, string $trait, bool $isVaccinated, string $pcciStatus, int $accountId, string $ownerName, float $price, string $status)
     {
@@ -381,6 +382,24 @@ class PetProfile
     public function setStudHistory($studHistory)
     {
         $this->studHistory = $studHistory;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of vaccineRecords
+     */
+    public function getVaccineRecords()
+    {
+        return $this->vaccineRecords;
+    }
+
+    /**
+     * Set the value of vaccineRecords
+     */
+    public function setVaccineRecords($vaccineRecords)
+    {
+        $this->vaccineRecords = $vaccineRecords;
 
         return $this;
     }

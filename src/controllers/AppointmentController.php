@@ -30,7 +30,7 @@ class AppointmentController
                 }
                 $user = unserialize($_SESSION["user"]);
                 $log = $user->getFullName() . " has deleted Appointment ID $id";
-                if (!$this->logservices->addLog($log)) {
+                if (!$this->logservices->addLog($user->getId(), $user->getType(), $log)) {
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest($method);
@@ -41,7 +41,7 @@ class AppointmentController
                 }
                 $user = unserialize($_SESSION["user"]);
                 $log = $user->getFullName() . " has updated Appointment ID $id";
-                if (!$this->logservices->addLog($log)) {
+                if (!$this->logservices->addLog($user->getId(), $user->getType(), $log)) {
                     $_SESSION["msg"] .= "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest("GET");

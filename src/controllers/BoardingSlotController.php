@@ -33,7 +33,7 @@ class BoardingSlotController
                 }
                 $user = unserialize($_SESSION["user"]);
                 $log = $user->getFullName() . " has deleted Slot ID $id";
-                if (!$this->logservices->addLog($log)) {
+                if (!$this->logservices->addLog($user->getId(), $user->getType(), $log)) {
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest("GET");
@@ -68,7 +68,7 @@ class BoardingSlotController
                 }
                 $user = unserialize($_SESSION["user"]);
                 $log = $user->getFullName() . " has updated Slot ID $id";
-                if (!$this->logservices->addLog($log)) {
+                if (!$this->logservices->addLog($user->getId(), $user->getType(), $log)) {
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest("GET");
@@ -110,7 +110,7 @@ class BoardingSlotController
                     $this->processCollectionRequest("GET");
                 }
                 $log = $user->getFullName() . " has added a Pet Boarding Slot.";
-                if (!$this->logservices->addLog($log)) {
+                if (!$this->logservices->addLog($user->getId(), $user->getType(), $log)) {
                     $_SESSION["msg"] = "There was an error in adding the log.";
                 }
                 $this->processCollectionRequest("GET");

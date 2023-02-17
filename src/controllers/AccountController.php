@@ -78,7 +78,7 @@ class AccountController
                 }
                 $user = unserialize($_SESSION["user"]);
                 $log = $user->getFullName() . " has deleted Account ID $id";
-                if (!$this->logservices->addLog($log)) {
+                if (!$this->logservices->addLog($user->getId(), $user->getType(), $log)) {
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processStaffCollectionRequest($method);
@@ -89,7 +89,7 @@ class AccountController
                 }
                 $user = unserialize($_SESSION["user"]);
                 $log = $user->getFullName() . " has updated Account ID $id";
-                if (!$this->logservices->addLog($log)) {
+                if (!$this->logservices->addLog($user->getId(), $user->getType(), $log)) {
                     $_SESSION["msg"] .= "There was an error in the logging of the action.";
                 }
                 $this->processStaffCollectionRequest("GET");
@@ -112,7 +112,7 @@ class AccountController
                 }
                 $user = unserialize($_SESSION["user"]);
                 $log = $user->getFullName() . " has added a staff account";
-                if ($this->logservices->addLog($log) == false) {
+                if ($this->logservices->addLog($user->getId(), $user->getType(), $log)) == false) {
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processStaffCollectionRequest("GET");

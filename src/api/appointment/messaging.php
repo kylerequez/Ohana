@@ -72,20 +72,16 @@ foreach ($appointments as $appointment) {
     $type = strtolower($appointment->getType());
     $text =
         ($appointment->getType() == "REHOMING") ?
-        "Aloha, {$appointment->getCustomerName()}!
-
-                Please be advised that you have a scheduled {$type} at {$appointment->getStartDate()->format('M-d-Y h:i A')} to {$appointment->getEndDate()->format('h:i A')}"
+        "Aloha, {$appointment->getCustomerName()}! Please be advised that you have a scheduled {$type} at {$appointment->getStartDate()->format('M-d-Y h:i A')} to {$appointment->getEndDate()->format('h:i A')}"
         :
-        "Aloha, {$appointment->getCustomerName()}!
-
-                Please be advised that you have a scheduled {$type} at {$appointment->getStartDate()->format('M-d-Y h:i A')} to {$appointment->getEndDate()->format('h:i A')}";
+        "Aloha, {$appointment->getCustomerName()}! Please be advised that you have a scheduled {$type} at {$appointment->getStartDate()->format('M-d-Y h:i A')} to {$appointment->getEndDate()->format('h:i A')}";
 
     $ch = curl_init();
     $parameters = array(
         'apikey' => SEMAPHORE_API_KEY,
         'number' => $appointment->getNumber(),
         'message' => $text,
-        'sendername' => 'OhanaKennel'
+        'sendername' => 'SEMAPHORE'
     );
     curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
     curl_setopt($ch, CURLOPT_POST, 1);

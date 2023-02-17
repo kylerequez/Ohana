@@ -31,7 +31,7 @@ class LogDAO
             $logs = null;
             if ($stmt->execute() > 0) {
                 while ($log = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $existingLog = new Log($log["log"], new DateTime($log["date"]));
+                    $existingLog = new Log($log["log"], $log["log_account_id"], $log["log_account_type"], new DateTime($log["date"]));
                     $existingLog->setId($log["log_id"]);
                     $logs[] = $existingLog;
                 }
@@ -43,17 +43,19 @@ class LogDAO
             $this->closeConnection();
         }
     }
-    public function addLog(string $log): bool
+    public function addLog(int $accountId, string $accountType, string $log): bool
     {
         try {
             $this->openConnection();
             $this->conn->beginTransaction();
             $sql = "INSERT INTO ohana_logs
-                    (log, date)
-                    VALUES (:log, :date);";
+                    (log_account_id, log_account_type, log, date)
+                    VALUES (:accountId, :accountType, :log, :date);";
             date_default_timezone_set('Asia/Manila');
             $now = new DateTime('now');
             $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":accountId", $accountId, PDO::PARAM_INT);
+            $stmt->bindParam(":accountType", $accountType, PDO::PARAM_STR);
             $stmt->bindParam(":log", $log, PDO::PARAM_STR);
             $stmt->bindParam(":date", $now->format('Y-m-d H:i:s'), PDO::PARAM_STR);
             $isAdded = $stmt->execute() > 0;

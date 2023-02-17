@@ -34,7 +34,7 @@ class ChatbotController
                 }
                 $user = unserialize($_SESSION["user"]);
                 $log = $user->getFullName() . " has updated the Chatbot Settings";
-                if (!$this->logservices->addLog($log)) {
+                if (!$this->logservices->addLog($user->getId(), $user->getType(), $log)) {
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processSettingsCollectionRequest("GET");
@@ -60,7 +60,7 @@ class ChatbotController
                 }
                 $user = unserialize($_SESSION["user"]);
                 $log = $user->getFullName() . " has deleted Response ID $id";
-                if (!$this->logservices->addLog($log)) {
+                if (!$this->logservices->addLog($user->getId(), $user->getType(), $log)) {
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processResponsesCollectionRequest($method);
@@ -71,7 +71,7 @@ class ChatbotController
                 }
                 $user = unserialize($_SESSION["user"]);
                 $log = $user->getFullName() . " has updated Response ID $id";
-                if (!$this->logservices->addLog($log)) {
+                if (!$this->logservices->addLog($user->getId(), $user->getType(), $log)) {
                     $_SESSION["msg"] .= "There was an error in the logging of the action.";
                 }
                 $this->processResponsesCollectionRequest("GET");
@@ -92,7 +92,7 @@ class ChatbotController
                 }
                 $user = unserialize($_SESSION["user"]);
                 $log = $user->getFullName() . " has added a response";
-                if ($this->logservices->addLog($log) == false) {
+                if ($this->logservices->addLog($user->getId(), $user->getType(), $log) == false) {
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processResponsesCollectionRequest("GET");

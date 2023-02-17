@@ -4,7 +4,7 @@
 <head>
     <title> PAYMENT METHOD </title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- IMPORTANT FOR RESPONSIVENESS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <meta name="description" content="Kennel business in the philippines that breeds and sells french bulldogs">
     <meta name="keywords" content="Kennel Business, French Bulldogs">
 
@@ -15,8 +15,6 @@
         #head {
             margin-top: 10%;
         }
-
-        @media screen and (min-width: 1100px) and (max-width: 1366px) {}
     </style>
 </head>
 
@@ -77,7 +75,7 @@
                                             <label class="form-check-label mt-3 mb-3" for="payment-method"> GCASH </label>
                                         </div>
                                         <div class="card-body">
-                                            <img src="/Ohana/src/images/payment/pay2.png" width="150px" height="150px">
+                                            <img src="/Ohana/src/images/payment/bank.png" width="150px" height="150px">
                                             <p class="card-text"> No. of users who chose this: <?php echo $services->getModeOfPaymentCount("BANK TRANSFER"); ?></p>
                                             <input class="form-check-input mt-3" type="radio" name="mode" id="bank" value="BANK TRANSFER" />
                                             <label class="form-check-label mt-3 mb-3" for="payment-method"> BANK TRANSFER </label>

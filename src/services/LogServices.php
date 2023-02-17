@@ -10,8 +10,8 @@ class LogServices
     {
         return $this->dao->getAllLogs();
     }
-    public function addLog(string $log): bool
+    public function addLog(int $accountId, string $type, string $log): bool
     {
-        return $this->dao->addLog($log);
+        return $this->dao->addLog($accountId, $type, $log);
     }
 }

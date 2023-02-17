@@ -30,7 +30,7 @@ class StudHistoryControler
                 }
                 $account = unserialize($_SESSION["user"]);
                 $log = $account->getFullName() . " has deleted Stud History $id";
-                if (!$this->logservices->addLog($log)) {
+                if (!$this->logservices->addLog($account->getId(), $account->getType(), $log)) {
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest("GET");
@@ -41,7 +41,7 @@ class StudHistoryControler
                 }
                 $account = unserialize($_SESSION["user"]);
                 $log = $account->getFullName() . " has updated Stud History $id";
-                if (!$this->logservices->addLog($log)) {
+                if (!$this->logservices->addLog($account->getId(), $account->getType(), $log)) {
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                 }
                 $this->processCollectionRequest("GET");
@@ -61,7 +61,7 @@ class StudHistoryControler
                 }
                 $account = unserialize($_SESSION["user"]);
                 $log = $account->getFullName() . " has added a new stud record.";
-                if (!$this->logservices->addLog($log)) {
+                if (!$this->logservices->addLog($account->getId(), $account->getType(), $log)) {
                     $_SESSION["msg"] = "There was an error in the logging of the action.";
                     $this->processCollectionRequest("GET");
                 }

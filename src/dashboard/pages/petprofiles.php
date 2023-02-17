@@ -100,9 +100,10 @@
       width: 150px;
       height: 50px;
     }
+
     select.form-control:active {
       border-color: #C0B65A;
-      border-width:2px;
+      border-width: 2px;
     }
   </style>
 </head>
@@ -137,8 +138,7 @@
           <div class="createstaff-wrapper">
             <a class="create-staff-btn" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white">
                 <i data-feather="plus" aria-hidden="true"></i>Add Pet </button></a>
-          </div>
-          <br>
+          </div><br>
           <?php
           include_once dirname(__DIR__) . '/../models/PetProfile.php';
           include_once dirname(__DIR__) . '/../config/db-config.php';
@@ -231,6 +231,9 @@
                       <?php if ($profile->getType() == 'STUD') { ?>
                         <a href="/dashboard/stud-history/<?php echo $profile->getReference(); ?>/<?php echo $profile->getName(); ?>" style="color:#7d605c; margin-right: 15px;  font-size: 25px;"><i class="uil uil-eye"></i></a>
                       <?php } ?>
+
+                      <a href="/dashboard/vaccine-records/<?php echo $profile->getReference(); ?>/<?php echo $profile->getName(); ?>" style="color:#7d605c; margin-right: 15px; font-size: 25px;"><i class="uil uil-syringe"></i></a>
+
                       <a data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $profile->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"></i></button></a>
                       <a href="/dashboard/pet-profiles/delete/<?php echo $profile->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Pet Profile ID <?php echo $profile->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>
                       <form method="POST" action="/dashboard/pet-profiles/update/<?php echo $profile->getId(); ?>" enctype="multipart/form-data">

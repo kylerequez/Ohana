@@ -163,7 +163,8 @@ class StudHistoryDAO
         try {
             $this->openConnection();
             $sql = "SELECT COUNT(*) FROM ohana_stud_history 
-                    WHERE male_id = :id;";
+                    WHERE male_id = :id
+                    AND stud_status != 'SCHEDULED';";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt->execute();
