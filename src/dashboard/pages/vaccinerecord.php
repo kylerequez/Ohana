@@ -106,29 +106,6 @@
 </head>
 
 <body>
-  <?php
-  include_once dirname(__DIR__) . '/../models/PetProfile.php';
-  include_once dirname(__DIR__) . '/../config/app-config.php';
-  include_once dirname(__DIR__) . '/../config/db-config.php';
-  include_once dirname(__DIR__) . '/../dao/PetProfileDAO.php';
-  include_once dirname(__DIR__) . '/../dao/StudHistoryDAO.php';
-  include_once dirname(__DIR__) . '/../services/PetProfileServices.php';
-
-  $dao = new PetProfileDAO($servername, $database, $username, $password);
-  $history = new StudHistoryDAO($servername, $database, $username, $password);
-  $services = new PetProfileServices($dao, $history);
-
-  $profile = $services->getOhanaStudPet($reference, str_replace("%20", " ", $name));
-
-  if (is_null($profile) || $profile->getType() != "STUD") {
-  ?>
-    <script>
-      window.location = 'https://<?php echo DOMAIN_NAME; ?>/dashboard/pet-profiles';
-    </script>
-  <?php
-    exit();
-  }
-  ?>
   <div class="layer"></div>
   <div class="page-flex">
     <?php include_once dirname(__DIR__) . '/sidebar.php'; ?>
@@ -154,190 +131,124 @@
         <div class="container-fluid">
           <div class="card mb-4 mx-5" style="background:none;border:none;">
             <div class="card-body">
-              <div class="d-flex align-items-start align-items-sm-center gap-4">
-                <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" alt="dog-image" class="d-block rounded" height="150px" width="150px" id="dogimage" />
-                <div class="container-sm" style="font-family: 'Acme', sans-serif;">
-                  <span class="d-none d-sm-block fs-1" style="color:#DB6551"> <?php echo $profile->getName(); ?> </span>
-                  <span class="d-none d-sm-block fs-5" style="color:#7d605c"> Date of Birth: <?php echo round($profile->getStudRate() * 100), '%'; ?> </span>
-                </div>
-                <div class="createstaff-wrapper" id="recordbutton">
-                  <a class="create-staff-btn ms-5" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white">
-                      <i data-feather="plus" aria-hidden="true"></i>Add Vaccine Record </button></a>
-                </div>
+              <h2 class="main-title text-center mt-3">Vaccination Records</h2>
+              <div class="createstaff-wrapper" id="recordbutton">
+                <a class="create-staff-btn ms-5" data-bs-toggle="modal" data-bs-target="#addModal"><button type="create" style="color:white">
+                    <i data-feather="plus" aria-hidden="true"></i>Add Vaccine Record </button></a>
               </div>
             </div>
           </div>
-          <?php
-          $records = $profile->getStudHistory();
-          if (!is_null($records)) {
-          ?>
-            <div class="users-table table-wrapper">
-              <br>
-              <table id="profiles" class="posts-table">
-                <thead>
-                  <tr class="users-table-info">
-                    <th><b>DATE</b></th>
-                    <th><b>VACCINE TYPE</b></th>
-                    <th><b>REVACCINATION DATE</b></th>
-                    <th><b>CLINIC</b></th>
-                    <th><b>ACTION</b></th>
-                  </tr>
-                  <tr>
-                    <th></th>
-                    <th>
-                      <input type="text" class="form-control filter-input" placeholder="Enter Pet Name..." data-column="1">
-                    </th>
-                    <th>
-                      <select data-column="2" class="form-control filter-select">
-                        <option value="">Select a Pet Trait...</option>
-                        <option class="text-center" style="color:#DB6551" disabled>Standard</option>
-                        <option value="Fawn">Fawn</option>
-                        <option value="Sable">Sable</option>
-                        <option value="Brindle">Brindle</option>
-                        <option class="text-center" style="color:#DB6551" disabled>Exotic</option>
-                        <option value="Blue">Blue</option>
-                        <option value="Chocolate">Chocolate</option>
-                        <option value="Lilac">Lilac</option>
-                        <option value="Isabella">Isabella</option>
-                        <option value="Newshade Isabella">Newshade Isabella</option>
-                        <option value="Newshade">Newshade</option>
-                        <option value="Black Tan">Black Tan</option>
-                        <option value="Blue Tan">Blue Tan</option>
-                        <option value="Choco Tan">Choco Tan</option>
-                        <option value="Isabella Tan">Isabella Tan</option>
-                        <option value="Newshade Isabella Tan">Newshade Isabella Tan</option>
-                        <option class="text-center" style="color:#DB6551" disabled>Platinum</option>
-                        <option value="Lilac Plat">Lilac Plat</option>
-                        <option value="Champaigne Plat">Champaigne Plat</option>
-                        <option value="Newshade Plat">Newshade Plat</option>
-                        <option value="Merle">Merle</option>
-                      </select>
-                    </th>
-                    <th>
-                      <select data-column="3" class="form-control filter-select">
-                        <option value="" selected>Select a status...</option>
-                        <option value="SUCCESS">Success</option>
-                        <option value="FAILED">Failed</option>
-                        <option value="SCHEDULED">Scheduled</option>
-                      </select>
-                    </th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php foreach ($records as $record) { ?>
-                    <tr>
-                      <td><?php echo $record->getDate()->format('M-d-Y h:i:s A'); ?></td>
-                      <td><?php echo $record->getFemale()->getName(); ?></td>
-                      <td><?php echo $record->getFemale()->getTrait(); ?></td>
-                      <td><?php echo $record->getStatus(); ?></td>
-                      <td>
-                        <a data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $record->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"></i></button></a>
-                        <a href="/dashboard/stud-history/delete/<?php echo $record->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete the stud record?');" type="delete" style="color:red; font-size: 25px;"><i class="uil uil-trash-alt"></i></button></a>
-                        <form method="POST" action="/dashboard/stud-history/update/<?php echo $record->getId(); ?>">
-                          <div class="modal fade" id="editModalId<?php echo $record->getId(); ?>" tabindex="-1" aria-labelledby="editprofilemodal" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="editingModal" style="font-family:'Acme', sans-serif;">EDIT STUD RECORD</h5>
-                                  <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
-                                </div>
-                                <div class="modal-body">
-                                  <div class="mb-1">
-                                    <label for="name" class="col-form-label">DAM:</label>
-                                    <input type="hidden" name="maleId" value="<?php echo $profile->getId() ?>">
-                                  </div>
-                                  <?php
-                                  $dams = $services->getAllDams();
-                                  if (!is_null($dams)) {
-                                  ?>
-                                    <select class="form-control" name="femaleId" required>
-                                      <?php foreach ($dams as $dam) { ?>
-                                        <option value="<?php echo $dam->getId(); ?>" <?php if ($record->getFemaleId() == $dam->getId()) echo 'selected'; ?>><?php echo $dam->getName() . " (" . $dam->getColor() . "/" . $dam->getTrait() . ")"; ?></option>
-                                      <?php } ?>
-                                    </select>
-                                  <?php } ?>
-                                  <div class="mb-1">
-                                    <label for="name" class="col-form-label">DATE:</label>
-                                    <input type="datetime-local" class="form-control" name="date" value="<?php echo $record->getDate()->format('Y-m-d\TH:i:s'); ?>" required>
-                                  </div>
-                                  <div class="mb-1">
-                                    <label for="name" class="col-form-label">STATUS:</label>
-                                    <select class="form-control" name="status" required>
-                                      <option value="SUCCESS" <?php if ($record->getStatus() == "SUCCESS") echo 'selected'; ?>>Success</option>
-                                      <option value="FAILED" <?php if ($record->getStatus() == "FAILED") echo 'selected'; ?>>Failed</option>
-                                      <option value="SCHEDULED" <?php if ($record->getStatus() == "SCHEDULED") echo 'selected'; ?>>Scheduled</option>
-                                    </select>
-                                  </div>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="submit" class="btn text-light" style="background-color:#db6551"> Save Changes </button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </form>
-                      </td>
-                    </tr>
-                  <?php } ?>
-                </tbody>
-              </table>
-            </div>
-          <?php } else { ?>
-            <div class="alert text-light text-center ms-5 me-5" role="alert" style="margin-top:10%;background-color:#db6551">
-              No existing stud record for <?php echo $profile->getName(); ?>
-            </div>
-          <?php } ?>
+
+          <div class="users-table table-wrapper">
+            <br>
+            <table id="profiles" class="posts-table">
+              <thead>
+                <tr class="users-table-info">
+                  <th><b>VACCINE RECORD</b></th>
+                  <th><b>DATE OF VACCINATION</b></th>
+                  <th><b>VACCINE NAME</b></th>
+                  <th><b>REVACCINATION DATE</b></th>
+                  <th><b>ACTION</b></th>
+                </tr>
+                <tr>
+                  <th></th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Date" data-column="1">
+                  </th>
+                  <th>
+                    <input type="text" class="form-control filter-input" placeholder="Enter Vaccine Name" data-column="1">
+                  </th>
+                  <th> <input type="text" class="form-control filter-input" placeholder=" Enter Revaccination Date" data-column="1"> </th>
+                  <th>
+
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                <a href="" data-bs-toggle="modal" data-bs-target="#editModalId"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"></i></button></a>
+                  <a href="/dashboard/pet-profiles/delete/"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Pet Profile ID ?');" type="delete" style="color:red; font-size: 25px;">
+                      <i class="uil uil-trash-alt"></i></button>
+                    </a>
+                </td>
+                <div class="modal fade" id="editModalId" tabindex="-1" aria-labelledby="editrecordmodal" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="editingModal">EDIT VACCINE RECORD</h5>
+                        <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                      </div>
+                      <div class="modal-body">
+                        <div class="mb-3">
+                          <label for="name" class="col-form-label"> DATE OF VACCINATION: </label>
+                          <input type="date" class="form-control" name="revaccinationdate" value="" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="information" class="col-form-label"> VACCINE NAME </label>
+                          <input type="text" class="form-control" name="information" value="" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="revaccination" class="col-form-label"> REVACCINATION DATE </label>
+                          <input type="date" class="form-control" name="revaccination" value="" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="image" class="col-form-label"> VACCCINE RECORD: </label>
+                          <input type="file" class="form-control" name="image">
+                          <input type="hidden" class="form-control" name="old_image" value="">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Save Changes </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </tbody>
+            </table>
+          </div>
+          <div class="alert text-light text-center ms-5 me-5" role="alert" style="margin-top:10%;background-color:#db6551">
+            No existing Vaccine
+          </div>
         </div>
       </main>
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
     </div>
   </div>
-  <form method="POST" action="/dashboard/stud-history/add">
-    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addProfileModal" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="addRecordTitle" style="font-family:'Acme', sans-serif;"> ADD RECORD </h5>
-            <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+  <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addSlotTitle" style="font-family:'Acme', sans-serif;"> ADD VACCINE RECORD </h5>
+          <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="name" class="col-form-label"> DATE OF VACCINATION </label>
+            <input type="date" class="form-control" name="dategiven" required>
           </div>
-          <div class="modal-body">
-            <div class="mb-1">
-              <label for="name" class="col-form-label">DAM:</label>
-              <input type="hidden" name="maleId" value="<?php echo $profile->getId() ?>">
-              <?php
-              $dams = $services->getAllDams();
-              if (!is_null($dams)) {
-              ?>
-                <select class="form-control" name="femaleId" required>
-                  <option value="" selected>Select a dam...</option>
-                  <?php foreach ($dams as $dam) { ?>
-                    <option value="<?php echo $dam->getId(); ?>"><?php echo $dam->getName() . " (" . $dam->getColor() . "/" . $dam->getTrait() . ")"; ?></option>
-                  <?php } ?>
-                </select>
-              <?php } ?>
-            </div>
-            <div class="mb-1">
-              <label for="name" class="col-form-label">DATE:</label>
-              <input type="datetime-local" class="form-control" name="date" required>
-            </div>
-            <div class="mb-1">
-              <label for="name" class="col-form-label">STATUS:</label>
-              <select class="form-control" name="status" required>
-                <option value="" selected>Select a status...</option>
-                <option value="SUCCESS">Success</option>
-                <option value="FAILED">Failed</option>
-                <option value="SCHEDULED">Scheduled</option>
-              </select>
-            </div>
+          <div class="mb-3">
+            <label for="information" class="col-form-label"> VACCINE NAME </label>
+            <input type="text" class="form-control" name="information" placeholder="Enter VACCINE NAME" required>
           </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn" id="ToastBtn" style="background-color:#db6551;color:white"> Add Record </button>
+          <div class="mb-3">
+            <label for="information" class="col-form-label"> REVACCINATION DATE </label>
+            <input type="date" class="form-control" name="revaccination" required>
           </div>
+          <input type="hidden" class="form-control" name="isAvailable" value="1">
+          <div class="mb-3">
+            <label for="image" class="col-form-label"> RECORD IMAGE: </label>
+            <input type="file" class="form-control" name="image" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Add Slot </button>
         </div>
       </div>
     </div>
-  </form>
+  </div>
   <script>
     var table = $('#profiles').DataTable({
       orderCellsTop: true,
