@@ -127,7 +127,7 @@ class BoardingSlotDAO
             return $isDeleted;
         } catch (Exception $e) {
             $this->conn->rollBack();
-            return null;
+            return false;
         } finally {
             $this->closeConnection();
         }
