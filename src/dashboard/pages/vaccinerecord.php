@@ -138,117 +138,139 @@
               </div>
             </div>
           </div>
+          <div class="users-table table-wrapper"><br>
+            <?php
+            include_once dirname(__DIR__) . '/../models/VaccineRecord.php';
+            include_once dirname(__DIR__) . '/../config/db-config.php';
+            include_once dirname(__DIR__) . '/../dao/VaccineRecordDAO.php';
+            include_once dirname(__DIR__) . '/../services/VaccineRecordServices.php';
 
-          <div class="users-table table-wrapper">
-            <br>
-            <table id="profiles" class="posts-table">
-              <thead>
-                <tr class="users-table-info">
-                  <th><b>VACCINE RECORD</b></th>
-                  <th><b>DATE OF VACCINATION</b></th>
-                  <th><b>VACCINE NAME</b></th>
-                  <th><b>REVACCINATION DATE</b></th>
-                  <th><b>ACTION</b></th>
-                </tr>
-                <tr>
-                  <th></th>
-                  <th>
-                    <input type="text" class="form-control filter-input" placeholder="Enter Date" data-column="1">
-                  </th>
-                  <th>
-                    <input type="text" class="form-control filter-input" placeholder="Enter Vaccine Name" data-column="1">
-                  </th>
-                  <th> <input type="text" class="form-control filter-input" placeholder=" Enter Revaccination Date" data-column="1"> </th>
-                  <th>
+            $dao = new VaccineRecordDAO($servername, $database, $username, $password);
+            $services = new VaccineRecordServices($dao);
 
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                <a href="" data-bs-toggle="modal" data-bs-target="#editModalId"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"></i></button></a>
-                  <a href="/dashboard/pet-profiles/delete/"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Pet Profile ID ?');" type="delete" style="color:red; font-size: 25px;">
-                      <i class="uil uil-trash-alt"></i></button>
-                    </a>
-                </td>
-                <div class="modal fade" id="editModalId" tabindex="-1" aria-labelledby="editrecordmodal" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="editingModal">EDIT VACCINE RECORD</h5>
-                        <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+            $records = $services->getAllVaccineRecordsByPetReference($reference);
+
+            if (!is_null($records)) {
+            ?>
+              <table id="profiles" class="posts-table">
+                <thead>
+                  <tr class="users-table-info">
+                    <th><b>VACCINE RECORD</b></th>
+                    <th><b>VACCINE NAME</b></th>
+                    <th><b>DATE OF VACCINATION</b></th>
+                    <th><b>REVACCINATION DATE</b></th>
+                    <th><b>ACTION</b></th>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th>
+                      <input type="text" class="form-control filter-input" placeholder="Enter Vaccine Name" data-column="1">
+                    </th>
+                    <th>
+                      <input type="text" class="form-control filter-input" placeholder="Enter Vaccine Date" data-column="2">
+                    </th>
+                    <th>
+                      <input type="text" class="form-control filter-input" placeholder="Enter Revaccination Date" data-column="3" </th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($records as $record) { ?>
+                    <tr>
+                      <td><img src="data:image/jpeg;base64,<?php echo base64_encode($record->getImage()); ?>" class="rounded-3" style="width: 100px; height: 100px;"></td>
+                      <td><?php echo $record->getName(); ?></td>
+                      <td><?php echo $record->getVaccineDate()->format("M-d-Y"); ?></td>
+                      <td><?php echo $record->getRevaccinationDate()->format("M-d-Y"); ?></td>
+                      <td>
+                        <a href="" data-bs-toggle="modal" data-bs-target="#editModalId<?php echo $record->getId(); ?>"><button class="edit-btn transparent-btn" type="edit" style="color:#C0B65A; margin-right: 15px; font-size: 25px;"> <i class="uil uil-edit"></i></button></a>
+                        <a href="/dashboard/pet-profiles/vaccine-records/delete/<?php echo $record->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Vaccine Record ID <?php echo $record->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;">
+                            <i class="uil uil-trash-alt"></i></button>
+                        </a>
+                      </td>
+                    </tr>
+                    <form method="POST" action="/dashboard/pet-profiles/vaccine-records/update/<?php echo $record->getId(); ?>" enctype="multipart/form-data">
+                      <div class="modal fade" id="editModalId<?php echo $record->getId(); ?>" tabindex="-1" aria-labelledby="editrecordmodal" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="editingModal">EDIT VACCINE RECORD</h5>
+                              <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                            </div>
+                            <div class="modal-body">
+                              <div class="mb-3">
+                                <label for="name" class="col-form-label"> VACCINE NAME </label>
+                                <input type="text" id="name" class="form-control" name="name" value="<?php echo $record->getName(); ?>" required>
+                              </div>
+                              <div class="mb-3">
+                                <label for="date" class="col-form-label"> DATE OF VACCINATION: </label>
+                                <input type="date" id="date" class="form-control" name="revaccinationdate" value="<?php echo $record->getVaccineDate()->format("Y-m-d"); ?>" required>
+                              </div>
+                              <div class="mb-3">
+                                <label for="revaccination" class="col-form-label"> REVACCINATION DATE </label>
+                                <input type="date" id="revaccination" class="form-control" name="revaccination" value="<?php echo $record->getRevaccinationDate()->format("Y-m-d"); ?>" required>
+                              </div>
+                              <div class="mb-3">
+                                <label for="image" class="col-form-label"> VACCINE RECORD: </label>
+                                <input type="file" id="image" class="form-control" name="image">
+                                <input type="hidden" class="form-control" name="old_image" value="<?php echo base64_encode($record->getImage()); ?>">
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Save Changes </button>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="modal-body">
-                        <div class="mb-3">
-                          <label for="name" class="col-form-label"> DATE OF VACCINATION: </label>
-                          <input type="date" class="form-control" name="revaccinationdate" value="" required>
-                        </div>
-                        <div class="mb-3">
-                          <label for="information" class="col-form-label"> VACCINE NAME </label>
-                          <input type="text" class="form-control" name="information" value="" required>
-                        </div>
-                        <div class="mb-3">
-                          <label for="revaccination" class="col-form-label"> REVACCINATION DATE </label>
-                          <input type="date" class="form-control" name="revaccination" value="" required>
-                        </div>
-                        <div class="mb-3">
-                          <label for="image" class="col-form-label"> VACCCINE RECORD: </label>
-                          <input type="file" class="form-control" name="image">
-                          <input type="hidden" class="form-control" name="old_image" value="">
-                        </div>
-                        <div class="modal-footer">
-                          <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Save Changes </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              </tbody>
-            </table>
+                    </form>
+                  <?php } ?>
+                </tbody>
+              </table>
+            <?php } else { ?>
+              <div class="alert text-light text-center ms-5 me-5" role="alert" style="margin-top:10%;background-color:#db6551">
+                No existing Vaccine Records available for this dog.
+              </div>
+            <?php } ?>
           </div>
-          <div class="alert text-light text-center ms-5 me-5" role="alert" style="margin-top:10%;background-color:#db6551">
-            No existing Vaccine
-          </div>
+
         </div>
       </main>
       <?php include_once dirname(__DIR__) . '/footer.php'; ?>
     </div>
   </div>
-  <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addSlotTitle" style="font-family:'Acme', sans-serif;"> ADD VACCINE RECORD </h5>
-          <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
-        </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label for="name" class="col-form-label"> DATE OF VACCINATION </label>
-            <input type="date" class="form-control" name="dategiven" required>
+  <form method="POST" action="/dashboard/pet-profiles/vaccine-records/add" enctype="multipart/form-data">
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addSlotTitle" style="font-family:'Acme', sans-serif;"> ADD VACCINE RECORD </h5>
+            <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
           </div>
-          <div class="mb-3">
-            <label for="information" class="col-form-label"> VACCINE NAME </label>
-            <input type="text" class="form-control" name="information" placeholder="Enter VACCINE NAME" required>
+          <div class="modal-body">
+            <input type="hidden" name="reference" value="<?php echo $reference; ?>">
+            <div class="mb-3">
+              <label for="information" class="col-form-label"> VACCINE NAME </label>
+              <input type="text" class="form-control" name="name" placeholder="Enter VACCINE NAME" required>
+            </div>
+            <div class="mb-3">
+              <label for="name" class="col-form-label"> DATE OF VACCINATION </label>
+              <input type="date" class="form-control" name="vaccineDate" required>
+            </div>
+            <div class="mb-3">
+              <label for="information" class="col-form-label"> REVACCINATION DATE </label>
+              <input type="date" class="form-control" name="revaccinationDate" required>
+            </div>
+            <div class="mb-3">
+              <label for="image" class="col-form-label"> RECORD IMAGE: </label>
+              <input type="file" class="form-control" name="image" required>
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="information" class="col-form-label"> REVACCINATION DATE </label>
-            <input type="date" class="form-control" name="revaccination" required>
+          <div class="modal-footer">
+            <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Add Slot </button>
           </div>
-          <input type="hidden" class="form-control" name="isAvailable" value="1">
-          <div class="mb-3">
-            <label for="image" class="col-form-label"> RECORD IMAGE: </label>
-            <input type="file" class="form-control" name="image" required>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Add Slot </button>
         </div>
       </div>
     </div>
-  </div>
+  </form>
   <script>
     var table = $('#profiles').DataTable({
       orderCellsTop: true,

@@ -53,11 +53,12 @@ class LogDAO
                     VALUES (:accountId, :accountType, :log, :date);";
             date_default_timezone_set('Asia/Manila');
             $now = new DateTime('now');
+            $now = $now->format('Y-m-d H:i:s');
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":accountId", $accountId, PDO::PARAM_INT);
             $stmt->bindParam(":accountType", $accountType, PDO::PARAM_STR);
             $stmt->bindParam(":log", $log, PDO::PARAM_STR);
-            $stmt->bindParam(":date", $now->format('Y-m-d H:i:s'), PDO::PARAM_STR);
+            $stmt->bindParam(":date", $now, PDO::PARAM_STR);
             $isAdded = $stmt->execute() > 0;
             $this->conn->commit();
             return $isAdded;
