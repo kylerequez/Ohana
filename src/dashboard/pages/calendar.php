@@ -43,7 +43,9 @@
       background-color: #c0b65a;
       color: white;
     }
-
+    .fc-day-past {
+      background-color: #ececec;
+    }
     table,
     tbody,
     td,

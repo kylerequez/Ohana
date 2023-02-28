@@ -69,6 +69,10 @@
             font-weight: bold;
         }
 
+        .fc-day-past {
+            background-color: #ececec;
+        }
+
         #header {
             margin-top: 2%;
         }

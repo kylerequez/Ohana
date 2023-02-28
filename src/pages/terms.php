@@ -59,6 +59,16 @@
         </p>
     </div>
     <div class="container">
+        <h3><strong>Pickup Policy</strong></h3>
+        <p>
+        Customers who wish to pick up their dog immediately or on the day, must first contact the business for approval.
+        Customers who are interested in picking up their dog directly from the business must contact the business in advance to discuss the details of the pickup. 
+        If the pickup is approved, the customer must then message the business via social media to arrange the pickup. 
+        For any concerns or questions about the pickup must be directed through email, social media or call us, check the contact page for details.
+        </p>
+        <p>We reserve the right to refuse your request if the business deemed it as suspicious action.</p>
+    </div>
+    <div class="container">
         <h3><strong>License</strong></h3>
         <p>Unless otherwise stated, Ohana Kennel PH and/or its licensors own the intellectual property rights for all material on Ohana Kennel PH. All intellectual property rights are reserved. You may access this from Ohana Kennel PH for your own personal use subjected to restrictions set in these terms and conditions.</p>
         <p><strong>You must not do the following:</strong></p>
