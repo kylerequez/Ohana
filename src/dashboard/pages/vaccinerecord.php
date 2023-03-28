@@ -186,42 +186,44 @@
                         <a href="/dashboard/pet-profiles/vaccine-records/delete/<?php echo $record->getId(); ?>"><button class="delete-btn transparent-btn" onclick="return confirm('Are you sure you want to delete Vaccine Record ID <?php echo $record->getId(); ?>?');" type="delete" style="color:red; font-size: 25px;">
                             <i class="uil uil-trash-alt"></i></button>
                         </a>
-                      </td>
-                    </tr>
-                    <form method="POST" action="/dashboard/pet-profiles/vaccine-records/update/<?php echo $record->getId(); ?>" enctype="multipart/form-data">
-                      <div class="modal fade" id="editModalId<?php echo $record->getId(); ?>" tabindex="-1" aria-labelledby="editrecordmodal" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="editingModal">EDIT VACCINE RECORD</h5>
-                              <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
-                            </div>
-                            <div class="modal-body">
-                              <div class="mb-3">
-                                <label for="name" class="col-form-label"> VACCINE NAME </label>
-                                <input type="text" id="name" class="form-control" name="name" value="<?php echo $record->getName(); ?>" required>
+                        <form method="POST" action="/dashboard/pet-profiles/vaccine-records/update/<?php echo $record->getId(); ?>" enctype="multipart/form-data">
+                          <div class="modal fade" id="editModalId<?php echo $record->getId(); ?>" tabindex="-1" aria-labelledby="editrecordmodal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="editingModal">EDIT VACCINE RECORD</h5>
+                                  <a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                                </div>
+                                <div class="modal-body">
+                                  <input type="hidden" name="reference" value="<?php echo $record->getPetReference(); ?>">
+                                  <div class="mb-3">
+                                    <label for="name" class="col-form-label"> VACCINE NAME </label>
+                                    <input type="text" id="name" class="form-control" name="name" value="<?php echo $record->getName(); ?>" required>
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="date" class="col-form-label"> DATE OF VACCINATION: </label>
+                                    <input type="date" id="date" class="form-control" name="vaccineDate" value="<?php echo $record->getVaccineDate()->format("Y-m-d"); ?>" required>
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="revaccination" class="col-form-label"> REVACCINATION DATE </label>
+                                    <input type="date" id="revaccination" class="form-control" name="revaccinationDate" value="<?php echo $record->getRevaccinationDate()->format("Y-m-d"); ?>" required>
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="image" class="col-form-label"> VACCINE RECORD: </label>
+                                    <input type="file" id="image" class="form-control" name="image">
+                                    <input type="hidden" class="form-control" name="old_image" value="<?php echo base64_encode($record->getImage()); ?>">
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Save Changes </button>
+                                </div>
                               </div>
-                              <div class="mb-3">
-                                <label for="date" class="col-form-label"> DATE OF VACCINATION: </label>
-                                <input type="date" id="date" class="form-control" name="revaccinationdate" value="<?php echo $record->getVaccineDate()->format("Y-m-d"); ?>" required>
-                              </div>
-                              <div class="mb-3">
-                                <label for="revaccination" class="col-form-label"> REVACCINATION DATE </label>
-                                <input type="date" id="revaccination" class="form-control" name="revaccination" value="<?php echo $record->getRevaccinationDate()->format("Y-m-d"); ?>" required>
-                              </div>
-                              <div class="mb-3">
-                                <label for="image" class="col-form-label"> VACCINE RECORD: </label>
-                                <input type="file" id="image" class="form-control" name="image">
-                                <input type="hidden" class="form-control" name="old_image" value="<?php echo base64_encode($record->getImage()); ?>">
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Save Changes </button>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </form>
+                        </form>
+                      </td>
+                    </tr>
+
                   <?php } ?>
                 </tbody>
               </table>
@@ -265,7 +267,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Add Slot </button>
+            <button type="submit" class="btn" style="background-color:#db6551;color:white;"> Add Record </button>
           </div>
         </div>
       </div>

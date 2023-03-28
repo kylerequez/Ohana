@@ -118,8 +118,10 @@ class VaccineRecordDAO
             $stmt->bindParam(":date", $date, PDO::PARAM_STR);
             $stmt->bindParam(":revaccination", $revaccination, PDO::PARAM_STR);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+
+            $isUpdated = $stmt->execute() > 0;
             $this->conn->commit();
-            return false;
+            return $isUpdated;
         } catch (Exception $e) {
             $this->conn->rollBack();
             return false;

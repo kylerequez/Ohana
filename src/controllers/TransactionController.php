@@ -86,6 +86,11 @@ class TransactionController
                     $this->processCollectionRequest("GET");
                     exit();
                 }
+                $account = unserialize($_SESSION["user"]);
+                $log = $account->getFullName() . " has set the status of Transaction ID $id to " . $_POST["status"];
+                if (!$this->logservices->addLog($account->getId(), $account->getType(), $log)) {
+                    $_SESSION["msg"] = "There was an error in the logging of the action.";
+                }
                 $this->processCollectionRequest("GET");
                 exit();
         }

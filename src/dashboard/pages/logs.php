@@ -89,6 +89,13 @@
       margin-top: 20px;
       border: none;
     }
+
+    .form-control {
+      border-color: #db6551;
+      border-style: solid;
+      border-width: 2px;
+      background-color: white;
+    }
   </style>
 </head>
 
@@ -128,7 +135,7 @@
                     <input type="text" class="form-control filter-input" placeholder="Enter Log ID..." data-column="0">
                   </th>
                   <th>
-                    <select class="form-control filter-select" data-column="1">
+                    <select class="form-control filter-select" data-column="1" id="account-type">
                       <option value="">-- Select an account type --</option>
                       <option value="STAFF">Staff</option>
                       <option value="ADMINISTRATOR">Administrator</option>

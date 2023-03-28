@@ -18,8 +18,8 @@
         }
 
         #pupcard {
-            max-width: 55vw;
-            max-height: 50vh;
+            max-width: 60vw;
+            max-height: 60vh;
             border-style: solid;
             border-color: #eed1c2;
             border-width: 5px;
@@ -51,10 +51,9 @@
                 height: 30vh;
             }
         }
-    @media screen and (min-width: 1100px) and (max-width: 1366px) {
-        
-      }
-</style>
+
+        @media screen and (min-width: 1100px) and (max-width: 1366px) {}
+    </style>
 </head>
 
 <body style="background-color: #FAF8F0;">
@@ -65,10 +64,16 @@
     include_once dirname(__DIR__) . '/dao/PetProfileDAO.php';
     include_once dirname(__DIR__) . '/dao/StudHistoryDAO.php';
     include_once dirname(__DIR__) . '/services/PetProfileServices.php';
+    include_once dirname(__DIR__) . '/models/VaccineRecord.php';
+    include_once dirname(__DIR__) . '/dao/VaccineRecordDAO.php';
+    include_once dirname(__DIR__) . '/services/VaccineRecordServices.php';
+
 
     $dao = new PetProfileDAO($servername, $database, $username, $password);
     $history = new StudHistoryDAO($servername, $database, $username, $password);
     $services = new PetProfileServices($dao, $history);
+    $vaccineDao = new VaccineRecordDAO($servername, $database, $username, $password);
+    $vaccineServices = new VaccineRecordServices($vaccineDao);
 
     $name = str_replace("%20", " ", $name);
     $profile = $services->getOhanaStudPet($reference, $name);
@@ -108,24 +113,53 @@
             <div class="container h-90">
                 <div class="card mx-auto" id="pupcard">
                     <div class="row g-0">
-                        <div class="col-md-6 d-none d-md-block">
+                        <div class="col-6 d-none d-md-block">
                             <img src="data:image/jpeg;base64,<?php echo base64_encode($profile->getImage()); ?>" class="img-fluid p-5" id="picture" />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-6">
                             <div class="card-body p-md-5 text-black">
                                 <p class="text-center fs-1"><b> <?php echo $profile->getName(); ?> </b></p>
                                 <div class="card-body">
-                                    <p class="card-text"> <b class="ms-2">BIRTHDAY:</b> <?php echo $profile->getBirthdate()->format('M-d-Y'); ?> </p>
+                                    <p class="card-text"> <b class="ms-2">BIRTHDAY:</b> <?php echo $profile->getBirthdate()->format('M. d, Y'); ?> </p>
                                     <p class="card-text"> <b class="ms-2">COLOR:</b> <?php echo $profile->getColor(); ?> </p>
                                     <p class="card-text"> <b class="ms-2">GENDER:</b> <?php echo $profile->getSex(); ?> </p>
                                     <p class="card-text"> <b class="ms-2">GENES:</b> <?php echo $profile->getTrait(); ?> </p>
                                     <p class="card-text"> <b class="ms-2">PCCI PAPERS:</b> <?php echo ($profile->getPcciStatus() == 'REGISTERED') ? 'Registered' : 'Pending'; ?></p>
+                                    <p class="card-text"> <b class="ms-2">VACCINE STATUS:</b> <?php echo ($profile->getIsVaccinated() == '1') ? 'Vaccinated' : 'Not Vaccinated'; ?></p>
+                                    <?php
+                                    if ($profile->getIsVaccinated() == '1') {
+                                    ?>
+                                        <?php
+                                        $records = $vaccineServices->getAllVaccineRecordsByPetReference($reference);
+                                        if (!is_null($records)) {
+                                        ?>
+                                            <p class="card-text"><b class="ms-2 mb-2">VACCINES:</b></p>
+                                            <ol style="margin-left:25px; padding:10px;">
+                                                <?php
+                                                foreach ($records as $record) {
+                                                ?>
+                                                    <li><a href="#" class="ms-5" style="color:#db6551" data-bs-toggle="modal" data-bs-target="#showRecord<?php echo $record->getId(); ?>"><?php echo $record->getName(); ?></a></li>
+                                                    <div id="showRecord<?php echo $record->getId(); ?>" class="modal" tabindex="-1">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content">
+                                                                <img src="data:image/jpeg;base64,<?php echo base64_encode($record->getImage()); ?>" alt="<?php echo $record->getName(); ?> Image">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php
+                                                }
+                                                ?>
+                                            </ol>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
                                     <p class="card-text"> <b class="ms-2">PRICE PER SESSION</b> ₱ <?php echo number_format($profile->getPrice(), 2); ?></p>
                                     <p class="card-text"> <b class="ms-2">SUCCESS RATE:</b> <?php echo round($profile->getStudRate() * 100), '%'; ?></p>
                                     <p class="card-text fw-bold mt-3"> Our Adult Frenchies are fully vaccinated.</p>
                                     <p class="card-text fw-bold"> Note: Message us on social media for more pictures. </p>
                                 </div>
-                                <div class="buttons mt-5">
+                                <div class="buttons ms-5">
                                     <a href="/stud"><button class="btn btn-outline-dark" style="margin-left:5%"> Go Back</button></a>
                                     <a href="/select-stud-dog?reference=<?php echo $profile->getReference(); ?>"><button type="button" class="btn text-white" style="margin-left:5%; background-color:#c0b65a; ">Book as Stud</button></a>
                                 </div>

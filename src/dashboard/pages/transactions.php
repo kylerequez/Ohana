@@ -343,7 +343,7 @@
                                   <input type="email" class="form-control text-dark" name="number" value="<?php echo $transaction->getNumber(); ?>" disabled>
                                 </div>
                                 <div class="mb-3">
-                                  <label for="status" class="col-form-label"> Status: </label>
+                                  <label for="status" class="col-form-label"> STATUS: </label>
                                   <select class="form-control" name="status" aria-label="Default select example">
                                     <option value="PENDING" <?php if ($transaction->getStatus() == "PENDING") echo "selected"; ?>>PENDING</option>
                                     <option value="COMPLETED" <?php if ($transaction->getStatus() == "COMPLETED") echo "selected"; ?>>COMPLETED</option>

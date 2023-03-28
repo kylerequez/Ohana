@@ -118,7 +118,7 @@
   $history = new StudHistoryDAO($servername, $database, $username, $password);
   $services = new PetProfileServices($dao, $history);
 
-  $profile = $services->getOhanaStudPet($reference, str_replace("%20", " ", $name));
+  $profile = $services->getOhanaStudPetForRecord($reference, str_replace("%20", " ", $name));
 
   if (is_null($profile) || $profile->getType() != "STUD") {
   ?>

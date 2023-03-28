@@ -88,6 +88,12 @@
       margin-top: 20px;
       border: none;
     }
+    .form-control {
+      border-color: #db6551;
+      border-style: solid;
+      border-width: 2px;
+      background-color: white;
+    }
   </style>
 </head>
 

@@ -45,6 +45,13 @@ class PetProfileServices
         $profile->setStudRate(($this->history->getTotalHistoryCount($profile->getId()) == 0) ? 0 : $this->history->getTotalSuccessCount($profile->getId()) / $this->history->getTotalHistoryCount($profile->getId()));
         return $profile;
     }
+    public function getOhanaStudPetForRecord(string $reference, string $name): mixed
+    {
+        $profile = $this->dao->getOhanaStudPetForRecord($reference, $name);
+        $profile->setStudHistory($this->history->getAllStudHistoryByMaleId($profile->getId()));
+        $profile->setStudRate(($this->history->getTotalHistoryCount($profile->getId()) == 0) ? 0 : $this->history->getTotalSuccessCount($profile->getId()) / $this->history->getTotalHistoryCount($profile->getId()));
+        return $profile;
+    }
     public function getOhanaRehomingPet(string $reference,  string $name): mixed
     {
         return $this->dao->getOhanaRehomingPet($reference, $name);

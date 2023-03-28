@@ -7,10 +7,6 @@ include_once dirname(__DIR__) . '/../services/LogServices.php';
 include_once dirname(__DIR__) . '/../services/VaccineRecordServices.php';
 include_once dirname(__DIR__) . '/../controllers/VaccineRecordController.php';
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 $dao = new VaccineRecordDAO($servername, $database, $username, $password);
 $logdao = new LogDAO($servername, $database, $username, $password);
 $services = new VaccineRecordServices($dao);

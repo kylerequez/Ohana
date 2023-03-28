@@ -384,6 +384,47 @@ class PetProfileDAO
             $this->closeConnection();
         }
     }
+    public function getOhanaStudPetForRecord(string $reference, string $name): mixed
+    {
+        try {
+            $this->openConnection();
+            $sql = "SELECT * FROM ohana_pet_profiles
+                    WHERE account_id = 1
+                    AND  pet_type = 'STUD'
+                    AND pet_reference=:reference
+                    AND pet_name=:name;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":reference", $reference, PDO::PARAM_STR);
+            $stmt->bindParam(":name", $name, PDO::PARAM_STR);
+            $searchedPetProfile = null;
+            if ($stmt->execute() > 0) {
+                while ($petProfile = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $searchedPetProfile = new PetProfile(
+                        $petProfile["pet_image"],
+                        $petProfile["pet_reference"],
+                        $petProfile["pet_name"],
+                        new DateTime($petProfile["pet_birthdate"]),
+                        $petProfile["pet_sex"],
+                        $petProfile["pet_color"],
+                        $petProfile["pet_trait"],
+                        $petProfile["is_vaccinated"],
+                        $petProfile["pcci_status"],
+                        $petProfile["account_id"],
+                        $petProfile["owner_name"],
+                        $petProfile["pet_price"],
+                        $petProfile["pet_status"]
+                    );
+                    $searchedPetProfile->setType($petProfile["pet_type"]);
+                    $searchedPetProfile->setId($petProfile["pet_id"]);
+                }
+            }
+            return $searchedPetProfile;
+        } catch (Exception $e) {
+            return null;
+        } finally {
+            $this->closeConnection();
+        }
+    }
     public function getOhanaStudPet(string $reference, string $name): mixed
     {
         try {
